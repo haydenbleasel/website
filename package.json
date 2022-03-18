@@ -41,7 +41,10 @@
     "typescript": "4.6.2"
   },
   "eslintConfig": {
-    "extends": "./node_modules/@haydenbleasel/harmony/src/eslint.js"
+    "extends": "./node_modules/@haydenbleasel/harmony/src/eslint.js",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
   },
   "prettier": {
     "extends": "./node_modules/@haydenbleasel/harmony/src/prettier.js"

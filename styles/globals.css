@@ -29,6 +29,6 @@
 body {
   @apply font-text font-normal tracking-normal antialiased;
 
-  font-feature-settings: "kern", "frac", "kern";
+  font-feature-settings: "kern";
   text-rendering: optimizelegibility;
 }

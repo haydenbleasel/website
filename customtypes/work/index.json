@@ -1,0 +1,40 @@
+{
+  "id": "work",
+  "label": "Work",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      },
+      "jobs": {
+        "config": {
+          "label": "Jobs",
+          "placeholder": "",
+          "fields": {
+            "title": {
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "startYear": {
+              "config": {
+                "label": "Start Year",
+                "placeholder": ""
+              },
+              "type": "Number"
+            }
+          }
+        },
+        "type": "Group"
+      }
+    }
+  }
+}

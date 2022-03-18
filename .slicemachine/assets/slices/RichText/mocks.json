@@ -1,0 +1,17 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "rich_text",
+    "items": [],
+    "primary": {
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Occaecat id adipisicing ad aute nostrud occaecat laboris.",
+          "spans": []
+        }
+      ]
+    }
+  }
+]

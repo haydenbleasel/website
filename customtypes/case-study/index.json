@@ -1,0 +1,44 @@
+{
+  "id": "case-study",
+  "label": "Case Study",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      },
+      "title": {
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "description": {
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        },
+        "type": "Text"
+      }
+    },
+    "Content": {
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "rich_text": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_cts": {
+    "case-study": {}
+  },
+  "slices": {
+    "RichText": {
+      "default": {
+        "primary": {
+          "content": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

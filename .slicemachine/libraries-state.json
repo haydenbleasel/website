@@ -1,5 +1,62 @@
 {
   "slices": {
-    "components": {}
+    "components": {
+      "rich_text": {
+        "library": "slices",
+        "id": "rich_text",
+        "name": "RichText",
+        "description": "RichText",
+        "model": {
+          "id": "rich_text",
+          "type": "SharedSlice",
+          "name": "RichText",
+          "description": "RichText",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "RichText",
+              "primary": {
+                "content": {
+                  "config": {
+                    "label": "Content",
+                    "placeholder": "",
+                    "allowTargetBlank": false,
+                    "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2"
+                  },
+                  "type": "StructuredText"
+                }
+              },
+              "items": {}
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "rich_text",
+            "items": [],
+            "primary": {
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Occaecat id adipisicing ad aute nostrud occaecat laboris.",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "isDirectory": true,
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      }
+    }
   }
 }

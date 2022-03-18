@@ -1,39 +1,48 @@
 {
-  "id": "326eacd4-abc2-40ae-9eaa-f0810c993a9b",
-  "uid": "tenetur-voluptatem-corrupti",
+  "id": "fd477326-e53d-4b67-a0ca-db74f6d0abce",
+  "uid": "quia-minima-beatae",
   "type": "home",
   "data": {
-    "title": "revolutionize viral initiatives",
-    "description": "generate intuitive partnerships",
-    "name": "streamline enterprise architectures",
-    "role": "revolutionize enterprise experiences",
+    "title": "disintermediate back-end web-readiness",
+    "description": "incentivize extensible eyeballs",
+    "photo": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=900&h=500&fit=crop"
+    },
+    "name": "reintermediate proactive supply-chains",
+    "role": "extend back-end deliverables",
     "sections": [
       {
-        "title": "expedite proactive e-commerce",
+        "title": "implement B2B models",
         "content": [
           {
             "type": "paragraph",
-            "text": "Magna ut nostrud cupidatat.",
+            "text": "Commodo amet minim culpa ex proident in aute anim non ad incididunt aute mollit dolor elit. Nisi sit elit sint tempor officia est ut dolor nostrud excepteur eu aliquip velit labore aliquip.",
             "spans": []
           }
         ]
       },
       {
-        "title": "e-enable magnetic e-services",
+        "title": "deliver out-of-the-box synergies",
         "content": [
           {
             "type": "paragraph",
-            "text": "Incididunt deserunt quis ad nisi sunt laborum veniam proident labore. Nisi ipsum do culpa reprehenderit anim fugiat commodo.",
+            "text": "Excepteur ad mollit non aute cillum pariatur do occaecat do velit nisi. Ad excepteur excepteur laborum.",
             "spans": []
           }
         ]
       },
       {
-        "title": "target virtual interfaces",
+        "title": "innovate wireless web-readiness",
         "content": [
           {
             "type": "paragraph",
-            "text": "Sunt voluptate in enim laborum. Dolore cillum excepteur commodo amet adipisicing proident veniam dolore ea enim. Do culpa consequat magna deserunt sint duis exercitation do officia sunt quis aliquip.",
+            "text": "Irure ipsum occaecat consectetur culpa amet deserunt minim. Sunt ut mollit tempor eiusmod id consectetur officia deserunt nulla do eu.",
             "spans": []
           }
         ]

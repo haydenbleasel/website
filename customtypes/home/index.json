@@ -28,6 +28,14 @@
       }
     },
     "Hero": {
+      "photo": {
+        "config": {
+          "label": "Photo",
+          "constraint": {},
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
       "name": {
         "config": {
           "label": "Name",

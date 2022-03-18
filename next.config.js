@@ -11,6 +11,9 @@ const nextConfig = {
   swcMinify: true,
   images: {
     formats: ["image/avif", "image/webp"],
+    domains: [
+      'images.prismic.io'
+    ]
   },
   async headers() {
     return [

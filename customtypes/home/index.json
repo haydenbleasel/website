@@ -1,0 +1,74 @@
+{
+  "id": "home",
+  "label": "Home",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      },
+      "title": {
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "description": {
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        },
+        "type": "Text"
+      }
+    },
+    "Hero": {
+      "name": {
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "role": {
+        "config": {
+          "label": "Role",
+          "placeholder": ""
+        },
+        "type": "Text"
+      }
+    },
+    "Content": {
+      "sections": {
+        "config": {
+          "label": "Sections",
+          "placeholder": "",
+          "fields": {
+            "title": {
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "content": {
+              "config": {
+                "label": "Content",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "multi": "paragraph,preformatted,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading3,heading2"
+              },
+              "type": "StructuredText"
+            }
+          }
+        },
+        "type": "Group"
+      }
+    }
+  }
+}

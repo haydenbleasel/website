@@ -1,6 +1,16 @@
 {
   "_cts": {
-    "case-study": {}
+    "case-study": {},
+    "home": {
+      "sections": {
+        "content": {
+          "config": {
+            "patternType": "PARAGRAPH",
+            "blocks": 1
+          }
+        }
+      }
+    }
   },
   "slices": {
     "RichText": {

@@ -6,6 +6,8 @@ import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
 import { format, parseISO } from "date-fns";
 import type { KeyTextField, PrismicDocumentWithUID, SliceZone } from "@prismicio/types";
 import { Search } from "react-feather";
+import slugify from "slugify";
+import { PrismicLink } from "@prismicio/react";
 import Layout from "../components/layout";
 import { getMediumPosts } from "../utils/medium";
 import { getDevPosts } from "../utils/dev";
@@ -28,10 +30,12 @@ const PostLink: FC<Post> = ({ title, date }, index) => (
     {Boolean(index) && (
       <hr className="border-t border-gray-100 my-2" />
     )}
-    <div className="flex justify-between gap-8">
-      <p className="text-md text-gray-900 flex-1">{title}</p>
-      <p className="text-sm text-gray-500 w-24 flex-0 text-right">{format(parseISO(date), 'MMM dd, yyyy')}</p>
-    </div>
+    <PrismicLink href={`/blog/${slugify(title, { lower: true, strict: true })}`}>
+      <div className="flex justify-between gap-8">
+        <p className="text-md text-gray-900 flex-1">{title}</p>
+        <p className="text-sm text-gray-500 w-24 flex-0 text-right">{format(parseISO(date), 'MMM dd, yyyy')}</p>
+      </div>
+    </PrismicLink>
   </>
 );
 

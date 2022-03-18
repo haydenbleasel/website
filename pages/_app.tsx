@@ -5,6 +5,7 @@ import Head from "next/head";
 import { load, trackPageview } from "fathom-client";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
+import { Toaster } from "react-hot-toast";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const { events } = useRouter();
@@ -49,6 +50,10 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#F5F5F9" />
       </Head>
       <Component {...pageProps} />
+      <Toaster toastOptions={{
+        duration: 5000,
+        position: 'bottom-right',
+      }} />
     </>
   );
 };

@@ -21,6 +21,7 @@
     "@tailwindcss/typography": "^0.5.2",
     "date-fns": "^2.28.0",
     "fathom-client": "^3.4.1",
+    "fuse.js": "^6.5.3",
     "hex-to-rgba": "^2.0.1",
     "jsdom": "^19.0.0",
     "lodash.groupby": "^4.6.0",
@@ -77,7 +78,8 @@
             "snake_case"
           ]
         }
-      ]
+      ],
+      "@typescript-eslint/no-misused-promises": "off"
     }
   },
   "prettier": {

@@ -24,7 +24,8 @@
     },
     "clients": {},
     "playlists": {},
-    "blog": {}
+    "blog": {},
+    "recommendations": {}
   },
   "slices": {
     "RichText": {

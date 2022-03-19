@@ -1,0 +1,51 @@
+{
+  "id": "a4a351d1-67df-4b54-bcde-709a43de95b1",
+  "uid": "iste-et-et",
+  "type": "recommendations",
+  "data": {
+    "tools": [
+      {
+        "name": "facilitate magnetic web-readiness",
+        "description": "strategize cross-platform architectures",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      },
+      {
+        "name": "streamline killer paradigms",
+        "description": "engage viral convergence",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      }
+    ],
+    "freelancers": [
+      {
+        "name": "expedite end-to-end web-readiness",
+        "description": "enable open-source experiences",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      },
+      {
+        "name": "implement cutting-edge solutions",
+        "description": "transform world-class methodologies",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        }
+      },
+      {
+        "name": "productize killer portals",
+        "description": "seize bricks-and-clicks paradigms",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        }
+      }
+    ]
+  }
+}

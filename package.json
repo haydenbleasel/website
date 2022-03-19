@@ -38,7 +38,7 @@
     "slugify": "^1.6.5"
   },
   "devDependencies": {
-    "@haydenbleasel/harmony": "^1.0.7",
+    "@haydenbleasel/harmony": "^1.0.8",
     "@prismicio/types": "^0.1.27",
     "@types/jsdom": "^16.2.14",
     "@types/lodash.groupby": "^4.6.6",
@@ -68,20 +68,6 @@
     "extends": "./node_modules/@haydenbleasel/harmony/src/eslint.js",
     "parserOptions": {
       "project": "./tsconfig.json"
-    },
-    "rules": {
-      "@typescript-eslint/naming-convention": [
-        "error",
-        {
-          "selector": "variable",
-          "format": [
-            "camelCase",
-            "PascalCase",
-            "snake_case"
-          ]
-        }
-      ],
-      "@typescript-eslint/no-misused-promises": "off"
     }
   },
   "prettier": {

@@ -119,7 +119,7 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
             <Image src={track.album.images[0].url} width={48} height={48} />
           </div>
           <div className="flex flex-col flex-1 relative">
-            <p className="text-md text-gray-900 line-clamp-1">{track.name}</p>
+            <p className="text-md text-gray-900 line-clamp-1 leading-normal">{track.name}</p>
             <p className="text-sm text-gray-500 line-clamp-1">{track.artists[0].name} &bull; {track.album.name}</p>
           </div>
         </div>

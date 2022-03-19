@@ -1262,10 +1262,10 @@
     "@hapi/bourne" "2.x.x"
     "@hapi/hoek" "9.x.x"
 
-"@haydenbleasel/harmony@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@haydenbleasel/harmony/-/harmony-1.0.7.tgz#c6e24c4bc56aa9f98c61dfd2470cecc5338d3f24"
-  integrity sha512-Qbkq9T+XRiYO0fm95yNbNKajmcTZon1TsaLw8fWZErLlNqxqTUK8CYI9IPIvKI1/+xhuvNRoMzrYMht6tIsQKg==
+"@haydenbleasel/harmony@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/harmony/-/harmony-1.0.8.tgz#f619df2008e10d74ca0d742ec5176f756155f078"
+  integrity sha512-jnS3FXurT+Zwf16QfURve8m6Tbto4jkP9ZxWdMF88t9m/yPaoBn0klQ/YkOEsOvcb5w7QeU0nzFfdCOge/P39w==
   dependencies:
     eslint-config-next "^12.1.0"
     eslint-config-prettier "^8.5.0"

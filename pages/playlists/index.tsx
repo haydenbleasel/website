@@ -8,7 +8,7 @@ import { getPlaylists } from "../../utils/spotify";
 
 type PlaylistsProps = {
   playlists: SpotifyPlaylistPreview[];
-}
+};
 
 const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
   <Layout backHref="/" backLabel="Home">
@@ -17,13 +17,18 @@ const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
       <div>
         {playlists.map((playlist, index) => (
           <>
-            {Boolean(index) && (
-              <hr className="border-t border-gray-100 my-2" />
-            )}
-            <PrismicLink href={`/playlists/${playlist.id}-${slugify(playlist.name, { strict: true, lower: true })}`}>
+            {Boolean(index) && <hr className="my-2 border-t border-gray-100" />}
+            <PrismicLink
+              href={`/playlists/${playlist.id}-${slugify(playlist.name, {
+                strict: true,
+                lower: true,
+              })}`}
+            >
               <div className="flex gap-8" key={playlist.id}>
-                <p className="text-md text-gray-900 flex-1">{playlist.name}</p>
-                <p className="w-24 flex-0 text-sm text-gray-400 text-right">{playlist.tracks.total} tracks</p>
+                <p className="flex-1 text-md text-gray-900">{playlist.name}</p>
+                <p className="flex-0 w-24 text-right text-sm text-gray-400">
+                  {playlist.tracks.total} tracks
+                </p>
               </div>
             </PrismicLink>
           </>
@@ -39,8 +44,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       playlists,
-    }
-  }
-}
+    },
+  };
+};
 
 export default Playlists;

@@ -13,32 +13,36 @@ type ClientsData = {
     freelance: {
       client: KeyTextField;
     }[];
-  }
+  };
   jellypepper: {
     client: KeyTextField;
   }[];
-}
+};
 
 type ClientListData = {
   name: string;
   data: {
     client: KeyTextField;
   }[];
-}
+};
 
 const ClientList: FC<ClientListData> = ({ name, data }) => (
   <div className="flex gap-8">
-    <p className="w-24 flex-0 text-sm text-gray-400">{name}</p>
-    <div className="flex-1 flex flex-col gap-1">
-      {data.sort((clientA, clientB) => {
-        if (!clientA.client || !clientB.client) {
-          return 0;
-        }
+    <p className="flex-0 w-24 text-sm text-gray-400">{name}</p>
+    <div className="flex flex-1 flex-col gap-1">
+      {data
+        .sort((clientA, clientB) => {
+          if (!clientA.client || !clientB.client) {
+            return 0;
+          }
 
-        return clientB.client < clientA.client ? 1 : -1;
-      }).map(({ client }, index) => (
-        <p className="text-md text-gray-900" key={index}>{client}</p>
-      ))}
+          return clientB.client < clientA.client ? 1 : -1;
+        })
+        .map(({ client }, index) => (
+          <p className="text-md text-gray-900" key={index}>
+            {client}
+          </p>
+        ))}
     </div>
   </div>
 );
@@ -52,10 +56,10 @@ const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
       <ClientList name="Freelance" data={data.freelance} />
     </div>
   </Layout>
-)
+);
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await getPage('clients') as PrismicDocumentWithUID;
+  const { data } = (await getPage("clients")) as PrismicDocumentWithUID;
   const jellypepperPrismicClient = createClient(
     process.env.JELLYPEPPER_PRISMIC_ENDPOINT ?? "loading",
     {
@@ -63,17 +67,21 @@ export const getStaticProps: GetStaticProps = async () => {
       accessToken: process.env.JELLYPEPPER_PRISMIC_ACCESS_TOKEN ?? "",
     }
   );
-  const clients = await jellypepperPrismicClient.getAllByType('client') as unknown as PrismicDocumentWithUID<{
+  const clients = (await jellypepperPrismicClient.getAllByType(
+    "client"
+  )) as unknown as PrismicDocumentWithUID<{
     client_name: KeyTextField;
   }>[];
-  const jellypepper = clients.map((client) => ({ client: client.data.client_name }));
+  const jellypepper = clients.map((client) => ({
+    client: client.data.client_name,
+  }));
 
   return {
     props: {
       data,
       jellypepper,
-    }
-  }
+    },
+  };
 };
 
 export default Clients;

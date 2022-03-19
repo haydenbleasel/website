@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import type { JSXMapSerializer, LinkProps } from "@prismicio/react";
 import { PrismicProvider, PrismicLink } from "@prismicio/react";
-import Link from 'next/link';
+import Link from "next/link";
 import { Menu, Share } from "react-feather";
 import { useClickAway, useToggle } from "react-use";
 import { client, docResolver, linkResolver } from "../utils/prismic";
@@ -19,7 +19,7 @@ export const components: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
     <p
       key={key}
-      className="text-md text-normal mb-4 text-gray-900 dark:text-white"
+      className="text-normal mb-4 text-md text-gray-900 dark:text-white"
     >
       {children}
     </p>
@@ -28,18 +28,17 @@ export const components: JSXMapSerializer = {
     const href = docResolver(node.data);
 
     return (
-      <PrismicLink
-        key={key}
-        href={href}
-      >
-        <span className="text-gray-900 dark:text-white hover:text-gray-800 dark:hover:text-gray-100 transition-colors underline">{children}</span>
+      <PrismicLink key={key} href={href}>
+        <span className="text-gray-900 underline transition-colors hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
+          {children}
+        </span>
       </PrismicLink>
     );
   },
   heading1: ({ children, key }) => (
     <h1
       key={key}
-      className="text-xl mt-8 mb-4 text-gray-900 dark:text-white font-semibold"
+      className="mt-8 mb-4 text-xl font-semibold text-gray-900 dark:text-white"
     >
       {children}
     </h1>
@@ -47,7 +46,7 @@ export const components: JSXMapSerializer = {
   heading2: ({ children, key }) => (
     <h2
       key={key}
-      className="text-sm sm:text-lg mt-8 mb-4 text-gray-900 dark:text-white font-semibold"
+      className="mt-8 mb-4 text-sm font-semibold text-gray-900 dark:text-white sm:text-lg"
     >
       {children}
     </h2>
@@ -55,7 +54,7 @@ export const components: JSXMapSerializer = {
   heading3: ({ children, key }) => (
     <h3
       key={key}
-      className="text-xs sm:text-md mt-8 mb-4 text-gray-900 dark:text-white font-semibold"
+      className="mt-8 mb-4 text-xs font-semibold text-gray-900 dark:text-white sm:text-md"
     >
       {children}
     </h3>
@@ -63,7 +62,7 @@ export const components: JSXMapSerializer = {
   heading4: ({ children, key }) => (
     <h4
       key={key}
-      className="text-xl sm:text-sm mt-8 mb-4 text-gray-900 dark:text-white font-semibold"
+      className="mt-8 mb-4 text-xl font-semibold text-gray-900 dark:text-white sm:text-sm"
     >
       {children}
     </h4>
@@ -71,7 +70,7 @@ export const components: JSXMapSerializer = {
   heading5: ({ children, key }) => (
     <h5
       key={key}
-      className="text-lg sm:text-xs mt-8 mb-4 text-gray-900 dark:text-white font-semibold"
+      className="mt-8 mb-4 text-lg font-semibold text-gray-900 dark:text-white sm:text-xs"
     >
       {children}
     </h5>
@@ -79,19 +78,19 @@ export const components: JSXMapSerializer = {
   heading6: ({ children, key }) => (
     <h6
       key={key}
-      className="text-md sm:text-xl mt-8 mb-4 text-gray-900 dark:text-white font-semibold"
+      className="mt-8 mb-4 text-md font-semibold text-gray-900 dark:text-white sm:text-xl"
     >
       {children}
     </h6>
   ),
   list: ({ children, key }) => (
     <div key={key}>
-      <ul className="list-disc list-inside mb-4">{children}</ul>
+      <ul className="mb-4 list-inside list-disc">{children}</ul>
     </div>
   ),
   oList: ({ children, key }) => (
     <div key={key}>
-      <ul className="list-decimal list-inside mb-4">{children}</ul>
+      <ul className="mb-4 list-inside list-decimal">{children}</ul>
     </div>
   ),
   listItem: ({ children, key }) => (
@@ -112,8 +111,10 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? '', {
-      includedDomains: [new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '').hostname],
+    load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? "", {
+      includedDomains: [
+        new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "").hostname,
+      ],
       url: process.env.NEXT_PUBLIC_ANALYTICS_URL,
     });
 
@@ -128,14 +129,12 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     };
   }, [events]);
 
-  useClickAway(ref, () => (
-    menuOpen && toggleMenuOpen(false)
-  ));
+  useClickAway(ref, () => menuOpen && toggleMenuOpen(false));
 
   const internalLinkComponent = ({
     children,
     href,
-    className = '',
+    className = "",
     ...props
   }: LinkProps & { className?: string }) => {
     const active = asPath === href;
@@ -144,10 +143,11 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <Link href={href} passHref>
         <a
           href={href}
-          className={`text-md font-normal transition-all ${active
-            ? 'text-gray-700 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500'
-            : 'text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500'
-            } ${className}`}
+          className={`text-md font-normal transition-all ${
+            active
+              ? "text-gray-700 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"
+              : "text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500"
+          } ${className}`}
           {...props}
         >
           {children}
@@ -159,7 +159,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   const externalLinkComponent = ({
     children,
     href,
-    className = '',
+    className = "",
     ...props
   }: LinkProps & { className?: string }) => (
     <Link href={href}>
@@ -167,10 +167,10 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         {...props}
         target="_blank"
         rel="noopener noreferrer"
-        className={`text-md font-normal transition-all text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500 inline-flex items-center gap-2 ${className}`}
+        className={`inline-flex items-center gap-2 text-md font-normal text-gray-500 transition-all hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500 ${className}`}
       >
         {children}
-        {typeof children === 'string' && (
+        {typeof children === "string" && (
           <div className="text-gray-400 dark:text-gray-600">
             <Share size={16} />
           </div>
@@ -180,12 +180,12 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   );
 
   const pages = [
-    { link: '/', label: 'Home' },
-    { link: '/work', label: 'Work' },
-    { link: '/clients', label: 'Clients' },
-    { link: '/blog', label: 'Blog' },
-    { link: '/playlists', label: 'Playlists' },
-    { link: '/colophon', label: 'Colophon' },
+    { link: "/", label: "Home" },
+    { link: "/work", label: "Work" },
+    { link: "/clients", label: "Clients" },
+    { link: "/blog", label: "Blog" },
+    { link: "/playlists", label: "Playlists" },
+    { link: "/colophon", label: "Colophon" },
   ];
 
   return (
@@ -220,21 +220,37 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         <Component {...pageProps} />
       </PrismicProvider>
       <div className="fixed top-0 right-0 flex flex-col items-end" ref={ref}>
-        <div className="p-4" onClick={toggleMenuOpen} onKeyDown={toggleMenuOpen} role="button" tabIndex={0}>
+        <div
+          className="p-4"
+          onClick={toggleMenuOpen}
+          onKeyDown={toggleMenuOpen}
+          role="button"
+          tabIndex={0}
+        >
           <Menu size={16} color={tailwindConfig.theme.colors.gray[400]} />
         </div>
-        <div className={`bg-white rounded-md shadow-sm mr-4 py-2 grid w-[200px] transition-all ${menuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-1 pointer-events-none'} `}>
+        <div
+          className={`mr-4 grid w-[200px] rounded-md bg-white py-2 shadow-sm transition-all ${
+            menuOpen
+              ? "pointer-events-auto translate-y-0 opacity-100"
+              : "pointer-events-none translate-y-1 opacity-0"
+          } `}
+        >
           {pages.map((page, index) => (
             <PrismicLink href={page.link} key={index}>
-              <span className="px-3 py-1 bg-white hover:bg-gray-100 flex text-sm text-gray-900">{page.label}</span>
+              <span className="flex bg-white px-3 py-1 text-sm text-gray-900 hover:bg-gray-100">
+                {page.label}
+              </span>
             </PrismicLink>
           ))}
         </div>
       </div>
-      <Toaster toastOptions={{
-        duration: 5000,
-        position: 'bottom-right',
-      }} />
+      <Toaster
+        toastOptions={{
+          duration: 5000,
+          position: "bottom-right",
+        }}
+      />
     </>
   );
 };

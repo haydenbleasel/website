@@ -1,6 +1,6 @@
 import type { GetStaticProps } from "next";
 import type { FC } from "react";
-import groupBy from 'lodash.groupby';
+import groupBy from "lodash.groupby";
 import type { PrismicDocumentWithUID } from "@prismicio/types";
 import Layout from "../components/layout";
 import { getPage } from "../utils/prismic";
@@ -11,8 +11,8 @@ type WorkData = {
       title: string;
       startYear: number;
     }[];
-  }
-}
+  };
+};
 
 const Work: FC<WorkData> = ({ data }) => {
   const years = groupBy(data.jobs, (job) => job.startYear);
@@ -21,29 +21,33 @@ const Work: FC<WorkData> = ({ data }) => {
     <Layout backHref="/" backLabel="Home">
       <div className="grid gap-8">
         <h1 className="text-md font-medium text-gray-900">Work</h1>
-        {Object.keys(years).reverse().map((startYear) => (
-          <div className="flex gap-8" key={startYear}>
-            <p className="w-24 flex-0 text-sm text-gray-400">{startYear}</p>
-            <div className="flex-1 flex flex-col gap-1">
-              {years[startYear].map((job) => (
-                <p className="text-md text-gray-900" key={job.title}>{job.title}</p>
-              ))}
+        {Object.keys(years)
+          .reverse()
+          .map((startYear) => (
+            <div className="flex gap-8" key={startYear}>
+              <p className="flex-0 w-24 text-sm text-gray-400">{startYear}</p>
+              <div className="flex flex-1 flex-col gap-1">
+                {years[startYear].map((job) => (
+                  <p className="text-md text-gray-900" key={job.title}>
+                    {job.title}
+                  </p>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </Layout>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await getPage('work') as PrismicDocumentWithUID;
+  const { data } = (await getPage("work")) as PrismicDocumentWithUID;
 
   return {
     props: {
       data,
-    }
-  }
+    },
+  };
 };
 
 export default Work;

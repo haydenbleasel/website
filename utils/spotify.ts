@@ -12,6 +12,7 @@ const getAccessToken = async (): Promise<string> => {
     method: "POST",
     headers: {
       Authorization: `Basic ${authorization}`,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: "grant_type=client_credentials",

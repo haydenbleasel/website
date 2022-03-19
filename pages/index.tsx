@@ -79,7 +79,7 @@ const Home: FC<HomeProps> = ({ data }) => {
             <PrismicRichText field={section.content} />
           </div>
         ))}
-        <form onSubmit={joinMailingList} className="relative">
+        <form onSubmit={joinMailingList} className={`relative ${loading ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'}`}>
           <input
             className="w-full text-md font-normal text-gray-900 placeholder:text-gray-400 py-[6px] px-3 border border-gray-100 rounded-sm p-[2px]"
             name="email"

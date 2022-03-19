@@ -58,6 +58,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "next-sitemap": "^2.5.10",
     "postcss": "^8.4.12",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.6.0",
     "prettier-plugin-tailwindcss": "^0.1.8",
     "slice-machine-ui": "^0.3.3",
@@ -77,5 +78,8 @@
   },
   "stylelint": {
     "extends": "./node_modules/@haydenbleasel/harmony/src/stylelint.js"
-  }
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }

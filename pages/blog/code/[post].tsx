@@ -17,6 +17,7 @@ const LandingPage: FC<LandingPageProps> = ({ data }) => (
         <h1 className="text-md font-medium text-gray-900">{data.title}</h1>
         <p className="text-sm text-gray-500">Last updated at {format(parseISO(data.date), 'MMM dd, yyyy')} </p>
       </div>
+      {/* eslint-disable-next-line @typescript-eslint/naming-convention, react/no-danger */}
       <div className="prose" dangerouslySetInnerHTML={{ __html: data.content }} />
     </div>
   </Layout>

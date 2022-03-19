@@ -28,8 +28,8 @@ const { useGlobalState } = createGlobalState({ interactableNotified: false });
 
 const Track = ({ track }: SpotifyTrack, index: number) => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
-  const [fadeIn, setFadeIn] = useState<NodeJS.Timer | null>(null);
-  const [fadeOut, setFadeOut] = useState<NodeJS.Timer | null>(null);
+  const [fadeIn, setFadeIn] = useState<ReturnType<typeof setInterval> | null>(null);
+  const [fadeOut, setFadeOut] = useState<ReturnType<typeof setInterval> | null>(null);
   const [interactable, setInteractable] = useState<boolean>(false);
   const [interactableNotified, setInteractableNotified] = useGlobalState('interactableNotified');
 

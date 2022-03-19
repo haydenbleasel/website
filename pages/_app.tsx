@@ -9,11 +9,11 @@ import type { JSXMapSerializer, LinkProps } from "@prismicio/react";
 import { PrismicProvider, PrismicLink } from "@prismicio/react";
 import Link from 'next/link';
 import { Menu, Share } from "react-feather";
+import { useClickAway, useToggle } from "react-use";
 import { client, docResolver, linkResolver } from "../utils/prismic";
 import "../styles/globals.css";
 import "../styles/dev.css";
 import tailwindConfig from "../tailwind.config";
-import { useClickAway, useToggle } from "react-use";
 
 export const components: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -129,7 +129,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   }, [events]);
 
   useClickAway(ref, () => (
-    toggleMenuOpen(false)
+    menuOpen && toggleMenuOpen(false)
   ));
 
   const internalLinkComponent = ({
@@ -223,7 +223,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         <div className="p-4" onClick={toggleMenuOpen} onKeyDown={toggleMenuOpen} role="button" tabIndex={0}>
           <Menu size={16} color={tailwindConfig.theme.colors.gray[400]} />
         </div>
-        <div className={`bg-white rounded-md shadow-sm mr-4 py-2 grid w-[200px] transition-all ${menuOpen ? 'opacity-1 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-1 pointer-events-none'} `}>
+        <div className={`bg-white rounded-md shadow-sm mr-4 py-2 grid w-[200px] transition-all ${menuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-1 pointer-events-none'} `}>
           {pages.map((page, index) => (
             <PrismicLink href={page.link} key={index}>
               <span className="px-3 py-1 bg-white hover:bg-gray-100 flex text-sm text-gray-900">{page.label}</span>

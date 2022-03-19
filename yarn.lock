@@ -1269,10 +1269,10 @@
     "@hapi/bourne" "2.x.x"
     "@hapi/hoek" "9.x.x"
 
-"@haydenbleasel/harmony@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@haydenbleasel/harmony/-/harmony-1.0.8.tgz#f619df2008e10d74ca0d742ec5176f756155f078"
-  integrity sha512-jnS3FXurT+Zwf16QfURve8m6Tbto4jkP9ZxWdMF88t9m/yPaoBn0klQ/YkOEsOvcb5w7QeU0nzFfdCOge/P39w==
+"@haydenbleasel/harmony@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/harmony/-/harmony-1.0.10.tgz#50f8a611f95ae52d0d00a5c735275da984b32387"
+  integrity sha512-vIJSm1zKOb2z2xHM3RVw6lNZf8FR6JrXuPxtl4Uamn79b2COcky14AGfyFo57RzvxkgNsg6bE7CkXoTG9sw2NA==
   dependencies:
     eslint-config-next "^12.1.0"
     eslint-config-prettier "^8.5.0"
@@ -1445,6 +1445,16 @@
     "@prismicio/types" "^0.1.24"
     escape-html "^1.0.3"
     imgix-url-builder "^0.0.2"
+
+"@prismicio/helpers@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.2.1.tgz#de45c74d259ce6adf54fca3bd413631418b1435d"
+  integrity sha512-WFfS5CpPJ1PTNU/cqx3XnO8mnbfI8bEgAnWqD57IS5Pqy8YcK8oW5VSR7nw2wPowJjWTuf8j59YtE5uiHi6aCQ==
+  dependencies:
+    "@prismicio/richtext" "^2.0.1"
+    "@prismicio/types" "^0.1.27"
+    escape-html "^1.0.3"
+    imgix-url-builder "^0.0.3"
 
 "@prismicio/react@^2.1.2":
   version "2.1.2"
@@ -1913,10 +1923,10 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.5.tgz#75a2a8e7d8ab4b230414505d92335d1dcb53a6df"
   integrity sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==
 
-"@types/react@17.0.40":
-  version "17.0.40"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.40.tgz#dc010cee6254d5239a138083f3799a16638e6bad"
-  integrity sha512-UrXhD/JyLH+W70nNSufXqMZNuUD2cXHu6UjCllC6pmOQgBX4SGXOH8fjRka0O0Ee0HrFxapDD8Bwn81Kmiz6jQ==
+"@types/react@17.0.41":
+  version "17.0.41"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.41.tgz#6e179590d276394de1e357b3f89d05d7d3da8b85"
+  integrity sha512-chYZ9ogWUodyC7VUTRBfblysKLjnohhFY9bGLwvnUFFy48+vB9DikmB3lW0qTFmBcKSzmdglcvkHK71IioOlDA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4694,6 +4704,11 @@ imgix-url-builder@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/imgix-url-builder/-/imgix-url-builder-0.0.2.tgz#49a583cacdb3ac38a0a5c098271bec3b3cdee55b"
   integrity sha512-PHT9aXvD+I6x5UAdvsAKNALvxHI1AWGGpxLUQDQAXzUt54ScFHxxODJ/4/XWDM55cqvRCvT3MMxbOWjgWhLe9Q==
+
+imgix-url-builder@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/imgix-url-builder/-/imgix-url-builder-0.0.3.tgz#9f386de64cdd1363d352a7f6313fd7dacd8fb282"
+  integrity sha512-8Oc2Cn4+jF06sEfJcVPlWYfD2F6RjrwIMbk1xEzux8unoB5LsvFc/GL1BQ47HPaeE12ReX2nMUcjUslGYWLxHA==
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"

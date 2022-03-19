@@ -31,7 +31,7 @@ export type Track = {
   is_local: boolean;
   name: string;
   popularity: number;
-  preview_url: null;
+  preview_url: string | null;
   track: boolean;
   track_number: number;
   type: string;

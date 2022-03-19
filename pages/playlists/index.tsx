@@ -11,7 +11,7 @@ type PlaylistsProps = {
 }
 
 const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
-  <Layout>
+  <Layout backHref="/" backLabel="Home">
     <div className="grid gap-8">
       <h1 className="text-md font-medium">Playlists</h1>
       <div>

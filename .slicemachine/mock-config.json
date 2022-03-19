@@ -13,6 +13,14 @@
     },
     "work": {
       "jobs": {}
+    },
+    "landing-page": {
+      "content": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
     }
   },
   "slices": {

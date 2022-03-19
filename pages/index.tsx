@@ -1,5 +1,5 @@
 import { PrismicRichText } from '@prismicio/react';
-import type { ImageFieldImage, KeyTextField, RichTextField } from '@prismicio/types';
+import type { ImageFieldImage, KeyTextField, PrismicDocumentWithUID, RichTextField } from '@prismicio/types';
 import { trackGoal } from 'fathom-client';
 import type { GetStaticProps } from 'next';
 import Image from 'next/image';
@@ -95,7 +95,7 @@ const Home: FC<HomeProps> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getPage('home');
+  const { data } = await getPage('home') as PrismicDocumentWithUID;
 
   return {
     props: {

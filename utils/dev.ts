@@ -2,6 +2,27 @@ import { parseISO, format } from "date-fns";
 import type { DevPost, DevPostDetailed } from "../types/dev";
 import type { Post } from "../types/post";
 
+export const getDevPost = async (id: string): Promise<Post> => {
+  const resp = await fetch(`https://dev.to/api/articles/${id}`);
+
+  const data = (await resp.json()) as DevPostDetailed;
+
+  return {
+    id,
+    title: data.title,
+    link: data.url,
+    caption: "",
+    description: data.description,
+    image: data.social_image,
+    date: data.created_at,
+    comments: data.comments_count,
+    reactions: data.public_reactions_count,
+    duration: data.reading_time_minutes,
+    tags: data.tags,
+    content: data.body_html,
+  };
+};
+
 export const getDevPosts = async (): Promise<DevPost[]> => {
   const response = await fetch(
     "https://dev.to/api/articles?username=haydenbleasel"
@@ -10,13 +31,11 @@ export const getDevPosts = async (): Promise<DevPost[]> => {
 
   const content = await Promise.all(
     items.map(async (item) => {
-      const resp = await fetch(`https://dev.to/api/articles/${item.id}`);
-
-      const data = (await resp.json()) as DevPostDetailed;
+      const data = await getDevPost(`${item.id}`);
 
       return {
         id: item.id,
-        content: data.body_html,
+        content: data.content,
       };
     })
   );

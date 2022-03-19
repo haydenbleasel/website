@@ -1,0 +1,50 @@
+{
+  "id": "landing-page",
+  "label": "Landing Page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      },
+      "title": {
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "description": {
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "cover": {
+        "config": {
+          "label": "Cover",
+          "constraint": {},
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    },
+    "Content": {
+      "content": {
+        "config": {
+          "label": "Content",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        },
+        "type": "StructuredText"
+      }
+    }
+  }
+}

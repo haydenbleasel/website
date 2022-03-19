@@ -8,12 +8,12 @@ import type { KeyTextField, PrismicDocumentWithUID, SliceZone } from "@prismicio
 import { Search } from "react-feather";
 import slugify from "slugify";
 import { PrismicLink } from "@prismicio/react";
-import Layout from "../components/layout";
-import { getMediumPosts } from "../utils/medium";
-import { getDevPosts } from "../utils/dev";
-import type { Post } from "../types/post";
-import { getPages } from "../utils/prismic";
-import tailwindConfig from "../tailwind.config";
+import Layout from "../../components/layout";
+import { getMediumPosts } from "../../utils/medium";
+import { getDevPosts } from "../../utils/dev";
+import type { Post } from "../../types/post";
+import { getPages } from "../../utils/prismic";
+import tailwindConfig from "../../tailwind.config";
 
 type WorkData = {
   mediumPosts: Post[];
@@ -25,12 +25,12 @@ const sortByDate = (postA: Post, postB: Post) => (
   parseISO(postA.date) > parseISO(postB.date) ? -1 : 1
 );
 
-const PostLink: FC<Post> = ({ title, date }, index) => (
+const PostLink: FC<Post> = ({ id, title, date }, index) => (
   <>
     {Boolean(index) && (
       <hr className="border-t border-gray-100 my-2" />
     )}
-    <PrismicLink href={`/blog/${slugify(title, { lower: true, strict: true })}`}>
+    <PrismicLink href={`/blog/${id}-${slugify(title, { lower: true, strict: true })}`}>
       <div className="flex justify-between gap-8">
         <p className="text-md text-gray-900 flex-1">{title}</p>
         <p className="text-sm text-gray-500 w-24 flex-0 text-right">{format(parseISO(date), 'MMM dd, yyyy')}</p>
@@ -72,7 +72,7 @@ const Work: FC<WorkData> = ({ mediumPosts, devPosts, caseStudies }) => {
   return (
     <Layout backHref="/" backLabel="Home">
       <div className="grid gap-8">
-        <h1 className="text-md font-medium">Blog</h1>
+        <h1 className="text-md font-medium text-gray-900">Blog</h1>
         <Tabs className="grid gap-8">
 
           <div className="grid gap-3">

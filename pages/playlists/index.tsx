@@ -13,7 +13,7 @@ type PlaylistsProps = {
 const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
   <Layout backHref="/" backLabel="Home">
     <div className="grid gap-8">
-      <h1 className="text-md font-medium">Playlists</h1>
+      <h1 className="text-md font-medium text-gray-900">Playlists</h1>
       <div>
         {playlists.map((playlist, index) => (
           <>

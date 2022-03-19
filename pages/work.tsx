@@ -1,6 +1,7 @@
 import type { GetStaticProps } from "next";
 import type { FC } from "react";
 import groupBy from 'lodash.groupby';
+import type { PrismicDocumentWithUID } from "@prismicio/types";
 import Layout from "../components/layout";
 import { getPage } from "../utils/prismic";
 
@@ -19,7 +20,7 @@ const Work: FC<WorkData> = ({ data }) => {
   return (
     <Layout backHref="/" backLabel="Home">
       <div className="grid gap-8">
-        <h1 className="text-md font-medium">Work</h1>
+        <h1 className="text-md font-medium text-gray-900">Work</h1>
         {Object.keys(years).reverse().map((startYear) => (
           <div className="flex gap-8" key={startYear}>
             <p className="w-24 flex-0 text-sm text-gray-400">{startYear}</p>
@@ -36,7 +37,7 @@ const Work: FC<WorkData> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getPage('work');
+  const { data } = await getPage('work') as PrismicDocumentWithUID;
 
   return {
     props: {

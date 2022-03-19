@@ -1,0 +1,25 @@
+{
+  "id": "75028fab-1ff1-451d-bc5a-379ef41b7f20",
+  "uid": "veniam-omnis-nobis",
+  "type": "landing-page",
+  "data": {
+    "title": "reinvent B2C synergies",
+    "description": "grow front-end e-commerce",
+    "cover": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=900&h=500&fit=crop"
+    },
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Proident sit excepteur qui. Minim do anim velit labore nulla id proident anim labore officia ea culpa. Velit tempor incididunt consequat commodo irure amet aute enim non.",
+        "spans": []
+      }
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-const hexToRGBA = require('hex-to-rgba');
+const hexToRGBA = require("hex-to-rgba");
 const lineClamp = require("@tailwindcss/line-clamp");
 const typography = require("@tailwindcss/typography");
 
@@ -38,46 +38,46 @@ module.exports = {
         900: "#101828",
       },
       error: {
-        DEFAULT: '#d92d20',
-        25: '#fffbfa',
-        50: '#fef3f2',
-        100: '#fee4e2',
-        200: '#fecdca',
-        300: '#fda29b',
-        400: '#f97066',
-        500: '#f04438',
-        600: '#d92d20',
-        700: '#b42318',
-        800: '#912018',
-        900: '#7a271a',
+        DEFAULT: "#d92d20",
+        25: "#fffbfa",
+        50: "#fef3f2",
+        100: "#fee4e2",
+        200: "#fecdca",
+        300: "#fda29b",
+        400: "#f97066",
+        500: "#f04438",
+        600: "#d92d20",
+        700: "#b42318",
+        800: "#912018",
+        900: "#7a271a",
       },
       warning: {
-        DEFAULT: '#dc6803',
-        25: '#fffcf5',
-        50: '#fffaeb',
-        100: '#fef0c7',
-        200: '#fedf89',
-        300: '#fec84b',
-        400: '#fdb022',
-        500: '#f79009',
-        600: '#dc6803',
-        700: '#b54708',
-        800: '#93370d',
-        900: '#7a2e0e',
+        DEFAULT: "#dc6803",
+        25: "#fffcf5",
+        50: "#fffaeb",
+        100: "#fef0c7",
+        200: "#fedf89",
+        300: "#fec84b",
+        400: "#fdb022",
+        500: "#f79009",
+        600: "#dc6803",
+        700: "#b54708",
+        800: "#93370d",
+        900: "#7a2e0e",
       },
       success: {
-        DEFAULT: '#039855',
-        25: '#f6fef9',
-        50: '#ecfdf3',
-        100: '#d1fadf',
-        200: '#a6f4c5',
-        300: '#6ce9a6',
-        400: '#32d583',
-        500: '#12b76a',
-        600: '#039855',
-        700: '#027a48',
-        800: '#05603a',
-        900: '#054f31',
+        DEFAULT: "#039855",
+        25: "#f6fef9",
+        50: "#ecfdf3",
+        100: "#d1fadf",
+        200: "#a6f4c5",
+        300: "#6ce9a6",
+        400: "#32d583",
+        500: "#12b76a",
+        600: "#039855",
+        700: "#027a48",
+        800: "#05603a",
+        900: "#054f31",
       },
     },
     fontFamily: {
@@ -148,7 +148,7 @@ module.exports = {
       xl: ["1.25rem", "1.75"],
     },
     letterSpacing: {
-      normal: '0.008rem',
+      normal: "0.008rem",
     },
     fontWeight: {
       normal: 300,
@@ -246,9 +246,36 @@ module.exports = {
         },
       },
     },
+    extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: [
+            {
+              pre: {
+                fontSize: theme("fontSize.sm"),
+              },
+              code: {
+                borderRadius: theme("borderRadius.sm"),
+                color: theme("colors.gray.600"),
+                backgroundColor: theme("colors.gray.50"),
+              },
+              "code::before": {
+                content: "",
+              },
+              "code::after": {
+                content: "",
+              },
+              a: {
+                color: theme("colors.gray.600"),
+                "&:hover": {
+                  color: theme("colors.gray.700"),
+                },
+              },
+            },
+          ],
+        },
+      }),
+    },
   },
-  plugins: [
-    lineClamp,
-    typography,
-  ],
+  plugins: [lineClamp, typography],
 };

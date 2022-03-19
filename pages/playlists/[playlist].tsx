@@ -164,7 +164,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
           {tracks.map(Track)}
         </div>
       </div>
-    </Layout >
+    </Layout>
   );
 };
 

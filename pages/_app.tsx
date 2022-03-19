@@ -4,13 +4,14 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { load, trackPageview } from "fathom-client";
 import { useRouter } from "next/router";
-import "../styles/globals.css";
 import { Toaster } from "react-hot-toast";
 import type { JSXMapSerializer, LinkProps } from "@prismicio/react";
 import { PrismicProvider, PrismicLink } from "@prismicio/react";
 import Link from 'next/link';
 import { Share } from "react-feather";
 import { client, docResolver, linkResolver } from "../utils/prismic";
+import "../styles/globals.css";
+import "../styles/dev.css";
 
 const components: JSXMapSerializer = {
   paragraph: ({ children, key }) => (

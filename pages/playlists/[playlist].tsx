@@ -161,13 +161,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
           </p>
         </div>
         <div>
-          {tracks.sort((playlist1, playlist2) => {
-            if (playlist1.added_at === playlist2.added_at) {
-              return 0;
-            }
-
-            return playlist2.added_at < playlist1.added_at ? 1 : -1;
-          }).map(Track)}
+          {tracks.map(Track)}
         </div>
       </div>
     </Layout >

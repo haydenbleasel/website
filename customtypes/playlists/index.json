@@ -1,0 +1,17 @@
+{
+  "id": "playlists",
+  "label": "Playlists",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      }
+    }
+  }
+}

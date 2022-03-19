@@ -22,7 +22,9 @@
         }
       }
     },
-    "clients": {}
+    "clients": {},
+    "playlists": {},
+    "blog": {}
   },
   "slices": {
     "RichText": {

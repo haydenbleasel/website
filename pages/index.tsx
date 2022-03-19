@@ -73,7 +73,9 @@ const Home: FC<HomeProps> = ({ data }) => {
       <div className="grid gap-12">
         {data.sections.map((section, index) => (
           <div key={index} className="grid gap-4">
-            <p className="text-sm font-normal text-gray-500">{section.title}</p>
+            {section.title && (
+              <p className="text-sm font-normal text-gray-500">{section.title}</p>
+            )}
             <PrismicRichText field={section.content} />
           </div>
         ))}

@@ -1,0 +1,17 @@
+{
+  "id": "blog",
+  "label": "Blog",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      }
+    }
+  }
+}

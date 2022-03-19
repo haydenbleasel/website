@@ -5,6 +5,7 @@ import { Fragment, useState } from "react";
 import toast from "react-hot-toast";
 import slugify from "slugify";
 import { createGlobalState } from 'react-hooks-global-state';
+import { decode } from 'he';
 import Layout from "../../components/layout";
 import type { SpotifyPlaylistDetailed } from "../../types/spotify/playlistDetailed";
 import type { SpotifyTrack } from "../../types/spotify/track";
@@ -146,6 +147,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
 
   const uniqueArtists = new Set(artists.map((artist) => artist.name));
   const topArtists = artists.sort((artist1, artist2) => artist2.count > artist1.count ? 1 : -1).slice(0, 5).map((artist) => artist.name);
+  const description = data.description.endsWith('.') ? data.description : `${data.description}.`;
 
   return (
     <Layout backHref="/playlists" backLabel="Playlists">
@@ -153,7 +155,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
         <div className="grid gap-1">
           <h1 className="text-md font-medium text-gray-900">{data.name}</h1>
           <p className="text-md font-normal text-gray-900">
-            <span>{data.description.endsWith('.') ? data.description : `${data.description}.`} </span>
+            <span>{decode(description)} </span>
             <span>Featuring {formatter.format(topArtists)}.</span>
           </p>
           <p className="text-sm text-gray-500">

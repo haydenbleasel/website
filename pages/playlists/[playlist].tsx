@@ -2,6 +2,7 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import type { FC } from "react";
 import { Fragment, useState } from "react";
+import toast from "react-hot-toast";
 import slugify from "slugify";
 import Layout from "../../components/layout";
 import type { SpotifyPlaylistDetailed } from "../../types/spotify/playlistDetailed";
@@ -25,6 +26,7 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [fadeIn, setFadeIn] = useState<NodeJS.Timer | null>(null);
   const [fadeOut, setFadeOut] = useState<NodeJS.Timer | null>(null);
+  const [interactable, setInteractable] = useState<boolean>(false);
 
   const play = () => {
     if (audio || !track.preview_url) {
@@ -33,7 +35,15 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
 
     const newAudio = new Audio(track.preview_url);
     newAudio.volume = 0;
-    newAudio.play().catch(console.warn);
+
+    newAudio.play().then(() => {
+      setInteractable(true);
+    }).catch((error) => {
+      const message = error instanceof Error ? error.message : error as string;
+      if (!message.includes('user didn\'t interact with the document first') && !message.includes('interrupted by a call to pause()')) {
+        toast.error(message);
+      }
+    });
 
     const timer = setInterval(() => {
       if (newAudio.volume < 1) {
@@ -81,7 +91,7 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
         <hr className="border-t border-gray-100" />
       )}
       <div className="relative" onMouseOver={play} onMouseLeave={stop} onFocus={play} onBlur={stop} role="button" tabIndex={0}>
-        {Boolean(track.preview_url) && (
+        {Boolean(track.preview_url) && interactable && (
           <div className={`
             absolute left-0 top-0 h-full bg-gray-100
             ${audio ? 'w-full transition-all duration-[30s] ease-linear' : 'w-0'}

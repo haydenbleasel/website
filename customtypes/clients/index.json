@@ -1,0 +1,53 @@
+{
+  "id": "clients",
+  "label": "Clients",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      }
+    },
+    "R/GA": {
+      "rga": {
+        "config": {
+          "label": "Rga",
+          "placeholder": "",
+          "fields": {
+            "client": {
+              "config": {
+                "label": "Client",
+                "placeholder": ""
+              },
+              "type": "Text"
+            }
+          }
+        },
+        "type": "Group"
+      }
+    },
+    "Freelance": {
+      "freelance": {
+        "config": {
+          "label": "Freelance",
+          "placeholder": "",
+          "fields": {
+            "client": {
+              "config": {
+                "label": "Client",
+                "placeholder": ""
+              },
+              "type": "Text"
+            }
+          }
+        },
+        "type": "Group"
+      }
+    }
+  }
+}

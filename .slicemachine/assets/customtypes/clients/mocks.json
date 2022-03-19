@@ -1,0 +1,29 @@
+{
+  "id": "5db6fb46-1bd9-4e92-b63e-fa2b0a9f3ae6",
+  "uid": "sequi-laboriosam-fugit",
+  "type": "clients",
+  "data": {
+    "rga": [
+      {
+        "client": "expedite frictionless markets"
+      },
+      {
+        "client": "evolve seamless synergies"
+      },
+      {
+        "client": "architect strategic technologies"
+      }
+    ],
+    "freelance": [
+      {
+        "client": "enhance clicks-and-mortar architectures"
+      },
+      {
+        "client": "strategize clicks-and-mortar metrics"
+      },
+      {
+        "client": "implement robust relationships"
+      }
+    ]
+  }
+}

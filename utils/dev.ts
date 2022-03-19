@@ -23,7 +23,7 @@ export const getDevPost = async (id: string): Promise<Post> => {
   };
 };
 
-export const getDevPosts = async (): Promise<DevPost[]> => {
+export const getDevPosts = async (): Promise<Post[]> => {
   const response = await fetch(
     "https://dev.to/api/articles?username=haydenbleasel"
   );

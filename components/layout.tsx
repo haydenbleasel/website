@@ -3,7 +3,7 @@ import type { FC, HTMLAttributes } from "react";
 import { ArrowLeft } from "react-feather";
 import tailwindConfig from '../tailwind.config';
 
-type LayoutProps = HTMLAttributes<HTMLDivElement> & {
+export type LayoutProps = HTMLAttributes<HTMLDivElement> & {
   backHref?: string;
   backLabel?: string;
 }

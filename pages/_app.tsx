@@ -14,6 +14,7 @@ import { client, docResolver, linkResolver } from "../utils/prismic";
 import "../styles/globals.css";
 import "../styles/dev.css";
 import tailwindConfig from "../tailwind.config";
+import CommandBar from "../components/commandbar";
 
 export const components: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -189,7 +190,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   ];
 
   return (
-    <>
+    <CommandBar>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -251,7 +252,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           position: "bottom-right",
         }}
       />
-    </>
+    </CommandBar>
   );
 };
 

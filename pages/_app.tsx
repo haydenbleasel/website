@@ -13,7 +13,7 @@ import { client, docResolver, linkResolver } from "../utils/prismic";
 import "../styles/globals.css";
 import "../styles/dev.css";
 
-const components: JSXMapSerializer = {
+export const components: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
     <p
       key={key}

@@ -3,9 +3,11 @@ import type { FC } from "react";
 import type { KeyTextField, PrismicDocumentWithUID, RichTextField, SliceZone } from "@prismicio/types";
 import { format, parseISO } from "date-fns";
 import slugify from "slugify";
+import type { JSXMapSerializer } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
 import Layout from "../../../components/layout";
 import { getPage, getPages } from "../../../utils/prismic";
+import { components } from "../../_app";
 
 type LandingPageProps = {
   data: {
@@ -15,6 +17,18 @@ type LandingPageProps = {
   };
   last_publication_date: string;
 }
+
+const blogComponents: JSXMapSerializer = {
+  ...components,
+  paragraph: ({ children, key }) => (
+    <p
+      key={key}
+      className="text-md text-normal mb-4 text-gray-900 dark:text-white indent-8"
+    >
+      {children}
+    </p>
+  ),
+};
 
 const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
   <Layout backHref="/blog" backLabel="Blog">
@@ -27,7 +41,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
         {data.slices1.map((slice, index) => {
           if (slice.slice_type === 'rich_text') {
             return (
-              <PrismicRichText key={index} field={slice.primary.content as RichTextField} />
+              <PrismicRichText key={index} field={slice.primary.content as RichTextField} components={blogComponents} />
             );
           }
 
@@ -36,7 +50,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
       </div>
     </div>
   </Layout>
-);
+)
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = (params?.post as string).split('-')[0];

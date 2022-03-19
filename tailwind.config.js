@@ -254,6 +254,11 @@ module.exports = {
             {
               pre: {
                 fontSize: theme("fontSize.sm"),
+                margin: 0,
+                padding: theme("padding.5"),
+                overflow: "auto",
+                borderRadius: theme("borderRadius.sm"),
+                backgroundColor: theme("colors.gray.900"),
               },
               code: {
                 borderRadius: theme("borderRadius.sm"),

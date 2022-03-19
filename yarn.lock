@@ -6833,6 +6833,11 @@ react-feather@^2.0.9:
   dependencies:
     prop-types "^15.7.2"
 
+react-hooks-global-state@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-hooks-global-state/-/react-hooks-global-state-1.0.2.tgz#37bbc3203a0be9f3ac0658abfd28dd7ce7ee166c"
+  integrity sha512-UcWz+VjcUUCQ7bXGmOhanGII3j22zyPSjwJnQWeycxFYj/etBxIbz9xziEm4sv5+OqGuS7bzvpx24XkCxgJ7Bg==
+
 react-hot-toast@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-hot-toast/-/react-hot-toast-2.2.0.tgz#ab6f4caed4214b9534f94bb8cfaaf21b051e62b9"

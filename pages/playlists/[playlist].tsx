@@ -4,6 +4,7 @@ import type { FC } from "react";
 import { Fragment, useState } from "react";
 import toast from "react-hot-toast";
 import slugify from "slugify";
+import { createGlobalState } from 'react-hooks-global-state';
 import Layout from "../../components/layout";
 import type { SpotifyPlaylistDetailed } from "../../types/spotify/playlistDetailed";
 import type { SpotifyTrack } from "../../types/spotify/track";
@@ -22,11 +23,14 @@ const formatter = new Intl.ListFormat(
   }
 );
 
+const { useGlobalState } = createGlobalState({ interactableNotified: false });
+
 const Track = ({ track }: SpotifyTrack, index: number) => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [fadeIn, setFadeIn] = useState<NodeJS.Timer | null>(null);
   const [fadeOut, setFadeOut] = useState<NodeJS.Timer | null>(null);
   const [interactable, setInteractable] = useState<boolean>(false);
+  const [interactableNotified, setInteractableNotified] = useGlobalState('interactableNotified');
 
   const play = () => {
     if (audio || !track.preview_url) {
@@ -38,9 +42,22 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
 
     newAudio.play().then(() => {
       setInteractable(true);
+      if (interactableNotified) {
+        setInteractableNotified(false);
+        toast.success('Nice! You’re good to go.');
+      }
     }).catch((error) => {
       const message = error instanceof Error ? error.message : error as string;
-      if (!message.includes('user didn\'t interact with the document first') && !message.includes('interrupted by a call to pause()')) {
+      if (message.includes('user didn\'t interact with the document first')) {
+        if (!interactableNotified) {
+          toast('Please click anywhere on the page to preview tracks on hover.');
+          setInteractableNotified(true);
+          return;
+        }
+        return;
+      }
+
+      if (!message.includes('interrupted by a call to pause()')) {
         toast.error(message);
       }
     });
@@ -91,10 +108,10 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
         <hr className="border-t border-gray-100" />
       )}
       <div className="relative" onMouseOver={play} onMouseLeave={stop} onFocus={play} onBlur={stop} role="button" tabIndex={0}>
-        {Boolean(track.preview_url) && interactable && (
+        {Boolean(track.preview_url) && (
           <div className={`
             absolute left-0 top-0 h-full bg-gray-100
-            ${audio ? 'w-full transition-all duration-[30s] ease-linear' : 'w-0'}
+            ${(audio && interactable) ? 'w-full transition-all duration-[30s] ease-linear' : 'w-0'}
           `} />
         )}
         <div className="relative p-2 flex gap-4 items-center">

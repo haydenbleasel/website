@@ -2,7 +2,6 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import type { FC } from "react";
 import type { KeyTextField, PrismicDocumentWithUID, RichTextField, SliceZone } from "@prismicio/types";
 import { format, parseISO } from "date-fns";
-import slugify from "slugify";
 import type { JSXMapSerializer } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
 import Layout from "../../../components/layout";
@@ -53,8 +52,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
 )
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = (params?.post as string).split('-')[0];
-  const { data, last_publication_date } = await getPage(id, 'case-study') as PrismicDocumentWithUID<LandingPageProps['data']>;
+  const { data, last_publication_date } = await getPage(params?.post as string, 'case-study') as PrismicDocumentWithUID<LandingPageProps['data']>;
 
   return {
     props: {
@@ -67,9 +65,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const caseStudies = await getPages('case-study') as PrismicDocumentWithUID<LandingPageProps['data']>[];
 
-  const paths = caseStudies.map(({ uid, data }) => ({
+  const paths = caseStudies.map(({ uid }) => ({
     params: {
-      post: `${uid}-${slugify(data.description ?? '', { lower: true, strict: true })}`,
+      post: uid,
     },
   }));
 

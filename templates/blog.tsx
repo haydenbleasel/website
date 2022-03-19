@@ -4,28 +4,23 @@ import { useRouter } from 'next/router';
 import type { ChangeEventHandler, FC } from 'react';
 import { Fragment, useState } from 'react';
 import { Search } from 'react-feather';
-import slugify from 'slugify';
 import Layout from '../components/layout';
 import tailwindConfig from '../tailwind.config';
 import type { Post } from '../types/post';
 
-const PostLink: FC<Post> = ({ id, title, date }, index) => {
-  const { asPath } = useRouter();
-
-  return (
-    <Fragment key={id}>
-      {Boolean(index) && (
-        <hr className="border-t border-gray-100 my-2" />
-      )}
-      <PrismicLink href={`${asPath}/${id}-${slugify(title, { lower: true, strict: true })}`}>
-        <div className="flex justify-between gap-8">
-          <p className="text-md text-gray-900 flex-1">{title}</p>
-          <p className="text-sm text-gray-500 w-24 flex-0 text-right">{format(parseISO(date), 'MMM dd, yyyy')}</p>
-        </div>
-      </PrismicLink>
-    </Fragment>
-  );
-}
+const PostLink: FC<Post> = ({ id, title, date, link }, index) => (
+  <Fragment key={id}>
+    {Boolean(index) && (
+      <hr className="border-t border-gray-100 my-2" />
+    )}
+    <PrismicLink href={link}>
+      <div className="flex justify-between gap-8">
+        <p className="text-md text-gray-900 flex-1">{title}</p>
+        <p className="text-sm text-gray-500 w-24 flex-0 text-right">{format(parseISO(date), 'MMM dd, yyyy')}</p>
+      </div>
+    </PrismicLink>
+  </Fragment>
+)
 
 type BlogTemplateData = {
   posts: Post[];

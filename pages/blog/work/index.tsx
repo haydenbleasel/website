@@ -24,6 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
     id: caseStudy.uid,
     title: caseStudy.data.description,
     date: caseStudy.first_publication_date,
+    link: `/blog/work/${caseStudy.uid}`,
   })) as Post[];
 
   return {

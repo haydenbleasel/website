@@ -20,12 +20,12 @@ export const getStaticProps: GetStaticProps = async () => {
     slices: SliceZone;
   }>[];
 
-  const posts = caseStudies.map((caseStudy) => ({
+  const posts: Post[] = caseStudies.map((caseStudy) => ({
     id: caseStudy.uid,
-    title: caseStudy.data.description,
+    title: caseStudy.data.description ?? '',
     date: caseStudy.first_publication_date,
     link: `/blog/work/${caseStudy.uid}`,
-  })) as Post[];
+  }));
 
   return {
     props: {

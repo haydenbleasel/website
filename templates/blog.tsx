@@ -11,14 +11,16 @@ import type { Post } from "../types/post";
 const PostLink: FC<Post> = ({ id, title, date, link }, index) => (
   <Fragment key={id}>
     {Boolean(index) && <hr className="my-2 border-t border-gray-100" />}
-    <PrismicLink href={link}>
-      <div className="flex justify-between gap-8">
-        <p className="flex-1 text-md text-gray-900">{title}</p>
-        <p className="flex-0 w-24 text-right text-sm text-gray-500">
-          {format(parseISO(date), "MMM dd, yyyy")}
-        </p>
-      </div>
-    </PrismicLink>
+    <div className="fill-anchor">
+      <PrismicLink href={link}>
+        <div className="flex justify-between gap-8">
+          <p className="flex-1 text-md text-gray-900">{title}</p>
+          <p className="flex-0 w-24 text-right text-sm text-gray-500">
+            {format(parseISO(date), "MMM dd, yyyy")}
+          </p>
+        </div>
+      </PrismicLink>
+    </div>
   </Fragment>
 );
 

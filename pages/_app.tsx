@@ -167,7 +167,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         {...props}
         target="_blank"
         rel="noopener noreferrer"
-        className={`flex items-center gap-2 text-md font-normal text-gray-500 transition-all hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500 ${className}`}
+        className={`inline-flex items-center gap-2 text-md font-normal text-gray-500 transition-all hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500 ${className}`}
       >
         {children}
         {typeof children === "string" && (

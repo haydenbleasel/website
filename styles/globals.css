@@ -32,3 +32,9 @@ body {
   font-feature-settings: "kern";
   text-rendering: optimizelegibility;
 }
+
+@layer components {
+  .fill-anchor > a {
+    @apply w-full;
+  }
+}

@@ -31,12 +31,16 @@ const PostLink = (
 ) => (
   <Fragment key={index}>
     {Boolean(index) && <hr className="my-2 border-t border-gray-100" />}
-    <PrismicLink field={link}>
-      <div className="flex flex-1 justify-between gap-8">
-        <p className="flex-0 w-32 text-md text-gray-900">{name}</p>
-        <p className="flex-1 text-right text-sm text-gray-500">{description}</p>
-      </div>
-    </PrismicLink>
+    <div className="fill-anchor">
+      <PrismicLink field={link}>
+        <div className="flex flex-1 justify-between gap-8">
+          <p className="flex-0 w-32 text-md text-gray-900">{name}</p>
+          <p className="flex-1 text-right text-sm text-gray-500">
+            {description}
+          </p>
+        </div>
+      </PrismicLink>
+    </div>
   </Fragment>
 );
 
@@ -58,7 +62,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
       )
     ).default;
     const fuse = new Fuse(tabs[activeTab].data, {
-      keys: ["title", "date", "content"],
+      keys: ["name", "description"],
     });
 
     const searchResults = fuse.search(value);

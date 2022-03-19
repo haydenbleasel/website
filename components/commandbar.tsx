@@ -62,6 +62,30 @@ const CommandBar: FC = ({ children }) => {
     },
   ];
 
+  /*
+   * useRegisterActions(actions, []);
+   *
+   * useEffect(() => {
+   * const loadContent = async () => {
+   *  const contentActions = await fetch("/api/kbar");
+   *  const data = await contentActions.json();
+   *
+   *  data.actions.forEach((action) => {
+   *    action.perform = async () => push(action.link);
+   *    delete action.link;
+   *  });
+   *
+   *  actions.push(...data.actions);
+   * };
+   *
+   * loadContent().catch((error) => {
+   *  const message =
+   *    error instanceof Error ? error.message : (error as string);
+   *  toast.error(message);
+   * });
+   * }, []);
+   */
+
   return (
     <KBarProvider actions={actions}>
       <KBarPortal>

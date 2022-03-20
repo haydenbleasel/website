@@ -37,4 +37,8 @@ body {
   .fill-anchor > a {
     @apply w-full;
   }
+
+  .contains-video > iframe {
+    @apply h-full w-full;
+  }
 }

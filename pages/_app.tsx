@@ -127,6 +127,31 @@ export const components: JSXMapSerializer = {
       {children}
     </li>
   ),
+  embed: ({ node, key }) => {
+    if (!node.oembed.html) {
+      return undefined;
+    }
+
+    if (node.oembed.type === "video") {
+      return (
+        <div
+          key={key}
+          className="contains-video mb-4 flex aspect-video overflow-hidden rounded-sm"
+          // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
+          dangerouslySetInnerHTML={{ __html: node.oembed.html }}
+        />
+      );
+    }
+
+    return (
+      <div
+        key={key}
+        className="mb-4"
+        // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
+        dangerouslySetInnerHTML={{ __html: node.oembed.html }}
+      />
+    );
+  },
 };
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {

@@ -17,6 +17,7 @@ const nextConfig = {
       "haydenbleasel.cdn.prismic.io",
       "prismic-io.s3.amazonaws.com",
     ],
+    dangerouslyAllowSVG: true,
   },
   async headers() {
     return [

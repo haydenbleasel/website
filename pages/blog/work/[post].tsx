@@ -169,7 +169,11 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
           </p>
         </div>
         {data.coverAnimation.url && (
-          <div style={{ background: "#CE5777" }} ref={animationRef} />
+          <div
+            style={{ background: "#CE5777" }}
+            className="overflow-hidden rounded-sm"
+            ref={animationRef}
+          />
         )}
         {data.coverImage.url && !data.coverAnimation.url && (
           <div className="flex overflow-hidden rounded-sm">

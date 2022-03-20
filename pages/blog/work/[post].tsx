@@ -23,7 +23,7 @@ import lottie from "lottie-web";
 import { asHTML } from "@prismicio/helpers";
 import Layout from "../../../components/layout";
 import { getPage, getPages } from "../../../utils/prismic";
-import { components } from "../../_app";
+import richTextComponents from "../../../components/richTextComponents";
 
 type WorkPostProps = {
   data: {
@@ -37,7 +37,7 @@ type WorkPostProps = {
 };
 
 const blogComponents: JSXMapSerializer = {
-  ...components,
+  ...richTextComponents,
   paragraph: ({ children, key }) => (
     <p
       key={key}

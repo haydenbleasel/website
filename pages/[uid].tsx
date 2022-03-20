@@ -12,7 +12,7 @@ import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Layout from "../components/layout";
 import { getPage, getPages } from "../utils/prismic";
-import { components } from "./_app";
+import richTextComponents from "../components/richTextComponents";
 
 type LandingPageProps = {
   data: {
@@ -25,7 +25,7 @@ type LandingPageProps = {
 };
 
 const landingPageComponents: JSXMapSerializer = {
-  ...components,
+  ...richTextComponents,
   paragraph: ({ children, key }) => (
     <p
       key={key}

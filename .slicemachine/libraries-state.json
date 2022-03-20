@@ -1,6 +1,62 @@
 {
   "slices": {
     "components": {
+      "blockquote": {
+        "library": "slices",
+        "id": "blockquote",
+        "name": "Blockquote",
+        "description": "Blockquote",
+        "model": {
+          "id": "blockquote",
+          "type": "SharedSlice",
+          "name": "Blockquote",
+          "description": "Blockquote",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Blockquote",
+              "primary": {
+                "content": {
+                  "config": {
+                    "label": "Content",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em,hyperlink,embed"
+                  },
+                  "type": "StructuredText"
+                }
+              },
+              "items": {}
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "blockquote",
+            "items": [],
+            "primary": {
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Consectetur consectetur anim exercitation veniam magna ex sit proident.",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "isDirectory": true,
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "comparison": {
         "library": "slices",
         "id": "comparison",

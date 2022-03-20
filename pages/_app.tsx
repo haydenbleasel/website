@@ -9,6 +9,7 @@ import type { JSXMapSerializer, LinkProps } from "@prismicio/react";
 import { PrismicProvider, PrismicLink } from "@prismicio/react";
 import Link from "next/link";
 import { Share } from "react-feather";
+import Image from "next/image";
 import { client, docResolver, linkResolver } from "../utils/prismic";
 import "../styles/globals.css";
 import "../styles/dev.css";
@@ -28,6 +29,18 @@ export const components: JSXMapSerializer = {
     <strong key={key} className="font-semibold">
       {children}
     </strong>
+  ),
+  image: ({ key, node }) => (
+    <div className="mb-4 flex overflow-hidden rounded-sm">
+      <Image
+        key={key}
+        src={node.url}
+        alt={node.alt ?? ""}
+        width={480}
+        height={480 * (node.dimensions.height / node.dimensions.width)}
+        className="w-full"
+      />
+    </div>
   ),
   hyperlink: ({ children, node, key }) => {
     const href = docResolver(node.data);

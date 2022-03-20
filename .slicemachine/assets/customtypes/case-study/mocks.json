@@ -1,9 +1,22 @@
 {
-  "id": "552463a8-6cef-4dff-bdba-bab0295721b4",
-  "uid": "consequuntur-nihil-laudantium",
+  "id": "6a379eda-4f57-4315-af0f-6bc1f3a2ac62",
+  "uid": "sit-est-molestiae",
   "type": "case-study",
   "data": {
-    "title": "syndicate out-of-the-box e-markets",
-    "description": "maximize intuitive experiences"
+    "title": "cultivate e-business action-items",
+    "description": "transform ubiquitous platforms",
+    "coverImage": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055?w=900&h=500&fit=crop"
+    },
+    "coverAnimation": {
+      "link_type": "media",
+      "url": "https://source.unsplash.com/daily"
+    }
   }
 }

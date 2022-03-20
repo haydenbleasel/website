@@ -25,6 +25,22 @@
           "placeholder": ""
         },
         "type": "Text"
+      },
+      "coverImage": {
+        "config": {
+          "label": "Cover Image",
+          "constraint": {},
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "coverAnimation": {
+        "config": {
+          "label": "Cover Animation",
+          "placeholder": "",
+          "select": "media"
+        },
+        "type": "Link"
       }
     },
     "Content": {
@@ -40,6 +56,9 @@
               "type": "SharedSlice"
             },
             "comparison": {
+              "type": "SharedSlice"
+            },
+            "blockquote": {
               "type": "SharedSlice"
             }
           }

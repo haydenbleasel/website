@@ -33,6 +33,14 @@
           "thumbnails": []
         },
         "type": "Image"
+      },
+      "animation": {
+        "config": {
+          "label": "Animation",
+          "placeholder": "",
+          "select": "media"
+        },
+        "type": "Link"
       }
     },
     "Content": {
@@ -44,6 +52,17 @@
           "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         },
         "type": "StructuredText"
+      },
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "blockquote": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     }
   }

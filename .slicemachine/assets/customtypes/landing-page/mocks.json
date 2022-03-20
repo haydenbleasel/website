@@ -1,10 +1,10 @@
 {
-  "id": "75028fab-1ff1-451d-bc5a-379ef41b7f20",
-  "uid": "veniam-omnis-nobis",
+  "id": "bebcc9da-8d47-47bc-ad13-d75f4861fed2",
+  "uid": "voluptatum-accusamus-est",
   "type": "landing-page",
   "data": {
-    "title": "reinvent B2C synergies",
-    "description": "grow front-end e-commerce",
+    "title": "envisioneer robust vortals",
+    "description": "reintermediate compelling users",
     "cover": {
       "dimensions": {
         "width": 900,
@@ -12,12 +12,16 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?w=900&h=500&fit=crop"
+    },
+    "animation": {
+      "link_type": "media",
+      "url": "https://source.unsplash.com/daily"
     },
     "content": [
       {
         "type": "paragraph",
-        "text": "Proident sit excepteur qui. Minim do anim velit labore nulla id proident anim labore officia ea culpa. Velit tempor incididunt consequat commodo irure amet aute enim non.",
+        "text": "Incididunt ut ullamco ad laboris in. Fugiat exercitation sunt cillum magna veniam veniam excepteur minim aliquip culpa ad eiusmod. Commodo veniam anim sint.",
         "spans": []
       }
     ]

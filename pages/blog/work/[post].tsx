@@ -20,6 +20,7 @@ import { SliceZone, PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
 import { ReactCompareSlider } from "react-compare-slider";
 import lottie from "lottie-web";
+import { asHTML } from "@prismicio/helpers";
 import Layout from "../../../components/layout";
 import { getPage, getPages } from "../../../utils/prismic";
 import { components } from "../../_app";
@@ -56,6 +57,20 @@ const RichTextSlice: FC<
   }>
 > = ({ slice }) => (
   <PrismicRichText field={slice.primary.content} components={blogComponents} />
+);
+
+const BlockquoteSlice: FC<
+  SliceComponentProps<{
+    slice_type: "blockquote";
+    primary: {
+      content: RichTextField;
+    };
+  }>
+> = ({ slice }) => (
+  <blockquote
+    // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
+    dangerouslySetInnerHTML={{ __html: asHTML(slice.primary.content) }}
+  />
 );
 
 const QuoteSlice: FC<
@@ -179,6 +194,8 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
               quote: QuoteSlice as unknown as SliceComponentType<Slice>,
               comparison:
                 ComparisonSlice as unknown as SliceComponentType<Slice>,
+              blockquote:
+                BlockquoteSlice as unknown as SliceComponentType<Slice>,
             }}
           />
         </div>

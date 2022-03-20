@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { load, trackPageview } from "fathom-client";
@@ -8,13 +8,12 @@ import { Toaster } from "react-hot-toast";
 import type { JSXMapSerializer, LinkProps } from "@prismicio/react";
 import { PrismicProvider, PrismicLink } from "@prismicio/react";
 import Link from "next/link";
-import { Menu, Share } from "react-feather";
-import { useClickAway, useToggle } from "react-use";
+import { Share } from "react-feather";
 import { client, docResolver, linkResolver } from "../utils/prismic";
 import "../styles/globals.css";
 import "../styles/dev.css";
-import tailwindConfig from "../tailwind.config";
 import CommandBar from "../components/commandbar";
+import Menu from "../components/menu";
 
 export const components: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -119,8 +118,6 @@ export const components: JSXMapSerializer = {
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const { events, asPath } = useRouter();
-  const [menuOpen, toggleMenuOpen] = useToggle(false);
-  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? "", {
@@ -140,8 +137,6 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       events.off("routeChangeComplete", onRouteChangeComplete);
     };
   }, [events]);
-
-  useClickAway(ref, () => menuOpen && toggleMenuOpen(false));
 
   const internalLinkComponent = ({
     children,
@@ -191,15 +186,6 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     </Link>
   );
 
-  const pages = [
-    { link: "/", label: "Home" },
-    { link: "/work", label: "Work" },
-    { link: "/clients", label: "Clients" },
-    { link: "/blog", label: "Blog" },
-    { link: "/playlists", label: "Playlists" },
-    { link: "/colophon", label: "Colophon" },
-  ];
-
   return (
     <CommandBar>
       <Head>
@@ -231,32 +217,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       >
         <Component {...pageProps} />
       </PrismicProvider>
-      <div className="fixed top-0 right-0 flex flex-col items-end" ref={ref}>
-        <div
-          className="p-4"
-          onClick={toggleMenuOpen}
-          onKeyDown={toggleMenuOpen}
-          role="button"
-          tabIndex={0}
-        >
-          <Menu size={16} color={tailwindConfig.theme.colors.gray[400]} />
-        </div>
-        <div
-          className={`mr-4 grid w-[200px] rounded-md bg-white py-2 shadow-sm transition-all ${
-            menuOpen
-              ? "pointer-events-auto translate-y-0 opacity-100"
-              : "pointer-events-none translate-y-1 opacity-0"
-          } `}
-        >
-          {pages.map((page, index) => (
-            <PrismicLink href={page.link} key={index}>
-              <span className="flex bg-white px-3 py-1 text-sm text-gray-900 hover:bg-gray-100">
-                {page.label}
-              </span>
-            </PrismicLink>
-          ))}
-        </div>
-      </div>
+      <Menu />
       <Toaster
         toastOptions={{
           duration: 5000,

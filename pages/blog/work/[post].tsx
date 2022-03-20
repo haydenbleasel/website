@@ -5,10 +5,15 @@ import type {
   KeyTextField,
   PrismicDocumentWithUID,
   RichTextField,
+  Slice,
   SliceZone as SliceZoneProps,
 } from "@prismicio/types";
 import { format, parseISO } from "date-fns";
-import type { JSXMapSerializer, SliceComponentProps } from "@prismicio/react";
+import type {
+  JSXMapSerializer,
+  SliceComponentProps,
+  SliceComponentType,
+} from "@prismicio/react";
 import { SliceZone, PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
 import { ReactCompareSlider } from "react-compare-slider";
@@ -132,9 +137,9 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => (
         <SliceZone
           slices={data.slices1}
           components={{
-            rich_text: RichTextSlice,
-            quote: QuoteSlice,
-            comparison: ComparisonSlice,
+            rich_text: RichTextSlice as unknown as SliceComponentType<Slice>,
+            quote: QuoteSlice as unknown as SliceComponentType<Slice>,
+            comparison: ComparisonSlice as unknown as SliceComponentType<Slice>,
           }}
         />
       </div>

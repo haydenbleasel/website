@@ -11,7 +11,7 @@ export type LayoutProps = HTMLAttributes<HTMLDivElement> & {
 const Layout: FC<LayoutProps> = ({ backHref, backLabel, ...props }) => (
   <div className="container mx-auto py-12 sm:py-48">
     <div className="grid gap-8 sm:grid-cols-12">
-      <div className="mx-auto grid w-full max-w-[32rem] gap-24 px-4 sm:col-span-3">
+      <div className="mx-auto grid w-full max-w-[32rem] gap-24 self-start px-4 sm:col-span-3">
         {backHref && (
           <PrismicLink href={backHref}>
             <span className="flex items-center gap-1">

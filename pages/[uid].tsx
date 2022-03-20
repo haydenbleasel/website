@@ -6,11 +6,13 @@ import type {
   PrismicDocumentWithUID,
   RichTextField,
 } from "@prismicio/types";
+import type { JSXMapSerializer } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Layout from "../components/layout";
 import { getPage, getPages } from "../utils/prismic";
+import { components } from "./_app";
 
 type LandingPageProps = {
   data: {
@@ -20,6 +22,18 @@ type LandingPageProps = {
     content: RichTextField;
   };
   last_publication_date: string;
+};
+
+const landingPageComponents: JSXMapSerializer = {
+  ...components,
+  paragraph: ({ children, key }) => (
+    <p
+      key={key}
+      className="text-normal mb-4 indent-8 text-md text-gray-900 dark:text-white"
+    >
+      {children}
+    </p>
+  ),
 };
 
 const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
@@ -53,7 +67,10 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
         </div>
       )}
       <div>
-        <PrismicRichText field={data.content} />
+        <PrismicRichText
+          field={data.content}
+          components={landingPageComponents}
+        />
       </div>
     </div>
   </Layout>

@@ -42,17 +42,13 @@ export const components: JSXMapSerializer = {
       />
     </div>
   ),
-  hyperlink: ({ children, node, key }) => {
-    const href = docResolver(node.data);
-
-    return (
-      <PrismicLink key={key} href={href}>
-        <span className="text-gray-900 underline transition-colors hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
-          {children}
-        </span>
-      </PrismicLink>
-    );
-  },
+  hyperlink: ({ children, node, key }) => (
+    <PrismicLink key={key} href={docResolver(node.data)}>
+      <span className="text-gray-900 underline transition-colors hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
+        {children}
+      </span>
+    </PrismicLink>
+  ),
   heading1: ({ children, key }) => (
     <h1
       key={key}

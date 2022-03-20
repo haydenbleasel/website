@@ -6,7 +6,7 @@ class Document extends NextDocument {
     return (
       <Html lang="en" className="scroll-smooth">
         <Head />
-        <body>
+        <body className="bg-white dark:bg-gray-900">
           <Main />
           <NextScript />
         </body>

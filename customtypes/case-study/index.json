@@ -35,6 +35,12 @@
           "choices": {
             "rich_text": {
               "type": "SharedSlice"
+            },
+            "quote": {
+              "type": "SharedSlice"
+            },
+            "comparison": {
+              "type": "SharedSlice"
             }
           }
         }

@@ -26,13 +26,15 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
   <Layout backHref="/" backLabel="Home">
     <div className="grid gap-8">
       <div className="grid gap-1">
-        <h1 className="text-md font-medium text-gray-900">{data.title}</h1>
+        <h1 className="text-md font-medium text-gray-900 dark:text-white">
+          {data.title}
+        </h1>
         {data.description && (
           <p className="text-md font-normal text-gray-900">
             {data.description}
           </p>
         )}
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           Last updated at{" "}
           {format(parseISO(last_publication_date), "MMM dd, yyyy")}{" "}
         </p>
@@ -50,7 +52,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
           />
         </div>
       )}
-      <div className="indent-8">
+      <div>
         <PrismicRichText field={data.content} />
       </div>
     </div>

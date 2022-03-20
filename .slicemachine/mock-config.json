@@ -39,6 +39,16 @@
           }
         }
       }
+    },
+    "Quote": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Comparison": {
+      "default": {
+        "primary": {}
+      }
     }
   }
 }

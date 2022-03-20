@@ -1,23 +1,26 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import type { FC } from "react";
 import type {
+  ImageField,
   KeyTextField,
   PrismicDocumentWithUID,
   RichTextField,
-  SliceZone,
+  SliceZone as SliceZoneProps,
 } from "@prismicio/types";
 import { format, parseISO } from "date-fns";
-import type { JSXMapSerializer } from "@prismicio/react";
-import { PrismicRichText } from "@prismicio/react";
+import type { JSXMapSerializer, SliceComponentProps } from "@prismicio/react";
+import { SliceZone, PrismicRichText } from "@prismicio/react";
+import Image from "next/image";
+import { ReactCompareSlider } from "react-compare-slider";
 import Layout from "../../../components/layout";
 import { getPage, getPages } from "../../../utils/prismic";
 import { components } from "../../_app";
 
-type LandingPageProps = {
+type WorkPostProps = {
   data: {
     title: KeyTextField;
     description: KeyTextField;
-    slices1: SliceZone;
+    slices1: SliceZoneProps;
   };
   last_publication_date: string;
 };
@@ -34,30 +37,106 @@ const blogComponents: JSXMapSerializer = {
   ),
 };
 
-const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
+const RichTextSlice: FC<
+  SliceComponentProps<{
+    slice_type: "rich_text";
+    primary: {
+      content: RichTextField;
+    };
+  }>
+> = ({ slice }) => (
+  <PrismicRichText field={slice.primary.content} components={blogComponents} />
+);
+
+const QuoteSlice: FC<
+  SliceComponentProps<{
+    slice_type: "quote";
+    primary: {
+      content: RichTextField;
+      author: KeyTextField;
+      photo: ImageField;
+    };
+  }>
+> = ({ slice }) => (
+  <div className="my-8 grid gap-2">
+    <p className="m-0 text-md text-gray-900 dark:text-white">
+      {slice.primary.content}
+    </p>
+    <div className="flex items-center gap-3">
+      {slice.primary.photo.url && (
+        <div className="flex overflow-hidden rounded-full">
+          <Image src={slice.primary.photo.url} width={32} height={32} />
+        </div>
+      )}
+      <p className="m-0 text-sm text-gray-500 dark:text-gray-400">
+        {slice.primary.author}
+      </p>
+    </div>
+  </div>
+);
+
+const ComparisonSlice: FC<
+  SliceComponentProps<{
+    slice_type: "quote";
+    primary: {
+      before: ImageField;
+      after: ImageField;
+    };
+  }>
+> = ({ slice }) => {
+  if (!slice.primary.before.url || !slice.primary.after.url) {
+    return null;
+  }
+
+  return (
+    <ReactCompareSlider
+      itemOne={
+        <Image
+          src={slice.primary.before.url}
+          width={480}
+          height={
+            480 *
+            (slice.primary.before.dimensions.height /
+              slice.primary.before.dimensions.width)
+          }
+        />
+      }
+      itemTwo={
+        <Image
+          src={slice.primary.after.url}
+          width={480}
+          height={
+            480 *
+            (slice.primary.after.dimensions.height /
+              slice.primary.after.dimensions.width)
+          }
+        />
+      }
+    />
+  );
+};
+
+const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => (
   <Layout backHref="/blog" backLabel="Blog">
     <div className="grid gap-8">
       <div className="grid gap-1">
-        <h1 className="text-md font-medium text-gray-900">{data.title}</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-md font-medium text-gray-900 dark:text-white">
+          {data.title}
+        </h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           Last updated at{" "}
           {format(parseISO(last_publication_date), "MMM dd, yyyy")}{" "}
         </p>
       </div>
-      <div className="prose">
-        {data.slices1.map((slice, index) => {
-          if (slice.slice_type === "rich_text") {
-            return (
-              <PrismicRichText
-                key={index}
-                field={slice.primary.content as RichTextField}
-                components={blogComponents}
-              />
-            );
-          }
-
-          return undefined;
-        })}
+      <div className="prose dark:prose-invert">
+        <SliceZone
+          slices={data.slices1}
+          components={{
+            rich_text: RichTextSlice,
+            quote: QuoteSlice,
+            comparison: ComparisonSlice,
+          }}
+        />
       </div>
     </div>
   </Layout>
@@ -67,7 +146,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data, last_publication_date } = (await getPage(
     params?.post as string,
     "case-study"
-  )) as PrismicDocumentWithUID<LandingPageProps["data"]>;
+  )) as PrismicDocumentWithUID<WorkPostProps["data"]>;
 
   return {
     props: {
@@ -79,7 +158,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const caseStudies = (await getPages("case-study")) as PrismicDocumentWithUID<
-    LandingPageProps["data"]
+    WorkPostProps["data"]
   >[];
 
   const paths = caseStudies.map(({ uid }) => ({
@@ -94,4 +173,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default LandingPage;
+export default WorkPost;

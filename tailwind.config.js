@@ -4,7 +4,7 @@ const typography = require("@tailwindcss/typography");
 
 module.exports = {
   mode: "jit",
-  darkMode: "media",
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -276,6 +276,15 @@ module.exports = {
                 "&:hover": {
                   color: theme("colors.gray.700"),
                 },
+              },
+            },
+          ],
+        },
+        dark: {
+          css: [
+            {
+              pre: {
+                backgroundColor: theme("colors.gray.800"),
               },
             },
           ],

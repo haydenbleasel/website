@@ -25,6 +25,11 @@ export const components: JSXMapSerializer = {
       {children}
     </p>
   ),
+  strong: ({ children, key }) => (
+    <strong key={key} className="font-semibold">
+      {children}
+    </strong>
+  ),
   hyperlink: ({ children, node, key }) => {
     const href = docResolver(node.data);
 
@@ -85,22 +90,28 @@ export const components: JSXMapSerializer = {
     </h6>
   ),
   list: ({ children, key }) => (
-    <div key={key}>
-      <ul className="mb-4 list-inside list-disc">{children}</ul>
-    </div>
+    <ul key={key} className="mb-4 list-inside list-disc pl-0">
+      {children}
+    </ul>
   ),
   oList: ({ children, key }) => (
-    <div key={key}>
-      <ul className="mb-4 list-inside list-decimal">{children}</ul>
-    </div>
+    <ul key={key} className="mb-4 list-inside list-decimal pl-0">
+      {children}
+    </ul>
   ),
   listItem: ({ children, key }) => (
-    <li key={key} className="text-md text-gray-900 dark:text-white">
+    <li
+      key={key}
+      className="pl-8 -indent-[1.4rem] text-md text-gray-900 dark:text-white"
+    >
       {children}
     </li>
   ),
   oListItem: ({ children, key }) => (
-    <li key={key} className="text-md text-gray-900 dark:text-white">
+    <li
+      key={key}
+      className="pl-8 -indent-[1.4rem] text-md text-gray-900 dark:text-white"
+    >
       {children}
     </li>
   ),
@@ -168,7 +179,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         {...props}
         target="_blank"
         rel="noopener noreferrer"
-        className={`inline-flex items-center gap-2 text-md font-normal text-gray-500 transition-all hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500 ${className}`}
+        className={`inline items-center gap-2 text-md font-normal text-gray-500 transition-all hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500 ${className}`}
       >
         {children}
         {typeof children === "string" && (

@@ -28,7 +28,9 @@ type ClientListData = {
 
 const ClientList: FC<ClientListData> = ({ name, data }) => (
   <div className="flex gap-8">
-    <p className="flex-0 w-24 text-sm text-gray-400">{name}</p>
+    <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400">
+      {name}
+    </p>
     <div className="flex flex-1 flex-col gap-1">
       {data
         .sort((clientA, clientB) => {
@@ -39,7 +41,7 @@ const ClientList: FC<ClientListData> = ({ name, data }) => (
           return clientB.client < clientA.client ? 1 : -1;
         })
         .map(({ client }, index) => (
-          <p className="text-md text-gray-900" key={index}>
+          <p className="text-md text-gray-900 dark:text-white" key={index}>
             {client}
           </p>
         ))}
@@ -50,7 +52,9 @@ const ClientList: FC<ClientListData> = ({ name, data }) => (
 const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
   <Layout backHref="/" backLabel="Home">
     <div className="grid gap-8">
-      <h1 className="text-md font-medium text-gray-900">Clients</h1>
+      <h1 className="text-md font-medium text-gray-900 dark:text-white">
+        Clients
+      </h1>
       <ClientList name="R/GA" data={data.rga} />
       <ClientList name="Jellypepper" data={jellypepper} />
       <ClientList name="Freelance" data={data.freelance} />

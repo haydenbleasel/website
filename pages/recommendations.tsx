@@ -30,7 +30,9 @@ const PostLink = (
   index: number
 ) => (
   <Fragment key={index}>
-    {Boolean(index) && <hr className="my-2 border-t border-gray-100" />}
+    {Boolean(index) && (
+      <hr className="my-2 border-t border-gray-100 dark:border-gray-800" />
+    )}
     <div className="fill-anchor">
       <PrismicLink field={link}>
         <div className="flex flex-1 justify-between gap-8">
@@ -76,7 +78,9 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
   return (
     <Layout backHref="/" backLabel="Home">
       <div className="grid gap-8">
-        <h1 className="text-md font-medium text-gray-900">Recommendations</h1>
+        <h1 className="text-md font-medium text-gray-900 dark:text-white">
+          Recommendations
+        </h1>
         <div className="grid gap-8">
           <div className="grid gap-2">
             <div className="space-between flex items-center gap-8">
@@ -117,7 +121,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
                 />
               </div>
             </div>
-            <hr className="border-t border-gray-100" />
+            <hr className="border-t border-gray-100 dark:border-gray-800" />
           </div>
 
           <div>{tabs[activeTab].data.filter(filterBySearch).map(PostLink)}</div>

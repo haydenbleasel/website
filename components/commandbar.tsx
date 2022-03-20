@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
+import type { Action, ActionImpl } from "kbar";
 import {
   KBarProvider,
   KBarPortal,
@@ -8,26 +9,74 @@ import {
   KBarSearch,
   useMatches,
   KBarResults,
+  useRegisterActions,
 } from "kbar";
 import { useRouter } from "next/router";
 import type { FC } from "react";
-import { useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { ChevronRight } from "react-feather";
+import toast from "react-hot-toast";
+import { useLocalStorage } from "react-use";
+import tailwindConfig from "../tailwind.config";
+
+type RenderParams<T = ActionImpl | string> = {
+  item: T;
+  active: boolean;
+};
 
 const RenderResults: FC = () => {
   const { results } = useMatches();
 
   const onRender = useCallback(
-    ({ item, active }) =>
-      typeof item === "string" ? (
-        <div>{item}</div>
+    (props: RenderParams) =>
+      typeof props.item === "string" ? (
+        <div className="px-4 py-2 text-sm text-gray-500">{props.item}</div>
       ) : (
         <div
-          className={`flex items-center ${active ? "bg-gray-100" : "bg-white"}`}
+          className={`flex cursor-pointer items-center justify-between py-3 px-4 transition-colors ${
+            props.active ? "bg-gray-100" : "bg-white"
+          }`}
         >
-          {item.name}
-          <div className="rounded-sm bg-gray-100 p-1 font-mono text-gray-700">
-            {item.shortcut}
+          <div className="flex items-center gap-1">
+            {props.item.parent && (
+              <>
+                <span
+                  className={`text-md transition-colors ${
+                    props.active ? "text-gray-500" : "text-gray-400"
+                  }`}
+                >
+                  {
+                    props.item.ancestors.find(
+                      (ancestor) =>
+                        ancestor.id === (props.item as ActionImpl).parent
+                    )?.name
+                  }
+                </span>
+                <ChevronRight
+                  size={16}
+                  color={tailwindConfig.theme.colors.gray[400]}
+                />
+              </>
+            )}
+            <span className="text-md text-gray-900 line-clamp-1">
+              {props.item.name}
+            </span>
           </div>
+          {props.item.shortcut && (
+            <div
+              className={`flex h-6 w-6 items-center justify-center rounded-md transition-colors ${
+                props.active ? "bg-gray-200" : "bg-gray-100"
+              }`}
+            >
+              <span
+                className={`font-mono text-sm font-medium leading-normal transition-colors ${
+                  props.active ? "text-gray-500" : "text-gray-400"
+                }`}
+              >
+                {props.item.shortcut}
+              </span>
+            </div>
+          )}
         </div>
       ),
     []
@@ -36,14 +85,56 @@ const RenderResults: FC = () => {
   return <KBarResults items={results} onRender={onRender} />;
 };
 
+type ServerAction = Omit<Action, "perform"> & {
+  link: string;
+};
+
+const LoadCustomActions = () => {
+  const [customActions, setCustomActions] = useState<Action[]>([]);
+  const { push } = useRouter();
+
+  useEffect(() => {
+    const loadContent = async () => {
+      const contentActions = await fetch("/api/kbar");
+      const { actions } = (await contentActions.json()) as {
+        actions: ServerAction[];
+      };
+
+      const newActions: Action[] = actions.map(({ link, ...props }) => ({
+        ...props,
+        perform: async () => push(link),
+      }));
+
+      setCustomActions(newActions);
+    };
+
+    if (!customActions.length) {
+      loadContent().catch((error) => {
+        const message =
+          error instanceof Error ? error.message : (error as string);
+        toast.error(message);
+      });
+    }
+  }, [customActions.length, push]);
+
+  useRegisterActions(customActions, [customActions]);
+
+  return null;
+};
+
 const CommandBar: FC = ({ children }) => {
   const { push } = useRouter();
+  const [theme, setTheme, removeTheme] = useLocalStorage<string | undefined>(
+    "theme",
+    undefined
+  );
   const actions = [
     {
       id: "home",
       name: "Home",
       shortcut: ["h"],
       keywords: "home",
+      section: "Pages",
       perform: async () => push("/"),
     },
     {
@@ -51,43 +142,74 @@ const CommandBar: FC = ({ children }) => {
       name: "Blog",
       shortcut: ["b"],
       keywords: "blog",
+      section: "Pages",
+    },
+    {
+      id: "blog-index",
+      name: "All Posts",
+      parent: "blog",
       perform: async () => push("/blog"),
     },
     {
-      id: "colophon",
-      name: "Colophon",
-      shortcut: ["c"],
-      keywords: "colophon",
-      perform: async () => push("/colophon"),
+      id: "playlists",
+      name: "Playlists",
+      shortcut: ["p"],
+      keywords: "playlists",
+      section: "Pages",
+    },
+    {
+      id: "playlists-index",
+      name: "All Playlists",
+      parent: "playlists",
+      perform: async () => push("/playlists"),
+    },
+    {
+      id: "theme",
+      name: "Change theme...",
+      shortcut: ["t"],
+      keywords: "theme",
+      section: "Utilities",
+    },
+    {
+      id: "lightMode",
+      name: "Light",
+      shortcut: ["l"],
+      keywords: "light",
+      parent: "theme",
+      perform: () => setTheme("light"),
+    },
+    {
+      id: "darkMode",
+      name: "Dark",
+      shortcut: ["d"],
+      keywords: "dark",
+      parent: "theme",
+      perform: () => setTheme("dark"),
+    },
+    {
+      id: "systemTheme",
+      name: "System Default",
+      shortcut: ["s"],
+      keywords: "light",
+      parent: "theme",
+      perform: () => removeTheme(),
     },
   ];
 
-  /*
-   * useRegisterActions(actions, []);
-   *
-   * useEffect(() => {
-   * const loadContent = async () => {
-   *  const contentActions = await fetch("/api/kbar");
-   *  const data = await contentActions.json();
-   *
-   *  data.actions.forEach((action) => {
-   *    action.perform = async () => push(action.link);
-   *    delete action.link;
-   *  });
-   *
-   *  actions.push(...data.actions);
-   * };
-   *
-   * loadContent().catch((error) => {
-   *  const message =
-   *    error instanceof Error ? error.message : (error as string);
-   *  toast.error(message);
-   * });
-   * }, []);
-   */
+  useEffect(() => {
+    if (
+      theme === "dark" ||
+      (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <KBarProvider actions={actions}>
+      <LoadCustomActions />
       <KBarPortal>
         <KBarPositioner>
           <KBarAnimator className="mx-auto w-full max-w-xl overflow-hidden rounded-lg bg-white drop-shadow-2xl">

@@ -10,12 +10,16 @@ import type { Post } from "../types/post";
 
 const PostLink: FC<Post> = ({ id, title, date, link }, index) => (
   <Fragment key={id}>
-    {Boolean(index) && <hr className="my-2 border-t border-gray-100" />}
+    {Boolean(index) && (
+      <hr className="my-2 border-t border-gray-100 dark:border-gray-800" />
+    )}
     <div className="fill-anchor">
       <PrismicLink href={link}>
         <div className="flex justify-between gap-8">
-          <p className="flex-1 text-md text-gray-900">{title}</p>
-          <p className="flex-0 w-24 text-right text-sm text-gray-500">
+          <p className="flex-1 text-md text-gray-900 dark:text-white">
+            {title}
+          </p>
+          <p className="flex-0 w-24 text-right text-sm text-gray-500 dark:text-gray-400">
             {format(parseISO(date), "MMM dd, yyyy")}
           </p>
         </div>
@@ -63,7 +67,9 @@ const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
   return (
     <Layout backHref="/" backLabel="Home">
       <div className="grid gap-8">
-        <h1 className="text-md font-medium text-gray-900">Blog</h1>
+        <h1 className="text-md font-medium text-gray-900 dark:text-white">
+          Blog
+        </h1>
         <div className="grid gap-8">
           <div className="grid gap-2">
             <div className="space-between flex items-center gap-8">
@@ -73,8 +79,8 @@ const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
                     <span
                       className={`relative whitespace-nowrap text-sm ${
                         tab.link === asPath
-                          ? 'text-gray-900 after:absolute after:-bottom-[14.5px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""]'
-                          : "text-gray-500"
+                          ? 'text-gray-900 after:absolute after:-bottom-[14.5px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
+                          : "text-gray-500 dark:text-gray-400"
                       }`}
                     >
                       {tab.label}
@@ -90,14 +96,14 @@ const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
                   />
                 </div>
                 <input
-                  className="w-full px-[18px] text-sm"
+                  className="w-full bg-transparent px-[18px] text-sm placeholder:text-gray-400 dark:placeholder:text-gray-500"
                   type="text"
                   placeholder="Search"
                   onChange={handleSearch}
                 />
               </div>
             </div>
-            <hr className="border-t border-gray-100" />
+            <hr className="border-t border-gray-100 dark:border-gray-800" />
           </div>
 
           <div>

@@ -114,7 +114,9 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
 
   return (
     <Fragment key={track.id}>
-      {Boolean(index) && <hr className="border-t border-gray-100" />}
+      {Boolean(index) && (
+        <hr className="border-t border-gray-100 dark:border-gray-800" />
+      )}
       <div
         className="relative"
         onMouseOver={play}
@@ -127,7 +129,7 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
         {Boolean(track.preview_url) && (
           <div
             className={`
-            absolute left-0 top-0 h-full bg-gray-100
+            absolute left-0 top-0 h-full bg-gray-100 dark:bg-gray-800
             ${
               audio && interactable
                 ? "w-full transition-all duration-[30s] ease-linear"
@@ -141,10 +143,10 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
             <Image src={track.album.images[0].url} width={48} height={48} />
           </div>
           <div className="relative flex flex-1 flex-col">
-            <p className="text-md leading-normal text-gray-900 line-clamp-1">
+            <p className="text-md leading-normal text-gray-900 line-clamp-1 dark:text-white">
               {track.name}
             </p>
-            <p className="text-sm text-gray-500 line-clamp-1">
+            <p className="text-sm text-gray-500 line-clamp-1 dark:text-gray-400">
               {track.artists[0].name} &bull; {track.album.name}
             </p>
           </div>
@@ -185,17 +187,19 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
     <Layout backHref="/playlists" backLabel="Playlists">
       <div className="grid gap-8">
         <div className="grid gap-1">
-          <h1 className="text-md font-medium text-gray-900">{data.name}</h1>
-          <p className="text-md font-normal text-gray-900">
+          <h1 className="text-md font-medium text-gray-900 dark:text-white">
+            {data.name}
+          </h1>
+          <p className="text-md font-normal text-gray-900 dark:text-white">
             <span>{decode(description)} </span>
             <span>Featuring {formatter.format(topArtists)}.</span>
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             {[
               `${duration} hours`,
               `${data.tracks.total} tracks`,
               `${uniqueArtists.size} artists`,
-            ].join(" • ")}
+            ].join(" · ")}
           </p>
         </div>
         <div>{tracks.map(Track)}</div>

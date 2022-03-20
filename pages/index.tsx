@@ -81,15 +81,19 @@ const Home: FC<HomeProps> = ({ data }) => {
           </div>
         )}
         <div>
-          <h1 className="text-md font-medium text-gray-900">{data.name}</h1>
-          <p className="text-md font-normal text-gray-500">{data.role}</p>
+          <h1 className="text-md font-medium text-gray-900 dark:text-white">
+            {data.name}
+          </h1>
+          <p className="text-md font-normal text-gray-500 dark:text-gray-400">
+            {data.role}
+          </p>
         </div>
       </div>
       <div className="grid gap-12">
         {data.sections.map((section, index) => (
           <div key={index} className="grid gap-4">
             {section.title && (
-              <p className="text-sm font-normal text-gray-500">
+              <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
                 {section.title}
               </p>
             )}

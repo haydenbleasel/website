@@ -1,0 +1,34 @@
+{
+  "id": "comparison",
+  "type": "SharedSlice",
+  "name": "Comparison",
+  "description": "Comparison",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Comparison",
+      "primary": {
+        "before": {
+          "config": {
+            "label": "Before",
+            "constraint": {},
+            "thumbnails": []
+          },
+          "type": "Image"
+        },
+        "after": {
+          "config": {
+            "label": "After",
+            "constraint": {},
+            "thumbnails": []
+          },
+          "type": "Image"
+        }
+      },
+      "items": {}
+    }
+  ]
+}

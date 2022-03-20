@@ -15,8 +15,10 @@ const LandingPage: FC<LandingPageProps> = ({ data }) => (
   <Layout backHref="/blog" backLabel="Blog">
     <div className="grid gap-8">
       <div className="grid gap-1">
-        <h1 className="text-md font-medium text-gray-900">{data.title}</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-md font-medium text-gray-900 dark:text-white">
+          {data.title}
+        </h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           {[
             `${data.comments_count} ${
               data.comments_count === 1 ? "comment" : "comments"
@@ -25,13 +27,13 @@ const LandingPage: FC<LandingPageProps> = ({ data }) => (
               data.public_reactions_count === 1 ? "reaction" : "reactions"
             }`,
             `${data.reading_time_minutes} min read`,
-          ].join(" • ")}
+          ].join(" · ")}
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           Last updated at {format(parseISO(data.created_at), "MMM dd, yyyy")}
         </p>
       </div>
-      <Html className="prose" data={data.body_html} />
+      <Html className="prose dark:prose-invert" data={data.body_html} />
     </div>
   </Layout>
 );

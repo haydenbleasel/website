@@ -8,7 +8,7 @@ import type {
 import { trackGoal } from "fathom-client";
 import type { GetStaticProps } from "next";
 import Image from "next/image";
-import type { FC, FormEvent } from "react";
+import type { FC, FormEvent, KeyboardEventHandler } from "react";
 import { useState } from "react";
 import { HelpCircle } from "react-feather";
 import toast from "react-hot-toast";
@@ -73,6 +73,16 @@ const Home: FC<HomeProps> = ({ data }) => {
       "The activity status is a guess of what I am doing right now, based on a combination of APIs, time and some solid guesswork."
     );
 
+  const handleNotifyActivity: KeyboardEventHandler<HTMLDivElement> = (
+    event
+  ) => {
+    if (event.code === "Space") {
+      event.preventDefault();
+      event.stopPropagation();
+      notifyActivity();
+    }
+  };
+
   return (
     <Layout>
       <div className="grid gap-8">
@@ -97,9 +107,10 @@ const Home: FC<HomeProps> = ({ data }) => {
                 </p>
                 <div
                   onClick={notifyActivity}
-                  onKeyDown={notifyActivity}
+                  onKeyDown={handleNotifyActivity}
                   tabIndex={-1}
                   role="button"
+                  className="select-none"
                 >
                   <HelpCircle
                     size={12}

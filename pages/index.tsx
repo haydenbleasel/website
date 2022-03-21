@@ -10,8 +10,11 @@ import type { GetStaticProps } from "next";
 import Image from "next/image";
 import type { FC, FormEvent } from "react";
 import { useState } from "react";
+import { HelpCircle } from "react-feather";
 import toast from "react-hot-toast";
 import Layout from "../components/layout";
+import useActivity from "../hooks/useActivity";
+import tailwindConfig from "../tailwind.config";
 import { getPage } from "../utils/prismic";
 
 type HomeProps = {
@@ -31,6 +34,7 @@ type HomeProps = {
 const Home: FC<HomeProps> = ({ data }) => {
   const [email, setEmail] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const activity = useActivity();
 
   const joinMailingList = async (event: FormEvent) => {
     event.preventDefault();
@@ -64,19 +68,45 @@ const Home: FC<HomeProps> = ({ data }) => {
     }
   };
 
+  const notifyActivity = () =>
+    toast(
+      "The activity status is a guess of what I am doing right now, based on a combination of APIs, time and some solid guesswork."
+    );
+
   return (
     <Layout>
       <div className="grid gap-8">
         {data.photo.url && (
           <div className="flex">
-            <div className="inline-flex overflow-hidden rounded-full">
-              <Image
-                src={data.photo.url}
-                width={64}
-                height={64}
-                layout="fixed"
-                priority
-              />
+            <div className="relative">
+              <div className="inline-flex overflow-hidden rounded-full">
+                <Image
+                  src={data.photo.url}
+                  width={64}
+                  height={64}
+                  layout="fixed"
+                  priority
+                />
+              </div>
+              <div className="absolute top-10 left-10 flex max-w-[26px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-gray-100 bg-white p-1 pr-2 transition-[max-width] hover:w-auto hover:max-w-[300px] dark:bg-gray-900">
+                <p className="text-md leading-none text-gray-900">
+                  {activity.emoji}
+                </p>
+                <p className="text-sm leading-none text-gray-900">
+                  {activity.status}
+                </p>
+                <div
+                  onClick={notifyActivity}
+                  onKeyDown={notifyActivity}
+                  tabIndex={-1}
+                  role="button"
+                >
+                  <HelpCircle
+                    size={12}
+                    color={tailwindConfig.theme.colors.gray[400]}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         )}

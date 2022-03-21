@@ -1,6 +1,7 @@
 import { useKBar } from "kbar";
 import type { FC, KeyboardEventHandler } from "react";
 import { Menu as MenuList } from "react-feather";
+import toast from "react-hot-toast";
 import tailwindConfig from "../tailwind.config";
 
 const Menu: FC = () => {
@@ -11,6 +12,7 @@ const Menu: FC = () => {
       event.preventDefault();
       event.stopPropagation();
       kbar.query.toggle();
+      toast("You can also press ⌘K to open the menu!");
     }
   };
 

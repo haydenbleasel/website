@@ -15,6 +15,10 @@ type GitHubResponse = {
   active: boolean;
 };
 
+type VercelResponse = {
+  active: boolean;
+};
+
 const fetcher = async <ResponseType>(url: string): Promise<ResponseType> => {
   const response = await fetch(url);
   const data = (await response.json()) as ResponseType;
@@ -25,6 +29,7 @@ const fetcher = async <ResponseType>(url: string): Promise<ResponseType> => {
 const useActivity = (): ActivityResponse => {
   const steam = useSWR<SteamResponse>("/api/steam", fetcher);
   const github = useSWR<GitHubResponse>("/api/github", fetcher);
+  const vercel = useSWR<VercelResponse>("/api/vercel", fetcher);
   const [status, setStatus] = useState<ActivityResponse>({
     emoji: "🤔",
     status: "Not sure",
@@ -48,6 +53,12 @@ const useActivity = (): ActivityResponse => {
       newStatus.source = "GitHub";
     }
 
+    if (!vercel.error && vercel.data?.active) {
+      newStatus.emoji = "🏗";
+      newStatus.status = "Deploying code";
+      newStatus.source = "Vercel";
+    }
+
     const date = new Date().toLocaleTimeString("en-US", {
       timeZone: "Australia/Sydney",
       hour12: false,
@@ -68,7 +79,14 @@ const useActivity = (): ActivityResponse => {
     }
 
     setStatus(newStatus);
-  }, [github.data?.active, github.error, steam.data?.game, steam.error]);
+  }, [
+    github.data?.active,
+    github.error,
+    steam.data?.game,
+    steam.error,
+    vercel.data?.active,
+    vercel.error,
+  ]);
 
   return status;
 };

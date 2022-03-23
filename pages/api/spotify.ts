@@ -27,12 +27,14 @@ const handler: NextApiHandler = async (req, res) => {
 
     if (data.error) {
       res.status(500).json({ error: data.error.message });
+      return;
     }
 
     if (data.item) {
       res
         .status(200)
         .json({ track: data.item.name, artist: data.item.artists[0].name });
+      return;
     }
 
     res.status(200).json({ track: undefined, artist: undefined });

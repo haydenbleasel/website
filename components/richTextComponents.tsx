@@ -7,10 +7,18 @@ const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
     <p
       key={key}
-      className="text-normal mb-4 text-md text-gray-900 dark:text-white"
+      className="mb-4 text-md font-normal text-gray-900 dark:text-white"
     >
       {children}
     </p>
+  ),
+  em: ({ children, key }) => (
+    <em
+      key={key}
+      className="font-serif font-medium text-gray-900 dark:text-white"
+    >
+      {children}
+    </em>
   ),
   strong: ({ children, key }) => (
     <strong key={key} className="font-semibold">

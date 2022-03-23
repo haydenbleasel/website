@@ -99,6 +99,15 @@ module.exports = {
         "Segoe UI Symbol",
         "Noto Color Emoji",
       ],
+      serif: [
+        "Newsreader",
+        "ui-serif",
+        "Georgia",
+        "Cambria",
+        "Times New Roman",
+        "Times",
+        "serif",
+      ],
       mono: [
         "IBM Plex Mono",
         "SFMono-Regular",

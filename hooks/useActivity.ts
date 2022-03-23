@@ -56,7 +56,7 @@ const useActivity = (): ActivityResponse => {
       if (time === 11) {
         newStatus.emoji = "💪";
         newStatus.status = "Training";
-      } else if (time > 23 && time < 7) {
+      } else if (time >= 1 && time <= 8) {
         newStatus.emoji = "😴";
         newStatus.status = "Sleeping";
       } else {

@@ -29,7 +29,7 @@ const landingPageComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
     <p
       key={key}
-      className="text-normal mb-4 indent-8 text-md text-gray-900 dark:text-white"
+      className="mb-4 indent-8 text-md font-normal text-gray-900 dark:text-white"
     >
       {children}
     </p>

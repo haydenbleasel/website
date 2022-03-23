@@ -26,6 +26,7 @@ const handler: NextApiHandler = async (req, res) => {
         status: "online",
         game: gameextrainfo,
       });
+      return;
     }
 
     res.status(200).json({ status: "offline", game: undefined });

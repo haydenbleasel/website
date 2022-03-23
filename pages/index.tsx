@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import Activity from "../components/activity";
 import Layout from "../components/layout";
 import { getPage } from "../utils/prismic";
+import type { RevueHandlerResponse } from "./api/revue";
 
 type HomeProps = {
   data: {
@@ -43,15 +44,13 @@ const Home: FC<HomeProps> = ({ data }) => {
         body: JSON.stringify({ email }),
       });
 
-      const body = (await response.json()) as { message: string };
+      const body = (await response.json()) as RevueHandlerResponse;
 
       if (response.status !== 200) {
         throw new Error(body.message);
       }
 
-      toast.success(
-        "Thanks, choom! I'll let you know when I release something cool."
-      );
+      toast.success(body.message);
       setEmail("");
       if (process.env.NEXT_PUBLIC_FATHOM_NEWSLETTER_GOAL) {
         trackGoal(process.env.NEXT_PUBLIC_FATHOM_NEWSLETTER_GOAL, 0);

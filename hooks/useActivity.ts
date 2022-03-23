@@ -4,10 +4,15 @@ import useSWR from "swr";
 type ActivityResponse = {
   emoji: string;
   status: string;
+  source?: string;
 };
 
 type SteamResponse = {
   game: string | undefined;
+};
+
+type GitHubResponse = {
+  active: boolean;
 };
 
 const fetcher = async <ResponseType>(url: string): Promise<ResponseType> => {
@@ -19,6 +24,7 @@ const fetcher = async <ResponseType>(url: string): Promise<ResponseType> => {
 
 const useActivity = (): ActivityResponse => {
   const steam = useSWR<SteamResponse>("/api/steam", fetcher);
+  const github = useSWR<GitHubResponse>("/api/github", fetcher);
   const [status, setStatus] = useState<ActivityResponse>({
     emoji: "🤔",
     status: "Not sure",
@@ -33,6 +39,13 @@ const useActivity = (): ActivityResponse => {
     if (!steam.error && steam.data?.game) {
       newStatus.emoji = "🎮";
       newStatus.status = `Playing ${steam.data.game}`;
+      newStatus.source = "Steam";
+    }
+
+    if (!github.error && github.data?.active) {
+      newStatus.emoji = "👨‍💻";
+      newStatus.status = "Coding";
+      newStatus.source = "GitHub";
     }
 
     const date = new Date().toLocaleTimeString("en-US", {
@@ -55,7 +68,7 @@ const useActivity = (): ActivityResponse => {
     }
 
     setStatus(newStatus);
-  }, [steam.data?.game, steam.error]);
+  }, [github.data?.active, github.error, steam.data?.game, steam.error]);
 
   return status;
 };

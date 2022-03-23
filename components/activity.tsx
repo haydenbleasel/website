@@ -28,12 +28,17 @@ const Activity: FC = () => {
       <p className="text-sm leading-none text-gray-900 dark:text-white">
         {activity.status}
       </p>
+      {activity.source && (
+        <span className="text-sm leading-none text-gray-500 dark:text-gray-400">
+          via {activity.source}
+        </span>
+      )}
       <div
         onClick={notifyActivity}
         onKeyDown={handleNotifyActivity}
         tabIndex={-1}
         role="button"
-        className="select-none text-gray-400 dark:text-gray-500"
+        className="flex select-none text-gray-400 dark:text-gray-500"
       >
         <HelpCircle size={12} />
       </div>

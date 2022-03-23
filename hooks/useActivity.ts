@@ -10,11 +10,6 @@ type SteamResponse = {
   game: string | undefined;
 };
 
-type SpotifyResponse = {
-  track: string | undefined;
-  artist: string | undefined;
-};
-
 const fetcher = async <ResponseType>(url: string): Promise<ResponseType> => {
   const response = await fetch(url);
   const data = (await response.json()) as ResponseType;
@@ -24,7 +19,6 @@ const fetcher = async <ResponseType>(url: string): Promise<ResponseType> => {
 
 const useActivity = (): ActivityResponse => {
   const steam = useSWR<SteamResponse>("/api/steam", fetcher);
-  const spotify = useSWR<SpotifyResponse>("/api/spotify", fetcher);
   const [status, setStatus] = useState<ActivityResponse>({
     emoji: "🤔",
     status: "Not sure",
@@ -39,11 +33,6 @@ const useActivity = (): ActivityResponse => {
     if (!steam.error && steam.data?.game) {
       newStatus.emoji = "🎮";
       newStatus.status = `Playing ${steam.data.game}`;
-    }
-
-    if (!spotify.error && spotify.data?.track && spotify.data.artist) {
-      newStatus.emoji = "🎧";
-      newStatus.status = `Listening to ${spotify.data.track} by ${spotify.data.artist}`;
     }
 
     const date = new Date().toLocaleTimeString("en-US", {
@@ -66,13 +55,7 @@ const useActivity = (): ActivityResponse => {
     }
 
     setStatus(newStatus);
-  }, [
-    spotify.error,
-    spotify.data?.artist,
-    spotify.data?.track,
-    steam.data?.game,
-    steam.error,
-  ]);
+  }, [steam.data?.game, steam.error]);
 
   return status;
 };

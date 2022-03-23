@@ -19,7 +19,7 @@ const handler: NextApiHandler = async (req, res) => {
       const eventTime = new Date(event.createdAt);
       const difference = differenceInMinutes(new Date(), eventTime);
 
-      return difference < 30;
+      return difference < 10;
     });
 
     const active = Boolean(recent.length);

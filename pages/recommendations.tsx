@@ -5,10 +5,11 @@ import type {
   PrismicDocumentWithUID,
 } from "@prismicio/types";
 import type { GetStaticProps } from "next";
-import type { ChangeEventHandler, FC } from "react";
-import { Fragment, useState } from "react";
-import { Search } from "react-feather";
+import type { FC } from "react";
+import { useEffect, Fragment, useState } from "react";
+import toast from "react-hot-toast";
 import Layout from "../components/layout";
+import Search from "../components/search";
 import { getPage } from "../utils/prismic";
 
 type RecommendationsData = {
@@ -47,29 +48,43 @@ const PostLink = (
 
 const Recommendations: FC<RecommendationsData> = ({ data }) => {
   const [results, setResults] = useState<string[]>([]);
+  const [search, setSearch] = useState<string>("");
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
     { label: "Tools", data: data.tools },
     { label: "Freelancers", data: data.freelancers },
   ];
+  const { data: activeData } = tabs[activeTab];
 
-  const handleSearch: ChangeEventHandler<HTMLInputElement> = async (event) => {
-    const { value } = event.currentTarget;
+  useEffect(() => {
+    const filterRecommendations = async (term: string) => {
+      const Fuse = (
+        await import(
+          /* webpackChunkName: "fuse" */
+          "fuse.js"
+        )
+      ).default;
+      const fuse = new Fuse(activeData, {
+        keys: ["name", "description"],
+      });
 
-    const Fuse = (
-      await import(
-        /* webpackChunkName: "fuse" */
-        "fuse.js"
-      )
-    ).default;
-    const fuse = new Fuse(tabs[activeTab].data, {
-      keys: ["name", "description"],
+      const searchResults = fuse.search(term);
+
+      setResults(searchResults.map(({ item }) => item.name ?? ""));
+    };
+
+    if (!search) {
+      setResults([]);
+      return;
+    }
+
+    filterRecommendations(search).catch((error) => {
+      const message =
+        error instanceof Error ? error.message : (error as string);
+
+      toast.error(message);
     });
-
-    const searchResults = fuse.search(value);
-
-    setResults(searchResults.map(({ item }) => item.name ?? ""));
-  };
+  }, [activeData, search]);
 
   const filterBySearch = (post: RecommendationsData["data"]["tools"][number]) =>
     results.length && post.name ? results.includes(post.name) : true;
@@ -105,22 +120,12 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
                   </div>
                 ))}
               </div>
-              <div className="flex-0 relative">
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
-                  <Search size={14} />
-                </div>
-                <input
-                  className="w-full px-[18px] text-sm text-gray-900 placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500"
-                  type="text"
-                  placeholder="Search"
-                  onChange={handleSearch}
-                />
-              </div>
+              <Search value={search} onChange={setSearch} />
             </div>
             <hr className="border-t border-gray-100 dark:border-gray-800" />
           </div>
 
-          <div>{tabs[activeTab].data.filter(filterBySearch).map(PostLink)}</div>
+          <div>{activeData.filter(filterBySearch).map(PostLink)}</div>
         </div>
       </div>
     </Layout>

@@ -1,10 +1,11 @@
 import { PrismicLink } from "@prismicio/react";
 import { format, parseISO } from "date-fns";
 import { useRouter } from "next/router";
-import type { ChangeEventHandler, FC } from "react";
-import { Fragment, useState } from "react";
-import { Search } from "react-feather";
+import type { FC } from "react";
+import { useEffect, Fragment, useState } from "react";
+import toast from "react-hot-toast";
 import Layout from "../components/layout";
+import Search from "../components/search";
 import type { Post } from "../types/post";
 
 const PostLink: FC<Post> = ({ id, title, date, link }, index) => (
@@ -34,24 +35,37 @@ type BlogTemplateData = {
 const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
   const [results, setResults] = useState<string[]>([]);
   const { asPath } = useRouter();
+  const [search, setSearch] = useState("");
 
-  const handleSearch: ChangeEventHandler<HTMLInputElement> = async (event) => {
-    const { value } = event.currentTarget;
+  useEffect(() => {
+    const filterPosts = async (term: string) => {
+      const Fuse = (
+        await import(
+          /* webpackChunkName: "fuse" */
+          "fuse.js"
+        )
+      ).default;
+      const fuse = new Fuse(posts, {
+        keys: ["title", "date", "content"],
+      });
 
-    const Fuse = (
-      await import(
-        /* webpackChunkName: "fuse" */
-        "fuse.js"
-      )
-    ).default;
-    const fuse = new Fuse(posts, {
-      keys: ["title", "date", "content"],
+      const searchResults = fuse.search(term);
+
+      setResults(searchResults.map(({ item }) => item.id));
+    };
+
+    if (!search) {
+      setResults([]);
+      return;
+    }
+
+    filterPosts(search).catch((error) => {
+      const message =
+        error instanceof Error ? error.message : (error as string);
+
+      toast.error(message);
     });
-
-    const searchResults = fuse.search(value);
-
-    setResults(searchResults.map(({ item }) => item.id));
-  };
+  }, [posts, search]);
 
   const filterBySearch = (post: Post) =>
     results.length ? results.includes(post.id) : true;
@@ -87,17 +101,7 @@ const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
                   </PrismicLink>
                 ))}
               </div>
-              <div className="flex-0 relative">
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
-                  <Search size={14} />
-                </div>
-                <input
-                  className="w-full bg-transparent px-[18px] text-sm text-gray-900 placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500"
-                  type="text"
-                  placeholder="Search"
-                  onChange={handleSearch}
-                />
-              </div>
+              <Search value={search} onChange={setSearch} />
             </div>
             <hr className="border-t border-gray-100 dark:border-gray-800" />
           </div>

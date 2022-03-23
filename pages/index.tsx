@@ -43,10 +43,10 @@ const Home: FC<HomeProps> = ({ data }) => {
         body: JSON.stringify({ email }),
       });
 
-      const body = (await response.json()) as { error?: string };
+      const body = (await response.json()) as { message: string };
 
-      if (body.error) {
-        throw new Error(body.error);
+      if (response.status !== 200) {
+        throw new Error(body.message);
       }
 
       toast.success(
@@ -57,9 +57,9 @@ const Home: FC<HomeProps> = ({ data }) => {
         trackGoal(process.env.NEXT_PUBLIC_FATHOM_NEWSLETTER_GOAL, 0);
       }
     } catch (error) {
-      toast.error(
-        "Sorry, something went wrong! Try again later, hopefully I've fixed it by then."
-      );
+      const message =
+        error instanceof Error ? error.message : (error as string);
+      toast.error(message);
     } finally {
       setLoading(false);
     }

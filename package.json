@@ -19,6 +19,7 @@
     "@tailwindcss/line-clamp": "^0.3.1",
     "@tailwindcss/typography": "^0.5.2",
     "date-fns": "^2.28.0",
+    "disposable-email-domains": "^1.0.59",
     "fathom-client": "^3.4.1",
     "fuse.js": "^6.5.3",
     "he": "^1.2.0",

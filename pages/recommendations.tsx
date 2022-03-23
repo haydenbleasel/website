@@ -36,8 +36,10 @@ const PostLink = (
     <div className="fill-anchor">
       <PrismicLink field={link}>
         <div className="flex flex-1 justify-between gap-8">
-          <p className="flex-0 w-32 text-md text-gray-900">{name}</p>
-          <p className="flex-1 text-right text-sm text-gray-500">
+          <p className="flex-0 w-32 text-md text-gray-900 dark:text-white">
+            {name}
+          </p>
+          <p className="flex-1 text-right text-sm text-gray-500 dark:text-gray-400">
             {description}
           </p>
         </div>
@@ -111,8 +113,8 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
                       tabIndex={0}
                       className={`relative whitespace-nowrap text-sm ${
                         index === activeTab
-                          ? 'text-gray-900 after:absolute after:-bottom-[14.5px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""]'
-                          : "text-gray-500"
+                          ? 'text-gray-900 after:absolute after:-bottom-[14.5px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
+                          : "text-gray-500 dark:text-gray-400"
                       }`}
                     >
                       {tab.label}

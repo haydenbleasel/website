@@ -106,14 +106,14 @@ const Home: FC<HomeProps> = ({ data }) => {
         ))}
         <form
           onSubmit={joinMailingList}
-          className={`relative ${
+          className={`flex gap-4 ${
             loading
               ? "pointer-events-none opacity-50"
               : "pointer-events-auto opacity-100"
           }`}
         >
           <input
-            className="w-full rounded-sm border border-gray-100 p-[2px] py-[6px] px-3 text-md font-normal text-gray-900 placeholder:text-gray-400"
+            className="w-full rounded-sm border border-gray-200 bg-transparent py-2 px-3 text-md font-normal text-gray-900 placeholder:text-gray-400 dark:border-gray-700 dark:text-white"
             name="email"
             placeholder="hello@janesmith.com"
             type="email"
@@ -124,7 +124,7 @@ const Home: FC<HomeProps> = ({ data }) => {
           <button
             type="submit"
             disabled={!email}
-            className="absolute right-[2px] top-[2px] rounded-sm bg-gray-900 py-[6px] px-6 text-md font-medium text-white"
+            className="rounded-sm border border-gray-900 bg-gray-900 py-2 px-6 text-md font-medium text-white dark:border-gray-800 dark:bg-gray-800"
           >
             Join
           </button>

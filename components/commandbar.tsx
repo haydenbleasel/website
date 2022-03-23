@@ -17,7 +17,6 @@ import { useState, useEffect, useCallback } from "react";
 import { ChevronRight } from "react-feather";
 import toast from "react-hot-toast";
 import { useLocalStorage } from "react-use";
-import tailwindConfig from "../tailwind.config";
 
 type RenderParams<T = ActionImpl | string> = {
   item: T;
@@ -52,10 +51,9 @@ const RenderResults: FC = () => {
                     )?.name
                   }
                 </span>
-                <ChevronRight
-                  size={16}
-                  color={tailwindConfig.theme.colors.gray[400]}
-                />
+                <span className="text-gray-400 dark:text-gray-500">
+                  <ChevronRight size={16} />
+                </span>
               </>
             )}
             <span className="text-md text-gray-900 line-clamp-1">

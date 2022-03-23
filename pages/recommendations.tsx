@@ -9,7 +9,6 @@ import type { ChangeEventHandler, FC } from "react";
 import { Fragment, useState } from "react";
 import { Search } from "react-feather";
 import Layout from "../components/layout";
-import tailwindConfig from "../tailwind.config";
 import { getPage } from "../utils/prismic";
 
 type RecommendationsData = {
@@ -107,14 +106,11 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
                 ))}
               </div>
               <div className="flex-0 relative">
-                <div className="absolute left-0 top-1/2 -translate-y-1/2">
-                  <Search
-                    size={14}
-                    color={tailwindConfig.theme.colors.gray[400]}
-                  />
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
+                  <Search size={14} />
                 </div>
                 <input
-                  className="w-full px-[18px] text-sm"
+                  className="w-full px-[18px] text-sm text-gray-900 placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500"
                   type="text"
                   placeholder="Search"
                   onChange={handleSearch}

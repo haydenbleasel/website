@@ -32,7 +32,7 @@ const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
                 <p className="flex-1 text-md text-gray-900 dark:text-white">
                   {playlist.name}
                 </p>
-                <p className="flex-0 w-24 text-right text-sm text-gray-400">
+                <p className="flex-0 w-24 text-right text-sm text-gray-400 dark:text-gray-500">
                   {playlist.tracks.total} tracks
                 </p>
               </div>

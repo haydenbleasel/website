@@ -12,9 +12,11 @@ import type { FC, FormEvent } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import Activity from "../components/activity";
+import ExternalLinkComponent from "../components/externalLink";
 import Layout from "../components/layout";
 import { getPage } from "../utils/prismic";
 import type { RevueHandlerResponse } from "./api/revue";
+import { social } from "./_app";
 
 type HomeProps = {
   data: {
@@ -128,6 +130,20 @@ const Home: FC<HomeProps> = ({ data }) => {
             Join
           </button>
         </form>
+      </div>
+      <div className="flex">
+        {social.map((platform) => (
+          <ExternalLinkComponent href={platform.url} key={platform.id}>
+            <span className="flex p-3 transition-transform hover:-translate-y-1">
+              <Image
+                src={`/social/${platform.id}.svg`}
+                width={16}
+                height={16}
+                layout="fixed"
+              />
+            </span>
+          </ExternalLinkComponent>
+        ))}
       </div>
     </Layout>
   );

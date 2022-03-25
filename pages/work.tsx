@@ -18,11 +18,13 @@ const Work: FC<WorkData> = ({ data }) => {
   const years = groupBy(data.jobs, (job) => job.startYear);
 
   return (
-    <Layout backHref="/" backLabel="Home">
+    <Layout
+      backHref="/"
+      backLabel="Home"
+      title="Work"
+      description="A list of roles I've had over the years."
+    >
       <div className="grid gap-8">
-        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-          Work
-        </h1>
         {Object.keys(years)
           .reverse()
           .map((startYear) => (

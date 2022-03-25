@@ -50,11 +50,13 @@ const ClientList: FC<ClientListData> = ({ name, data }) => (
 );
 
 const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
-  <Layout backHref="/" backLabel="Home">
+  <Layout
+    backHref="/"
+    backLabel="Home"
+    title="Clients"
+    description="A list of clients I've worked with over the years."
+  >
     <div className="grid gap-8">
-      <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-        Clients
-      </h1>
       <ClientList name="R/GA" data={data.rga} />
       <ClientList name="Jellypepper" data={jellypepper} />
       <ClientList name="Freelance" data={data.freelance} />

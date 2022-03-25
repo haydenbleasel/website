@@ -11,11 +11,13 @@ type PlaylistsProps = {
 };
 
 const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
-  <Layout backHref="/" backLabel="Home">
+  <Layout
+    backHref="/"
+    backLabel="Home"
+    title="Playlists"
+    description="Curated playlists from my Spotify library."
+  >
     <div className="grid gap-8">
-      <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-        Playlists
-      </h1>
       <div>
         {playlists.map((playlist, index) => (
           <>

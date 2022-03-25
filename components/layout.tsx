@@ -7,9 +7,11 @@ import { ArrowLeft } from 'react-feather';
 import StickyTitle from './stickyTitle';
 
 export type LayoutProps = {
+  title: string | null;
+  description: string | null;
   backHref?: string;
   backLabel?: string;
-} & NextSeoProps;
+} & Omit<NextSeoProps, 'title' | 'description'>;
 
 const Layout: FC<LayoutProps> = ({
   title,
@@ -21,6 +23,13 @@ const Layout: FC<LayoutProps> = ({
 }) => {
   const { asPath } = useRouter();
   const siteUrl = new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL).href;
+
+  if (!title || !description) {
+    throw new Error(
+      'Layout: `title` and `description` are required properties. ' +
+        'Please set them in the page component.'
+    );
+  }
 
   return (
     <>

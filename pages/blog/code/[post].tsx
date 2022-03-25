@@ -12,12 +12,14 @@ type LandingPageProps = {
 };
 
 const LandingPage: FC<LandingPageProps> = ({ data }) => (
-  <Layout backHref="/blog" backLabel="Blog">
+  <Layout
+    backHref="/blog"
+    backLabel="Blog"
+    title={data.title}
+    description={data.description}
+  >
     <div className="grid gap-8">
       <div className="grid gap-1">
-        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-          {data.title}
-        </h1>
         <p className="text-sm text-gray-500 dark:text-gray-400">
           {[
             `${data.comments_count} ${

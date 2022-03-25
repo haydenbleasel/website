@@ -92,11 +92,13 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
     results.length && post.name ? results.includes(post.name) : true;
 
   return (
-    <Layout backHref="/" backLabel="Home">
+    <Layout
+      backHref="/"
+      backLabel="Home"
+      title="Recommendations"
+      description="A list of tools and freelancers I recommend."
+    >
       <div className="grid gap-8">
-        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-          Recommendations
-        </h1>
         <div className="grid gap-8">
           <div className="grid gap-2">
             <div className="space-between flex items-center gap-8">

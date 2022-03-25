@@ -18,11 +18,11 @@ const StickyTitle: FC = ({ children }) => {
       }`}
       ref={intersectionRef}
     >
-      <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-        <div className="container mx-auto grid max-w-[32rem] py-2 px-4">
+      <div className="container mx-auto grid max-w-[32rem] py-2 px-4">
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
           {children}
-        </div>
-      </h1>
+        </h1>
+      </div>
     </div>
   );
 };

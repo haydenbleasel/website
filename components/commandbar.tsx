@@ -29,11 +29,13 @@ const RenderResults: FC = () => {
   const onRender = useCallback(
     (props: RenderParams) =>
       typeof props.item === 'string' ? (
-        <div className="px-4 py-2 text-sm text-gray-500">{props.item}</div>
+        <div className="px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
+          {props.item}
+        </div>
       ) : (
         <div
           className={`flex cursor-pointer items-center justify-between py-3 px-4 transition-colors ${
-            props.active ? 'bg-gray-100' : 'bg-white'
+            props.active ? 'bg-gray-100 dark:bg-gray-800' : 'bg-transparent'
           }`}
         >
           <div className="flex items-center gap-1">
@@ -41,7 +43,9 @@ const RenderResults: FC = () => {
               <>
                 <span
                   className={`text-md transition-colors ${
-                    props.active ? 'text-gray-500' : 'text-gray-400'
+                    props.active
+                      ? 'text-gray-500 dark:text-gray-400'
+                      : 'text-gray-400 dark:text-gray-500'
                   }`}
                 >
                   {
@@ -56,19 +60,23 @@ const RenderResults: FC = () => {
                 </span>
               </>
             )}
-            <span className="text-md text-gray-900 line-clamp-1">
+            <span className="text-md text-gray-900 line-clamp-1 dark:text-white">
               {props.item.name}
             </span>
           </div>
           {props.item.shortcut && (
             <div
               className={`flex h-6 w-6 items-center justify-center rounded-md transition-colors ${
-                props.active ? 'bg-gray-200' : 'bg-gray-100'
+                props.active
+                  ? 'bg-gray-200 dark:bg-gray-700'
+                  : 'bg-gray-100 dark:bg-gray-800'
               }`}
             >
               <span
                 className={`font-mono text-sm font-medium leading-normal transition-colors ${
-                  props.active ? 'text-gray-500' : 'text-gray-400'
+                  props.active
+                    ? 'text-gray-500 dark:text-gray-400'
+                    : 'text-gray-400 dark:text-gray-500'
                 }`}
               >
                 {props.item.shortcut}
@@ -233,9 +241,9 @@ const CommandBar: FC = ({ children }) => {
     <KBarProvider actions={actions}>
       <LoadCustomActions />
       <KBarPortal>
-        <KBarPositioner className="z-30 bg-white/80 backdrop-blur-sm">
-          <KBarAnimator className="mx-auto w-full max-w-xl overflow-hidden rounded-lg bg-white drop-shadow-2xl">
-            <KBarSearch className="font-md w-full border-none bg-white py-3 px-4 font-normal text-gray-900 outline-none" />
+        <KBarPositioner className="z-30 bg-white/80 backdrop-blur-sm dark:bg-gray-900/80">
+          <KBarAnimator className="mx-auto w-full max-w-xl overflow-hidden rounded-lg bg-white drop-shadow-2xl dark:bg-gray-900">
+            <KBarSearch className="font-md w-full border-b border-gray-100 bg-transparent py-3 px-4 font-normal text-gray-900 outline-none dark:border-gray-800 dark:text-white" />
             <RenderResults />
           </KBarAnimator>
         </KBarPositioner>

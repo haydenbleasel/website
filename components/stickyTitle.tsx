@@ -17,8 +17,10 @@ const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
 
   return (
     <div
-      className={`top-[-1px] z-10 transition-all ${
-        isSticky ? 'border-b border-gray-100 bg-white/80 backdrop-blur-sm' : ''
+      className={`top-[-1px] z-10 border-b border-transparent bg-transparent ${
+        isSticky && !noSticky
+          ? 'border-gray-100 bg-white/80 backdrop-blur-sm transition-all dark:border-gray-800 dark:bg-gray-900/80'
+          : ''
       } ${noSticky ? '' : 'sticky'}`}
       ref={intersectionRef}
     >

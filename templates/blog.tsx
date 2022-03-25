@@ -78,11 +78,8 @@ const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
   ];
 
   return (
-    <Layout backHref="/" backLabel="Home">
+    <Layout backHref="/" backLabel="Home" title="Blog">
       <div className="grid gap-8">
-        <h1 className="text-md font-medium text-gray-900 dark:text-white">
-          Blog
-        </h1>
         <div className="grid gap-8">
           <div className="grid gap-2">
             <div className="space-between flex items-center gap-8">

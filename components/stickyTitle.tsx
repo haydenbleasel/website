@@ -1,0 +1,30 @@
+import type { FC } from 'react';
+import { useRef } from 'react';
+import { useIntersection } from 'react-use';
+
+const StickyTitle: FC = ({ children }) => {
+  const intersectionRef = useRef(null);
+  const intersection = useIntersection(intersectionRef, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+  });
+  const isSticky = !intersection?.isIntersecting;
+
+  return (
+    <div
+      className={`sticky top-[-1px] z-10 transition-all ${
+        isSticky ? 'border-b border-gray-100 bg-white/80 backdrop-blur-sm' : ''
+      }`}
+      ref={intersectionRef}
+    >
+      <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+        <div className="container mx-auto grid max-w-[32rem] py-2 px-4">
+          {children}
+        </div>
+      </h1>
+    </div>
+  );
+};
+
+export default StickyTitle;

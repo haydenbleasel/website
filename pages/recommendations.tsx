@@ -94,7 +94,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
   return (
     <Layout backHref="/" backLabel="Home">
       <div className="grid gap-8">
-        <h1 className="text-md font-medium text-gray-900 dark:text-white">
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
           Recommendations
         </h1>
         <div className="grid gap-8">

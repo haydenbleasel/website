@@ -15,7 +15,7 @@ const LandingPage: FC<LandingPageProps> = ({ data }) => (
   <Layout backHref="/blog" backLabel="Blog">
     <div className="grid gap-8">
       <div className="grid gap-1">
-        <h1 className="text-md font-medium text-gray-900 dark:text-white">
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
           {data.title}
         </h1>
         <p className="text-sm text-gray-500 dark:text-gray-400">

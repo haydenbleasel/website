@@ -52,7 +52,7 @@ const ClientList: FC<ClientListData> = ({ name, data }) => (
 const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
   <Layout backHref="/" backLabel="Home">
     <div className="grid gap-8">
-      <h1 className="text-md font-medium text-gray-900 dark:text-white">
+      <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
         Clients
       </h1>
       <ClientList name="R/GA" data={data.rga} />

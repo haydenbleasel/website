@@ -17,7 +17,7 @@ class Document extends NextDocument {
             rel="stylesheet"
           />
         </Head>
-        <body className="bg-white dark:bg-gray-900">
+        <body className="mt-12 bg-white dark:bg-gray-900 sm:mt-48">
           <Main />
           <NextScript />
         </body>

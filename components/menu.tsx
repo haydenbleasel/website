@@ -17,7 +17,7 @@ const Menu: FC = () => {
 
   return (
     <div
-      className="fixed top-0 right-0 p-4 text-gray-400 dark:text-gray-500"
+      className="fixed top-0 right-0 z-20 p-4 text-gray-400 dark:text-gray-500"
       onClick={() => kbar.query.toggle()}
       onKeyDown={keyDownHandler}
       role="button"

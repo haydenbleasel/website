@@ -187,7 +187,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
     <Layout backHref="/playlists" backLabel="Playlists">
       <div className="grid gap-8">
         <div className="grid gap-1">
-          <h1 className="text-md font-medium text-gray-900 dark:text-white">
+          <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
             {data.name}
           </h1>
           <p className="text-md font-normal text-gray-900 dark:text-white">

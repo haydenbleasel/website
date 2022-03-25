@@ -7980,6 +7980,11 @@ statuses@2.0.1, statuses@^2.0.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+sticky-events@^3.4.12:
+  version "3.4.12"
+  resolved "https://registry.yarnpkg.com/sticky-events/-/sticky-events-3.4.12.tgz#32228a2babe22e2b3856c686ed11d2cd76d94005"
+  integrity sha512-DjCjyFX8yLvxY4JQQ0t1JTxfmugx0T6gofb2CsOlPppY077+RAxKyRqiwbQSPOhfkuEJpBWcVGzwqpVeIvQemQ==
+
 stream-parser@~0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/stream-parser/-/stream-parser-0.3.1.tgz#1618548694420021a1182ff0af1911c129761773"

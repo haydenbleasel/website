@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import { ArrowLeft } from 'react-feather';
+import StickyTitle from './stickyTitle';
 
 export type LayoutProps = {
   backHref?: string;
@@ -56,11 +57,12 @@ const Layout: FC<LayoutProps> = ({
         }}
         {...props}
       />
-      <div className="container mx-auto grid max-w-[32rem] gap-24 py-12 px-4 sm:py-48">
+      <StickyTitle>{title}</StickyTitle>
+      <div className="container mx-auto mt-4 grid max-w-[32rem] gap-24 px-4 pb-12 sm:pb-48">
         {children}
       </div>
       {backHref && (
-        <div className="fixed top-0 left-0">
+        <div className="fixed top-0 left-0 z-20">
           <PrismicLink href={backHref}>
             <span className="flex items-center gap-1 p-4 text-gray-400 dark:text-gray-500">
               <ArrowLeft size={14} />

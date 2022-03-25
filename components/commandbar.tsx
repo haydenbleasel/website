@@ -166,6 +166,14 @@ const CommandBar: FC = ({ children }) => {
       perform: async () => push('/work'),
     },
     {
+      id: 'neutral',
+      name: 'Neutral',
+      shortcut: ['n'],
+      keywords: 'neutral',
+      section: 'Pages',
+      perform: async () => push('/neutral'),
+    },
+    {
       id: 'recommendations',
       name: 'Recommendations',
       shortcut: ['r'],

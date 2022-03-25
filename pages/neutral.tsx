@@ -31,12 +31,7 @@ const WorkPost: FC<WorkPostProps> = ({
   programCount,
   latestVersion,
 }) => (
-  <Layout
-    backHref="/"
-    backLabel="Home"
-    title={data.title}
-    description={data.description}
-  >
+  <Layout title={data.title} description={data.description}>
     <div className="grid gap-8">
       <div className="grid gap-1">
         <p className="text-sm text-gray-500 dark:text-gray-400">

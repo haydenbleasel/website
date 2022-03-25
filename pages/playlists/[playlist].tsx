@@ -184,12 +184,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
     : `${data.description}.`;
 
   return (
-    <Layout
-      backHref="/playlists"
-      backLabel="Playlists"
-      title={data.name}
-      description={data.description}
-    >
+    <Layout title={data.name} description={data.description}>
       <div className="grid gap-8">
         <div className="grid gap-1">
           <p className="text-md font-normal text-gray-900 dark:text-white">

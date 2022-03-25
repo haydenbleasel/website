@@ -9,17 +9,35 @@ import StickyTitle from './stickyTitle';
 export type LayoutProps = {
   title: string | null;
   description: string | null;
-  backHref?: string;
-  backLabel?: string;
   noSticky?: boolean;
   noTitle?: boolean;
 } & Omit<NextSeoProps, 'title' | 'description'>;
 
+const getPreviousPage = (path: string) => {
+  const pathElements = path.split('/').filter(Boolean);
+
+  if (!pathElements.length) {
+    return null;
+  }
+
+  if (pathElements.length === 1) {
+    return {
+      href: '/',
+      label: 'Home',
+    };
+  }
+
+  const lastPage = pathElements[pathElements.length - 2];
+
+  return {
+    href: `/${pathElements.slice(0, -1).join('/')}`,
+    label: lastPage.charAt(0).toUpperCase() + lastPage.slice(1),
+  };
+};
+
 const Layout: FC<LayoutProps> = ({
   title,
   description,
-  backHref,
-  backLabel,
   children,
   noSticky = false,
   noTitle = false,
@@ -27,6 +45,7 @@ const Layout: FC<LayoutProps> = ({
 }) => {
   const { asPath } = useRouter();
   const siteUrl = new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL).href;
+  const previousPage = getPreviousPage(asPath);
 
   if (!title || !description) {
     throw new Error(
@@ -74,13 +93,13 @@ const Layout: FC<LayoutProps> = ({
       <div className="container mx-auto mt-4 grid max-w-[32rem] gap-24 px-4 pb-12 sm:pb-48">
         {children}
       </div>
-      {backHref && (
+      {previousPage && (
         <div className="fixed top-0 left-0 z-20">
-          <PrismicLink href={backHref}>
+          <PrismicLink href={previousPage.href}>
             <span className="flex items-center gap-1 p-4 text-gray-400 dark:text-gray-500">
               <ArrowLeft size={14} />
               <span className="text-sm leading-[1rem] text-gray-400 dark:text-gray-500">
-                {backLabel ?? 'Back'}
+                {previousPage.label}
               </span>
             </span>
           </PrismicLink>

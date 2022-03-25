@@ -12,8 +12,6 @@ type PlaylistsProps = {
 
 const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
   <Layout
-    backHref="/"
-    backLabel="Home"
     title="Playlists"
     description="Curated playlists from my Spotify library."
   >

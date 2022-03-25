@@ -93,8 +93,6 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
 
   return (
     <Layout
-      backHref="/"
-      backLabel="Home"
       title="Recommendations"
       description="A list of tools and freelancers I recommend."
     >

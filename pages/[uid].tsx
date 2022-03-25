@@ -37,12 +37,7 @@ const landingPageComponents: JSXMapSerializer = {
 };
 
 const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
-  <Layout
-    backHref="/"
-    backLabel="Home"
-    title={data.title}
-    description={data.description}
-  >
+  <Layout title={data.title} description={data.description}>
     <div className="grid gap-8">
       <div className="grid gap-1">
         {data.description && (

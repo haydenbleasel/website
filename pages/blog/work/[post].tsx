@@ -157,13 +157,7 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
   }, [data.coverAnimation.url]);
 
   return (
-    <Layout
-      backHref="/blog"
-      backLabel="Blog"
-      title={data.title}
-      description={data.description}
-      noSticky
-    >
+    <Layout title={data.title} description={data.description} noSticky>
       <div className="grid gap-8">
         <div className="grid gap-1">
           <p className="text-sm text-gray-500 dark:text-gray-400">

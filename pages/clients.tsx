@@ -51,8 +51,6 @@ const ClientList: FC<ClientListData> = ({ name, data }) => (
 
 const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
   <Layout
-    backHref="/"
-    backLabel="Home"
     title="Clients"
     description="A list of clients I've worked with over the years."
   >

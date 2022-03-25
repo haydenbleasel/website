@@ -78,12 +78,7 @@ const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
   ];
 
   return (
-    <Layout
-      backHref="/"
-      backLabel="Home"
-      title="Blog"
-      description="Posts about code, work and life."
-    >
+    <Layout title="Blog" description="Posts about code, work and life.">
       <div className="grid gap-8">
         <div className="grid gap-8">
           <div className="grid gap-2">

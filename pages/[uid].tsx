@@ -40,11 +40,6 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
   <Layout title={data.title} description={data.description}>
     <div className="grid gap-8">
       <div className="grid gap-1">
-        {data.description && (
-          <p className="text-md font-normal text-gray-900">
-            {data.description}
-          </p>
-        )}
         <p className="text-sm text-gray-500 dark:text-gray-400">
           Last updated at{' '}
           {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}

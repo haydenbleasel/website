@@ -33,6 +33,7 @@ const handler: NextApiHandler = async (req, res) => {
     keywords: data.title,
     link: `/${uid}`,
     section: 'Pages',
+    shortcut: uid === 'colophon' ? ['?'] : undefined,
   }));
 
   const playlistActions = playlists.map(({ id, name }) => ({

@@ -11,6 +11,8 @@ export type LayoutProps = {
   description: string | null;
   backHref?: string;
   backLabel?: string;
+  noSticky?: boolean;
+  noTitle?: boolean;
 } & Omit<NextSeoProps, 'title' | 'description'>;
 
 const Layout: FC<LayoutProps> = ({
@@ -19,6 +21,8 @@ const Layout: FC<LayoutProps> = ({
   backHref,
   backLabel,
   children,
+  noSticky = false,
+  noTitle = false,
   ...props
 }) => {
   const { asPath } = useRouter();
@@ -66,7 +70,7 @@ const Layout: FC<LayoutProps> = ({
         }}
         {...props}
       />
-      <StickyTitle>{title}</StickyTitle>
+      {!noTitle && <StickyTitle noSticky={noSticky}>{title}</StickyTitle>}
       <div className="container mx-auto mt-4 grid max-w-[32rem] gap-24 px-4 pb-12 sm:pb-48">
         {children}
       </div>

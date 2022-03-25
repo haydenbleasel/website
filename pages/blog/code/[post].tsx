@@ -17,6 +17,7 @@ const LandingPage: FC<LandingPageProps> = ({ data }) => (
     backLabel="Blog"
     title={data.title}
     description={data.description}
+    noSticky
   >
     <div className="grid gap-8">
       <div className="grid gap-1">

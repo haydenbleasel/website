@@ -29,7 +29,7 @@ type HomeProps = {
 };
 
 const Home: FC<HomeProps> = ({ data }) => (
-  <Layout title={data.title} description={data.description}>
+  <Layout title={data.title} description={data.description} noSticky noTitle>
     <div className="grid gap-8">
       {data.photo.url && (
         <div className="flex">
@@ -48,6 +48,9 @@ const Home: FC<HomeProps> = ({ data }) => (
         </div>
       )}
       <div>
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+          {data.name}
+        </h1>
         <p className="text-md font-normal text-gray-500 dark:text-gray-400">
           {data.role}
         </p>

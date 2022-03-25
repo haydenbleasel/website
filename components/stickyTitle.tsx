@@ -2,7 +2,11 @@ import type { FC } from 'react';
 import { useRef } from 'react';
 import { useIntersection } from 'react-use';
 
-const StickyTitle: FC = ({ children }) => {
+type StickyTitleProps = {
+  noSticky: boolean;
+};
+
+const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
   const intersectionRef = useRef(null);
   const intersection = useIntersection(intersectionRef, {
     root: null,
@@ -13,9 +17,9 @@ const StickyTitle: FC = ({ children }) => {
 
   return (
     <div
-      className={`sticky top-[-1px] z-10 transition-all ${
+      className={`top-[-1px] z-10 transition-all ${
         isSticky ? 'border-b border-gray-100 bg-white/80 backdrop-blur-sm' : ''
-      }`}
+      } ${noSticky ? '' : 'sticky'}`}
       ref={intersectionRef}
     >
       <div className="container mx-auto grid max-w-[32rem] py-2 px-4">

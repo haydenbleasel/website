@@ -1,8 +1,8 @@
-const { createSecureHeaders } = require("next-secure-headers");
-const withPlugins = require("next-compose-plugins");
-const withPWA = require("next-pwa");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
+const { createSecureHeaders } = require('next-secure-headers');
+const withPlugins = require('next-compose-plugins');
+const withPWA = require('next-pwa');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
 });
 
 /** @type {import('next').NextConfig} */
@@ -10,19 +10,19 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    formats: ["image/avif", "image/webp"],
+    formats: ['image/avif', 'image/webp'],
     domains: [
-      "images.prismic.io",
-      "i.scdn.co",
-      "haydenbleasel.cdn.prismic.io",
-      "prismic-io.s3.amazonaws.com",
+      'images.prismic.io',
+      'i.scdn.co',
+      'haydenbleasel.cdn.prismic.io',
+      'prismic-io.s3.amazonaws.com',
     ],
     dangerouslyAllowSVG: true,
   },
   async headers() {
     return [
       {
-        source: "/(.*)",
+        source: '/(.*)',
         headers: createSecureHeaders(),
       },
     ];
@@ -31,8 +31,8 @@ const nextConfig = {
 
 const pwaConfig = {
   pwa: {
-    dest: "public",
-    disable: process.env.NODE_ENV === "development",
+    dest: 'public',
+    disable: process.env.NODE_ENV === 'development',
     dynamicStartUrl: false,
     mode: process.env.NODE_ENV,
   },

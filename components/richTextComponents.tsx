@@ -1,7 +1,7 @@
-import type { JSXMapSerializer } from "@prismicio/react";
-import { PrismicLink } from "@prismicio/react";
-import Image from "next/image";
-import { docResolver } from "../utils/prismic";
+import type { JSXMapSerializer } from '@prismicio/react';
+import { PrismicLink } from '@prismicio/react';
+import Image from 'next/image';
+import { docResolver } from '../utils/prismic';
 
 const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -30,7 +30,7 @@ const richTextComponents: JSXMapSerializer = {
       <Image
         key={key}
         src={node.url}
-        alt={node.alt ?? ""}
+        alt={node.alt ?? ''}
         width={480}
         height={480 * (node.dimensions.height / node.dimensions.width)}
         className="w-full"
@@ -123,7 +123,7 @@ const richTextComponents: JSXMapSerializer = {
       return undefined;
     }
 
-    if (node.oembed.type === "video") {
+    if (node.oembed.type === 'video') {
       return (
         <div
           key={key}

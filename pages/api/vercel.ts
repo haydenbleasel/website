@@ -1,5 +1,5 @@
-import { differenceInMinutes } from "date-fns";
-import type { NextApiHandler } from "next";
+import { differenceInMinutes } from 'date-fns';
+import type { NextApiHandler } from 'next';
 
 type VercelEvent = {
   createdAt: number;
@@ -7,9 +7,9 @@ type VercelEvent = {
 
 const handler: NextApiHandler = async (req, res) => {
   try {
-    const response = await fetch("https://api.vercel.com/v3/events", {
+    const response = await fetch('https://api.vercel.com/v3/events', {
       headers: {
-        Authorization: `Bearer ${process.env.VERCEL_TOKEN ?? ""}`,
+        Authorization: `Bearer ${process.env.VERCEL_TOKEN ?? ''}`,
       },
     });
 
@@ -24,7 +24,7 @@ const handler: NextApiHandler = async (req, res) => {
 
     const active = Boolean(recent.length);
 
-    res.status(200).json({ status: active ? "online" : "offline", active });
+    res.status(200).json({ status: active ? 'online' : 'offline', active });
   } catch (error) {
     const message = error instanceof Error ? error.message : (error as string);
     res.status(500).json({ error: message });

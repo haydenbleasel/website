@@ -2,16 +2,16 @@
 // https://github.com/microsoft/TypeScript/issues/46907
 
 declare namespace Intl {
-  type ListType = "conjunction" | "disjunction";
+  type ListType = 'conjunction' | 'disjunction';
 
   type ListFormatOptions = {
-    localeMatcher?: "lookup" | "best fit";
+    localeMatcher?: 'lookup' | 'best fit';
     type?: ListType;
-    style?: "long" | "short" | "narrow";
+    style?: 'long' | 'short' | 'narrow';
   };
 
   type ListFormatPart = {
-    type: "element" | "literal";
+    type: 'element' | 'literal';
     value: string;
   };
 

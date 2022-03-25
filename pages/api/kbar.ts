@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { PrismicDocumentWithUID } from "@prismicio/types";
-import type { NextApiHandler } from "next";
-import slugify from "slugify";
-import { getDevPosts } from "../../utils/dev";
-import { getMediumPosts } from "../../utils/medium";
-import { getPages } from "../../utils/prismic";
-import { getPlaylists } from "../../utils/spotify";
+import type { PrismicDocumentWithUID } from '@prismicio/types';
+import type { NextApiHandler } from 'next';
+import slugify from 'slugify';
+import { getDevPosts } from '../../utils/dev';
+import { getMediumPosts } from '../../utils/medium';
+import { getPages } from '../../utils/prismic';
+import { getPlaylists } from '../../utils/spotify';
 
 const handler: NextApiHandler = async (req, res) => {
   const caseStudies = (await getPages(
-    "case-study"
+    'case-study'
   )) as PrismicDocumentWithUID[];
   const landingPages = (await getPages(
-    "landing-page"
+    'landing-page'
   )) as PrismicDocumentWithUID[];
   const playlists = await getPlaylists();
   const devPosts = await getDevPosts();
@@ -24,7 +24,7 @@ const handler: NextApiHandler = async (req, res) => {
     name: data.title,
     keywords: data.title,
     link: `/blog/work/${uid}`,
-    parent: "blog",
+    parent: 'blog',
   }));
 
   const landingPageActions = landingPages.map(({ uid, data }) => ({
@@ -32,7 +32,7 @@ const handler: NextApiHandler = async (req, res) => {
     name: data.title,
     keywords: data.title,
     link: `/${uid}`,
-    section: "Pages",
+    section: 'Pages',
   }));
 
   const playlistActions = playlists.map(({ id, name }) => ({
@@ -40,7 +40,7 @@ const handler: NextApiHandler = async (req, res) => {
     name,
     keywords: name,
     link: `/playlists/${id}-${slugify(name, { lower: true, strict: true })}`,
-    parent: "playlists",
+    parent: 'playlists',
   }));
 
   const devPostActions = devPosts.map(({ id, title }) => ({
@@ -48,7 +48,7 @@ const handler: NextApiHandler = async (req, res) => {
     name: title,
     keywords: title,
     link: `/blog/code/${id}-${slugify(title, { lower: true, strict: true })}`,
-    parent: "blog",
+    parent: 'blog',
   }));
 
   const mediumPostActions = mediumPosts.map(({ id, title }) => ({
@@ -56,7 +56,7 @@ const handler: NextApiHandler = async (req, res) => {
     name: title,
     keywords: title,
     link: `/blog/other/${id}-${slugify(title, { lower: true, strict: true })}`,
-    parent: "blog",
+    parent: 'blog',
   }));
 
   const actions = [

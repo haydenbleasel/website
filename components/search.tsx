@@ -1,5 +1,5 @@
-import type { FC } from "react";
-import { Search as SearchIcon } from "react-feather";
+import type { FC } from 'react';
+import { Search as SearchIcon } from 'react-feather';
 
 type SearchProps = {
   value: string;

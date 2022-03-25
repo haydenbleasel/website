@@ -1,9 +1,9 @@
-import type { GetStaticProps } from "next";
-import type { FC } from "react";
-import groupBy from "lodash.groupby";
-import type { PrismicDocumentWithUID } from "@prismicio/types";
-import Layout from "../components/layout";
-import { getPage } from "../utils/prismic";
+import type { GetStaticProps } from 'next';
+import type { FC } from 'react';
+import groupBy from 'lodash.groupby';
+import type { PrismicDocumentWithUID } from '@prismicio/types';
+import Layout from '../components/layout';
+import { getPage } from '../utils/prismic';
 
 type WorkData = {
   data: {
@@ -48,7 +48,7 @@ const Work: FC<WorkData> = ({ data }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage("work")) as PrismicDocumentWithUID;
+  const { data } = (await getPage('work')) as PrismicDocumentWithUID;
 
   return {
     props: {

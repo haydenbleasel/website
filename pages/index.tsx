@@ -1,18 +1,18 @@
-import { PrismicRichText } from "@prismicio/react";
+import { PrismicRichText } from '@prismicio/react';
 import type {
   ImageFieldImage,
   KeyTextField,
   PrismicDocumentWithUID,
   RichTextField,
-} from "@prismicio/types";
-import type { GetStaticProps } from "next";
-import Image from "next/image";
-import type { FC } from "react";
-import Activity from "../components/activity";
-import ExternalLinkComponent from "../components/externalLink";
-import Layout from "../components/layout";
-import { getPage } from "../utils/prismic";
-import { social } from "./_app";
+} from '@prismicio/types';
+import type { GetStaticProps } from 'next';
+import Image from 'next/image';
+import type { FC } from 'react';
+import Activity from '../components/activity';
+import ExternalLinkComponent from '../components/externalLink';
+import Layout from '../components/layout';
+import { getPage } from '../utils/prismic';
+import { social } from './_app';
 
 type HomeProps = {
   data: {
@@ -86,7 +86,7 @@ const Home: FC<HomeProps> = ({ data }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage("home")) as PrismicDocumentWithUID;
+  const { data } = (await getPage('home')) as PrismicDocumentWithUID;
 
   return {
     props: {

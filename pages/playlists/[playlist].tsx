@@ -1,24 +1,24 @@
-import type { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
-import type { FC } from "react";
-import { Fragment, useState } from "react";
-import toast from "react-hot-toast";
-import slugify from "slugify";
-import { createGlobalState } from "react-hooks-global-state";
-import { decode } from "he";
-import Layout from "../../components/layout";
-import type { SpotifyPlaylistDetailed } from "../../types/spotify/playlistDetailed";
-import type { SpotifyTrack } from "../../types/spotify/track";
-import { getPlaylist, getPlaylists } from "../../utils/spotify";
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import Image from 'next/image';
+import type { FC } from 'react';
+import { Fragment, useState } from 'react';
+import toast from 'react-hot-toast';
+import slugify from 'slugify';
+import { createGlobalState } from 'react-hooks-global-state';
+import { decode } from 'he';
+import Layout from '../../components/layout';
+import type { SpotifyPlaylistDetailed } from '../../types/spotify/playlistDetailed';
+import type { SpotifyTrack } from '../../types/spotify/track';
+import { getPlaylist, getPlaylists } from '../../utils/spotify';
 
 type PlaylistsProps = {
   data: SpotifyPlaylistDetailed;
   tracks: SpotifyTrack[];
 };
 
-const formatter = new Intl.ListFormat("en-AU", {
-  style: "long",
-  type: "conjunction",
+const formatter = new Intl.ListFormat('en-AU', {
+  style: 'long',
+  type: 'conjunction',
 });
 
 const { useGlobalState } = createGlobalState({ interactableNotified: false });
@@ -33,7 +33,7 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
   );
   const [interactable, setInteractable] = useState<boolean>(false);
   const [interactableNotified, setInteractableNotified] = useGlobalState(
-    "interactableNotified"
+    'interactableNotified'
   );
 
   const play = () => {
@@ -50,7 +50,7 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
         setInteractable(true);
         if (interactableNotified) {
           setInteractableNotified(false);
-          toast.success("Nice! You’re good to go.");
+          toast.success('Nice! You’re good to go.');
         }
       })
       .catch((error) => {
@@ -59,7 +59,7 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
         if (message.includes("user didn't interact with the document first")) {
           if (!interactableNotified) {
             toast(
-              "Please click anywhere on the page to preview tracks on hover."
+              'Please click anywhere on the page to preview tracks on hover.'
             );
             setInteractableNotified(true);
             return;
@@ -67,7 +67,7 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
           return;
         }
 
-        if (!message.includes("interrupted by a call to pause()")) {
+        if (!message.includes('interrupted by a call to pause()')) {
           toast.error(message);
         }
       });
@@ -132,8 +132,8 @@ const Track = ({ track }: SpotifyTrack, index: number) => {
             absolute left-0 top-0 h-full bg-gray-100 dark:bg-gray-800
             ${
               audio && interactable
-                ? "w-full transition-all duration-[30s] ease-linear"
-                : "w-0"
+                ? 'w-full transition-all duration-[30s] ease-linear'
+                : 'w-0'
             }
           `}
           />
@@ -179,7 +179,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
     .sort((artist1, artist2) => (artist2.count > artist1.count ? 1 : -1))
     .slice(0, 5)
     .map((artist) => artist.name);
-  const description = data.description.endsWith(".")
+  const description = data.description.endsWith('.')
     ? data.description
     : `${data.description}.`;
 
@@ -199,7 +199,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
               `${duration} hours`,
               `${data.tracks.total} tracks`,
               `${uniqueArtists.size} artists`,
-            ].join(" · ")}
+            ].join(' · ')}
           </p>
         </div>
         <div>{tracks.map(Track)}</div>
@@ -209,7 +209,7 @@ const Playlists: FC<PlaylistsProps> = ({ data, tracks }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = (params?.playlist as string).split("-")[0];
+  const id = (params?.playlist as string).split('-')[0];
 
   const { data, tracks } = await getPlaylist(id);
 

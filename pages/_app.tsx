@@ -1,18 +1,18 @@
-import type { FC } from "react";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { Toaster } from "react-hot-toast";
-import { PrismicProvider } from "@prismicio/react";
-import { SocialProfileJsonLd } from "next-seo";
-import { client, linkResolver } from "../utils/prismic";
-import "../styles/globals.css";
-import "../styles/dev.css";
-import CommandBar from "../components/commandbar";
-import Menu from "../components/menu";
-import ExternalLinkComponent from "../components/externalLink";
-import InternalLinkComponent from "../components/internalLink";
-import useAnalytics from "../hooks/useAnalytics";
-import richTextComponents from "../components/richTextComponents";
+import type { FC } from 'react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { Toaster } from 'react-hot-toast';
+import { PrismicProvider } from '@prismicio/react';
+import { SocialProfileJsonLd } from 'next-seo';
+import { client, linkResolver } from '../utils/prismic';
+import '../styles/globals.css';
+import '../styles/dev.css';
+import CommandBar from '../components/commandbar';
+import Menu from '../components/menu';
+import ExternalLinkComponent from '../components/externalLink';
+import InternalLinkComponent from '../components/internalLink';
+import useAnalytics from '../hooks/useAnalytics';
+import richTextComponents from '../components/richTextComponents';
 
 type SocialPlatform = {
   id: string;
@@ -22,54 +22,54 @@ type SocialPlatform = {
 
 export const social: SocialPlatform[] = [
   {
-    id: "twitter",
-    name: "Twitter",
-    url: "https://twitter.com/haydenbleasel",
+    id: 'twitter',
+    name: 'Twitter',
+    url: 'https://twitter.com/haydenbleasel',
   },
   {
-    id: "dribbble",
-    name: "Dribbble",
-    url: "https://dribbble.com/haydenbleasel",
+    id: 'dribbble',
+    name: 'Dribbble',
+    url: 'https://dribbble.com/haydenbleasel',
   },
   {
-    id: "instagram",
-    name: "Instagram",
-    url: "https://www.instagram.com/hayden.bleasel/",
+    id: 'instagram',
+    name: 'Instagram',
+    url: 'https://www.instagram.com/hayden.bleasel/',
   },
   {
-    id: "github",
-    name: "GitHub",
-    url: "https://github.com/haydenbleasel/",
+    id: 'github',
+    name: 'GitHub',
+    url: 'https://github.com/haydenbleasel/',
   },
   {
-    id: "linkedin",
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/haydenbleasel",
+    id: 'linkedin',
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/haydenbleasel',
   },
   {
-    id: "producthunt",
-    name: "ProductHunt",
-    url: "https://www.producthunt.com/@haydenbleasel",
+    id: 'producthunt',
+    name: 'ProductHunt',
+    url: 'https://www.producthunt.com/@haydenbleasel',
   },
   {
-    id: "spotify",
-    name: "Spotify",
-    url: "https://open.spotify.com/user/haydenbleasel",
+    id: 'spotify',
+    name: 'Spotify',
+    url: 'https://open.spotify.com/user/haydenbleasel',
   },
   {
-    id: "devto",
-    name: "Dev.to",
-    url: "https://dev.to/haydenbleasel",
+    id: 'devto',
+    name: 'Dev.to',
+    url: 'https://dev.to/haydenbleasel',
   },
   {
-    id: "figma",
-    name: "Figma",
-    url: "https://www.figma.com/@haydenbleasel",
+    id: 'figma',
+    name: 'Figma',
+    url: 'https://www.figma.com/@haydenbleasel',
   },
   {
-    id: "medium",
-    name: "Medium",
-    url: "https://haydenbleasel.medium.com/",
+    id: 'medium',
+    name: 'Medium',
+    url: 'https://haydenbleasel.medium.com/',
   },
 ];
 
@@ -101,7 +101,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <SocialProfileJsonLd
         type="Person"
         name="Hayden Bleasel"
-        url={process.env.NEXT_PUBLIC_SITE_URL ?? ""}
+        url={process.env.NEXT_PUBLIC_SITE_URL ?? ''}
         sameAs={Object.values(social).map(({ url }) => url)}
       />
       <PrismicProvider
@@ -117,7 +117,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <Toaster
         toastOptions={{
           duration: 5000,
-          position: "bottom-right",
+          position: 'bottom-right',
         }}
       />
     </CommandBar>

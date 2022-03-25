@@ -1,8 +1,8 @@
-import type { GetStaticProps } from "next";
-import type { FC } from "react";
-import { getDevPosts } from "../../../utils/dev";
-import type { Post } from "../../../types/post";
-import BlogTemplate from "../../../templates/blog";
+import type { GetStaticProps } from 'next';
+import type { FC } from 'react';
+import { getDevPosts } from '../../../utils/dev';
+import type { Post } from '../../../types/post';
+import BlogTemplate from '../../../templates/blog';
 
 type BlogData = {
   posts: Post[];

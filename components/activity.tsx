@@ -1,19 +1,19 @@
-import type { FC, KeyboardEventHandler } from "react";
-import { HelpCircle } from "react-feather";
-import toast from "react-hot-toast";
-import useActivity from "../hooks/useActivity";
+import type { FC, KeyboardEventHandler } from 'react';
+import { HelpCircle } from 'react-feather';
+import toast from 'react-hot-toast';
+import useActivity from '../hooks/useActivity';
 
 const Activity: FC = () => {
   const activity = useActivity();
   const notifyActivity = () =>
     toast(
-      "The activity status is a guess of what I am doing right now, based on a combination of several APIs and the time of day."
+      'The activity status is a guess of what I am doing right now, based on a combination of several APIs and the time of day.'
     );
 
   const handleNotifyActivity: KeyboardEventHandler<HTMLDivElement> = (
     event
   ) => {
-    if (event.code === "Space") {
+    if (event.code === 'Space') {
       event.preventDefault();
       event.stopPropagation();
       notifyActivity();

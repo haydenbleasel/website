@@ -1,20 +1,20 @@
-import * as prismic from "@prismicio/client";
-import type { LinkResolverFunction } from "@prismicio/helpers";
+import * as prismic from '@prismicio/client';
+import type { LinkResolverFunction } from '@prismicio/helpers';
 import type {
   FilledLinkToMediaField,
   FilledLinkToWebField,
   FilledLinkToDocumentField,
-} from "@prismicio/types";
+} from '@prismicio/types';
 
 export const linkResolver: LinkResolverFunction = (document) => {
   if (!document.uid) {
-    return "/";
+    return '/';
   }
 
   const routes: Record<string, string> = {
-    home: "/",
+    home: '/',
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    "case-study": `/blog/work/${document.uid}`,
+    'case-study': `/blog/work/${document.uid}`,
   };
 
   return routes[document.type] || `/${document.uid}`;
@@ -26,7 +26,7 @@ export const docResolver = (
     | FilledLinkToWebField
     | FilledLinkToMediaField
 ): string => {
-  if (link.link_type === "Document") {
+  if (link.link_type === 'Document') {
     return linkResolver(link);
   }
 
@@ -34,10 +34,10 @@ export const docResolver = (
 };
 
 export const client = prismic.createClient(
-  process.env.PRISMIC_ENDPOINT ?? "loading",
+  process.env.PRISMIC_ENDPOINT ?? 'loading',
   {
     fetch,
-    accessToken: process.env.PRISMIC_ACCESS_TOKEN ?? "",
+    accessToken: process.env.PRISMIC_ACCESS_TOKEN ?? '',
   }
 );
 

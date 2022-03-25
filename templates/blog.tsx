@@ -1,12 +1,12 @@
-import { PrismicLink } from "@prismicio/react";
-import { format, parseISO } from "date-fns";
-import { useRouter } from "next/router";
-import type { FC } from "react";
-import { useEffect, Fragment, useState } from "react";
-import toast from "react-hot-toast";
-import Layout from "../components/layout";
-import Search from "../components/search";
-import type { Post } from "../types/post";
+import { PrismicLink } from '@prismicio/react';
+import { format, parseISO } from 'date-fns';
+import { useRouter } from 'next/router';
+import type { FC } from 'react';
+import { useEffect, Fragment, useState } from 'react';
+import toast from 'react-hot-toast';
+import Layout from '../components/layout';
+import Search from '../components/search';
+import type { Post } from '../types/post';
 
 const PostLink: FC<Post> = ({ id, title, date, link }, index) => (
   <Fragment key={id}>
@@ -20,7 +20,7 @@ const PostLink: FC<Post> = ({ id, title, date, link }, index) => (
             {title}
           </p>
           <p className="flex-0 w-24 text-right text-sm text-gray-500 dark:text-gray-400">
-            {format(parseISO(date), "MMM dd, yyyy")}
+            {format(parseISO(date), 'MMM dd, yyyy')}
           </p>
         </div>
       </PrismicLink>
@@ -35,18 +35,18 @@ type BlogTemplateData = {
 const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
   const [results, setResults] = useState<string[]>([]);
   const { asPath } = useRouter();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const filterPosts = async (term: string) => {
       const Fuse = (
         await import(
           /* webpackChunkName: "fuse" */
-          "fuse.js"
+          'fuse.js'
         )
       ).default;
       const fuse = new Fuse(posts, {
-        keys: ["title", "date", "content"],
+        keys: ['title', 'date', 'content'],
       });
 
       const searchResults = fuse.search(term);
@@ -71,9 +71,9 @@ const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
     results.length ? results.includes(post.id) : true;
 
   const tabs = [
-    { label: "All", link: "/blog" },
-    { label: "Work", link: "/blog/work" },
-    { label: "Code", link: "/blog/code" },
+    { label: 'All', link: '/blog' },
+    { label: 'Work', link: '/blog/work' },
+    { label: 'Code', link: '/blog/code' },
     // { label: 'Other', link: '/blog/other' },
   ];
 
@@ -93,7 +93,7 @@ const BlogTemplate: FC<BlogTemplateData> = ({ posts }) => {
                       className={`relative whitespace-nowrap text-sm ${
                         tab.link === asPath
                           ? 'text-gray-900 after:absolute after:-bottom-[14.5px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
-                          : "text-gray-500 dark:text-gray-400"
+                          : 'text-gray-500 dark:text-gray-400'
                       }`}
                     >
                       {tab.label}

@@ -1,4 +1,4 @@
-import type { Track } from "./track";
+import type { Track } from './track';
 
 export type SpotifyPlaylistDetailed = {
   collaborative: boolean;

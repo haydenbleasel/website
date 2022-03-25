@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention, react/no-danger */
 
-import type { FC, HTMLAttributes } from "react";
+import type { FC, HTMLAttributes } from 'react';
 
 type HTMLProps = HTMLAttributes<HTMLDivElement> & {
   data: string;

@@ -1,9 +1,9 @@
-import type { GetStaticProps } from "next";
-import type { FC } from "react";
-import type { KeyTextField, PrismicDocumentWithUID } from "@prismicio/types";
-import { createClient } from "@prismicio/client";
-import Layout from "../components/layout";
-import { getPage } from "../utils/prismic";
+import type { GetStaticProps } from 'next';
+import type { FC } from 'react';
+import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
+import { createClient } from '@prismicio/client';
+import Layout from '../components/layout';
+import { getPage } from '../utils/prismic';
 
 type ClientsData = {
   data: {
@@ -63,16 +63,16 @@ const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage("clients")) as PrismicDocumentWithUID;
+  const { data } = (await getPage('clients')) as PrismicDocumentWithUID;
   const jellypepperPrismicClient = createClient(
-    process.env.JELLYPEPPER_PRISMIC_ENDPOINT ?? "loading",
+    process.env.JELLYPEPPER_PRISMIC_ENDPOINT ?? 'loading',
     {
       fetch,
-      accessToken: process.env.JELLYPEPPER_PRISMIC_ACCESS_TOKEN ?? "",
+      accessToken: process.env.JELLYPEPPER_PRISMIC_ACCESS_TOKEN ?? '',
     }
   );
   const clients = (await jellypepperPrismicClient.getAllByType(
-    "client"
+    'client'
   )) as unknown as PrismicDocumentWithUID<{
     client_name: KeyTextField;
   }>[];

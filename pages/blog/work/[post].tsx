@@ -1,6 +1,6 @@
-import type { GetStaticPaths, GetStaticProps } from "next";
-import type { FC } from "react";
-import { useEffect, useRef } from "react";
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { FC } from 'react';
+import { useEffect, useRef } from 'react';
 import type {
   FilledLinkToMediaField,
   ImageField,
@@ -9,21 +9,21 @@ import type {
   RichTextField,
   Slice,
   SliceZone as SliceZoneProps,
-} from "@prismicio/types";
-import { format, parseISO } from "date-fns";
+} from '@prismicio/types';
+import { format, parseISO } from 'date-fns';
 import type {
   JSXMapSerializer,
   SliceComponentProps,
   SliceComponentType,
-} from "@prismicio/react";
-import { SliceZone, PrismicRichText } from "@prismicio/react";
-import Image from "next/image";
-import { ReactCompareSlider } from "react-compare-slider";
-import lottie from "lottie-web";
-import { asHTML } from "@prismicio/helpers";
-import Layout from "../../../components/layout";
-import { getPage, getPages } from "../../../utils/prismic";
-import richTextComponents from "../../../components/richTextComponents";
+} from '@prismicio/react';
+import { SliceZone, PrismicRichText } from '@prismicio/react';
+import Image from 'next/image';
+import { ReactCompareSlider } from 'react-compare-slider';
+import lottie from 'lottie-web';
+import { asHTML } from '@prismicio/helpers';
+import Layout from '../../../components/layout';
+import { getPage, getPages } from '../../../utils/prismic';
+import richTextComponents from '../../../components/richTextComponents';
 
 type WorkPostProps = {
   data: {
@@ -50,7 +50,7 @@ const blogComponents: JSXMapSerializer = {
 
 const RichTextSlice: FC<
   SliceComponentProps<{
-    slice_type: "rich_text";
+    slice_type: 'rich_text';
     primary: {
       content: RichTextField;
     };
@@ -61,7 +61,7 @@ const RichTextSlice: FC<
 
 const BlockquoteSlice: FC<
   SliceComponentProps<{
-    slice_type: "blockquote";
+    slice_type: 'blockquote';
     primary: {
       content: RichTextField;
     };
@@ -75,7 +75,7 @@ const BlockquoteSlice: FC<
 
 const QuoteSlice: FC<
   SliceComponentProps<{
-    slice_type: "quote";
+    slice_type: 'quote';
     primary: {
       content: RichTextField;
       author: KeyTextField;
@@ -102,7 +102,7 @@ const QuoteSlice: FC<
 
 const ComparisonSlice: FC<
   SliceComponentProps<{
-    slice_type: "quote";
+    slice_type: 'quote';
     primary: {
       before: ImageField;
       after: ImageField;
@@ -148,7 +148,7 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
     if (data.coverAnimation.url && animationRef.current) {
       lottie.loadAnimation({
         container: animationRef.current,
-        renderer: "svg",
+        renderer: 'svg',
         loop: true,
         autoplay: true,
         path: data.coverAnimation.url,
@@ -164,13 +164,13 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
             {data.title}
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Last updated at{" "}
-            {format(parseISO(last_publication_date), "MMM dd, yyyy")}{" "}
+            Last updated at{' '}
+            {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
           </p>
         </div>
         {data.coverAnimation.url && (
           <div
-            style={{ background: "#CE5777" }}
+            style={{ background: '#CE5777' }}
             className="overflow-hidden rounded-sm"
             ref={animationRef}
           />
@@ -179,7 +179,7 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
           <div className="flex overflow-hidden rounded-sm">
             <Image
               src={data.coverImage.url}
-              alt={data.coverImage.alt ?? ""}
+              alt={data.coverImage.alt ?? ''}
               width={480}
               height={
                 480 *
@@ -211,8 +211,8 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data, last_publication_date } = (await getPage(
     params?.post as string,
-    "case-study"
-  )) as PrismicDocumentWithUID<WorkPostProps["data"]>;
+    'case-study'
+  )) as PrismicDocumentWithUID<WorkPostProps['data']>;
 
   return {
     props: {
@@ -223,8 +223,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const caseStudies = (await getPages("case-study")) as PrismicDocumentWithUID<
-    WorkPostProps["data"]
+  const caseStudies = (await getPages('case-study')) as PrismicDocumentWithUID<
+    WorkPostProps['data']
   >[];
 
   const paths = caseStudies.map(({ uid }) => ({

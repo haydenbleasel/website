@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import type { Action, ActionImpl } from "kbar";
+import type { Action, ActionImpl } from 'kbar';
 import {
   KBarProvider,
   KBarPortal,
@@ -10,13 +10,13 @@ import {
   useMatches,
   KBarResults,
   useRegisterActions,
-} from "kbar";
-import { useRouter } from "next/router";
-import type { FC } from "react";
-import { useState, useEffect, useCallback } from "react";
-import { ChevronRight } from "react-feather";
-import toast from "react-hot-toast";
-import { useLocalStorage } from "react-use";
+} from 'kbar';
+import { useRouter } from 'next/router';
+import type { FC } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { ChevronRight } from 'react-feather';
+import toast from 'react-hot-toast';
+import { useLocalStorage } from 'react-use';
 
 type RenderParams<T = ActionImpl | string> = {
   item: T;
@@ -28,12 +28,12 @@ const RenderResults: FC = () => {
 
   const onRender = useCallback(
     (props: RenderParams) =>
-      typeof props.item === "string" ? (
+      typeof props.item === 'string' ? (
         <div className="px-4 py-2 text-sm text-gray-500">{props.item}</div>
       ) : (
         <div
           className={`flex cursor-pointer items-center justify-between py-3 px-4 transition-colors ${
-            props.active ? "bg-gray-100" : "bg-white"
+            props.active ? 'bg-gray-100' : 'bg-white'
           }`}
         >
           <div className="flex items-center gap-1">
@@ -41,7 +41,7 @@ const RenderResults: FC = () => {
               <>
                 <span
                   className={`text-md transition-colors ${
-                    props.active ? "text-gray-500" : "text-gray-400"
+                    props.active ? 'text-gray-500' : 'text-gray-400'
                   }`}
                 >
                   {
@@ -63,12 +63,12 @@ const RenderResults: FC = () => {
           {props.item.shortcut && (
             <div
               className={`flex h-6 w-6 items-center justify-center rounded-md transition-colors ${
-                props.active ? "bg-gray-200" : "bg-gray-100"
+                props.active ? 'bg-gray-200' : 'bg-gray-100'
               }`}
             >
               <span
                 className={`font-mono text-sm font-medium leading-normal transition-colors ${
-                  props.active ? "text-gray-500" : "text-gray-400"
+                  props.active ? 'text-gray-500' : 'text-gray-400'
                 }`}
               >
                 {props.item.shortcut}
@@ -83,7 +83,7 @@ const RenderResults: FC = () => {
   return <KBarResults items={results} onRender={onRender} />;
 };
 
-type ServerAction = Omit<Action, "perform"> & {
+type ServerAction = Omit<Action, 'perform'> & {
   link: string;
 };
 
@@ -93,7 +93,7 @@ const LoadCustomActions = () => {
 
   useEffect(() => {
     const loadContent = async () => {
-      const contentActions = await fetch("/api/kbar");
+      const contentActions = await fetch('/api/kbar');
       const { actions } = (await contentActions.json()) as {
         actions: ServerAction[];
       };
@@ -123,109 +123,109 @@ const LoadCustomActions = () => {
 const CommandBar: FC = ({ children }) => {
   const { push } = useRouter();
   const [theme, setTheme, removeTheme] = useLocalStorage<string | undefined>(
-    "theme",
+    'theme',
     undefined
   );
   const actions = [
     {
-      id: "home",
-      name: "Home",
-      shortcut: ["h"],
-      keywords: "home",
-      section: "Pages",
-      perform: async () => push("/"),
+      id: 'home',
+      name: 'Home',
+      shortcut: ['h'],
+      keywords: 'home',
+      section: 'Pages',
+      perform: async () => push('/'),
     },
     {
-      id: "blog",
-      name: "Blog",
-      shortcut: ["b"],
-      keywords: "blog",
-      section: "Pages",
+      id: 'blog',
+      name: 'Blog',
+      shortcut: ['b'],
+      keywords: 'blog',
+      section: 'Pages',
     },
     {
-      id: "clients",
-      name: "Clients",
-      shortcut: ["c"],
-      keywords: "clients",
-      section: "Pages",
-      perform: async () => push("/clients"),
+      id: 'clients',
+      name: 'Clients',
+      shortcut: ['c'],
+      keywords: 'clients',
+      section: 'Pages',
+      perform: async () => push('/clients'),
     },
     {
-      id: "work",
-      name: "Work",
-      shortcut: ["w"],
-      keywords: "work",
-      section: "Pages",
-      perform: async () => push("/work"),
+      id: 'work',
+      name: 'Work',
+      shortcut: ['w'],
+      keywords: 'work',
+      section: 'Pages',
+      perform: async () => push('/work'),
     },
     {
-      id: "recommendations",
-      name: "Recommendations",
-      shortcut: ["r"],
-      keywords: "recommendations",
-      section: "Pages",
-      perform: async () => push("/recommendations"),
+      id: 'recommendations',
+      name: 'Recommendations',
+      shortcut: ['r'],
+      keywords: 'recommendations',
+      section: 'Pages',
+      perform: async () => push('/recommendations'),
     },
     {
-      id: "blog-index",
-      name: "All Posts",
-      parent: "blog",
-      perform: async () => push("/blog"),
+      id: 'blog-index',
+      name: 'All Posts',
+      parent: 'blog',
+      perform: async () => push('/blog'),
     },
     {
-      id: "playlists",
-      name: "Playlists",
-      shortcut: ["p"],
-      keywords: "playlists",
-      section: "Pages",
+      id: 'playlists',
+      name: 'Playlists',
+      shortcut: ['p'],
+      keywords: 'playlists',
+      section: 'Pages',
     },
     {
-      id: "playlists-index",
-      name: "All Playlists",
-      parent: "playlists",
-      perform: async () => push("/playlists"),
+      id: 'playlists-index',
+      name: 'All Playlists',
+      parent: 'playlists',
+      perform: async () => push('/playlists'),
     },
     {
-      id: "theme",
-      name: "Change theme...",
-      shortcut: ["t"],
-      keywords: "theme",
-      section: "Utilities",
+      id: 'theme',
+      name: 'Change theme...',
+      shortcut: ['t'],
+      keywords: 'theme',
+      section: 'Utilities',
     },
     {
-      id: "lightMode",
-      name: "Light",
-      shortcut: ["l"],
-      keywords: "light",
-      parent: "theme",
-      perform: () => setTheme("light"),
+      id: 'lightMode',
+      name: 'Light',
+      shortcut: ['l'],
+      keywords: 'light',
+      parent: 'theme',
+      perform: () => setTheme('light'),
     },
     {
-      id: "darkMode",
-      name: "Dark",
-      shortcut: ["d"],
-      keywords: "dark",
-      parent: "theme",
-      perform: () => setTheme("dark"),
+      id: 'darkMode',
+      name: 'Dark',
+      shortcut: ['d'],
+      keywords: 'dark',
+      parent: 'theme',
+      perform: () => setTheme('dark'),
     },
     {
-      id: "systemTheme",
-      name: "System Default",
-      shortcut: ["s"],
-      keywords: "light",
-      parent: "theme",
+      id: 'systemTheme',
+      name: 'System Default',
+      shortcut: ['s'],
+      keywords: 'light',
+      parent: 'theme',
       perform: () => removeTheme(),
     },
   ];
 
   useEffect(() => {
     if (
-      theme === "dark" ||
-      (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      theme === 'dark' ||
+      (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
-      document.documentElement.classList.add("dark");
+      document.documentElement.classList.add('dark');
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove('dark');
     }
   }, [theme]);
 

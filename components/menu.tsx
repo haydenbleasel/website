@@ -1,17 +1,17 @@
-import { useKBar } from "kbar";
-import type { FC, KeyboardEventHandler } from "react";
-import { Menu as MenuList } from "react-feather";
-import toast from "react-hot-toast";
+import { useKBar } from 'kbar';
+import type { FC, KeyboardEventHandler } from 'react';
+import { Menu as MenuList } from 'react-feather';
+import toast from 'react-hot-toast';
 
 const Menu: FC = () => {
   const kbar = useKBar();
 
   const keyDownHandler: KeyboardEventHandler<HTMLDivElement> = (event) => {
-    if (event.code === "Space") {
+    if (event.code === 'Space') {
       event.preventDefault();
       event.stopPropagation();
       kbar.query.toggle();
-      toast("You can also press ⌘K to open the menu!");
+      toast('You can also press ⌘K to open the menu!');
     }
   };
 

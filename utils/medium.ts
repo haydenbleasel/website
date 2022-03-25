@@ -1,12 +1,12 @@
-import Parser from "rss-parser";
-import slugify from "slugify";
-import type { MediumPost } from "../types/medium";
-import type { Post } from "../types/post";
+import Parser from 'rss-parser';
+import slugify from 'slugify';
+import type { MediumPost } from '../types/medium';
+import type { Post } from '../types/post';
 
 const fetchMediumFeed = async (): Promise<MediumPost[]> => {
   const parser = new Parser();
   const { items } = (await parser.parseURL(
-    "https://medium.com/feed/@haydenbleasel"
+    'https://medium.com/feed/@haydenbleasel'
   )) as { items: MediumPost[] };
 
   return items;

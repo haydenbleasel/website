@@ -1,10 +1,10 @@
-import { PrismicLink } from "@prismicio/react";
-import type { GetStaticProps } from "next";
-import type { FC } from "react";
-import slugify from "slugify";
-import Layout from "../../components/layout";
-import type { SpotifyPlaylistPreview } from "../../types/spotify/playlistPreview";
-import { getPlaylists } from "../../utils/spotify";
+import { PrismicLink } from '@prismicio/react';
+import type { GetStaticProps } from 'next';
+import type { FC } from 'react';
+import slugify from 'slugify';
+import Layout from '../../components/layout';
+import type { SpotifyPlaylistPreview } from '../../types/spotify/playlistPreview';
+import { getPlaylists } from '../../utils/spotify';
 
 type PlaylistsProps = {
   playlists: SpotifyPlaylistPreview[];

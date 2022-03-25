@@ -1,16 +1,16 @@
-import { PrismicLink } from "@prismicio/react";
+import { PrismicLink } from '@prismicio/react';
 import type {
   KeyTextField,
   LinkField,
   PrismicDocumentWithUID,
-} from "@prismicio/types";
-import type { GetStaticProps } from "next";
-import type { FC } from "react";
-import { useEffect, Fragment, useState } from "react";
-import toast from "react-hot-toast";
-import Layout from "../components/layout";
-import Search from "../components/search";
-import { getPage } from "../utils/prismic";
+} from '@prismicio/types';
+import type { GetStaticProps } from 'next';
+import type { FC } from 'react';
+import { useEffect, Fragment, useState } from 'react';
+import toast from 'react-hot-toast';
+import Layout from '../components/layout';
+import Search from '../components/search';
+import { getPage } from '../utils/prismic';
 
 type RecommendationsData = {
   data: {
@@ -50,11 +50,11 @@ const PostLink = (
 
 const Recommendations: FC<RecommendationsData> = ({ data }) => {
   const [results, setResults] = useState<string[]>([]);
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>('');
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { label: "Tools", data: data.tools },
-    { label: "Freelancers", data: data.freelancers },
+    { label: 'Tools', data: data.tools },
+    { label: 'Freelancers', data: data.freelancers },
   ];
   const { data: activeData } = tabs[activeTab];
 
@@ -63,16 +63,16 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
       const Fuse = (
         await import(
           /* webpackChunkName: "fuse" */
-          "fuse.js"
+          'fuse.js'
         )
       ).default;
       const fuse = new Fuse(activeData, {
-        keys: ["name", "description"],
+        keys: ['name', 'description'],
       });
 
       const searchResults = fuse.search(term);
 
-      setResults(searchResults.map(({ item }) => item.name ?? ""));
+      setResults(searchResults.map(({ item }) => item.name ?? ''));
     };
 
     if (!search) {
@@ -88,7 +88,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
     });
   }, [activeData, search]);
 
-  const filterBySearch = (post: RecommendationsData["data"]["tools"][number]) =>
+  const filterBySearch = (post: RecommendationsData['data']['tools'][number]) =>
     results.length && post.name ? results.includes(post.name) : true;
 
   return (
@@ -114,7 +114,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
                       className={`relative whitespace-nowrap text-sm ${
                         index === activeTab
                           ? 'text-gray-900 after:absolute after:-bottom-[14.5px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
-                          : "text-gray-500 dark:text-gray-400"
+                          : 'text-gray-500 dark:text-gray-400'
                       }`}
                     >
                       {tab.label}
@@ -135,7 +135,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage("recommendations")) as PrismicDocumentWithUID;
+  const { data } = (await getPage('recommendations')) as PrismicDocumentWithUID;
 
   return {
     props: {

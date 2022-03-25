@@ -15,7 +15,7 @@
 }
 
 .highlight {
-  @apply grid sm:-mx-16;
+  @apply grid;
   color: var(--syntax-text-color);
 
   & .hll {

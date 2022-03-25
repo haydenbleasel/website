@@ -68,7 +68,7 @@ const Home: FC<HomeProps> = ({ data }) => (
         </div>
       ))}
     </div>
-    <div className="flex">
+    <div className="-ml-3 flex flex-wrap">
       {social.map((platform) => (
         <ExternalLinkComponent href={platform.url} key={platform.id}>
           <span className="flex p-3 transition-transform hover:-translate-y-1">

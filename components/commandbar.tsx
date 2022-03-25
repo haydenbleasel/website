@@ -233,7 +233,7 @@ const CommandBar: FC = ({ children }) => {
     <KBarProvider actions={actions}>
       <LoadCustomActions />
       <KBarPortal>
-        <KBarPositioner>
+        <KBarPositioner className="bg-white/80 backdrop-blur-sm">
           <KBarAnimator className="mx-auto w-full max-w-xl overflow-hidden rounded-lg bg-white drop-shadow-2xl">
             <KBarSearch className="font-md w-full border-none bg-white py-3 px-4 font-normal text-gray-900 outline-none" />
             <RenderResults />

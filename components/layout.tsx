@@ -56,27 +56,21 @@ const Layout: FC<LayoutProps> = ({
         }}
         {...props}
       />
-      <div className="container mx-auto py-12 sm:py-48">
-        <div className="grid gap-8 sm:grid-cols-12">
-          <div className="mx-auto grid w-full max-w-[32rem] gap-24 self-start px-4 sm:col-span-3">
-            {backHref && (
-              <PrismicLink href={backHref}>
-                <span className="flex items-center gap-1 text-gray-400 dark:text-gray-500">
-                  <ArrowLeft size={14} />
-                  <span className="text-sm text-gray-400 dark:text-gray-500">
-                    {backLabel ?? 'Back'}
-                  </span>
-                </span>
-              </PrismicLink>
-            )}
-          </div>
-          <div className="sm:col-span-9 sm:col-start-4 md:col-span-6">
-            <div className="mx-auto grid w-full max-w-[32rem] gap-24 px-4">
-              {children}
-            </div>
-          </div>
-        </div>
+      <div className="container mx-auto grid max-w-[32rem] gap-24 py-12 px-4 sm:py-48">
+        {children}
       </div>
+      {backHref && (
+        <div className="fixed top-0 left-0">
+          <PrismicLink href={backHref}>
+            <span className="flex items-center gap-1 p-4 text-gray-400 dark:text-gray-500">
+              <ArrowLeft size={14} />
+              <span className="text-sm leading-[1rem] text-gray-400 dark:text-gray-500">
+                {backLabel ?? 'Back'}
+              </span>
+            </span>
+          </PrismicLink>
+        </div>
+      )}
     </>
   );
 };

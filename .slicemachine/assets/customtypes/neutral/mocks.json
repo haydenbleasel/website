@@ -1,0 +1,25 @@
+{
+  "id": "30c36898-1cb9-4341-9f0e-2db483458c46",
+  "uid": "a-nostrum-ut",
+  "type": "neutral",
+  "data": {
+    "title": "redefine bricks-and-clicks convergence",
+    "description": "visualize distributed e-commerce",
+    "coverImage": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=900&h=500&fit=crop"
+    },
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Veniam fugiat anim enim enim.",
+        "spans": []
+      }
+    ]
+  }
+}

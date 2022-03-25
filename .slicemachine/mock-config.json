@@ -25,7 +25,15 @@
     "clients": {},
     "playlists": {},
     "blog": {},
-    "recommendations": {}
+    "recommendations": {},
+    "neutral": {
+      "content": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    }
   },
   "slices": {
     "RichText": {

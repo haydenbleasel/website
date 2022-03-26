@@ -25,7 +25,11 @@ const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
       ref={intersectionRef}
     >
       <div className="container mx-auto grid max-w-[40rem] py-2 px-4">
-        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+        <h1
+          className={`font-semibold text-gray-900 transition-all dark:text-white ${
+            isSticky && !noSticky ? 'text-md' : 'text-xl'
+          }`}
+        >
           {children}
         </h1>
       </div>

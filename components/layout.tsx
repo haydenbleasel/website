@@ -90,7 +90,7 @@ const Layout: FC<LayoutProps> = ({
         {...props}
       />
       {!noTitle && <StickyTitle noSticky={noSticky}>{title}</StickyTitle>}
-      <div className="container mx-auto mt-4 grid max-w-[40rem] gap-24 px-4 pb-12 sm:pb-48">
+      <div className="container mx-auto mt-4 grid max-w-[42rem] gap-24 px-4 pb-12 sm:pb-48">
         {children}
       </div>
       {previousPage && (

@@ -6,7 +6,7 @@ export type NeutralData = {
   latestVersion: string;
 };
 
-const options = {
+const options: RequestInit = {
   method: 'POST',
   body: JSON.stringify({
     passphrase: process.env.NEUTRAL_PASSPHRASE,

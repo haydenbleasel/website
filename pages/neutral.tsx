@@ -34,9 +34,9 @@ const WorkPost: FC<WorkPostProps> = ({
   const metrics = [
     { label: 'Trees planted', value: treeCount },
     { label: 'Tonnes of CO₂e offset', value: offsetAmount },
-    { label: 'Average Rating', value: averageRating },
+    { label: 'Average rating', value: averageRating },
     { label: 'Reforestation programs', value: programCount },
-    { label: 'Latest Version', value: latestVersion },
+    { label: 'Latest version', value: latestVersion },
   ];
 
   return (

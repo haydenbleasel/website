@@ -1,7 +1,10 @@
+import dynamic from 'next/dynamic';
 import type { JSXMapSerializer } from '@prismicio/react';
 import { PrismicLink } from '@prismicio/react';
 import Image from 'next/image';
+import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import { docResolver } from '../utils/prismic';
+import tailwindConfig from '../tailwind.config';
 
 const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -141,6 +144,34 @@ const richTextComponents: JSXMapSerializer = {
         // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
         dangerouslySetInnerHTML={{ __html: node.oembed.html }}
       />
+    );
+  },
+  preformatted: ({ node, key }) => {
+    const SyntaxHighlighter = dynamic(
+      async () =>
+        import(
+          /* webpackChunkName: "react-syntax-highlighter" */
+          'react-syntax-highlighter'
+        )
+    );
+
+    return (
+      <div className="mb-4 grid w-full font-mono font-medium">
+        <SyntaxHighlighter
+          key={key}
+          style={dracula as object}
+          customStyle={{
+            padding: '1rem',
+            borderRadius: '0.25rem',
+          }}
+          showLineNumbers
+          lineNumberStyle={{
+            color: tailwindConfig.theme.colors.gray[600],
+          }}
+        >
+          {node.text}
+        </SyntaxHighlighter>
+      </div>
     );
   },
 };

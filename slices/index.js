@@ -2,19 +2,25 @@
 
 import Blockquote from './Blockquote';
 import Comparison from './Comparison';
+import NeutralData from './NeutralData';
 import Quote from './Quote';
 import RichText from './RichText';
+import StoreButtons from './StoreButtons';
 
 export {
 	Blockquote,
 	Comparison,
+	NeutralData,
 	Quote,
 	RichText,
+	StoreButtons,
 };
 
 export const components = {
 	blockquote: Blockquote,
 	comparison: Comparison,
+	neutral_data: NeutralData,
 	quote: Quote,
 	rich_text: RichText,
+	store_buttons: StoreButtons,
 };

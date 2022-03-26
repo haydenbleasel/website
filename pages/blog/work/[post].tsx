@@ -6,24 +6,15 @@ import type {
   ImageField,
   KeyTextField,
   PrismicDocumentWithUID,
-  RichTextField,
-  Slice,
   SliceZone as SliceZoneProps,
 } from '@prismicio/types';
 import { format, parseISO } from 'date-fns';
-import type {
-  JSXMapSerializer,
-  SliceComponentProps,
-  SliceComponentType,
-} from '@prismicio/react';
-import { SliceZone, PrismicRichText } from '@prismicio/react';
+import { SliceZone } from '@prismicio/react';
 import Image from 'next/image';
-import { ReactCompareSlider } from 'react-compare-slider';
 import lottie from 'lottie-web';
-import { asHTML } from '@prismicio/helpers';
 import Layout from '../../../components/layout';
 import { getPage, getPages } from '../../../utils/prismic';
-import richTextComponents from '../../../components/richTextComponents';
+import { components } from '../../../slices';
 
 type WorkPostProps = {
   data: {
@@ -34,111 +25,6 @@ type WorkPostProps = {
     slices1: SliceZoneProps;
   };
   last_publication_date: string;
-};
-
-const blogComponents: JSXMapSerializer = {
-  ...richTextComponents,
-  paragraph: ({ children, key }) => (
-    <p
-      key={key}
-      className="mb-4 indent-8 text-md font-normal text-gray-900 dark:text-white"
-    >
-      {children}
-    </p>
-  ),
-};
-
-const RichTextSlice: FC<
-  SliceComponentProps<{
-    slice_type: 'rich_text';
-    primary: {
-      content: RichTextField;
-    };
-  }>
-> = ({ slice }) => (
-  <PrismicRichText field={slice.primary.content} components={blogComponents} />
-);
-
-const BlockquoteSlice: FC<
-  SliceComponentProps<{
-    slice_type: 'blockquote';
-    primary: {
-      content: RichTextField;
-    };
-  }>
-> = ({ slice }) => (
-  <blockquote
-    // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
-    dangerouslySetInnerHTML={{ __html: asHTML(slice.primary.content) }}
-  />
-);
-
-const QuoteSlice: FC<
-  SliceComponentProps<{
-    slice_type: 'quote';
-    primary: {
-      content: RichTextField;
-      author: KeyTextField;
-      photo: ImageField;
-    };
-  }>
-> = ({ slice }) => (
-  <div className="my-8 grid gap-2">
-    <p className="m-0 text-md text-gray-900 dark:text-white">
-      {slice.primary.content}
-    </p>
-    <div className="flex items-center gap-3">
-      {slice.primary.photo.url && (
-        <div className="flex overflow-hidden rounded-full">
-          <Image src={slice.primary.photo.url} width={32} height={32} />
-        </div>
-      )}
-      <p className="m-0 text-sm text-gray-500 dark:text-gray-400">
-        {slice.primary.author}
-      </p>
-    </div>
-  </div>
-);
-
-const ComparisonSlice: FC<
-  SliceComponentProps<{
-    slice_type: 'quote';
-    primary: {
-      before: ImageField;
-      after: ImageField;
-    };
-  }>
-> = ({ slice }) => {
-  if (!slice.primary.before.url || !slice.primary.after.url) {
-    return null;
-  }
-
-  return (
-    <ReactCompareSlider
-      itemOne={
-        <Image
-          src={slice.primary.before.url}
-          width={480}
-          height={
-            480 *
-            (slice.primary.before.dimensions.height /
-              slice.primary.before.dimensions.width)
-          }
-        />
-      }
-      itemTwo={
-        <Image
-          src={slice.primary.after.url}
-          width={480}
-          height={
-            480 *
-            (slice.primary.after.dimensions.height /
-              slice.primary.after.dimensions.width)
-          }
-        />
-      }
-    />
-  );
 };
 
 const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
@@ -188,17 +74,7 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
           </div>
         )}
         <div className="prose dark:prose-invert">
-          <SliceZone
-            slices={data.slices1}
-            components={{
-              rich_text: RichTextSlice as unknown as SliceComponentType<Slice>,
-              quote: QuoteSlice as unknown as SliceComponentType<Slice>,
-              comparison:
-                ComparisonSlice as unknown as SliceComponentType<Slice>,
-              blockquote:
-                BlockquoteSlice as unknown as SliceComponentType<Slice>,
-            }}
-          />
+          <SliceZone slices={data.slices1} components={components} />
         </div>
       </div>
     </Layout>

@@ -1,0 +1,17 @@
+{
+  "id": "neutral_data",
+  "type": "SharedSlice",
+  "name": "NeutralData",
+  "description": "NeutralData",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "NeutralData",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

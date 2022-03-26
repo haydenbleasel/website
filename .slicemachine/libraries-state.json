@@ -131,6 +131,50 @@
         },
         "screenshotPaths": {}
       },
+      "neutral_data": {
+        "library": "slices",
+        "id": "neutral_data",
+        "name": "NeutralData",
+        "description": "NeutralData",
+        "model": {
+          "id": "neutral_data",
+          "type": "SharedSlice",
+          "name": "NeutralData",
+          "description": "NeutralData",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "NeutralData",
+              "primary": {},
+              "items": {}
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "neutral_data",
+            "items": [],
+            "primary": {}
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "isDirectory": true,
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/haydenbleasel/GitHub/daylight/.slicemachine/assets/slices/NeutralData/default/preview.png",
+            "width": 800,
+            "height": 48
+          }
+        }
+      },
       "quote": {
         "library": "slices",
         "id": "quote",
@@ -200,7 +244,7 @@
         "meta": {
           "fileName": "index",
           "isDirectory": true,
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {}
       },
@@ -259,6 +303,76 @@
           "extension": "js"
         },
         "screenshotPaths": {}
+      },
+      "store_buttons": {
+        "library": "slices",
+        "id": "store_buttons",
+        "name": "StoreButtons",
+        "description": "StoreButtons",
+        "model": {
+          "id": "store_buttons",
+          "type": "SharedSlice",
+          "name": "StoreButtons",
+          "description": "StoreButtons",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "StoreButtons",
+              "primary": {
+                "appStoreLink": {
+                  "config": {
+                    "label": "App Store Link",
+                    "placeholder": "",
+                    "allowTargetBlank": false
+                  },
+                  "type": "Link"
+                },
+                "googlePlayLink": {
+                  "config": {
+                    "label": "Google Play Link",
+                    "placeholder": "",
+                    "allowTargetBlank": false
+                  },
+                  "type": "Link"
+                }
+              },
+              "items": {}
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "store_buttons",
+            "items": [],
+            "primary": {
+              "appStoreLink": {
+                "link_type": "Web",
+                "url": "http://google.com"
+              },
+              "googlePlayLink": {
+                "link_type": "Web",
+                "url": "https://prismic.io"
+              }
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "isDirectory": true,
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/haydenbleasel/GitHub/daylight/.slicemachine/assets/slices/StoreButtons/default/preview.png",
+            "width": 800,
+            "height": 48
+          }
+        }
       }
     }
   }

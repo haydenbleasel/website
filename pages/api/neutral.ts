@@ -1,9 +1,12 @@
-export type NeutralData = {
-  averageRating: number;
-  programCount: number;
-  treeCount: number;
-  offsetAmount: string;
-  latestVersion: string;
+import type { NextApiHandler } from 'next';
+
+export type NeutralResponse = {
+  averageRating?: number;
+  programCount?: number;
+  treeCount?: number;
+  offsetAmount?: string;
+  latestVersion?: string;
+  error?: string;
 };
 
 const options: RequestInit = {
@@ -60,20 +63,26 @@ const fetchLatestVersion = async (): Promise<string> => {
   return data.latestVersion;
 };
 
-const fetchNeutralData = async (): Promise<NeutralData> => {
-  const treeCount = await fetchTreeCount();
-  const programCount = await fetchProgramCount();
-  const averageRating = await fetchAverageRating();
-  const offsetAmount = await fetchOffsetAmount();
-  const latestVersion = await fetchLatestVersion();
+const handler: NextApiHandler<NeutralResponse> = async (req, res) => {
+  try {
+    const treeCount = await fetchTreeCount();
+    const programCount = await fetchProgramCount();
+    const averageRating = await fetchAverageRating();
+    const offsetAmount = await fetchOffsetAmount();
+    const latestVersion = await fetchLatestVersion();
 
-  return {
-    averageRating,
-    programCount,
-    treeCount,
-    offsetAmount,
-    latestVersion,
-  };
+    return res.status(200).json({
+      averageRating,
+      programCount,
+      treeCount,
+      offsetAmount,
+      latestVersion,
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : (error as string);
+
+    return res.status(500).json({ error: message });
+  }
 };
 
-export default fetchNeutralData;
+export default handler;

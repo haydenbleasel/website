@@ -1,0 +1,34 @@
+{
+  "id": "store_buttons",
+  "type": "SharedSlice",
+  "name": "StoreButtons",
+  "description": "StoreButtons",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "StoreButtons",
+      "primary": {
+        "appStoreLink": {
+          "config": {
+            "label": "App Store Link",
+            "placeholder": "",
+            "allowTargetBlank": false
+          },
+          "type": "Link"
+        },
+        "googlePlayLink": {
+          "config": {
+            "label": "Google Play Link",
+            "placeholder": "",
+            "allowTargetBlank": false
+          },
+          "type": "Link"
+        }
+      },
+      "items": {}
+    }
+  ]
+}

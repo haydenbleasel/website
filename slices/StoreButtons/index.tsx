@@ -1,18 +1,10 @@
+import React from 'react';
 import { PrismicLink } from '@prismicio/react';
 import Image from 'next/image';
-import type { FC } from 'react';
 
-type StoreButtonsProps = {
-  appStoreLink: string;
-  googlePlayLink: string;
-};
-
-export const StoreButtons: FC<StoreButtonsProps> = ({
-  appStoreLink,
-  googlePlayLink,
-}) => (
+const StoreButtons = ({ slice }) => (
   <div className="flex gap-3">
-    <PrismicLink href={appStoreLink} aria-label="App Store">
+    <PrismicLink href={slice.primary.appStoreLink} aria-label="App Store">
       <div className="flex transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:hidden">
         <Image
           src="/images/app-store.svg"
@@ -36,7 +28,7 @@ export const StoreButtons: FC<StoreButtonsProps> = ({
         />
       </div>
     </PrismicLink>
-    <PrismicLink href={googlePlayLink} aria-label="Play Store">
+    <PrismicLink href={slice.primary.googlePlayLink} aria-label="Play Store">
       <div className="flex transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:hidden">
         <Image
           src="/images/play-store.svg"

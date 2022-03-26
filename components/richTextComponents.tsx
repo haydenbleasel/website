@@ -126,15 +126,20 @@ const richTextComponents: JSXMapSerializer = {
       return undefined;
     }
 
-    if (node.oembed.type === 'video') {
-      return (
-        <div
-          key={key}
-          className="contains-video mb-4 flex aspect-video overflow-hidden rounded-sm"
-          // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
-          dangerouslySetInnerHTML={{ __html: node.oembed.html }}
-        />
+    if (
+      node.oembed.type === 'video' &&
+      (node.oembed.provider_name === 'YouTube' ||
+        node.oembed.provider_name === 'Vimeo')
+    ) {
+      const ReactPlayer = dynamic(
+        async () =>
+          import(
+            /* webpackChunkName: "react-player" */
+            'react-player'
+          )
       );
+
+      return <ReactPlayer key={key} url={node.oembed.embed_url} />;
     }
 
     return (

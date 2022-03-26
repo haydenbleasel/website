@@ -27,7 +27,7 @@ const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
       <div className="container mx-auto grid max-w-[40rem] py-2 px-4">
         <h1
           className={`font-semibold text-gray-900 transition-all dark:text-white ${
-            isSticky && !noSticky ? 'text-md' : 'text-xl'
+            isSticky && !noSticky ? 'text-md leading-loose' : 'text-xl'
           }`}
         >
           {children}

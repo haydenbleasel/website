@@ -13,8 +13,8 @@ const InternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
         href={href}
         className={`text-md font-normal transition-all ${
           active
-            ? 'text-gray-700 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500'
-            : 'text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500'
+            ? 'text-gray-600 dark:text-gray-300'
+            : 'text-gray-900 hover:text-gray-600 dark:text-white dark:hover:text-gray-300'
         }`}
         {...props}
       >

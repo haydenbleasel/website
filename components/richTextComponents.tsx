@@ -18,7 +18,7 @@ const richTextComponents: JSXMapSerializer = {
   em: ({ children, key }) => (
     <em
       key={key}
-      className="font-serif font-medium text-gray-900 dark:text-white"
+      className="font-serif text-[17px] font-medium text-gray-900 dark:text-white"
     >
       {children}
     </em>
@@ -41,11 +41,11 @@ const richTextComponents: JSXMapSerializer = {
     </div>
   ),
   hyperlink: ({ children, node, key }) => (
-    <PrismicLink key={key} href={docResolver(node.data)}>
-      <span className="text-gray-900 underline transition-colors hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
+    <span className="inline border-b border-gray-900 hover:border-gray-600 dark:border-white dark:hover:border-gray-300">
+      <PrismicLink key={key} href={docResolver(node.data)}>
         {children}
-      </span>
-    </PrismicLink>
+      </PrismicLink>
+    </span>
   ),
   heading1: ({ children, key }) => (
     <h1

@@ -1,7 +1,7 @@
 import type { LinkProps } from '@prismicio/react';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { Share } from 'react-feather';
+import { ArrowUpRight } from 'react-feather';
 
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => (
   <Link href={href}>
@@ -9,13 +9,14 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => (
       {...props}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline items-center gap-2 text-md font-normal text-gray-500 transition-all hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500"
+      className="inline text-md font-normal text-gray-900 transition-colors hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
     >
       {children}
-      {typeof children === 'string' && (
-        <div className="text-gray-400 dark:text-gray-600">
-          <Share size={16} />
-        </div>
+      {Array.isArray(children) && (
+        <ArrowUpRight
+          size={14}
+          className="ml-[2px] inline -translate-y-[2px]"
+        />
       )}
     </a>
   </Link>

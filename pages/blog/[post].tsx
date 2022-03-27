@@ -12,9 +12,9 @@ import { format, parseISO } from 'date-fns';
 import { SliceZone } from '@prismicio/react';
 import Image from 'next/image';
 import lottie from 'lottie-web';
-import Layout from '../../../components/layout';
-import { getPage, getPages } from '../../../utils/prismic';
-import { components } from '../../../slices';
+import Layout from '../../components/layout';
+import { getPage, getPages } from '../../utils/prismic';
+import { components } from '../../slices';
 
 type WorkPostProps = {
   data: {

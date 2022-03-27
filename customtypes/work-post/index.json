@@ -1,0 +1,69 @@
+{
+  "id": "work-post",
+  "label": "Work Post",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      },
+      "title": {
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "description": {
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "coverImage": {
+        "config": {
+          "label": "Cover Image",
+          "constraint": {},
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "coverAnimation": {
+        "config": {
+          "label": "Cover Animation",
+          "placeholder": "",
+          "select": "media"
+        },
+        "type": "Link"
+      }
+    },
+    "Content": {
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "blockquote": {
+              "type": "SharedSlice"
+            },
+            "quote": {
+              "type": "SharedSlice"
+            },
+            "rich_text": {
+              "type": "SharedSlice"
+            },
+            "comparison": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

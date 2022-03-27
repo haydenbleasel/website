@@ -26,7 +26,8 @@
           "blocks": 1
         }
       }
-    }
+    },
+    "work-post": {}
   },
   "slices": {
     "RichText": {

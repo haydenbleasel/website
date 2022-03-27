@@ -42,13 +42,21 @@ export const client = prismic.createClient(
 );
 
 export const getPage = async (uid: string, type?: string): Promise<unknown> => {
-  const page = await client.getByUID(type ?? uid, uid);
+  try {
+    const page = await client.getByUID(type ?? uid, uid);
 
-  return page;
+    return page;
+  } catch (error) {
+    return null;
+  }
 };
 
 export const getPages = async (type: string): Promise<unknown> => {
-  const pages = await client.getAllByType(type);
+  try {
+    const pages = await client.getAllByType(type);
 
-  return pages;
+    return pages;
+  } catch (error) {
+    return null;
+  }
 };

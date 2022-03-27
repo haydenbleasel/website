@@ -283,6 +283,7 @@ module.exports = {
               },
               a: {
                 color: theme('colors.gray.600'),
+                textDecoration: 'none',
                 '&:hover': {
                   color: theme('colors.gray.700'),
                 },

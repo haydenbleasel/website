@@ -16,18 +16,15 @@ import Layout from '../../components/layout';
 import { getPage, getPages } from '../../utils/prismic';
 import { components } from '../../slices';
 
-type WorkPostProps = {
-  data: {
-    title: KeyTextField;
-    description: KeyTextField;
-    coverImage: ImageField;
-    coverAnimation: FilledLinkToMediaField;
-    slices1: SliceZoneProps;
-  };
-  last_publication_date: string;
-};
+type PostProps = PrismicDocumentWithUID<{
+  title: KeyTextField;
+  description: KeyTextField;
+  coverImage: ImageField;
+  coverAnimation: FilledLinkToMediaField;
+  slices1: SliceZoneProps;
+}>;
 
-const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
+const WorkPost: FC<PostProps> = ({ data, last_publication_date }) => {
   const animationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -82,25 +79,31 @@ const WorkPost: FC<WorkPostProps> = ({ data, last_publication_date }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { data, last_publication_date } = (await getPage(
-    params?.post as string,
-    'case-study'
-  )) as PrismicDocumentWithUID<WorkPostProps['data']>;
+  const uid = params?.post as string;
+
+  const posts = await Promise.all([
+    getPage(uid, 'case-study'),
+    getPage(uid, 'work-post'),
+  ]);
+
+  const post = posts.filter(Boolean)[0] as PrismicDocumentWithUID<
+    PostProps['data']
+  >;
 
   return {
-    props: {
-      data,
-      last_publication_date,
-    },
+    props: post,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const caseStudies = (await getPages('case-study')) as PrismicDocumentWithUID<
-    WorkPostProps['data']
+    PostProps['data']
+  >[];
+  const workPosts = (await getPages('work-post')) as PrismicDocumentWithUID<
+    PostProps['data']
   >[];
 
-  const paths = caseStudies.map(({ uid }) => ({
+  const paths = [...caseStudies, ...workPosts].map(({ uid }) => ({
     params: {
       post: uid,
     },

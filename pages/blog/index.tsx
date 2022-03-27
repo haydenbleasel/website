@@ -15,7 +15,7 @@ import type { Post } from '../../types/post';
 import { getDevPosts } from '../../utils/dev';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
-// import { getMediumPosts } from "../../utils/medium";
+import { getMediumPosts } from '../../utils/medium';
 
 type BlogProps = {
   posts: (Post & { type: string })[];
@@ -146,25 +146,40 @@ const Blog: FC<BlogProps> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const mediumPosts = await getMediumPosts();
+  const mediumPosts = await getMediumPosts();
   const devPosts = await getDevPosts();
   const caseStudies = (await getPages('case-study')) as PrismicDocumentWithUID<{
     title: KeyTextField;
     description: KeyTextField;
     slices: SliceZone;
   }>[];
+  const workPosts = (await getPages('work-post')) as PrismicDocumentWithUID<{
+    title: KeyTextField;
+    description: KeyTextField;
+    slices: SliceZone;
+  }>[];
 
   const posts: BlogProps['posts'] = [
-    // ...mediumPosts,
+    ...mediumPosts.map((post) => ({
+      ...post,
+      type: 'Design',
+    })),
     ...devPosts.map((post) => ({
       ...post,
       type: 'Code',
     })),
-    ...caseStudies.map((caseStudy) => ({
-      id: caseStudy.uid,
-      title: caseStudy.data.description ?? '',
-      date: caseStudy.first_publication_date,
-      link: `/blog/work/${caseStudy.uid}`,
+    ...caseStudies.map((post) => ({
+      id: post.uid,
+      title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
+      date: post.first_publication_date,
+      link: `/blog/${post.uid}`,
+      type: 'Case Studies',
+    })),
+    ...workPosts.map((post) => ({
+      id: post.uid,
+      title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
+      date: post.first_publication_date,
+      link: `/blog/${post.uid}`,
       type: 'Work',
     })),
   ];

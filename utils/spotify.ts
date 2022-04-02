@@ -1,6 +1,4 @@
 import type { SpotifyPlaylistPreview } from '../types/spotify/playlistPreview';
-import type { SpotifyTrack } from '../types/spotify/track';
-import type { SpotifyPlaylistDetailed } from '../types/spotify/playlistDetailed';
 
 const getAccessToken = async (): Promise<string> => {
   const authorization = Buffer.from(
@@ -21,44 +19,6 @@ const getAccessToken = async (): Promise<string> => {
   const { access_token } = (await grant.json()) as { access_token: string };
 
   return access_token;
-};
-
-export const getPlaylist = async (
-  id: string
-): Promise<{
-  data: SpotifyPlaylistDetailed;
-  tracks: SpotifyTrack[];
-}> => {
-  const access_token = await getAccessToken();
-
-  const tracksRequest = await fetch(
-    `https://api.spotify.com/v1/playlists/${id}/tracks`,
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    }
-  );
-
-  const { items } = (await tracksRequest.json()) as {
-    items: SpotifyTrack[];
-  };
-
-  const playlistRequest = await fetch(
-    `https://api.spotify.com/v1/playlists/${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    }
-  );
-
-  const playlist = (await playlistRequest.json()) as SpotifyPlaylistDetailed;
-
-  return {
-    data: playlist,
-    tracks: items,
-  };
 };
 
 export const getPlaylists = async (): Promise<SpotifyPlaylistPreview[]> => {

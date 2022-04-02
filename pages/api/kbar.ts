@@ -2,11 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
 import type { NextApiHandler } from 'next';
-import slugify from 'slugify';
 import { getDevPosts } from '../../utils/dev';
 import { getMediumPosts } from '../../utils/medium';
 import { getPages } from '../../utils/prismic';
-import { getPlaylists } from '../../utils/spotify';
 
 type Docs = PrismicDocumentWithUID<{
   title: KeyTextField;
@@ -17,7 +15,6 @@ const handler: NextApiHandler = async (req, res) => {
   const caseStudies = (await getPages('case-study')) as Docs;
   const workPosts = (await getPages('work-post')) as Docs;
   const landingPages = (await getPages('landing-page')) as Docs;
-  const playlists = await getPlaylists();
   const devPosts = await getDevPosts();
   const mediumPosts = await getMediumPosts();
 
@@ -46,14 +43,6 @@ const handler: NextApiHandler = async (req, res) => {
     shortcut: uid === 'colophon' ? ['?'] : undefined,
   }));
 
-  const playlistActions = playlists.map(({ id, name }) => ({
-    id,
-    name,
-    keywords: name,
-    link: `/playlists/${id}-${slugify(name, { lower: true, strict: true })}`,
-    parent: 'playlists',
-  }));
-
   const devPostActions = devPosts.map(({ id, title, link }) => ({
     id,
     name: title,
@@ -74,7 +63,6 @@ const handler: NextApiHandler = async (req, res) => {
     ...caseStudyActions,
     ...landingPageActions,
     ...workPostActions,
-    ...playlistActions,
     ...devPostActions,
     ...mediumPostActions,
   ];

@@ -193,11 +193,6 @@ const CommandBar: FC = ({ children }) => {
       name: 'Playlists',
       keywords: 'playlists',
       section: 'Pages',
-    },
-    {
-      id: 'playlists-index',
-      name: 'All Playlists',
-      parent: 'playlists',
       perform: async () => push('/playlists'),
       shortcut: ['p'],
     },

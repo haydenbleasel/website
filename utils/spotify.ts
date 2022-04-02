@@ -1,4 +1,4 @@
-import type { SpotifyPlaylistPreview } from '../types/spotify/playlistPreview';
+import type { SpotifyPlaylist } from '../types/spotify';
 
 const getAccessToken = async (): Promise<string> => {
   const authorization = Buffer.from(
@@ -21,7 +21,7 @@ const getAccessToken = async (): Promise<string> => {
   return access_token;
 };
 
-export const getPlaylists = async (): Promise<SpotifyPlaylistPreview[]> => {
+export const getPlaylists = async (): Promise<SpotifyPlaylist[]> => {
   const access_token = await getAccessToken();
 
   const playlistsRequest = await fetch(
@@ -34,7 +34,7 @@ export const getPlaylists = async (): Promise<SpotifyPlaylistPreview[]> => {
   );
 
   const { items } = (await playlistsRequest.json()) as {
-    items: SpotifyPlaylistPreview[];
+    items: SpotifyPlaylist[];
   };
 
   return items;

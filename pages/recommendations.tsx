@@ -6,46 +6,39 @@ import type {
 } from '@prismicio/types';
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
-import { useEffect, Fragment, useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import Layout from '../components/layout';
+import List from '../components/list';
 import Search from '../components/search';
 import { getPage } from '../utils/prismic';
 
 type RecommendationsData = {
   data: {
-    tools: Recommendation[];
-    freelancers: Recommendation[];
+    tools: RecommendationData[];
+    freelancers: RecommendationData[];
   };
 };
 
-type Recommendation = {
+type RecommendationData = {
   name: KeyTextField;
   description: KeyTextField;
   link: LinkField;
 };
 
-const PostLink = (
-  { name, description, link }: Recommendation,
-  index: number
-) => (
-  <Fragment key={index}>
-    {Boolean(index) && (
-      <hr className="my-2 border-t border-gray-100 dark:border-gray-800" />
-    )}
-    <div className="fill-anchor">
-      <PrismicLink field={link}>
-        <div className="flex flex-1 justify-between gap-8">
-          <p className="flex-0 w-32 text-md text-gray-900 dark:text-white">
-            {name}
-          </p>
-          <p className="flex-1 text-right text-sm text-gray-500 dark:text-gray-400">
-            {description}
-          </p>
-        </div>
-      </PrismicLink>
-    </div>
-  </Fragment>
+const Recommendation = ({ name, description, link }: RecommendationData) => (
+  <div className="fill-anchor">
+    <PrismicLink field={link}>
+      <div className="flex flex-1 justify-between gap-8">
+        <p className="flex-0 w-32 text-md text-gray-900 dark:text-white">
+          {name}
+        </p>
+        <p className="flex-1 text-right text-sm text-gray-500 dark:text-gray-400">
+          {description}
+        </p>
+      </div>
+    </PrismicLink>
+  </div>
 );
 
 const Recommendations: FC<RecommendationsData> = ({ data }) => {
@@ -126,8 +119,10 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
             </div>
             <hr className="border-t border-gray-100 dark:border-gray-800" />
           </div>
-
-          <div>{activeData.filter(filterBySearch).map(PostLink)}</div>
+          <List
+            data={activeData.filter(filterBySearch)}
+            renderItem={Recommendation}
+          />
         </div>
       </div>
     </Layout>

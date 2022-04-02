@@ -8,40 +8,42 @@ import type {
 
 import { PrismicLink } from '@prismicio/react';
 import { format, parseISO } from 'date-fns';
-import { useEffect, Fragment, useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { ArrowUpRight } from 'react-feather';
 import { getPages } from '../../utils/prismic';
 import type { Post } from '../../types/post';
 import { getDevPosts } from '../../utils/dev';
 import Layout from '../../components/layout';
 import Search from '../../components/search';
 import { getMediumPosts } from '../../utils/medium';
+import List from '../../components/list';
 
 type BlogProps = {
   posts: (Post & { type: string })[];
 };
 
-const PostLink: FC<BlogProps['posts'][number]> = (
-  { id, title, date, link },
-  index
-) => (
-  <Fragment key={id}>
-    {Boolean(index) && (
-      <hr className="my-2 border-t border-gray-100 dark:border-gray-800" />
-    )}
-    <div className="fill-anchor">
-      <PrismicLink href={link}>
-        <div className="flex justify-between gap-8">
-          <p className="flex-1 text-md text-gray-900 dark:text-white">
-            {title}
-          </p>
-          <p className="flex-0 w-24 text-right text-sm text-gray-500 dark:text-gray-400">
-            {format(parseISO(date), 'MMM dd, yyyy')}
-          </p>
-        </div>
-      </PrismicLink>
-    </div>
-  </Fragment>
+const PostLink: FC<BlogProps['posts'][number]> = ({
+  id,
+  title,
+  date,
+  link,
+}) => (
+  <div className="fill-anchor" key={id}>
+    <PrismicLink href={link}>
+      <div className="flex justify-between gap-8 py-3">
+        <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
+          <span className="line-clamp-1">{title}</span>
+          {!link.startsWith('/') && (
+            <ArrowUpRight className="shrink-0" size={16} />
+          )}
+        </p>
+        <p className="flex-0 w-24 text-right text-sm text-gray-500 dark:text-gray-400">
+          {format(parseISO(date), 'MMM dd, yyyy')}
+        </p>
+      </div>
+    </PrismicLink>
+  </div>
 );
 
 const sortAlphabetically = (stringA: string, stringB: string) =>
@@ -132,14 +134,14 @@ const Blog: FC<BlogProps> = ({ posts }) => {
           <hr className="border-t border-gray-100 dark:border-gray-800" />
         </div>
 
-        <div>
-          {posts
+        <List
+          data={posts
             .filter(filterBySearchAndType)
             .sort((postA: Post, postB: Post) =>
               parseISO(postA.date) > parseISO(postB.date) ? -1 : 1
-            )
-            .map(PostLink)}
-        </div>
+            )}
+          renderItem={PostLink}
+        />
       </div>
     </Layout>
   );

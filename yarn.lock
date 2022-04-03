@@ -1513,10 +1513,10 @@
     "@prismicio/types" "^0.1.22"
     "@slicemachine/core" "1.0.3-slicecanvas.2"
 
-"@prismicio/slice-simulator-react@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@prismicio/slice-simulator-react/-/slice-simulator-react-0.2.0.tgz#3c7d7e154d679ef4d331c90a1feb3a643e017d65"
-  integrity sha512-P7IlRyG3vQs+Jp3DsbhWpm+pJpDxHUkwJbWyGsFjb+H+n66CZxakuJiCs/qw9x357S9Q9AGbPgSLMb7258pYeA==
+"@prismicio/slice-simulator-react@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@prismicio/slice-simulator-react/-/slice-simulator-react-0.2.1.tgz#a971a8f824820de57fce47018170f86cdbc06364"
+  integrity sha512-BO1jQU4jGyIhT8Hhb+10CIWulXR9ail107TW7xky9K3MkMKNJcueKo9ljoj/sq6dtvq3r04cSusyhZQrj/hJxw==
   dependencies:
     "@prismicio/slice-simulator-core" "^0.2.0"
 

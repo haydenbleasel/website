@@ -15,7 +15,7 @@
     "@prismicio/client": "^6.4.2",
     "@prismicio/helpers": "^2.2.1",
     "@prismicio/next": "^0.1.0",
-    "@prismicio/react": "^2.1.2",
+    "@prismicio/react": "^2.2.0",
     "@prismicio/slice-simulator-react": "^0.2.1",
     "@tailwindcss/line-clamp": "^0.3.1",
     "@tailwindcss/typography": "^0.5.2",

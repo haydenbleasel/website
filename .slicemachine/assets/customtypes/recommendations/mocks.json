@@ -1,20 +1,46 @@
 {
-  "id": "a4a351d1-67df-4b54-bcde-709a43de95b1",
-  "uid": "iste-et-et",
+  "id": "08666483-0ed5-4e5d-8cb2-326bc3bfb96d",
+  "uid": "optio-eligendi-vero",
   "type": "recommendations",
   "data": {
+    "title": "empower holistic methodologies",
+    "description": "embrace integrated paradigms",
     "tools": [
       {
-        "name": "facilitate magnetic web-readiness",
-        "description": "strategize cross-platform architectures",
+        "name": "cultivate 24/365 e-tailers",
+        "description": "drive front-end e-services",
         "link": {
           "link_type": "Web",
-          "url": "http://twitter.com"
+          "url": "http://google.com"
         }
       },
       {
-        "name": "streamline killer paradigms",
-        "description": "engage viral convergence",
+        "name": "revolutionize dynamic e-markets",
+        "description": "maximize strategic portals",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "name": "e-enable dynamic supply-chains",
+        "description": "monetize end-to-end bandwidth",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        }
+      },
+      {
+        "name": "incubate extensible portals",
+        "description": "productize vertical bandwidth",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        }
+      },
+      {
+        "name": "evolve robust channels",
+        "description": "engineer value-added e-services",
         "link": {
           "link_type": "Web",
           "url": "https://slicemachine.dev"
@@ -23,24 +49,40 @@
     ],
     "freelancers": [
       {
-        "name": "expedite end-to-end web-readiness",
-        "description": "enable open-source experiences",
+        "name": "transition enterprise functionalities",
+        "description": "productize one-to-one technologies",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "name": "generate web-enabled web-readiness",
+        "description": "cultivate customized platforms",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "name": "drive out-of-the-box e-business",
+        "description": "seize scalable experiences",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "name": "synthesize plug-and-play paradigms",
+        "description": "revolutionize real-time eyeballs",
         "link": {
           "link_type": "Web",
           "url": "http://twitter.com"
         }
       },
       {
-        "name": "implement cutting-edge solutions",
-        "description": "transform world-class methodologies",
-        "link": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        }
-      },
-      {
-        "name": "productize killer portals",
-        "description": "seize bricks-and-clicks paradigms",
+        "name": "deploy user-centric models",
+        "description": "productize intuitive web-readiness",
         "link": {
           "link_type": "Web",
           "url": "http://google.com"

@@ -4,6 +4,7 @@ import type {
   LinkField,
   PrismicDocumentWithUID,
 } from '@prismicio/types';
+import { format, parse } from 'date-fns';
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
@@ -16,52 +17,64 @@ import Search from '../components/search';
 import Tab from '../components/tab';
 import { getPage } from '../utils/prismic';
 
-type RecommendationsData = {
+type FeaturesData = {
   data: {
     title: KeyTextField;
     description: KeyTextField;
-    tools: RecommendationData[];
-    freelancers: RecommendationData[];
+    speaking: FeatureData[];
+    articles: FeatureData[];
   };
 };
 
-type RecommendationData = {
+type FeatureData = {
   name: KeyTextField;
-  description: KeyTextField;
+  source: KeyTextField;
   link: LinkField;
+  date: KeyTextField;
 };
 
-const Recommendation: FC<RecommendationData> = ({
+const FeatureInner: FC<Partial<FeatureData> & { withArrow?: boolean }> = ({
   name,
-  description,
-  link,
+  source,
+  date,
+  withArrow,
 }) => (
-  <div className="fill-anchor">
-    <PrismicLink field={link}>
-      <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
-        <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
-          <span className="line-clamp-1">{name}</span>
-          <ArrowUpRight className="shrink-0" size={16} />
-        </p>
-        <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
-          {description}
-        </p>
-      </div>
-    </PrismicLink>
+  <div className="flex flex-1 flex-col items-center gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
+    <div className="flex flex-col gap-1">
+      <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
+        <span className="line-clamp-1">{name}</span>
+        {withArrow && <ArrowUpRight className="shrink-0" size={16} />}
+      </p>
+      <p className="text-sm text-gray-500 dark:text-gray-400">{source}</p>
+    </div>
+    <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+      {date && format(parse(date, 'yyyy-MM-dd', new Date()), 'MMM dd, yyyy')}
+    </p>
   </div>
 );
 
-const sortAlphabetically = (
-  recommendationA: RecommendationData,
-  recommendationB: RecommendationData
-) => ((recommendationB.name ?? '') > (recommendationA.name ?? '') ? -1 : 1);
+const Feature: FC<FeatureData> = ({ link, ...props }) => (
+  <div className="fill-anchor">
+    {link.link_type === 'Any' ? (
+      <FeatureInner {...props} />
+    ) : (
+      <PrismicLink field={link}>
+        <FeatureInner {...props} withArrow />
+      </PrismicLink>
+    )}
+  </div>
+);
 
-const Recommendations: FC<RecommendationsData> = ({ data }) => {
+const sortByDate = (featureA: FeatureData, featureB: FeatureData) =>
+  (featureB.date ?? '') > (featureA.date ?? '') ? 1 : -1;
+
+const Featured: FC<FeaturesData> = ({ data }) => {
   const [results, setResults] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
   const tabs = [
-    { label: 'Tools', data: data.tools },
-    { label: 'Freelancers', data: data.freelancers },
+    { label: 'All', data: [...data.speaking, ...data.articles] },
+    { label: 'Speaking', data: data.speaking },
+    { label: 'Articles', data: data.articles },
   ];
   const [activeTab, setActiveTab] = useState(tabs[0].label);
   const { data: activeData } = tabs.find(
@@ -100,7 +113,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
     });
   }, [activeData, search]);
 
-  const filterBySearch = (post: RecommendationData) =>
+  const filterBySearch = (post: FeatureData) =>
     results.length && post.name ? results.includes(post.name) : true;
 
   return (
@@ -128,8 +141,8 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
             <Divider />
           </div>
           <List
-            data={activeData.sort(sortAlphabetically).filter(filterBySearch)}
-            renderItem={Recommendation}
+            data={activeData.sort(sortByDate).filter(filterBySearch)}
+            renderItem={Feature}
           />
         </div>
       </div>
@@ -138,7 +151,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage('recommendations')) as PrismicDocumentWithUID;
+  const { data } = (await getPage('featured')) as PrismicDocumentWithUID;
 
   return {
     props: {
@@ -147,4 +160,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Recommendations;
+export default Featured;

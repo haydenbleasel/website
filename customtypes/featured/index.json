@@ -1,6 +1,6 @@
 {
-  "id": "recommendations",
-  "label": "Recommendations",
+  "id": "featured",
+  "label": "Featured",
   "repeatable": false,
   "status": true,
   "json": {
@@ -27,10 +27,10 @@
         "type": "Text"
       }
     },
-    "Tools": {
-      "tools": {
+    "Speaking": {
+      "speaking": {
         "config": {
-          "label": "Tools",
+          "label": "Speaking",
           "placeholder": "",
           "fields": {
             "name": {
@@ -40,9 +40,9 @@
               },
               "type": "Text"
             },
-            "description": {
+            "source": {
               "config": {
-                "label": "Description",
+                "label": "Source",
                 "placeholder": ""
               },
               "type": "Text"
@@ -54,16 +54,23 @@
                 "allowTargetBlank": false
               },
               "type": "Link"
+            },
+            "date": {
+              "config": {
+                "label": "Date",
+                "placeholder": ""
+              },
+              "type": "Date"
             }
           }
         },
         "type": "Group"
       }
     },
-    "Freelancers": {
-      "freelancers": {
+    "Articles": {
+      "articles": {
         "config": {
-          "label": "Freelancers",
+          "label": "Articles",
           "placeholder": "",
           "fields": {
             "name": {
@@ -73,9 +80,9 @@
               },
               "type": "Text"
             },
-            "description": {
+            "source": {
               "config": {
-                "label": "Description",
+                "label": "Source",
                 "placeholder": ""
               },
               "type": "Text"
@@ -87,6 +94,13 @@
                 "allowTargetBlank": false
               },
               "type": "Link"
+            },
+            "date": {
+              "config": {
+                "label": "Date",
+                "placeholder": ""
+              },
+              "type": "Date"
             }
           }
         },

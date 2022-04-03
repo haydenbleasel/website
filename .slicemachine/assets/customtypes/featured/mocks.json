@@ -1,0 +1,85 @@
+{
+  "id": "9dd57a35-ae5e-456f-afd9-bdf7b1b21a05",
+  "uid": "quae-excepturi-non",
+  "type": "featured",
+  "data": {
+    "title": "innovate back-end web services",
+    "description": "incubate real-time e-commerce",
+    "speaking": [
+      {
+        "name": "extend out-of-the-box blockchains",
+        "source": "generate out-of-the-box deliverables",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        },
+        "date": "2017-09-20"
+      },
+      {
+        "name": "syndicate global eyeballs",
+        "source": "matrix strategic vortals",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "date": "2019-02-25"
+      },
+      {
+        "name": "strategize plug-and-play e-markets",
+        "source": "exploit revolutionary action-items",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        },
+        "date": "2018-03-08"
+      },
+      {
+        "name": "target cutting-edge convergence",
+        "source": "synthesize compelling convergence",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "date": "2017-09-07"
+      }
+    ],
+    "articles": [
+      {
+        "name": "drive rich systems",
+        "source": "recontextualize magnetic architectures",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        },
+        "date": "2017-07-20"
+      },
+      {
+        "name": "visualize scalable supply-chains",
+        "source": "synergize rich bandwidth",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "date": "2013-05-18"
+      },
+      {
+        "name": "e-enable extensible web-readiness",
+        "source": "synthesize bricks-and-clicks metrics",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        },
+        "date": "2021-01-01"
+      },
+      {
+        "name": "target next-generation web services",
+        "source": "enable integrated relationships",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        },
+        "date": "2017-09-10"
+      }
+    ]
+  }
+}

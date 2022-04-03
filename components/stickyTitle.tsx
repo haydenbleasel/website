@@ -13,7 +13,7 @@ const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
     rootMargin: '0px',
     threshold: 1,
   });
-  const isSticky = !intersection?.isIntersecting;
+  const isSticky = intersection ? !intersection.isIntersecting : false;
 
   return (
     <div

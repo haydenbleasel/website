@@ -1,8 +1,17 @@
-import React from 'react';
+import type { FC } from 'react';
+import type { SliceComponentProps } from '@prismicio/react';
 import { PrismicLink } from '@prismicio/react';
 import Image from 'next/image';
 
-const StoreButtons = ({ slice }) => (
+const StoreButtons: FC<
+  SliceComponentProps<{
+    slice_type: 'store_buttons';
+    primary: {
+      appStoreLink: string;
+      googlePlayLink: string;
+    };
+  }>
+> = ({ slice }) => (
   <div className="flex gap-3">
     <PrismicLink href={slice.primary.appStoreLink} aria-label="App Store">
       <div className="flex transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:hidden">

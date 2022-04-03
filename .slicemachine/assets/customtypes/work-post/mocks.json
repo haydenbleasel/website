@@ -1,10 +1,10 @@
 {
-  "id": "2aaed21c-2de3-4e7f-8065-94c015bb1bc8",
-  "uid": "qui-modi-non",
+  "id": "3062eb1e-dd01-4c82-ad65-7b7d67a2f2be",
+  "uid": "autem-quo-sint",
   "type": "work-post",
   "data": {
-    "title": "facilitate rich initiatives",
-    "description": "implement web-enabled portals",
+    "title": "incubate virtual content",
+    "description": "generate dynamic bandwidth",
     "coverImage": {
       "dimensions": {
         "width": 900,
@@ -12,11 +12,12 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869?w=900&h=500&fit=crop"
     },
     "coverAnimation": {
       "link_type": "media",
       "url": "https://source.unsplash.com/daily"
-    }
+    },
+    "customPublishDate": "2020-10-23"
   }
 }

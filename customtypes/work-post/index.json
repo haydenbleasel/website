@@ -41,6 +41,13 @@
           "select": "media"
         },
         "type": "Link"
+      },
+      "customPublishDate": {
+        "config": {
+          "label": "Custom Publish Date",
+          "placeholder": ""
+        },
+        "type": "Date"
       }
     },
     "Content": {

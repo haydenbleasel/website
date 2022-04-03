@@ -1,13 +1,14 @@
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import type {
+  DateField,
   KeyTextField,
   PrismicDocumentWithUID,
   SliceZone,
 } from '@prismicio/types';
 
 import { PrismicLink } from '@prismicio/react';
-import { format, parseISO } from 'date-fns';
+import { format, parse, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { ArrowUpRight } from 'react-feather';
@@ -138,11 +139,13 @@ export const getStaticProps: GetStaticProps = async () => {
   const caseStudies = (await getPages('case-study')) as PrismicDocumentWithUID<{
     title: KeyTextField;
     description: KeyTextField;
+    customPublishDate: DateField;
     slices: SliceZone;
   }>[];
   const workPosts = (await getPages('work-post')) as PrismicDocumentWithUID<{
     title: KeyTextField;
     description: KeyTextField;
+    customPublishDate: DateField;
     slices: SliceZone;
   }>[];
 
@@ -158,14 +161,26 @@ export const getStaticProps: GetStaticProps = async () => {
     ...caseStudies.map((post) => ({
       id: post.uid,
       title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
-      date: post.first_publication_date,
+      date: post.data.customPublishDate
+        ? parse(
+            post.data.customPublishDate,
+            'yyyy-MM-dd',
+            new Date()
+          ).toISOString()
+        : post.first_publication_date,
       link: `/blog/${post.uid}`,
       type: 'Case Studies',
     })),
     ...workPosts.map((post) => ({
       id: post.uid,
       title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
-      date: post.first_publication_date,
+      date: post.data.customPublishDate
+        ? parse(
+            post.data.customPublishDate,
+            'yyyy-MM-dd',
+            new Date()
+          ).toISOString()
+        : post.first_publication_date,
       link: `/blog/${post.uid}`,
       type: 'Work',
     })),

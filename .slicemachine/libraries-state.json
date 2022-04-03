@@ -52,7 +52,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "tsx"
         },
         "screenshotPaths": {}
@@ -126,7 +125,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "tsx"
         },
         "screenshotPaths": {}
@@ -164,7 +162,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "tsx"
         },
         "screenshotPaths": {
@@ -243,7 +240,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "tsx"
         },
         "screenshotPaths": {}
@@ -299,7 +295,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "tsx"
         },
         "screenshotPaths": {}
@@ -363,7 +358,6 @@
         },
         "meta": {
           "fileName": "index",
-          "isDirectory": true,
           "extension": "tsx"
         },
         "screenshotPaths": {

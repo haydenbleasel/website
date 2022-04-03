@@ -14,7 +14,7 @@
     "@next/bundle-analyzer": "^12.1.4",
     "@prismicio/client": "^6.4.2",
     "@prismicio/helpers": "^2.2.1",
-    "@prismicio/next": "^0.1.0",
+    "@prismicio/next": "^0.1.2",
     "@prismicio/react": "^2.1.2",
     "@prismicio/slice-simulator-react": "^0.2.1",
     "@tailwindcss/line-clamp": "^0.3.1",

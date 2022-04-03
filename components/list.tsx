@@ -96,17 +96,15 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
         <Divider />
       </div>
       {data.map(({ title, items }) => (
-        <Tabs.Content value={title} key={title}>
-          <div className="group">
-            {items.filter(filterBySearch).map((item, index) => (
-              <Fragment key={index}>
-                {Boolean(index) && <Divider />}
-                <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
-                  {renderItem(item as unknown as never)}
-                </div>
-              </Fragment>
-            ))}
-          </div>
+        <Tabs.Content value={title} key={title} className="group">
+          {items.filter(filterBySearch).map((item, index) => (
+            <Fragment key={index}>
+              {Boolean(index) && <Divider />}
+              <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
+                {renderItem(item as unknown as never)}
+              </div>
+            </Fragment>
+          ))}
         </Tabs.Content>
       ))}
     </Tabs.Root>

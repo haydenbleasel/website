@@ -7,8 +7,6 @@ import type {
   SliceZone,
 } from '@prismicio/types';
 import { format, parse, parseISO } from 'date-fns';
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 import { ArrowUpRight } from 'react-feather';
 import { ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
@@ -17,22 +15,17 @@ import { getPages } from '../../utils/prismic';
 import type { Post } from '../../types/post';
 import { getDevPosts } from '../../utils/dev';
 import Layout from '../../components/layout';
-import Search from '../../components/search';
 import { getMediumPosts } from '../../utils/medium';
 import List from '../../components/list';
-import Tab from '../../components/tab';
-import Divider from '../../components/divider';
 
 type BlogProps = {
-  posts: (Post & { type: string })[];
+  mediumPosts: Post[];
+  devPosts: Post[];
+  caseStudies: Post[];
+  workPosts: Post[];
 };
 
-const PostLink: FC<BlogProps['posts'][number]> = ({
-  id,
-  title,
-  date,
-  link,
-}) => (
+const PostLink: FC<Post> = ({ id, title, date, link }) => (
   <div className="fill-anchor" key={id}>
     <Link href={link} passHref>
       <a href={link}>
@@ -52,59 +45,29 @@ const PostLink: FC<BlogProps['posts'][number]> = ({
   </div>
 );
 
-const sortAlphabetically = (stringA: string, stringB: string) =>
-  stringB > stringA ? -1 : 1;
+const sortByDate = (postA: Post, postB: Post) =>
+  parseISO(postA.date) > parseISO(postB.date) ? -1 : 1;
 
-const Blog: FC<BlogProps> = ({ posts }) => {
+const Blog: FC<BlogProps> = ({
+  caseStudies,
+  devPosts,
+  mediumPosts,
+  workPosts,
+}) => {
   const { asPath } = useRouter();
-  const [results, setResults] = useState<string[]>([]);
-  const [search, setSearch] = useState('');
-  const [activeTab, setActiveTab] = useState<string>('All');
-
-  useEffect(() => {
-    const filterPosts = async (term: string) => {
-      const Fuse = (
-        await import(
-          /* webpackChunkName: "fuse" */
-          'fuse.js'
-        )
-      ).default;
-      const fuse = new Fuse(posts, {
-        keys: ['title', 'date', 'content'],
-      });
-
-      const searchResults = fuse.search(term);
-
-      setResults(searchResults.map(({ item }) => item.id));
-    };
-
-    if (!search) {
-      setResults([]);
-      return;
-    }
-
-    filterPosts(search).catch((error) => {
-      const message =
-        error instanceof Error ? error.message : (error as string);
-
-      toast.error(message);
-    });
-  }, [posts, search]);
-
-  const tabs = new Set<string>();
-  posts.forEach((post) => tabs.add(post.type));
-  tabs.add('All');
-
-  const filterBySearchAndType = (post: BlogProps['posts'][number]) => {
-    const isActiveType = activeTab === 'All' ? true : post.type === activeTab;
-    const isSearchMatch = results.length ? results.includes(post.id) : true;
-
-    return isSearchMatch && isActiveType;
-  };
-
-  const sortedPosts = posts.sort((postA: Post, postB: Post) =>
-    parseISO(postA.date) > parseISO(postB.date) ? -1 : 1
-  );
+  const allPosts = [
+    ...caseStudies,
+    ...devPosts,
+    ...mediumPosts,
+    ...workPosts,
+  ].sort(sortByDate);
+  const data = [
+    { title: 'All', items: allPosts },
+    { title: 'Case Studies', items: caseStudies.sort(sortByDate) },
+    { title: 'Code', items: devPosts.sort(sortByDate) },
+    { title: 'Design', items: mediumPosts.sort(sortByDate) },
+    { title: 'Work', items: workPosts.sort(sortByDate) },
+  ];
 
   return (
     <Layout title="Blog" description="Posts about code, work and life.">
@@ -113,36 +76,17 @@ const Blog: FC<BlogProps> = ({ posts }) => {
         url={new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL ?? '').href}
         title="Blog"
         images={[]}
-        dateModified={sortedPosts[sortedPosts.length - 1].date}
-        datePublished={sortedPosts[0].date}
+        dateModified={allPosts[allPosts.length - 1].date}
+        datePublished={allPosts[0].date}
         description="Posts about code, work and life."
         authorName="Hayden Bleasel"
       />
-      <div className="grid gap-8">
-        <div className="grid gap-1">
-          <div className="space-between flex items-center gap-8">
-            <div className="flex flex-1 gap-4">
-              {Array.from(tabs)
-                .sort(sortAlphabetically)
-                .map((tab) => (
-                  <Tab
-                    key={tab}
-                    tab={tab}
-                    onTabSelect={setActiveTab}
-                    isActive={tab === activeTab}
-                  />
-                ))}
-            </div>
-            <Search value={search} onChange={setSearch} />
-          </div>
-          <Divider />
-        </div>
-
-        <List
-          data={sortedPosts.filter(filterBySearchAndType)}
-          renderItem={PostLink}
-        />
-      </div>
+      <List
+        data={data}
+        renderItem={PostLink}
+        indexKey="name"
+        searchKeys={['title', 'date', 'content']}
+      />
     </Layout>
   );
 };
@@ -163,46 +107,34 @@ export const getStaticProps: GetStaticProps = async () => {
     slices: SliceZone;
   }>[];
 
-  const posts: BlogProps['posts'] = [
-    ...mediumPosts.map((post) => ({
-      ...post,
-      type: 'Design',
-    })),
-    ...devPosts.map((post) => ({
-      ...post,
-      type: 'Code',
-    })),
-    ...caseStudies.map((post) => ({
-      id: post.uid,
-      title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
-      date: post.data.customPublishDate
-        ? parse(
-            post.data.customPublishDate,
-            'yyyy-MM-dd',
-            new Date()
-          ).toISOString()
-        : post.first_publication_date,
-      link: `/blog/${post.uid}`,
-      type: 'Case Studies',
-    })),
-    ...workPosts.map((post) => ({
-      id: post.uid,
-      title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
-      date: post.data.customPublishDate
-        ? parse(
-            post.data.customPublishDate,
-            'yyyy-MM-dd',
-            new Date()
-          ).toISOString()
-        : post.first_publication_date,
-      link: `/blog/${post.uid}`,
-      type: 'Work',
-    })),
-  ];
-
   return {
     props: {
-      posts,
+      mediumPosts,
+      devPosts,
+      caseStudies: caseStudies.map((post) => ({
+        id: post.uid,
+        title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
+        date: post.data.customPublishDate
+          ? parse(
+              post.data.customPublishDate,
+              'yyyy-MM-dd',
+              new Date()
+            ).toISOString()
+          : post.first_publication_date,
+        link: `/blog/${post.uid}`,
+      })),
+      workPosts: workPosts.map((post) => ({
+        id: post.uid,
+        title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
+        date: post.data.customPublishDate
+          ? parse(
+              post.data.customPublishDate,
+              'yyyy-MM-dd',
+              new Date()
+            ).toISOString()
+          : post.first_publication_date,
+        link: `/blog/${post.uid}`,
+      })),
     },
   };
 };

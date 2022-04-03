@@ -39,7 +39,7 @@ const WorkPost: FC<PostProps> = ({
     : first_publication_date;
 
   return (
-    <Layout title={data.title} description={data.description} noSticky>
+    <Layout title={data.title} description={data.description}>
       <ArticleJsonLd
         url={new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL ?? '').href}
         title={data.title ?? ''}

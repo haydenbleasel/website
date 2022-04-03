@@ -74,7 +74,6 @@ const Featured: FC<FeaturesData> = ({ data }) => {
   const [results, setResults] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
   const tabs = [
-    { label: 'All', data: [...data.speaking, ...data.articles] },
     { label: 'Speaking', data: data.speaking },
     { label: 'Articles', data: data.articles },
   ];

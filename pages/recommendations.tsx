@@ -1,10 +1,10 @@
-import { PrismicLink } from '@prismicio/react';
 import type {
   KeyTextField,
   LinkField,
   PrismicDocumentWithUID,
 } from '@prismicio/types';
 import type { GetStaticProps } from 'next';
+import Link from 'next/link';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'react-feather';
@@ -14,7 +14,7 @@ import Layout from '../components/layout';
 import List from '../components/list';
 import Search from '../components/search';
 import Tab from '../components/tab';
-import { getPage } from '../utils/prismic';
+import { docResolver, getPage } from '../utils/prismic';
 
 type RecommendationsData = {
   data: {
@@ -37,17 +37,19 @@ const Recommendation: FC<RecommendationData> = ({
   link,
 }) => (
   <div className="fill-anchor">
-    <PrismicLink field={link}>
-      <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
-        <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
-          <span className="line-clamp-1">{name}</span>
-          <ArrowUpRight className="shrink-0" size={16} />
-        </p>
-        <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
-          {description}
-        </p>
-      </div>
-    </PrismicLink>
+    <Link href={docResolver(link)} passHref>
+      <a href={docResolver(link)}>
+        <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
+          <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
+            <span className="line-clamp-1">{name}</span>
+            <ArrowUpRight className="shrink-0" size={16} />
+          </p>
+          <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+            {description}
+          </p>
+        </div>
+      </a>
+    </Link>
   </div>
 );
 

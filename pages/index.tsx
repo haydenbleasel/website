@@ -70,7 +70,7 @@ const Home: FC<HomeProps> = ({ data }) => (
     </div>
     <div className="-ml-3 flex flex-wrap">
       {social.map((platform) => (
-        <Link href={platform.url} key={platform.id}>
+        <Link href={platform.url} key={platform.id} passHref>
           <a href={platform.url}>
             <span className="flex p-3 transition-transform hover:-translate-y-1">
               <Image

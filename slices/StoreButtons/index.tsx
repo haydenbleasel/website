@@ -19,7 +19,7 @@ const StoreButtons: FC<
 
   return (
     <div className="flex gap-3">
-      <Link href={appStoreLink} aria-label="App Store">
+      <Link href={appStoreLink} aria-label="App Store" passHref>
         <a href={appStoreLink}>
           <div className="flex transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:hidden">
             <Image
@@ -45,7 +45,7 @@ const StoreButtons: FC<
           </div>
         </a>
       </Link>
-      <Link href={googlePlayLink} aria-label="Play Store">
+      <Link href={googlePlayLink} aria-label="Play Store" passHref>
         <a href={googlePlayLink}>
           <div className="flex transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:hidden">
             <Image

@@ -6,14 +6,13 @@ import type {
   PrismicDocumentWithUID,
   SliceZone,
 } from '@prismicio/types';
-
-import { PrismicLink } from '@prismicio/react';
 import { format, parse, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { ArrowUpRight } from 'react-feather';
 import { ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { getPages } from '../../utils/prismic';
 import type { Post } from '../../types/post';
 import { getDevPosts } from '../../utils/dev';
@@ -35,19 +34,21 @@ const PostLink: FC<BlogProps['posts'][number]> = ({
   link,
 }) => (
   <div className="fill-anchor" key={id}>
-    <PrismicLink href={link}>
-      <div className="flex flex-col gap-1 py-3 sm:flex-row sm:justify-between sm:gap-8">
-        <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
-          <span className="sm:line-clamp-1">{title}</span>
-          {!link.startsWith('/') && (
-            <ArrowUpRight className="shrink-0" size={16} />
-          )}
-        </p>
-        <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
-          {format(parseISO(date), 'MMM dd, yyyy')}
-        </p>
-      </div>
-    </PrismicLink>
+    <Link href={link} passHref>
+      <a href={link}>
+        <div className="flex flex-col gap-1 py-3 sm:flex-row sm:justify-between sm:gap-8">
+          <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
+            <span className="sm:line-clamp-1">{title}</span>
+            {!link.startsWith('/') && (
+              <ArrowUpRight className="shrink-0" size={16} />
+            )}
+          </p>
+          <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+            {format(parseISO(date), 'MMM dd, yyyy')}
+          </p>
+        </div>
+      </a>
+    </Link>
   </div>
 );
 

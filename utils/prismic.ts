@@ -1,9 +1,9 @@
 import * as prismic from '@prismicio/client';
 import type { LinkResolverFunction } from '@prismicio/helpers';
 import type {
-  FilledLinkToMediaField,
   FilledLinkToWebField,
   FilledLinkToDocumentField,
+  LinkField,
 } from '@prismicio/types';
 
 export const linkResolver: LinkResolverFunction = (document) => {
@@ -22,17 +22,12 @@ export const linkResolver: LinkResolverFunction = (document) => {
   return routes[document.type] || `/${document.uid}`;
 };
 
-export const docResolver = (
-  link:
-    | FilledLinkToDocumentField
-    | FilledLinkToWebField
-    | FilledLinkToMediaField
-): string => {
+export const docResolver = (link: LinkField): string => {
   if (link.link_type === 'Document') {
-    return linkResolver(link);
+    return linkResolver(link as FilledLinkToDocumentField);
   }
 
-  return link.url;
+  return (link as FilledLinkToWebField).url;
 };
 
 export const client = prismic.createClient(

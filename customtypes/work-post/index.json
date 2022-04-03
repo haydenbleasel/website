@@ -34,13 +34,12 @@
         },
         "type": "Image"
       },
-      "coverAnimation": {
+      "coverVideo": {
         "config": {
-          "label": "Cover Animation",
-          "placeholder": "",
-          "select": "media"
+          "label": "Cover Video",
+          "placeholder": ""
         },
-        "type": "Link"
+        "type": "Embed"
       },
       "customPublishDate": {
         "config": {

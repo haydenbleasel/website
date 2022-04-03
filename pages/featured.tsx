@@ -1,4 +1,3 @@
-import { PrismicLink } from '@prismicio/react';
 import type {
   KeyTextField,
   LinkField,
@@ -6,6 +5,7 @@ import type {
 } from '@prismicio/types';
 import { format, parse } from 'date-fns';
 import type { GetStaticProps } from 'next';
+import Link from 'next/link';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'react-feather';
@@ -15,7 +15,7 @@ import Layout from '../components/layout';
 import List from '../components/list';
 import Search from '../components/search';
 import Tab from '../components/tab';
-import { getPage } from '../utils/prismic';
+import { docResolver, getPage } from '../utils/prismic';
 
 type FeaturesData = {
   data: {
@@ -58,9 +58,11 @@ const Feature: FC<FeatureData> = ({ link, ...props }) => (
     {link.link_type === 'Any' ? (
       <FeatureInner {...props} />
     ) : (
-      <PrismicLink field={link}>
-        <FeatureInner {...props} withArrow />
-      </PrismicLink>
+      <Link href={docResolver(link)} passHref>
+        <a href={docResolver(link)}>
+          <FeatureInner {...props} withArrow />
+        </a>
+      </Link>
     )}
   </div>
 );
@@ -119,32 +121,30 @@ const Featured: FC<FeaturesData> = ({ data }) => {
   return (
     <Layout title={data.title} description={data.description}>
       <div className="grid gap-8">
-        <div className="grid gap-8">
-          <div className="grid gap-1">
-            <div className="space-between flex items-center gap-8">
-              <div className="flex flex-1 gap-4">
-                {tabs.map((tab) => (
-                  <div
-                    className="text-md font-normal text-gray-700 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"
-                    key={tab.label}
-                  >
-                    <Tab
-                      tab={tab.label}
-                      onTabSelect={setActiveTab}
-                      isActive={tab.label === activeTab}
-                    />
-                  </div>
-                ))}
-              </div>
-              <Search value={search} onChange={setSearch} />
+        <div className="grid gap-1">
+          <div className="space-between flex items-center gap-8">
+            <div className="flex flex-1 gap-4">
+              {tabs.map((tab) => (
+                <div
+                  className="text-md font-normal text-gray-700 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"
+                  key={tab.label}
+                >
+                  <Tab
+                    tab={tab.label}
+                    onTabSelect={setActiveTab}
+                    isActive={tab.label === activeTab}
+                  />
+                </div>
+              ))}
             </div>
-            <Divider />
+            <Search value={search} onChange={setSearch} />
           </div>
-          <List
-            data={activeData.sort(sortByDate).filter(filterBySearch)}
-            renderItem={Feature}
-          />
+          <Divider />
         </div>
+        <List
+          data={activeData.sort(sortByDate).filter(filterBySearch)}
+          renderItem={Feature}
+        />
       </div>
     </Layout>
   );

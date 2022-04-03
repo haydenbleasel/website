@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { ArrowUpRight } from 'react-feather';
 
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => (
-  <Link href={href}>
+  <Link href={href} passHref>
     <a
       {...props}
       target="_blank"

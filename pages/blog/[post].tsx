@@ -1,9 +1,8 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { FC } from 'react';
-import { useEffect, useRef } from 'react';
 import type {
   DateField,
-  FilledLinkToMediaField,
+  EmbedField,
   ImageField,
   KeyTextField,
   PrismicDocumentWithUID,
@@ -13,18 +12,18 @@ import { format, parse, parseISO } from 'date-fns';
 import type { SliceZoneComponents } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
 import Image from 'next/image';
-import lottie from 'lottie-web';
 import { useRouter } from 'next/router';
 import { ArticleJsonLd } from 'next-seo';
 import Layout from '../../components/layout';
 import { getPage, getPages } from '../../utils/prismic';
 import { components } from '../../slices';
+import Video from '../../components/video';
 
 type PostProps = PrismicDocumentWithUID<{
   title: KeyTextField;
   description: KeyTextField;
   coverImage: ImageField;
-  coverAnimation: FilledLinkToMediaField;
+  coverVideo: EmbedField;
   custom_publish_date: DateField;
   slices1: SliceZoneProps;
 }>;
@@ -34,20 +33,7 @@ const WorkPost: FC<PostProps> = ({
   last_publication_date,
   first_publication_date,
 }) => {
-  const animationRef = useRef<HTMLDivElement>(null);
   const { asPath } = useRouter();
-
-  useEffect(() => {
-    if (data.coverAnimation.url && animationRef.current) {
-      lottie.loadAnimation({
-        container: animationRef.current,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: data.coverAnimation.url,
-      });
-    }
-  }, [data.coverAnimation.url]);
   const publishedAt = data.custom_publish_date
     ? parse(data.custom_publish_date, 'yyyy-MM-dd', new Date()).toISOString()
     : first_publication_date;
@@ -77,14 +63,7 @@ const WorkPost: FC<PostProps> = ({
             {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
           </p>
         </div>
-        {data.coverAnimation.url && (
-          <div
-            style={{ background: '#CE5777' }}
-            className="overflow-hidden rounded-sm"
-            ref={animationRef}
-          />
-        )}
-        {data.coverImage.url && !data.coverAnimation.url && (
+        {data.coverImage.url && (
           <div className="flex overflow-hidden rounded-sm">
             <Image
               src={data.coverImage.url}
@@ -98,6 +77,15 @@ const WorkPost: FC<PostProps> = ({
               priority
             />
           </div>
+        )}
+        {data.coverVideo.embed_url && (
+          <Video
+            data={data.coverVideo}
+            loop
+            playsinline
+            controls={false}
+            muted
+          />
         )}
         <div className="prose dark:prose-invert">
           <SliceZone

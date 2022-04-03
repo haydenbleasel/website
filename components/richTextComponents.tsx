@@ -6,6 +6,7 @@ import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import type { TwitterTweetEmbedProps } from 'react-twitter-embed/dist/components/TwitterTweetEmbed';
 import { docResolver } from '../utils/prismic';
 import tailwindConfig from '../tailwind.config';
+import Video from './video';
 
 const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -149,39 +150,7 @@ const richTextComponents: JSXMapSerializer = {
     }
 
     if (node.oembed.type === 'video') {
-      if (node.oembed.provider_name === 'YouTube') {
-        const ReactPlayer = dynamic(
-          async () =>
-            import(
-              /* webpackChunkName: "react-player/youtube" */
-              'react-player/youtube'
-            )
-        );
-
-        return (
-          <div className="my-8">
-            <ReactPlayer key={key} url={node.oembed.embed_url} />
-          </div>
-        );
-      }
-
-      if (node.oembed.provider_name === 'Vimeo') {
-        const ReactPlayer = dynamic(
-          async () =>
-            import(
-              /* webpackChunkName: "react-player/vimeo" */
-              'react-player/vimeo'
-            )
-        );
-
-        return (
-          <div className="my-8">
-            <ReactPlayer key={key} url={node.oembed.embed_url} />
-          </div>
-        );
-      }
-
-      return undefined;
+      return <Video data={node.oembed} />;
     }
 
     return (

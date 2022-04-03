@@ -1,10 +1,10 @@
 {
-  "id": "0fa19148-3bed-4249-b105-aafc316bb09f",
-  "uid": "ipsam-quia-nam",
+  "id": "f3ef50bb-834a-4366-85b1-321aab99c601",
+  "uid": "eum-qui-blanditiis",
   "type": "case-study",
   "data": {
-    "title": "scale intuitive web services",
-    "description": "synergize next-generation markets",
+    "title": "redefine dot-com markets",
+    "description": "evolve plug-and-play e-commerce",
     "coverImage": {
       "dimensions": {
         "width": 900,
@@ -12,12 +12,23 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?w=900&h=500&fit=crop"
     },
-    "coverAnimation": {
-      "link_type": "media",
-      "url": "https://source.unsplash.com/daily"
+    "coverVideo": {
+      "title": "Prismic January Product Meetup",
+      "author_name": "Prismic",
+      "author_url": "https://www.youtube.com/channel/UCJq6AEgtWeZt7ziQ-fLKOeA",
+      "type": "video",
+      "height": 113,
+      "width": 200,
+      "version": "1.0",
+      "provider_name": "YouTube",
+      "provider_url": "https://www.youtube.com/",
+      "thumbnail_height": 360,
+      "thumbnail_width": 480,
+      "thumbnail_url": "https://i.ytimg.com/vi/fiOwHYFkUz0/hqdefault.jpg",
+      "html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/fiOwHYFkUz0?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
     },
-    "customPublishDate": "2021-02-20"
+    "customPublishDate": "2012-07-18"
   }
 }

@@ -1,5 +1,5 @@
-import { PrismicLink } from '@prismicio/react';
 import type { GetStaticProps } from 'next';
+import Link from 'next/link';
 import type { FC } from 'react';
 import { ArrowUpRight } from 'react-feather';
 import Layout from '../components/layout';
@@ -20,17 +20,19 @@ const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
       <List
         data={playlists}
         renderItem={(playlist: SpotifyPlaylist) => (
-          <PrismicLink href={playlist.external_urls.spotify}>
-            <div className="flex gap-8 py-2" key={playlist.id}>
-              <p className="flex flex-1 items-center gap-2 text-md text-gray-900 dark:text-white">
-                <span>{playlist.name}</span>
-                <ArrowUpRight size={16} />
-              </p>
-              <p className="flex-0 w-24 text-right text-sm text-gray-400 dark:text-gray-500">
-                {playlist.tracks.total} tracks
-              </p>
-            </div>
-          </PrismicLink>
+          <Link href={playlist.external_urls.spotify} passHref>
+            <a href={playlist.external_urls.spotify}>
+              <div className="flex gap-8 py-2" key={playlist.id}>
+                <p className="flex flex-1 items-center gap-2 text-md text-gray-900 dark:text-white">
+                  <span>{playlist.name}</span>
+                  <ArrowUpRight size={16} />
+                </p>
+                <p className="flex-0 w-24 text-right text-sm text-gray-400 dark:text-gray-500">
+                  {playlist.tracks.total} tracks
+                </p>
+              </div>
+            </a>
+          </Link>
         )}
       />
     </div>

@@ -26,21 +26,20 @@
         },
         "type": "Text"
       },
-      "cover": {
+      "coverImage": {
         "config": {
-          "label": "Cover",
+          "label": "Cover Image",
           "constraint": {},
           "thumbnails": []
         },
         "type": "Image"
       },
-      "animation": {
+      "coverVideo": {
         "config": {
-          "label": "Animation",
-          "placeholder": "",
-          "select": "media"
+          "label": "Cover Video",
+          "placeholder": ""
         },
-        "type": "Link"
+        "type": "Embed"
       }
     },
     "Content": {

@@ -182,6 +182,14 @@ const CommandBar: FC = ({ children }) => {
       perform: async () => push('/recommendations'),
     },
     {
+      id: 'featured',
+      name: 'Featured',
+      shortcut: ['f'],
+      keywords: 'featured',
+      section: 'Pages',
+      perform: async () => push('/featured'),
+    },
+    {
       id: 'blog-index',
       name: 'All Posts',
       parent: 'blog',

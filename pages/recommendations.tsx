@@ -32,18 +32,23 @@ type RecommendationData = {
 const Recommendation = ({ name, description, link }: RecommendationData) => (
   <div className="fill-anchor">
     <PrismicLink field={link}>
-      <div className="flex flex-1 justify-between gap-8 py-2">
-        <p className="flex-0 flex w-32 items-center gap-2 text-md text-gray-900 dark:text-white">
-          {name}
-          <ArrowUpRight size={16} />
+      <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
+        <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
+          <span className="line-clamp-1">{name}</span>
+          <ArrowUpRight className="shrink-0" size={16} />
         </p>
-        <p className="flex-1 text-right text-sm text-gray-500 dark:text-gray-400">
+        <p className="flex-1 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
           {description}
         </p>
       </div>
     </PrismicLink>
   </div>
 );
+
+const sortAlphabetically = (
+  recommendationA: RecommendationData,
+  recommendationB: RecommendationData
+) => ((recommendationB.name ?? '') > (recommendationA.name ?? '') ? -1 : 1);
 
 const Recommendations: FC<RecommendationsData> = ({ data }) => {
   const [results, setResults] = useState<string[]>([]);
@@ -120,7 +125,7 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
             <Divider />
           </div>
           <List
-            data={activeData.filter(filterBySearch)}
+            data={activeData.sort(sortAlphabetically).filter(filterBySearch)}
             renderItem={Recommendation}
           />
         </div>

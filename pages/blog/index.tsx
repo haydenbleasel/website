@@ -36,14 +36,14 @@ const PostLink: FC<BlogProps['posts'][number]> = ({
 }) => (
   <div className="fill-anchor" key={id}>
     <PrismicLink href={link}>
-      <div className="flex justify-between gap-8 py-3">
+      <div className="flex flex-col gap-1 py-3 sm:flex-row sm:justify-between sm:gap-8">
         <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
-          <span className="line-clamp-1">{title}</span>
+          <span className="sm:line-clamp-1">{title}</span>
           {!link.startsWith('/') && (
             <ArrowUpRight className="shrink-0" size={16} />
           )}
         </p>
-        <p className="flex-0 w-24 text-right text-sm text-gray-500 dark:text-gray-400">
+        <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
           {format(parseISO(date), 'MMM dd, yyyy')}
         </p>
       </div>

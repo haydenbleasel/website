@@ -3,7 +3,7 @@ import type { JSXMapSerializer } from '@prismicio/react';
 import { PrismicLink } from '@prismicio/react';
 import Image from 'next/image';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-import { TwitterTweetEmbed } from 'react-twitter-embed';
+import type { TwitterTweetEmbedProps } from 'react-twitter-embed/dist/components/TwitterTweetEmbed';
 import { docResolver } from '../utils/prismic';
 import tailwindConfig from '../tailwind.config';
 
@@ -134,6 +134,13 @@ const richTextComponents: JSXMapSerializer = {
         return undefined;
       }
 
+      const TwitterTweetEmbed = dynamic<TwitterTweetEmbedProps>(async () =>
+        import(
+          /* webpackChunkName: "react-twitter-embed" */
+          'react-twitter-embed'
+        ).then((mod) => mod.TwitterTweetEmbed)
+      );
+
       return (
         <div className="mx-auto my-8 max-w-[550px]">
           <TwitterTweetEmbed tweetId={tweetId} />
@@ -141,20 +148,32 @@ const richTextComponents: JSXMapSerializer = {
       );
     }
 
-    if (
-      node.oembed.type === 'video' &&
-      (node.oembed.provider_name === 'YouTube' ||
-        node.oembed.provider_name === 'Vimeo')
-    ) {
-      const ReactPlayer = dynamic(
-        async () =>
-          import(
-            /* webpackChunkName: "react-player" */
-            'react-player'
-          )
-      );
+    if (node.oembed.type === 'video') {
+      if (node.oembed.provider_name === 'YouTube') {
+        const ReactPlayer = dynamic(
+          async () =>
+            import(
+              /* webpackChunkName: "react-player/youtube" */
+              'react-player/youtube'
+            )
+        );
 
-      return <ReactPlayer key={key} url={node.oembed.embed_url} />;
+        return <ReactPlayer key={key} url={node.oembed.embed_url} />;
+      }
+
+      if (node.oembed.provider_name === 'Vimeo') {
+        const ReactPlayer = dynamic(
+          async () =>
+            import(
+              /* webpackChunkName: "react-player/vimeo" */
+              'react-player/vimeo'
+            )
+        );
+
+        return <ReactPlayer key={key} url={node.oembed.embed_url} />;
+      }
+
+      return undefined;
     }
 
     return (

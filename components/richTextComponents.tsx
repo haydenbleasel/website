@@ -30,7 +30,7 @@ const richTextComponents: JSXMapSerializer = {
     </strong>
   ),
   image: ({ key, node }) => (
-    <div className="mb-4 flex overflow-hidden rounded-sm">
+    <div className="my-8 flex overflow-hidden rounded-sm">
       <Image
         key={key}
         src={node.url}
@@ -158,7 +158,11 @@ const richTextComponents: JSXMapSerializer = {
             )
         );
 
-        return <ReactPlayer key={key} url={node.oembed.embed_url} />;
+        return (
+          <div className="my-8">
+            <ReactPlayer key={key} url={node.oembed.embed_url} />
+          </div>
+        );
       }
 
       if (node.oembed.provider_name === 'Vimeo') {
@@ -170,7 +174,11 @@ const richTextComponents: JSXMapSerializer = {
             )
         );
 
-        return <ReactPlayer key={key} url={node.oembed.embed_url} />;
+        return (
+          <div className="my-8">
+            <ReactPlayer key={key} url={node.oembed.embed_url} />
+          </div>
+        );
       }
 
       return undefined;
@@ -195,7 +203,7 @@ const richTextComponents: JSXMapSerializer = {
     );
 
     return (
-      <div className="mb-4 grid w-full font-mono font-medium">
+      <div className="my-8 grid w-full font-mono font-medium">
         <SyntaxHighlighter
           key={key}
           style={dracula as object}

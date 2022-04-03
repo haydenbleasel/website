@@ -3,6 +3,7 @@ import type { JSXMapSerializer } from '@prismicio/react';
 import { PrismicLink } from '@prismicio/react';
 import Image from 'next/image';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { docResolver } from '../utils/prismic';
 import tailwindConfig from '../tailwind.config';
 
@@ -124,6 +125,20 @@ const richTextComponents: JSXMapSerializer = {
   embed: ({ node, key }) => {
     if (!node.oembed.html) {
       return undefined;
+    }
+
+    if (node.oembed.provider_name === 'Twitter') {
+      const tweetId = (node.oembed.url as string).split('/').pop();
+
+      if (!tweetId) {
+        return undefined;
+      }
+
+      return (
+        <div className="mx-auto my-8 max-w-[550px]">
+          <TwitterTweetEmbed tweetId={tweetId} />
+        </div>
+      );
     }
 
     if (

@@ -41,6 +41,7 @@
     "react-hot-toast": "^2.2.0",
     "react-player": "^2.10.0",
     "react-syntax-highlighter": "^15.5.0",
+    "react-twitter-embed": "^4.0.4",
     "react-use": "^17.3.2",
     "rss-parser": "^3.12.0",
     "slugify": "^1.6.5",

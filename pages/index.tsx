@@ -7,9 +7,9 @@ import type {
 } from '@prismicio/types';
 import type { GetStaticProps } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { FC } from 'react';
 import Activity from '../components/activity';
-import ExternalLinkComponent from '../components/externalLink';
 import Layout from '../components/layout';
 import { getPage } from '../utils/prismic';
 import { social } from './_app';
@@ -70,16 +70,18 @@ const Home: FC<HomeProps> = ({ data }) => (
     </div>
     <div className="-ml-3 flex flex-wrap">
       {social.map((platform) => (
-        <ExternalLinkComponent href={platform.url} key={platform.id}>
-          <span className="flex p-3 transition-transform hover:-translate-y-1">
-            <Image
-              src={`/social/${platform.id}.svg`}
-              width={16}
-              height={16}
-              layout="fixed"
-            />
-          </span>
-        </ExternalLinkComponent>
+        <Link href={platform.url} key={platform.id}>
+          <a href={platform.url}>
+            <span className="flex p-3 transition-transform hover:-translate-y-1">
+              <Image
+                src={`/social/${platform.id}.svg`}
+                width={16}
+                height={16}
+                layout="fixed"
+              />
+            </span>
+          </a>
+        </Link>
       ))}
     </div>
   </Layout>

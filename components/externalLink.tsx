@@ -12,12 +12,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => (
       className="inline text-md font-normal text-gray-900 transition-colors hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
     >
       {children}
-      {Array.isArray(children) && (
-        <ArrowUpRight
-          size={14}
-          className="ml-[2px] inline -translate-y-[2px]"
-        />
-      )}
+      <ArrowUpRight size={14} className="ml-[2px] inline -translate-y-[2px]" />
     </a>
   </Link>
 );

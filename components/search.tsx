@@ -12,7 +12,7 @@ const Search: FC<SearchProps> = ({ value, onChange }) => (
       <SearchIcon size={14} />
     </div>
     <input
-      className="w-full bg-transparent px-[18px] text-sm text-gray-900 placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500"
+      className="w-full bg-transparent py-1 px-[18px] text-sm text-gray-900 outline-none placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500"
       type="text"
       placeholder="Search"
       value={value}

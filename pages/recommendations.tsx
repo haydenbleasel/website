@@ -8,9 +8,11 @@ import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import Divider from '../components/divider';
 import Layout from '../components/layout';
 import List from '../components/list';
 import Search from '../components/search';
+import Tab from '../components/tab';
 import { getPage } from '../utils/prismic';
 
 type RecommendationsData = {
@@ -44,12 +46,16 @@ const Recommendation = ({ name, description, link }: RecommendationData) => (
 const Recommendations: FC<RecommendationsData> = ({ data }) => {
   const [results, setResults] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
-  const [activeTab, setActiveTab] = useState(0);
   const tabs = [
     { label: 'Tools', data: data.tools },
     { label: 'Freelancers', data: data.freelancers },
   ];
-  const { data: activeData } = tabs[activeTab];
+  const [activeTab, setActiveTab] = useState(tabs[0].label);
+  const { data: activeData } = tabs.find(
+    ({ label }) => label === activeTab
+  ) ?? {
+    data: [],
+  };
 
   useEffect(() => {
     const filterRecommendations = async (term: string) => {
@@ -91,33 +97,25 @@ const Recommendations: FC<RecommendationsData> = ({ data }) => {
     >
       <div className="grid gap-8">
         <div className="grid gap-8">
-          <div className="grid gap-2">
+          <div className="grid gap-1">
             <div className="space-between flex items-center gap-8">
               <div className="flex flex-1 gap-4">
-                {tabs.map((tab, index) => (
+                {tabs.map((tab) => (
                   <div
                     className="text-md font-normal text-gray-700 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"
                     key={tab.label}
                   >
-                    <span
-                      onClick={() => setActiveTab(index)}
-                      onKeyDown={() => setActiveTab(index)}
-                      role="button"
-                      tabIndex={0}
-                      className={`relative whitespace-nowrap text-sm ${
-                        index === activeTab
-                          ? 'text-gray-900 after:absolute after:-bottom-[14.5px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
-                          : 'text-gray-500 dark:text-gray-400'
-                      }`}
-                    >
-                      {tab.label}
-                    </span>
+                    <Tab
+                      tab={tab.label}
+                      onTabSelect={setActiveTab}
+                      isActive={tab.label === activeTab}
+                    />
                   </div>
                 ))}
               </div>
               <Search value={search} onChange={setSearch} />
             </div>
-            <hr className="border-t border-gray-100 dark:border-gray-800" />
+            <Divider />
           </div>
           <List
             data={activeData.filter(filterBySearch)}

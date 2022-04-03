@@ -18,6 +18,8 @@ import Layout from '../../components/layout';
 import Search from '../../components/search';
 import { getMediumPosts } from '../../utils/medium';
 import List from '../../components/list';
+import Tab from '../../components/tab';
+import Divider from '../../components/divider';
 
 type BlogProps = {
   posts: (Post & { type: string })[];
@@ -98,40 +100,23 @@ const Blog: FC<BlogProps> = ({ posts }) => {
   return (
     <Layout title="Blog" description="Posts about code, work and life.">
       <div className="grid gap-8">
-        <div className="grid gap-2">
+        <div className="grid gap-1">
           <div className="space-between flex items-center gap-8">
             <div className="flex flex-1 gap-4">
               {Array.from(tabs)
                 .sort(sortAlphabetically)
                 .map((tab) => (
-                  <div
-                    onClick={() => setActiveTab(tab)}
-                    onKeyDown={(event) => {
-                      if (event.code === 'Space') {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        setActiveTab(tab);
-                      }
-                    }}
-                    role="button"
-                    tabIndex={0}
+                  <Tab
                     key={tab}
-                  >
-                    <span
-                      className={`relative whitespace-nowrap text-sm ${
-                        tab === activeTab
-                          ? 'text-gray-900 after:absolute after:-bottom-[14.5px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
-                          : 'text-gray-500 dark:text-gray-400'
-                      }`}
-                    >
-                      {tab}
-                    </span>
-                  </div>
+                    tab={tab}
+                    onTabSelect={setActiveTab}
+                    isActive={tab === activeTab}
+                  />
                 ))}
             </div>
             <Search value={search} onChange={setSearch} />
           </div>
-          <hr className="border-t border-gray-100 dark:border-gray-800" />
+          <Divider />
         </div>
 
         <List

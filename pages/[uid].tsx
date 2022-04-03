@@ -5,7 +5,7 @@ import type {
   KeyTextField,
   PrismicDocumentWithUID,
 } from '@prismicio/types';
-import type { SliceZoneProps } from '@prismicio/react';
+import type { SliceZoneComponents, SliceZoneProps } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
 import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
@@ -18,7 +18,7 @@ type LandingPageProps = {
     title: KeyTextField;
     description: KeyTextField;
     cover: ImageFieldImage;
-    slices1: SliceZoneProps;
+    slices1: SliceZoneProps['slices'];
   };
   last_publication_date: string;
 };
@@ -46,7 +46,10 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
         </div>
       )}
       <div className="grid gap-8">
-        <SliceZone slices={data.slices1} components={components} />
+        <SliceZone
+          slices={data.slices1}
+          components={components as unknown as SliceZoneComponents}
+        />
       </div>
     </div>
   </Layout>

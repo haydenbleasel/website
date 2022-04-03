@@ -7,6 +7,7 @@ import type {
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
+import { ArrowUpRight } from 'react-feather';
 import toast from 'react-hot-toast';
 import Divider from '../components/divider';
 import Layout from '../components/layout';
@@ -31,9 +32,10 @@ type RecommendationData = {
 const Recommendation = ({ name, description, link }: RecommendationData) => (
   <div className="fill-anchor">
     <PrismicLink field={link}>
-      <div className="flex flex-1 justify-between gap-8">
-        <p className="flex-0 w-32 text-md text-gray-900 dark:text-white">
+      <div className="flex flex-1 justify-between gap-8 py-2">
+        <p className="flex-0 flex w-32 items-center gap-2 text-md text-gray-900 dark:text-white">
           {name}
+          <ArrowUpRight size={16} />
         </p>
         <p className="flex-1 text-right text-sm text-gray-500 dark:text-gray-400">
           {description}

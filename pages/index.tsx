@@ -1,5 +1,6 @@
 import { PrismicRichText } from '@prismicio/react';
 import type {
+  GroupField,
   ImageFieldImage,
   KeyTextField,
   PrismicDocumentWithUID,
@@ -21,10 +22,10 @@ type HomeProps = {
     name: KeyTextField;
     role: KeyTextField;
     photo: ImageFieldImage;
-    sections: {
+    sections: GroupField<{
       title: KeyTextField;
       content: RichTextField;
-    }[];
+    }>;
   };
 };
 

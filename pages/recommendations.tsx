@@ -1,4 +1,5 @@
 import type {
+  GroupField,
   KeyTextField,
   LinkField,
   PrismicDocumentWithUID,
@@ -15,8 +16,8 @@ type RecommendationsData = {
   data: {
     title: KeyTextField;
     description: KeyTextField;
-    tools: RecommendationData[];
-    freelancers: RecommendationData[];
+    tools: GroupField<RecommendationData>;
+    freelancers: GroupField<RecommendationData>;
   };
 };
 

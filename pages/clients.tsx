@@ -1,29 +1,33 @@
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
-import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
+import type {
+  GroupField,
+  KeyTextField,
+  PrismicDocumentWithUID,
+} from '@prismicio/types';
 import { createClient } from '@prismicio/client';
 import Layout from '../components/layout';
 import { getPage } from '../utils/prismic';
 
 type ClientsData = {
   data: {
-    rga: {
+    rga: GroupField<{
       client: KeyTextField;
-    }[];
-    freelance: {
+    }>;
+    freelance: GroupField<{
       client: KeyTextField;
-    }[];
+    }>;
   };
-  jellypepper: {
+  jellypepper: GroupField<{
     client: KeyTextField;
-  }[];
+  }>;
 };
 
 type ClientListData = {
   name: string;
-  data: {
+  data: GroupField<{
     client: KeyTextField;
-  }[];
+  }>;
 };
 
 const ClientList: FC<ClientListData> = ({ name, data }) => (

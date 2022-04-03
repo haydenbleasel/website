@@ -1,4 +1,5 @@
 import type {
+  GroupField,
   KeyTextField,
   LinkField,
   PrismicDocumentWithUID,
@@ -16,8 +17,8 @@ type FeaturesData = {
   data: {
     title: KeyTextField;
     description: KeyTextField;
-    speaking: FeatureData[];
-    articles: FeatureData[];
+    speaking: GroupField<FeatureData>;
+    articles: GroupField<FeatureData>;
   };
 };
 

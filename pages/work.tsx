@@ -1,16 +1,16 @@
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import groupBy from 'lodash.groupby';
-import type { PrismicDocumentWithUID } from '@prismicio/types';
+import type { GroupField, PrismicDocumentWithUID } from '@prismicio/types';
 import Layout from '../components/layout';
 import { getPage } from '../utils/prismic';
 
 type WorkData = {
   data: {
-    jobs: {
+    jobs: GroupField<{
       title: string;
       startYear: number;
-    }[];
+    }>;
   };
 };
 

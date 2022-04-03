@@ -9,6 +9,7 @@ import type {
   SliceZone as SliceZoneProps,
 } from '@prismicio/types';
 import { format, parseISO } from 'date-fns';
+import type { SliceZoneComponents } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
 import Image from 'next/image';
 import lottie from 'lottie-web';
@@ -71,7 +72,10 @@ const WorkPost: FC<PostProps> = ({ data, last_publication_date }) => {
           </div>
         )}
         <div className="prose dark:prose-invert">
-          <SliceZone slices={data.slices1} components={components} />
+          <SliceZone
+            slices={data.slices1}
+            components={components as unknown as SliceZoneComponents}
+          />
         </div>
       </div>
     </Layout>

@@ -1,23 +1,116 @@
 import type { FC, ReactNode } from 'react';
-import { Fragment } from 'react';
+import { useEffect, useState, Fragment } from 'react';
+import * as Tabs from '@radix-ui/react-tabs';
+import toast from 'react-hot-toast';
+import { Search } from 'react-feather';
 import Divider from './divider';
 
 type ListProps = {
-  data: unknown[];
+  data: {
+    title: string;
+    items: Record<string, unknown>[];
+  }[];
+  indexKey: string;
+  searchKeys: string[];
   renderItem: (item: never) => ReactNode;
 };
 
-const List: FC<ListProps> = ({ data, renderItem }) => (
-  <div className="group">
-    {data.map((item, index) => (
-      <Fragment key={index}>
-        {Boolean(index) && <Divider />}
-        <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
-          {renderItem(item as never)}
+const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
+  const [activeTab, setActiveTab] = useState<string>(data[0].title);
+  const [results, setResults] = useState<string[]>([]);
+  const [search, setSearch] = useState<string>('');
+
+  useEffect(() => {
+    const filterRecommendations = async (term: string) => {
+      const Fuse = (
+        await import(
+          /* webpackChunkName: "fuse" */
+          'fuse.js'
+        )
+      ).default;
+      const activeData = data.find((tab) => tab.title === activeTab)?.items;
+      const fuse = new Fuse(activeData ?? [], {
+        keys: searchKeys,
+      });
+      const searchResults = fuse.search(term);
+      const searchResultKeys = searchResults.map(({ item }) => item[indexKey]);
+
+      setResults(searchResultKeys as never);
+    };
+
+    if (!search) {
+      setResults([]);
+      return;
+    }
+
+    filterRecommendations(search).catch((error) => {
+      const message =
+        error instanceof Error ? error.message : (error as string);
+
+      toast.error(message);
+    });
+  }, [activeTab, data, indexKey, search, searchKeys]);
+
+  const filterBySearch = (post: Record<string, unknown>) =>
+    results.length && post[indexKey]
+      ? results.includes(post[indexKey] as string)
+      : true;
+
+  return (
+    <Tabs.Root
+      className="grid gap-4"
+      value={activeTab}
+      onValueChange={setActiveTab}
+    >
+      <div className="grid gap-1">
+        <div className="space-between flex items-center gap-8">
+          <Tabs.List className="flex flex-1 gap-4">
+            {data.map(({ title }) => (
+              <Tabs.Trigger
+                className={`relative whitespace-nowrap text-sm ${
+                  title === activeTab
+                    ? 'text-gray-900 after:absolute after:-bottom-[9px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
+                    : 'text-gray-500 dark:text-gray-400'
+                }`}
+                value={title}
+                key={title}
+              >
+                {title}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+          <div className="flex-0 relative">
+            <Search
+              className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
+              size={14}
+            />
+            <input
+              className="w-full bg-transparent py-1 px-[18px] text-sm text-gray-900 outline-none placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500"
+              type="text"
+              placeholder="Search"
+              value={search}
+              onChange={({ target }) => setSearch(target.value)}
+            />
+          </div>
         </div>
-      </Fragment>
-    ))}
-  </div>
-);
+        <Divider />
+      </div>
+      {data.map(({ title, items }) => (
+        <Tabs.Content value={title} key={title}>
+          <div className="group">
+            {items.filter(filterBySearch).map((item, index) => (
+              <Fragment key={index}>
+                {Boolean(index) && <Divider />}
+                <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
+                  {renderItem(item as unknown as never)}
+                </div>
+              </Fragment>
+            ))}
+          </div>
+        </Tabs.Content>
+      ))}
+    </Tabs.Root>
+  );
+};
 
 export default List;

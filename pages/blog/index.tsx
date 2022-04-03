@@ -12,6 +12,8 @@ import { format, parse, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { ArrowUpRight } from 'react-feather';
+import { ArticleJsonLd } from 'next-seo';
+import { useRouter } from 'next/router';
 import { getPages } from '../../utils/prismic';
 import type { Post } from '../../types/post';
 import { getDevPosts } from '../../utils/dev';
@@ -53,6 +55,7 @@ const sortAlphabetically = (stringA: string, stringB: string) =>
   stringB > stringA ? -1 : 1;
 
 const Blog: FC<BlogProps> = ({ posts }) => {
+  const { asPath } = useRouter();
   const [results, setResults] = useState<string[]>([]);
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState<string>('All');
@@ -98,8 +101,22 @@ const Blog: FC<BlogProps> = ({ posts }) => {
     return isSearchMatch && isActiveType;
   };
 
+  const sortedPosts = posts.sort((postA: Post, postB: Post) =>
+    parseISO(postA.date) > parseISO(postB.date) ? -1 : 1
+  );
+
   return (
     <Layout title="Blog" description="Posts about code, work and life.">
+      <ArticleJsonLd
+        type="Blog"
+        url={new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL ?? '').href}
+        title="Blog"
+        images={[]}
+        dateModified={sortedPosts[sortedPosts.length - 1].date}
+        datePublished={sortedPosts[0].date}
+        description="Posts about code, work and life."
+        authorName="Hayden Bleasel"
+      />
       <div className="grid gap-8">
         <div className="grid gap-1">
           <div className="space-between flex items-center gap-8">
@@ -121,11 +138,7 @@ const Blog: FC<BlogProps> = ({ posts }) => {
         </div>
 
         <List
-          data={posts
-            .filter(filterBySearchAndType)
-            .sort((postA: Post, postB: Post) =>
-              parseISO(postA.date) > parseISO(postB.date) ? -1 : 1
-            )}
+          data={sortedPosts.filter(filterBySearchAndType)}
           renderItem={PostLink}
         />
       </div>

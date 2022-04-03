@@ -2,17 +2,20 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { FC } from 'react';
 import { useEffect, useRef } from 'react';
 import type {
+  DateField,
   FilledLinkToMediaField,
   ImageField,
   KeyTextField,
   PrismicDocumentWithUID,
   SliceZone as SliceZoneProps,
 } from '@prismicio/types';
-import { format, parseISO } from 'date-fns';
+import { format, parse, parseISO } from 'date-fns';
 import type { SliceZoneComponents } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
 import Image from 'next/image';
 import lottie from 'lottie-web';
+import { useRouter } from 'next/router';
+import { ArticleJsonLd } from 'next-seo';
 import Layout from '../../components/layout';
 import { getPage, getPages } from '../../utils/prismic';
 import { components } from '../../slices';
@@ -22,11 +25,17 @@ type PostProps = PrismicDocumentWithUID<{
   description: KeyTextField;
   coverImage: ImageField;
   coverAnimation: FilledLinkToMediaField;
+  custom_publish_date: DateField;
   slices1: SliceZoneProps;
 }>;
 
-const WorkPost: FC<PostProps> = ({ data, last_publication_date }) => {
+const WorkPost: FC<PostProps> = ({
+  data,
+  last_publication_date,
+  first_publication_date,
+}) => {
   const animationRef = useRef<HTMLDivElement>(null);
+  const { asPath } = useRouter();
 
   useEffect(() => {
     if (data.coverAnimation.url && animationRef.current) {
@@ -39,9 +48,28 @@ const WorkPost: FC<PostProps> = ({ data, last_publication_date }) => {
       });
     }
   }, [data.coverAnimation.url]);
+  const publishedAt = data.custom_publish_date
+    ? parse(data.custom_publish_date, 'yyyy-MM-dd', new Date()).toISOString()
+    : first_publication_date;
 
   return (
     <Layout title={data.title} description={data.description} noSticky>
+      <ArticleJsonLd
+        url={new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL ?? '').href}
+        title={data.title ?? ''}
+        images={data.coverImage.url ? [data.coverImage.url] : []}
+        datePublished={publishedAt}
+        dateModified={last_publication_date}
+        authorName={[]}
+        publisherName="Corellium"
+        publisherLogo={
+          new URL(
+            '/android-chrome-512x512.png',
+            process.env.NEXT_PUBLIC_SITE_URL ?? ''
+          ).href
+        }
+        description={data.description ?? ''}
+      />
       <div className="grid gap-8">
         <div className="grid gap-1">
           <p className="text-sm text-gray-500 dark:text-gray-400">

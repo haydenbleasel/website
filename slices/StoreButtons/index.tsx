@@ -20,7 +20,7 @@ const StoreButtons: FC<
   return (
     <div className="flex gap-3">
       <Link href={appStoreLink} aria-label="App Store" passHref>
-        <a href={appStoreLink}>
+        <a href={appStoreLink} target="_blank" rel="noopener noreferrer">
           <div className="flex transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:hidden">
             <Image
               src="/images/app-store.svg"

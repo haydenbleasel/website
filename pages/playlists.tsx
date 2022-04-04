@@ -14,7 +14,7 @@ type PlaylistsProps = {
 
 const Playlist = ({ external_urls, id, name, tracks }: SpotifyPlaylist) => (
   <Link href={external_urls.spotify} passHref>
-    <a href={external_urls.spotify}>
+    <a href={external_urls.spotify} target="_blank" rel="noopener noreferrer">
       <div className="flex gap-8 py-2" key={id}>
         <p className="flex flex-1 items-center gap-2 text-md text-gray-900 dark:text-white">
           <span>{name}</span>

@@ -55,7 +55,7 @@ const Feature: FC<FeatureData> = ({ link, ...props }) => (
       <FeatureInner {...props} />
     ) : (
       <Link href={docResolver(link)} passHref>
-        <a href={docResolver(link)}>
+        <a href={docResolver(link)} target="_blank" rel="noopener noreferrer">
           <FeatureInner {...props} withArrow />
         </a>
       </Link>

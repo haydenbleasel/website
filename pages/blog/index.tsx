@@ -25,25 +25,34 @@ type BlogProps = {
   workPosts: Post[];
 };
 
-const PostLink: FC<Post> = ({ id, title, date, link }) => (
-  <div className="fill-anchor" key={id}>
-    <Link href={link} passHref>
-      <a href={link}>
-        <div className="flex flex-col gap-1 py-3 sm:flex-row sm:justify-between sm:gap-8">
-          <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
-            <span className="sm:line-clamp-1">{title}</span>
-            {!link.startsWith('/') && (
-              <ArrowUpRight className="shrink-0" size={16} />
-            )}
-          </p>
-          <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
-            {format(parseISO(date), 'MMM dd, yyyy')}
-          </p>
-        </div>
-      </a>
-    </Link>
-  </div>
-);
+const PostLink: FC<Post> = ({ id, title, date, link }) => {
+  const linkProps = link.startsWith('/')
+    ? {}
+    : {
+        rel: 'noopener noreferrer',
+        target: '_blank',
+      };
+
+  return (
+    <div className="fill-anchor" key={id}>
+      <Link href={link} passHref>
+        <a href={link} {...linkProps}>
+          <div className="flex flex-col gap-1 py-3 sm:flex-row sm:justify-between sm:gap-8">
+            <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
+              <span className="sm:line-clamp-1">{title}</span>
+              {!link.startsWith('/') && (
+                <ArrowUpRight className="shrink-0" size={16} />
+              )}
+            </p>
+            <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+              {format(parseISO(date), 'MMM dd, yyyy')}
+            </p>
+          </div>
+        </a>
+      </Link>
+    </div>
+  );
+};
 
 const sortByDate = (postA: Post, postB: Post) =>
   parseISO(postA.date) > parseISO(postB.date) ? -1 : 1;

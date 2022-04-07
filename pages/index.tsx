@@ -15,7 +15,7 @@ import Layout from '../components/layout';
 import { getPage } from '../utils/prismic';
 import { social } from './_app';
 
-type HomeProps = {
+export type HomeProps = {
   data: {
     title: KeyTextField;
     description: KeyTextField;

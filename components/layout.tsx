@@ -94,7 +94,7 @@ const Layout: FC<LayoutProps> = ({
         {children}
       </div>
       {previousPage && (
-        <div className="fixed top-0 left-0 z-20">
+        <div className="fixed top-0 left-0 z-20 print:hidden">
           <PrismicLink href={previousPage.href}>
             <span className="flex items-center gap-1 p-4 text-gray-500 dark:text-gray-400">
               <ArrowLeft size={16} />

@@ -27,6 +27,10 @@ export const docResolver = (link: LinkField): string => {
     return linkResolver(link as FilledLinkToDocumentField);
   }
 
+  if (link.link_type === 'Any') {
+    return '';
+  }
+
   return (link as FilledLinkToWebField).url;
 };
 

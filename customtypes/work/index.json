@@ -24,12 +24,50 @@
               },
               "type": "Text"
             },
+            "company": {
+              "config": {
+                "label": "Company",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "link": {
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "allowTargetBlank": false
+              },
+              "type": "Link"
+            },
+            "description": {
+              "config": {
+                "label": "Description",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+              },
+              "type": "StructuredText"
+            },
             "startYear": {
               "config": {
                 "label": "Start Year",
                 "placeholder": ""
               },
               "type": "Number"
+            },
+            "endYear": {
+              "config": {
+                "label": "End Year",
+                "placeholder": ""
+              },
+              "type": "Number"
+            },
+            "location": {
+              "config": {
+                "label": "Location",
+                "placeholder": ""
+              },
+              "type": "Text"
             }
           }
         },

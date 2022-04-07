@@ -1,32 +1,44 @@
 {
-  "id": "16ff7c3e-b9ac-4846-9d40-3eb3ef321891",
-  "uid": "repudiandae-esse-quod",
+  "id": "425b0ed0-fa45-45bf-91e2-a2328dbb87ca",
+  "uid": "omnis-ut-at",
   "type": "work",
   "data": {
     "jobs": [
       {
-        "title": "empower sticky relationships",
-        "startYear": 5717
+        "title": "engage web-enabled vortals",
+        "company": "iterate integrated initiatives",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        },
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Non amet non sint ex esse mollit laboris anim. Elit laborum labore eiusmod enim eu nulla non qui amet et cillum ad duis excepteur exercitation. Mollit elit anim cillum.",
+            "spans": []
+          }
+        ],
+        "startYear": 6308,
+        "endYear": 5478,
+        "location": "monetize bleeding-edge channels"
       },
       {
-        "title": "e-enable frictionless models",
-        "startYear": 4688
-      },
-      {
-        "title": "expedite cross-platform synergies",
-        "startYear": 681
-      },
-      {
-        "title": "aggregate customized e-business",
-        "startYear": 428
-      },
-      {
-        "title": "scale mission-critical schemas",
-        "startYear": 3470
-      },
-      {
-        "title": "architect dynamic bandwidth",
-        "startYear": 202
+        "title": "evolve web-enabled functionalities",
+        "company": "visualize turn-key deliverables",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        },
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Sit ut veniam proident do officia do ex. Nostrud nulla eu aute consequat exercitation.",
+            "spans": []
+          }
+        ],
+        "startYear": 6304,
+        "endYear": 7663,
+        "location": "morph cross-media web services"
       }
     ]
   }

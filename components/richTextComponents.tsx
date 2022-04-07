@@ -12,7 +12,7 @@ const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
     <p
       key={key}
-      className="mb-4 text-md font-normal text-gray-900 dark:text-white"
+      className="mb-4 text-md font-normal text-gray-900 dark:text-white print:text-sm"
     >
       {children}
     </p>
@@ -52,7 +52,7 @@ const richTextComponents: JSXMapSerializer = {
   heading1: ({ children, key }) => (
     <h1
       key={key}
-      className="mt-8 mb-4 text-xl font-semibold text-gray-900 dark:text-white"
+      className="mt-8 mb-4 text-xl font-semibold text-gray-900 dark:text-white print:text-lg"
     >
       {children}
     </h1>
@@ -60,7 +60,7 @@ const richTextComponents: JSXMapSerializer = {
   heading2: ({ children, key }) => (
     <h2
       key={key}
-      className="mt-8 mb-4 text-sm font-semibold text-gray-900 dark:text-white sm:text-lg"
+      className="mt-8 mb-4 text-sm font-semibold text-gray-900 dark:text-white sm:text-lg print:text-xs"
     >
       {children}
     </h2>
@@ -76,7 +76,7 @@ const richTextComponents: JSXMapSerializer = {
   heading4: ({ children, key }) => (
     <h4
       key={key}
-      className="mt-8 mb-4 text-xl font-semibold text-gray-900 dark:text-white sm:text-sm"
+      className="mt-8 mb-4 text-xl font-semibold text-gray-900 dark:text-white sm:text-sm print:text-lg"
     >
       {children}
     </h4>
@@ -84,7 +84,7 @@ const richTextComponents: JSXMapSerializer = {
   heading5: ({ children, key }) => (
     <h5
       key={key}
-      className="mt-8 mb-4 text-lg font-semibold text-gray-900 dark:text-white sm:text-xs"
+      className="mt-8 mb-4 text-lg font-semibold text-gray-900 dark:text-white sm:text-xs print:text-md"
     >
       {children}
     </h5>
@@ -92,7 +92,7 @@ const richTextComponents: JSXMapSerializer = {
   heading6: ({ children, key }) => (
     <h6
       key={key}
-      className="mt-8 mb-4 text-md font-semibold text-gray-900 dark:text-white sm:text-xl"
+      className="mt-8 mb-4 text-md font-semibold text-gray-900 dark:text-white sm:text-xl print:text-sm"
     >
       {children}
     </h6>
@@ -110,7 +110,7 @@ const richTextComponents: JSXMapSerializer = {
   listItem: ({ children, key }) => (
     <li
       key={key}
-      className="pl-8 -indent-[1.4rem] text-md text-gray-900 dark:text-white"
+      className="pl-8 -indent-[1.4rem] text-md text-gray-900 dark:text-white print:text-sm"
     >
       {children}
     </li>
@@ -118,7 +118,7 @@ const richTextComponents: JSXMapSerializer = {
   oListItem: ({ children, key }) => (
     <li
       key={key}
-      className="pl-8 -indent-[1.4rem] text-md text-gray-900 dark:text-white"
+      className="pl-8 -indent-[1.4rem] text-md text-gray-900 dark:text-white print:text-sm"
     >
       {children}
     </li>

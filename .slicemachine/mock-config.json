@@ -12,7 +12,14 @@
       }
     },
     "work": {
-      "jobs": {}
+      "jobs": {
+        "description": {
+          "config": {
+            "patternType": "PARAGRAPH",
+            "blocks": 1
+          }
+        }
+      }
     },
     "landing-page": {},
     "clients": {},
@@ -30,6 +37,15 @@
     "work-post": {},
     "featured": {
       "speaking": {}
+    },
+    "resume": {
+      "summary": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "testimonials": {}
     }
   },
   "slices": {

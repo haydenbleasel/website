@@ -1,91 +1,85 @@
 {
-  "id": "08666483-0ed5-4e5d-8cb2-326bc3bfb96d",
-  "uid": "optio-eligendi-vero",
+  "id": "255a9a09-5117-4c27-9349-25b178ef440d",
+  "uid": "fuga-quia-dolore",
   "type": "recommendations",
   "data": {
-    "title": "empower holistic methodologies",
-    "description": "embrace integrated paradigms",
+    "title": "visualize vertical communities",
+    "description": "matrix clicks-and-mortar supply-chains",
     "tools": [
       {
-        "name": "cultivate 24/365 e-tailers",
-        "description": "drive front-end e-services",
+        "name": "brand back-end action-items",
+        "description": "revolutionize plug-and-play action-items",
         "link": {
           "link_type": "Web",
           "url": "http://google.com"
         }
       },
       {
-        "name": "revolutionize dynamic e-markets",
-        "description": "maximize strategic portals",
-        "link": {
-          "link_type": "Web",
-          "url": "https://prismic.io"
-        }
-      },
-      {
-        "name": "e-enable dynamic supply-chains",
-        "description": "monetize end-to-end bandwidth",
-        "link": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        }
-      },
-      {
-        "name": "incubate extensible portals",
-        "description": "productize vertical bandwidth",
-        "link": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        }
-      },
-      {
-        "name": "evolve robust channels",
-        "description": "engineer value-added e-services",
-        "link": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        }
-      }
-    ],
-    "freelancers": [
-      {
-        "name": "transition enterprise functionalities",
-        "description": "productize one-to-one technologies",
-        "link": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        }
-      },
-      {
-        "name": "generate web-enabled web-readiness",
-        "description": "cultivate customized platforms",
-        "link": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        }
-      },
-      {
-        "name": "drive out-of-the-box e-business",
-        "description": "seize scalable experiences",
-        "link": {
-          "link_type": "Web",
-          "url": "https://prismic.io"
-        }
-      },
-      {
-        "name": "synthesize plug-and-play paradigms",
-        "description": "revolutionize real-time eyeballs",
+        "name": "repurpose distributed e-commerce",
+        "description": "benchmark magnetic technologies",
         "link": {
           "link_type": "Web",
           "url": "http://twitter.com"
         }
       },
       {
-        "name": "deploy user-centric models",
-        "description": "productize intuitive web-readiness",
+        "name": "disintermediate end-to-end solutions",
+        "description": "unleash best-of-breed paradigms",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      },
+      {
+        "name": "extend rich web-readiness",
+        "description": "enable enterprise action-items",
         "link": {
           "link_type": "Web",
           "url": "http://google.com"
+        }
+      }
+    ],
+    "freelancers": [
+      {
+        "name": "drive next-generation portals",
+        "description": "deliver front-end applications",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      },
+      {
+        "name": "morph dynamic e-services",
+        "description": "orchestrate 24/7 architectures",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        }
+      },
+      {
+        "name": "evolve frictionless niches",
+        "description": "scale B2C users",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      }
+    ],
+    "apps": [
+      {
+        "name": "innovate compelling communities",
+        "description": "expedite dynamic mindshare",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "name": "disintermediate impactful content",
+        "description": "synthesize compelling methodologies",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
         }
       }
     ]

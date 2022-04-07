@@ -1,0 +1,100 @@
+{
+  "id": "resume",
+  "label": "Resume",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        },
+        "type": "UID"
+      }
+    },
+    "Summary": {
+      "summary": {
+        "config": {
+          "label": "Summary",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        },
+        "type": "StructuredText"
+      }
+    },
+    "Testimonials": {
+      "testimonials": {
+        "config": {
+          "label": "Testimonials",
+          "placeholder": "",
+          "fields": {
+            "name": {
+              "config": {
+                "label": "Name",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "quote": {
+              "config": {
+                "label": "Quote",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "photo": {
+              "config": {
+                "label": "Photo",
+                "constraint": {},
+                "thumbnails": []
+              },
+              "type": "Image"
+            }
+          }
+        },
+        "type": "Group"
+      }
+    },
+    "Education": {
+      "education": {
+        "config": {
+          "label": "Education",
+          "placeholder": "",
+          "fields": {
+            "degree": {
+              "config": {
+                "label": "Degree",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "university": {
+              "config": {
+                "label": "University",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "startYear": {
+              "config": {
+                "label": "Start Year",
+                "placeholder": ""
+              },
+              "type": "Number"
+            },
+            "endYear": {
+              "config": {
+                "label": "End Year",
+                "placeholder": ""
+              },
+              "type": "Number"
+            }
+          }
+        },
+        "type": "Group"
+      }
+    }
+  }
+}

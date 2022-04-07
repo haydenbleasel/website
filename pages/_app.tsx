@@ -115,6 +115,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </PrismicProvider>
       <Menu />
       <Toaster
+        containerClassName="print:hidden"
         toastOptions={{
           duration: 5000,
           position: 'bottom-right',

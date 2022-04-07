@@ -68,15 +68,17 @@ const sortByDate = (featureA: FeatureData, featureB: FeatureData) =>
 
 const Featured: FC<FeaturesData> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
-    <List
-      data={[
-        { title: 'Speaking', items: data.speaking.sort(sortByDate) },
-        { title: 'Articles', items: data.articles.sort(sortByDate) },
-      ]}
-      renderItem={Feature}
-      indexKey="name"
-      searchKeys={['name', 'description']}
-    />
+    <div className="mt-4">
+      <List
+        data={[
+          { title: 'Speaking', items: data.speaking.sort(sortByDate) },
+          { title: 'Articles', items: data.articles.sort(sortByDate) },
+        ]}
+        renderItem={Feature}
+        indexKey="name"
+        searchKeys={['name', 'description']}
+      />
+    </div>
   </Layout>
 );
 

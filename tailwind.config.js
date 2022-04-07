@@ -263,6 +263,7 @@ module.exports = {
         DEFAULT: {
           css: [
             {
+              maxWidth: 'none',
               pre: {
                 fontSize: theme('fontSize.sm'),
                 margin: 0,

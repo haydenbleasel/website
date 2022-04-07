@@ -59,8 +59,7 @@ const WorkPost: FC<PostProps> = ({
       <div className="grid gap-8">
         <div className="grid gap-1">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Last updated at{' '}
-            {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
+            Published {format(parseISO(publishedAt), 'MMM dd, yyyy')}{' '}
           </p>
         </div>
         {data.coverImage.url && (
@@ -68,9 +67,9 @@ const WorkPost: FC<PostProps> = ({
             <Image
               src={data.coverImage.url}
               alt={data.coverImage.alt ?? ''}
-              width={480}
+              width={640}
               height={
-                480 *
+                640 *
                 (data.coverImage.dimensions.height /
                   data.coverImage.dimensions.width)
               }

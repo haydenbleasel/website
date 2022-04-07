@@ -33,7 +33,7 @@ const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
     title="Playlists"
     description="Curated playlists from my Spotify library."
   >
-    <div className="group">
+    <div className="group mt-4">
       {playlists.map((item, index) => (
         <Fragment key={index}>
           {Boolean(index) && <Divider />}

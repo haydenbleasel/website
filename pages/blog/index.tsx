@@ -90,12 +90,14 @@ const Blog: FC<BlogProps> = ({
         description="Posts about code, work and life."
         authorName="Hayden Bleasel"
       />
-      <List
-        data={data}
-        renderItem={PostLink}
-        indexKey="name"
-        searchKeys={['title', 'date', 'content']}
-      />
+      <div className="mt-4">
+        <List
+          data={data}
+          renderItem={PostLink}
+          indexKey="name"
+          searchKeys={['title', 'date', 'content']}
+        />
+      </div>
     </Layout>
   );
 };

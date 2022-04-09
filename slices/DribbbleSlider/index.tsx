@@ -53,7 +53,11 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
   useEffect(() => {
     loadShotData(shot)
       .then(setData)
-      .catch((error) => toast.error(error as string));
+      .catch((error) => {
+        const message =
+          error instanceof Error ? error.message : (error as string);
+        toast.error(message);
+      });
   }, [shot]);
 
   return (

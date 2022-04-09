@@ -29,7 +29,7 @@ const NeutralData: FC = () => {
         </div>
         <p className="text-md text-gray-500 dark:text-gray-400">Live data</p>
       </div>
-      <div className="flex flex-col gap-8 sm:grid-cols-2">
+      <div className="grid gap-8 sm:grid-cols-2">
         {metrics.map((metric, index) => (
           <div className="flex flex-col" key={index}>
             {metric.value ? (

@@ -16,6 +16,7 @@ const nextConfig = {
       'i.scdn.co',
       'haydenbleasel.cdn.prismic.io',
       'prismic-io.s3.amazonaws.com',
+      'cdn.dribbble.com',
     ],
     dangerouslyAllowSVG: true,
   },

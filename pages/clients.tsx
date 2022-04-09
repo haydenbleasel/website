@@ -58,7 +58,7 @@ const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
     title="Clients"
     description="A list of clients I've worked with over the years."
   >
-    <div className="grid gap-8">
+    <div className="flex flex-col gap-8">
       <ClientList name="R/GA" data={data.rga} />
       <ClientList name="Jellypepper" data={jellypepper} />
       <ClientList name="Freelance" data={data.freelance} />

@@ -13,7 +13,7 @@ const Quote: FC<
     };
   }>
 > = ({ slice }) => (
-  <div className="my-8 grid gap-2">
+  <div className="my-8 flex flex-col gap-2">
     <p className="m-0 text-md text-gray-900 dark:text-white">
       {slice.primary.content}
     </p>

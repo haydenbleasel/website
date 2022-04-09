@@ -31,7 +31,7 @@ const Work: FC<WorkProps> = ({ data }) => {
 
   return (
     <Layout title="Work" description="A list of roles I've had over the years.">
-      <div className="mt-4 grid gap-8">
+      <div className="mt-4 flex flex-col gap-8">
         {Object.keys(years)
           .reverse()
           .map((startYear) => (

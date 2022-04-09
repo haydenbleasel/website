@@ -66,6 +66,9 @@
             },
             "comparison": {
               "type": "SharedSlice"
+            },
+            "dribbble_slider": {
+              "type": "SharedSlice"
             }
           }
         }

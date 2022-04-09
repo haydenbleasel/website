@@ -56,8 +56,8 @@ const WorkPost: FC<PostProps> = ({
         }
         description={data.description ?? ''}
       />
-      <div className="grid gap-8">
-        <div className="grid gap-1">
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-1">
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Published {format(parseISO(publishedAt), 'MMM dd, yyyy')}{' '}
           </p>

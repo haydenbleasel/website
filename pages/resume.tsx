@@ -44,7 +44,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
 
   return (
     <Layout title="Resume" description="My printable resume." noTitle>
-      <div className="grid gap-8">
+      <div className="flex flex-col gap-8">
         <div className="flex items-start gap-8">
           {home.photo.url && (
             <div className="flex overflow-hidden rounded-full">
@@ -94,18 +94,18 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
           </div>
         </div>
 
-        <div className="grid gap-4">
+        <div className="flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
             Summary
           </h2>
           <PrismicRichText field={data.summary} />
         </div>
 
-        <div className="grid gap-4">
+        <div className="flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
             Selected Work History
           </h2>
-          <div className="grid gap-4">
+          <div className="flex flex-col gap-4">
             {work.jobs.map((job) => (
               <div key={job.title}>
                 <p className="text-md font-semibold text-gray-900 dark:text-white print:text-sm">
@@ -137,7 +137,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
           </PrismicLink>
         </div>
 
-        <div className="grid gap-4">
+        <div className="flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
             Education
           </h2>
@@ -153,11 +153,11 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
           ))}
         </div>
 
-        <div className="grid gap-4">
+        <div className="flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
             Testimonials
           </h2>
-          <div className="grid gap-4">
+          <div className="flex flex-col gap-4">
             {data.testimonials.map((testimonial) => (
               <blockquote
                 key={testimonial.name}

@@ -31,7 +31,7 @@ export type HomeProps = {
 
 const Home: FC<HomeProps> = ({ data }) => (
   <Layout title={data.title} description={data.description} noSticky noTitle>
-    <div className="grid gap-8">
+    <div className="flex flex-col gap-8">
       {data.photo.url && (
         <div className="flex">
           <div className="relative">
@@ -57,9 +57,9 @@ const Home: FC<HomeProps> = ({ data }) => (
         </p>
       </div>
     </div>
-    <div className="grid gap-12">
+    <div className="flex flex-col gap-12">
       {data.sections.map((section, index) => (
-        <div key={index} className="grid gap-4">
+        <div key={index} className="flex flex-col gap-4">
           {section.title && (
             <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
               {section.title}

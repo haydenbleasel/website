@@ -28,8 +28,8 @@ type LandingPageProps = {
 
 const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
   <Layout title={data.title} description={data.description}>
-    <div className="grid gap-8">
-      <div className="grid gap-1">
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-1">
         <p className="text-sm text-gray-500 dark:text-gray-400">
           Last updated at{' '}
           {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
@@ -53,7 +53,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
       {data.coverVideo.embed_url && (
         <Video data={data.coverVideo} loop playsinline controls={false} muted />
       )}
-      <div className="grid gap-8">
+      <div className="flex flex-col gap-8">
         <SliceZone
           slices={data.slices1}
           components={components as unknown as SliceZoneComponents}

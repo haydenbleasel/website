@@ -58,11 +58,11 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
 
   return (
     <Tabs.Root
-      className="grid gap-4"
+      className="flex flex-col gap-4"
       value={activeTab}
       onValueChange={setActiveTab}
     >
-      <div className="grid gap-1">
+      <div className="flex flex-col gap-1">
         <div className="space-between flex items-center gap-8">
           <Tabs.List className="flex flex-1 gap-4">
             {data.map(({ title }) => (

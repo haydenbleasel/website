@@ -21,7 +21,7 @@ const NeutralData: FC = () => {
   ];
 
   return (
-    <div className="grid gap-8 rounded-sm bg-gray-100 p-8 dark:bg-gray-800">
+    <div className="flex flex-col gap-8 rounded-sm bg-gray-100 p-8 dark:bg-gray-800">
       <div className="flex items-center gap-2">
         <div className="relative inline-flex h-3 w-3">
           <span className="absolute inset-0 inline-flex h-full w-full animate-ping rounded-full bg-success-400 opacity-75 dark:bg-success-500" />
@@ -29,7 +29,7 @@ const NeutralData: FC = () => {
         </div>
         <p className="text-md text-gray-500 dark:text-gray-400">Live data</p>
       </div>
-      <div className="grid gap-8 sm:grid-cols-2">
+      <div className="flex flex-col gap-8 sm:grid-cols-2">
         {metrics.map((metric, index) => (
           <div className="flex flex-col" key={index}>
             {metric.value ? (

@@ -66,7 +66,13 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
       >
         <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-900">
           {data ? (
-            <Image src={data.image} width={400} height={300} layout="fixed" />
+            <Image
+              src={data.image}
+              width={400}
+              height={300}
+              layout="fixed"
+              quality={100}
+            />
           ) : (
             <Placeholder className="h-[300px] w-[400px]" />
           )}

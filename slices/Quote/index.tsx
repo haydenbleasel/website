@@ -20,7 +20,12 @@ const Quote: FC<
     <div className="flex items-center gap-3">
       {slice.primary.photo.url && (
         <div className="flex overflow-hidden rounded-full">
-          <Image src={slice.primary.photo.url} width={32} height={32} />
+          <Image
+            src={slice.primary.photo.url}
+            width={32}
+            height={32}
+            quality={100}
+          />
         </div>
       )}
       <p className="m-0 text-sm text-gray-500 dark:text-gray-400">

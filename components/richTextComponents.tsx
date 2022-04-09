@@ -39,6 +39,7 @@ const richTextComponents: JSXMapSerializer = {
         width={640}
         height={640 * (node.dimensions.height / node.dimensions.width)}
         className="w-full"
+        quality={100}
       />
     </div>
   ),

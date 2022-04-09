@@ -55,6 +55,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
                 height={64}
                 layout="fixed"
                 priority
+                quality={100}
               />
             </div>
           )}
@@ -174,6 +175,8 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
                         alt=""
                         width={32}
                         height={32}
+                        quality={100}
+                        priority
                       />
                     </div>
                   )}

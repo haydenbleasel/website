@@ -42,6 +42,7 @@ const Home: FC<HomeProps> = ({ data }) => (
                 height={64}
                 layout="fixed"
                 priority
+                quality={100}
               />
             </div>
             <Activity />
@@ -79,6 +80,7 @@ const Home: FC<HomeProps> = ({ data }) => (
                 width={16}
                 height={16}
                 layout="fixed"
+                quality={100}
               />
             </span>
           </a>

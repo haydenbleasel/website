@@ -47,6 +47,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
                 data.coverImage.dimensions.width)
             }
             priority
+            quality={100}
           />
         </div>
       )}

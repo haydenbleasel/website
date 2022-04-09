@@ -56,7 +56,13 @@ const FigmaFile: FC<
       >
         <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-900">
           {data ? (
-            <Image src={data.image} width={640} height={320} layout="fixed" />
+            <Image
+              src={data.image}
+              width={640}
+              height={320}
+              layout="fixed"
+              quality={100}
+            />
           ) : (
             <Placeholder className="h-[320px] w-[640px]" />
           )}

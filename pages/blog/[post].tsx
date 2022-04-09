@@ -74,6 +74,7 @@ const WorkPost: FC<PostProps> = ({
                   data.coverImage.dimensions.width)
               }
               priority
+              quality={100}
             />
           </div>
         )}

@@ -28,6 +28,7 @@ const Comparison: FC<
             (slice.primary.before.dimensions.height /
               slice.primary.before.dimensions.width)
           }
+          quality={100}
         />
       }
       itemTwo={
@@ -39,6 +40,7 @@ const Comparison: FC<
             (slice.primary.after.dimensions.height /
               slice.primary.after.dimensions.width)
           }
+          quality={100}
         />
       }
     />

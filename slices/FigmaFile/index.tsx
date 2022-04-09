@@ -19,6 +19,7 @@ const FigmaFile: FC<
   }>
 > = ({ slice }) => {
   const { key } = slice.primary;
+  const href = `https://www.figma.com/file/${key ?? ''}`;
   const { data, error } = useSWR<FigmaResponse['data'], Error>(
     '/api/figma',
     async (url: string) => {
@@ -45,12 +46,10 @@ const FigmaFile: FC<
     }
   }, [error]);
 
-  const url = `https://www.figma.com/file/${key ?? ''}`;
-
   return (
-    <Link href={url} passHref>
+    <Link href={href} passHref>
       <a
-        href={url}
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         className="group relative mt-8 mb-4 flex w-full flex-shrink-0 flex-grow-0 flex-col"

@@ -132,6 +132,8 @@ const DribbbleSlider: FC<
   const [emblaRef, emblaApi] = useEmblaCarousel({
     startIndex: 0,
     loop: false,
+    dragFree: false,
+    draggable: false,
     align: 'start',
   });
 

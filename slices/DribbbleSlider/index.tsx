@@ -8,16 +8,11 @@ import {
   MessageSquare,
   ThumbsUp,
 } from 'react-feather';
-import emblaCarouselClassNames from 'embla-carousel-class-names';
 import useEmblaCarousel from 'embla-carousel-react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
 import type { DribbbleResponse } from '../../pages/api/dribbble';
-
-const options = {
-  dragging: 'cursor-[grabbing]',
-};
 
 const formatNumbers = (num: number) => {
   if (num < 1000) {
@@ -96,7 +91,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
             </div>
           )}
           <div className="flex flex-col gap-1 border-t border-gray-100 p-4">
-            <p className="m-0 text-lg font-semibold text-gray-900 dark:text-white">
+            <p className="m-0 text-lg font-semibold text-gray-900 line-clamp-1 dark:text-white">
               {data?.title ?? 'Loading'}
             </p>
             <div className="flex items-center gap-3">
@@ -134,19 +129,15 @@ const DribbbleSlider: FC<
     }[];
   }>
 > = ({ slice }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      startIndex: 0,
-      dragFree: true,
-      loop: false,
-      align: 'start',
-    },
-    [emblaCarouselClassNames(options)]
-  );
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    startIndex: 0,
+    loop: false,
+    align: 'start',
+  });
 
   return (
     <>
-      <div className="w-full cursor-[grab]" ref={emblaRef}>
+      <div className="mt-8" ref={emblaRef}>
         <div className="flex gap-8">{slice.items.map(Shot)}</div>
       </div>
       <div className="mt-8 flex gap-8">
@@ -157,7 +148,7 @@ const DribbbleSlider: FC<
           role="button"
           tabIndex={0}
         >
-          <ArrowLeft className="text-gray-900 dark:text-white" />
+          <ArrowLeft className="text-gray-500 dark:text-gray-400" />
         </div>
         <div
           className="rounded-full border border-gray-200 p-4 transition-all hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800"
@@ -166,7 +157,7 @@ const DribbbleSlider: FC<
           role="button"
           tabIndex={0}
         >
-          <ArrowRight className="text-gray-900 dark:text-white" />
+          <ArrowRight className="text-gray-500 dark:text-gray-400" />
         </div>
       </div>
     </>

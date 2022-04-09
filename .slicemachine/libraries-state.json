@@ -190,6 +190,54 @@
         },
         "screenshotPaths": {}
       },
+      "figma_file": {
+        "library": "slices",
+        "id": "figma_file",
+        "name": "FigmaFile",
+        "description": "FigmaFile",
+        "model": {
+          "id": "figma_file",
+          "type": "SharedSlice",
+          "name": "FigmaFile",
+          "description": "FigmaFile",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "FigmaFile",
+              "primary": {
+                "key": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Key",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "figma_file",
+            "items": [],
+            "primary": {
+              "key": "monetize B2C web services"
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {}
+      },
       "neutral_data": {
         "library": "slices",
         "id": "neutral_data",

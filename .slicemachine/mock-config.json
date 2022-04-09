@@ -98,6 +98,11 @@
       "default": {
         "primary": {}
       }
+    },
+    "FigmaFile": {
+      "default": {
+        "primary": {}
+      }
     }
   }
 }

@@ -3,6 +3,7 @@
 import Blockquote from './Blockquote';
 import Comparison from './Comparison';
 import DribbbleSlider from './DribbbleSlider';
+import FigmaFile from './FigmaFile';
 import NeutralData from './NeutralData';
 import Quote from './Quote';
 import RichText from './RichText';
@@ -12,6 +13,7 @@ export {
 	Blockquote,
 	Comparison,
 	DribbbleSlider,
+	FigmaFile,
 	NeutralData,
 	Quote,
 	RichText,
@@ -22,6 +24,7 @@ export const components = {
 	blockquote: Blockquote,
 	comparison: Comparison,
 	dribbble_slider: DribbbleSlider,
+	figma_file: FigmaFile,
 	neutral_data: NeutralData,
 	quote: Quote,
 	rich_text: RichText,

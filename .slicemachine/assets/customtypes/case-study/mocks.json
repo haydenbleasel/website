@@ -1,10 +1,10 @@
 {
-  "id": "bad98e8d-5fb8-4d09-a41a-82d348dc83f7",
-  "uid": "occaecati-beatae-modi",
+  "id": "c0c3d61a-f6f2-4ce2-b60f-05176b256899",
+  "uid": "maxime-quod-fugiat",
   "type": "case-study",
   "data": {
-    "title": "strategize collaborative platforms",
-    "description": "strategize frictionless systems",
+    "title": "incentivize innovative users",
+    "description": "reintermediate synergistic functionalities",
     "coverImage": {
       "dimensions": {
         "width": 900,
@@ -12,7 +12,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea?w=900&h=500&fit=crop"
     },
     "coverVideo": {
       "url": "https://twitter.com/timbenniks/status/1304146886832594944",
@@ -27,6 +27,6 @@
       "provider_url": "http://www.twitter.com/",
       "version": "1.0"
     },
-    "customPublishDate": "2021-04-05"
+    "customPublishDate": "2021-12-11"
   }
 }

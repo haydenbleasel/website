@@ -1,0 +1,26 @@
+{
+  "id": "dribbble_slider",
+  "type": "SharedSlice",
+  "name": "DribbbleSlider",
+  "description": "DribbbleSlider",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "DribbbleSlider",
+      "primary": {},
+      "items": {
+        "shot": {
+          "type": "Number",
+          "config": {
+            "label": "Shot",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 
 import Blockquote from './Blockquote';
 import Comparison from './Comparison';
+import DribbbleSlider from './DribbbleSlider';
 import NeutralData from './NeutralData';
 import Quote from './Quote';
 import RichText from './RichText';
@@ -10,6 +11,7 @@ import StoreButtons from './StoreButtons';
 export {
 	Blockquote,
 	Comparison,
+	DribbbleSlider,
 	NeutralData,
 	Quote,
 	RichText,
@@ -19,6 +21,7 @@ export {
 export const components = {
 	blockquote: Blockquote,
 	comparison: Comparison,
+	dribbble_slider: DribbbleSlider,
 	neutral_data: NeutralData,
 	quote: Quote,
 	rich_text: RichText,

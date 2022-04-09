@@ -93,6 +93,11 @@
       "default": {
         "primary": {}
       }
+    },
+    "DribbbleSlider": {
+      "default": {
+        "primary": {}
+      }
     }
   }
 }

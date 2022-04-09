@@ -29,7 +29,8 @@
                   "type": "StructuredText"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -91,7 +92,8 @@
                   "type": "Image"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -129,6 +131,65 @@
         },
         "screenshotPaths": {}
       },
+      "dribbble_slider": {
+        "library": "slices",
+        "id": "dribbble_slider",
+        "name": "DribbbleSlider",
+        "description": "DribbbleSlider",
+        "model": {
+          "id": "dribbble_slider",
+          "type": "SharedSlice",
+          "name": "DribbbleSlider",
+          "description": "DribbbleSlider",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "DribbbleSlider",
+              "primary": {},
+              "items": {
+                "shot": {
+                  "type": "Number",
+                  "config": {
+                    "label": "Shot",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "dribbble_slider",
+            "items": [
+              {
+                "shot": 3145
+              },
+              {
+                "shot": 363
+              },
+              {
+                "shot": 1870
+              },
+              {
+                "shot": 4769
+              }
+            ],
+            "primary": {}
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "neutral_data": {
         "library": "slices",
         "id": "neutral_data",
@@ -147,7 +208,8 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "NeutralData",
               "primary": {},
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -213,7 +275,8 @@
                   "type": "Image"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -272,7 +335,8 @@
                   "type": "StructuredText"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -321,7 +385,8 @@
                   "config": {
                     "label": "App Store Link",
                     "placeholder": "",
-                    "allowTargetBlank": false
+                    "allowTargetBlank": false,
+                    "select": null
                   },
                   "type": "Link"
                 },
@@ -329,12 +394,14 @@
                   "config": {
                     "label": "Google Play Link",
                     "placeholder": "",
-                    "allowTargetBlank": false
+                    "allowTargetBlank": false,
+                    "select": null
                   },
                   "type": "Link"
                 }
               },
-              "items": {}
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },

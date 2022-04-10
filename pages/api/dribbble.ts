@@ -1,6 +1,5 @@
 import type { NextApiHandler } from 'next';
-import puppeteer from 'puppeteer-core';
-import chrome from 'chrome-aws-lambda';
+import { createBrowser } from '../../utils/browser';
 
 export type DribbbleResponse = {
   error?: string;
@@ -20,20 +19,8 @@ const handler: NextApiHandler<DribbbleResponse> = async (req, res) => {
     res.status(400).json({ error: 'No shot specified' });
     return;
   }
-  const browser = await puppeteer.launch(
-    process.env.AWS_EXECUTION_ENV
-      ? {
-          args: chrome.args,
-          executablePath: await chrome.executablePath,
-          headless: chrome.headless,
-        }
-      : {
-          args: [],
-          executablePath:
-            '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-        }
-  );
 
+  const browser = await createBrowser();
   const page = await browser.newPage();
   await page.goto(`https://dribbble.com/shots/${shot}`);
 

@@ -36,49 +36,60 @@ const useActivity = (): ActivityResponse => {
   });
 
   useEffect(() => {
-    const newStatus: ActivityResponse = {
-      emoji: '',
-      status: '',
-    };
-
     if (!steam.error && steam.data?.game) {
-      newStatus.emoji = '🎮';
-      newStatus.status = `Playing ${steam.data.game}`;
-      newStatus.source = 'Steam';
+      setStatus({
+        emoji: '🎮',
+        status: `Playing ${steam.data.game}`,
+        source: 'Steam',
+      });
+      return;
     }
 
     if (!github.error && github.data?.active) {
-      newStatus.emoji = '👨‍💻';
-      newStatus.status = 'Coding';
-      newStatus.source = 'GitHub';
+      setStatus({
+        emoji: '👨‍💻',
+        status: 'Coding',
+        source: 'GitHub',
+      });
+      return;
     }
 
     if (!vercel.error && vercel.data?.active) {
-      newStatus.emoji = '🏗';
-      newStatus.status = 'Deploying code';
-      newStatus.source = 'Vercel';
+      setStatus({
+        emoji: '🏗',
+        status: 'Deploying code',
+        source: 'Vercel',
+      });
+      return;
     }
 
     const date = new Date().toLocaleTimeString('en-US', {
       timeZone: 'Australia/Sydney',
       hour12: false,
     });
+
     const time = Number(date.split(':')[0]);
 
-    if (!newStatus.status) {
-      if (time === 11) {
-        newStatus.emoji = '💪';
-        newStatus.status = 'Training';
-      } else if (time >= 1 && time <= 8) {
-        newStatus.emoji = '😴';
-        newStatus.status = 'Sleeping';
-      } else {
-        newStatus.emoji = '👨‍💻';
-        newStatus.status = 'Working';
-      }
+    if (time === 11) {
+      setStatus({
+        emoji: '💪',
+        status: 'Training',
+      });
+      return;
     }
 
-    setStatus(newStatus);
+    if (time >= 1 && time <= 8) {
+      setStatus({
+        emoji: '😴',
+        status: 'Sleeping',
+      });
+      return;
+    }
+
+    setStatus({
+      emoji: '👨‍💻',
+      status: 'Working',
+    });
   }, [
     github.data?.active,
     github.error,

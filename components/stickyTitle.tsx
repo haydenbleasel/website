@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useRef } from 'react';
-import { useIntersection } from 'react-use';
+import { useIntersectionObserver } from '@react-hookz/web/esnext';
 
 type StickyTitleProps = {
   noSticky: boolean;
@@ -8,10 +8,10 @@ type StickyTitleProps = {
 
 const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
   const intersectionRef = useRef(null);
-  const intersection = useIntersection(intersectionRef, {
+  const intersection = useIntersectionObserver(intersectionRef, {
     root: null,
     rootMargin: '0px',
-    threshold: 1,
+    threshold: [0, 0.5],
   });
   const isSticky = intersection ? !intersection.isIntersecting : false;
 

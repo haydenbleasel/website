@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { ArrowUpRight } from 'react-feather';
-import { useAsync } from 'react-use';
+import { useAsync, useMountEffect } from '@react-hookz/web/esnext';
 import type { ScreenshotResponse } from '../pages/api/screenshot';
 import Placeholder from './placeholder';
 
@@ -12,7 +12,7 @@ const excludedLinks = ['twitter.com', 'linkedin.com'];
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   const isExcluded = excludedLinks.some((excluded) => href.includes(excluded));
 
-  const screenshot = useAsync(async () => {
+  const [screenshot, { execute }] = useAsync(async () => {
     if (isExcluded) {
       return null;
     }
@@ -31,15 +31,17 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
     }
 
     return image;
-  }, [href, isExcluded]);
+  });
+
+  useMountEffect(execute);
 
   return (
     <span className="group relative">
       {!isExcluded && !screenshot.error && (
         <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex -translate-x-2/4 -translate-y-0 rounded-lg bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-900">
-          {screenshot.value ? (
+          {screenshot.result ? (
             <Image
-              src={`data:image/png;base64,${screenshot.value}`}
+              src={`data:image/png;base64,${screenshot.result}`}
               width={300}
               height={187}
               layout="fixed"

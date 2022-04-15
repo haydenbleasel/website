@@ -9,7 +9,7 @@ const Placeholder: FC<PlaceholderProps> = ({ className }) => (
     className={`flex items-center justify-center bg-gray-50 ${className ?? ''}`}
   >
     <svg
-      className="mr-3 h-5 w-5 animate-spin text-gray-400"
+      className="h-5 w-5 animate-spin text-gray-400"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

@@ -15,7 +15,6 @@
       "jobs": {
         "config": {
           "label": "Jobs",
-          "placeholder": "",
           "fields": {
             "title": {
               "config": {
@@ -35,7 +34,8 @@
               "config": {
                 "label": "Link",
                 "placeholder": "",
-                "allowTargetBlank": false
+                "allowTargetBlank": false,
+                "select": null
               },
               "type": "Link"
             },

@@ -53,7 +53,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
       {data.coverVideo.embed_url && (
         <Video data={data.coverVideo} loop playsinline controls={false} muted />
       )}
-      <div className="flex flex-col gap-8">
+      <div>
         <PrismicRichText field={data.content} />
       </div>
     </div>

@@ -7,9 +7,13 @@ import { useAsync } from 'react-use';
 import type { ScreenshotResponse } from '../pages/api/screenshot';
 import Placeholder from './placeholder';
 
+const excludedLinks = ['twitter.com', 'linkedin.com'];
+
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
+  const isExcluded = excludedLinks.some((excluded) => href.includes(excluded));
+
   const screenshot = useAsync(async () => {
-    if (href.includes('twitter.com')) {
+    if (isExcluded) {
       return null;
     }
 
@@ -27,11 +31,11 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
     }
 
     return image;
-  }, [href]);
+  }, [href, isExcluded]);
 
   return (
     <span className="group relative">
-      {!href.includes('twitter.com') && (
+      {!isExcluded && (
         <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex -translate-x-2/4 -translate-y-0 rounded-lg bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-900">
           {screenshot.value ? (
             <Image

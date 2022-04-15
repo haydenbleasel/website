@@ -9,8 +9,9 @@ import type {
   PrismicDocumentWithUID,
   RichTextField,
 } from '@prismicio/types';
+import { PrismicLink } from '@prismicio/react';
 import Layout from '../components/layout';
-import { getPage } from '../utils/prismic';
+import { docResolver, getPage } from '../utils/prismic';
 
 export type WorkProps = {
   data: {
@@ -43,7 +44,14 @@ const Work: FC<WorkProps> = ({ data }) => {
                 {years[startYear].map((job) => (
                   <div key={job.company}>
                     <p className="text-md text-gray-900 dark:text-white">
-                      {job.title}, {job.company}
+                      {job.title},{' '}
+                      {docResolver(job.link) ? (
+                        <PrismicLink field={job.link}>
+                          <span className="underline">{job.company}</span>
+                        </PrismicLink>
+                      ) : (
+                        job.company
+                      )}
                     </p>
                     <p className="flex-0 text-sm text-gray-500 dark:text-gray-400">
                       {job.location}

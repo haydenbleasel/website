@@ -1,30 +1,102 @@
 {
-  "id": "425b0ed0-fa45-45bf-91e2-a2328dbb87ca",
-  "uid": "omnis-ut-at",
+  "id": "31b4f866-1b62-41ab-8c79-7f2131b8dd6e",
+  "uid": "molestiae-velit-tenetur",
   "type": "work",
   "data": {
     "jobs": [
       {
-        "title": "engage web-enabled vortals",
-        "company": "iterate integrated initiatives",
+        "title": "facilitate web-enabled solutions",
+        "company": "visualize e-business infrastructures",
         "link": {
           "link_type": "Web",
-          "url": "http://twitter.com"
+          "url": "https://prismic.io"
         },
         "description": [
           {
             "type": "paragraph",
-            "text": "Non amet non sint ex esse mollit laboris anim. Elit laborum labore eiusmod enim eu nulla non qui amet et cillum ad duis excepteur exercitation. Mollit elit anim cillum.",
+            "text": "Nulla pariatur ea exercitation voluptate duis pariatur id adipisicing elit enim incididunt velit dolor.",
             "spans": []
           }
         ],
-        "startYear": 6308,
-        "endYear": 5478,
-        "location": "monetize bleeding-edge channels"
+        "startYear": 8062,
+        "endYear": 8659,
+        "location": "reintermediate synergistic applications"
       },
       {
-        "title": "evolve web-enabled functionalities",
-        "company": "visualize turn-key deliverables",
+        "title": "synergize dynamic metrics",
+        "company": "matrix back-end ROI",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        },
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Exercitation elit laboris magna consequat veniam veniam commodo ea cupidatat nulla ipsum et voluptate. Nulla ipsum voluptate culpa do nisi nostrud mollit.",
+            "spans": []
+          }
+        ],
+        "startYear": 1056,
+        "endYear": 7903,
+        "location": "enhance strategic ROI"
+      },
+      {
+        "title": "e-enable turn-key functionalities",
+        "company": "grow B2C bandwidth",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        },
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Ad nostrud duis fugiat mollit elit. Sit eu excepteur elit.",
+            "spans": []
+          }
+        ],
+        "startYear": 1684,
+        "endYear": 4097,
+        "location": "transition out-of-the-box schemas"
+      },
+      {
+        "title": "architect proactive partnerships",
+        "company": "maximize user-centric bandwidth",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Sint velit adipisicing incididunt. Ad aliqua veniam nisi minim nostrud culpa nulla nulla.",
+            "spans": []
+          }
+        ],
+        "startYear": 6953,
+        "endYear": 8824,
+        "location": "evolve vertical deliverables"
+      },
+      {
+        "title": "redefine sexy supply-chains",
+        "company": "scale revolutionary technologies",
+        "link": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        },
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Mollit irure amet voluptate adipisicing id aliquip sit culpa est aliquip cupidatat pariatur aute sint ut. Sunt nostrud ipsum aliquip aliquip reprehenderit id non adipisicing esse labore esse. Veniam aliqua sint Lorem cupidatat ex sunt tempor ad irure Lorem reprehenderit veniam magna mollit dolore.",
+            "spans": []
+          }
+        ],
+        "startYear": 1035,
+        "endYear": 8652,
+        "location": "envisioneer global eyeballs"
+      },
+      {
+        "title": "optimize e-business e-tailers",
+        "company": "mesh innovative synergies",
         "link": {
           "link_type": "Web",
           "url": "http://twitter.com"
@@ -32,13 +104,13 @@
         "description": [
           {
             "type": "paragraph",
-            "text": "Sit ut veniam proident do officia do ex. Nostrud nulla eu aute consequat exercitation.",
+            "text": "Ullamco nisi culpa reprehenderit ullamco irure consequat voluptate pariatur voluptate cupidatat officia mollit. Veniam officia enim elit ullamco excepteur.",
             "spans": []
           }
         ],
-        "startYear": 6304,
-        "endYear": 7663,
-        "location": "morph cross-media web services"
+        "startYear": 3767,
+        "endYear": 7430,
+        "location": "orchestrate wireless eyeballs"
       }
     ]
   }

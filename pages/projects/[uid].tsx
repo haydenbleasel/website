@@ -8,7 +8,6 @@ import type {
 } from '@prismicio/types';
 import type { SliceZoneComponents, SliceZoneProps } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
-import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
 import Layout from '../../components/layout';
 import { getPage, getPages } from '../../utils/prismic';
@@ -23,16 +22,14 @@ type LandingPageProps = {
     coverVideo: EmbedField;
     slices1: SliceZoneProps['slices'];
   };
-  last_publication_date: string;
 };
 
-const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
+const LandingPage: FC<LandingPageProps> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-1">
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Last updated at{' '}
-          {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
+          {data.description}
         </p>
       </div>
       {data.coverImage.url && (

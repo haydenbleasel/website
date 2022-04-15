@@ -59,7 +59,7 @@ const Home: FC<HomeProps> = ({ data }) => (
         </p>
       </div>
     </div>
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-6 sm:gap-12">
       {data.sections.map((section, index) => (
         <div key={index} className="flex flex-col gap-4">
           {section.title && (

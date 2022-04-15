@@ -74,11 +74,11 @@ const Home: FC<HomeProps> = ({ data }) => (
       {social.map((platform) => (
         <Link href={platform.url} key={platform.id} passHref>
           <a href={platform.url} target="_blank" rel="noopener noreferrer">
-            <span className="flex p-3 transition-transform hover:-translate-y-1">
+            <span className="flex p-4 transition-transform hover:-translate-y-1">
               <Image
                 src={`/social/${platform.id}.svg`}
-                width={16}
-                height={16}
+                width={18}
+                height={18}
                 layout="fixed"
                 quality={100}
               />

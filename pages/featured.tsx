@@ -35,7 +35,7 @@ const FeatureInner: FC<Partial<FeatureData> & { withArrow?: boolean }> = ({
   date,
   withArrow,
 }) => (
-  <div className="flex flex-1 flex-col items-center gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
+  <div className="flex flex-1 flex-col sm:items-center gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
     <div className="flex flex-col gap-1">
       <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
         <span className="line-clamp-1">{name}</span>

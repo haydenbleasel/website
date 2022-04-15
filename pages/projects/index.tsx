@@ -34,11 +34,11 @@ const Project = (project: ProjectProps) => {
 
   return (
     <PrismicLink document={project} key={id}>
-      <div className="flex gap-8 py-2">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-8 py-2">
         <p className="flex-0 flex w-24 items-center gap-2 text-md text-gray-900 dark:text-white">
           {data.title}
         </p>
-        <p className="flex-1 text-right text-sm text-gray-400 dark:text-gray-500">
+        <p className="flex-1 sm:text-right text-sm text-gray-500 dark:text-gray-400">
           {data.description}
         </p>
       </div>

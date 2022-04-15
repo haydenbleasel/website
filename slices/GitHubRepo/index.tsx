@@ -45,12 +45,12 @@ const GitHubRepo: FC<
     <Link href={data.html_url} passHref>
       <a
         href={data.html_url}
-        className="flex items-center overflow-hidden rounded-md border border-gray-200 bg-white drop-shadow-sm transition-all hover:drop-shadow-md dark:text-gray-900"
+        className="flex flex-col sm:flex-row items-center overflow-hidden rounded-md border border-gray-200 bg-white drop-shadow-sm transition-all hover:drop-shadow-md dark:text-gray-900"
       >
-        <span className="border-r border-gray-200 bg-gray-50 p-11 dark:border-gray-700 dark:bg-gray-800">
-          <GitHub size={24} className="text-gray-700" />
+        <span className="border-b sm:border-b-0 w-full sm:w-[auto] sm:border-r border-gray-200 bg-gray-50 p-11 dark:border-gray-700 dark:bg-gray-800">
+          <GitHub size={24} className="text-gray-700 mx-auto" />
         </span>
-        <span className="flex flex-1 flex-col gap-[2px] p-4">
+        <span className="flex flex-1 flex-col gap-[2px] p-4 w-full">
           <span className="flex items-center justify-between">
             <p className="text-md font-semibold text-gray-900 line-clamp-1 dark:text-white">
               {data.full_name}

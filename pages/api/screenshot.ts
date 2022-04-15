@@ -17,7 +17,7 @@ const handler: NextApiHandler<ScreenshotResponse> = async (req, res) => {
   const browser = await createBrowser();
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 750 });
-  await page.goto(url, { waitUntil: 'networkidle0' });
+  await page.goto(url, { waitUntil: 'load' });
   const image = (await page.screenshot({
     type: 'png',
     encoding: 'base64',

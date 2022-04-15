@@ -13,6 +13,7 @@ export const linkResolver: LinkResolverFunction = (document) => {
 
   const routes: Record<string, string> = {
     home: '/',
+    project: `/projects/${document.uid}`,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     'case-study': `/blog/${document.uid}`,
     // eslint-disable-next-line @typescript-eslint/naming-convention

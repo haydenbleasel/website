@@ -5,14 +5,13 @@ import type {
   ImageFieldImage,
   KeyTextField,
   PrismicDocumentWithUID,
+  RichTextField,
 } from '@prismicio/types';
-import type { SliceZoneComponents, SliceZoneProps } from '@prismicio/react';
-import { SliceZone } from '@prismicio/react';
+import { PrismicRichText } from '@prismicio/react';
 import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
 import Layout from '../components/layout';
 import { getPage, getPages } from '../utils/prismic';
-import { components } from '../slices';
 import Video from '../components/video';
 
 type LandingPageProps = {
@@ -21,7 +20,7 @@ type LandingPageProps = {
     description: KeyTextField;
     coverImage: ImageFieldImage;
     coverVideo: EmbedField;
-    slices1: SliceZoneProps['slices'];
+    content: RichTextField;
   };
   last_publication_date: string;
 };
@@ -55,10 +54,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
         <Video data={data.coverVideo} loop playsinline controls={false} muted />
       )}
       <div className="flex flex-col gap-8">
-        <SliceZone
-          slices={data.slices1}
-          components={components as unknown as SliceZoneComponents}
-        />
+        <PrismicRichText field={data.content} />
       </div>
     </div>
   </Layout>

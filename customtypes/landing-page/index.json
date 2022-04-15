@@ -40,33 +40,14 @@
           "placeholder": ""
         },
         "type": "Embed"
-      }
-    },
-    "Content": {
-      "slices1": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
+      },
+      "content": {
+        "type": "StructuredText",
         "config": {
-          "choices": {
-            "blockquote": {
-              "type": "SharedSlice"
-            },
-            "comparison": {
-              "type": "SharedSlice"
-            },
-            "quote": {
-              "type": "SharedSlice"
-            },
-            "rich_text": {
-              "type": "SharedSlice"
-            },
-            "neutral_data": {
-              "type": "SharedSlice"
-            },
-            "store_buttons": {
-              "type": "SharedSlice"
-            }
-          }
+          "label": "Content",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       }
     }

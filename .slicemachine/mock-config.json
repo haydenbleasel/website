@@ -21,7 +21,14 @@
         }
       }
     },
-    "landing-page": {},
+    "landing-page": {
+      "content": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
     "clients": {},
     "playlists": {},
     "blog": {},
@@ -46,7 +53,8 @@
         }
       },
       "testimonials": {}
-    }
+    },
+    "project": {}
   },
   "slices": {
     "RichText": {

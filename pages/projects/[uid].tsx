@@ -67,7 +67,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data, last_publication_date } = (await getPage(
     params?.uid as string,
-    'landing-page'
+    'project'
   )) as PrismicDocumentWithUID;
 
   return {

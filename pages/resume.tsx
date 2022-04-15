@@ -14,8 +14,8 @@ import toast from 'react-hot-toast';
 import { PrismicLink, PrismicRichText } from '@prismicio/react';
 import { docResolver, getPage } from '../utils/prismic';
 import Layout from '../components/layout';
+import { social } from '../utils/social';
 import type { WorkProps } from './work';
-import { social } from './_app';
 import type { HomeProps } from '.';
 
 type ResumeProps = {
@@ -53,7 +53,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
       <div className="flex flex-col gap-8 py-8 sm:py-0">
         <div className="flex items-start gap-8">
           {home.photo.url && (
-            <div className="flex overflow-hidden rounded-full shrink-0">
+            <div className="flex shrink-0 overflow-hidden rounded-full">
               <Image
                 src={home.photo.url}
                 alt="Hayden Bleasel"
@@ -72,7 +72,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
             <p className="text-md font-normal text-gray-500 dark:text-gray-400 print:text-sm">
               {home.description}
             </p>
-            <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="mt-2 flex flex-col gap-4 sm:flex-row sm:items-center">
               <PrismicLink href={process.env.NEXT_PUBLIC_SITE_URL}>
                 <span className="text-sm font-medium underline print:text-xs">
                   Website

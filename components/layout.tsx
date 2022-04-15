@@ -58,6 +58,7 @@ const Layout: FC<LayoutProps> = ({
     <>
       <NextSeo
         title={title}
+        titleTemplate="%s — Hayden Bleasel"
         description={description}
         canonical={siteUrl}
         openGraph={{

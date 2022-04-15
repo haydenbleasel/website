@@ -9,6 +9,10 @@ import Placeholder from './placeholder';
 
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   const screenshot = useAsync(async () => {
+    if (href.includes('twitter.com')) {
+      return null;
+    }
+
     const response = await fetch('/api/screenshot', {
       method: 'POST',
       body: JSON.stringify({
@@ -27,18 +31,20 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
 
   return (
     <span className="group relative">
-      <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex -translate-x-2/4 -translate-y-0 rounded-lg bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-900">
-        {screenshot.value ? (
-          <Image
-            src={`data:image/png;base64,${screenshot.value}`}
-            width={300}
-            height={187}
-            layout="fixed"
-          />
-        ) : (
-          <Placeholder className="h-[187.5px] w-[300px] rounded-md" />
-        )}
-      </span>
+      {!href.includes('twitter.com') && (
+        <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex -translate-x-2/4 -translate-y-0 rounded-lg bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-900">
+          {screenshot.value ? (
+            <Image
+              src={`data:image/png;base64,${screenshot.value}`}
+              width={300}
+              height={187}
+              layout="fixed"
+            />
+          ) : (
+            <Placeholder className="h-[187.5px] w-[300px] rounded-md" />
+          )}
+        </span>
+      )}
       <Link href={href} passHref>
         <a
           {...props}

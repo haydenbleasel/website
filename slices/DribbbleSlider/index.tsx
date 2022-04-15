@@ -68,7 +68,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
         rel="noopener noreferrer"
         className="group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col"
       >
-        <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-900">
+        <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-800">
           {data ? (
             <Image
               src={data.image}
@@ -81,7 +81,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
           ) : (
             <Placeholder className="h-[300px] w-[400px]" />
           )}
-          <div className="flex flex-col gap-1 border-t border-gray-100 p-4">
+          <div className="flex flex-col gap-1 border-t border-gray-100 p-4 dark:border-gray-700">
             <p className="m-0 text-lg font-semibold text-gray-900 line-clamp-1 dark:text-white">
               {data?.title ?? 'Loading'}
             </p>

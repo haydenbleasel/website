@@ -6,7 +6,9 @@ type PlaceholderProps = {
 
 const Placeholder: FC<PlaceholderProps> = ({ className }) => (
   <span
-    className={`flex items-center justify-center bg-gray-50 ${className ?? ''}`}
+    className={`flex items-center justify-center bg-gray-50 dark:bg-gray-900 ${
+      className ?? ''
+    }`}
   >
     <svg
       className="h-5 w-5 animate-spin text-gray-400"

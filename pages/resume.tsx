@@ -72,7 +72,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
             <p className="text-md font-normal text-gray-500 dark:text-gray-400 print:text-sm">
               {home.description}
             </p>
-            <div className="mt-2 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
               <PrismicLink href={process.env.NEXT_PUBLIC_SITE_URL}>
                 <span className="text-sm font-medium underline print:text-xs">
                   Website

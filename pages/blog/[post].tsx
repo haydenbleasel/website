@@ -97,42 +97,42 @@ const WorkPost: FC<PostProps> = ({
         </div>
       </div>
       <div className="fixed bottom-0 left-0 bg-white right-0 px-4 py-3 flex items-center justify-between gap-4 border-t border-gray-200 text-gray-500 dark:text-gray-400">
-        <p className="text-md text-gray-900 font-semibold">Share this article</p>
-        <div className="flex items-center gap-4">
+        <p className="text-md text-gray-900 font-semibold line-clamp-1">Share this article</p>
+        <div className="flex items-center">
           <FacebookShareButton url={shareUrl}>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
               <FacebookIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md">Facebook</span>
+              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Facebook</span>
             </span>
           </FacebookShareButton>
           <TwitterShareButton url={shareUrl}>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
               <TwitterIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md">Twitter</span>
+              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Twitter</span>
             </span>
           </TwitterShareButton>
           <LinkedinShareButton url={shareUrl}>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
               <LinkedinIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md">LinkedIn</span>
+              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">LinkedIn</span>
             </span>
           </LinkedinShareButton>
           <TelegramShareButton url={shareUrl}>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
               <TelegramIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md">Telegram</span>
+              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Telegram</span>
             </span>
           </TelegramShareButton>
           <RedditShareButton url={shareUrl}>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
               <RedditIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md">Reddit</span>
+              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Reddit</span>
             </span>
           </RedditShareButton>
           <EmailShareButton url={shareUrl}>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
               <EmailIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md">Email</span>
+              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Email</span>
             </span>
           </EmailShareButton>
         </div>

@@ -80,7 +80,11 @@ const Home: FC<HomeProps> = ({ data }) => (
             rel="noopener noreferrer"
             aria-label={platform.name}
           >
-            <span className="flex p-4 transition-transform hover:-translate-y-1">
+            <span
+              className={`flex p-4 transition-transform hover:-translate-y-1 ${
+                platform.invertDark ? 'dark:brightness-0 dark:invert' : ''
+              }`}
+            >
               <Image
                 src={`/social/${platform.id}.svg`}
                 width={18}

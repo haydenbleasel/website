@@ -58,16 +58,16 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
 
   return (
     <Tabs.Root
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-3"
       value={activeTab}
       onValueChange={setActiveTab}
     >
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 overflow-x-auto pb-1">
         <div className="space-between flex items-center gap-8">
           <Tabs.List className="flex flex-1 gap-4">
             {data.map(({ title }) => (
               <Tabs.Trigger
-                className={`relative whitespace-nowrap text-sm ${
+                className={`relative whitespace-nowrap text-md font-normal ${
                   title === activeTab
                     ? 'text-gray-900 after:absolute after:-bottom-[9px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
                     : 'text-gray-500 dark:text-gray-400'
@@ -85,7 +85,7 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
               size={14}
             />
             <input
-              className="w-full bg-transparent py-1 px-[18px] text-sm text-gray-900 outline-none placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500"
+              className="w-full min-w-[200px] bg-transparent py-1 px-[18px] text-md font-normal text-gray-900 outline-none placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500"
               type="text"
               placeholder="Search"
               value={search}
@@ -107,7 +107,7 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
               </Fragment>
             ))
           ) : (
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-md font-normal text-gray-500 dark:text-gray-400">
               No data found.
             </p>
           )}

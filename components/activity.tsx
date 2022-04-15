@@ -21,10 +21,10 @@ const Activity: FC = () => {
   };
 
   return (
-    <div className="absolute top-10 left-10 flex max-w-[26px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-gray-100 bg-white p-1 pr-2 transition-[max-width] hover:w-auto hover:max-w-[300px] dark:border-gray-800 dark:bg-gray-900">
-      <p className="text-md leading-none text-gray-900 dark:text-white">
+    <div className="absolute top-10 left-10 flex h-[28px] w-full max-w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-gray-100 bg-white pr-2 transition-[max-width] hover:w-auto hover:max-w-[300px] dark:border-gray-800 dark:bg-gray-900">
+      <div className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-gray-900 dark:text-white sm:text-md">
         {activity.emoji}
-      </p>
+      </div>
       <p className="text-sm leading-none text-gray-900 dark:text-white">
         {activity.status}
       </p>

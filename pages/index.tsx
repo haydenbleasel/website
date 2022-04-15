@@ -43,6 +43,7 @@ const Home: FC<HomeProps> = ({ data }) => (
                 layout="fixed"
                 priority
                 quality={100}
+                alt=""
               />
             </div>
             <Activity />
@@ -73,7 +74,12 @@ const Home: FC<HomeProps> = ({ data }) => (
     <div className="-ml-3 flex flex-wrap">
       {social.map((platform) => (
         <Link href={platform.url} key={platform.id} passHref>
-          <a href={platform.url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={platform.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={platform.name}
+          >
             <span className="flex p-4 transition-transform hover:-translate-y-1">
               <Image
                 src={`/social/${platform.id}.svg`}
@@ -81,6 +87,7 @@ const Home: FC<HomeProps> = ({ data }) => (
                 height={18}
                 layout="fixed"
                 quality={100}
+                alt={platform.name}
               />
             </span>
           </a>

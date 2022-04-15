@@ -25,6 +25,7 @@ const Quote: FC<
             width={32}
             height={32}
             quality={100}
+            alt=""
           />
         </div>
       )}

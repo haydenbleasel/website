@@ -76,6 +76,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
               height={300}
               layout="fixed"
               quality={100}
+              alt=""
             />
           ) : (
             <Placeholder className="h-[300px] w-[400px]" />

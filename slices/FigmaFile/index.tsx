@@ -62,15 +62,16 @@ const FigmaFile: FC<
               height={320}
               layout="responsive"
               quality={100}
+              alt=""
             />
           ) : (
             <Placeholder className="h-[320px] w-[640px]" />
           )}
           <div className="flex flex-col gap-1 border-t border-gray-100 p-4">
-            <p className="m-0 text-md sm:text-lg font-semibold text-gray-900 line-clamp-1 dark:text-white">
+            <p className="m-0 text-md font-semibold text-gray-900 line-clamp-1 dark:text-white sm:text-lg">
               {data?.title ?? 'Loading'}
             </p>
-            <p className="m-0 text-sm sm:text-md font-normal text-gray-500 dark:text-gray-400">
+            <p className="m-0 text-sm font-normal text-gray-500 dark:text-gray-400 sm:text-md">
               {data
                 ? `Last updated ${format(
                     parseISO(data.lastUpdated),

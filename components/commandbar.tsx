@@ -280,6 +280,7 @@ const CommandBar: FC = ({ children }) => {
         height={16}
         layout="fixed"
         quality={100}
+        alt=""
       />
     ),
     section: 'Social',

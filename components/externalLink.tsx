@@ -43,6 +43,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
               width={300}
               height={187}
               layout="fixed"
+              alt=""
             />
           ) : (
             <Placeholder className="h-[187.5px] w-[300px] rounded-md" />

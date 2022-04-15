@@ -150,6 +150,12 @@ const CommandBar: FC = ({ children }) => {
       section: 'Pages',
     },
     {
+      id: 'projects',
+      name: 'Projects',
+      keywords: 'projects',
+      section: 'Pages',
+    },
+    {
       id: 'clients',
       name: 'Clients',
       shortcut: ['c'],
@@ -203,6 +209,13 @@ const CommandBar: FC = ({ children }) => {
       parent: 'blog',
       shortcut: ['b'],
       perform: async () => push('/blog'),
+    },
+    {
+      id: 'projects-index',
+      name: 'All Projects',
+      parent: 'projects',
+      shortcut: ['x'],
+      perform: async () => push('/projects'),
     },
     {
       id: 'playlists',

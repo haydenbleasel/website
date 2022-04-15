@@ -15,6 +15,7 @@ const handler: NextApiHandler = async (req, res) => {
   const caseStudies = (await getPages('case-study')) as Docs;
   const workPosts = (await getPages('work-post')) as Docs;
   const landingPages = (await getPages('landing-page')) as Docs;
+  const projects = (await getPages('project')) as Docs;
   const devPosts = await getDevPosts();
   const mediumPosts = await getMediumPosts();
 
@@ -32,6 +33,14 @@ const handler: NextApiHandler = async (req, res) => {
     keywords: data.title,
     link: `/blog/${uid}`,
     parent: 'blog',
+  }));
+
+  const projectsActions = projects.map(({ uid, data }) => ({
+    id: uid,
+    name: `${data.title ?? ''} — ${data.description ?? ''}`,
+    keywords: data.title,
+    link: `/projects/${uid}`,
+    parent: 'projects',
   }));
 
   const landingPageActions = landingPages.map(({ uid, data }) => ({
@@ -62,6 +71,7 @@ const handler: NextApiHandler = async (req, res) => {
   const actions = [
     ...caseStudyActions,
     ...landingPageActions,
+    ...projectsActions,
     ...workPostActions,
     ...devPostActions,
     ...mediumPostActions,

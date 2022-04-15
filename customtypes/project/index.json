@@ -78,6 +78,9 @@
             },
             "store_buttons": {
               "type": "SharedSlice"
+            },
+            "git_hub_repo": {
+              "type": "SharedSlice"
             }
           }
         }

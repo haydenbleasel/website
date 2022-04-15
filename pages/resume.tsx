@@ -39,7 +39,13 @@ type ResumeProps = {
 
 const Resume: FC<ResumeProps> = ({ data, home, work }) => {
   useEffect(() => {
-    toast('You can press ⌘P to print this page!');
+    toast('You can press ⌘P to print this page!', {
+      duration: 5 * 60 * 1000,
+    });
+
+    return () => {
+      toast.dismiss();
+    };
   }, []);
 
   return (

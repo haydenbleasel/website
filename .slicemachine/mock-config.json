@@ -54,7 +54,8 @@
       },
       "testimonials": {}
     },
-    "project": {}
+    "project": {},
+    "projects": {}
   },
   "slices": {
     "RichText": {
@@ -108,6 +109,11 @@
       }
     },
     "FigmaFile": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "GitHubRepo": {
       "default": {
         "primary": {}
       }

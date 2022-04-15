@@ -1,0 +1,12 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "git_hub_repo",
+    "items": [],
+    "primary": {
+      "owner": "harness integrated e-commerce",
+      "repo": "morph bricks-and-clicks web-readiness"
+    }
+  }
+]

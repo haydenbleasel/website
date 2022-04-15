@@ -1,7 +1,6 @@
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import { Fragment } from 'react';
-import { ArrowUpRight } from 'react-feather';
 import type {
   EmbedField,
   ImageFieldImage,
@@ -10,11 +9,15 @@ import type {
   SliceZone,
 } from '@prismicio/types';
 import { PrismicLink } from '@prismicio/react';
-import { getPages } from '../../utils/prismic';
+import { getPage, getPages } from '../../utils/prismic';
 import Divider from '../../components/divider';
 import Layout from '../../components/layout';
 
 type ProjectsProps = {
+  data: {
+    title: KeyTextField;
+    description: KeyTextField;
+  };
   projects: ProjectProps[];
 };
 
@@ -33,8 +36,7 @@ const Project = (project: ProjectProps) => {
     <PrismicLink document={project} key={id}>
       <div className="flex gap-8 py-2">
         <p className="flex-0 flex w-24 items-center gap-2 text-md text-gray-900 dark:text-white">
-          <span>{data.title}</span>
-          <ArrowUpRight size={16} />
+          {data.title}
         </p>
         <p className="flex-1 text-right text-sm text-gray-400 dark:text-gray-500">
           {data.description}
@@ -44,8 +46,8 @@ const Project = (project: ProjectProps) => {
   );
 };
 
-const Projects: FC<ProjectsProps> = ({ projects }) => (
-  <Layout title="Projects" description="Things I'm working on after-hours.">
+const Projects: FC<ProjectsProps> = ({ data, projects }) => (
+  <Layout title={data.title} description={data.description}>
     <div className="group mt-4">
       {projects.map((item, index) => (
         <Fragment key={index}>
@@ -60,10 +62,12 @@ const Projects: FC<ProjectsProps> = ({ projects }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
+  const { data } = (await getPage('projects')) as PrismicDocumentWithUID;
   const projects = await getPages('project');
 
   return {
     props: {
+      data,
       projects,
     },
   };

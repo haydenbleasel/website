@@ -1,0 +1,33 @@
+{
+  "id": "git_hub_repo",
+  "type": "SharedSlice",
+  "name": "GitHubRepo",
+  "description": "GitHubRepo",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "GitHubRepo",
+      "primary": {
+        "owner": {
+          "type": "Text",
+          "config": {
+            "label": "Owner",
+            "placeholder": ""
+          }
+        },
+        "repo": {
+          "type": "Text",
+          "config": {
+            "label": "Repo",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

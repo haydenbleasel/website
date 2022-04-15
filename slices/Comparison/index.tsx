@@ -18,32 +18,38 @@ const Comparison: FC<
   }
 
   return (
-    <ReactCompareSlider
-      itemOne={
-        <Image
-          src={slice.primary.before.url}
-          width={480}
-          height={
-            480 *
-            (slice.primary.before.dimensions.height /
-              slice.primary.before.dimensions.width)
-          }
-          quality={100}
-        />
-      }
-      itemTwo={
-        <Image
-          src={slice.primary.after.url}
-          width={480}
-          height={
-            480 *
-            (slice.primary.after.dimensions.height /
-              slice.primary.after.dimensions.width)
-          }
-          quality={100}
-        />
-      }
-    />
+    <div className="flex flex-col gap-1">
+      <ReactCompareSlider
+        itemOne={
+          <Image
+            src={slice.primary.before.url}
+            width={640}
+            height={
+              640 *
+              (slice.primary.before.dimensions.height /
+                slice.primary.before.dimensions.width)
+            }
+            quality={100}
+          />
+        }
+        itemTwo={
+          <Image
+            src={slice.primary.after.url}
+            width={640}
+            height={
+              640 *
+              (slice.primary.after.dimensions.height /
+                slice.primary.after.dimensions.width)
+            }
+            quality={100}
+          />
+        }
+      />
+      <div className="flex items-center justify-between">
+        <p className="m-0 text-sm text-gray-500 dark:text-gray-400">Before</p>
+        <p className="m-0 text-sm text-gray-500 dark:text-gray-400">After</p>
+      </div>
+    </div>
   );
 };
 

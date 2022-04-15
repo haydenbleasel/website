@@ -67,7 +67,7 @@ const Layout: FC<LayoutProps> = ({
           description,
           images: [
             {
-              url: new URL('cover.jpg', process.env.NEXT_PUBLIC_SITE_URL).href,
+              url: new URL('/cover.png', process.env.NEXT_PUBLIC_SITE_URL).href,
               width: 1200,
               height: 630,
               alt: '',

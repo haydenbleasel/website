@@ -14,7 +14,20 @@ import { SliceZone } from '@prismicio/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ArticleJsonLd } from 'next-seo';
-import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, RedditIcon, RedditShareButton, TelegramIcon, TelegramShareButton, TwitterIcon, TwitterShareButton } from 'react-share';
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  RedditIcon,
+  RedditShareButton,
+  TelegramIcon,
+  TelegramShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from 'react-share';
 import Layout from '../../components/layout';
 import { getPage, getPages } from '../../utils/prismic';
 import { components } from '../../slices';
@@ -38,7 +51,7 @@ const WorkPost: FC<PostProps> = ({
   const publishedAt = data.custom_publish_date
     ? parse(data.custom_publish_date, 'yyyy-MM-dd', new Date()).toISOString()
     : first_publication_date;
-  const shareUrl = new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL ?? '').href
+  const shareUrl = new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL ?? '').href;
 
   return (
     <Layout title={data.title} description={data.description}>
@@ -96,43 +109,57 @@ const WorkPost: FC<PostProps> = ({
           />
         </div>
       </div>
-      <div className="fixed bottom-0 left-0 bg-white right-0 px-4 py-3 flex items-center justify-between gap-4 border-t border-gray-200 text-gray-500 dark:text-gray-400">
-        <p className="text-md text-gray-900 font-semibold line-clamp-1">Share this article</p>
+      <div className="fixed bottom-0 left-0 right-0 flex items-center justify-between gap-4 border-t border-gray-200 bg-white px-4 py-3 text-gray-500 dark:text-gray-400">
+        <p className="text-md font-semibold text-gray-900 line-clamp-1">
+          Share this article
+        </p>
         <div className="flex items-center">
           <FacebookShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
+            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-gray-100 sm:py-1">
               <FacebookIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Facebook</span>
+              <span className="hidden text-md text-gray-500 dark:text-gray-400 sm:block">
+                Facebook
+              </span>
             </span>
           </FacebookShareButton>
           <TwitterShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
+            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-gray-100 sm:py-1">
               <TwitterIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Twitter</span>
+              <span className="hidden text-md text-gray-500 dark:text-gray-400 sm:block">
+                Twitter
+              </span>
             </span>
           </TwitterShareButton>
           <LinkedinShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
+            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-gray-100 sm:py-1">
               <LinkedinIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">LinkedIn</span>
+              <span className="hidden text-md text-gray-500 dark:text-gray-400 sm:block">
+                LinkedIn
+              </span>
             </span>
           </LinkedinShareButton>
           <TelegramShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
+            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-gray-100 sm:py-1">
               <TelegramIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Telegram</span>
+              <span className="hidden text-md text-gray-500 dark:text-gray-400 sm:block">
+                Telegram
+              </span>
             </span>
           </TelegramShareButton>
           <RedditShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
+            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-gray-100 sm:py-1">
               <RedditIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Reddit</span>
+              <span className="hidden text-md text-gray-500 dark:text-gray-400 sm:block">
+                Reddit
+              </span>
             </span>
           </RedditShareButton>
           <EmailShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 py-[10px] sm:py-1 px-[10px] rounded-md hover:bg-gray-100 transition-colors">
+            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-gray-100 sm:py-1">
               <EmailIcon className="rounded-full" size={16} />
-              <span className="hidden sm:block text-md text-gray-500 dark:text-gray-400">Email</span>
+              <span className="hidden text-md text-gray-500 dark:text-gray-400 sm:block">
+                Email
+              </span>
             </span>
           </EmailShareButton>
         </div>

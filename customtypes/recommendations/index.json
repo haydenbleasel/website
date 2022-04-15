@@ -31,7 +31,6 @@
       "tools": {
         "config": {
           "label": "Tools",
-          "placeholder": "",
           "fields": {
             "name": {
               "config": {
@@ -51,7 +50,8 @@
               "config": {
                 "label": "Link",
                 "placeholder": "",
-                "allowTargetBlank": false
+                "allowTargetBlank": false,
+                "select": null
               },
               "type": "Link"
             }
@@ -64,7 +64,6 @@
       "freelancers": {
         "config": {
           "label": "Freelancers",
-          "placeholder": "",
           "fields": {
             "name": {
               "config": {
@@ -84,40 +83,8 @@
               "config": {
                 "label": "Link",
                 "placeholder": "",
-                "allowTargetBlank": false
-              },
-              "type": "Link"
-            }
-          }
-        },
-        "type": "Group"
-      }
-    },
-    "Apps": {
-      "apps": {
-        "config": {
-          "label": "Apps",
-          "placeholder": "",
-          "fields": {
-            "name": {
-              "config": {
-                "label": "Name",
-                "placeholder": ""
-              },
-              "type": "Text"
-            },
-            "description": {
-              "config": {
-                "label": "Description",
-                "placeholder": ""
-              },
-              "type": "Text"
-            },
-            "link": {
-              "config": {
-                "label": "Link",
-                "placeholder": "",
-                "allowTargetBlank": false
+                "allowTargetBlank": false,
+                "select": null
               },
               "type": "Link"
             }

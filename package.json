@@ -45,6 +45,7 @@
     "react-hooks-global-state": "^1.0.2",
     "react-hot-toast": "^2.2.0",
     "react-player": "^2.10.0",
+    "react-share": "^4.4.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-twitter-embed": "^4.0.4",
     "react-use": "^17.3.2",

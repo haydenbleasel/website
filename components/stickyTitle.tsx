@@ -17,7 +17,7 @@ const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
 
   return (
     <div
-      className={`top-[-1px] z-10 border-b bg-transparent ${
+      className={`pt-12 sm:pt-0 top-[-1px] z-10 border-b bg-transparent ${
         isSticky && !noSticky
           ? 'border-gray-100 bg-white/80 backdrop-blur-sm transition-all dark:border-gray-800 dark:bg-gray-900/80'
           : 'border-transparent'

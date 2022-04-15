@@ -1,85 +1,67 @@
 {
-  "id": "255a9a09-5117-4c27-9349-25b178ef440d",
-  "uid": "fuga-quia-dolore",
+  "id": "53908b84-7cdd-45dd-8202-497bf18f2f38",
+  "uid": "dolorem-sunt-rerum",
   "type": "recommendations",
   "data": {
-    "title": "visualize vertical communities",
-    "description": "matrix clicks-and-mortar supply-chains",
+    "title": "streamline vertical interfaces",
+    "description": "disintermediate cross-platform schemas",
     "tools": [
       {
-        "name": "brand back-end action-items",
-        "description": "revolutionize plug-and-play action-items",
-        "link": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        }
-      },
-      {
-        "name": "repurpose distributed e-commerce",
-        "description": "benchmark magnetic technologies",
+        "name": "redefine clicks-and-mortar mindshare",
+        "description": "transition interactive experiences",
         "link": {
           "link_type": "Web",
           "url": "http://twitter.com"
         }
       },
       {
-        "name": "disintermediate end-to-end solutions",
-        "description": "unleash best-of-breed paradigms",
+        "name": "disintermediate granular functionalities",
+        "description": "engage mission-critical partnerships",
         "link": {
           "link_type": "Web",
           "url": "http://twitter.com"
-        }
-      },
-      {
-        "name": "extend rich web-readiness",
-        "description": "enable enterprise action-items",
-        "link": {
-          "link_type": "Web",
-          "url": "http://google.com"
         }
       }
     ],
     "freelancers": [
       {
-        "name": "drive next-generation portals",
-        "description": "deliver front-end applications",
+        "name": "repurpose interactive functionalities",
+        "description": "incubate holistic paradigms",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "name": "integrate viral supply-chains",
+        "description": "iterate cutting-edge platforms",
         "link": {
           "link_type": "Web",
           "url": "http://twitter.com"
         }
       },
       {
-        "name": "morph dynamic e-services",
-        "description": "orchestrate 24/7 architectures",
+        "name": "optimize integrated technologies",
+        "description": "grow distributed supply-chains",
         "link": {
           "link_type": "Web",
           "url": "http://google.com"
         }
       },
       {
-        "name": "evolve frictionless niches",
-        "description": "scale B2C users",
+        "name": "mesh turn-key initiatives",
+        "description": "recontextualize integrated bandwidth",
         "link": {
           "link_type": "Web",
-          "url": "http://twitter.com"
-        }
-      }
-    ],
-    "apps": [
-      {
-        "name": "innovate compelling communities",
-        "description": "expedite dynamic mindshare",
-        "link": {
-          "link_type": "Web",
-          "url": "https://prismic.io"
+          "url": "http://google.com"
         }
       },
       {
-        "name": "disintermediate impactful content",
-        "description": "synthesize compelling methodologies",
+        "name": "leverage holistic relationships",
+        "description": "transition ubiquitous networks",
         "link": {
           "link_type": "Web",
-          "url": "https://prismic.io"
+          "url": "http://twitter.com"
         }
       }
     ]

@@ -23,7 +23,7 @@ const Menu: FC = () => {
       role="button"
       tabIndex={0}
     >
-      <MenuList size={16} />
+      <MenuList size={16} aria-label="Menu" />
     </div>
   );
 };

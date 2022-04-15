@@ -40,7 +40,7 @@ const Activity: FC = () => {
         role="button"
         className="flex select-none text-gray-400 dark:text-gray-500"
       >
-        <HelpCircle size={12} />
+        <HelpCircle size={12} aria-label="Activity Info" />
       </div>
     </div>
   );

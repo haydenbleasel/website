@@ -15,7 +15,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import { useState, useEffect, useCallback } from 'react';
-import { ArrowUpRight, ChevronRight } from 'react-feather';
+import { ArrowUpRight, ChevronRight, Code } from 'react-feather';
 import toast from 'react-hot-toast';
 import { useLocalStorage } from 'react-use';
 import { social } from '../utils/social';
@@ -286,6 +286,15 @@ const CommandBar: FC = ({ children }) => {
     section: 'Social',
     perform: async () => push(url),
   }));
+
+  socialActions.push({
+    id: 'source',
+    name: 'View source code',
+    keywords: 'source',
+    section: 'Social',
+    icon: <Code size={16} className="text-gray-900" />,
+    perform: async () => push('https://github.com/haydenbleasel/daylight'),
+  });
 
   useEffect(() => {
     if (

@@ -13,7 +13,7 @@ import type { FC } from 'react';
 import Activity from '../components/activity';
 import Layout from '../components/layout';
 import { getPage } from '../utils/prismic';
-import { social } from './_app';
+import { social } from '../utils/social';
 
 export type HomeProps = {
   data: {

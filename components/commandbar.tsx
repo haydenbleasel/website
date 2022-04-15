@@ -11,12 +11,14 @@ import {
   KBarResults,
   useRegisterActions,
 } from 'kbar';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import { useState, useEffect, useCallback } from 'react';
-import { ChevronRight } from 'react-feather';
+import { ArrowUpRight, ChevronRight } from 'react-feather';
 import toast from 'react-hot-toast';
 import { useLocalStorage } from 'react-use';
+import { social } from '../utils/social';
 
 type RenderParams<T = ActionImpl | string> = {
   item: T;
@@ -39,6 +41,9 @@ const RenderResults: FC = () => {
           }`}
         >
           <div className="flex items-center gap-1">
+            {props.item.icon && (
+              <div className="mr-2 flex">{props.item.icon}</div>
+            )}
             {props.item.parent && (
               <>
                 <span
@@ -82,6 +87,12 @@ const RenderResults: FC = () => {
                 {props.item.shortcut}
               </span>
             </div>
+          )}
+          {props.item.icon && (
+            <ArrowUpRight
+              size={16}
+              className="text-gray-400 dark:text-gray-500"
+            />
           )}
         </div>
       ),
@@ -258,6 +269,23 @@ const CommandBar: FC = ({ children }) => {
     },
   ];
 
+  const socialActions = social.map(({ id, name, url }) => ({
+    id,
+    name,
+    keywords: id,
+    icon: (
+      <Image
+        src={`/social/${id}.svg`}
+        width={16}
+        height={16}
+        layout="fixed"
+        quality={100}
+      />
+    ),
+    section: 'Social',
+    perform: async () => push(url),
+  }));
+
   useEffect(() => {
     if (
       theme === 'dark' ||
@@ -270,7 +298,7 @@ const CommandBar: FC = ({ children }) => {
   }, [theme]);
 
   return (
-    <KBarProvider actions={actions}>
+    <KBarProvider actions={[...actions, ...socialActions]}>
       <LoadCustomActions />
       <KBarPortal>
         <KBarPositioner className="z-30 bg-white/80 backdrop-blur-sm dark:bg-gray-900/80">

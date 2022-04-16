@@ -74,12 +74,14 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
               src={data.image}
               width={400}
               height={300}
-              layout="fixed"
+              layout="responsive"
               quality={100}
               alt=""
             />
           ) : (
-            <Placeholder className="h-[300px] w-[400px]" />
+            <div className="aspect-[4/3]">
+              <Placeholder className="h-full w-full" />
+            </div>
           )}
           <div className="flex flex-col gap-1 border-t border-gray-100 p-4 dark:border-gray-700">
             <p className="m-0 text-lg font-semibold text-gray-900 line-clamp-1 dark:text-white">

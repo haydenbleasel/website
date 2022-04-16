@@ -1,9 +1,51 @@
 {
-  "id": "cb0022dc-527c-4834-9452-eccd66046f96",
-  "uid": "qui-voluptas-eum",
+  "id": "32c12876-9dbf-41d7-8477-3b119ca4e810",
+  "uid": "eum-placeat-sint",
   "type": "projects",
   "data": {
-    "title": "orchestrate out-of-the-box communities",
-    "description": "transform distributed convergence"
+    "title": "embrace viral solutions",
+    "description": "exploit sticky communities",
+    "wip": [
+      {
+        "name": "mesh vertical functionalities",
+        "description": "envisioneer web-enabled platforms",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      },
+      {
+        "name": "facilitate efficient experiences",
+        "description": "exploit ubiquitous communities",
+        "link": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "name": "revolutionize next-generation portals",
+        "description": "expedite 24/365 ROI",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "name": "expedite holistic platforms",
+        "description": "reinvent dot-com infrastructures",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "name": "orchestrate world-class e-commerce",
+        "description": "facilitate integrated relationships",
+        "link": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      }
+    ]
   }
 }

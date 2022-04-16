@@ -26,6 +26,38 @@
           "placeholder": ""
         }
       }
+    },
+    "WIP": {
+      "wip": {
+        "type": "Group",
+        "config": {
+          "label": "Wip",
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "Name",
+                "placeholder": ""
+              }
+            },
+            "description": {
+              "type": "Text",
+              "config": {
+                "label": "Description",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -40,8 +40,8 @@ type ProjectProps = PrismicDocumentWithUID<{
 const Project: FC<{
   title: KeyTextField;
   description: KeyTextField;
-  wip: boolean;
-}> = ({ title, description, wip }) => (
+  wip?: boolean;
+}> = ({ title, description, wip = false }) => (
   <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
     <p className="flex-0 flex items-center gap-2 text-md text-gray-900 dark:text-white">
       {title}
@@ -75,6 +75,7 @@ const Projects: FC<ProjectsProps> = ({ data, projects }) => (
             </div>
           </Fragment>
         ))}
+        {data.wip.length && projects.length && <Divider />}
         {data.wip.map((item, index) => (
           <Fragment key={index}>
             {Boolean(index) && <Divider />}

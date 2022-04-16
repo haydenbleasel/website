@@ -2,6 +2,7 @@ import type { EmbedField } from '@prismicio/types';
 import dynamic from 'next/dynamic';
 import type { FC } from 'react';
 import type { VimeoPlayerProps } from 'react-player/vimeo';
+import Placeholder from './placeholder';
 
 type VideoProps = {
   data: EmbedField;
@@ -18,22 +19,25 @@ const Video: FC<VideoProps> = ({ data, ...props }) => {
 
   return (
     <div
-      className="overflow-hidden rounded-md"
+      className="relative overflow-hidden rounded-md"
       style={{
         aspectRatio: `${data.width as number}/${data.height as number}`,
       }}
     >
-      <ReactPlayer
-        url={data.embed_url}
-        loop
-        controls={false}
-        muted
-        playsinline
-        playing
-        width="100%"
-        height="100%"
-        {...props}
-      />
+      <Placeholder className="absolute inset-0 z-0" />
+      <div className="relative z-10 h-full w-full">
+        <ReactPlayer
+          url={data.embed_url}
+          loop
+          controls={false}
+          muted
+          playsinline
+          playing
+          width="100%"
+          height="100%"
+          {...props}
+        />
+      </div>
     </div>
   );
 };

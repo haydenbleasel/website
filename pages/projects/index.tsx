@@ -37,13 +37,17 @@ type ProjectProps = PrismicDocumentWithUID<{
   slices1: SliceZone;
 }>;
 
-const Project: FC<{ title: KeyTextField; description: KeyTextField }> = ({
-  title,
-  description,
-}) => (
+const Project: FC<{
+  title: KeyTextField;
+  description: KeyTextField;
+  wip: boolean;
+}> = ({ title, description, wip }) => (
   <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
-    <p className="flex-0 flex w-32 items-center gap-2 text-md text-gray-900 dark:text-white">
+    <p className="flex-0 flex items-center gap-2 text-md text-gray-900 dark:text-white">
       {title}
+      {wip && (
+        <span className="text-xs text-gray-500 dark:text-gray-400">(WIP)</span>
+      )}
     </p>
     <p className="flex-1 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
       {description}
@@ -76,7 +80,7 @@ const Projects: FC<ProjectsProps> = ({ data, projects }) => (
             {Boolean(index) && <Divider />}
             <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
               {item.link.link_type === 'Any' ? (
-                <Project title={item.name} description={item.description} />
+                <Project title={item.name} description={item.description} wip />
               ) : (
                 <Link href={docResolver(item.link)} passHref>
                   <a

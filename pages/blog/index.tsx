@@ -70,13 +70,6 @@ const Blog: FC<BlogProps> = ({
     ...mediumPosts,
     ...workPosts,
   ].sort(sortByDate);
-  const data = [
-    { title: 'All', items: allPosts },
-    { title: 'Case Studies', items: caseStudies.sort(sortByDate) },
-    { title: 'Code', items: devPosts.sort(sortByDate) },
-    { title: 'Design', items: mediumPosts.sort(sortByDate) },
-    { title: 'Work', items: workPosts.sort(sortByDate) },
-  ];
 
   return (
     <Layout title="Blog" description="Posts about code, work and life.">
@@ -92,9 +85,15 @@ const Blog: FC<BlogProps> = ({
       />
       <div className="mt-4">
         <List
-          data={data}
+          data={[
+            { title: 'All', items: allPosts },
+            { title: 'Case Studies', items: caseStudies.sort(sortByDate) },
+            { title: 'Code', items: devPosts.sort(sortByDate) },
+            { title: 'Design', items: mediumPosts.sort(sortByDate) },
+            { title: 'Work', items: workPosts.sort(sortByDate) },
+          ]}
           renderItem={PostLink}
-          indexKey="name"
+          indexKey="title"
           searchKeys={['title', 'date', 'content']}
         />
       </div>

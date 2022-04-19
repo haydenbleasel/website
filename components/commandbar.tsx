@@ -215,6 +215,14 @@ const CommandBar: FC = ({ children }) => {
       perform: async () => push('/featured'),
     },
     {
+      id: 'games',
+      name: 'Games',
+      shortcut: ['g'],
+      keywords: 'games',
+      section: 'Pages',
+      perform: async () => push('/games'),
+    },
+    {
       id: 'blog-index',
       name: 'All Posts',
       parent: 'blog',

@@ -1,13 +1,12 @@
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
-import { Fragment } from 'react';
 import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
 import { Star } from 'react-feather';
 import { getPage } from '../utils/prismic';
-import Divider from '../components/divider';
 import Layout from '../components/layout';
 import type { AchievementProps, SteamGame } from '../utils/steam';
 import { getGames } from '../utils/steam';
+import List from '../components/list';
 
 type ProjectsProps = {
   data: {
@@ -18,6 +17,18 @@ type ProjectsProps = {
     game: SteamGame;
     achievements: AchievementProps[];
   }[];
+};
+
+const isPerfectGame = (game: ProjectsProps['games'][number]) => {
+  if (!game.achievements.length) {
+    return false;
+  }
+
+  const isPerfect =
+    game.achievements.filter(({ achieved }) => Boolean(achieved)).length ===
+    game.achievements.length;
+
+  return isPerfect;
 };
 
 const Achievements: FC<{ data: AchievementProps[] }> = ({ data }) => {
@@ -71,12 +82,18 @@ const Games: FC<ProjectsProps> = ({ data, games }) => (
         {data.description}
       </p>
       <div className="mt-4">
-        {games.sort(sortByPlaytime).map((game, index) => (
-          <Fragment key={index}>
-            {Boolean(index) && <Divider />}
-            <Game {...game} />
-          </Fragment>
-        ))}
+        <List
+          data={[
+            { title: 'All Games', items: games.sort(sortByPlaytime) },
+            {
+              title: 'Perfect Games',
+              items: games.sort(sortByPlaytime).filter(isPerfectGame),
+            },
+          ]}
+          renderItem={Game}
+          indexKey="id"
+          searchKeys={['game.name']}
+        />
       </div>
     </div>
   </Layout>

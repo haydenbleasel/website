@@ -65,6 +65,7 @@ export const getGames = async (): Promise<
   const games = data.response.games
     .filter(({ playtime_forever }) => Boolean(playtime_forever))
     .map(async (game) => ({
+      id: game.appid,
       game,
       achievements: await getAchievements(game.appid),
     }));

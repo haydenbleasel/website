@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useRef } from 'react';
-import { useIntersection } from 'react-use';
+import { useIntersectionObserver } from '@react-hookz/web';
 
 type StickyTitleProps = {
   noSticky: boolean;
@@ -8,16 +8,16 @@ type StickyTitleProps = {
 
 const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
   const intersectionRef = useRef(null);
-  const intersection = useIntersection(intersectionRef, {
+  const intersection = useIntersectionObserver(intersectionRef, {
     root: null,
     rootMargin: '0px',
-    threshold: 1,
+    threshold: [0, 0.5],
   });
   const isSticky = intersection ? !intersection.isIntersecting : false;
 
   return (
     <div
-      className={`pt-12 sm:pt-0 top-[-1px] z-10 border-b bg-transparent ${
+      className={`top-[-1px] z-10 border-b bg-transparent pt-12 sm:pt-0 ${
         isSticky && !noSticky
           ? 'border-gray-100 bg-white/80 backdrop-blur-sm transition-all dark:border-gray-800 dark:bg-gray-900/80'
           : 'border-transparent'

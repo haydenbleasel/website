@@ -17,7 +17,7 @@ import type { FC } from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import { ArrowUpRight, ChevronRight, Code } from 'react-feather';
 import toast from 'react-hot-toast';
-import { useLocalStorage } from 'react-use';
+import { useLocalStorageValue } from '@react-hookz/web';
 import { social } from '../utils/social';
 
 type RenderParams<T = ActionImpl | string> = {
@@ -141,10 +141,9 @@ const LoadCustomActions = () => {
 
 const CommandBar: FC = ({ children }) => {
   const { push } = useRouter();
-  const [theme, setTheme, removeTheme] = useLocalStorage<string | undefined>(
-    'theme',
-    undefined
-  );
+  const [theme, setTheme, removeTheme] = useLocalStorageValue<
+    string | undefined
+  >('theme', undefined);
   const actions = [
     {
       id: 'home',

@@ -1,6 +1,6 @@
-const hexToRGBA = require('hex-to-rgba');
 const lineClamp = require('@tailwindcss/line-clamp');
 const typography = require('@tailwindcss/typography');
+const animationDelay = require('tailwindcss-animation-delay');
 
 module.exports = {
   mode: 'jit',
@@ -159,9 +159,6 @@ module.exports = {
       lg: ['1.125rem', '1.75'],
       xl: ['1.25rem', '1.75'],
     },
-    letterSpacing: {
-      normal: '0.008rem',
-    },
     fontWeight: {
       normal: 300,
       medium: 400,
@@ -174,91 +171,22 @@ module.exports = {
       xl: '2rem',
       xxl: '2.5rem',
     },
-    boxShadow: (theme) => ({
-      border: `inset 0 0 0 1px ${theme('colors.gray.300')}`,
-      'border-light': `inset 0 0 0 1px ${theme('colors.gray.200')}`,
-      'border-focus': `inset 0 0 0 1px ${theme('colors.gray.300')}`,
-      'border-error': `inset 0 0 0 1px ${theme('colors.error.300')}`,
-      focus: `0 0 0 0.25rem ${theme('colors.gray.100')}`,
-      'focus-error': `0 0 0 0.25rem ${theme('colors.error.100')}`,
-      xs: `0 1px 0.125rem ${hexToRGBA(theme('colors.gray.900'), 0.05)}`,
-      sm: `0 1px 0.1875rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.1
-      )}, 0 1px 0.125rem ${hexToRGBA(theme('colors.gray.900'), 0.06)}`,
-      md: `0 0.25rem 0.5rem -0.125rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.1
-      )}, 0 0.125rem 0.25rem -0.125rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.06
-      )}`,
-      lg: `0 0.75rem 1rem -0.25rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.1
-      )}, 0 0.25rem 0.375rem -0.125rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.05
-      )}`,
-      xl: `0 1.25rem 1.5rem -0.25rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.1
-      )}, 0 0.5rem 0.5rem -0.25rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.04
-      )}`,
-      '2xl': `0 1.75rem 2rem -0.375rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.1
-      )}, 0 1rem 0.625rem -0.25rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.03
-      )}`,
-      '3xl': `0 2.25rem 2.5rem -0.375rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.1
-      )}, 0 2rem 0.75rem -0.375rem ${hexToRGBA(
-        theme('colors.gray.900'),
-        0.02
-      )}`,
-    }),
     extend: {
       animation: {
-        fadeIn: 'fadeIn 0.2s ease-out',
-        fadeOut: 'fadeOut 0.2s ease-in',
-        enter: 'enter 0.2s ease-out',
-        enterCenter: 'enterCenter 0.2s ease-out',
-        exit: 'exit 0.2s ease-in forwards',
-        exitCenter: 'exitCenter 0.2s ease-in forwards',
+        enter: 'enter 0.6s forwards',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
-        },
-        fadeOut: {
-          '0%': { opacity: 1 },
-          '100%': { opacity: 0 },
-        },
         enter: {
-          '0%': { opacity: 0, transform: 'scale(.9)' },
-          '100%': { opacity: 1, transform: 'scale(1)' },
-        },
-        enterCenter: {
-          '0%': { opacity: 0, transform: 'translate(-50%, -50%) scale(.9)' },
-          '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-        },
-        exit: {
-          '0%': { opacity: 1, transform: 'scale(1)' },
-          '100%': { opacity: 0, transform: 'scale(.9)' },
-        },
-        exitCenter: {
-          '0%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-          '100%': { opacity: 0, transform: 'translate(-50%, -50%) scale(0.9)' },
+          '0%': {
+            opacity: 0,
+            transform: 'translateY(0.5rem)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'none',
+          },
         },
       },
-    },
-    extend: {
       typography: (theme) => ({
         DEFAULT: {
           css: [
@@ -305,5 +233,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [lineClamp, typography],
+  plugins: [lineClamp, typography, animationDelay],
 };

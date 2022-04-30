@@ -12,6 +12,7 @@ const SocialLinks: FC = () => (
           target="_blank"
           rel="noopener noreferrer"
           aria-label={platform.name}
+          className="animate-enter opacity-0"
         >
           <span
             className={`flex p-4 transition-transform hover:-translate-y-1 ${

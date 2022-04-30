@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { ArrowUpRight } from 'react-feather';
-import { useAsync, useMountEffect } from '@react-hookz/web/esnext';
+import { useAsync, useMountEffect } from '@react-hookz/web';
 import type { ScreenshotResponse } from '../pages/api/screenshot';
 import Placeholder from './placeholder';
 
@@ -11,12 +11,7 @@ const excludedLinks = ['twitter.com', 'linkedin.com'];
 
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   const isExcluded = excludedLinks.some((excluded) => href.includes(excluded));
-
   const [screenshot, { execute }] = useAsync(async () => {
-    if (isExcluded) {
-      return null;
-    }
-
     const response = await fetch('/api/screenshot', {
       method: 'POST',
       body: JSON.stringify({
@@ -33,7 +28,11 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
     return image;
   });
 
-  useMountEffect(execute);
+  useMountEffect(async () => {
+    if (!isExcluded) {
+      await execute();
+    }
+  });
 
   return (
     <span className="group relative">

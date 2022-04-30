@@ -17,7 +17,7 @@ import type { FC } from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import { ArrowUpRight, ChevronRight, Code } from 'react-feather';
 import toast from 'react-hot-toast';
-import { useLocalStorageValue } from '@react-hookz/web/esnext';
+import { useLocalStorageValue } from '@react-hookz/web';
 import { social } from '../utils/social';
 
 type RenderParams<T = ActionImpl | string> = {

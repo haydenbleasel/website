@@ -11,7 +11,7 @@ const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
   const intersection = useIntersectionObserver(intersectionRef, {
     root: null,
     rootMargin: '0px',
-    threshold: [0, 0.5],
+    threshold: [1],
   });
   const isSticky = intersection ? !intersection.isIntersecting : false;
 

@@ -17,7 +17,7 @@
     "@prismicio/client": "^6.4.3",
     "@prismicio/helpers": "^2.3.0",
     "@prismicio/next": "^0.1.2",
-    "@prismicio/react": "^2.2.0",
+    "@prismicio/react": "^2.3.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
     "@radix-ui/react-tabs": "^0.1.5",
     "@react-hookz/web": "^13.2.1",

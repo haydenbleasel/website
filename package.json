@@ -31,7 +31,7 @@
     "he": "^1.2.0",
     "hex-to-rgba": "^2.0.1",
     "jsdom": "^19.0.0",
-    "kbar": "^0.1.0-beta.33",
+    "kbar": "^0.1.0-beta.34",
     "lodash.groupby": "^4.6.0",
     "next": "12.1.5",
     "next-compose-plugins": "^2.2.1",

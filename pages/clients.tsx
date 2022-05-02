@@ -59,9 +59,21 @@ const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
     description="A list of clients I've worked with over the years."
   >
     <div className="flex flex-col gap-8">
-      <ClientList name="R/GA" data={data.rga} />
-      <ClientList name="Jellypepper" data={jellypepper} />
-      <ClientList name="Freelance" data={data.freelance} />
+      {[
+        { name: 'RGA', data: data.rga },
+        { name: 'Freelance', data: data.freelance },
+        { name: 'Jellypepper', data: jellypepper },
+      ].map((clientList, index) => (
+        <div
+          className="animate-enter opacity-0"
+          key={clientList.name}
+          style={{
+            animationDelay: `${(index + 1) * 100}ms`,
+          }}
+        >
+          <ClientList {...clientList} />
+        </div>
+      ))}
     </div>
   </Layout>
 );

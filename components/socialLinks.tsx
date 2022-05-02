@@ -5,7 +5,7 @@ import { social } from '../utils/social';
 
 const SocialLinks: FC = () => (
   <div className="-ml-3 flex flex-wrap">
-    {social.map((platform) => (
+    {social.map((platform, index) => (
       <Link href={platform.url} key={platform.id} passHref>
         <a
           href={platform.url}
@@ -13,6 +13,7 @@ const SocialLinks: FC = () => (
           rel="noopener noreferrer"
           aria-label={platform.name}
           className="animate-enter opacity-0"
+          style={{ animationDelay: `${(index + 2) * 100}ms` }}
         >
           <span
             className={`flex p-4 transition-transform hover:-translate-y-1 ${

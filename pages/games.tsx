@@ -78,7 +78,7 @@ const sortByPlaytime = (
 const Games: FC<ProjectsProps> = ({ data, games }) => (
   <Layout title={data.title} description={data.description}>
     <div className="flex flex-col gap-4">
-      <p className="text-sm text-gray-500 dark:text-gray-400">
+      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
         {data.description}
       </p>
       <div className="mt-4">

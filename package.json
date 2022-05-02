@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n next,prismic \"next dev\" \"yarn:slicemachine\"",
+    "dev": "yarn install && concurrently -n next,prismic \"next dev\" \"yarn:slicemachine\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

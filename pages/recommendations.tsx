@@ -56,19 +56,24 @@ const sortAlphabetically = (
 
 const Recommendations: FC<RecommendationsData> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
-    <div className="mt-4">
-      <List
-        data={[
-          { title: 'Tools', items: data.tools.sort(sortAlphabetically) },
-          {
-            title: 'Freelancers',
-            items: data.freelancers.sort(sortAlphabetically),
-          },
-        ]}
-        renderItem={Recommendation}
-        indexKey="name"
-        searchKeys={['name', 'description']}
-      />
+    <div className="flex flex-col gap-4">
+      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
+        {data.description}
+      </p>
+      <div className="mt-4">
+        <List
+          data={[
+            { title: 'Tools', items: data.tools.sort(sortAlphabetically) },
+            {
+              title: 'Freelancers',
+              items: data.freelancers.sort(sortAlphabetically),
+            },
+          ]}
+          renderItem={Recommendation}
+          indexKey="name"
+          searchKeys={['name', 'description']}
+        />
+      </div>
     </div>
   </Layout>
 );

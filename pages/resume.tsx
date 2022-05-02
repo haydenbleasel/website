@@ -15,6 +15,7 @@ import { PrismicLink, PrismicRichText } from '@prismicio/react';
 import { docResolver, getPage } from '../utils/prismic';
 import Layout from '../components/layout';
 import { social } from '../utils/social';
+import SocialLinks from '../components/socialLinks';
 import type { WorkProps } from './work';
 import type { HomeProps } from '.';
 
@@ -72,32 +73,11 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
             <p className="text-md font-normal text-gray-500 dark:text-gray-400 print:text-sm">
               {home.description}
             </p>
-            <div className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
-              <PrismicLink href={process.env.NEXT_PUBLIC_SITE_URL}>
-                <span className="text-sm font-medium underline print:text-xs">
-                  Website
-                </span>
-              </PrismicLink>
-              <PrismicLink
-                href={social.find(({ id }) => id === 'twitter')?.url}
-              >
-                <span className="text-sm font-medium underline print:text-xs">
-                  Twitter
-                </span>
-              </PrismicLink>
-              <PrismicLink href={social.find(({ id }) => id === 'github')?.url}>
-                <span className="text-sm font-medium underline print:text-xs">
-                  GitHub
-                </span>
-              </PrismicLink>
-              <PrismicLink
-                href={social.find(({ id }) => id === 'dribbble')?.url}
-              >
-                <span className="text-sm font-medium underline print:text-xs">
-                  Dribbble
-                </span>
-              </PrismicLink>
-            </div>
+            <PrismicLink href={process.env.NEXT_PUBLIC_SITE_URL}>
+              <span className="text-sm font-medium underline print:text-xs">
+                Visit my website
+              </span>
+            </PrismicLink>
           </div>
         </div>
 
@@ -193,6 +173,13 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
               </blockquote>
             ))}
           </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
+            Social
+          </h2>
+          <SocialLinks />
         </div>
       </div>
     </Layout>

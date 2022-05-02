@@ -7,7 +7,7 @@ import { useAsync, useMountEffect } from '@react-hookz/web';
 import type { ScreenshotResponse } from '../pages/api/screenshot';
 import Placeholder from './placeholder';
 
-const excludedLinks = ['twitter.com', 'linkedin.com'];
+const excludedLinks = ['twitter.com', 'linkedin.com', 'haydenbleasel.com'];
 
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   const isExcluded = excludedLinks.some((excluded) => href.includes(excluded));

@@ -33,15 +33,25 @@ const Playlists: FC<PlaylistsProps> = ({ playlists }) => (
     title="Playlists"
     description="Curated playlists from my Spotify library."
   >
-    <div className="group mt-4">
-      {playlists.map((item, index) => (
-        <Fragment key={index}>
-          {Boolean(index) && <Divider />}
-          <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
-            <Playlist {...item} />
-          </div>
-        </Fragment>
-      ))}
+    <div className="flex flex-col gap-4">
+      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
+        Curated playlists from my Spotify library.
+      </p>
+      <div className="group mt-4">
+        {playlists.map((item, index) => (
+          <Fragment key={index}>
+            {Boolean(index) && <Divider />}
+            <div
+              className="animate-enter opacity-0 transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100"
+              style={{
+                animationDelay: `${(index + 2) * 100}ms`,
+              }}
+            >
+              <Playlist {...item} />
+            </div>
+          </Fragment>
+        ))}
+      </div>
     </div>
   </Layout>
 );

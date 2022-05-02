@@ -58,14 +58,17 @@ const Project: FC<{
 const Projects: FC<ProjectsProps> = ({ data, projects }) => (
   <Layout title={data.title} description={data.description}>
     <div className="flex flex-col gap-4">
-      <p className="text-sm text-gray-500 dark:text-gray-400">
+      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
         {data.description}
       </p>
       <div className="group mt-4">
         {projects.map((item, index) => (
           <Fragment key={index}>
             {Boolean(index) && <Divider />}
-            <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
+            <div
+              className="animate-enter opacity-0 transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100"
+              style={{ animationDelay: `${(index + 2) * 100}ms` }}
+            >
               <PrismicLink document={item}>
                 <Project
                   title={item.data.title}
@@ -79,7 +82,12 @@ const Projects: FC<ProjectsProps> = ({ data, projects }) => (
         {data.wip.map((item, index) => (
           <Fragment key={index}>
             {Boolean(index) && <Divider />}
-            <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
+            <div
+              className="animate-enter opacity-0 transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100"
+              style={{
+                animationDelay: `${(index + projects.length + 2) * 100}ms`,
+              }}
+            >
               {item.link.link_type === 'Any' ? (
                 <Project title={item.name} description={item.description} wip />
               ) : (

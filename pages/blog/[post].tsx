@@ -72,13 +72,13 @@ const WorkPost: FC<PostProps> = ({
         description={data.description ?? ''}
       />
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-1">
+        <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Published {format(parseISO(publishedAt), 'MMM dd, yyyy')}{' '}
           </p>
         </div>
         {data.coverImage.url && (
-          <div className="flex overflow-hidden rounded-sm">
+          <div className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200">
             <Image
               src={data.coverImage.url}
               alt={data.coverImage.alt ?? ''}
@@ -94,22 +94,24 @@ const WorkPost: FC<PostProps> = ({
           </div>
         )}
         {data.coverVideo.embed_url && (
-          <Video
-            data={data.coverVideo}
-            loop
-            playsinline
-            controls={false}
-            muted
-          />
+          <div className="animate-enter opacity-0 animation-delay-200">
+            <Video
+              data={data.coverVideo}
+              loop
+              playsinline
+              controls={false}
+              muted
+            />
+          </div>
         )}
-        <div className="prose dark:prose-invert">
+        <div className="prose animate-enter opacity-0 animation-delay-300 dark:prose-invert">
           <SliceZone
             slices={data.slices1}
             components={components as unknown as SliceZoneComponents}
           />
         </div>
       </div>
-      <div className="bottom-0 left-0 right-0 flex items-center justify-between gap-4 border-t border-gray-200 bg-white py-3 text-gray-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 sm:fixed sm:px-4">
+      <div className="bottom-0 left-0 right-0 flex animate-enter items-center justify-between gap-4 border-t border-gray-200 bg-white py-3 text-gray-500 opacity-0 animation-delay-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 sm:fixed sm:px-4">
         <p className="text-md font-semibold text-gray-900 line-clamp-1 dark:text-white">
           Share this article
         </p>

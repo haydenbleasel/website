@@ -35,7 +35,7 @@ const FeatureInner: FC<Partial<FeatureData> & { withArrow?: boolean }> = ({
   date,
   withArrow,
 }) => (
-  <div className="flex flex-1 flex-col sm:items-center gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
+  <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
     <div className="flex flex-col gap-1">
       <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
         <span className="line-clamp-1">{name}</span>
@@ -68,16 +68,21 @@ const sortByDate = (featureA: FeatureData, featureB: FeatureData) =>
 
 const Featured: FC<FeaturesData> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
-    <div className="mt-4">
-      <List
-        data={[
-          { title: 'Speaking', items: data.speaking.sort(sortByDate) },
-          { title: 'Articles', items: data.articles.sort(sortByDate) },
-        ]}
-        renderItem={Feature}
-        indexKey="name"
-        searchKeys={['name', 'description']}
-      />
+    <div className="flex flex-col gap-4">
+      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
+        {data.description}
+      </p>
+      <div className="mt-4">
+        <List
+          data={[
+            { title: 'Speaking', items: data.speaking.sort(sortByDate) },
+            { title: 'Articles', items: data.articles.sort(sortByDate) },
+          ]}
+          renderItem={Feature}
+          indexKey="name"
+          searchKeys={['name', 'description']}
+        />
+      </div>
     </div>
   </Layout>
 );

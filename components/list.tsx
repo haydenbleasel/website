@@ -65,13 +65,14 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
       <div className="flex flex-col gap-1 overflow-x-auto pb-1">
         <div className="space-between flex items-center gap-8">
           <Tabs.List className="flex flex-1 gap-4">
-            {data.map(({ title }) => (
+            {data.map(({ title }, index) => (
               <Tabs.Trigger
-                className={`relative whitespace-nowrap text-md font-normal ${
+                className={`relative animate-enter whitespace-nowrap text-md font-normal opacity-0 ${
                   title === activeTab
                     ? 'text-gray-900 after:absolute after:-bottom-[9px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
                     : 'text-gray-500 dark:text-gray-400'
                 }`}
+                style={{ animationDelay: `${(index + 2) * 100}ms` }}
                 value={title}
                 key={title}
               >
@@ -79,7 +80,12 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
               </Tabs.Trigger>
             ))}
           </Tabs.List>
-          <div className="flex-0 relative">
+          <div
+            className="flex-0 relative animate-enter opacity-0"
+            style={{
+              animationDelay: `${(data.length + 2) * 100}ms`,
+            }}
+          >
             <Search
               className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
               size={14}
@@ -101,7 +107,10 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
             items.filter(filterBySearch).map((item, index) => (
               <Fragment key={index}>
                 {Boolean(index) && <Divider />}
-                <div className="transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100">
+                <div
+                  className="animate-enter opacity-0 transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100"
+                  style={{ animationDelay: `${(index + 3) * 100}ms` }}
+                >
                   {renderItem(item as unknown as never)}
                 </div>
               </Fragment>

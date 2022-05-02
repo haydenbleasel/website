@@ -27,13 +27,13 @@ type LandingPageProps = {
 const LandingPage: FC<LandingPageProps> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
     <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-1">
+      <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
         <p className="text-sm text-gray-500 dark:text-gray-400">
           {data.description}
         </p>
       </div>
       {data.coverImage.url && (
-        <div className="flex overflow-hidden rounded-sm">
+        <div className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200">
           <Image
             src={data.coverImage.url}
             alt={data.coverImage.alt ?? ''}
@@ -49,9 +49,17 @@ const LandingPage: FC<LandingPageProps> = ({ data }) => (
         </div>
       )}
       {data.coverVideo.embed_url && (
-        <Video data={data.coverVideo} loop playsinline controls={false} muted />
+        <div className="animate-enter opacity-0 animation-delay-200">
+          <Video
+            data={data.coverVideo}
+            loop
+            playsinline
+            controls={false}
+            muted
+          />
+        </div>
       )}
-      <div className="flex flex-col gap-8">
+      <div className="flex animate-enter flex-col gap-8 opacity-0 animation-delay-300">
         <SliceZone
           slices={data.slices1}
           components={components as unknown as SliceZoneComponents}

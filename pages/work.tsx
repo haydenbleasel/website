@@ -35,8 +35,14 @@ const Work: FC<WorkProps> = ({ data }) => {
       <div className="mt-4 flex flex-col gap-8">
         {Object.keys(years)
           .reverse()
-          .map((startYear) => (
-            <div className="flex gap-8" key={startYear}>
+          .map((startYear, index) => (
+            <div
+              className="flex animate-enter gap-8 opacity-0"
+              key={startYear}
+              style={{
+                animationDelay: `${(index + 2) * 100}ms`,
+              }}
+            >
               <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400">
                 {startYear}
               </p>

@@ -39,7 +39,7 @@ const Achievements: FC<{ data: AchievementProps[] }> = ({ data }) => {
 
   return (
     <span
-      className={`ml-2 flex items-center gap-1 text-xs ${
+      className={`flex items-center gap-1 text-xs sm:ml-2 ${
         isPerfect ? 'text-[#DC6803]' : 'text-gray-500 dark:text-gray-400'
       }`}
     >
@@ -55,7 +55,7 @@ const Game = ({ game, achievements }: ProjectsProps['games'][number]) => {
 
   return (
     <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
-      <p className="flex flex-1 items-center gap-2 text-md text-gray-900 dark:text-white">
+      <p className="flex flex-1 flex-col gap-2 text-md text-gray-900 dark:text-white sm:flex-row sm:items-center">
         {name}
         {Boolean(achievements.length) && <Achievements data={achievements} />}
       </p>

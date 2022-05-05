@@ -18,7 +18,7 @@ type TwitterResponse = {
 const handler: NextApiHandler = async (req, res) => {
   try {
     const response = await fetch(
-      `https://api.twitter.com/2/users/1628137603/tweets?tweet.fields=created_at`,
+      `https://api.twitter.com/2/users/1628137603/tweets?tweet.fields=created_at&max_results=5`,
       {
         headers: {
           Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN ?? ''}`,

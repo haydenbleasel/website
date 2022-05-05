@@ -75,29 +75,46 @@ const sortByPlaytime = (
   gameB: ProjectsProps['games'][number]
 ) => (gameB.game.playtime_forever > gameA.game.playtime_forever ? 1 : -1);
 
-const Games: FC<ProjectsProps> = ({ data, games }) => (
-  <Layout title={data.title} description={data.description}>
-    <div className="flex flex-col gap-4">
-      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
-        {data.description}
-      </p>
-      <div className="mt-4">
-        <List
-          data={[
-            { title: 'All Games', items: games.sort(sortByPlaytime) },
-            {
-              title: 'Perfect Games',
-              items: games.sort(sortByPlaytime).filter(isPerfectGame),
-            },
-          ]}
-          renderItem={Game}
-          indexKey="id"
-          searchKeys={['game.name']}
-        />
+const Games: FC<ProjectsProps> = ({ data, games }) => {
+  const totalPlaytime = games.reduce(
+    (acc, { game }) => acc + game.playtime_forever,
+    0
+  );
+  const totalHours = Math.floor(totalPlaytime / 60);
+  const totalAchievements = games.reduce(
+    (acc, { achievements }) =>
+      acc + achievements.filter(({ achieved }) => achieved).length,
+    0
+  );
+
+  return (
+    <Layout title={data.title} description={data.description}>
+      <div className="flex flex-col gap-4">
+        <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
+          {data.description}
+        </p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">
+          {totalHours} hours of tracked playtime and {totalAchievements}{' '}
+          achievements across {games.length} games.
+        </p>
+        <div className="mt-4">
+          <List
+            data={[
+              { title: 'All Games', items: games.sort(sortByPlaytime) },
+              {
+                title: 'Perfect Games',
+                items: games.sort(sortByPlaytime).filter(isPerfectGame),
+              },
+            ]}
+            renderItem={Game}
+            indexKey="id"
+            searchKeys={['game.name']}
+          />
+        </div>
       </div>
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = (await getPage('games')) as PrismicDocumentWithUID;

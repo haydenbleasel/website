@@ -19,6 +19,10 @@ type VercelResponse = {
   active: boolean;
 };
 
+type TwitterResponse = {
+  active: boolean;
+};
+
 const fetcher = async <ResponseType>(url: string): Promise<ResponseType> => {
   const response = await fetch(url);
   const data = (await response.json()) as ResponseType;
@@ -30,6 +34,7 @@ const useActivity = (): ActivityResponse => {
   const steam = useSWR<SteamResponse>('/api/steam', fetcher);
   const github = useSWR<GitHubResponse>('/api/github-events', fetcher);
   const vercel = useSWR<VercelResponse>('/api/vercel', fetcher);
+  const twitter = useSWR<TwitterResponse>('/api/twitter', fetcher);
   const [status, setStatus] = useState<ActivityResponse>({
     emoji: '🤔',
     status: 'Not sure',
@@ -41,6 +46,15 @@ const useActivity = (): ActivityResponse => {
         emoji: '🎮',
         status: `Playing ${steam.data.game}`,
         source: 'Steam',
+      });
+      return;
+    }
+
+    if (!twitter.error && twitter.data?.active) {
+      setStatus({
+        emoji: '🐦',
+        status: `Tweeting`,
+        source: 'Twitter',
       });
       return;
     }

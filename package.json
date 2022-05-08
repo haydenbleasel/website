@@ -9,7 +9,7 @@
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "slicemachine": "start-slicemachine",
-    "upgrade": "npx ncu -u -x chrome-aws-lambda,puppeteer-core,react,react-dom,@types/react && yarn install"
+    "upgrade": "npx npm-check-updates -u -x chrome-aws-lambda,puppeteer-core,react,react-dom,@types/react && yarn install"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^12.1.5",

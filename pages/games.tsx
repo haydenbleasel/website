@@ -93,7 +93,7 @@ const Games: FC<ProjectsProps> = ({ data, games }) => {
         <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
           {data.description}
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-400">
+        <p className="animate-enter text-xs text-gray-500 opacity-0 animation-delay-200 dark:text-gray-400">
           {totalHours} hours of tracked playtime and {totalAchievements}{' '}
           achievements across {games.length} games.
         </p>

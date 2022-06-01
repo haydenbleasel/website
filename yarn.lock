@@ -1400,17 +1400,17 @@
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
 
-"@react-hookz/deep-equal@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@react-hookz/deep-equal/-/deep-equal-1.0.1.tgz#1e9aad97b964879b54a3909f36f0727befa13e1f"
-  integrity sha512-6k/pU2jNlgYvKOy84vpCAZ8MGVwybvAdjzrh4UicCVOCPxz0LSBws1OE6O5TO4sPHaSw+yLfNzNK8RicGFc1Kw==
+"@react-hookz/deep-equal@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@react-hookz/deep-equal/-/deep-equal-1.0.2.tgz#4e8bdeda027379dcf8b62a42e5f75f0351b11b35"
+  integrity sha512-cM5kPFb6EFH5q52WzRxfRX9+8g5kq78McWOYs6e1seo+nK6NpfLupT5uOCIJp37jU8ayd4Su8ni3HRFTN2C2kg==
 
-"@react-hookz/web@^13.2.1":
-  version "13.2.1"
-  resolved "https://registry.yarnpkg.com/@react-hookz/web/-/web-13.2.1.tgz#12b3bc30d2cced8b75690c6c3708f96cfdf58172"
-  integrity sha512-ckHdvZ5rgblBscvHdPWAASH46FvfOGjnC+TG3ZtzkOEaYxFtXAzxgQyjjPS+veLuVEGLZ/9HdU6A2l24QBp+9w==
+"@react-hookz/web@^14.2.2":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@react-hookz/web/-/web-14.2.2.tgz#eee0085f954e5b62d0a6c5b20d8786c28abfb9ad"
+  integrity sha512-6FeZHKV3FFOYnbSJMkkqXDoMuIX0HEFJlDF4LpHR7RsA3zrH2xzhtF8nSYZ+pG6fDIqYKID9yQuILFmbAWaqCQ==
   dependencies:
-    "@react-hookz/deep-equal" "^1.0.1"
+    "@react-hookz/deep-equal" "^1.0.2"
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"

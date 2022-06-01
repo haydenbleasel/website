@@ -20,7 +20,7 @@
     "@prismicio/react": "^2.3.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
     "@radix-ui/react-tabs": "^0.1.5",
-    "@react-hookz/web": "^13.2.1",
+    "@react-hookz/web": "^14.2.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
     "chrome-aws-lambda": "^8.0.2",

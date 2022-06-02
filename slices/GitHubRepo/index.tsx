@@ -47,10 +47,13 @@ const GitHubRepo: FC<
         href={data.html_url}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex flex-col items-center overflow-hidden rounded-md border border-gray-200 bg-white drop-shadow-sm transition-all hover:drop-shadow-md dark:text-gray-900 sm:flex-row"
+        className="flex flex-col items-center overflow-hidden rounded-md border border-gray-200 bg-white drop-shadow-sm transition-all hover:-translate-y-1 hover:drop-shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-900 sm:flex-row"
       >
         <span className="w-full border-b border-gray-200 bg-gray-50 p-11 dark:border-gray-700 dark:bg-gray-800 sm:w-[auto] sm:border-b-0 sm:border-r">
-          <GitHub size={24} className="mx-auto text-gray-700" />
+          <GitHub
+            size={24}
+            className="mx-auto text-gray-700 dark:text-gray-300"
+          />
         </span>
         <span className="flex w-full flex-1 flex-col gap-[2px] p-4">
           <span className="flex items-center justify-between">

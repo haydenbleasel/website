@@ -180,10 +180,11 @@ const richTextComponents: JSXMapSerializer = {
           customStyle={{
             padding: '1rem',
             borderRadius: '0.25rem',
+            backgroundColor: tailwindConfig.theme.colors.gray[800],
           }}
           showLineNumbers
           lineNumberStyle={{
-            color: tailwindConfig.theme.colors.gray[600],
+            color: tailwindConfig.theme.colors.gray[400],
           }}
         >
           {node.text}

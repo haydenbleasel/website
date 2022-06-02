@@ -176,7 +176,8 @@ const richTextComponents: JSXMapSerializer = {
       <div className="my-8 grid w-full font-mono font-medium">
         <SyntaxHighlighter
           key={key}
-          style={dracula as object}
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          style={dracula}
           customStyle={{
             padding: '1rem',
             borderRadius: '0.25rem',

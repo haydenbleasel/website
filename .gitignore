@@ -36,3 +36,8 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# next
+public/*.js
+public/sitemap*.xml
+public/*.txt

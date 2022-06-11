@@ -12,12 +12,19 @@
         },
         "type": "UID"
       },
-      "title": {
+      "role": {
+        "type": "Text",
         "config": {
-          "label": "Title",
+          "label": "Role",
           "placeholder": ""
-        },
-        "type": "Text"
+        }
+      },
+      "company": {
+        "type": "Text",
+        "config": {
+          "label": "Company",
+          "placeholder": ""
+        }
       },
       "description": {
         "config": {
@@ -41,12 +48,26 @@
         },
         "type": "Embed"
       },
-      "customPublishDate": {
+      "startYear": {
+        "type": "Number",
         "config": {
-          "label": "Custom Publish Date",
+          "label": "Start Year",
           "placeholder": ""
-        },
-        "type": "Date"
+        }
+      },
+      "endYear": {
+        "type": "Number",
+        "config": {
+          "label": "End Year",
+          "placeholder": ""
+        }
+      },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "Location",
+          "placeholder": ""
+        }
       }
     },
     "Content": {
@@ -74,6 +95,17 @@
               "type": "SharedSlice"
             }
           }
+        }
+      }
+    },
+    "Summary": {
+      "summary": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Summary",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       }
     }

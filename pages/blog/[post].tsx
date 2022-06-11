@@ -172,15 +172,9 @@ const WorkPost: FC<PostProps> = ({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const uid = params?.post as string;
+  const posts = await getPage(uid, 'case-study');
 
-  const posts = await Promise.all([
-    getPage(uid, 'case-study'),
-    getPage(uid, 'work-post'),
-  ]);
-
-  const post = posts.filter(Boolean)[0] as PrismicDocumentWithUID<
-    PostProps['data']
-  >;
+  const post = posts as PrismicDocumentWithUID<PostProps['data']>;
 
   return {
     props: post,
@@ -191,11 +185,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const caseStudies = (await getPages('case-study')) as PrismicDocumentWithUID<
     PostProps['data']
   >[];
-  const workPosts = (await getPages('work-post')) as PrismicDocumentWithUID<
-    PostProps['data']
-  >[];
 
-  const paths = [...caseStudies, ...workPosts].map(({ uid }) => ({
+  const paths = caseStudies.map(({ uid }) => ({
     params: {
       post: uid,
     },

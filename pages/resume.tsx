@@ -12,11 +12,11 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
 import { PrismicLink, PrismicRichText } from '@prismicio/react';
-import { docResolver, getPage } from '../utils/prismic';
+import { getPage, getPages } from '../utils/prismic';
 import Layout from '../components/layout';
 import { social } from '../utils/social';
 import SocialLinks from '../components/socialLinks';
-import type { WorkProps } from './work';
+import type { WorkPostProps } from './work/[post]';
 import type { HomeProps } from '.';
 
 type ResumeProps = {
@@ -35,7 +35,15 @@ type ResumeProps = {
     }>;
   };
   home: HomeProps['data'];
-  work: WorkProps['data'];
+  work: WorkPostProps[];
+};
+
+const sortByYear = (postA: WorkPostProps, postB: WorkPostProps) => {
+  if (!postA.data.startYear || !postB.data.startYear) {
+    return -1;
+  }
+
+  return postB.data.startYear - postA.data.startYear;
 };
 
 const Resume: FC<ResumeProps> = ({ data, home, work }) => {
@@ -93,26 +101,26 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
             Selected Work History
           </h2>
           <div className="flex flex-col gap-4">
-            {work.jobs.map((job) => (
-              <div key={job.title}>
+            {work.sort(sortByYear).map((job) => (
+              <div key={job.uid}>
                 <p className="text-md font-semibold text-gray-900 dark:text-white print:text-sm">
-                  {job.title},{' '}
-                  {docResolver(job.link) ? (
-                    <PrismicLink field={job.link}>
+                  {job.data.role},{' '}
+                  {job.data.slices1.length ? (
+                    <PrismicLink document={job}>
                       <span className="text-md font-semibold underline print:text-sm">
-                        {job.company}
+                        {job.data.company}
                       </span>
                     </PrismicLink>
                   ) : (
-                    job.company
+                    job.data.company
                   )}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 print:text-xs">
-                  {job.startYear} &mdash; {job.endYear ?? 'Present'} in{' '}
-                  {job.location}
+                  {job.data.startYear} &mdash; {job.data.endYear ?? 'Present'}{' '}
+                  in {job.data.location}
                 </p>
                 <div className="mt-4">
-                  <PrismicRichText field={job.description} />
+                  <PrismicRichText field={job.data.summary} />
                 </div>
               </div>
             ))}
@@ -189,7 +197,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = (await getPage('resume')) as PrismicDocumentWithUID;
   const { data: home } = (await getPage('home')) as PrismicDocumentWithUID;
-  const { data: work } = (await getPage('work')) as PrismicDocumentWithUID;
+  const work = (await getPages('work-post')) as WorkPostProps[];
 
   return {
     props: {

@@ -22,7 +22,6 @@ type BlogProps = {
   mediumPosts: Post[];
   devPosts: Post[];
   caseStudies: Post[];
-  workPosts: Post[];
 };
 
 const PostLink: FC<Post> = ({ id, title, date, link }) => {
@@ -57,19 +56,11 @@ const PostLink: FC<Post> = ({ id, title, date, link }) => {
 const sortByDate = (postA: Post, postB: Post) =>
   parseISO(postA.date) > parseISO(postB.date) ? -1 : 1;
 
-const Blog: FC<BlogProps> = ({
-  caseStudies,
-  devPosts,
-  mediumPosts,
-  workPosts,
-}) => {
+const Blog: FC<BlogProps> = ({ caseStudies, devPosts, mediumPosts }) => {
   const { asPath } = useRouter();
-  const allPosts = [
-    ...caseStudies,
-    ...devPosts,
-    ...mediumPosts,
-    ...workPosts,
-  ].sort(sortByDate);
+  const allPosts = [...caseStudies, ...devPosts, ...mediumPosts].sort(
+    sortByDate
+  );
 
   return (
     <Layout title="Blog" description="Posts about code, work and life.">
@@ -90,7 +81,6 @@ const Blog: FC<BlogProps> = ({
             { title: 'Case Studies', items: caseStudies.sort(sortByDate) },
             { title: 'Code', items: devPosts.sort(sortByDate) },
             { title: 'Design', items: mediumPosts.sort(sortByDate) },
-            { title: 'Work', items: workPosts.sort(sortByDate) },
           ]}
           renderItem={PostLink}
           indexKey="title"
@@ -110,30 +100,12 @@ export const getStaticProps: GetStaticProps = async () => {
     customPublishDate: DateField;
     slices: SliceZone;
   }>[];
-  const workPosts = (await getPages('work-post')) as PrismicDocumentWithUID<{
-    title: KeyTextField;
-    description: KeyTextField;
-    customPublishDate: DateField;
-    slices: SliceZone;
-  }>[];
 
   return {
     props: {
       mediumPosts,
       devPosts,
       caseStudies: caseStudies.map((post) => ({
-        id: post.uid,
-        title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
-        date: post.data.customPublishDate
-          ? parse(
-              post.data.customPublishDate,
-              'yyyy-MM-dd',
-              new Date()
-            ).toISOString()
-          : post.first_publication_date,
-        link: `/blog/${post.uid}`,
-      })),
-      workPosts: workPosts.map((post) => ({
         id: post.uid,
         title: `${post.data.title ?? ''} — ${post.data.description ?? ''}`,
         date: post.data.customPublishDate

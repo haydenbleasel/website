@@ -1,37 +1,25 @@
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import groupBy from 'lodash.groupby';
-import type {
-  GroupField,
-  KeyTextField,
-  LinkField,
-  NumberField,
-  PrismicDocumentWithUID,
-  RichTextField,
-} from '@prismicio/types';
+import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
 import { PrismicLink } from '@prismicio/react';
-import Layout from '../components/layout';
-import { docResolver, getPage } from '../utils/prismic';
+import Layout from '../../components/layout';
+import { getPage, getPages } from '../../utils/prismic';
+import type { WorkPostProps } from './[post]';
 
 export type WorkProps = {
   data: {
-    jobs: GroupField<{
-      title: KeyTextField;
-      company: KeyTextField;
-      link: LinkField;
-      description: RichTextField;
-      startYear: NumberField;
-      endYear: NumberField;
-      location: KeyTextField;
-    }>;
+    title: KeyTextField;
+    description: KeyTextField;
   };
+  posts: WorkPostProps[];
 };
 
-const Work: FC<WorkProps> = ({ data }) => {
-  const years = groupBy(data.jobs, (job) => job.startYear);
+const Work: FC<WorkProps> = ({ data, posts }) => {
+  const years = groupBy(posts, (post) => post.data.startYear);
 
   return (
-    <Layout title="Work" description="A list of roles I've had over the years.">
+    <Layout title={data.title} description={data.description}>
       <div className="mt-4 flex flex-col gap-8">
         {Object.keys(years)
           .reverse()
@@ -48,19 +36,19 @@ const Work: FC<WorkProps> = ({ data }) => {
               </p>
               <div className="flex flex-1 flex-col gap-4">
                 {years[startYear].map((job) => (
-                  <div key={job.company}>
+                  <div key={job.uid}>
                     <p className="text-md text-gray-900 dark:text-white">
-                      {job.title},{' '}
-                      {docResolver(job.link) ? (
-                        <PrismicLink field={job.link}>
-                          <span className="underline">{job.company}</span>
+                      {job.data.role},{' '}
+                      {job.data.slices1.length ? (
+                        <PrismicLink document={job}>
+                          <span className="underline">{job.data.company}</span>
                         </PrismicLink>
                       ) : (
-                        job.company
+                        job.data.company
                       )}
                     </p>
                     <p className="flex-0 text-sm text-gray-500 dark:text-gray-400">
-                      {job.location}
+                      {job.data.location}
                     </p>
                   </div>
                 ))}
@@ -74,10 +62,12 @@ const Work: FC<WorkProps> = ({ data }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = (await getPage('work')) as PrismicDocumentWithUID;
+  const posts = (await getPages('work-post')) as PrismicDocumentWithUID[];
 
   return {
     props: {
       data,
+      posts,
     },
   };
 };

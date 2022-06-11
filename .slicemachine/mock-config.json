@@ -41,7 +41,14 @@
         }
       }
     },
-    "work-post": {},
+    "work-post": {
+      "summary": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
     "featured": {
       "speaking": {}
     },

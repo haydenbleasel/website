@@ -176,9 +176,14 @@ const CommandBar: FC = ({ children }) => {
     {
       id: 'work',
       name: 'Work',
-      shortcut: ['w'],
       keywords: 'work',
       section: 'Pages',
+    },
+    {
+      id: 'work-index',
+      name: 'All Work',
+      parent: 'work',
+      shortcut: ['w'],
       perform: async () => push('/work'),
     },
     {

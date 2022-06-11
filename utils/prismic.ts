@@ -17,7 +17,7 @@ export const linkResolver: LinkResolverFunction = (document) => {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     'case-study': `/blog/${document.uid}`,
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    'work-post': `/blog/${document.uid}`,
+    'work-post': `/work/${document.uid}`,
   };
 
   return routes[document.type] || `/${document.uid}`;

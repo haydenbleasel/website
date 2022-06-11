@@ -1,10 +1,11 @@
 {
-  "id": "875ccf72-4d41-4da6-817d-940114148ff9",
-  "uid": "nihil-maxime-non",
+  "id": "843904d4-02f8-48f8-8653-48af50d03a26",
+  "uid": "dolorem-et-sed",
   "type": "work-post",
   "data": {
-    "title": "extend out-of-the-box communities",
-    "description": "incubate distributed action-items",
+    "role": "morph extensible infrastructures",
+    "company": "leverage enterprise solutions",
+    "description": "deploy transparent communities",
     "coverImage": {
       "dimensions": {
         "width": 900,
@@ -12,7 +13,7 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?w=900&h=500&fit=crop"
     },
     "coverVideo": {
       "url": "https://twitter.com/timbenniks/status/1304146886832594944",
@@ -27,6 +28,15 @@
       "provider_url": "http://www.twitter.com/",
       "version": "1.0"
     },
-    "customPublishDate": "2019-05-18"
+    "startYear": 6098,
+    "endYear": 9702,
+    "location": "extend dot-com networks",
+    "summary": [
+      {
+        "type": "paragraph",
+        "text": "Ex cillum Lorem adipisicing do magna nulla. Exercitation velit officia laboris cillum laboris ipsum irure ad incididunt consectetur. Irure esse non nostrud duis Lorem ad culpa adipisicing eiusmod nisi amet qui.",
+        "spans": []
+      }
+    ]
   }
 }

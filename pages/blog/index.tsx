@@ -11,7 +11,7 @@ import { ArrowUpRight } from 'react-feather';
 import { ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { getPages } from '../../utils/prismic';
+import { getPage, getPages } from '../../utils/prismic';
 import type { Post } from '../../types/post';
 import { getDevPosts } from '../../utils/dev';
 import Layout from '../../components/layout';
@@ -19,6 +19,10 @@ import { getMediumPosts } from '../../utils/medium';
 import List from '../../components/list';
 
 type BlogProps = {
+  data: {
+    title: KeyTextField;
+    description: KeyTextField;
+  };
   mediumPosts: Post[];
   devPosts: Post[];
   caseStudies: Post[];
@@ -56,32 +60,50 @@ const PostLink: FC<Post> = ({ id, title, date, link }) => {
 const sortByDate = (postA: Post, postB: Post) =>
   parseISO(postA.date) > parseISO(postB.date) ? -1 : 1;
 
-const Blog: FC<BlogProps> = ({ caseStudies, devPosts, mediumPosts }) => {
+const Blog: FC<BlogProps> = ({ data, caseStudies, devPosts, mediumPosts }) => {
   const { asPath } = useRouter();
   const allPosts = [...caseStudies, ...devPosts, ...mediumPosts].sort(
     sortByDate
   );
+  const categories: {
+    title: string;
+    items: Record<string, unknown>[];
+  }[] = [];
+
+  if (allPosts.length) {
+    categories.push({ title: 'All', items: allPosts });
+  }
+
+  if (caseStudies.length) {
+    categories.push({
+      title: 'Case Studies',
+      items: caseStudies.sort(sortByDate),
+    });
+  }
+
+  if (devPosts.length) {
+    categories.push({ title: 'Code', items: devPosts.sort(sortByDate) });
+  }
+
+  if (mediumPosts.length) {
+    categories.push({ title: 'Design', items: mediumPosts.sort(sortByDate) });
+  }
 
   return (
-    <Layout title="Blog" description="Posts about code, work and life.">
+    <Layout title={data.title} description={data.description}>
       <ArticleJsonLd
         type="Blog"
         url={new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL ?? '').href}
-        title="Blog"
+        title={data.title ?? ''}
         images={[]}
         dateModified={allPosts[allPosts.length - 1].date}
         datePublished={allPosts[0].date}
-        description="Posts about code, work and life."
+        description={data.description ?? ''}
         authorName="Hayden Bleasel"
       />
       <div className="mt-4">
         <List
-          data={[
-            { title: 'All', items: allPosts },
-            { title: 'Case Studies', items: caseStudies.sort(sortByDate) },
-            { title: 'Code', items: devPosts.sort(sortByDate) },
-            { title: 'Design', items: mediumPosts.sort(sortByDate) },
-          ]}
+          data={categories}
           renderItem={PostLink}
           indexKey="title"
           searchKeys={['title', 'date', 'content']}
@@ -92,6 +114,7 @@ const Blog: FC<BlogProps> = ({ caseStudies, devPosts, mediumPosts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  const { data } = (await getPage('blog')) as PrismicDocumentWithUID;
   const mediumPosts = await getMediumPosts();
   const devPosts = await getDevPosts();
   const caseStudies = (await getPages('case-study')) as PrismicDocumentWithUID<{
@@ -103,6 +126,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      data,
       mediumPosts,
       devPosts,
       caseStudies: caseStudies.map((post) => ({

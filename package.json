@@ -55,7 +55,8 @@
     "tailwindcss-animation-delay": "^1.0.7"
   },
   "devDependencies": {
-    "@haydenbleasel/harmony": "^1.0.21",
+    "@haydenbleasel/harmony": "^1.0.22",
+    "@next/eslint-plugin-next": "^12.1.6",
     "@prismicio/types": "^0.1.29",
     "@types/he": "^1.1.2",
     "@types/jsdom": "^16.2.14",
@@ -85,7 +86,7 @@
     "typescript": "4.7.3"
   },
   "eslintConfig": {
-    "extends": "./node_modules/@haydenbleasel/harmony/eslint.js",
+    "extends": "./node_modules/@haydenbleasel/harmony/eslint-next.js",
     "parserOptions": {
       "project": "./tsconfig.json"
     }

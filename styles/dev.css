@@ -16,6 +16,7 @@
 
 .highlight {
   @apply grid;
+
   color: var(--syntax-text-color);
 
   & .hll {

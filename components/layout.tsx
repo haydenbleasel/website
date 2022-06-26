@@ -90,7 +90,9 @@ const Layout: FC<LayoutProps> = ({
         }}
         {...props}
       />
-      {!noTitle && <StickyTitle noSticky={noSticky}>{title}</StickyTitle>}
+      <StickyTitle noSticky={noSticky} noTitle={noTitle}>
+        {title}
+      </StickyTitle>
       <div className="container mx-auto flex max-w-[42rem] flex-col gap-12 px-4 pb-12 sm:gap-24 sm:pb-48">
         {children}
       </div>

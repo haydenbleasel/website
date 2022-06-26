@@ -4,9 +4,10 @@ import { useIntersectionObserver } from '@react-hookz/web';
 
 type StickyTitleProps = {
   noSticky: boolean;
+  noTitle: boolean;
 };
 
-const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
+const StickyTitle: FC<StickyTitleProps> = ({ noSticky, noTitle, children }) => {
   const intersectionRef = useRef(null);
   const intersection = useIntersectionObserver(intersectionRef, {
     root: null,
@@ -24,15 +25,17 @@ const StickyTitle: FC<StickyTitleProps> = ({ noSticky, children }) => {
       } ${noSticky ? '' : 'sticky'}`}
       ref={intersectionRef}
     >
-      <div className="container mx-auto grid max-w-[42rem] py-2 px-4">
-        <h1
-          className={`animate-enter font-semibold text-gray-900 opacity-0 transition-all dark:text-white ${
-            isSticky && !noSticky ? 'text-md leading-loose' : 'text-xl'
-          }`}
-        >
-          {children}
-        </h1>
-      </div>
+      {!noTitle && (
+        <div className="container mx-auto grid max-w-[42rem] py-2 px-4">
+          <h1
+            className={`animate-enter font-semibold text-gray-900 opacity-0 transition-all dark:text-white ${
+              isSticky && !noSticky ? 'text-md leading-loose' : 'text-xl'
+            }`}
+          >
+            {children}
+          </h1>
+        </div>
+      )}
     </div>
   );
 };

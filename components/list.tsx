@@ -113,10 +113,12 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
               <Fragment key={index}>
                 {Boolean(index) && <Divider />}
                 <div
-                  className="animate-enter opacity-0 transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100"
+                  className="animate-enter opacity-0 transition-opacity"
                   style={{ animationDelay: `${300 + index * 50}ms` }}
                 >
-                  {renderItem(item as unknown as never)}
+                  <div className="group-hover:opacity-30 group-hover:hover:opacity-100">
+                    {renderItem(item as unknown as never)}
+                  </div>
                 </div>
               </Fragment>
             ))

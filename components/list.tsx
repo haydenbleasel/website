@@ -65,7 +65,7 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
       <div className="flex flex-col gap-1 overflow-x-auto pb-1">
         <div className="space-between flex items-center gap-8">
           <Tabs.List className="flex flex-1 gap-4">
-            {data.map(({ title }, index) => (
+            {data.map(({ items, title }, index) => (
               <Tabs.Trigger
                 className={`relative animate-enter whitespace-nowrap text-md font-normal opacity-0 ${
                   title === activeTab
@@ -76,7 +76,10 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
                 value={title}
                 key={title}
               >
-                {title}
+                {title}{' '}
+                <span className="rounded-full bg-gray-50 py-1 px-2 text-xs">
+                  {items.length}
+                </span>
               </Tabs.Trigger>
             ))}
           </Tabs.List>

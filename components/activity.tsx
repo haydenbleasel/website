@@ -1,5 +1,4 @@
 import type { FC, KeyboardEventHandler } from 'react';
-import { HelpCircle } from 'react-feather';
 import toast from 'react-hot-toast';
 import useActivity from '../hooks/useActivity';
 
@@ -21,7 +20,13 @@ const Activity: FC = () => {
   };
 
   return (
-    <div className="absolute top-10 left-10 flex h-[28px] w-full max-w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-gray-100 bg-white pr-2 transition-[max-width] hover:w-auto hover:max-w-[300px] dark:border-gray-800 dark:bg-gray-900">
+    <div
+      className="absolute top-10 left-10 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-gray-100 bg-white pr-2 hover:w-auto dark:border-gray-800 dark:bg-gray-900"
+      onClick={notifyActivity}
+      onKeyDown={handleNotifyActivity}
+      tabIndex={-1}
+      role="button"
+    >
       <div className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-gray-900 dark:text-white sm:text-md">
         {activity.emoji}
       </div>
@@ -33,15 +38,6 @@ const Activity: FC = () => {
           via {activity.source}
         </span>
       )}
-      <div
-        onClick={notifyActivity}
-        onKeyDown={handleNotifyActivity}
-        tabIndex={-1}
-        role="button"
-        className="flex select-none text-gray-400 dark:text-gray-500"
-      >
-        <HelpCircle size={12} aria-label="Activity Info" />
-      </div>
     </div>
   );
 };

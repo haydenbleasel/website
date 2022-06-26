@@ -24,8 +24,8 @@ const NeutralData: FC = () => {
     <div className="flex flex-col gap-8 rounded-sm bg-gray-100 p-8 dark:bg-gray-800">
       <div className="flex items-center gap-2">
         <div className="relative inline-flex h-3 w-3">
-          <span className="absolute inset-0 inline-flex h-full w-full animate-ping rounded-full bg-success-400 opacity-75 dark:bg-success-500" />
-          <span className="relative inline-flex h-3 w-3 rounded-full bg-success-500 dark:bg-success-400" />
+          <span className="absolute inset-0 inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75 dark:bg-green-500" />
+          <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500 dark:bg-green-400" />
         </div>
         <p className="text-md text-gray-500 dark:text-gray-400">Live data</p>
       </div>

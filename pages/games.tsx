@@ -40,7 +40,7 @@ const Achievements: FC<{ data: AchievementProps[] }> = ({ data }) => {
   return (
     <span
       className={`flex items-center gap-1 text-xs sm:ml-2 ${
-        isPerfect ? 'text-[#DC6803]' : 'text-gray-500 dark:text-gray-400'
+        isPerfect ? 'text-gold' : 'text-gray-500 dark:text-gray-400'
       }`}
     >
       <Star size={12} />

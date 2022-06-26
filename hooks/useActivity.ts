@@ -82,9 +82,12 @@ const useActivity = (): ActivityResponse => {
       hour12: false,
     });
 
+    const day = new Date().getDay();
+    const isWeekend = day === 0 || day === 6;
+
     const time = Number(date.split(':')[0]);
 
-    if (time === 11) {
+    if (time === 11 && !isWeekend) {
       setStatus({
         emoji: '💪',
         status: 'Training',
@@ -100,15 +103,25 @@ const useActivity = (): ActivityResponse => {
       return;
     }
 
+    if (!isWeekend) {
+      setStatus({
+        emoji: '👨‍💻',
+        status: 'Working',
+      });
+      return;
+    }
+
     setStatus({
-      emoji: '👨‍💻',
-      status: 'Working',
+      emoji: '😎',
+      status: 'Chilling',
     });
   }, [
     github.data?.active,
     github.error,
     steam.data?.game,
     steam.error,
+    twitter.data?.active,
+    twitter.error,
     vercel.data?.active,
     vercel.error,
   ]);

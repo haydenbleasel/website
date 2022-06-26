@@ -37,7 +37,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   return (
     <span className="group relative">
       {!isExcluded && !screenshot.error && (
-        <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex -translate-x-2/4 -translate-y-0 rounded-lg bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-900">
+        <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex -translate-x-2/4 -translate-y-0 rounded-lg bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-800">
           {screenshot.result ? (
             <Image
               src={`data:image/png;base64,${screenshot.result}`}

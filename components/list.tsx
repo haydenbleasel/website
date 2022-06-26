@@ -79,7 +79,7 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
                 key={title}
               >
                 {title}{' '}
-                <span className="rounded-full bg-gray-50 py-1 px-2 text-xs">
+                <span className="rounded-full bg-gray-50 py-1 px-2 text-xs dark:bg-gray-800">
                   {items.length}
                 </span>
               </Tabs.Trigger>

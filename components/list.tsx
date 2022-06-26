@@ -31,6 +31,8 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
       const activeData = data.find((tab) => tab.title === activeTab)?.items;
       const fuse = new Fuse(activeData ?? [], {
         keys: searchKeys,
+        minMatchCharLength: 2,
+        threshold: 0.2,
       });
       const searchResults = fuse.search(term);
       const searchResultKeys = searchResults.map(({ item }) => item[indexKey]);

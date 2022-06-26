@@ -4,9 +4,14 @@ import { PrismicLink } from '@prismicio/react';
 import Image from 'next/image';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import type { TwitterTweetEmbedProps } from 'react-twitter-embed/dist/components/TwitterTweetEmbed';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import type { TailwindConfig } from 'tailwindcss/tailwind-config';
+import type { DefaultColors } from 'tailwindcss/types/generated/colors';
 import { docResolver } from '../utils/prismic';
 import tailwindConfig from '../tailwind.config';
 import Video from './video';
+
+const fullConfig = resolveConfig(tailwindConfig as TailwindConfig);
 
 const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -61,7 +66,7 @@ const richTextComponents: JSXMapSerializer = {
   heading2: ({ children, key }) => (
     <h2
       key={key}
-      className="mt-8 mb-4 text-sm font-semibold text-gray-900 dark:text-white sm:text-lg print:text-xs"
+      className="mt-8 mb-4 text-sm font-semibold text-gray-900 dark:text-white print:text-xs sm:text-lg"
     >
       {children}
     </h2>
@@ -77,7 +82,7 @@ const richTextComponents: JSXMapSerializer = {
   heading4: ({ children, key }) => (
     <h4
       key={key}
-      className="mt-8 mb-4 text-xl font-semibold text-gray-900 dark:text-white sm:text-sm print:text-lg"
+      className="mt-8 mb-4 text-xl font-semibold text-gray-900 dark:text-white print:text-lg sm:text-sm"
     >
       {children}
     </h4>
@@ -85,7 +90,7 @@ const richTextComponents: JSXMapSerializer = {
   heading5: ({ children, key }) => (
     <h5
       key={key}
-      className="mt-8 mb-4 text-lg font-semibold text-gray-900 dark:text-white sm:text-xs print:text-md"
+      className="mt-8 mb-4 text-lg font-semibold text-gray-900 dark:text-white print:text-md sm:text-xs"
     >
       {children}
     </h5>
@@ -93,7 +98,7 @@ const richTextComponents: JSXMapSerializer = {
   heading6: ({ children, key }) => (
     <h6
       key={key}
-      className="mt-8 mb-4 text-md font-semibold text-gray-900 dark:text-white sm:text-xl print:text-sm"
+      className="mt-8 mb-4 text-md font-semibold text-gray-900 dark:text-white print:text-sm sm:text-xl"
     >
       {children}
     </h6>
@@ -164,6 +169,7 @@ const richTextComponents: JSXMapSerializer = {
     );
   },
   preformatted: ({ node, key }) => {
+    const { gray } = fullConfig.theme.colors as unknown as DefaultColors;
     const SyntaxHighlighter = dynamic(
       async () =>
         import(
@@ -181,11 +187,11 @@ const richTextComponents: JSXMapSerializer = {
           customStyle={{
             padding: '1rem',
             borderRadius: '0.25rem',
-            backgroundColor: tailwindConfig.theme.colors.gray[800],
+            backgroundColor: gray[800],
           }}
           showLineNumbers
           lineNumberStyle={{
-            color: tailwindConfig.theme.colors.gray[400],
+            color: gray[400],
           }}
         >
           {node.text}

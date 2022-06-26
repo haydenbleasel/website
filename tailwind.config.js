@@ -2,6 +2,7 @@ const lineClamp = require('@tailwindcss/line-clamp');
 const typography = require('@tailwindcss/typography');
 const animationDelay = require('tailwindcss-animation-delay');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
   darkMode: 'class',

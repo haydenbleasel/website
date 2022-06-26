@@ -64,6 +64,7 @@
     "@types/node": "18.0.0",
     "@types/react": "17.0.43",
     "@types/react-syntax-highlighter": "^15.5.2",
+    "@types/tailwindcss": "^3.0.10",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "autoprefixer": "^10.4.7",

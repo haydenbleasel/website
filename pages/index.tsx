@@ -9,6 +9,7 @@ import type {
 import type { GetStaticProps } from 'next';
 import Image from 'next/image';
 import type { FC } from 'react';
+import { Globe } from 'react-feather';
 import Activity from '../components/activity';
 import Layout from '../components/layout';
 import SocialLinks from '../components/socialLinks';
@@ -18,6 +19,7 @@ export type HomeProps = {
   data: {
     title: KeyTextField;
     description: KeyTextField;
+    location: KeyTextField;
     name: KeyTextField;
     role: KeyTextField;
     photo: ImageFieldImage;
@@ -55,6 +57,10 @@ const Home: FC<HomeProps> = ({ data }) => (
         </h1>
         <p className="text-md font-normal text-gray-500 dark:text-gray-400">
           {data.role}
+        </p>
+        <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+          <Globe width={16} height={16} />
+          {data.location}
         </p>
       </div>
     </div>

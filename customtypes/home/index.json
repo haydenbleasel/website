@@ -25,6 +25,13 @@
           "placeholder": ""
         },
         "type": "Text"
+      },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "Location",
+          "placeholder": ""
+        }
       }
     },
     "Hero": {
@@ -55,7 +62,6 @@
       "sections": {
         "config": {
           "label": "Sections",
-          "placeholder": "",
           "fields": {
             "title": {
               "config": {

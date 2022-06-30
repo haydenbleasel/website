@@ -58,9 +58,9 @@ const Home: FC<HomeProps> = ({ data }) => (
         <p className="text-md font-normal text-gray-500 dark:text-gray-400">
           {data.role}
         </p>
-        <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+        <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
           <Globe width={16} height={16} />
-          {data.location}
+          <p className="text-sm font-medium leading-snug">{data.location}</p>
         </p>
       </div>
     </div>

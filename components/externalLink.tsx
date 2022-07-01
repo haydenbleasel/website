@@ -1,5 +1,5 @@
 import type { LinkProps } from '@prismicio/react';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { ArrowUpRight } from 'react-feather';
@@ -43,7 +43,6 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
               src={`data:image/png;base64,${screenshot.result}`}
               width={300}
               height={187}
-              layout="fixed"
               alt=""
             />
           ) : (

@@ -5,7 +5,7 @@ import type { KeyTextField } from '@prismicio/types';
 import useSWR from 'swr';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { format, parseISO } from 'date-fns';
 import type { FigmaResponse } from '../../pages/api/figma';
 import Placeholder from '../../components/placeholder';
@@ -60,7 +60,6 @@ const FigmaFile: FC<
               src={data.image}
               width={640}
               height={320}
-              layout="responsive"
               quality={100}
               alt=""
             />

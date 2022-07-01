@@ -9,7 +9,7 @@ import type {
 } from '@prismicio/types';
 import type { FC } from 'react';
 import { useEffect } from 'react';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import toast from 'react-hot-toast';
 import { PrismicLink, PrismicRichText } from '@prismicio/react';
 import { getPage, getPages } from '../utils/prismic';
@@ -62,17 +62,15 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
       <div className="flex flex-col gap-8 py-8 sm:py-0">
         <div className="flex items-start gap-8">
           {home.photo.url && (
-            <div className="flex shrink-0 overflow-hidden rounded-full">
-              <Image
-                src={home.photo.url}
-                alt="Hayden Bleasel"
-                width={64}
-                height={64}
-                layout="fixed"
-                priority
-                quality={100}
-              />
-            </div>
+            <Image
+              src={home.photo.url}
+              alt="Hayden Bleasel"
+              width={64}
+              height={64}
+              priority
+              quality={100}
+              className="flex shrink-0 overflow-hidden rounded-full"
+            />
           )}
           <div>
             <h1 className="text-xl font-semibold text-gray-900 dark:text-white print:text-lg">
@@ -163,16 +161,15 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
                 </p>
                 <div className="mt-4 flex items-center gap-2">
                   {testimonial.photo.url && (
-                    <div className="inline-flex overflow-hidden rounded-full">
-                      <Image
-                        src={testimonial.photo.url}
-                        alt=""
-                        width={32}
-                        height={32}
-                        quality={100}
-                        priority
-                      />
-                    </div>
+                    <Image
+                      src={testimonial.photo.url}
+                      alt=""
+                      width={32}
+                      height={32}
+                      quality={100}
+                      priority
+                      className="inline-flex overflow-hidden rounded-full"
+                    />
                   )}
                   <p className="text-md font-medium text-gray-900 dark:text-white print:text-sm">
                     {testimonial.name}

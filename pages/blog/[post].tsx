@@ -11,7 +11,7 @@ import type {
 import { format, parse, parseISO } from 'date-fns';
 import type { SliceZoneComponents } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 import { ArticleJsonLd } from 'next-seo';
 import {
@@ -78,20 +78,19 @@ const WorkPost: FC<PostProps> = ({
           </p>
         </div>
         {data.coverImage.url && (
-          <div className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200">
-            <Image
-              src={data.coverImage.url}
-              alt={data.coverImage.alt ?? ''}
-              width={640}
-              height={
-                640 *
-                (data.coverImage.dimensions.height /
-                  data.coverImage.dimensions.width)
-              }
-              priority
-              quality={100}
-            />
-          </div>
+          <Image
+            src={data.coverImage.url}
+            alt={data.coverImage.alt ?? ''}
+            width={640}
+            height={
+              640 *
+              (data.coverImage.dimensions.height /
+                data.coverImage.dimensions.width)
+            }
+            priority
+            quality={100}
+            className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
+          />
         )}
         {data.coverVideo.embed_url && (
           <div className="animate-enter opacity-0 animation-delay-200">

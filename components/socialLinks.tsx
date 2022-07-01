@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { social } from '../utils/social';
@@ -15,20 +15,16 @@ const SocialLinks: FC = () => (
           className="animate-enter opacity-0"
           style={{ animationDelay: `${(index + 2) * 100}ms` }}
         >
-          <span
+          <Image
+            src={`/social/${platform.id}.svg`}
+            width={18}
+            height={18}
+            quality={100}
+            alt={platform.name}
             className={`flex p-4 transition-transform hover:-translate-y-1 ${
               platform.invertDark ? 'dark:brightness-0 dark:invert' : ''
             }`}
-          >
-            <Image
-              src={`/social/${platform.id}.svg`}
-              width={18}
-              height={18}
-              layout="fixed"
-              quality={100}
-              alt={platform.name}
-            />
-          </span>
+          />
         </a>
       </Link>
     ))}

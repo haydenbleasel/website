@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import type { SliceComponentProps } from '@prismicio/react';
 import type { ImageField } from '@prismicio/types';
 import { ReactCompareSlider } from 'react-compare-slider';
-import Image from 'next/image';
+import Image from 'next/future/image';
 
 const Comparison: FC<
   SliceComponentProps<{

@@ -21,6 +21,11 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: true,
   },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
   async headers() {
     return [
       {

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import type { JSXMapSerializer } from '@prismicio/react';
 import { PrismicLink } from '@prismicio/react';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import type { TwitterTweetEmbedProps } from 'react-twitter-embed/dist/components/TwitterTweetEmbed';
 import resolveConfig from 'tailwindcss/resolveConfig';
@@ -36,17 +36,15 @@ const richTextComponents: JSXMapSerializer = {
     </strong>
   ),
   image: ({ key, node }) => (
-    <div className="my-8 flex overflow-hidden rounded-sm">
-      <Image
-        key={key}
-        src={node.url}
-        alt={node.alt ?? ''}
-        width={640}
-        height={640 * (node.dimensions.height / node.dimensions.width)}
-        className="w-full"
-        quality={100}
-      />
-    </div>
+    <Image
+      key={key}
+      src={node.url}
+      alt={node.alt ?? ''}
+      width={640}
+      height={640 * (node.dimensions.height / node.dimensions.width)}
+      className="my-8 flex w-full overflow-hidden rounded-sm"
+      quality={100}
+    />
   ),
   hyperlink: ({ children, node, key }) => (
     <span className="inline border-b border-gray-900 hover:border-gray-600 dark:border-white dark:hover:border-gray-300">

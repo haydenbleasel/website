@@ -11,7 +11,7 @@ import {
   KBarResults,
   useRegisterActions,
 } from 'kbar';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import { useState, useEffect, useCallback } from 'react';
@@ -282,7 +282,6 @@ const CommandBar: FC = ({ children }) => {
         src={`/social/${id}.svg`}
         width={16}
         height={16}
-        layout="fixed"
         quality={100}
         alt=""
       />

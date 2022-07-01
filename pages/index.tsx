@@ -7,7 +7,7 @@ import type {
   RichTextField,
 } from '@prismicio/types';
 import type { GetStaticProps } from 'next';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import type { FC } from 'react';
 import { Globe } from 'react-feather';
 import Activity from '../components/activity';
@@ -36,17 +36,15 @@ const Home: FC<HomeProps> = ({ data }) => (
       {data.photo.url && (
         <div className="flex animate-enter opacity-0">
           <div className="relative">
-            <div className="inline-flex overflow-hidden rounded-full">
-              <Image
-                src={data.photo.url}
-                width={64}
-                height={64}
-                layout="fixed"
-                priority
-                quality={100}
-                alt=""
-              />
-            </div>
+            <Image
+              src={data.photo.url}
+              width={64}
+              height={64}
+              priority
+              quality={100}
+              alt=""
+              className="inline-flex overflow-hidden rounded-full"
+            />
             <Activity />
           </div>
         </div>

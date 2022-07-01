@@ -11,7 +11,7 @@ import {
 import useEmblaCarousel from 'embla-carousel-react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import type { DribbbleResponse } from '../../pages/api/dribbble';
 import Placeholder from '../../components/placeholder';
 
@@ -77,7 +77,6 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
                 src={data.image}
                 width={400}
                 height={300}
-                layout="responsive"
                 quality={100}
                 alt=""
               />

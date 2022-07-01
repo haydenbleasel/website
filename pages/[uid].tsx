@@ -9,7 +9,7 @@ import type {
 } from '@prismicio/types';
 import { PrismicRichText } from '@prismicio/react';
 import { format, parseISO } from 'date-fns';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Layout from '../components/layout';
 import { getPage, getPages } from '../utils/prismic';
 import Video from '../components/video';
@@ -35,20 +35,19 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
         </p>
       </div>
       {data.coverImage.url && (
-        <div className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200">
-          <Image
-            src={data.coverImage.url}
-            alt={data.coverImage.alt ?? ''}
-            width={480}
-            height={
-              480 *
-              (data.coverImage.dimensions.height /
-                data.coverImage.dimensions.width)
-            }
-            priority
-            quality={100}
-          />
-        </div>
+        <Image
+          src={data.coverImage.url}
+          alt={data.coverImage.alt ?? ''}
+          width={480}
+          height={
+            480 *
+            (data.coverImage.dimensions.height /
+              data.coverImage.dimensions.width)
+          }
+          priority
+          quality={100}
+          className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
+        />
       )}
       {data.coverVideo.embed_url && (
         <div className="animate-enter opacity-0 animation-delay-200">

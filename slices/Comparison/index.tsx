@@ -18,7 +18,7 @@ const Comparison: FC<
   }
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="my-8 flex flex-col gap-1">
       <ReactCompareSlider
         itemOne={
           <Image
@@ -31,6 +31,7 @@ const Comparison: FC<
             }
             quality={100}
             alt="Before Image"
+            className="m-0"
           />
         }
         itemTwo={
@@ -44,6 +45,7 @@ const Comparison: FC<
             }
             quality={100}
             alt="After Image"
+            className="m-0"
           />
         }
       />

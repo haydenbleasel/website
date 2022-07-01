@@ -166,14 +166,6 @@ const CommandBar: FC = ({ children }) => {
       section: 'Pages',
     },
     {
-      id: 'clients',
-      name: 'Clients',
-      shortcut: ['c'],
-      keywords: 'clients',
-      section: 'Pages',
-      perform: async () => push('/clients'),
-    },
-    {
       id: 'work',
       name: 'Work',
       keywords: 'work',
@@ -187,12 +179,12 @@ const CommandBar: FC = ({ children }) => {
       perform: async () => push('/work'),
     },
     {
-      id: 'neutral',
-      name: 'Neutral',
-      shortcut: ['n'],
-      keywords: 'neutral',
+      id: 'clients',
+      name: 'Clients',
+      shortcut: ['c'],
+      keywords: 'clients',
       section: 'Pages',
-      perform: async () => push('/neutral'),
+      perform: async () => push('/clients'),
     },
     {
       id: 'recommendations',

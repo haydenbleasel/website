@@ -12,7 +12,7 @@ const SocialLinks: FC = () => (
         target="_blank"
         rel="noopener noreferrer"
         aria-label={platform.name}
-        className="animate-enter opacity-0"
+        className="animate-enter p-4 opacity-0"
         style={{ animationDelay: `${(index + 2) * 100}ms` }}
       >
         <Image
@@ -21,7 +21,7 @@ const SocialLinks: FC = () => (
           height={18}
           quality={100}
           alt={platform.name}
-          className={`flex p-4 transition-transform hover:-translate-y-1 ${
+          className={`flex transition-transform hover:-translate-y-1 ${
             platform.invertDark ? 'dark:brightness-0 dark:invert' : ''
           }`}
         />

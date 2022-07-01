@@ -6,7 +6,7 @@ type PlaceholderProps = {
 
 const Placeholder: FC<PlaceholderProps> = ({ className }) => (
   <span
-    className={`flex items-center justify-center bg-gray-50 dark:bg-gray-900 ${
+    className={`flex items-center justify-center bg-gray-50 dark:bg-gray-800 ${
       className ?? ''
     }`}
   >

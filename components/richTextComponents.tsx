@@ -177,7 +177,7 @@ const richTextComponents: JSXMapSerializer = {
     );
 
     return (
-      <div className="my-8 grid w-full font-mono font-medium">
+      <div className="grid w-full font-mono font-medium">
         <SyntaxHighlighter
           key={key}
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

@@ -37,7 +37,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   return (
     <span className="group relative">
       {!isExcluded && !screenshot.error && (
-        <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex -translate-x-2/4 -translate-y-0 rounded-lg bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-800">
+        <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex h-[187px] w-[300px] -translate-x-2/4 -translate-y-0 rounded-lg bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-800">
           {screenshot.result ? (
             <Image
               src={`data:image/png;base64,${screenshot.result}`}
@@ -50,19 +50,18 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
           )}
         </span>
       )}
-      <Link href={href} passHref>
-        <a
-          {...props}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline text-md font-normal text-gray-900 transition-colors hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-        >
-          {children}
-          <ArrowUpRight
-            size={14}
-            className="ml-[2px] inline -translate-y-[2px]"
-          />
-        </a>
+      <Link
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline text-md font-normal text-gray-900 transition-colors hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+        {...props}
+      >
+        {children}
+        <ArrowUpRight
+          size={14}
+          className="ml-[2px] inline -translate-y-[2px]"
+        />
       </Link>
     </span>
   );

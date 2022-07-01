@@ -19,49 +19,73 @@ const StoreButtons: FC<
 
   return (
     <div className="flex gap-3">
-      <Link href={appStoreLink} aria-label="App Store" passHref>
-        <a href={appStoreLink} target="_blank" rel="noopener noreferrer">
-          <Image
-            src="/images/app-store.svg"
-            width={132}
-            height={44}
-            alt="Download on the App Store"
-            priority
-            quality={100}
-            className="flex transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:hidden"
-          />
-          <Image
-            src="/images/app-store-dark.svg"
-            width={132}
-            height={44}
-            alt="Download on the App Store"
-            priority
-            quality={100}
-            className="hidden transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:flex"
-          />
-        </a>
+      <Link
+        href={appStoreLink}
+        aria-label="App Store"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex dark:hidden"
+      >
+        <Image
+          src="/images/app-store.svg"
+          width={132}
+          height={44}
+          alt="Download on the App Store"
+          priority
+          quality={100}
+          className="transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
+        />
       </Link>
-      <Link href={googlePlayLink} aria-label="Play Store" passHref>
-        <a href={googlePlayLink}>
-          <Image
-            src="/images/play-store.svg"
-            width={148.5}
-            height={44}
-            alt="Get it on Google Play"
-            priority
-            quality={100}
-            className="flex transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:hidden"
-          />
-          <Image
-            src="/images/play-store-dark.svg"
-            width={148.5}
-            height={44}
-            alt="Get it on Google Play"
-            priority
-            quality={100}
-            className="hidden transition-all hover:translate-y-[-2px] hover:drop-shadow-md dark:flex"
-          />
-        </a>
+      <Link
+        href={appStoreLink}
+        aria-label="App Store"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden dark:flex"
+      >
+        <Image
+          src="/images/app-store-dark.svg"
+          width={132}
+          height={44}
+          alt="Download on the App Store"
+          priority
+          quality={100}
+          className="transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
+        />
+      </Link>
+      <Link
+        href={googlePlayLink}
+        aria-label="Play Store"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex dark:hidden"
+      >
+        <Image
+          src="/images/play-store.svg"
+          width={148.5}
+          height={44}
+          alt="Get it on Google Play"
+          priority
+          quality={100}
+          className="transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
+        />
+      </Link>
+      <Link
+        href={googlePlayLink}
+        aria-label="Play Store"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden dark:flex"
+      >
+        <Image
+          src="/images/play-store-dark.svg"
+          width={148.5}
+          height={44}
+          alt="Get it on Google Play"
+          priority
+          quality={100}
+          className="transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
+        />
       </Link>
     </div>
   );

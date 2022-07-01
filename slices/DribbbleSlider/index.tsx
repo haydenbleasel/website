@@ -61,54 +61,53 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
   }, [shot]);
 
   return (
-    <Link key={shot} href={url} passHref>
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col"
-      >
-        <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-800">
-          <div className="relative aspect-[4/3] w-full">
-            <Placeholder className="absolute z-0 h-full w-full" />
+    <Link
+      key={shot}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col"
+    >
+      <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-800">
+        <div className="relative aspect-[4/3] w-full">
+          <Placeholder className="absolute z-0 h-full w-full" />
 
-            {data && (
-              <Image
-                src={data.image}
-                width={400}
-                height={300}
-                quality={100}
-                alt=""
-              />
-            )}
-          </div>
-          <div className="flex flex-col gap-1 border-t border-gray-100 p-4 dark:border-gray-700">
-            <p className="m-0 text-lg font-semibold text-gray-900 line-clamp-1 dark:text-white">
-              {data?.title ?? 'Loading'}
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <MessageSquare size={16} className="text-gray-400" />
-                <p className="m-0 text-md text-gray-500 dark:text-gray-400">
-                  {formatNumbers(data?.comments ?? 0)}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <ThumbsUp size={16} className="text-gray-400" />
-                <p className="m-0 text-md text-gray-500 dark:text-gray-400">
-                  {formatNumbers(data?.likes ?? 0)}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Eye size={16} className="text-gray-400" />
-                <p className="m-0 text-md text-gray-500 dark:text-gray-400">
-                  {formatNumbers(data?.views ?? 0)}
-                </p>
-              </div>
+          {data && (
+            <Image
+              src={data.image}
+              width={400}
+              height={300}
+              quality={100}
+              alt=""
+            />
+          )}
+        </div>
+        <div className="flex flex-col gap-1 border-t border-gray-100 p-4 dark:border-gray-700">
+          <p className="m-0 text-lg font-semibold text-gray-900 line-clamp-1 dark:text-white">
+            {data?.title ?? 'Loading'}
+          </p>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <MessageSquare size={16} className="text-gray-400" />
+              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+                {formatNumbers(data?.comments ?? 0)}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <ThumbsUp size={16} className="text-gray-400" />
+              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+                {formatNumbers(data?.likes ?? 0)}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Eye size={16} className="text-gray-400" />
+              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+                {formatNumbers(data?.views ?? 0)}
+              </p>
             </div>
           </div>
         </div>
-      </a>
+      </div>
     </Link>
   );
 };

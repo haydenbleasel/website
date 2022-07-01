@@ -6,26 +6,25 @@ import { social } from '../utils/social';
 const SocialLinks: FC = () => (
   <div className="-ml-3 flex flex-wrap">
     {social.map((platform, index) => (
-      <Link href={platform.url} key={platform.id} passHref>
-        <a
-          href={platform.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={platform.name}
-          className="animate-enter opacity-0"
-          style={{ animationDelay: `${(index + 2) * 100}ms` }}
-        >
-          <Image
-            src={`/social/${platform.id}.svg`}
-            width={18}
-            height={18}
-            quality={100}
-            alt={platform.name}
-            className={`flex p-4 transition-transform hover:-translate-y-1 ${
-              platform.invertDark ? 'dark:brightness-0 dark:invert' : ''
-            }`}
-          />
-        </a>
+      <Link
+        href={platform.url}
+        key={platform.id}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={platform.name}
+        className="animate-enter opacity-0"
+        style={{ animationDelay: `${(index + 2) * 100}ms` }}
+      >
+        <Image
+          src={`/social/${platform.id}.svg`}
+          width={18}
+          height={18}
+          quality={100}
+          alt={platform.name}
+          className={`flex p-4 transition-transform hover:-translate-y-1 ${
+            platform.invertDark ? 'dark:brightness-0 dark:invert' : ''
+          }`}
+        />
       </Link>
     ))}
   </div>

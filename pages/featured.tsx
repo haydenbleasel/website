@@ -54,10 +54,8 @@ const Feature: FC<FeatureData> = ({ link, ...props }) => (
     {link.link_type === 'Any' ? (
       <FeatureInner {...props} />
     ) : (
-      <Link href={docResolver(link)} passHref>
-        <a href={docResolver(link)} target="_blank" rel="noopener noreferrer">
-          <FeatureInner {...props} withArrow />
-        </a>
+      <Link href={docResolver(link)} target="_blank" rel="noopener noreferrer">
+        <FeatureInner {...props} withArrow />
       </Link>
     )}
   </div>

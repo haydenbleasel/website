@@ -33,18 +33,16 @@ const Recommendation: FC<RecommendationData> = ({
   link,
 }) => (
   <div className="fill-anchor">
-    <Link href={docResolver(link)} passHref>
-      <a href={docResolver(link)} target="_blank" rel="noopener noreferrer">
-        <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
-          <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
-            <span className="line-clamp-1">{name}</span>
-            <ArrowUpRight className="shrink-0" size={16} />
-          </p>
-          <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
-            {description}
-          </p>
-        </div>
-      </a>
+    <Link href={docResolver(link)} target="_blank" rel="noopener noreferrer">
+      <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
+        <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
+          <span className="line-clamp-1">{name}</span>
+          <ArrowUpRight className="shrink-0" size={16} />
+        </p>
+        <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+          {description}
+        </p>
+      </div>
     </Link>
   </div>
 );

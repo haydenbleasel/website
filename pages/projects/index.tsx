@@ -91,14 +91,12 @@ const Projects: FC<ProjectsProps> = ({ data, projects }) => (
               {item.link.link_type === 'Any' ? (
                 <Project title={item.name} description={item.description} wip />
               ) : (
-                <Link href={docResolver(item.link)} passHref>
-                  <a
-                    href={docResolver(item.link)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Project title={item.name} description={item.description} />
-                  </a>
+                <Link
+                  href={docResolver(item.link)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Project title={item.name} description={item.description} />
                 </Link>
               )}
             </div>

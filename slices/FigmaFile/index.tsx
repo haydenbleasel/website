@@ -54,17 +54,20 @@ const FigmaFile: FC<
       className="group relative mt-8 mb-4 flex w-full flex-shrink-0 flex-grow-0 flex-col"
     >
       <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-900">
-        {data ? (
-          <Image
-            src={data.image}
-            width={640}
-            height={320}
-            quality={100}
-            alt=""
-          />
-        ) : (
-          <Placeholder className="h-[320px] w-[640px]" />
-        )}
+        <div className="relative aspect-[2/1] w-full">
+          <Placeholder className="absolute z-0 h-full w-full" />
+
+          {data && (
+            <Image
+              src={data.image}
+              width={640}
+              height={320}
+              quality={100}
+              alt=""
+              className="relative z-10 m-0"
+            />
+          )}
+        </div>
         <div className="flex flex-col gap-1 border-t border-gray-100 p-4">
           <p className="m-0 text-md font-semibold text-gray-900 line-clamp-1 dark:text-white sm:text-lg">
             {data?.title ?? 'Loading'}

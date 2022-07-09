@@ -3,6 +3,7 @@ import type { FC, KeyboardEventHandler, MouseEventHandler } from 'react';
 import { useState } from 'react';
 import { Menu as MenuList } from 'react-feather';
 import toast from 'react-hot-toast';
+import getCommandKey from '../utils/getCommandKey';
 
 const Menu: FC = () => {
   const kbar = useKBar();
@@ -18,7 +19,7 @@ const Menu: FC = () => {
 
   const clickHandler: MouseEventHandler<HTMLDivElement> = () => {
     if (!clickNotified) {
-      toast('You can also press ⌘K to open the menu!');
+      toast(`You can also press ${getCommandKey()}K to open the menu!`);
       setClickNotified(true);
     }
     kbar.query.toggle();

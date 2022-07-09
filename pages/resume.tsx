@@ -16,6 +16,7 @@ import { getPage, getPages } from '../utils/prismic';
 import Layout from '../components/layout';
 import { social } from '../utils/social';
 import SocialLinks from '../components/socialLinks';
+import getCommandKey from '../utils/getCommandKey';
 import type { WorkPostProps } from './work/[post]';
 import type { HomeProps } from '.';
 
@@ -48,7 +49,7 @@ const sortByYear = (postA: WorkPostProps, postB: WorkPostProps) => {
 
 const Resume: FC<ResumeProps> = ({ data, home, work }) => {
   useEffect(() => {
-    toast('You can press ⌘P to print this page!', {
+    toast(`You can press ${getCommandKey()}P to print this page!`, {
       duration: 5 * 60 * 1000,
     });
 

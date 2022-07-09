@@ -6,7 +6,6 @@ import { PrismicProvider } from '@prismicio/react';
 import { SocialProfileJsonLd } from 'next-seo';
 import { client, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
-import '../styles/dev.css';
 import CommandBar from '../components/commandbar';
 import Menu from '../components/menu';
 import ExternalLinkComponent from '../components/externalLink';

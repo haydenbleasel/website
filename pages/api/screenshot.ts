@@ -25,7 +25,6 @@ const handler: NextApiHandler<ScreenshotResponse> = async (req, res) => {
           url,
           width: 1200,
           height: 750,
-          waitUntil: 'networkidle2',
         }),
       }
     );

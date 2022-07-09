@@ -14,7 +14,8 @@ export type LayoutProps = {
 } & Omit<NextSeoProps, 'title' | 'description'>;
 
 const getPreviousPage = (path: string) => {
-  const pathElements = path.split('/').filter(Boolean);
+  const { pathname } = new URL(path, process.env.NEXT_PUBLIC_SITE_URL);
+  const pathElements = pathname.split('/').filter(Boolean);
 
   if (!pathElements.length) {
     return null;

@@ -1,5 +1,4 @@
 import type { NextApiHandler } from 'next';
-import { createBrowser } from '../../utils/browser';
 
 export type ScreenshotResponse = {
   error?: string;
@@ -14,23 +13,41 @@ const handler: NextApiHandler<ScreenshotResponse> = async (req, res) => {
     return;
   }
 
-  const browser = await createBrowser();
-  const page = await browser.newPage();
-  await page.setViewport({ width: 1200, height: 750 });
-  await page.goto(url, { waitUntil: 'networkidle0' });
-  const image = (await page.screenshot({
-    type: 'png',
-    encoding: 'base64',
-  })) as string;
+  try {
+    const response = await fetch(
+      'https://glimpse.haydenbleasel.com/api/screenshot',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url,
+          width: 1200,
+          height: 750,
+          waitUntil: 'networkidle2',
+        }),
+      }
+    );
 
-  await browser.close();
+    const { image, error } = (await response.json()) as ScreenshotResponse;
 
-  if (!image) {
-    res.status(400).json({ error: 'No image found' });
-    return;
+    if (error) {
+      res.status(400).json({ error });
+      return;
+    }
+
+    if (!image) {
+      res.status(400).json({ error: 'No image found' });
+      return;
+    }
+
+    res.status(200).json({ image });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : (error as string);
+
+    res.status(400).json({ error: message });
   }
-
-  res.status(200).json({ image });
 };
 
 export default handler;

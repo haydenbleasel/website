@@ -1,5 +1,4 @@
 import type { NextApiHandler } from 'next';
-import { createBrowser } from '../../utils/browser';
 
 export type DribbbleResponse = {
   error?: string;
@@ -20,39 +19,29 @@ const handler: NextApiHandler<DribbbleResponse> = async (req, res) => {
     return;
   }
 
-  const browser = await createBrowser();
-  const page = await browser.newPage();
-  await page.goto(`https://dribbble.com/shots/${shot}`);
+  try {
+    const response = await fetch(
+      `https://slam-dunk.haydenbleasel.com/api/${shot}`
+    );
 
-  const config = (await page.evaluate('Dribbble.JsConfig')) as {
-    shotData: Record<string, unknown>;
-  };
+    const { data, error } = (await response.json()) as DribbbleResponse;
 
-  await browser.close();
+    if (error) {
+      res.status(400).json({ error });
+      return;
+    }
 
-  const { title, shotMediaPreview, commentsCount, likesCount, viewsCount } =
-    config.shotData as {
-      title: string;
-      commentsCount: number;
-      likesCount: number;
-      viewsCount: number;
-      shotMediaPreview: {
-        mediaType: string | null;
-        shotGifUrl: string;
-        shotImageUrl: string;
-        shotVideoUrl: string | null;
-      };
-    };
+    if (!data) {
+      res.status(400).json({ error: 'No data found' });
+      return;
+    }
 
-  const data = {
-    title,
-    image: shotMediaPreview.shotVideoUrl ?? shotMediaPreview.shotGifUrl,
-    comments: commentsCount,
-    likes: likesCount,
-    views: viewsCount,
-  };
+    res.status(200).json({ data });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : (error as string);
 
-  res.status(200).json({ data });
+    res.status(400).json({ error: message });
+  }
 };
 
 export default handler;

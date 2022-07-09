@@ -19,13 +19,9 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
       }),
     });
 
-    const { error, image } = (await response.json()) as ScreenshotResponse;
+    const data = (await response.json()) as ScreenshotResponse;
 
-    if (error) {
-      throw new Error(error);
-    }
-
-    return image;
+    return data;
   });
 
   useMountEffect(async () => {
@@ -36,11 +32,11 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
 
   return (
     <span className="group relative inline-block">
-      {!isExcluded && !screenshot.error && (
+      {!isExcluded && !screenshot.error && !screenshot.result?.error && (
         <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex h-[203px] w-[316px] -translate-x-2/4 -translate-y-0 rounded-lg border border-gray-50 bg-white p-2 opacity-0 shadow-lg transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:border-gray-700 dark:bg-gray-800">
-          {screenshot.result ? (
+          {screenshot.result?.image ? (
             <Image
-              src={`data:image/png;base64,${screenshot.result}`}
+              src={`data:image/png;base64,${screenshot.result.image}`}
               width={300}
               height={187}
               alt=""

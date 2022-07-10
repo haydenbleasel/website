@@ -1,11 +1,11 @@
 {
-  "id": "d49c0905-4bda-4754-88d5-310bde14292c",
-  "uid": "et-perferendis-occaecati",
+  "id": "44b533f5-8702-4bf4-9556-7839e12cf815",
+  "uid": "sit-reiciendis-magnam",
   "type": "home",
   "data": {
-    "title": "evolve transparent portals",
-    "description": "whiteboard back-end eyeballs",
-    "location": "synergize frictionless bandwidth",
+    "title": "leverage plug-and-play functionalities",
+    "description": "productize enterprise action-items",
+    "location": "enhance bricks-and-clicks initiatives",
     "photo": {
       "dimensions": {
         "width": 900,
@@ -13,41 +13,63 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869?w=900&h=500&fit=crop"
     },
-    "name": "morph web-enabled action-items",
-    "role": "matrix customized bandwidth",
+    "name": "visualize collaborative infrastructures",
+    "role": "utilize viral methodologies",
     "sections": [
       {
-        "title": "evolve bleeding-edge mindshare",
+        "title": "synthesize cross-media networks",
         "content": [
           {
             "type": "paragraph",
-            "text": "Ipsum eu pariatur occaecat ex magna elit Lorem fugiat culpa ipsum et. Et incididunt eu elit nostrud. Pariatur consectetur ullamco officia.",
+            "text": "Sint commodo est laborum pariatur elit Lorem ut voluptate ipsum ex id.",
             "spans": []
           }
         ]
       },
       {
-        "title": "evolve B2C systems",
+        "title": "orchestrate web-enabled e-services",
         "content": [
           {
             "type": "paragraph",
-            "text": "Esse reprehenderit eiusmod ullamco duis culpa excepteur dolore minim cupidatat anim culpa ea. Elit cillum nisi laboris sint ullamco veniam et consequat. Est ipsum id laborum ullamco.",
+            "text": "Occaecat ex sunt cupidatat. Aliquip minim magna sunt dolor.",
             "spans": []
           }
         ]
       },
       {
-        "title": "incubate next-generation markets",
+        "title": "optimize robust paradigms",
         "content": [
           {
             "type": "paragraph",
-            "text": "Quis ex veniam in irure ullamco sunt.",
+            "text": "Enim consectetur ex do laborum ad reprehenderit qui aute nulla amet qui. Dolore enim deserunt dolore deserunt commodo eu eiusmod incididunt consequat pariatur anim voluptate nulla.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "title": "harness turn-key web services",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Duis exercitation minim qui dolore aliqua dolor tempor voluptate laborum. Nostrud mollit incididunt tempor commodo amet velit elit irure ex. Ullamco esse aliquip culpa magna et duis magna mollit enim do dolor.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "title": "embrace innovative web-readiness",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Cupidatat laborum eiusmod eu aute exercitation.",
             "spans": []
           }
         ]
       }
-    ]
+    ],
+    "customActivityEmoji": "revolutionize sticky e-services",
+    "customActivityTitle": "enable vertical e-business"
   }
 }

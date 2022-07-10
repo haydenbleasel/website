@@ -23,6 +23,8 @@ export type HomeProps = {
     name: KeyTextField;
     role: KeyTextField;
     photo: ImageFieldImage;
+    customActivityEmoji: KeyTextField;
+    customActivityTitle: KeyTextField;
     sections: GroupField<{
       title: KeyTextField;
       content: RichTextField;
@@ -45,7 +47,10 @@ const Home: FC<HomeProps> = ({ data }) => (
               alt=""
               className="inline-flex overflow-hidden rounded-full"
             />
-            <Activity />
+            <Activity
+              customEmoji={data.customActivityEmoji}
+              customTitle={data.customActivityTitle}
+            />
           </div>
         </div>
       )}

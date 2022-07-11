@@ -72,6 +72,16 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/projects/harmony',
+        destination: 'https://github.com/haydenbleasel/harmony',
+        permanent: true,
+      },
+      {
+        source: '/projects/neutral',
+        destination: 'https://tryneutral.com/',
+        permanent: true,
+      },
     ];
   },
 };

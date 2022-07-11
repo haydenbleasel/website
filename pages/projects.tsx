@@ -2,19 +2,15 @@ import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import { Fragment } from 'react';
 import type {
-  EmbedField,
   GroupField,
-  ImageFieldImage,
   KeyTextField,
   LinkField,
   PrismicDocumentWithUID,
-  SliceZone,
 } from '@prismicio/types';
-import { PrismicLink } from '@prismicio/react';
 import Link from 'next/link';
-import { docResolver, getPage, getPages } from '../../utils/prismic';
-import Divider from '../../components/divider';
-import Layout from '../../components/layout';
+import { docResolver, getPage } from '../utils/prismic';
+import Divider from '../components/divider';
+import Layout from '../components/layout';
 
 type ProjectsProps = {
   data: {
@@ -26,16 +22,7 @@ type ProjectsProps = {
       link: LinkField;
     }>;
   };
-  projects: ProjectProps[];
 };
-
-type ProjectProps = PrismicDocumentWithUID<{
-  title: KeyTextField;
-  description: KeyTextField;
-  coverImage: ImageFieldImage;
-  coverVideo: EmbedField;
-  slices1: SliceZone;
-}>;
 
 const Project: FC<{
   title: KeyTextField;
@@ -55,37 +42,20 @@ const Project: FC<{
   </div>
 );
 
-const Projects: FC<ProjectsProps> = ({ data, projects }) => (
+const Projects: FC<ProjectsProps> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
     <div className="flex flex-col gap-4">
       <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
         {data.description}
       </p>
       <div className="group mt-4">
-        {projects.map((item, index) => (
-          <Fragment key={index}>
-            {Boolean(index) && <Divider />}
-            <div
-              className="animate-enter opacity-0 transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100"
-              style={{ animationDelay: `${(index + 2) * 100}ms` }}
-            >
-              <PrismicLink document={item}>
-                <Project
-                  title={item.data.title}
-                  description={item.data.description}
-                />
-              </PrismicLink>
-            </div>
-          </Fragment>
-        ))}
-        {data.wip.length && projects.length && <Divider />}
         {data.wip.map((item, index) => (
           <Fragment key={index}>
             {Boolean(index) && <Divider />}
             <div
               className="animate-enter opacity-0 transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100"
               style={{
-                animationDelay: `${(index + projects.length + 2) * 100}ms`,
+                animationDelay: `${(index + data.wip.length + 2) * 100}ms`,
               }}
             >
               {item.link.link_type === 'Any' ? (
@@ -109,12 +79,10 @@ const Projects: FC<ProjectsProps> = ({ data, projects }) => (
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = (await getPage('projects')) as PrismicDocumentWithUID;
-  const projects = await getPages('project');
 
   return {
     props: {
       data,
-      projects,
     },
   };
 };

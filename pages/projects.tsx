@@ -12,7 +12,7 @@ import { docResolver, getPage } from '../utils/prismic';
 import Divider from '../components/divider';
 import Layout from '../components/layout';
 
-type ProjectsProps = {
+export type ProjectsProps = {
   data: {
     title: KeyTextField;
     description: KeyTextField;

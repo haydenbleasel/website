@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
+import type {
+  FilledLinkToWebField,
+  KeyTextField,
+  PrismicDocumentWithUID,
+} from '@prismicio/types';
 import type { NextApiHandler } from 'next';
 import { getDevPosts } from '../../utils/dev';
 import { getMediumPosts } from '../../utils/medium';
-import { getPages } from '../../utils/prismic';
+import { getPage, getPages } from '../../utils/prismic';
+import type { ProjectsProps } from '../projects';
 import type { WorkPostProps } from '../work/[post]';
 
 type Docs = PrismicDocumentWithUID<{
@@ -16,9 +21,21 @@ const handler: NextApiHandler = async (req, res) => {
   const caseStudies = (await getPages('case-study')) as Docs;
   const workPosts = (await getPages('work-post')) as WorkPostProps[];
   const landingPages = (await getPages('landing-page')) as Docs;
-  const projects = (await getPages('project')) as Docs;
+  const projects = (await getPage('projects')) as PrismicDocumentWithUID<
+    ProjectsProps['data']
+  >;
   const devPosts = await getDevPosts();
   const mediumPosts = await getMediumPosts();
+
+  const projectActions = projects.data.wip
+    .filter(({ link }) => link.link_type === 'Web')
+    .map(({ name, description, link }) => ({
+      id: name,
+      name: `${name ?? ''} — ${description ?? ''}`,
+      keywords: name,
+      link: (link as FilledLinkToWebField).url,
+      parent: 'projects',
+    }));
 
   const caseStudyActions = caseStudies.map(({ uid, data }) => ({
     id: uid,
@@ -34,14 +51,6 @@ const handler: NextApiHandler = async (req, res) => {
     keywords: data.role,
     link: `/work/${uid}`,
     parent: 'work',
-  }));
-
-  const projectsActions = projects.map(({ uid, data }) => ({
-    id: uid,
-    name: `${data.title ?? ''} — ${data.description ?? ''}`,
-    keywords: data.title,
-    link: `/projects/${uid}`,
-    parent: 'projects',
   }));
 
   const landingPageActions = landingPages.map(({ uid, data }) => ({
@@ -70,9 +79,9 @@ const handler: NextApiHandler = async (req, res) => {
   }));
 
   const actions = [
+    ...projectActions,
     ...caseStudyActions,
     ...landingPageActions,
-    ...projectsActions,
     ...workPostActions,
     ...devPostActions,
     ...mediumPostActions,

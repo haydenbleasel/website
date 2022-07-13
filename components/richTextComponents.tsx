@@ -2,16 +2,125 @@ import dynamic from 'next/dynamic';
 import type { JSXMapSerializer } from '@prismicio/react';
 import { PrismicLink } from '@prismicio/react';
 import Image from 'next/future/image';
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import type { TwitterTweetEmbedProps } from 'react-twitter-embed/dist/components/TwitterTweetEmbed';
 import resolveConfig from 'tailwindcss/resolveConfig';
 import type { TailwindConfig } from 'tailwindcss/tailwind-config';
 import type { DefaultColors } from 'tailwindcss/types/generated/colors';
+import type { CSSProperties, FC } from 'react';
+import { useState, useEffect } from 'react';
+import type { RTPreformattedNode } from '@prismicio/types';
 import { docResolver } from '../utils/prismic';
 import tailwindConfig from '../tailwind.config';
 import Video from './video';
 
 const fullConfig = resolveConfig(tailwindConfig as TailwindConfig);
+
+const Preformatted: FC<{ node: RTPreformattedNode; key: string }> = ({
+  node,
+  key,
+}) => {
+  const { gray } = fullConfig.theme.colors as unknown as DefaultColors;
+  const SyntaxHighlighter = dynamic(async () => {
+    const { Light } = await import(
+      /* webpackChunkName: "react-syntax-highlighter" */
+      'react-syntax-highlighter'
+    );
+    const javascript = await import(
+      /* webpackChunkName: "react-syntax-highlighter-javascript" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/javascript'
+    );
+    const typescript = await import(
+      /* webpackChunkName: "react-syntax-highlighter-typescript" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/typescript'
+    );
+    const bash = await import(
+      /* webpackChunkName: "react-syntax-highlighter-bash" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/bash'
+    );
+    const xml = await import(
+      /* webpackChunkName: "react-syntax-highlighter-xml" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/xml'
+    );
+    const http = await import(
+      /* webpackChunkName: "react-syntax-highlighter-http" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/http'
+    );
+    const json = await import(
+      /* webpackChunkName: "react-syntax-highlighter-json" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/json'
+    );
+    const markdown = await import(
+      /* webpackChunkName: "react-syntax-highlighter-markdown" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/markdown'
+    );
+    const plaintext = await import(
+      /* webpackChunkName: "react-syntax-highlighter-plaintext" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/plaintext'
+    );
+    const shell = await import(
+      /* webpackChunkName: "react-syntax-highlighter-shell" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/shell'
+    );
+    const yaml = await import(
+      /* webpackChunkName: "react-syntax-highlighter-yaml" */
+      'react-syntax-highlighter/dist/cjs/languages/hljs/yaml'
+    );
+
+    Light.registerLanguage('javascript', javascript);
+    Light.registerLanguage('typescript', typescript);
+    Light.registerLanguage('bash', bash);
+    Light.registerLanguage('xml', xml);
+    Light.registerLanguage('http', http);
+    Light.registerLanguage('json', json);
+    Light.registerLanguage('markdown', markdown);
+    Light.registerLanguage('plaintext', plaintext);
+    Light.registerLanguage('shell', shell);
+    Light.registerLanguage('yml', yaml);
+
+    return Light;
+  });
+  const [theme, setTheme] = useState<Record<string, CSSProperties> | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    const loadTheme = async () => {
+      const dracula = (
+        await import(
+          /* webpackChunkName: "react-syntax-highlighter-dracula" */
+          'react-syntax-highlighter/dist/cjs/styles/hljs/dracula'
+        )
+      ).default;
+
+      setTheme(dracula);
+    };
+
+    if (!theme) {
+      // eslint-disable-next-line no-console
+      loadTheme().catch(console.warn);
+    }
+  }, [theme]);
+
+  return (
+    <div className="grid w-full font-mono font-medium">
+      <SyntaxHighlighter
+        key={key}
+        style={theme}
+        customStyle={{
+          padding: '1rem',
+          borderRadius: '0.25rem',
+          backgroundColor: gray[800],
+        }}
+        showLineNumbers
+        lineNumberStyle={{
+          color: gray[400],
+        }}
+      >
+        {node.text}
+      </SyntaxHighlighter>
+    </div>
+  );
+};
 
 const richTextComponents: JSXMapSerializer = {
   paragraph: ({ children, key }) => (
@@ -166,36 +275,7 @@ const richTextComponents: JSXMapSerializer = {
       />
     );
   },
-  preformatted: ({ node, key }) => {
-    const { gray } = fullConfig.theme.colors as unknown as DefaultColors;
-    const SyntaxHighlighter = dynamic(
-      async () =>
-        import(
-          /* webpackChunkName: "react-syntax-highlighter" */
-          'react-syntax-highlighter'
-        )
-    );
-
-    return (
-      <div className="grid w-full font-mono font-medium">
-        <SyntaxHighlighter
-          key={key}
-          style={dracula}
-          customStyle={{
-            padding: '1rem',
-            borderRadius: '0.25rem',
-            backgroundColor: gray[800],
-          }}
-          showLineNumbers
-          lineNumberStyle={{
-            color: gray[400],
-          }}
-        >
-          {node.text}
-        </SyntaxHighlighter>
-      </div>
-    );
-  },
+  preformatted: Preformatted,
 };
 
 export default richTextComponents;

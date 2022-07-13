@@ -1,4 +1,5 @@
-import type { NextApiHandler } from 'next';
+import type { NextRequest } from 'next/server';
+import res from '../../utils/response';
 
 export type DribbbleResponse = {
   error?: string;
@@ -11,12 +12,15 @@ export type DribbbleResponse = {
   };
 };
 
-const handler: NextApiHandler<DribbbleResponse> = async (req, res) => {
-  const { shot } = JSON.parse(req.body as string) as { shot: number };
+export const config = {
+  runtime: 'experimental-edge',
+};
+
+const handler = async (req: NextRequest): Promise<Response> => {
+  const { shot } = (await req.json()) as { shot: number };
 
   if (!shot) {
-    res.status(400).json({ error: 'No shot specified' });
-    return;
+    return res(400, { error: 'No shot provided' });
   }
 
   try {
@@ -27,20 +31,18 @@ const handler: NextApiHandler<DribbbleResponse> = async (req, res) => {
     const { data, error } = (await response.json()) as DribbbleResponse;
 
     if (error) {
-      res.status(400).json({ error });
-      return;
+      return res(400, { error });
     }
 
     if (!data) {
-      res.status(400).json({ error: 'No data found' });
-      return;
+      return res(400, { error: 'No data found' });
     }
 
-    res.status(200).json({ data });
+    return res(200, { data });
   } catch (error) {
     const message = error instanceof Error ? error.message : (error as string);
 
-    res.status(400).json({ error: message });
+    return res(400, { error: message });
   }
 };
 

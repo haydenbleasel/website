@@ -4,7 +4,6 @@ import type { SliceComponentProps } from '@prismicio/react';
 import { PrismicLink } from '@prismicio/react';
 import type { KeyTextField } from '@prismicio/types';
 import useSWR from 'swr';
-import { GitHub } from 'react-feather';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import dynamic from 'next/dynamic';
@@ -66,6 +65,15 @@ const GitHubRepo: FC<
     );
 
     return OctoIcons.StarIcon;
+  });
+
+  const GitHub = dynamic(async () => {
+    const FeatherIcons = await import(
+      /* webpackChunkName: "react-feather" */
+      'react-feather'
+    );
+
+    return FeatherIcons.GitHub;
   });
 
   return data ? (

@@ -1,4 +1,5 @@
-import type { NextApiHandler } from 'next';
+import type { NextRequest } from 'next/server';
+import res from '../../utils/response';
 
 export type FigmaResponse = {
   error?: string;
@@ -33,29 +34,38 @@ type FigmaDocument = {
   ];
 };
 
-const handler: NextApiHandler<FigmaResponse> = async (req, res) => {
-  const { key } = JSON.parse(req.body as string) as { key: string };
+export const config = {
+  runtime: 'experimental-edge',
+};
+
+const handler = async (req: NextRequest): Promise<Response> => {
+  const { key } = (await req.json()) as { key: string };
 
   if (!key) {
-    res.status(400).json({ error: 'No key specified' });
-    return;
+    return res(400, { error: 'No key provided' });
   }
 
-  const response = await fetch(`https://api.figma.com/v1/files/${key}`, {
-    headers: {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      'X-FIGMA-TOKEN': process.env.FIGMA_ACCESS_TOKEN ?? '',
-    },
-  });
+  try {
+    const response = await fetch(`https://api.figma.com/v1/files/${key}`, {
+      headers: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        'X-FIGMA-TOKEN': process.env.FIGMA_ACCESS_TOKEN ?? '',
+      },
+    });
 
-  const doc = (await response.json()) as FigmaDocument;
-  const data = {
-    title: doc.name,
-    lastUpdated: doc.lastModified,
-    image: doc.thumbnailUrl,
-  };
+    const doc = (await response.json()) as FigmaDocument;
+    const data = {
+      title: doc.name,
+      lastUpdated: doc.lastModified,
+      image: doc.thumbnailUrl,
+    };
 
-  res.status(200).json({ data });
+    return res(200, { data });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : (error as string);
+
+    return res(500, { error: message });
+  }
 };
 
 export default handler;

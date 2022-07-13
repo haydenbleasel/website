@@ -1,4 +1,5 @@
-import type { NextApiHandler } from 'next';
+import type { NextRequest } from 'next/server';
+import res from '../../utils/response';
 
 type GitHubRepo = {
   full_name: string;
@@ -18,20 +19,22 @@ export type RepositoryResponse = {
   data?: GitHubRepo;
 };
 
-const handler: NextApiHandler<RepositoryResponse> = async (req, res) => {
-  const { owner, repo } = JSON.parse(req.body as string) as {
+export const config = {
+  runtime: 'experimental-edge',
+};
+
+const handler = async (req: NextRequest): Promise<Response> => {
+  const { owner, repo } = (await req.json()) as {
     owner: string;
     repo: string;
   };
 
   if (!owner) {
-    res.status(400).json({ error: 'No owner specified' });
-    return;
+    return res(400, { error: 'No owner provided' });
   }
 
   if (!repo) {
-    res.status(400).json({ error: 'No repo specified' });
-    return;
+    return res(400, { error: 'No repo provided' });
   }
 
   try {
@@ -47,10 +50,11 @@ const handler: NextApiHandler<RepositoryResponse> = async (req, res) => {
 
     const data = (await response.json()) as GitHubRepo;
 
-    res.status(200).json({ data });
+    return res(200, { data });
   } catch (error) {
     const message = error instanceof Error ? error.message : (error as string);
-    res.status(500).json({ error: message });
+
+    return res(500, { error: message });
   }
 };
 

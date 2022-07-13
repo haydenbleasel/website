@@ -1,4 +1,4 @@
-import type { NextApiHandler } from 'next';
+import res from '../../utils/response';
 
 type SteamResponse = {
   response: {
@@ -9,7 +9,11 @@ type SteamResponse = {
   };
 };
 
-const handler: NextApiHandler = async (req, res) => {
+export const config = {
+  runtime: 'experimental-edge',
+};
+
+const handler = async (): Promise<Response> => {
   try {
     const response = await fetch(
       `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${
@@ -22,17 +26,17 @@ const handler: NextApiHandler = async (req, res) => {
 
     // 0 means offline, everything else is a variation of online.
     if (personastate && gameextrainfo) {
-      res.status(200).json({
+      return res(200, {
         status: 'online',
         game: gameextrainfo,
       });
-      return;
     }
 
-    res.status(200).json({ status: 'offline', game: undefined });
+    return res(200, { status: 'offline', game: undefined });
   } catch (error) {
     const message = error instanceof Error ? error.message : (error as string);
-    res.status(500).json({ error: message });
+
+    return res(500, { error: message });
   }
 };
 

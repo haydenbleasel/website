@@ -42,7 +42,7 @@ const handler = async (req: NextRequest): Promise<Response> => {
   } catch (error) {
     const message = error instanceof Error ? error.message : (error as string);
 
-    return res(400, { error: message });
+    return res(500, { error: message });
   }
 };
 

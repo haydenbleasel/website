@@ -1,11 +1,15 @@
 import { differenceInMinutes, parseISO } from 'date-fns';
-import type { NextApiHandler } from 'next';
+import res from '../../utils/response';
 
 type GitHubEvent = {
   created_at: string;
 };
 
-const handler: NextApiHandler = async (req, res) => {
+export const config = {
+  runtime: 'experimental-edge',
+};
+
+const handler = async (): Promise<Response> => {
   try {
     const response = await fetch(
       'https://api.github.com/users/haydenbleasel/events',
@@ -28,10 +32,14 @@ const handler: NextApiHandler = async (req, res) => {
 
     const active = Boolean(recent.length);
 
-    res.status(200).json({ status: active ? 'online' : 'offline', active });
+    return res(200, {
+      status: active ? 'online' : 'offline',
+      active,
+    });
   } catch (error) {
     const message = error instanceof Error ? error.message : (error as string);
-    res.status(500).json({ error: message });
+
+    return res(500, { error: message });
   }
 };
 

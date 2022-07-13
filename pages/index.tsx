@@ -63,9 +63,9 @@ const Home: FC<HomeProps> = ({ data }) => (
         </p>
         <p className="mt-3 inline-flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
           <Globe width={12} height={12} />
-          <p className="text-xs font-medium leading-snug">
+          <span className="text-xs font-medium leading-snug">
             Currently in {data.location}
-          </p>
+          </span>
         </p>
       </div>
     </div>

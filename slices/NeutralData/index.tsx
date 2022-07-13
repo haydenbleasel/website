@@ -1,6 +1,14 @@
 import type { FC } from 'react';
 import useSWR from 'swr';
-import type { NeutralResponse } from '../../pages/api/neutral';
+
+export type NeutralResponse = {
+  averageRating?: number;
+  programCount?: number;
+  treeCount?: number;
+  offsetAmount?: string;
+  latestVersion?: string;
+  error?: string;
+};
 
 const fetcher = async (url: string) => {
   const response = await fetch(url);

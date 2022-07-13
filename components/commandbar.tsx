@@ -29,14 +29,14 @@ const RenderResults: FC = () => {
   const { results } = useMatches();
 
   const onRender = useCallback(
-    (props: RenderParams) =>
+    (props: RenderParams & { item: { external?: boolean } }) =>
       typeof props.item === 'string' ? (
         <div className="px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
           {props.item}
         </div>
       ) : (
         <div
-          className={`flex cursor-pointer items-center justify-between py-3 px-4 transition-colors ${
+          className={`flex cursor-pointer items-center justify-between gap-2 py-3 px-4 transition-colors ${
             props.active ? 'bg-gray-100 dark:bg-gray-800' : 'bg-transparent'
           }`}
         >
@@ -69,6 +69,19 @@ const RenderResults: FC = () => {
               {props.item.name}
             </span>
           </div>
+          {props.item.external && (
+            <div className="flex h-6 w-6 items-center justify-center rounded-md transition-colors">
+              <span
+                className={`font-mono text-sm font-medium leading-normal transition-colors ${
+                  props.active
+                    ? 'text-gray-500 dark:text-gray-400'
+                    : 'text-gray-400 dark:text-gray-500'
+                }`}
+              >
+                <ArrowUpRight size={20} />
+              </span>
+            </div>
+          )}
           {props.item.shortcut && (
             <div
               className={`flex h-6 w-6 items-center justify-center rounded-md transition-colors ${

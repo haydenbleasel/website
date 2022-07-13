@@ -35,6 +35,7 @@ const handler: NextApiHandler = async (req, res) => {
       keywords: name,
       link: (link as FilledLinkToWebField).url,
       parent: 'projects',
+      external: true,
     }));
 
   const caseStudyActions = caseStudies.map(({ uid, data }) => ({
@@ -68,6 +69,7 @@ const handler: NextApiHandler = async (req, res) => {
     keywords: title,
     link,
     parent: 'blog',
+    external: true,
   }));
 
   const mediumPostActions = mediumPosts.map(({ id, title, link }) => ({
@@ -76,6 +78,7 @@ const handler: NextApiHandler = async (req, res) => {
     keywords: title,
     link,
     parent: 'blog',
+    external: true,
   }));
 
   const actions = [

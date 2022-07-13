@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import { GitHub } from 'react-feather';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
-import { EyeIcon, RepoForkedIcon, StarIcon } from '@primer/octicons-react';
+import dynamic from 'next/dynamic';
 import type { RepositoryResponse } from '../../pages/api/github-repo';
 
 const GitHubRepo: FC<
@@ -40,6 +40,33 @@ const GitHubRepo: FC<
       return newData.data;
     }
   );
+
+  const EyeIcon = dynamic(async () => {
+    const OctoIcons = await import(
+      /* webpackChunkName: "octoicons-react" */
+      '@primer/octicons-react'
+    );
+
+    return OctoIcons.EyeIcon;
+  });
+
+  const RepoForkedIcon = dynamic(async () => {
+    const OctoIcons = await import(
+      /* webpackChunkName: "octoicons-react" */
+      '@primer/octicons-react'
+    );
+
+    return OctoIcons.RepoForkedIcon;
+  });
+
+  const StarIcon = dynamic(async () => {
+    const OctoIcons = await import(
+      /* webpackChunkName: "octoicons-react" */
+      '@primer/octicons-react'
+    );
+
+    return OctoIcons.StarIcon;
+  });
 
   return data ? (
     <Link
@@ -96,7 +123,7 @@ const GitHubRepo: FC<
       </span>
     </Link>
   ) : (
-    <PrismicLink href={`https://github.com/${owner}/${repo}`}>
+    <PrismicLink href={`https://github.com/${owner ?? ''}/${repo ?? ''}`}>
       github.com/{owner}/{repo}
     </PrismicLink>
   );

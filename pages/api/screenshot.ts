@@ -24,7 +24,6 @@ const handler = async (req: NextRequest): Promise<Response> => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: process.env.GLIMPSE_PASSPHRASE ?? '',
         },
         body: JSON.stringify({
           url,

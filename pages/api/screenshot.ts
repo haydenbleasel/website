@@ -24,6 +24,7 @@ const handler = async (req: NextRequest): Promise<Response> => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          referer: 'haydenbleasel.com',
         },
         body: JSON.stringify({
           url,

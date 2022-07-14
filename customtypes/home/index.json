@@ -25,13 +25,6 @@
           "placeholder": ""
         },
         "type": "Text"
-      },
-      "location": {
-        "type": "Text",
-        "config": {
-          "label": "Location",
-          "placeholder": ""
-        }
       }
     },
     "Hero": {

@@ -300,7 +300,7 @@ const CommandBar: FC = ({ children }) => {
       />
     ),
     section: 'Social',
-    perform: async () => push(url),
+    perform: () => window.open(url, '_blank'),
   }));
 
   socialActions.push({
@@ -309,7 +309,8 @@ const CommandBar: FC = ({ children }) => {
     keywords: 'source',
     section: 'Social',
     icon: <Code size={16} className="text-gray-900" />,
-    perform: async () => push('https://github.com/haydenbleasel/daylight'),
+    perform: () =>
+      window.open('https://github.com/haydenbleasel/daylight', '_blank'),
   });
 
   useEffect(() => {

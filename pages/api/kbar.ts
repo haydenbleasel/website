@@ -46,13 +46,15 @@ const handler: NextApiHandler = async (req, res) => {
     parent: 'blog',
   }));
 
-  const workPostActions = workPosts.map(({ uid, data }) => ({
-    id: uid,
-    name: `${data.role ?? ''} at ${data.company ?? ''}`,
-    keywords: data.role,
-    link: `/work/${uid}`,
-    parent: 'work',
-  }));
+  const workPostActions = workPosts
+    .filter((job) => job.data.slices1.length)
+    .map(({ uid, data }) => ({
+      id: uid,
+      name: `${data.role ?? ''} at ${data.company ?? ''}`,
+      keywords: data.role,
+      link: `/work/${uid}`,
+      parent: 'work',
+    }));
 
   const landingPageActions = landingPages.map(({ uid, data }) => ({
     id: uid,

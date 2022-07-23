@@ -116,8 +116,11 @@ const Games: FC<ProjectsProps> = ({ data, games }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage('games')) as PrismicDocumentWithUID;
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const { data } = (await getPage(
+    { previewData },
+    'games'
+  )) as PrismicDocumentWithUID;
   const games = await getGames();
 
   return {

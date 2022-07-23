@@ -111,8 +111,11 @@ const Blog: FC<BlogProps> = ({ data, caseStudies, devPosts, mediumPosts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage('blog')) as PrismicDocumentWithUID;
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const { data } = (await getPage(
+    { previewData },
+    'blog'
+  )) as PrismicDocumentWithUID;
   const mediumPosts = await getMediumPosts();
   const devPosts = await getDevPosts();
   const caseStudies = (await getPages('case-study')) as PrismicDocumentWithUID<{

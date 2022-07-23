@@ -80,9 +80,12 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  previewData,
+}) => {
   const uid = params?.post as string;
-  const posts = await getPage(uid, 'work-post');
+  const posts = await getPage({ previewData }, uid, 'work-post');
   const post = posts as PrismicDocumentWithUID<WorkPostProps['data']>;
 
   return {

@@ -90,8 +90,11 @@ const Home: FC<HomeProps> = ({ data, location }) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage('home')) as PrismicDocumentWithUID;
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const { data } = (await getPage(
+    { previewData },
+    'home'
+  )) as PrismicDocumentWithUID;
   const location = await getLocation();
 
   return {

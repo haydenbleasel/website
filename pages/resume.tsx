@@ -192,9 +192,15 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage('resume')) as PrismicDocumentWithUID;
-  const { data: home } = (await getPage('home')) as PrismicDocumentWithUID;
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const { data } = (await getPage(
+    { previewData },
+    'resume'
+  )) as PrismicDocumentWithUID;
+  const { data: home } = (await getPage(
+    { previewData },
+    'home'
+  )) as PrismicDocumentWithUID;
   const work = (await getPages('work-post')) as WorkPostProps[];
 
   return {

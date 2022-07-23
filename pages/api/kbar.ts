@@ -21,7 +21,7 @@ const handler: NextApiHandler = async (req, res) => {
   const caseStudies = (await getPages('case-study')) as Docs;
   const workPosts = (await getPages('work-post')) as WorkPostProps[];
   const landingPages = (await getPages('landing-page')) as Docs;
-  const projects = (await getPage('projects')) as PrismicDocumentWithUID<
+  const projects = (await getPage({}, 'projects')) as PrismicDocumentWithUID<
     ProjectsProps['data']
   >;
   const devPosts = await getDevPosts();

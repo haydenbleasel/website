@@ -5,7 +5,8 @@ import { Toaster } from 'react-hot-toast';
 import { PrismicProvider } from '@prismicio/react';
 import { SocialProfileJsonLd } from 'next-seo';
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { client, linkResolver } from '../utils/prismic';
+import { PrismicPreview } from '@prismicio/next';
+import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
 import CommandBar from '../components/commandbar';
 import Menu from '../components/menu';
@@ -57,10 +58,14 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           linkResolver={linkResolver}
           internalLinkComponent={InternalLinkComponent}
           externalLinkComponent={ExternalLinkComponent}
-          client={client}
+          client={createClient()}
           richTextComponents={richTextComponents}
         >
-          <Component {...pageProps} />
+          <PrismicPreview
+            repositoryName={process.env.NEXT_PUBLIC_PRISMIC_ENDPOINT ?? ''}
+          >
+            <Component {...pageProps} />
+          </PrismicPreview>
         </PrismicProvider>
         <Menu />
         <Toaster

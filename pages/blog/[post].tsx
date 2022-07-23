@@ -169,9 +169,12 @@ const WorkPost: FC<PostProps> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  previewData,
+}) => {
   const uid = params?.post as string;
-  const posts = await getPage(uid, 'case-study');
+  const posts = await getPage({ previewData }, uid, 'case-study');
 
   const post = posts as PrismicDocumentWithUID<PostProps['data']>;
 

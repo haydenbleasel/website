@@ -60,8 +60,11 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage('work')) as PrismicDocumentWithUID;
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const { data } = (await getPage(
+    { previewData },
+    'work'
+  )) as PrismicDocumentWithUID;
   const posts = (await getPages('work-post')) as PrismicDocumentWithUID[];
 
   return {

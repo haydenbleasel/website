@@ -67,8 +67,12 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  previewData,
+}) => {
   const { data, last_publication_date } = (await getPage(
+    { previewData },
     params?.uid as string,
     'landing-page'
   )) as PrismicDocumentWithUID;

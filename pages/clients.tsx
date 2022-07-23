@@ -78,8 +78,11 @@ const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = (await getPage('clients')) as PrismicDocumentWithUID;
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const { data } = (await getPage(
+    { previewData },
+    'clients'
+  )) as PrismicDocumentWithUID;
   const jellypepperPrismicClient = createClient(
     process.env.JELLYPEPPER_PRISMIC_ENDPOINT ?? 'loading',
     {

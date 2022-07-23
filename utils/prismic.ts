@@ -39,7 +39,7 @@ export const docResolver = (link: LinkField): string => {
 
 export const createClient = (config = {}): prismic.Client => {
   const client = prismic.createClient(
-    process.env.PRISMIC_ENDPOINT ?? 'loading',
+    process.env.NEXT_PUBLIC_PRISMIC_ENDPOINT ?? 'loading',
     {
       fetch,
       accessToken: process.env.PRISMIC_ACCESS_TOKEN ?? '',

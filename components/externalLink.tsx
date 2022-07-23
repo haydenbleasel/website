@@ -40,6 +40,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
               width={300}
               height={187}
               alt=""
+              className="m-0"
             />
           ) : (
             <Placeholder className="h-full w-full rounded-md" />

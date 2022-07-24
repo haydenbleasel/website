@@ -32,19 +32,20 @@ const Recommendation: FC<RecommendationData> = ({
   description,
   link,
 }) => (
-  <div className="fill-anchor">
-    <Link href={docResolver(link)} target="_blank" rel="noopener noreferrer">
-      <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:justify-between sm:gap-8">
-        <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
-          <span className="line-clamp-1">{name}</span>
-          <ArrowUpRight className="shrink-0" size={16} />
-        </p>
-        <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
-          {description}
-        </p>
-      </div>
-    </Link>
-  </div>
+  <Link
+    href={docResolver(link)}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex flex-1 flex-col gap-1 py-2 no-underline sm:flex-row sm:justify-between sm:gap-8"
+  >
+    <span className="flex flex-1 items-center gap-2">
+      <span className="line-clamp-1">{name}</span>
+      <ArrowUpRight className="shrink-0" size={16} />
+    </span>
+    <span className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+      {description}
+    </span>
+  </Link>
 );
 
 const sortAlphabetically = (
@@ -54,25 +55,22 @@ const sortAlphabetically = (
 
 const Recommendations: FC<RecommendationsData> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
-    <div className="flex flex-col gap-4">
-      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
-        {data.description}
-      </p>
-      <div className="mt-4">
-        <List
-          data={[
-            { title: 'Tools', items: data.tools.sort(sortAlphabetically) },
-            {
-              title: 'Freelancers',
-              items: data.freelancers.sort(sortAlphabetically),
-            },
-          ]}
-          renderItem={Recommendation}
-          indexKey="name"
-          searchKeys={['name', 'description']}
-        />
-      </div>
-    </div>
+    <p className="animate-enter opacity-0 animation-delay-100">
+      {data.description}
+    </p>
+    <List
+      className="mt-4"
+      data={[
+        { title: 'Tools', items: data.tools.sort(sortAlphabetically) },
+        {
+          title: 'Freelancers',
+          items: data.freelancers.sort(sortAlphabetically),
+        },
+      ]}
+      renderItem={Recommendation}
+      indexKey="name"
+      searchKeys={['name', 'description']}
+    />
   </Layout>
 );
 

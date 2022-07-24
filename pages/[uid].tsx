@@ -31,42 +31,33 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
     description={data.description}
     image={data.coverImage}
   >
-    <div className="flex flex-col gap-8">
-      <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          Last updated at{' '}
-          {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
-        </p>
+    <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
+      <small className="mt-0 text-gray-500 dark:text-gray-400">
+        Last updated at{' '}
+        {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
+      </small>
+    </div>
+    {data.coverImage.url && (
+      <Image
+        src={data.coverImage.url}
+        alt={data.coverImage.alt ?? ''}
+        width={480}
+        height={
+          480 *
+          (data.coverImage.dimensions.height / data.coverImage.dimensions.width)
+        }
+        priority
+        quality={100}
+        className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
+      />
+    )}
+    {data.coverVideo.embed_url && (
+      <div className="animate-enter opacity-0 animation-delay-200">
+        <Video data={data.coverVideo} loop playsinline controls={false} muted />
       </div>
-      {data.coverImage.url && (
-        <Image
-          src={data.coverImage.url}
-          alt={data.coverImage.alt ?? ''}
-          width={480}
-          height={
-            480 *
-            (data.coverImage.dimensions.height /
-              data.coverImage.dimensions.width)
-          }
-          priority
-          quality={100}
-          className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
-        />
-      )}
-      {data.coverVideo.embed_url && (
-        <div className="animate-enter opacity-0 animation-delay-200">
-          <Video
-            data={data.coverVideo}
-            loop
-            playsinline
-            controls={false}
-            muted
-          />
-        </div>
-      )}
-      <div className="animate-enter opacity-0 animation-delay-300">
-        <PrismicRichText field={data.content} />
-      </div>
+    )}
+    <div className="animate-enter opacity-0 animation-delay-300">
+      <PrismicRichText field={data.content} />
     </div>
   </Layout>
 );

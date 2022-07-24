@@ -26,10 +26,10 @@ const StickyTitle: FC<StickyTitleProps> = ({ noSticky, noTitle, children }) => {
       ref={intersectionRef}
     >
       {!noTitle && (
-        <div className="container mx-auto grid max-w-[42rem] py-2 px-4">
+        <div className="container prose mx-auto grid max-w-[42rem] py-2 px-4 dark:prose-invert">
           <h1
-            className={`animate-enter font-semibold text-gray-900 opacity-0 transition-all dark:text-white ${
-              isSticky && !noSticky ? 'text-md leading-loose' : 'text-xl'
+            className={`animate-enter opacity-0 transition-all ${
+              isSticky && !noSticky ? 'text-md leading-loose' : ''
             }`}
           >
             {children}

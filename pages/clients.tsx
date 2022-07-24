@@ -32,7 +32,7 @@ type ClientListData = {
 
 const ClientList: FC<ClientListData> = ({ name, data }) => (
   <div className="mt-4 flex gap-8">
-    <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400">
+    <p className="flex-0 m-0 w-24 text-sm text-gray-500 dark:text-gray-400">
       {name}
     </p>
     <div className="flex flex-1 flex-col gap-1">
@@ -45,7 +45,7 @@ const ClientList: FC<ClientListData> = ({ name, data }) => (
           return clientB.client < clientA.client ? 1 : -1;
         })
         .map(({ client }, index) => (
-          <p className="text-md text-gray-900 dark:text-white" key={index}>
+          <p className="m-0" key={index}>
             {client}
           </p>
         ))}

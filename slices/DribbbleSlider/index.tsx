@@ -66,7 +66,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col"
+      className="group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col no-underline"
     >
       <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-800">
         <div className="relative aspect-[4/3] w-full">
@@ -175,11 +175,11 @@ const DribbbleSlider: FC<
   }, [emblaApi]);
 
   return (
-    <>
-      <div className="mt-8" ref={emblaRef}>
+    <div className="my-8 flex flex-col gap-8">
+      <div ref={emblaRef}>
         <div className="flex gap-8">{slice.items.map(Shot)}</div>
       </div>
-      <div className="mt-8 flex gap-8">
+      <div className="flex gap-8">
         <Arrow
           icon={ArrowLeft}
           active={canScrollPrev}
@@ -191,7 +191,7 @@ const DribbbleSlider: FC<
           handleClick={() => emblaApi?.scrollNext()}
         />
       </div>
-    </>
+    </div>
   );
 };
 

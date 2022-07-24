@@ -31,13 +31,13 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
                 animationDelay: `${(index + 2) * 100}ms`,
               }}
             >
-              <p className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400">
+              <p className="flex-0 m-0 w-24 text-sm text-gray-500 dark:text-gray-400">
                 {startYear}
               </p>
               <div className="flex flex-1 flex-col gap-4">
                 {years[startYear].map((job) => (
                   <div key={job.uid}>
-                    <p className="text-md text-gray-900 dark:text-white">
+                    <p className="m-0">
                       {job.data.role},{' '}
                       {job.data.slices1.length ? (
                         <PrismicLink document={job}>
@@ -47,7 +47,7 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
                         job.data.company
                       )}
                     </p>
-                    <p className="flex-0 text-sm text-gray-500 dark:text-gray-400">
+                    <p className="flex-0 m-0 text-sm text-gray-500 dark:text-gray-400">
                       {job.data.location}
                     </p>
                   </div>

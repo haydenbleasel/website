@@ -6,6 +6,7 @@ import { Search } from 'react-feather';
 import Divider from './divider';
 
 type ListProps = {
+  className?: string;
   data: {
     title: string;
     items: Record<string, unknown>[];
@@ -15,7 +16,13 @@ type ListProps = {
   renderItem: (item: never) => ReactNode;
 };
 
-const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
+const List: FC<ListProps> = ({
+  className = '',
+  data,
+  renderItem,
+  indexKey,
+  searchKeys,
+}) => {
   const [activeTab, setActiveTab] = useState<string>(data[0].title);
   const [results, setResults] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
@@ -57,7 +64,7 @@ const List: FC<ListProps> = ({ data, renderItem, indexKey, searchKeys }) => {
 
   return (
     <Tabs.Root
-      className="flex flex-col gap-3"
+      className={`flex flex-col gap-3 ${className}`}
       value={activeTab}
       onValueChange={setActiveTab}
     >

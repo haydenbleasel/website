@@ -75,49 +75,43 @@ const WorkPost: FC<PostProps> = ({
         }
         description={data.description ?? ''}
       />
-      <div className="flex flex-col gap-8">
-        <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            Published {format(parseISO(publishedAt), 'MMM dd, yyyy')}{' '}
-          </p>
-        </div>
-        {data.coverImage.url && (
-          <Image
-            src={data.coverImage.url}
-            alt={data.coverImage.alt ?? ''}
-            width={640}
-            height={
-              640 *
-              (data.coverImage.dimensions.height /
-                data.coverImage.dimensions.width)
-            }
-            priority
-            quality={100}
-            className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
-          />
-        )}
-        {data.coverVideo.embed_url && (
-          <div className="animate-enter opacity-0 animation-delay-200">
-            <Video
-              data={data.coverVideo}
-              loop
-              playsinline
-              controls={false}
-              muted
-            />
-          </div>
-        )}
-        <div className="prose animate-enter opacity-0 animation-delay-300 dark:prose-invert">
-          <SliceZone
-            slices={data.slices1}
-            components={components as unknown as SliceZoneComponents}
+      <p className="animate-enter text-lg opacity-0 animation-delay-100">
+        Published {format(parseISO(publishedAt), 'MMM dd, yyyy')}
+      </p>
+      {data.coverImage.url && (
+        <Image
+          src={data.coverImage.url}
+          alt={data.coverImage.alt ?? ''}
+          width={640}
+          height={
+            640 *
+            (data.coverImage.dimensions.height /
+              data.coverImage.dimensions.width)
+          }
+          priority
+          quality={100}
+          className="animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
+        />
+      )}
+      {data.coverVideo.embed_url && (
+        <div className="animate-enter opacity-0 animation-delay-200">
+          <Video
+            data={data.coverVideo}
+            loop
+            playsinline
+            controls={false}
+            muted
           />
         </div>
+      )}
+      <div className="animate-enter opacity-0 animation-delay-300">
+        <SliceZone
+          slices={data.slices1}
+          components={components as unknown as SliceZoneComponents}
+        />
       </div>
-      <div className="bottom-0 left-0 right-0 flex animate-enter items-center justify-between gap-4 border-t border-gray-200 bg-white py-3 text-gray-500 opacity-0 animation-delay-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 sm:fixed sm:px-4">
-        <p className="text-md font-semibold text-gray-900 line-clamp-1 dark:text-white">
-          Share this article
-        </p>
+      <div className="bottom-0 left-0 right-0 flex animate-enter flex-col justify-between gap-4 border-t border-gray-200 bg-white py-3 text-gray-500 opacity-0 animation-delay-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 md:fixed md:flex-row md:items-center md:px-4">
+        <p className="m-0">Share this article</p>
         <div className="flex items-center">
           <FacebookShareButton url={shareUrl}>
             <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 sm:py-1">

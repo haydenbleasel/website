@@ -82,48 +82,77 @@ module.exports = {
           },
         },
       },
-      typography: (theme) => ({
+      typography: ({ theme }) => ({
         DEFAULT: {
-          css: [
-            {
-              maxWidth: 'none',
-              pre: {
-                fontSize: theme('fontSize.sm'),
-                margin: 0,
-                padding: theme('padding.5'),
-                overflow: 'auto',
-                borderRadius: theme('borderRadius.sm'),
-                backgroundColor: theme('colors.gray.900'),
-              },
-              code: {
-                borderRadius: theme('borderRadius.sm'),
-                color: theme('colors.gray.600'),
-                backgroundColor: theme('colors.gray.50'),
-              },
-              'code::before': {
-                content: '',
-              },
-              'code::after': {
-                content: '',
-              },
-              a: {
-                color: theme('colors.gray.600'),
-                textDecoration: 'none',
-                '&:hover': {
-                  color: theme('colors.gray.700'),
-                },
+          css: {
+            maxWidth: '42rem',
+            pre: {
+              fontSize: theme('fontSize.sm'),
+              margin: 0,
+              padding: theme('padding.5'),
+              overflow: 'auto',
+              borderRadius: theme('borderRadius.sm'),
+              backgroundColor: theme('colors.gray.900'),
+            },
+            code: {
+              borderRadius: theme('borderRadius.sm'),
+              color: theme('colors.gray.600'),
+              backgroundColor: theme('colors.gray.50'),
+            },
+            'code::before': {
+              content: '',
+            },
+            'code::after': {
+              content: '',
+            },
+            h1: {
+              fontWeight: theme('fontWeight.semibold'),
+            },
+            h2: {
+              fontWeight: theme('fontWeight.semibold'),
+            },
+            h3: {
+              fontWeight: theme('fontWeight.semibold'),
+            },
+            h4: {
+              fontWeight: theme('fontWeight.semibold'),
+            },
+            h5: {
+              fontWeight: theme('fontWeight.semibold'),
+            },
+            h6: {
+              fontWeight: theme('fontWeight.semibold'),
+            },
+            strong: {
+              fontWeight: theme('fontWeight.semibold'),
+            },
+            em: {
+              fontFamily: theme('fontFamily.serif').join(', '),
+              fontSize: '17px',
+              fontWeight: theme('fontWeight.medium'),
+            },
+            a: {
+              textDecoration: 'underline',
+              fontWeight: theme('fontWeight.normal'),
+              color: theme('colors.gray.900'),
+              '&:hover': {
+                color: theme('colors.gray.800'),
               },
             },
-          ],
+          },
         },
-        dark: {
-          css: [
-            {
-              pre: {
-                backgroundColor: theme('colors.gray.800'),
+        invert: {
+          css: {
+            pre: {
+              backgroundColor: theme('colors.gray.800'),
+            },
+            a: {
+              color: theme('colors.white'),
+              '&:hover': {
+                color: theme('colors.gray.100'),
               },
             },
-          ],
+          },
         },
       }),
     },

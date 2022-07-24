@@ -1,6 +1,5 @@
 import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
-import { Fragment } from 'react';
 import type {
   GroupField,
   KeyTextField,
@@ -9,8 +8,8 @@ import type {
 } from '@prismicio/types';
 import Link from 'next/link';
 import { docResolver, getPage } from '../utils/prismic';
-import Divider from '../components/divider';
 import Layout from '../components/layout';
+import List from '../components/list';
 
 export type ProjectsProps = {
   data: {
@@ -30,50 +29,53 @@ const Project: FC<{
   wip?: boolean;
 }> = ({ title, description, wip = false }) => (
   <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
-    <p className="flex-0 flex items-center gap-2 text-md text-gray-900 dark:text-white">
+    <span className="flex-0 flex items-center gap-2">
       {title}
       {wip && (
         <span className="text-xs text-gray-500 dark:text-gray-400">(WIP)</span>
       )}
-    </p>
-    <p className="flex-1 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+    </span>
+    <span className="flex-1 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
       {description}
-    </p>
+    </span>
   </div>
 );
 
 const Projects: FC<ProjectsProps> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
-    <div className="flex flex-col gap-4">
-      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
-        {data.description}
-      </p>
-      <div className="group mt-4">
-        {data.wip.map((item, index) => (
-          <Fragment key={index}>
-            {Boolean(index) && <Divider />}
-            <div
-              className="animate-enter opacity-0 transition-opacity group-hover:opacity-30 group-hover:hover:opacity-100"
-              style={{
-                animationDelay: `${(index + data.wip.length + 2) * 100}ms`,
-              }}
-            >
-              {item.link.link_type === 'Any' ? (
-                <Project title={item.name} description={item.description} wip />
-              ) : (
-                <Link
-                  href={docResolver(item.link)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Project title={item.name} description={item.description} />
-                </Link>
-              )}
-            </div>
-          </Fragment>
-        ))}
-      </div>
-    </div>
+    <p className="animate-enter opacity-0 animation-delay-100 dark:text-gray-400">
+      {data.description}
+    </p>
+    <List
+      className="mt-4"
+      data={[
+        { title: 'All', items: data.wip },
+        {
+          title: 'Launched',
+          items: data.wip.filter((item) => item.link.link_type !== 'Any'),
+        },
+        {
+          title: 'In Progress',
+          items: data.wip.filter((item) => item.link.link_type === 'Any'),
+        },
+      ]}
+      renderItem={(item: ProjectsProps['data']['wip'][number]) =>
+        item.link.link_type === 'Any' ? (
+          <Project title={item.name} description={item.description} wip />
+        ) : (
+          <Link
+            href={docResolver(item.link)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="no-underline"
+          >
+            <Project title={item.name} description={item.description} />
+          </Link>
+        )
+      }
+      indexKey="title"
+      searchKeys={['title', 'date', 'content']}
+    />
   </Layout>
 );
 

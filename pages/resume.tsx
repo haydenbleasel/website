@@ -60,134 +60,85 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
 
   return (
     <Layout title="Resume" description="My printable resume." noTitle>
-      <div className="flex flex-col gap-8 py-8 sm:py-0">
-        <div className="flex items-start gap-8">
-          {home.photo.url && (
-            <Image
-              src={home.photo.url}
-              alt="Hayden Bleasel"
-              width={64}
-              height={64}
-              priority
-              quality={100}
-              className="flex shrink-0 overflow-hidden rounded-full"
-            />
-          )}
-          <div>
-            <h1 className="text-xl font-semibold text-gray-900 dark:text-white print:text-lg">
-              {home.name}
-            </h1>
-            <p className="text-md font-normal text-gray-500 dark:text-gray-400 print:text-sm">
-              {home.description}
-            </p>
-            <PrismicLink href={process.env.NEXT_PUBLIC_SITE_URL}>
-              <span className="text-sm font-medium underline print:text-xs">
-                Visit my website
-              </span>
-            </PrismicLink>
-          </div>
-        </div>
+      {home.photo.url && (
+        <Image
+          src={home.photo.url}
+          alt="Hayden Bleasel"
+          width={64}
+          height={64}
+          priority
+          quality={100}
+          className="flex shrink-0 overflow-hidden rounded-full"
+        />
+      )}
+      <h1 className="mb-4">{home.name}</h1>
+      <p className="mt-0 text-lg">{home.description}</p>
+      <PrismicLink href={process.env.NEXT_PUBLIC_SITE_URL}>
+        Visit my website
+      </PrismicLink>
 
-        <div className="flex flex-col gap-4">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
-            Summary
-          </h2>
-          <PrismicRichText field={data.summary} />
-        </div>
+      <h2>Summary</h2>
+      <PrismicRichText field={data.summary} />
 
-        <div className="flex flex-col gap-4">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
-            Selected Work History
-          </h2>
-          <div className="flex flex-col gap-4">
-            {work.sort(sortByYear).map((job) => (
-              <div key={job.uid}>
-                <p className="text-md font-semibold text-gray-900 dark:text-white print:text-sm">
-                  {job.data.role},{' '}
-                  {job.data.slices1.length ? (
-                    <PrismicLink document={job}>
-                      <span className="text-md font-semibold underline print:text-sm">
-                        {job.data.company}
-                      </span>
-                    </PrismicLink>
-                  ) : (
-                    job.data.company
-                  )}
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 print:text-xs">
-                  {job.data.startYear} &mdash; {job.data.endYear ?? 'Present'}{' '}
-                  in {job.data.location}
-                </p>
-                <div className="mt-4">
-                  <PrismicRichText field={job.data.summary} />
-                </div>
-              </div>
-            ))}
-          </div>
-          <PrismicLink href={social.find(({ id }) => id === 'linkedin')?.url}>
-            <div className="inline-block text-md font-semibold underline print:text-sm">
-              View more work history on LinkedIn
+      <h2>Selected Work History</h2>
+      {work.sort(sortByYear).map((job) => (
+        <div key={job.uid}>
+          <h3 className="mb-1">
+            {job.data.role},{' '}
+            {job.data.slices1.length ? (
+              <PrismicLink document={job}>
+                <span>{job.data.company}</span>
+              </PrismicLink>
+            ) : (
+              job.data.company
+            )}
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400">
+            {job.data.startYear} &mdash; {job.data.endYear ?? 'Present'} in{' '}
+            {job.data.location}
+          </p>
+          <PrismicRichText field={job.data.summary} />
+        </div>
+      ))}
+      <PrismicLink href={social.find(({ id }) => id === 'linkedin')?.url}>
+        View more work history on LinkedIn
+      </PrismicLink>
+
+      <h2>Education</h2>
+      {data.education.map((degree) => (
+        <div key={degree.degree}>
+          <h3 className="mb-0">{degree.degree}</h3>
+          <p>
+            {degree.university}, {degree.startYear} &mdash;{' '}
+            {degree.endYear ?? 'Present'}
+          </p>
+        </div>
+      ))}
+
+      <h2>Testimonials</h2>
+      <div>
+        {data.testimonials.map((testimonial) => (
+          <div key={testimonial.name}>
+            <blockquote>{testimonial.quote}</blockquote>
+            <div className="mt-4 flex items-center gap-2">
+              {testimonial.photo.url && (
+                <Image
+                  src={testimonial.photo.url}
+                  alt=""
+                  width={32}
+                  height={32}
+                  quality={100}
+                  priority
+                  className="m-0 inline-flex overflow-hidden rounded-full"
+                />
+              )}
+              <p className="m-0 font-semibold">{testimonial.name}</p>
             </div>
-          </PrismicLink>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
-            Education
-          </h2>
-          {data.education.map((degree) => (
-            <div key={degree.degree}>
-              <p className="text-md font-semibold text-gray-900 dark:text-white print:text-sm">
-                {degree.degree}, {degree.university}
-              </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 print:text-xs">
-                {degree.startYear} &mdash; {degree.endYear ?? 'Present'}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
-            Testimonials
-          </h2>
-          <div className="flex flex-col gap-4">
-            {data.testimonials.map((testimonial) => (
-              <blockquote
-                key={testimonial.name}
-                className="border-l-2 border-gray-200 pl-6"
-              >
-                <p className="text-md text-gray-900 dark:text-white print:text-sm">
-                  {testimonial.quote}
-                </p>
-                <div className="mt-4 flex items-center gap-2">
-                  {testimonial.photo.url && (
-                    <Image
-                      src={testimonial.photo.url}
-                      alt=""
-                      width={32}
-                      height={32}
-                      quality={100}
-                      priority
-                      className="inline-flex overflow-hidden rounded-full"
-                    />
-                  )}
-                  <p className="text-md font-medium text-gray-900 dark:text-white print:text-sm">
-                    {testimonial.name}
-                  </p>
-                </div>
-              </blockquote>
-            ))}
           </div>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white print:text-md">
-            Social
-          </h2>
-          <SocialLinks />
-        </div>
+        ))}
       </div>
+
+      <SocialLinks />
     </Layout>
   );
 };

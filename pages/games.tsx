@@ -55,11 +55,11 @@ const Game = ({ game, achievements }: ProjectsProps['games'][number]) => {
 
   return (
     <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
-      <p className="flex flex-1 flex-col gap-2 text-md text-gray-900 dark:text-white sm:flex-row sm:items-center">
+      <p className="m-0 flex flex-1 flex-col gap-2 sm:flex-row sm:items-center">
         {name}
         {Boolean(achievements.length) && <Achievements data={achievements} />}
       </p>
-      <p className="flex-0 flex w-24 text-sm text-gray-500 dark:text-gray-400 sm:justify-end">
+      <p className="flex-0 m-0 flex w-24 text-sm text-gray-500 dark:text-gray-400 sm:justify-end">
         {playtime_forever > 60
           ? `${hours} ${hours === 1 ? 'hour' : 'hours'}`
           : `${playtime_forever} ${
@@ -89,29 +89,23 @@ const Games: FC<ProjectsProps> = ({ data, games }) => {
 
   return (
     <Layout title={data.title} description={data.description}>
-      <div className="flex flex-col gap-4">
-        <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
-          {data.description}
-        </p>
-        <p className="animate-enter text-xs text-gray-500 opacity-0 animation-delay-200 dark:text-gray-400">
-          {totalHours} hours of tracked playtime and {totalAchievements}{' '}
-          achievements across {games.length} games.
-        </p>
-        <div className="mt-4">
-          <List
-            data={[
-              { title: 'All Games', items: games.sort(sortByPlaytime) },
-              {
-                title: 'Perfect Games',
-                items: games.sort(sortByPlaytime).filter(isPerfectGame),
-              },
-            ]}
-            renderItem={Game}
-            indexKey="id"
-            searchKeys={['game.name']}
-          />
-        </div>
-      </div>
+      <p className="animate-enter opacity-0 animation-delay-100">
+        {totalHours} hours of tracked playtime and {totalAchievements}{' '}
+        achievements across {games.length} games.
+      </p>
+      <List
+        className="mt-4"
+        data={[
+          { title: 'All Games', items: games.sort(sortByPlaytime) },
+          {
+            title: 'Perfect Games',
+            items: games.sort(sortByPlaytime).filter(isPerfectGame),
+          },
+        ]}
+        renderItem={Game}
+        indexKey="id"
+        searchKeys={['game.name']}
+      />
     </Layout>
   );
 };

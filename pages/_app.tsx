@@ -2,19 +2,22 @@ import type { FC } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Toaster } from 'react-hot-toast';
+import type { LinkProps } from '@prismicio/react';
 import { PrismicProvider } from '@prismicio/react';
 import { SocialProfileJsonLd } from 'next-seo';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { PrismicPreview } from '@prismicio/next';
+import Link from 'next/link';
 import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
 import CommandBar from '../components/commandbar';
 import Menu from '../components/menu';
 import ExternalLinkComponent from '../components/externalLink';
-import InternalLinkComponent from '../components/internalLink';
 import useAnalytics from '../hooks/useAnalytics';
 import richTextComponents from '../components/richTextComponents';
 import { social } from '../utils/social';
+
+const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   useAnalytics();

@@ -111,7 +111,7 @@ const Layout: FC<LayoutProps> = ({
       <StickyTitle noSticky={noSticky} noTitle={noTitle}>
         {title}
       </StickyTitle>
-      <div className="container mx-auto flex max-w-[42rem] flex-col gap-12 px-4 pb-12 sm:gap-24 sm:pb-48">
+      <div className="container prose mx-auto px-4 pb-12 dark:prose-invert sm:gap-24 sm:pb-48">
         {children}
       </div>
       {previousPage && (

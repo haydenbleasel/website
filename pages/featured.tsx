@@ -35,53 +35,52 @@ const FeatureInner: FC<Partial<FeatureData> & { withArrow?: boolean }> = ({
   date,
   withArrow,
 }) => (
-  <div className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-    <div className="flex flex-col gap-1">
-      <p className="flex flex-1 items-center gap-2 text-md leading-snug text-gray-900 dark:text-white">
+  <span className="flex flex-1 flex-col gap-1 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+    <span>
+      <span className="flex flex-1 items-center gap-2">
         <span className="line-clamp-1">{name}</span>
         {withArrow && <ArrowUpRight className="shrink-0" size={16} />}
-      </p>
-      <p className="text-sm text-gray-500 dark:text-gray-400">{source}</p>
-    </div>
-    <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+      </span>
+      <span className="text-sm text-gray-500 dark:text-gray-400">{source}</span>
+    </span>
+    <span className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
       {date && format(parse(date, 'yyyy-MM-dd', new Date()), 'MMM dd, yyyy')}
-    </p>
-  </div>
+    </span>
+  </span>
 );
 
-const Feature: FC<FeatureData> = ({ link, ...props }) => (
-  <div className="fill-anchor">
-    {link.link_type === 'Any' ? (
-      <FeatureInner {...props} />
-    ) : (
-      <Link href={docResolver(link)} target="_blank" rel="noopener noreferrer">
-        <FeatureInner {...props} withArrow />
-      </Link>
-    )}
-  </div>
-);
+const Feature: FC<FeatureData> = ({ link, ...props }) =>
+  link.link_type === 'Any' ? (
+    <FeatureInner {...props} />
+  ) : (
+    <Link
+      href={docResolver(link)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="no-underline"
+    >
+      <FeatureInner {...props} withArrow />
+    </Link>
+  );
 
 const sortByDate = (featureA: FeatureData, featureB: FeatureData) =>
   (featureB.date ?? '') > (featureA.date ?? '') ? 1 : -1;
 
 const Featured: FC<FeaturesData> = ({ data }) => (
   <Layout title={data.title} description={data.description}>
-    <div className="flex flex-col gap-4">
-      <p className="animate-enter text-sm text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
-        {data.description}
-      </p>
-      <div className="mt-4">
-        <List
-          data={[
-            { title: 'Speaking', items: data.speaking.sort(sortByDate) },
-            { title: 'Articles', items: data.articles.sort(sortByDate) },
-          ]}
-          renderItem={Feature}
-          indexKey="name"
-          searchKeys={['name', 'description']}
-        />
-      </div>
-    </div>
+    <p className="animate-enter text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
+      {data.description}
+    </p>
+    <List
+      className="mt-4"
+      data={[
+        { title: 'Speaking', items: data.speaking.sort(sortByDate) },
+        { title: 'Articles', items: data.articles.sort(sortByDate) },
+      ]}
+      renderItem={Feature}
+      indexKey="name"
+      searchKeys={['name', 'description']}
+    />
   </Layout>
 );
 

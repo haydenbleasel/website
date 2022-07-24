@@ -138,6 +138,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
         ))}
       </div>
 
+      <h2>Social</h2>
       <SocialLinks />
     </Layout>
   );

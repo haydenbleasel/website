@@ -67,7 +67,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           <PrismicPreview
             repositoryName={process.env.NEXT_PUBLIC_PRISMIC_ENDPOINT ?? ''}
           >
-            <Component {...pageProps} />
+            <div className="py-12 print:py-0 sm:gap-24 sm:py-48">
+              <Component {...pageProps} />
+            </div>
           </PrismicPreview>
         </PrismicProvider>
         <Menu />

@@ -42,9 +42,7 @@ const Activity: FC<ActivityProps> = ({ customEmoji, customTitle }) => {
       <div className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-gray-900 dark:text-white sm:text-md">
         {activity.emoji}
       </div>
-      <p className="text-sm leading-none text-gray-900 dark:text-white">
-        {activity.status}
-      </p>
+      <span className="text-sm leading-none">{activity.status}</span>
       {activity.source && (
         <span className="text-sm leading-none text-gray-500 dark:text-gray-400">
           via {activity.source}

@@ -86,6 +86,7 @@ module.exports = {
         DEFAULT: {
           css: {
             maxWidth: '42rem',
+            fontWeight: theme('fontWeight.normal'),
             pre: {
               fontSize: theme('fontSize.sm'),
               margin: 0,
@@ -125,6 +126,9 @@ module.exports = {
             },
             strong: {
               fontWeight: theme('fontWeight.semibold'),
+            },
+            p: {
+              fontWeight: theme('fontWeight.normal'),
             },
             em: {
               fontFamily: theme('fontFamily.serif').join(', '),

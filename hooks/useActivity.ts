@@ -78,7 +78,7 @@ const useActivity = (): ActivityResponse => {
     }
 
     const date = new Date().toLocaleTimeString('en-US', {
-      timeZone: 'Australia/Sydney',
+      timeZone: 'America/New_York',
       hour12: false,
     });
 

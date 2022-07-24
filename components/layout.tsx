@@ -111,7 +111,7 @@ const Layout: FC<LayoutProps> = ({
       <StickyTitle noSticky={noSticky} noTitle={noTitle}>
         {title}
       </StickyTitle>
-      <div className="container prose mx-auto px-4 pb-12 dark:prose-invert sm:gap-24 sm:pb-48">
+      <div className="container prose mx-auto px-4 py-12 antialiased dark:prose-invert print:py-0 sm:gap-24 sm:py-48">
         {children}
       </div>
       {previousPage && (

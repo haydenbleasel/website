@@ -4,7 +4,7 @@ import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
 import { Star } from 'react-feather';
 import { getPage } from '../utils/prismic';
 import Layout from '../components/layout';
-import type { AchievementProps, SteamGame } from '../utils/steam';
+import type { GamesResponse } from '../utils/steam';
 import { getGames } from '../utils/steam';
 import List from '../components/list';
 
@@ -13,58 +13,45 @@ type ProjectsProps = {
     title: KeyTextField;
     description: KeyTextField;
   };
-  games: {
-    game: SteamGame;
-    achievements: AchievementProps[];
-  }[];
+  games: GamesResponse;
 };
 
-const isPerfectGame = (game: ProjectsProps['games'][number]) => {
-  if (!game.achievements.length) {
-    return false;
-  }
+const Achievements: FC<GamesResponse[number]['achievements']> = ({
+  total,
+  achieved,
+}) => (
+  <span
+    className={`flex items-center gap-1 text-xs sm:ml-2 ${
+      achieved === total ? 'text-gold' : 'text-gray-500 dark:text-gray-400'
+    }`}
+  >
+    <Star size={12} />
+    {achieved} / {total}
+  </span>
+);
 
-  const isPerfect =
-    game.achievements.filter(({ achieved }) => Boolean(achieved)).length ===
-    game.achievements.length;
-
-  return isPerfect;
-};
-
-const Achievements: FC<{ data: AchievementProps[] }> = ({ data }) => {
-  const completedAchievements = data.filter(({ achieved }) =>
-    Boolean(achieved)
-  );
-  const isPerfect = completedAchievements.length === data.length;
-
-  return (
-    <span
-      className={`flex items-center gap-1 text-xs sm:ml-2 ${
-        isPerfect ? 'text-gold' : 'text-gray-500 dark:text-gray-400'
-      }`}
-    >
-      <Star size={12} />
-      {completedAchievements.length} / {data.length}
-    </span>
-  );
-};
-
-const Game = ({ game, achievements }: ProjectsProps['games'][number]) => {
-  const { name, playtime_forever } = game;
-  const hours = Math.floor(playtime_forever / 60);
+const Game = ({
+  name,
+  playtime,
+  achievements,
+}: ProjectsProps['games'][number]) => {
+  const hours = Math.floor(playtime / 60);
 
   return (
     <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
       <p className="m-0 flex flex-1 flex-col gap-2 sm:flex-row sm:items-center">
         {name}
-        {Boolean(achievements.length) && <Achievements data={achievements} />}
+        {Boolean(achievements) && (
+          <Achievements
+            total={achievements.total}
+            achieved={achievements.achieved}
+          />
+        )}
       </p>
       <p className="flex-0 m-0 flex w-24 text-sm text-gray-500 dark:text-gray-400 sm:justify-end">
-        {playtime_forever > 60
+        {playtime > 60
           ? `${hours} ${hours === 1 ? 'hour' : 'hours'}`
-          : `${playtime_forever} ${
-              playtime_forever === 1 ? 'minute' : 'minutes'
-            }`}
+          : `${playtime} ${playtime === 1 ? 'minute' : 'minutes'}`}
       </p>
     </div>
   );
@@ -73,17 +60,13 @@ const Game = ({ game, achievements }: ProjectsProps['games'][number]) => {
 const sortByPlaytime = (
   gameA: ProjectsProps['games'][number],
   gameB: ProjectsProps['games'][number]
-) => (gameB.game.playtime_forever > gameA.game.playtime_forever ? 1 : -1);
+) => (gameB.playtime > gameA.playtime ? 1 : -1);
 
 const Games: FC<ProjectsProps> = ({ data, games }) => {
-  const totalPlaytime = games.reduce(
-    (acc, { game }) => acc + game.playtime_forever,
-    0
-  );
+  const totalPlaytime = games.reduce((acc, game) => acc + game.playtime, 0);
   const totalHours = Math.floor(totalPlaytime / 60);
   const totalAchievements = games.reduce(
-    (acc, { achievements }) =>
-      acc + achievements.filter(({ achieved }) => achieved).length,
+    (acc, { achievements }) => acc + achievements.achieved,
     0
   );
 
@@ -99,7 +82,12 @@ const Games: FC<ProjectsProps> = ({ data, games }) => {
           { title: 'All Games', items: games.sort(sortByPlaytime) },
           {
             title: 'Perfect Games',
-            items: games.sort(sortByPlaytime).filter(isPerfectGame),
+            items: games
+              .sort(sortByPlaytime)
+              .filter(
+                ({ achievements }) =>
+                  achievements.achieved === achievements.total
+              ),
           },
         ]}
         renderItem={Game}

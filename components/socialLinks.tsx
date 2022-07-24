@@ -23,7 +23,7 @@ const SocialLinks: FC = () => (
               height={20}
               quality={100}
               alt={platform.name}
-              className={`flex ${
+              className={`m-0 flex ${
                 platform.invertDark ? 'dark:brightness-0 dark:invert' : ''
               }`}
             />

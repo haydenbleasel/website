@@ -1,4 +1,4 @@
-export type SteamGame = {
+type SteamGame = {
   appid: number;
   name: string;
   playtime_forever: number;
@@ -8,7 +8,7 @@ export type SteamGame = {
   playtime_linux_forever: number;
 };
 
-export type PlayerStatsProps = {
+type PlayerStatsProps = {
   playerstats:
     | {
         error: string;
@@ -22,11 +22,21 @@ export type PlayerStatsProps = {
       };
 };
 
-export type AchievementProps = {
+type AchievementProps = {
   apiname: string;
   achieved: number;
   unlocktime: number;
 };
+
+export type GamesResponse = {
+  id: SteamGame['appid'];
+  name: SteamGame['name'];
+  playtime: SteamGame['playtime_forever'];
+  achievements: {
+    total: number;
+    achieved: number;
+  };
+}[];
 
 const getAchievements = async (appid: number): Promise<AchievementProps[]> => {
   const response = await fetch(
@@ -44,12 +54,7 @@ const getAchievements = async (appid: number): Promise<AchievementProps[]> => {
   return data.playerstats.achievements ?? [];
 };
 
-export const getGames = async (): Promise<
-  {
-    game: SteamGame;
-    achievements: AchievementProps[];
-  }[]
-> => {
+export const getGames = async (): Promise<GamesResponse> => {
   const response = await fetch(
     `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${
       process.env.STEAM_API_KEY ?? ''
@@ -64,11 +69,19 @@ export const getGames = async (): Promise<
 
   const games = data.response.games
     .filter(({ playtime_forever }) => Boolean(playtime_forever))
-    .map(async (game) => ({
-      id: game.appid,
-      game,
-      achievements: await getAchievements(game.appid),
-    }));
+    .map(async (game) => {
+      const achievements = await getAchievements(game.appid);
+
+      return {
+        id: game.appid,
+        name: game.name,
+        playtime: game.playtime_forever,
+        achievements: {
+          total: achievements.length,
+          achieved: achievements.filter(({ achieved }) => achieved).length,
+        },
+      };
+    });
 
   return Promise.all(games);
 };

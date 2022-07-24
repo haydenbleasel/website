@@ -113,6 +113,29 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
   );
 };
 
+type ArrowProps = {
+  icon: FC<{ className?: string }>;
+  active: boolean;
+  handleClick: () => void;
+};
+
+const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => (
+  <div
+    className={`select-none rounded-full border border-gray-200 p-4 transition-all hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800 ${
+      active ? '' : 'cursor-not-allowed opacity-50'
+    }`}
+    onClick={handleClick}
+    onKeyDown={handleClick}
+    role="button"
+    tabIndex={0}
+    aria-label="Previous"
+    aria-controls="embla-carousel"
+    aria-disabled={!active}
+  >
+    <Icon className="text-gray-500 dark:text-gray-400" />
+  </div>
+);
+
 const DribbbleSlider: FC<
   SliceComponentProps<{
     slice_type: 'dribbble-slider';
@@ -128,6 +151,28 @@ const DribbbleSlider: FC<
     draggable: false,
     align: 'start',
   });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  useEffect(() => {
+    const onSelect = () => {
+      if (emblaApi) {
+        setCanScrollNext(emblaApi.canScrollNext());
+        setCanScrollPrev(emblaApi.canScrollPrev());
+      }
+    };
+
+    if (emblaApi) {
+      setCanScrollNext(emblaApi.canScrollNext());
+      setCanScrollPrev(emblaApi.canScrollPrev());
+
+      emblaApi.on('select', onSelect);
+    }
+
+    return () => {
+      emblaApi?.off('select', onSelect);
+    };
+  }, [emblaApi]);
 
   return (
     <>
@@ -135,24 +180,16 @@ const DribbbleSlider: FC<
         <div className="flex gap-8">{slice.items.map(Shot)}</div>
       </div>
       <div className="mt-8 flex gap-8">
-        <div
-          className="rounded-full border border-gray-200 p-4 transition-all hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800"
-          onClick={() => emblaApi?.scrollPrev()}
-          onKeyDown={() => emblaApi?.scrollPrev()}
-          role="button"
-          tabIndex={0}
-        >
-          <ArrowLeft className="text-gray-500 dark:text-gray-400" />
-        </div>
-        <div
-          className="rounded-full border border-gray-200 p-4 transition-all hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800"
-          onClick={() => emblaApi?.scrollNext()}
-          onKeyDown={() => emblaApi?.scrollNext()}
-          role="button"
-          tabIndex={0}
-        >
-          <ArrowRight className="text-gray-500 dark:text-gray-400" />
-        </div>
+        <Arrow
+          icon={ArrowLeft}
+          active={canScrollPrev}
+          handleClick={() => emblaApi?.scrollPrev()}
+        />
+        <Arrow
+          icon={ArrowRight}
+          active={canScrollNext}
+          handleClick={() => emblaApi?.scrollNext()}
+        />
       </div>
     </>
   );

@@ -1,6 +1,8 @@
 import { PrismicLink } from '@prismicio/react';
+import type { ImageField } from '@prismicio/types';
 import type { NextSeoProps } from 'next-seo';
 import { NextSeo } from 'next-seo';
+import type { OpenGraphMedia } from 'next-seo/lib/types';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import { ArrowLeft } from 'react-feather';
@@ -9,6 +11,7 @@ import StickyTitle from './stickyTitle';
 export type LayoutProps = {
   title: string | null;
   description: string | null;
+  image?: ImageField;
   noSticky?: boolean;
   noTitle?: boolean;
 } & Omit<NextSeoProps, 'title' | 'description'>;
@@ -39,6 +42,7 @@ const getPreviousPage = (path: string) => {
 const Layout: FC<LayoutProps> = ({
   title,
   description,
+  image,
   children,
   noSticky = false,
   noTitle = false,
@@ -55,6 +59,27 @@ const Layout: FC<LayoutProps> = ({
     );
   }
 
+  let images: OpenGraphMedia[] = [
+    {
+      url: new URL('/cover.png', process.env.NEXT_PUBLIC_SITE_URL).href,
+      width: 1200,
+      height: 630,
+      alt: '',
+      type: 'image/jpeg',
+    },
+  ];
+
+  if (image?.url) {
+    images = [
+      {
+        url: image.url,
+        width: image.dimensions.width,
+        height: image.dimensions.height,
+        alt: image.alt ?? '',
+      },
+    ];
+  }
+
   return (
     <>
       <NextSeo
@@ -66,15 +91,7 @@ const Layout: FC<LayoutProps> = ({
           url: siteUrl,
           title,
           description,
-          images: [
-            {
-              url: new URL('/cover.png', process.env.NEXT_PUBLIC_SITE_URL).href,
-              width: 1200,
-              height: 630,
-              alt: '',
-              type: 'image/jpeg',
-            },
-          ],
+          images,
           site_name: 'Hayden Bleasel',
           type: 'profile',
           profile: {

@@ -54,7 +54,11 @@ const WorkPost: FC<PostProps> = ({
   const shareUrl = new URL(asPath, process.env.NEXT_PUBLIC_SITE_URL ?? '').href;
 
   return (
-    <Layout title={data.title} description={data.description}>
+    <Layout
+      title={data.title}
+      description={data.description}
+      image={data.coverImage}
+    >
       <ArticleJsonLd
         url={shareUrl}
         title={data.title ?? ''}

@@ -34,6 +34,7 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
   <Layout
     title={`${data.role ?? ''} at ${data.company ?? ''}`}
     description={data.description}
+    image={data.coverImage}
   >
     <div className="flex flex-col gap-8">
       <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
@@ -41,7 +42,8 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
           {data.description}
         </p>
         <p className="animate-enter text-xs text-gray-500 opacity-0 animation-delay-200 dark:text-gray-400">
-          {data.startYear} &mdash; {data.endYear ?? 'Present'}, {data.location}.
+          {data.startYear} &mdash; {data.endYear ?? 'Present'} &bull;{' '}
+          {data.location}.
         </p>
       </div>
       {data.coverImage.url && (

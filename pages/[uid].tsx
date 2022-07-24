@@ -26,7 +26,11 @@ type LandingPageProps = {
 };
 
 const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
-  <Layout title={data.title} description={data.description}>
+  <Layout
+    title={data.title}
+    description={data.description}
+    image={data.coverImage}
+  >
     <div className="flex flex-col gap-8">
       <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
         <p className="text-sm text-gray-500 dark:text-gray-400">

@@ -1,5 +1,12 @@
 import type { SpotifyPlaylist } from '../types/spotify';
 
+export type PlaylistsResponse = {
+  id: SpotifyPlaylist['id'];
+  name: SpotifyPlaylist['name'];
+  tracks: SpotifyPlaylist['tracks']['total'];
+  url: SpotifyPlaylist['external_urls']['spotify'];
+}[];
+
 const getAccessToken = async (): Promise<string> => {
   const authorization = Buffer.from(
     `${process.env.SPOTIFY_CLIENT_ID ?? ''}:${
@@ -21,7 +28,7 @@ const getAccessToken = async (): Promise<string> => {
   return access_token;
 };
 
-export const getPlaylists = async (): Promise<SpotifyPlaylist[]> => {
+export const getPlaylists = async (): Promise<PlaylistsResponse> => {
   const access_token = await getAccessToken();
 
   const playlistsRequest = await fetch(
@@ -37,5 +44,12 @@ export const getPlaylists = async (): Promise<SpotifyPlaylist[]> => {
     items: SpotifyPlaylist[];
   };
 
-  return items;
+  const playlists = items.map((playlist) => ({
+    id: playlist.id,
+    name: playlist.name,
+    tracks: playlist.tracks.total,
+    url: playlist.external_urls.spotify,
+  }));
+
+  return playlists;
 };

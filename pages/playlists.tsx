@@ -4,16 +4,16 @@ import type { FC } from 'react';
 import { ArrowUpRight } from 'react-feather';
 import Layout from '../components/layout';
 import List from '../components/list';
-import type { SpotifyPlaylist } from '../types/spotify';
+import type { PlaylistsResponse } from '../utils/spotify';
 import { getPlaylists } from '../utils/spotify';
 
 type PlaylistsProps = {
-  playlists: SpotifyPlaylist[];
+  playlists: PlaylistsResponse;
 };
 
-const Playlist = ({ external_urls, id, name, tracks }: SpotifyPlaylist) => (
+const Playlist = ({ url, id, name, tracks }: PlaylistsResponse[number]) => (
   <Link
-    href={external_urls.spotify}
+    href={url}
     key={id}
     target="_blank"
     rel="noopener noreferrer"
@@ -25,7 +25,7 @@ const Playlist = ({ external_urls, id, name, tracks }: SpotifyPlaylist) => (
         <ArrowUpRight size={16} />
       </span>
       <span className="flex-0 w-24 text-right text-sm text-gray-400 dark:text-gray-500">
-        {tracks.total} tracks
+        {tracks} tracks
       </span>
     </span>
   </Link>

@@ -43,6 +43,7 @@ import { social } from '../utils/social';
 import parseError from '../utils/parseError';
 import LoadingIcon from './loadingIcon';
 import Tooltip from './tooltip';
+import useBionicReading from '../hooks/useBionicReading';
 
 type RenderParams<T = ActionImpl | string> = {
   item: T;
@@ -280,6 +281,7 @@ const CommandBar: FC = () => {
   );
   const [customActions, setCustomActions] = useState<Action[]>([]);
   const { results } = useMatches();
+  const { toggleBionicReading } = useBionicReading();
 
   useEffect(() => {
     const loadContent = async () => {
@@ -356,7 +358,12 @@ const CommandBar: FC = () => {
         parent: 'theme',
         action: () => removeTheme(),
         icon: Sunset,
-      }
+      },
+      {
+        name: 'Toggle Bionic Reading',
+        shortcut: 'b',
+        action: () => toggleBionicReading(),
+      },
     );
   }, [removeTheme, setTheme]);
 

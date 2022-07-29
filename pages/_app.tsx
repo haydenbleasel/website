@@ -20,13 +20,17 @@ import Activity from '../components/activity';
 import useAnalytics from '../hooks/useAnalytics';
 import useNetworkMonitor from '../hooks/useNetworkMonitor';
 import useThemeListener from '../hooks/useThemeListener';
+import useBionicReading from '../hooks/useBionicReading';
 
 const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
+  const { bionicReadingEnabled } = useBionicReading();
   useAnalytics();
   useNetworkMonitor();
   useThemeListener();
+
+  const components = richTextComponents(bionicReadingEnabled);
 
   return (
     <>
@@ -66,7 +70,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
             internalLinkComponent={InternalLinkComponent}
             externalLinkComponent={ExternalLinkComponent}
             client={createClient()}
-            richTextComponents={richTextComponents}
+            richTextComponents={components}
           >
             <PrismicPreview
               repositoryName={process.env.NEXT_PUBLIC_PRISMIC_ENDPOINT ?? ''}

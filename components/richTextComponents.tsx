@@ -9,6 +9,7 @@ import { Suspense, useState, useEffect } from 'react';
 import type { RTEmbedNode, RTPreformattedNode } from '@prismicio/types';
 import type { RequiredConfig } from 'tailwindcss/types/config';
 import tailwindConfig from '../tailwind.config';
+import { textVide } from 'text-vide';
 
 const fullConfig = resolveConfig(tailwindConfig as RequiredConfig);
 
@@ -132,7 +133,27 @@ const Fallback: FC<{ node: RTEmbedNode }> = ({ node }) => (
   />
 );
 
-const richTextComponents: JSXMapSerializer = {
+const richTextComponents = (
+  bionicReadingEnabled: boolean
+): JSXMapSerializer => ({
+  paragraph: ({ key, node }) => {
+    if (!bionicReadingEnabled) {
+      return undefined;
+    }
+
+    const bionic = textVide(node.text, {
+      sep: ['<strong className="font-bold text-gray-900">', '</strong>'],
+    });
+
+    return (
+      <p
+        key={key}
+        className="font-sans text-md leading-8 text-gray-500"
+        // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
+        dangerouslySetInnerHTML={{ __html: bionic }}
+      />
+    );
+  },
   image: ({ key, node }) => (
     <Image
       key={key}
@@ -190,6 +211,6 @@ const richTextComponents: JSXMapSerializer = {
     return <Fallback key={key} node={node} />;
   },
   preformatted: Preformatted,
-};
+});
 
 export default richTextComponents;

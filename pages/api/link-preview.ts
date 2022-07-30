@@ -1,47 +1,49 @@
-import { JSDOM } from 'jsdom';
-import type { NextApiHandler } from 'next';
+import type { NextRequest } from 'next/server';
+import { parse } from 'node-html-parser';
+import res from '../../utils/response';
 
 export type PreviewResponse = {
   error?: string;
   data?: {
-    title: string | null;
-    description: string | null | undefined;
-    image: string | null | undefined;
+    title: string | undefined;
+    description: string | undefined;
+    image: string | undefined;
   };
 };
 
-const handler: NextApiHandler<PreviewResponse> = async (req, res) => {
-  const { url } = JSON.parse(req.body as string) as { url: string };
+export const config = {
+  runtime: 'experimental-edge',
+};
+
+const handler = async (req: NextRequest): Promise<Response> => {
+  const { url } = (await req.json()) as { url?: string };
 
   if (!url) {
-    res.status(400).json({ error: 'No URL provided' });
-    return;
+    return res(400, { error: 'No URL provided' });
   }
 
   try {
     const response = await fetch(url);
     const data = await response.text();
-    const dom = new JSDOM(data);
+    const dom = parse(data);
 
-    const title = dom.window.document.querySelector('title');
-    const description = dom.window.document.querySelector(
-      'meta[name="description"]'
-    );
-    const image = dom.window.document.querySelector(
-      'meta[property="og:image"]'
-    );
+    const title = dom.querySelector('title')?.text;
+    const description = dom.querySelector('meta[name="description"]')
+      ?.attributes.content;
+    const image = dom.querySelector('meta[property="og:image"]')?.attributes
+      .content;
 
-    res.status(200).json({
+    return res(200, {
       data: {
-        title: title ? title.textContent : null,
-        description: description ? description.getAttribute('content') : null,
-        image: image ? image.getAttribute('content') : null,
+        title,
+        description,
+        image,
       },
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : (error as string);
 
-    res.status(500).json({ error: message });
+    return res(500, { error: message });
   }
 };
 

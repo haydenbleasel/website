@@ -175,7 +175,7 @@ const DribbbleSlider: FC<
   }, [emblaApi]);
 
   return (
-    <div className="my-8 flex flex-col gap-8">
+    <div className="my-8 -mx-4 flex flex-col gap-8 overflow-hidden px-4 sm:overflow-visible">
       <div ref={emblaRef}>
         <div className="flex gap-8">{slice.items.map(Shot)}</div>
       </div>

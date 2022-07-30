@@ -53,7 +53,7 @@ const useActivity = (): ActivityResponse => {
     if (!twitter.error && twitter.data?.active) {
       setStatus({
         emoji: '🐦',
-        status: `Tweeting`,
+        status: 'Tweeting',
         source: 'Twitter',
       });
       return;

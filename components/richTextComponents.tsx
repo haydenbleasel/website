@@ -9,7 +9,6 @@ import type { CSSProperties, FC } from 'react';
 import { useState, useEffect } from 'react';
 import type { RTPreformattedNode } from '@prismicio/types';
 import tailwindConfig from '../tailwind.config';
-import Video from './video';
 
 const fullConfig = resolveConfig(tailwindConfig as TailwindConfig);
 
@@ -159,6 +158,14 @@ const richTextComponents: JSXMapSerializer = {
     }
 
     if (node.oembed.type === 'video') {
+      const Video = dynamic(
+        async () =>
+          import(
+            /* webpackChunkName: "video" */
+            './video'
+          )
+      );
+
       return <Video data={node.oembed} />;
     }
 

@@ -2,13 +2,17 @@ import type { LinkProps } from '@prismicio/react';
 import Image from 'next/future/image';
 import Link from 'next/link';
 import type { FC } from 'react';
+import { useRef } from 'react';
 import { ArrowUpRight } from 'react-feather';
 import { useAsync, useMountEffect } from '@react-hookz/web';
+import { useMouse } from 'react-use';
 import type { PreviewResponse } from '../pages/api/link-preview';
 import Placeholder from './placeholder';
 
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
-  // const x = useCurso
+  const ref = useRef(null);
+  const { elX, elY } = useMouse(ref);
+
   const [screenshot, { execute }] = useAsync(async () => {
     const response = await fetch('/api/link-preview', {
       method: 'POST',
@@ -27,9 +31,15 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   useMountEffect(execute);
 
   return (
-    <span className="group relative inline-block">
+    <span ref={ref} className="group relative inline-block">
       {!screenshot.error && !isEmpty && (
-        <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex w-[316px] -translate-x-2/4 -translate-y-0 flex-col rounded-lg bg-gray-900/90 p-3 opacity-0 shadow-lg backdrop-blur-md transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-800">
+        <span
+          className="pointer-events-none absolute top-full left-0 z-20 flex w-[316px] translate-x-2 translate-y-2 flex-col rounded-lg bg-gray-900/90 p-3 opacity-0 shadow-lg backdrop-blur-md group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-800"
+          style={{
+            marginLeft: elX,
+            marginTop: elY,
+          }}
+        >
           <div className="h-[174px]">
             {screenshot.result?.data?.image ? (
               <Image

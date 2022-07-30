@@ -47,6 +47,7 @@
     "react-share": "^4.4.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-twitter-embed": "^4.0.4",
+    "react-use": "^17.4.0",
     "rss-parser": "^3.12.0",
     "slugify": "^1.6.5",
     "sticky-events": "^3.4.12",

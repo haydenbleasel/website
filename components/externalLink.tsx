@@ -22,11 +22,13 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
     return data;
   });
 
+  const isEmpty = screenshot.result ? !screenshot.result.data?.image : false;
+
   useMountEffect(execute);
 
   return (
     <span className="group relative inline-block">
-      {!screenshot.error && (
+      {!screenshot.error && !isEmpty && (
         <span className="pointer-events-none absolute left-0 bottom-full ml-[50%] flex w-[316px] -translate-x-2/4 -translate-y-0 flex-col rounded-lg bg-gray-900/90 p-3 opacity-0 shadow-lg backdrop-blur-md transition-all group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-gray-800">
           <div className="h-[174px]">
             {screenshot.result?.data?.image ? (

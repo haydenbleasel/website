@@ -1,10 +1,12 @@
 import type {
+  FilledLinkToWebField,
   GroupField,
   KeyTextField,
   LinkField,
   PrismicDocumentWithUID,
 } from '@prismicio/types';
 import type { GetStaticProps } from 'next';
+import Image from 'next/future/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { ArrowUpRight } from 'react-feather';
@@ -39,6 +41,16 @@ const Recommendation: FC<RecommendationData> = ({
     className="flex flex-1 flex-col gap-1 py-2 no-underline sm:flex-row sm:justify-between sm:gap-8"
   >
     <span className="flex flex-1 items-center gap-2">
+      {link.link_type === 'Web' && (
+        <Image
+          width={24}
+          height={24}
+          src={`https://logo.clearbit.com/${
+            new URL((link as FilledLinkToWebField).url).hostname
+          }?size=64`}
+          className="m-0 rounded-sm"
+        />
+      )}
       <span className="line-clamp-1">{name}</span>
       <ArrowUpRight className="shrink-0" size={16} />
     </span>

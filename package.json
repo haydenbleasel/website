@@ -66,7 +66,7 @@
     "@types/react-dom": "^17.0.17",
     "@types/react-syntax-highlighter": "^15.5.2",
     "@types/tailwindcss": "^3.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.30.0",
     "autoprefixer": "^10.4.7",
     "concurrently": "^7.2.2",

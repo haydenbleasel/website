@@ -80,7 +80,7 @@
     "postcss": "^8.4.14",
     "pre-commit": "^1.2.2",
     "prettier": "^2.7.1",
-    "prettier-plugin-tailwindcss": "^0.1.11",
+    "prettier-plugin-tailwindcss": "^0.1.13",
     "slice-machine-ui": "^0.4.0",
     "stylelint": "^14.9.1",
     "stylelint-prettier": "^2.0.0",

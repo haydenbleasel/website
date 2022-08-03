@@ -41,7 +41,7 @@ const Game = ({
     <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
       <p className="m-0 flex flex-1 flex-col gap-2 sm:flex-row sm:items-center">
         {name}
-        {Boolean(achievements) && (
+        {Boolean(achievements.total) && (
           <Achievements
             total={achievements.total}
             achieved={achievements.achieved}

@@ -84,9 +84,10 @@ const Games: FC<ProjectsProps> = ({ data, games }) => {
             title: 'Perfect Games',
             items: games
               .sort(sortByPlaytime)
-              .filter(
-                ({ achievements }) =>
-                  achievements.achieved === achievements.total
+              .filter(({ achievements }) =>
+                achievements.total
+                  ? achievements.achieved === achievements.total
+                  : false
               ),
           },
         ]}

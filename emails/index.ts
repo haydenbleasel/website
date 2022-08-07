@@ -2,14 +2,18 @@ import nodemailer from 'nodemailer';
 import { buildSendMail } from 'mailing-core';
 
 const transport = nodemailer.createTransport({
-  pool: true,
-  host: 'smtp.example.com',
-  port: 465,
-  secure: true,
+  host: 'smtp.sendgrid.net',
+  port: 587,
   auth: {
-    user: 'username',
-    pass: 'password',
+    user: 'haydenbleasel',
+    pass: process.env.SENDGRID_API_KEY,
   },
+});
+
+transport.verify((error) => {
+  if (error) {
+    throw new Error(error.message);
+  }
 });
 
 const sendMail = buildSendMail({

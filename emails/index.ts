@@ -3,9 +3,9 @@ import { buildSendMail } from 'mailing-core';
 
 const transport = nodemailer.createTransport({
   host: 'smtp.sendgrid.net',
-  port: 587,
+  port: 465,
   auth: {
-    user: 'haydenbleasel',
+    user: 'apikey',
     pass: process.env.SENDGRID_API_KEY,
   },
 });

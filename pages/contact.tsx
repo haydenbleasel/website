@@ -14,6 +14,8 @@ type ContactProps = {
   };
 };
 
+const emailRegex = /^\S+@\S+\.\S+$/u;
+
 const Contact: FC<ContactProps> = ({ data }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -78,7 +80,7 @@ const Contact: FC<ContactProps> = ({ data }) => {
           </label>
           <input
             className="w-full rounded-md border px-3 py-2 text-md text-gray-900 placeholder:text-gray-500"
-            placeholder="Full name"
+            placeholder="Jane Smith"
             required
             type="text"
             id="name"
@@ -95,8 +97,9 @@ const Contact: FC<ContactProps> = ({ data }) => {
           </label>
           <input
             className="w-full rounded-md border px-3 py-2 text-md text-gray-900 placeholder:text-gray-500"
-            placeholder="Email address"
+            placeholder="jane@acme.com"
             required
+            pattern={emailRegex.source}
             type="text"
             id="email"
             value={email}

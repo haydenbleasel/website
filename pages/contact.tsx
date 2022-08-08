@@ -1,7 +1,7 @@
 import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
 import type { GetStaticProps } from 'next';
 import type { FC, FormEventHandler } from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import Layout from '../components/layout';
 import LoadingIcon from '../components/loadingIcon';
@@ -21,6 +21,7 @@ const Contact: FC<ContactProps> = ({ data }) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
+  const firstInput = useRef<HTMLInputElement>(null);
 
   const handleSubmit: FormEventHandler = async (event) => {
     event.preventDefault();
@@ -65,6 +66,10 @@ const Contact: FC<ContactProps> = ({ data }) => {
     }
   };
 
+  useEffect(() => {
+    firstInput.current?.focus();
+  }, []);
+
   return (
     <Layout title={data.title} description={data.description}>
       <p className="animate-enter text-lg opacity-0 animation-delay-100">
@@ -79,11 +84,13 @@ const Contact: FC<ContactProps> = ({ data }) => {
             Name
           </label>
           <input
+            ref={firstInput}
             className="w-full rounded-md border px-3 py-2 text-md text-gray-900 placeholder:text-gray-500"
             placeholder="Jane Smith"
             required
             type="text"
             id="name"
+            autoFocus
             value={name}
             onChange={({ target }) => setName(target.value)}
           />
@@ -100,7 +107,7 @@ const Contact: FC<ContactProps> = ({ data }) => {
             placeholder="jane@acme.com"
             required
             pattern={emailRegex.source}
-            type="text"
+            type="email"
             id="email"
             value={email}
             onChange={({ target }) => setEmail(target.value)}
@@ -127,7 +134,11 @@ const Contact: FC<ContactProps> = ({ data }) => {
             type="submit"
             className="w-full rounded-md border bg-gray-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
             disabled={
-              !name.trim() || !email.trim() || !message.trim() || sending
+              !name.trim() ||
+              !email.trim() ||
+              !message.trim() ||
+              sending ||
+              !emailRegex.exec(email)
             }
           >
             {sending ? (

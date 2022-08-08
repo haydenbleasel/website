@@ -38,6 +38,7 @@ const handler: NextApiHandler<ContactResponse> = async (req, res) => {
   }
 
   const ip = req.headers['x-forwarded-for'] as string | undefined;
+  const now = new Date();
 
   try {
     await sendMail({
@@ -48,11 +49,10 @@ const handler: NextApiHandler<ContactResponse> = async (req, res) => {
         name,
         message,
         items: [
-          `Date: ${format(new Date(), 'MMMM do, yyyy at h:mm a')}`,
+          `Date: ${format(now, 'MMMM do, yyyy')} at ${format(now, 'h:mm a')}`,
           `Email: ${email}`,
           `IP: ${ip ?? req.socket.remoteAddress ?? 'Unknown'}`,
           `Device: ${req.headers['user-agent'] ?? 'Unknown'}`,
-          `Language: ${req.headers['accept-language'] ?? 'Unknown'}`,
         ],
       }) as ReactElement,
     });

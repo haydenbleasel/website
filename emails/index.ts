@@ -1,7 +1,7 @@
-import nodemailer from 'nodemailer';
+import { createTransport } from 'nodemailer';
 import { buildSendMail } from 'mailing-core';
 
-const transport = nodemailer.createTransport({
+const transport = createTransport({
   host: 'smtp.sendgrid.net',
   port: 465,
   secure: true,

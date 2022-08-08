@@ -254,6 +254,13 @@ const CommandBar: FC = ({ children }) => {
       shortcut: ['p'],
     },
     {
+      id: 'contact',
+      name: 'Contact',
+      keywords: 'contact',
+      section: 'Pages',
+      perform: async () => push('/contact'),
+    },
+    {
       id: 'theme',
       name: 'Change theme...',
       shortcut: ['t'],

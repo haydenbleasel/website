@@ -59,11 +59,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/contact',
-        destination: 'https://twitter.com/haydenbleasel',
-        permanent: true,
-      },
-      {
         source: '/blog/jellypepper',
         destination: '/work/jellypepper',
         permanent: true,

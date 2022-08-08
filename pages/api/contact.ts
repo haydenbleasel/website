@@ -32,7 +32,7 @@ const handler: NextApiHandler<ContactResponse> = async (req, res) => {
   if (domains.includes(domain)) {
     res.status(400).json({
       error:
-        "Sorry, we don't accept disposable email addresses. Please use a different email address.",
+        "Sorry, I don't accept disposable email addresses. Please use a different email address.",
     });
     return;
   }

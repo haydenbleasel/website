@@ -87,7 +87,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
             {job.data.role},{' '}
             {job.data.slices1.length ? (
               <PrismicLink document={job}>
-                <span>{job.data.company}</span>
+                <span className="font-semibold">{job.data.company}</span>
               </PrismicLink>
             ) : (
               job.data.company

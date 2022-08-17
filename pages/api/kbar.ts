@@ -15,6 +15,7 @@ import type { WorkPostProps } from '../work/[post]';
 type Docs = PrismicDocumentWithUID<{
   title: KeyTextField;
   description: KeyTextField;
+  icon?: KeyTextField;
 }>[];
 
 const handler: NextApiHandler = async (req, res) => {
@@ -61,6 +62,7 @@ const handler: NextApiHandler = async (req, res) => {
     link: `/${uid}`,
     section: 'Pages',
     shortcut: uid === 'colophon' ? ['?'] : undefined,
+    icon: data.icon,
   }));
 
   const devPostActions = devPosts.map(({ id, title, link }) => ({

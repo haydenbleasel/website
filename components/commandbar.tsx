@@ -36,6 +36,7 @@ import {
 } from 'react-feather';
 import toast from 'react-hot-toast';
 import { useLocalStorageValue } from '@react-hookz/web';
+import dynamic from 'next/dynamic';
 import { social } from '../utils/social';
 
 type RenderParams<T = ActionImpl | string> = {
@@ -137,10 +138,28 @@ const LoadCustomActions = () => {
         actions: ServerAction[];
       };
 
-      const newActions: Action[] = actions.map(({ link, ...props }) => ({
-        ...props,
-        perform: async () => push(link),
-      }));
+      const newActions: Action[] = actions.map(({ link, icon, ...props }) => {
+        const Icon = icon
+          ? dynamic(async () => {
+              const feather = await import(
+                /* webpackChunkName: "someModule" */
+                'react-feather'
+              );
+              return feather[icon as keyof typeof feather];
+            })
+          : undefined;
+
+        return {
+          ...props,
+          perform: async () => push(link),
+          icon: Icon ? (
+            <Icon
+              size={16}
+              className="text-neutral-500 dark:text-neutral-400"
+            />
+          ) : undefined,
+        };
+      });
 
       setCustomActions(newActions);
     };

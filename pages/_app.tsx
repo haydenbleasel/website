@@ -78,6 +78,8 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           toastOptions={{
             duration: 5000,
             position: 'bottom-right',
+            className:
+              '!bg-neutral-900/90 !backdrop-blur-md !text-white !rounded-md !px-1 !py-2',
           }}
         />
       </CommandBar>

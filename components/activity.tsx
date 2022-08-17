@@ -1,15 +1,9 @@
-import type { KeyTextField } from '@prismicio/types';
 import type { FC, KeyboardEventHandler } from 'react';
 import toast from 'react-hot-toast';
 import useActivity from '../hooks/useActivity';
 import Tooltip from './tooltip';
 
-type ActivityProps = {
-  customEmoji: KeyTextField;
-  customTitle?: KeyTextField;
-};
-
-const Activity: FC<ActivityProps> = ({ customEmoji, customTitle }) => {
+const Activity: FC = () => {
   const activity = useActivity();
   const notifyActivity = () =>
     toast(
@@ -25,12 +19,6 @@ const Activity: FC<ActivityProps> = ({ customEmoji, customTitle }) => {
       notifyActivity();
     }
   };
-
-  if (customEmoji && customTitle) {
-    activity.emoji = customEmoji;
-    activity.status = customTitle;
-    activity.source = 'Prismic';
-  }
 
   let label = activity.status;
 

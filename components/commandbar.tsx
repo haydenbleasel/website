@@ -356,7 +356,7 @@ const CommandBar: FC = ({ children }) => {
 
   const socialActions: (Action & {
     external?: boolean;
-  })[] = social.map(({ id, name, url }) => ({
+  })[] = social.map(({ id, name, url, invertDark }) => ({
     id,
     name,
     keywords: id,
@@ -367,6 +367,7 @@ const CommandBar: FC = ({ children }) => {
         height={16}
         quality={100}
         alt=""
+        className={invertDark ? 'dark:brightness-0 dark:invert' : ''}
       />
     ),
     section: 'Social',
@@ -379,7 +380,7 @@ const CommandBar: FC = ({ children }) => {
     name: 'View source code',
     keywords: 'source',
     section: 'Social',
-    icon: <Code size={16} className="text-neutral-900" />,
+    icon: <Code size={16} className="text-neutral-900 dark:text-white" />,
     perform: () =>
       window.open('https://github.com/haydenbleasel/daylight', '_blank'),
     external: true,
@@ -402,7 +403,7 @@ const CommandBar: FC = ({ children }) => {
       <KBarPortal>
         <KBarPositioner className="z-30 bg-neutral-50/80 backdrop-blur-sm dark:bg-neutral-800/80">
           <KBarAnimator className="mx-auto w-full max-w-xl overflow-hidden rounded-lg bg-white drop-shadow-2xl dark:bg-neutral-900">
-            <KBarSearch className="font-md w-full border-b border-neutral-100 bg-transparent py-3 px-4 font-normal text-neutral-900 outline-none dark:border-neutral-800 dark:text-white" />
+            <KBarSearch className="font-md w-full border-b border-neutral-200 bg-transparent py-3 px-4 font-normal text-neutral-900 outline-none dark:border-neutral-700 dark:text-white" />
             <RenderResults />
           </KBarAnimator>
         </KBarPositioner>

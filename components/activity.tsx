@@ -28,13 +28,13 @@ const Activity: FC = () => {
 
   return (
     <div
-      className="fixed top-2 right-12 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-neutral-100 bg-white pr-2 dark:border-neutral-800 dark:bg-neutral-900"
+      className="fixed top-2 right-12 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-neutral-200 pr-2 dark:border-neutral-700 dark:bg-neutral-900"
       onClick={notifyActivity}
       onKeyDown={handleNotifyActivity}
       tabIndex={-1}
       role="button"
     >
-      <Tooltip label={label} side="bottom" sideOffset={4}>
+      <Tooltip label={label} side="left" sideOffset={4}>
         <div className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-neutral-900 dark:text-white sm:text-md">
           {activity.emoji}
         </div>

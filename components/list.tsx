@@ -83,7 +83,7 @@ const List: FC<ListProps> = ({
                 key={title}
               >
                 {title}{' '}
-                <span className="rounded-full bg-neutral-50 py-1 px-2 text-xs dark:bg-neutral-800">
+                <span className="rounded-full border border-neutral-200 py-1 px-2 text-xs dark:border-neutral-700">
                   {items.length}
                 </span>
               </Tabs.Trigger>

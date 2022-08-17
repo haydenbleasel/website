@@ -68,7 +68,7 @@ const FigmaFile: FC<
             />
           )}
         </div>
-        <div className="flex flex-col gap-1 border-t border-neutral-100 p-4 dark:border-neutral-700">
+        <div className="flex flex-col gap-1 border-t border-neutral-200 p-4 dark:border-neutral-700">
           <p className="m-0 text-md font-semibold text-neutral-900 line-clamp-1 dark:text-white sm:text-lg">
             {data?.title ?? 'Loading'}
           </p>

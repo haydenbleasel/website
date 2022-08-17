@@ -83,7 +83,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
             />
           )}
         </div>
-        <div className="flex flex-col gap-1 border-t border-neutral-100 p-4 dark:border-neutral-700">
+        <div className="flex flex-col gap-1 border-t border-neutral-200 p-4 dark:border-neutral-700">
           <p className="m-0 text-lg font-semibold text-neutral-900 line-clamp-1 dark:text-white">
             {data?.title ?? 'Loading'}
           </p>

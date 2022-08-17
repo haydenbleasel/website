@@ -35,19 +35,21 @@ export type HomeProps = {
 
 const Home: FC<HomeProps> = ({ data, location }) => (
   <Layout title={data.title} description={data.description} noSticky noTitle>
-    <Image
-      src="/logo.svg"
-      width={48}
-      height={48}
-      priority
-      quality={100}
-      alt=""
-      className="m-0 animate-burst"
-    />
+    <div className="dark:brightness-0 dark:invert">
+      <Image
+        src="/logo.svg"
+        width={48}
+        height={48}
+        priority
+        quality={100}
+        alt=""
+        className="m-0 animate-burst"
+      />
+    </div>
     <div className="mt-16 animate-enter opacity-0 animation-delay-100">
       <h1 className="mb-4">{data.hero_title}</h1>
       <p className="m-0 text-lg leading-normal">{data.hero_description}</p>
-      <p className="mt-4 inline-flex items-center gap-1 rounded-full border border-neutral-300 px-3 py-1 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+      <p className="mt-4 inline-flex items-center gap-1 rounded-full border border-neutral-300 px-3 py-1 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300">
         <MapPin width={14} height={14} />
         <span className="text-sm font-medium leading-snug">
           Currently {location ? `in ${location}` : 'somewhere'}

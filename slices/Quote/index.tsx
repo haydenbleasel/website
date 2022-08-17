@@ -14,7 +14,7 @@ const Quote: FC<
   }>
 > = ({ slice }) => (
   <div className="my-8 flex flex-col gap-4">
-    <p className="m-0 text-md text-gray-900 dark:text-white">
+    <p className="m-0 text-md text-neutral-900 dark:text-white">
       {slice.primary.content}
     </p>
     <div className="flex items-center gap-3">
@@ -28,7 +28,7 @@ const Quote: FC<
           className="flex overflow-hidden rounded-full"
         />
       )}
-      <p className="m-0 text-sm text-gray-500 dark:text-gray-400">
+      <p className="m-0 text-sm text-neutral-500 dark:text-neutral-400">
         {slice.primary.author}
       </p>
     </div>

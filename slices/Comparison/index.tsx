@@ -50,8 +50,12 @@ const Comparison: FC<
         }
       />
       <div className="flex items-center justify-between">
-        <p className="m-0 text-sm text-gray-500 dark:text-gray-400">Before</p>
-        <p className="m-0 text-sm text-gray-500 dark:text-gray-400">After</p>
+        <p className="m-0 text-sm text-neutral-500 dark:text-neutral-400">
+          Before
+        </p>
+        <p className="m-0 text-sm text-neutral-500 dark:text-neutral-400">
+          After
+        </p>
       </div>
     </div>
   );

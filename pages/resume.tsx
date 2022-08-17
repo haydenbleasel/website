@@ -93,7 +93,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
               job.data.company
             )}
           </h3>
-          <p className="text-gray-500 dark:text-gray-400">
+          <p className="text-neutral-500 dark:text-neutral-400">
             {job.data.startYear} &mdash; {job.data.endYear ?? 'Present'} in{' '}
             {job.data.location}
           </p>

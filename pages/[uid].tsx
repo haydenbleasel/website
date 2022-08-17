@@ -32,7 +32,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
     image={data.coverImage}
   >
     <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
-      <p className="mt-0 text-gray-500 dark:text-gray-400">
+      <p className="mt-0 text-neutral-500 dark:text-neutral-400">
         Last updated at{' '}
         {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
       </p>

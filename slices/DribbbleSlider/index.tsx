@@ -68,7 +68,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
       rel="noopener noreferrer"
       className="group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col no-underline"
     >
-      <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-800">
+      <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-neutral-800">
         <div className="relative aspect-[4/3] w-full">
           <Placeholder className="absolute z-0 h-full w-full" />
 
@@ -83,26 +83,26 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
             />
           )}
         </div>
-        <div className="flex flex-col gap-1 border-t border-gray-100 p-4 dark:border-gray-700">
-          <p className="m-0 text-lg font-semibold text-gray-900 line-clamp-1 dark:text-white">
+        <div className="flex flex-col gap-1 border-t border-neutral-100 p-4 dark:border-neutral-700">
+          <p className="m-0 text-lg font-semibold text-neutral-900 line-clamp-1 dark:text-white">
             {data?.title ?? 'Loading'}
           </p>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <MessageSquare size={16} className="text-gray-400" />
-              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+              <MessageSquare size={16} className="text-neutral-400" />
+              <p className="m-0 text-md text-neutral-500 dark:text-neutral-400">
                 {formatNumbers(data?.comments ?? 0)}
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <ThumbsUp size={16} className="text-gray-400" />
-              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+              <ThumbsUp size={16} className="text-neutral-400" />
+              <p className="m-0 text-md text-neutral-500 dark:text-neutral-400">
                 {formatNumbers(data?.likes ?? 0)}
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <Eye size={16} className="text-gray-400" />
-              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+              <Eye size={16} className="text-neutral-400" />
+              <p className="m-0 text-md text-neutral-500 dark:text-neutral-400">
                 {formatNumbers(data?.views ?? 0)}
               </p>
             </div>
@@ -121,7 +121,7 @@ type ArrowProps = {
 
 const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => (
   <div
-    className={`select-none rounded-full border border-gray-200 p-4 transition-all hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800 ${
+    className={`select-none rounded-full border border-neutral-200 p-4 transition-all hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800 ${
       active ? '' : 'cursor-not-allowed opacity-50'
     }`}
     onClick={handleClick}
@@ -132,7 +132,7 @@ const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => (
     aria-controls="embla-carousel"
     aria-disabled={!active}
   >
-    <Icon className="text-gray-500 dark:text-gray-400" />
+    <Icon className="text-neutral-500 dark:text-neutral-400" />
   </div>
 );
 

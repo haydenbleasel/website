@@ -54,7 +54,7 @@ const Recommendation: FC<RecommendationData> = ({
       <span className="line-clamp-1">{name}</span>
       <ArrowUpRight className="shrink-0" size={16} />
     </span>
-    <span className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+    <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-400 sm:text-right">
       {description}
     </span>
   </Link>

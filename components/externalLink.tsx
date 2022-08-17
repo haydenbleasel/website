@@ -45,7 +45,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
 
   const Modal = (
     <span
-      className="pointer-events-none fixed z-20 flex w-[316px] translate-x-2 translate-y-2 flex-col rounded-lg bg-gray-900/90 p-3 shadow-lg backdrop-blur-md transition-opacity group-hover:-translate-y-2 dark:bg-gray-800"
+      className="pointer-events-none fixed z-20 flex w-[316px] translate-x-2 translate-y-2 flex-col rounded-lg bg-neutral-900/90 p-3 shadow-lg backdrop-blur-md transition-opacity group-hover:-translate-y-2 dark:bg-neutral-800"
       style={{
         left: relativeX,
         top: relativeY,
@@ -76,15 +76,15 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
         </span>
       )}
       {screenshot.result?.data?.description && (
-        <span className="block text-sm leading-normal text-gray-300 line-clamp-2">
+        <span className="block text-sm leading-normal text-neutral-300 line-clamp-2">
           {screenshot.result.data.description}
         </span>
       )}
       <span className="flex items-center gap-1">
-        <span className="block text-sm leading-normal text-gray-400 line-clamp-1">
+        <span className="block text-sm leading-normal text-neutral-400 line-clamp-1">
           {new URL(href).hostname}
         </span>
-        <ArrowUpRight width={12} height={12} className="text-gray-400" />
+        <ArrowUpRight width={12} height={12} className="text-neutral-400" />
       </span>
     </span>
   );
@@ -107,7 +107,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline text-md font-normal text-gray-900 transition-colors hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+        className="inline text-md font-normal text-neutral-900 transition-colors hover:text-neutral-600 dark:text-white dark:hover:text-neutral-300"
         {...props}
       >
         {children}

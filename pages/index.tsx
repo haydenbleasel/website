@@ -46,7 +46,7 @@ const Home: FC<HomeProps> = ({ data, location }) => (
     <div className="animate-enter opacity-0 animation-delay-100">
       <h1 className="mb-2">{data.name}</h1>
       <p className="m-0 text-lg">{data.role}</p>
-      <p className="mt-4 inline-flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+      <p className="mt-4 inline-flex items-center gap-1 rounded-full bg-neutral-100 px-3 py-1 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
         <MapPin width={14} height={14} />
         <span className="text-sm font-medium leading-snug">
           Currently {location ? `in ${location}` : 'somewhere'}
@@ -74,7 +74,7 @@ const Home: FC<HomeProps> = ({ data, location }) => (
           style={{ animationDelay: `${(index + 3) * 100}ms` }}
         >
           {section.title && (
-            <small className="text-sm text-gray-500 dark:text-gray-400">
+            <small className="text-sm text-neutral-500 dark:text-neutral-400">
               {section.title}
             </small>
           )}

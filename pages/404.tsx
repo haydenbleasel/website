@@ -8,7 +8,9 @@ const NotFound: FC = () => (
       <Image src="/images/bonk.webp" alt="Bonk" width={498} height={371} />
       <h1 className="m-0">
         404:{' '}
-        <span className="text-gray-500 dark:text-gray-400">Page not found</span>
+        <span className="text-neutral-500 dark:text-neutral-400">
+          Page not found
+        </span>
       </h1>
       <p>
         <PrismicLink className="font-medium" href="/">

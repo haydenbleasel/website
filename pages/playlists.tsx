@@ -24,7 +24,7 @@ const Playlist = ({ url, id, name, tracks }: PlaylistsResponse[number]) => (
         <span>{name}</span>
         <ArrowUpRight size={16} />
       </span>
-      <span className="flex-0 w-24 text-right text-sm text-gray-400 dark:text-gray-500">
+      <span className="flex-0 w-24 text-right text-sm text-neutral-400 dark:text-neutral-500">
         {tracks} tracks
       </span>
     </span>

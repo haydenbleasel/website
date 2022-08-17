@@ -22,7 +22,9 @@ const Achievements: FC<GamesResponse[number]['achievements']> = ({
 }) => (
   <span
     className={`flex items-center gap-1 text-xs sm:ml-2 ${
-      achieved === total ? 'text-gold' : 'text-gray-500 dark:text-gray-400'
+      achieved === total
+        ? 'text-gold'
+        : 'text-neutral-500 dark:text-neutral-400'
     }`}
   >
     <Star size={12} />
@@ -48,7 +50,7 @@ const Game = ({
           />
         )}
       </p>
-      <p className="flex-0 m-0 flex w-24 text-sm text-gray-500 dark:text-gray-400 sm:justify-end">
+      <p className="flex-0 m-0 flex w-24 text-sm text-neutral-500 dark:text-neutral-400 sm:justify-end">
         {playtime > 60
           ? `${hours} ${hours === 1 ? 'hour' : 'hours'}`
           : `${playtime} ${playtime === 1 ? 'minute' : 'minutes'}`}

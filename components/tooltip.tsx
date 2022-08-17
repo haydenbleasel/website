@@ -14,11 +14,11 @@ const Tooltip: FC<TooltipProps> = ({ label, children, ...props }) => (
       align="center"
       sideOffset={0}
       alignOffset={0}
-      className="rounded-md bg-gray-900/90 py-1 px-2 text-sm text-white shadow-lg backdrop-blur-sm"
+      className="rounded-md bg-neutral-900/90 py-1 px-2 text-sm text-white shadow-lg backdrop-blur-sm"
       {...props}
     >
       {label}
-      <Arrow className="fill-gray-900/90" />
+      <Arrow className="fill-neutral-900/90" />
     </Content>
   </Root>
 );

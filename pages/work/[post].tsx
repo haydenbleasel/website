@@ -37,10 +37,10 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
     image={data.coverImage}
   >
     <div className="animate-enter opacity-0 animation-delay-100">
-      <p className="m-0 text-lg text-gray-500 dark:text-gray-400">
+      <p className="m-0 text-lg text-neutral-500 dark:text-neutral-400">
         {data.role}
       </p>
-      <p className="mt-1 animate-enter text-gray-500 opacity-0 animation-delay-200 dark:text-gray-400">
+      <p className="mt-1 animate-enter text-neutral-500 opacity-0 animation-delay-200 dark:text-neutral-400">
         {data.startYear} &mdash; {data.endYear ?? 'Present'} &bull;{' '}
         {data.location}.
       </p>

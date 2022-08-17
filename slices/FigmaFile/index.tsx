@@ -53,7 +53,7 @@ const FigmaFile: FC<
       rel="noopener noreferrer"
       className="group relative my-8 flex w-full flex-shrink-0 flex-grow-0 flex-col no-underline"
     >
-      <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-800">
+      <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-neutral-800">
         <div className="relative aspect-[2/1] w-full">
           <Placeholder className="absolute z-0 h-full w-full" />
 
@@ -68,11 +68,11 @@ const FigmaFile: FC<
             />
           )}
         </div>
-        <div className="flex flex-col gap-1 border-t border-gray-100 p-4 dark:border-gray-700">
-          <p className="m-0 text-md font-semibold text-gray-900 line-clamp-1 dark:text-white sm:text-lg">
+        <div className="flex flex-col gap-1 border-t border-neutral-100 p-4 dark:border-neutral-700">
+          <p className="m-0 text-md font-semibold text-neutral-900 line-clamp-1 dark:text-white sm:text-lg">
             {data?.title ?? 'Loading'}
           </p>
-          <p className="m-0 text-sm font-normal text-gray-500 dark:text-gray-400 sm:text-md">
+          <p className="m-0 text-sm font-normal text-neutral-500 dark:text-neutral-400 sm:text-md">
             {data
               ? `Last updated ${format(
                   parseISO(data.lastUpdated),

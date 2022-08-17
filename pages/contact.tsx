@@ -78,14 +78,14 @@ const Contact: FC<ContactProps> = ({ data }) => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <fieldset className="flex animate-enter flex-col gap-1 text-lg opacity-0 animation-delay-200">
           <label
-            className="block text-md text-gray-500 dark:text-gray-400"
+            className="block text-md text-neutral-500 dark:text-neutral-400"
             htmlFor="name"
           >
             Name
           </label>
           <input
             ref={firstInput}
-            className="w-full rounded-md border px-3 py-2 text-md text-gray-900 placeholder:text-gray-500"
+            className="w-full rounded-md border px-3 py-2 text-md text-neutral-900 placeholder:text-neutral-500"
             placeholder="Jane Smith"
             required
             type="text"
@@ -97,13 +97,13 @@ const Contact: FC<ContactProps> = ({ data }) => {
         </fieldset>
         <fieldset className="flex animate-enter flex-col gap-1 text-lg opacity-0 animation-delay-300">
           <label
-            className="block text-md text-gray-500 dark:text-gray-400"
+            className="block text-md text-neutral-500 dark:text-neutral-400"
             htmlFor="email"
           >
             Email
           </label>
           <input
-            className="w-full rounded-md border px-3 py-2 text-md text-gray-900 placeholder:text-gray-500"
+            className="w-full rounded-md border px-3 py-2 text-md text-neutral-900 placeholder:text-neutral-500"
             placeholder="jane@acme.com"
             required
             pattern={emailRegex.source}
@@ -115,13 +115,13 @@ const Contact: FC<ContactProps> = ({ data }) => {
         </fieldset>
         <fieldset className="flex animate-enter flex-col gap-1 text-lg opacity-0 animation-delay-400">
           <label
-            className="block text-md text-gray-500 dark:text-gray-400"
+            className="block text-md text-neutral-500 dark:text-neutral-400"
             htmlFor="message"
           >
             Message
           </label>
           <textarea
-            className="max-h-[20rem] min-h-[8rem] w-full resize-y rounded-md border px-3 py-2 text-md text-gray-900 placeholder:text-gray-500"
+            className="max-h-[20rem] min-h-[8rem] w-full resize-y rounded-md border px-3 py-2 text-md text-neutral-900 placeholder:text-neutral-500"
             placeholder="What's on your mind?"
             required
             id="message"
@@ -132,7 +132,7 @@ const Contact: FC<ContactProps> = ({ data }) => {
         <fieldset className="animate-enter opacity-0 animation-delay-500">
           <button
             type="submit"
-            className="w-full rounded-md border bg-gray-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-md border bg-neutral-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
             disabled={
               !name.trim() ||
               !email.trim() ||

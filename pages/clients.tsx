@@ -32,7 +32,7 @@ type ClientListData = {
 
 const ClientList: FC<ClientListData> = ({ name, data }) => (
   <div className="mt-4 flex gap-8">
-    <p className="flex-0 m-0 w-24 text-sm text-gray-500 dark:text-gray-400">
+    <p className="flex-0 m-0 w-24 text-sm text-neutral-500 dark:text-neutral-400">
       {name}
     </p>
     <div className="flex flex-1 flex-col gap-1">

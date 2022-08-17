@@ -64,7 +64,7 @@ const FigmaFile: FC<
               height={320}
               quality={100}
               alt=""
-              className="relative z-10 m-0"
+              className="relative z-10 m-0 animate-burst"
             />
           )}
         </div>

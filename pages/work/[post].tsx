@@ -56,7 +56,7 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
         }
         priority
         quality={100}
-        className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
+        className="flex animate-enter-burst overflow-hidden rounded-sm opacity-0 animation-delay-200"
       />
     )}
     {data.coverVideo.embed_url && (

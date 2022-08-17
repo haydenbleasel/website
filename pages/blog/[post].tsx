@@ -90,7 +90,7 @@ const WorkPost: FC<PostProps> = ({
           }
           priority
           quality={100}
-          className="animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
+          className="animate-enter-burst overflow-hidden rounded-sm opacity-0 animation-delay-200"
         />
       )}
       {data.coverVideo.embed_url && (

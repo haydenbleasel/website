@@ -31,7 +31,7 @@ const Comparison: FC<
             }
             quality={100}
             alt="Before Image"
-            className="m-0"
+            className="m-0 animate-burst"
           />
         }
         itemTwo={
@@ -45,7 +45,7 @@ const Comparison: FC<
             }
             quality={100}
             alt="After Image"
-            className="m-0"
+            className="m-0 animate-burst"
           />
         }
       />

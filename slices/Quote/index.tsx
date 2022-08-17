@@ -25,7 +25,7 @@ const Quote: FC<
           height={32}
           quality={100}
           alt=""
-          className="flex overflow-hidden rounded-full"
+          className="flex animate-burst overflow-hidden rounded-full"
         />
       )}
       <p className="m-0 text-sm text-neutral-500 dark:text-neutral-400">

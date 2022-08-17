@@ -42,7 +42,7 @@ const Home: FC<HomeProps> = ({ data, location }) => (
       priority
       quality={100}
       alt=""
-      className="m-0"
+      className="m-0 animate-burst"
     />
     <div className="mt-16 animate-enter opacity-0 animation-delay-100">
       <h1 className="mb-4">{data.hero_title}</h1>
@@ -55,17 +55,15 @@ const Home: FC<HomeProps> = ({ data, location }) => (
       </p>
     </div>
     {data.hero_image.url && (
-      <div className="flex animate-enter opacity-0 animation-delay-200">
-        <Image
-          src={data.hero_image.url}
-          width={1214}
-          height={703}
-          priority
-          quality={100}
-          alt=""
-          className="block overflow-hidden rounded-sm"
-        />
-      </div>
+      <Image
+        src={data.hero_image.url}
+        width={1214}
+        height={703}
+        priority
+        quality={100}
+        alt=""
+        className="block animate-enter-burst overflow-hidden rounded-sm opacity-0 animation-delay-200"
+      />
     )}
     <div className="flex flex-col gap-6 sm:gap-12">
       {data.sections.map((section, index) => (

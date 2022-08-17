@@ -79,7 +79,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
               height={300}
               quality={100}
               alt=""
-              className="relative z-10 m-0"
+              className="relative z-10 m-0 animate-burst"
             />
           )}
         </div>

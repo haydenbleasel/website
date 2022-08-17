@@ -28,7 +28,7 @@ const Activity: FC = () => {
 
   return (
     <div
-      className="fixed top-2 right-12 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-neutral-200 pr-2 dark:border-neutral-700 dark:bg-neutral-900"
+      className="fixed top-2 right-12 z-10 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-neutral-200 pr-2 dark:border-neutral-700 dark:bg-neutral-900"
       onClick={notifyActivity}
       onKeyDown={handleNotifyActivity}
       tabIndex={-1}

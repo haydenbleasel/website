@@ -403,7 +403,7 @@ const CommandBar: FC = ({ children }) => {
       <KBarPortal>
         <KBarPositioner className="z-30 bg-neutral-50/80 backdrop-blur-sm dark:bg-neutral-800/80">
           <KBarAnimator className="mx-auto w-full max-w-xl overflow-hidden rounded-lg bg-white drop-shadow-2xl dark:bg-neutral-900">
-            <KBarSearch className="font-md w-full border-b border-neutral-200 bg-transparent py-3 px-4 font-normal text-neutral-900 outline-none dark:border-neutral-700 dark:text-white" />
+            <KBarSearch className="font-md w-full border-b border-neutral-200 bg-transparent py-3 px-4 font-normal text-neutral-900 outline-none placeholder:text-neutral-500 dark:border-neutral-700 dark:text-white" />
             <RenderResults />
           </KBarAnimator>
         </KBarPositioner>

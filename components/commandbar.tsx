@@ -317,7 +317,9 @@ const CommandBar: FC = ({ children }) => {
     },
   ];
 
-  const socialActions: Action[] = social.map(({ id, name, url }) => ({
+  const socialActions: (Action & {
+    external?: boolean;
+  })[] = social.map(({ id, name, url }) => ({
     id,
     name,
     keywords: id,
@@ -343,6 +345,7 @@ const CommandBar: FC = ({ children }) => {
     icon: <Code size={16} className="text-gray-900" />,
     perform: () =>
       window.open('https://github.com/haydenbleasel/daylight', '_blank'),
+    external: true,
   });
 
   useEffect(() => {

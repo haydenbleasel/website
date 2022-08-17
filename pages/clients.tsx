@@ -5,7 +5,6 @@ import type {
   KeyTextField,
   PrismicDocumentWithUID,
 } from '@prismicio/types';
-import { createClient } from '@prismicio/client';
 import Layout from '../components/layout';
 import { getPage } from '../utils/prismic';
 
@@ -83,19 +82,25 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     { previewData },
     'clients'
   )) as PrismicDocumentWithUID;
-  const jellypepperPrismicClient = createClient(
-    process.env.JELLYPEPPER_PRISMIC_ENDPOINT ?? 'loading',
+  const jellypepperResponse = await fetch(
+    'https://jellypepper.com/api/clients',
     {
-      fetch,
-      accessToken: process.env.JELLYPEPPER_PRISMIC_ACCESS_TOKEN ?? '',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        passphrase: process.env.JELLYPEPPER_PASSPHRASE,
+      }),
     }
   );
-  const clients = (await jellypepperPrismicClient.getAllByType(
-    'client'
-  )) as unknown as PrismicDocumentWithUID<{
-    client_name: KeyTextField;
-  }>[];
-  const jellypepper = clients.map((client) => ({
+  const jellypepperClients = (await jellypepperResponse.json()) as {
+    data: {
+      client_name: string;
+    };
+  }[];
+
+  const jellypepper = jellypepperClients.map((client) => ({
     client: client.data.client_name,
   }));
 

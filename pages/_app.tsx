@@ -16,6 +16,7 @@ import ExternalLinkComponent from '../components/externalLink';
 import useAnalytics from '../hooks/useAnalytics';
 import richTextComponents from '../components/richTextComponents';
 import { social } from '../utils/social';
+import Activity from '../components/activity';
 
 const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
@@ -70,6 +71,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
             <Component {...pageProps} />
           </PrismicPreview>
         </PrismicProvider>
+        <Activity />
         <Menu />
         <Toaster
           containerClassName="print:hidden"

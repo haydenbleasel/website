@@ -1,54 +1,51 @@
 {
-  "id": "a4751331-cacf-42aa-8625-ef13a279b083",
-  "uid": "voluptates-dolorum-voluptatem",
+  "id": "mock-doc-id",
+  "url": null,
   "type": "home",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
   "data": {
-    "title": "architect extensible interfaces",
-    "description": "utilize global convergence",
+    "title": "struck",
+    "description": "another",
     "photo": {
       "dimensions": {
         "width": 900,
         "height": 500
       },
-      "alt": "Placeholder image",
+      "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f"
     },
-    "name": "aggregate global channels",
-    "role": "exploit efficient e-tailers",
+    "name": "therefore",
+    "role": "circus",
+    "hero_image": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea"
+    },
     "sections": [
       {
-        "title": "aggregate integrated solutions",
+        "title": "fighting",
         "content": [
           {
             "type": "paragraph",
-            "text": "Non nulla qui qui.",
-            "spans": []
-          }
-        ]
-      },
-      {
-        "title": "mesh cross-platform niches",
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "Consectetur tempor ad Lorem cupidatat fugiat dolor dolore sunt quis ex elit eu ullamco. Dolor elit occaecat pariatur reprehenderit quis velit eu incididunt ex qui.",
-            "spans": []
-          }
-        ]
-      },
-      {
-        "title": "streamline global portals",
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "Labore veniam nostrud nostrud tempor cupidatat cupidatat fugiat consectetur quis velit laboris et minim sunt pariatur. Veniam excepteur voluptate ullamco. Eiusmod anim commodo aliquip.",
+            "text": "Duis consequat sit ex anim sint duis sint culpa voluptate sunt. Veniam do est pariatur do qui ipsum exercitation enim ipsum occaecat veniam fugiat in et.",
             "spans": []
           }
         ]
       }
     ],
-    "customActivityEmoji": "productize customized technologies",
-    "customActivityTitle": "mesh visionary ROI"
+    "customActivityEmoji": "lack",
+    "customActivityTitle": "loose"
   }
 }

@@ -49,6 +49,14 @@
           "placeholder": ""
         },
         "type": "Text"
+      },
+      "hero_image": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Image",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     },
     "Content": {

@@ -10,7 +10,6 @@ import type { GetStaticProps } from 'next';
 import Image from 'next/future/image';
 import type { FC } from 'react';
 import { MapPin } from 'react-feather';
-import Activity from '../components/activity';
 import Layout from '../components/layout';
 import SocialLinks from '../components/socialLinks';
 import { getPage } from '../utils/prismic';
@@ -23,6 +22,7 @@ export type HomeProps = {
     name: KeyTextField;
     role: KeyTextField;
     photo: ImageFieldImage;
+    hero_image: ImageFieldImage;
     customActivityEmoji: KeyTextField;
     customActivityTitle: KeyTextField;
     sections: GroupField<{
@@ -35,25 +35,14 @@ export type HomeProps = {
 
 const Home: FC<HomeProps> = ({ data, location }) => (
   <Layout title={data.title} description={data.description} noSticky noTitle>
-    {data.photo.url && (
-      <div className="flex animate-enter opacity-0">
-        <div className="relative">
-          <Image
-            src={data.photo.url}
-            width={64}
-            height={64}
-            priority
-            quality={100}
-            alt=""
-            className="mt-0 mb-8 inline-flex overflow-hidden rounded-full"
-          />
-          <Activity
-            customEmoji={data.customActivityEmoji}
-            customTitle={data.customActivityTitle}
-          />
-        </div>
-      </div>
-    )}
+    <Image
+      src="/logo.svg"
+      width={48}
+      height={48}
+      priority
+      quality={100}
+      alt=""
+    />
     <div className="animate-enter opacity-0 animation-delay-100">
       <h1 className="mb-2">{data.name}</h1>
       <p className="m-0 text-lg">{data.role}</p>
@@ -64,12 +53,25 @@ const Home: FC<HomeProps> = ({ data, location }) => (
         </span>
       </p>
     </div>
+    {data.hero_image.url && (
+      <div className="flex animate-enter opacity-0 animation-delay-200">
+        <Image
+          src={data.hero_image.url}
+          width={1214}
+          height={703}
+          priority
+          quality={100}
+          alt=""
+          className="block overflow-hidden rounded-sm"
+        />
+      </div>
+    )}
     <div className="flex flex-col gap-6 sm:gap-12">
       {data.sections.map((section, index) => (
         <div
           key={index}
           className="animate-enter opacity-0"
-          style={{ animationDelay: `${(index + 2) * 100}ms` }}
+          style={{ animationDelay: `${(index + 3) * 100}ms` }}
         >
           {section.title && (
             <small className="text-sm text-gray-500 dark:text-gray-400">

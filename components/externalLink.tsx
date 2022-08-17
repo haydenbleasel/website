@@ -6,9 +6,10 @@ import { useState, useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'react-feather';
 import { useAsync, useMountEffect } from '@react-hookz/web';
 import { useMouse, useWindowScroll } from 'react-use';
-import { createPortal } from 'react-dom';
+
 import type { PreviewResponse } from '../pages/api/link-preview';
 import Placeholder from './placeholder';
+import Portal from './portal';
 
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   const root = useRef<HTMLElement>();
@@ -43,52 +44,6 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
 
   useMountEffect(execute);
 
-  const Modal = (
-    <span
-      className="pointer-events-none fixed z-20 flex w-[316px] translate-x-2 translate-y-2 flex-col rounded-lg bg-neutral-900/90 p-3 shadow-lg backdrop-blur-md transition-opacity group-hover:-translate-y-2 dark:bg-neutral-800"
-      style={{
-        left: relativeX,
-        top: relativeY,
-        opacity: showPreview ? 1 : 0,
-      }}
-    >
-      <div className="h-[174px]">
-        {screenshot.result?.data?.image ? (
-          <Image
-            src={screenshot.result.data.image}
-            unoptimized
-            width={300}
-            height={158}
-            alt=""
-            className="m-0 h-[174px] rounded-sm object-cover"
-          />
-        ) : (
-          <Placeholder className="h-full w-full rounded-sm" />
-        )}
-      </div>
-      {screenshot.result?.data?.title && (
-        <span
-          className={`mt-2 block text-md font-medium leading-normal text-white ${
-            screenshot.result.data.description ? 'line-clamp-1' : 'line-clamp-3'
-          }`}
-        >
-          {screenshot.result.data.title}
-        </span>
-      )}
-      {screenshot.result?.data?.description && (
-        <span className="block text-sm leading-normal text-neutral-300 line-clamp-2">
-          {screenshot.result.data.description}
-        </span>
-      )}
-      <span className="flex items-center gap-1">
-        <span className="block text-sm leading-normal text-neutral-400 line-clamp-1">
-          {new URL(href).hostname}
-        </span>
-        <ArrowUpRight width={12} height={12} className="text-neutral-400" />
-      </span>
-    </span>
-  );
-
   return (
     <span
       ref={ref}
@@ -99,10 +54,59 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
       tabIndex={0}
       role="link"
     >
-      {!screenshot.error &&
-        !isEmpty &&
-        root.current &&
-        createPortal(Modal, root.current)}
+      {!screenshot.error && !isEmpty && root.current && (
+        <Portal>
+          <span
+            className="pointer-events-none fixed z-20 flex w-[316px] translate-x-2 translate-y-2 flex-col rounded-lg bg-neutral-900/90 p-3 shadow-lg backdrop-blur-md transition-opacity group-hover:-translate-y-2 dark:bg-neutral-800"
+            style={{
+              left: relativeX,
+              top: relativeY,
+              opacity: showPreview ? 1 : 0,
+            }}
+          >
+            <div className="h-[174px]">
+              {screenshot.result?.data?.image ? (
+                <Image
+                  src={screenshot.result.data.image}
+                  unoptimized
+                  width={300}
+                  height={158}
+                  alt=""
+                  className="m-0 h-[174px] rounded-sm object-cover"
+                />
+              ) : (
+                <Placeholder className="h-full w-full rounded-sm" />
+              )}
+            </div>
+            {screenshot.result?.data?.title && (
+              <span
+                className={`mt-2 block text-md font-medium leading-normal text-white ${
+                  screenshot.result.data.description
+                    ? 'line-clamp-1'
+                    : 'line-clamp-3'
+                }`}
+              >
+                {screenshot.result.data.title}
+              </span>
+            )}
+            {screenshot.result?.data?.description && (
+              <span className="block text-sm leading-normal text-neutral-300 line-clamp-2">
+                {screenshot.result.data.description}
+              </span>
+            )}
+            <span className="flex items-center gap-1">
+              <span className="block text-sm leading-normal text-neutral-400 line-clamp-1">
+                {new URL(href).hostname}
+              </span>
+              <ArrowUpRight
+                width={12}
+                height={12}
+                className="text-neutral-400"
+              />
+            </span>
+          </span>
+        </Portal>
+      )}
       <Link
         href={href}
         target="_blank"

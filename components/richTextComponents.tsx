@@ -3,20 +3,20 @@ import type { JSXMapSerializer } from '@prismicio/react';
 import Image from 'next/future/image';
 import type { TwitterTweetEmbedProps } from 'react-twitter-embed/dist/components/TwitterTweetEmbed';
 import resolveConfig from 'tailwindcss/resolveConfig';
-import type { TailwindConfig } from 'tailwindcss/tailwind-config';
 import type { DefaultColors } from 'tailwindcss/types/generated/colors';
 import type { CSSProperties, FC } from 'react';
 import { useState, useEffect } from 'react';
 import type { RTPreformattedNode } from '@prismicio/types';
+import type { RequiredConfig } from 'tailwindcss/types/config';
 import tailwindConfig from '../tailwind.config';
 
-const fullConfig = resolveConfig(tailwindConfig as TailwindConfig);
+const fullConfig = resolveConfig(tailwindConfig as RequiredConfig);
 
 const Preformatted: FC<{ node: RTPreformattedNode; key: string }> = ({
   node,
   key,
 }) => {
-  const { gray } = fullConfig.theme.colors as unknown as DefaultColors;
+  const { neutral } = fullConfig.theme?.colors as unknown as DefaultColors;
   const SyntaxHighlighter = dynamic(async () => {
     const { Light } = await import(
       /* webpackChunkName: "react-syntax-highlighter" */
@@ -106,11 +106,11 @@ const Preformatted: FC<{ node: RTPreformattedNode; key: string }> = ({
         customStyle={{
           padding: '1rem',
           borderRadius: '0.25rem',
-          backgroundColor: gray[800],
+          backgroundColor: neutral[800],
         }}
         showLineNumbers
         lineNumberStyle={{
-          color: gray[400],
+          color: neutral[400],
         }}
       >
         {node.text}

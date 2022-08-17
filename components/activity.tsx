@@ -2,6 +2,7 @@ import type { KeyTextField } from '@prismicio/types';
 import type { FC, KeyboardEventHandler } from 'react';
 import toast from 'react-hot-toast';
 import useActivity from '../hooks/useActivity';
+import Tooltip from './tooltip';
 
 type ActivityProps = {
   customEmoji: KeyTextField;
@@ -31,23 +32,25 @@ const Activity: FC<ActivityProps> = ({ customEmoji, customTitle }) => {
     activity.source = 'Prismic';
   }
 
+  let label = activity.status;
+
+  if (activity.source) {
+    label += ` (via ${activity.source})`;
+  }
+
   return (
     <div
-      className="absolute top-10 left-10 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-gray-100 bg-white pr-2 hover:w-auto dark:border-gray-800 dark:bg-gray-900"
+      className="absolute top-10 left-10 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-gray-100 bg-white pr-2 dark:border-gray-800 dark:bg-gray-900"
       onClick={notifyActivity}
       onKeyDown={handleNotifyActivity}
       tabIndex={-1}
       role="button"
     >
-      <div className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-gray-900 dark:text-white sm:text-md">
-        {activity.emoji}
-      </div>
-      <span className="text-sm leading-none">{activity.status}</span>
-      {activity.source && (
-        <span className="text-sm leading-none text-gray-500 dark:text-gray-400">
-          via {activity.source}
-        </span>
-      )}
+      <Tooltip label={label} side="right" sideOffset={4}>
+        <div className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-gray-900 dark:text-white sm:text-md">
+          {activity.emoji}
+        </div>
+      </Tooltip>
     </div>
   );
 };

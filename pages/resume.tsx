@@ -60,18 +60,18 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
 
   return (
     <Layout title="Resume" description="My printable resume." noTitle>
-      {home.photo.url && (
+      {home.hero_image.url && (
         <Image
-          src={home.photo.url}
+          src={home.hero_image.url}
           alt="Hayden Bleasel"
-          width={64}
-          height={64}
+          width={128}
+          height={128}
           priority
           quality={100}
-          className="flex shrink-0 overflow-hidden rounded-full"
+          className="flex h-16 w-16 shrink-0 overflow-hidden rounded-full object-cover"
         />
       )}
-      <h1 className="mb-4">{home.name}</h1>
+      <h1 className="mb-4">Hayden Bleasel</h1>
       <p className="mt-0 text-lg">{home.description}</p>
       <PrismicLink href={process.env.NEXT_PUBLIC_SITE_URL}>
         Visit my website

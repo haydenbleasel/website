@@ -28,24 +28,16 @@
       }
     },
     "Hero": {
-      "photo": {
+      "hero_title": {
         "config": {
-          "label": "Photo",
-          "constraint": {},
-          "thumbnails": []
-        },
-        "type": "Image"
-      },
-      "name": {
-        "config": {
-          "label": "Name",
+          "label": "Hero Title",
           "placeholder": ""
         },
         "type": "Text"
       },
-      "role": {
+      "hero_description": {
         "config": {
-          "label": "Role",
+          "label": "Hero Description",
           "placeholder": ""
         },
         "type": "Text"

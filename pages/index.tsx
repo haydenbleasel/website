@@ -19,8 +19,8 @@ export type HomeProps = {
   data: {
     title: KeyTextField;
     description: KeyTextField;
-    name: KeyTextField;
-    role: KeyTextField;
+    hero_title: KeyTextField;
+    hero_description: KeyTextField;
     photo: ImageFieldImage;
     hero_image: ImageFieldImage;
     customActivityEmoji: KeyTextField;
@@ -42,11 +42,12 @@ const Home: FC<HomeProps> = ({ data, location }) => (
       priority
       quality={100}
       alt=""
+      className="m-0"
     />
-    <div className="animate-enter opacity-0 animation-delay-100">
-      <h1 className="mb-2">{data.name}</h1>
-      <p className="m-0 text-lg">{data.role}</p>
-      <p className="mt-4 inline-flex items-center gap-1 rounded-full bg-neutral-100 px-3 py-1 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+    <div className="mt-16 animate-enter opacity-0 animation-delay-100">
+      <h1 className="mb-4">{data.hero_title}</h1>
+      <p className="m-0 text-lg leading-normal">{data.hero_description}</p>
+      <p className="mt-4 inline-flex items-center gap-1 rounded-full border border-neutral-300 px-3 py-1 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
         <MapPin width={14} height={14} />
         <span className="text-sm font-medium leading-snug">
           Currently {location ? `in ${location}` : 'somewhere'}

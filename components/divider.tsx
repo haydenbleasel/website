@@ -1,7 +1,8 @@
 import type { FC } from 'react';
+import { Root } from '@radix-ui/react-separator';
 
 const Divider: FC = () => (
-  <hr className="m-0 border-t border-neutral-200 dark:border-neutral-700" />
+  <Root className="m-0 border-t border-neutral-200 dark:border-neutral-700" />
 );
 
 export default Divider;

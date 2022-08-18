@@ -9,7 +9,7 @@
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "slicemachine": "start-slicemachine",
-    "upgrade": "npx npm-check-updates -u -x react,react-dom,@types/react,@types/react-dom && yarn install"
+    "upgrade": "npx npm-check-updates -u && yarn install"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^12.2.5",

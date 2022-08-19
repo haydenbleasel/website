@@ -155,7 +155,9 @@ const LoadCustomActions = () => {
 
         return {
           ...props,
-          perform: async () => push(link),
+          perform: link.startsWith('/')
+            ? async () => push(link)
+            : () => window.open(link, '_blank'),
           icon: Icon ? (
             <Icon
               size={16}

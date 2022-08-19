@@ -29,6 +29,17 @@ const handler = async (req: NextRequest): Promise<Response> => {
     repo: string;
   };
 
+  if (
+    req.headers.get('authorization') !==
+    `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`
+  ) {
+    return res(401, { error: 'Unauthorized' });
+  }
+
+  if (req.method !== 'POST') {
+    return res(405, { error: 'Method not allowed' });
+  }
+
   if (!owner) {
     return res(400, { error: 'No owner provided' });
   }

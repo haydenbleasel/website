@@ -12,10 +12,23 @@ type ContactResponse = {
 
 const handler: NextApiHandler<ContactResponse> = async (req, res) => {
   const { name, email, message } = req.body as {
-    name: string;
+    name?: string;
     email?: string;
     message?: string;
   };
+
+  if (
+    req.headers.authorization !==
+    `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`
+  ) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return;
+  }
+
+  if (!name) {
+    res.status(400).json({ error: 'No name provided' });
+    return;
+  }
 
   if (!email) {
     res.status(400).json({ error: 'Missing email field' });

@@ -39,6 +39,9 @@ const Contact: FC<ContactProps> = ({ data }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${
+            process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''
+          }`,
         },
         body: JSON.stringify({
           name,

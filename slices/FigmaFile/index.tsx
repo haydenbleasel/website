@@ -25,6 +25,11 @@ const FigmaFile: FC<
     async (url: string) => {
       const response = await fetch(url, {
         method: 'POST',
+        headers: {
+          Authorization: `Bearer ${
+            process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''
+          }`,
+        },
         body: JSON.stringify({
           key,
         }),

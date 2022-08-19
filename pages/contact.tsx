@@ -3,8 +3,10 @@ import type { GetStaticProps } from 'next';
 import type { FC, FormEventHandler } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import Input from '../components/input';
 import Layout from '../components/layout';
 import LoadingIcon from '../components/loadingIcon';
+import Textarea from '../components/textarea';
 import { getPage } from '../utils/prismic';
 
 type ContactProps = {
@@ -76,59 +78,37 @@ const Contact: FC<ContactProps> = ({ data }) => {
         {data.description}
       </p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <fieldset className="flex animate-enter flex-col gap-1 text-lg opacity-0 animation-delay-200">
-          <label
-            className="block text-md text-neutral-500 dark:text-neutral-400"
-            htmlFor="name"
-          >
-            Name
-          </label>
-          <input
-            ref={firstInput}
-            className="w-full rounded-md border px-3 py-2 text-md text-neutral-900 placeholder:text-neutral-500"
-            placeholder="Jane Smith"
-            required
-            type="text"
-            id="name"
-            autoFocus
-            value={name}
-            onChange={({ target }) => setName(target.value)}
-          />
-        </fieldset>
-        <fieldset className="flex animate-enter flex-col gap-1 text-lg opacity-0 animation-delay-300">
-          <label
-            className="block text-md text-neutral-500 dark:text-neutral-400"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="w-full rounded-md border px-3 py-2 text-md text-neutral-900 placeholder:text-neutral-500"
-            placeholder="jane@acme.com"
-            required
-            pattern={emailRegex.source}
-            type="email"
-            id="email"
-            value={email}
-            onChange={({ target }) => setEmail(target.value)}
-          />
-        </fieldset>
-        <fieldset className="flex animate-enter flex-col gap-1 text-lg opacity-0 animation-delay-400">
-          <label
-            className="block text-md text-neutral-500 dark:text-neutral-400"
-            htmlFor="message"
-          >
-            Message
-          </label>
-          <textarea
-            className="max-h-[20rem] min-h-[8rem] w-full resize-y rounded-md border px-3 py-2 text-md text-neutral-900 placeholder:text-neutral-500"
-            placeholder="What's on your mind?"
-            required
-            id="message"
-            value={message}
-            onChange={({ target }) => setMessage(target.value)}
-          />
-        </fieldset>
+        <Input
+          label="Name"
+          className="animation-delay-200"
+          ref={firstInput}
+          placeholder="Jane Smith"
+          required
+          type="text"
+          id="name"
+          autoFocus
+          value={name}
+          onChange={setName}
+        />
+        <Input
+          label="Email"
+          className="animation-delay-300"
+          placeholder="jane@acme.com"
+          required
+          type="email"
+          id="email"
+          value={email}
+          onChange={setEmail}
+        />
+        <Textarea
+          label="Message"
+          className="animation-delay-300"
+          placeholder="What's on your mind"
+          required
+          id="message"
+          value={message}
+          onChange={setMessage}
+        />
         <fieldset className="animate-enter opacity-0 animation-delay-500">
           <button
             type="submit"

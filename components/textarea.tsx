@@ -14,13 +14,13 @@ const TextareaRef: ForwardRefRenderFunction<
     className={`flex animate-enter flex-col gap-1 text-lg opacity-0 ${className}`}
   >
     <Root
-      className="block text-md text-neutral-500 dark:text-neutral-400"
+      className="block text-sm font-medium text-neutral-600 dark:text-neutral-400"
       htmlFor={props.id}
     >
       {label}
     </Root>
     <textarea
-      className="max-h-[20rem] min-h-[8rem] w-full resize-y rounded-md border px-3 py-2 text-md text-neutral-900 placeholder:text-neutral-500"
+      className="max-h-[20rem] min-h-[8rem] w-full resize-y rounded-md border px-3 py-2 text-md text-neutral-900 outline-neutral-900 placeholder:text-neutral-500"
       onChange={({ target }) => onChange(target.value)}
       ref={ref}
       {...props}

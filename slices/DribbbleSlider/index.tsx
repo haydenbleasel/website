@@ -28,6 +28,9 @@ const formatNumbers = (num: number) => {
 const loadShotData = async (shot: number) => {
   const response = await fetch('/api/dribbble', {
     method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`,
+    },
     body: JSON.stringify({
       shot,
     }),

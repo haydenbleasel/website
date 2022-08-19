@@ -4,6 +4,7 @@ import type { NextApiHandler } from 'next';
 import type { ReactElement } from 'react';
 import sendMail from '../../emails';
 import template from '../../emails/TextEmail';
+import parseBody from '../../utils/parseBody';
 
 type ContactResponse = {
   error?: string;
@@ -11,11 +12,11 @@ type ContactResponse = {
 };
 
 const handler: NextApiHandler<ContactResponse> = async (req, res) => {
-  const { name, email, message } = req.body as {
+  const { name, email, message } = parseBody<{
     name?: string;
     email?: string;
     message?: string;
-  };
+  }>(req);
 
   if (
     req.headers.authorization !==

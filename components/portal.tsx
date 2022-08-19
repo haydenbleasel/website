@@ -1,6 +1,10 @@
 import { Root } from '@radix-ui/react-portal';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 
-const Portal: FC = (props) => <Root {...props} />;
+type PortalProps = {
+  children: ReactNode;
+};
+
+const Portal: FC<PortalProps> = (props) => <Root {...props} />;
 
 export default Portal;

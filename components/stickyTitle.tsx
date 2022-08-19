@@ -1,10 +1,11 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useRef } from 'react';
 import { useIntersectionObserver } from '@react-hookz/web';
 
 type StickyTitleProps = {
   noSticky: boolean;
   noTitle: boolean;
+  children: ReactNode;
 };
 
 const StickyTitle: FC<StickyTitleProps> = ({ noSticky, noTitle, children }) => {

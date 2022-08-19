@@ -13,7 +13,7 @@ import {
 } from 'kbar';
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import {
   ArrowUpRight,
@@ -42,6 +42,10 @@ import { social } from '../utils/social';
 type RenderParams<T = ActionImpl | string> = {
   item: T;
   active: boolean;
+};
+
+type CommandBarProps = {
+  children: ReactNode;
 };
 
 const RenderResults: FC = () => {
@@ -178,7 +182,7 @@ const LoadCustomActions = () => {
   return null;
 };
 
-const CommandBar: FC = ({ children }) => {
+const CommandBar: FC<CommandBarProps> = ({ children }) => {
   const { push } = useRouter();
   const [theme, setTheme, removeTheme] = useLocalStorageValue<
     string | undefined

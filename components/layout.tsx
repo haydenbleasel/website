@@ -4,7 +4,7 @@ import type { NextSeoProps } from 'next-seo';
 import { NextSeo } from 'next-seo';
 import type { OpenGraphMedia } from 'next-seo/lib/types';
 import { useRouter } from 'next/router';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { ArrowLeft } from 'react-feather';
 import StickyTitle from './stickyTitle';
 
@@ -14,6 +14,7 @@ export type LayoutProps = {
   image?: ImageField;
   noSticky?: boolean;
   noTitle?: boolean;
+  children: ReactNode;
 } & Omit<NextSeoProps, 'title' | 'description'>;
 
 const getPreviousPage = (path: string) => {

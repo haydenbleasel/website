@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import groupBy from 'lodash.groupby';
 import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
-import { PrismicLink } from '@prismicio/react';
+import { PrismicLink, PrismicRichText } from '@prismicio/react';
 import Layout from '../../components/layout';
 import { getPage, getPages } from '../../utils/prismic';
 import type { WorkPostProps } from './[post]';
@@ -20,6 +20,9 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
 
   return (
     <Layout title={data.title} description={data.description}>
+      <p className="animate-enter opacity-0 animation-delay-100">
+        {data.description}
+      </p>
       <div className="mt-4 flex flex-col gap-8">
         {Object.keys(years)
           .reverse()
@@ -37,19 +40,22 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
               <div className="flex flex-1 flex-col gap-4">
                 {years[startYear].map((job) => (
                   <div key={job.uid}>
-                    <p className="m-0">
+                    <h2 className="m-0 text-xl">
                       {job.data.role},{' '}
                       {job.data.slices1.length ? (
                         <PrismicLink document={job}>
-                          <span className="underline">{job.data.company}</span>
+                          <span className="font-semibold underline">
+                            {job.data.company}
+                          </span>
                         </PrismicLink>
                       ) : (
                         job.data.company
                       )}
-                    </p>
-                    <p className="flex-0 m-0 text-sm text-neutral-500 dark:text-neutral-400">
+                    </h2>
+                    <p className="flex-0 m-0 text-neutral-500 dark:text-neutral-400">
                       {job.data.location}
                     </p>
+                    <PrismicRichText field={job.data.summary} />
                   </div>
                 ))}
               </div>

@@ -15,6 +15,7 @@ import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 import type { FC, ReactNode } from 'react';
 import { useState, useEffect, useCallback } from 'react';
+import type { Icon as IconType } from 'react-feather';
 import {
   ArrowUpRight,
   Award,
@@ -156,7 +157,7 @@ const LoadCustomActions = () => {
                 /* webpackChunkName: "someModule" */
                 'react-feather'
               );
-              return feather[icon as keyof typeof feather];
+              return feather[icon as keyof typeof feather] as IconType;
             })
           : undefined;
 

@@ -16,6 +16,7 @@ type Docs = PrismicDocumentWithUID<{
   title: KeyTextField;
   description: KeyTextField;
   icon?: KeyTextField;
+  shortcut?: KeyTextField;
 }>[];
 
 const handler: NextApiHandler = async (req, res) => {
@@ -74,7 +75,7 @@ const handler: NextApiHandler = async (req, res) => {
     keywords: data.title,
     link: `/${uid}`,
     section: 'Pages',
-    shortcut: uid === 'colophon' ? ['?'] : undefined,
+    shortcut: data.shortcut ? [data.shortcut] : undefined,
     icon: data.icon,
   }));
 

@@ -12,8 +12,8 @@
   "alternate_languages": [],
   "data": {
     "icon": "1",
-    "title": "influence",
-    "description": "between",
+    "title": "function",
+    "description": "shallow",
     "coverImage": {
       "dimensions": {
         "width": 900,
@@ -21,13 +21,13 @@
       },
       "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f"
+      "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea"
     },
     "coverVideo": {
-      "embed_url": "https://twitter.com/prismicio/status/1356293316158095361",
-      "author_name": "Prismic",
-      "author_url": "https://twitter.com/prismicio",
-      "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Gatsby is a popular choice for Prismic users and we work hard on delivering a CMS that plays to its strengths.<br><br>But, what makes <a href=\"https://twitter.com/GatsbyJS?ref_src=twsrc%5Etfw\">@GatsbyJS</a> so popular?<br><br>Here are some of <a href=\"https://twitter.com/mxstbr?ref_src=twsrc%5Etfw\">@mxstbr</a>&#39;s thoughts on Gatsby&#39;s success and how they&#39;re improving developer experience.<a href=\"https://t.co/ZjCPvsWWUD\">https://t.co/ZjCPvsWWUD</a> <a href=\"https://t.co/EQqzJpeNKl\">pic.twitter.com/EQqzJpeNKl</a></p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1356293316158095361?ref_src=twsrc%5Etfw\">February 1, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+      "embed_url": "https://twitter.com/timbenniks/status/1304146886832594944",
+      "author_name": "Tim Benniks",
+      "author_url": "https://twitter.com/timbenniks",
+      "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">I’ve been diving deep on <a href=\"https://twitter.com/prismicio?ref_src=twsrc%5Etfw\">@prismicio</a> <a href=\"https://twitter.com/hashtag/slicemachine?src=hash&amp;ref_src=twsrc%5Etfw\">#slicemachine</a> today. I made all my own components and I used custom slices. It works like a charm with <a href=\"https://twitter.com/nuxt_js?ref_src=twsrc%5Etfw\">@nuxt_js</a>. Also\": I’m coding with this view. <a href=\"https://t.co/F0I8X9gz39\">pic.twitter.com/F0I8X9gz39</a></p>&mdash; Tim Benniks (@timbenniks) <a href=\"https://twitter.com/timbenniks/status/1304146886832594944?ref_src=twsrc%5Etfw\">September 10, 2020</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
       "width": 550,
       "height": null,
       "type": "rich",
@@ -39,9 +39,10 @@
     "content": [
       {
         "type": "paragraph",
-        "text": "Magna excepteur quis dolor.",
+        "text": "Consectetur proident eu irure anim minim ea aliqua. Sunt ipsum Lorem sunt.",
         "spans": []
       }
-    ]
+    ],
+    "shortcut": "whom"
   }
 }

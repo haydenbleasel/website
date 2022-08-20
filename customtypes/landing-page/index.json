@@ -346,6 +346,13 @@
           "allowTargetBlank": false,
           "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
+      },
+      "shortcut": {
+        "type": "Text",
+        "config": {
+          "label": "Shortcut",
+          "placeholder": ""
+        }
       }
     }
   }

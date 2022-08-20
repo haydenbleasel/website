@@ -22,6 +22,8 @@ import type { HomeProps } from '.';
 
 type ResumeProps = {
   data: {
+    title: KeyTextField;
+    description: KeyTextField;
     summary: RichTextField;
     testimonials: GroupField<{
       name: KeyTextField;
@@ -59,7 +61,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
   }, []);
 
   return (
-    <Layout title="Resume" description="My printable resume." noTitle>
+    <Layout title={data.title} description={data.description} noTitle>
       {home.hero_image.url && (
         <Image
           src={home.hero_image.url}

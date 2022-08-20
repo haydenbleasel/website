@@ -11,6 +11,20 @@
           "placeholder": ""
         },
         "type": "UID"
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
       }
     },
     "Summary": {
@@ -28,7 +42,6 @@
       "testimonials": {
         "config": {
           "label": "Testimonials",
-          "placeholder": "",
           "fields": {
             "name": {
               "config": {
@@ -61,7 +74,6 @@
       "education": {
         "config": {
           "label": "Education",
-          "placeholder": "",
           "fields": {
             "degree": {
               "config": {

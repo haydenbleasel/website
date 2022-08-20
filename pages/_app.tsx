@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import type { LinkProps } from '@prismicio/react';
 import { PrismicProvider } from '@prismicio/react';
 import { SocialProfileJsonLd } from 'next-seo';
-import * as Tooltip from '@radix-ui/react-tooltip';
+import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { PrismicPreview } from '@prismicio/next';
 import Link from 'next/link';
 import { createClient, linkResolver } from '../utils/prismic';
@@ -24,7 +24,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   useAnalytics();
 
   return (
-    <Tooltip.Provider delayDuration={0}>
+    <TooltipProvider delayDuration={0}>
       <CommandBar>
         <Head>
           <meta charSet="utf-8" />
@@ -83,7 +83,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           }}
         />
       </CommandBar>
-    </Tooltip.Provider>
+    </TooltipProvider>
   );
 };
 

@@ -69,10 +69,11 @@ const sortByDate = (featureA: FeatureData, featureB: FeatureData) =>
   (featureB.date ?? '') > (featureA.date ?? '') ? 1 : -1;
 
 const Featured: FC<FeaturesData> = ({ data }) => (
-  <Layout title={data.title} description={data.description}>
-    <p className="animate-enter text-neutral-500 opacity-0 animation-delay-100 dark:text-neutral-400">
-      {data.description}
-    </p>
+  <Layout
+    title={data.title}
+    description={data.description}
+    subtitle={data.description}
+  >
     <List
       className="mt-4"
       data={[

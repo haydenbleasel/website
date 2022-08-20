@@ -76,10 +76,11 @@ const Contact: FC<ContactProps> = ({ data }) => {
   }, []);
 
   return (
-    <Layout title={data.title} description={data.description}>
-      <p className="animate-enter text-lg opacity-0 animation-delay-100">
-        {data.description}
-      </p>
+    <Layout
+      title={data.title}
+      description={data.description}
+      subtitle={data.description}
+    >
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input
           label="Name"

@@ -3,6 +3,7 @@ import { useEffect, useState, Fragment } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
 import toast from 'react-hot-toast';
 import { Search } from 'react-feather';
+import parseError from '../utils/parseError';
 import Divider from './divider';
 
 type ListProps = {
@@ -52,8 +53,7 @@ const List: FC<ListProps> = ({
     }
 
     filterRecommendations(search).catch((error) => {
-      const message =
-        error instanceof Error ? error.message : (error as string);
+      const message = parseError(error);
 
       toast.error(message);
     });

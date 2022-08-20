@@ -39,6 +39,7 @@ import toast from 'react-hot-toast';
 import { useLocalStorageValue } from '@react-hookz/web';
 import dynamic from 'next/dynamic';
 import { social } from '../utils/social';
+import parseError from '../utils/parseError';
 
 type RenderParams<T = ActionImpl | string> = {
   item: T;
@@ -180,8 +181,8 @@ const LoadCustomActions = () => {
 
     if (!customActions.length) {
       loadContent().catch((error) => {
-        const message =
-          error instanceof Error ? error.message : (error as string);
+        const message = parseError(error);
+
         toast.error(message);
       });
     }

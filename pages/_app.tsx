@@ -28,7 +28,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
 
   useEffect(() => {
     if (!networkState.online) {
-      toast.error('You are offline. Please check your internet connection.');
+      toast.error(
+        'You are offline - some content may not be available until you reconnect.'
+      );
     }
   }, [networkState.online]);
 

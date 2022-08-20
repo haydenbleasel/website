@@ -1,5 +1,6 @@
 import { differenceInMinutes, parseISO } from 'date-fns';
 import type { NextRequest } from 'next/server';
+import parseError from '../../utils/parseError';
 import res from '../../utils/response';
 
 type GitHubEvent = {
@@ -49,7 +50,7 @@ const handler = async (req: NextRequest): Promise<Response> => {
       active,
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : (error as string);
+    const message = parseError(error);
 
     return res(500, { error: message });
   }

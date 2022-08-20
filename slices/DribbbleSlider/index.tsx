@@ -14,6 +14,7 @@ import toast from 'react-hot-toast';
 import Image from 'next/future/image';
 import type { DribbbleResponse } from '../../pages/api/dribbble';
 import Placeholder from '../../components/placeholder';
+import parseError from '../../utils/parseError';
 
 const formatNumbers = (num: number) => {
   if (num < 1000) {
@@ -61,8 +62,8 @@ const Shot: FC<ShotProps> = ({ shot }) => {
     loadShotData(shot)
       .then(setData)
       .catch((error) => {
-        const message =
-          error instanceof Error ? error.message : (error as string);
+        const message = parseError(error);
+
         toast.error(message);
       });
   }, [shot]);

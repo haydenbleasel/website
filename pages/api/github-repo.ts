@@ -1,4 +1,5 @@
 import type { NextRequest } from 'next/server';
+import parseError from '../../utils/parseError';
 import res from '../../utils/response';
 
 type GitHubRepo = {
@@ -63,7 +64,7 @@ const handler = async (req: NextRequest): Promise<Response> => {
 
     return res(200, { data });
   } catch (error) {
-    const message = error instanceof Error ? error.message : (error as string);
+    const message = parseError(error);
 
     return res(500, { error: message });
   }

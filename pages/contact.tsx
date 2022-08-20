@@ -7,6 +7,7 @@ import Input from '../components/input';
 import Layout from '../components/layout';
 import LoadingIcon from '../components/loadingIcon';
 import Textarea from '../components/textarea';
+import parseError from '../utils/parseError';
 import { getPage } from '../utils/prismic';
 
 type ContactProps = {
@@ -62,8 +63,7 @@ const Contact: FC<ContactProps> = ({ data }) => {
 
       toast.success('Message sent!');
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : (error as string);
+      const errorMessage = parseError(error);
 
       toast.error(errorMessage);
     } finally {

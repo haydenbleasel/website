@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { parse } from 'node-html-parser';
+import parseError from '../../utils/parseError';
 import res from '../../utils/response';
 
 export type PreviewResponse = {
@@ -41,7 +42,7 @@ const handler = async (req: NextRequest): Promise<Response> => {
       },
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : (error as string);
+    const message = parseError(error);
 
     return res(500, { error: message });
   }

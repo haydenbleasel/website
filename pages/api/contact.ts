@@ -5,6 +5,7 @@ import type { ReactElement } from 'react';
 import sendMail from '../../emails';
 import template from '../../emails/TextEmail';
 import parseBody from '../../utils/parseBody';
+import parseError from '../../utils/parseError';
 
 type ContactResponse = {
   error?: string;
@@ -73,8 +74,7 @@ const handler: NextApiHandler<ContactResponse> = async (req, res) => {
 
     res.status(200).json({ message: 'Email sent' });
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : (error as string);
+    const errorMessage = parseError(error);
 
     res.status(500).json({ error: errorMessage });
   }

@@ -9,7 +9,6 @@ import type {
   RichTextField,
   SliceZone as SliceZoneProps,
 } from '@prismicio/types';
-import type { SliceZoneComponents } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
 import Image from 'next/future/image';
 import Layout from '../../components/layout';
@@ -65,10 +64,7 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
       </div>
     )}
     <div className="animate-enter opacity-0 animation-delay-300">
-      <SliceZone
-        slices={data.slices1}
-        components={components as unknown as SliceZoneComponents}
-      />
+      <SliceZone slices={data.slices1} components={components} />
     </div>
   </Layout>
 );

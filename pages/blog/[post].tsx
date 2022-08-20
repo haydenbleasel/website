@@ -9,7 +9,6 @@ import type {
   SliceZone as SliceZoneProps,
 } from '@prismicio/types';
 import { format, parse, parseISO } from 'date-fns';
-import type { SliceZoneComponents } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';
@@ -104,10 +103,7 @@ const WorkPost: FC<PostProps> = ({
         </div>
       )}
       <div className="animate-enter opacity-0 animation-delay-300">
-        <SliceZone
-          slices={data.slices1}
-          components={components as unknown as SliceZoneComponents}
-        />
+        <SliceZone slices={data.slices1} components={components} />
       </div>
       <div className="bottom-0 left-0 right-0 flex animate-enter flex-col justify-between gap-4 border-t border-neutral-200 bg-white py-3 text-neutral-500 opacity-0 animation-delay-300 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 md:fixed md:flex-row md:items-center md:px-4">
         <p className="m-0">Share this article</p>

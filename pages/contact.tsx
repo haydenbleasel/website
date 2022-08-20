@@ -92,6 +92,9 @@ const Contact: FC<ContactProps> = ({ data }) => {
           autoFocus
           value={name}
           onChange={setName}
+          errors={{
+            'Please enter your name': !name.trim(),
+          }}
         />
         <Input
           label="Email"
@@ -102,37 +105,42 @@ const Contact: FC<ContactProps> = ({ data }) => {
           id="email"
           value={email}
           onChange={setEmail}
+          errors={{
+            'Please enter your email address': !email.trim(),
+            'Please enter a valid email address': !emailRegex.test(email),
+          }}
         />
         <Textarea
           label="Message"
-          className="animation-delay-300"
+          className="animation-delay-400"
           placeholder="What's on your mind"
           required
           id="message"
           value={message}
           onChange={setMessage}
+          errors={{
+            'Please enter a message': !message.trim(),
+          }}
         />
-        <fieldset className="animate-enter opacity-0 animation-delay-500">
-          <button
-            type="submit"
-            className="w-full rounded-sm border bg-neutral-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
-            disabled={
-              !name.trim() ||
-              !email.trim() ||
-              !message.trim() ||
-              sending ||
-              !emailRegex.exec(email)
-            }
-          >
-            {sending ? (
-              <span className="mx-auto flex h-[28px] w-[28px] items-center justify-center">
-                <LoadingIcon />
-              </span>
-            ) : (
-              'Send'
-            )}
-          </button>
-        </fieldset>
+        <button
+          type="submit"
+          className="w-full animate-enter rounded-sm border border-none bg-neutral-900 px-3 py-2 text-md font-medium text-white opacity-0 animation-delay-500 disabled:cursor-not-allowed disabled:opacity-50"
+          disabled={
+            !name.trim() ||
+            !email.trim() ||
+            !message.trim() ||
+            sending ||
+            !emailRegex.exec(email)
+          }
+        >
+          {sending ? (
+            <span className="mx-auto flex h-[28px] w-[28px] items-center justify-center">
+              <LoadingIcon />
+            </span>
+          ) : (
+            'Send'
+          )}
+        </button>
       </form>
     </Layout>
   );

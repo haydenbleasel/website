@@ -119,7 +119,9 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
       <div>
         {data.testimonials.map((testimonial) => (
           <div key={testimonial.name}>
-            <blockquote>{testimonial.quote}</blockquote>
+            <blockquote className="font-serif text-[18px]">
+              {testimonial.quote}
+            </blockquote>
             <div className="mt-4 flex items-center gap-2">
               {testimonial.photo.url && (
                 <Image

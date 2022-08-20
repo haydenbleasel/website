@@ -9,7 +9,6 @@ import type {
 import type { GetStaticProps } from 'next';
 import Image from 'next/future/image';
 import type { FC } from 'react';
-import { MapPin } from 'react-feather';
 import Layout from '../components/layout';
 import SocialLinks from '../components/socialLinks';
 import { getPage } from '../utils/prismic';
@@ -49,8 +48,11 @@ const Home: FC<HomeProps> = ({ data, location }) => (
     <div className="mt-16 animate-enter opacity-0 animation-delay-100">
       <h1 className="mb-4">{data.hero_title}</h1>
       <p className="m-0 text-lg leading-normal">{data.hero_description}</p>
-      <p className="mt-4 inline-flex items-center gap-1 rounded-full border border-neutral-300 px-3 py-1 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300">
-        <MapPin width={14} height={14} />
+      <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-neutral-300 px-3 py-1 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300">
+        <div className="relative inline-flex h-2 w-2">
+          <span className="absolute inset-0 inline-flex h-full w-full animate-ping rounded-full bg-neutral-400 opacity-75 dark:bg-neutral-500" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-neutral-500 dark:bg-neutral-400" />
+        </div>
         <span className="text-sm font-medium leading-snug">
           Currently {location ? `in ${location}` : 'somewhere'}
         </span>

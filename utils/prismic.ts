@@ -5,6 +5,7 @@ import type {
   FilledLinkToWebField,
   FilledLinkToDocumentField,
   LinkField,
+  FilledLinkToMediaField,
 } from '@prismicio/types';
 import type { PreviewData } from 'next';
 import type { FetchLike } from '@prismicio/client';
@@ -14,28 +15,30 @@ export const linkResolver: LinkResolverFunction = (document) => {
     return '/';
   }
 
-  const routes: Record<string, string> = {
-    home: '/',
-    project: `/projects/${document.uid}`,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    'case-study': `/blog/${document.uid}`,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    'work-post': `/work/${document.uid}`,
-  };
-
-  return routes[document.type] || `/${document.uid}`;
+  switch (document.type) {
+    case 'home':
+      return '/';
+    case 'project':
+      return `/projects/${document.uid}`;
+    case 'case-study':
+      return `/blog/${document.uid}`;
+    case 'work-post':
+      return `/work/${document.uid}`;
+    default:
+      return `/${document.uid}`;
+  }
 };
 
 export const docResolver = (link: LinkField): string => {
-  if (link.link_type === 'Document') {
-    return linkResolver(link as FilledLinkToDocumentField);
+  switch (link.link_type) {
+    case 'Document':
+      return linkResolver(link as FilledLinkToDocumentField);
+    case 'Web':
+    case 'Media':
+      return (link as FilledLinkToWebField | FilledLinkToMediaField).url;
+    default:
+      return '';
   }
-
-  if (link.link_type === 'Any') {
-    return '';
-  }
-
-  return (link as FilledLinkToWebField).url;
 };
 
 export const createClient = (config = {}): prismic.Client => {

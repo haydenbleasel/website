@@ -115,7 +115,7 @@ const Contact: FC<ContactProps> = ({ data }) => {
         <fieldset className="animate-enter opacity-0 animation-delay-500">
           <button
             type="submit"
-            className="w-full rounded-md border bg-neutral-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-sm border bg-neutral-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
             disabled={
               !name.trim() ||
               !email.trim() ||

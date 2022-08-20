@@ -114,7 +114,7 @@ const WorkPost: FC<PostProps> = ({
         <p className="m-0">Share this article</p>
         <div className="flex items-center">
           <FacebookShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
+            <span className="flex items-center gap-2 rounded-sm py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
               <FacebookIcon className="rounded-full" size={16} />
               <span className="hidden text-md text-neutral-500 dark:text-neutral-400 sm:block">
                 Facebook
@@ -122,7 +122,7 @@ const WorkPost: FC<PostProps> = ({
             </span>
           </FacebookShareButton>
           <TwitterShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
+            <span className="flex items-center gap-2 rounded-sm py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
               <TwitterIcon className="rounded-full" size={16} />
               <span className="hidden text-md text-neutral-500 dark:text-neutral-400 sm:block">
                 Twitter
@@ -130,7 +130,7 @@ const WorkPost: FC<PostProps> = ({
             </span>
           </TwitterShareButton>
           <LinkedinShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
+            <span className="flex items-center gap-2 rounded-sm py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
               <LinkedinIcon className="rounded-full" size={16} />
               <span className="hidden text-md text-neutral-500 dark:text-neutral-400 sm:block">
                 LinkedIn
@@ -138,7 +138,7 @@ const WorkPost: FC<PostProps> = ({
             </span>
           </LinkedinShareButton>
           <TelegramShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
+            <span className="flex items-center gap-2 rounded-sm py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
               <TelegramIcon className="rounded-full" size={16} />
               <span className="hidden text-md text-neutral-500 dark:text-neutral-400 sm:block">
                 Telegram
@@ -146,7 +146,7 @@ const WorkPost: FC<PostProps> = ({
             </span>
           </TelegramShareButton>
           <RedditShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
+            <span className="flex items-center gap-2 rounded-sm py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
               <RedditIcon className="rounded-full" size={16} />
               <span className="hidden text-md text-neutral-500 dark:text-neutral-400 sm:block">
                 Reddit
@@ -154,7 +154,7 @@ const WorkPost: FC<PostProps> = ({
             </span>
           </RedditShareButton>
           <EmailShareButton url={shareUrl}>
-            <span className="flex items-center gap-2 rounded-md py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
+            <span className="flex items-center gap-2 rounded-sm py-[10px] px-[10px] transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 sm:py-1">
               <EmailIcon className="rounded-full" size={16} />
               <span className="hidden text-md text-neutral-500 dark:text-neutral-400 sm:block">
                 Email

@@ -19,7 +19,7 @@ const Video: FC<VideoProps> = ({ data, ...props }) => {
 
   return (
     <div
-      className="relative overflow-hidden rounded-md"
+      className="relative overflow-hidden rounded-sm"
       style={{
         aspectRatio: `${data.width as number}/${data.height as number}`,
       }}

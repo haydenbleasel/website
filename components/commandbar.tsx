@@ -96,7 +96,7 @@ const RenderResults: FC = () => {
           </div>
           {props.item.shortcut && (
             <div
-              className={`flex h-6 w-6 items-center justify-center rounded-md transition-colors ${
+              className={`flex h-6 w-6 items-center justify-center rounded-sm transition-colors ${
                 props.active
                   ? 'bg-neutral-200 dark:bg-neutral-700'
                   : 'bg-neutral-100 dark:bg-neutral-800'
@@ -137,7 +137,14 @@ const LoadCustomActions = () => {
 
   useEffect(() => {
     const loadContent = async () => {
-      const contentActions = await fetch('/api/kbar');
+      const contentActions = await fetch('/api/kbar', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${
+            process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''
+          }`,
+        },
+      });
       const { actions } = (await contentActions.json()) as {
         actions: ServerAction[];
       };

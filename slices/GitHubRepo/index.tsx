@@ -86,7 +86,7 @@ const GitHubRepo: FC<
       href={data.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col items-center overflow-hidden rounded-md border border-neutral-200 bg-white drop-shadow-sm transition-all hover:-translate-y-1 hover:drop-shadow-md dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-900 sm:flex-row"
+      className="flex flex-col items-center overflow-hidden rounded-sm border border-neutral-200 bg-white drop-shadow-sm transition-all hover:-translate-y-1 hover:drop-shadow-md dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-900 sm:flex-row"
     >
       <span className="w-full border-b border-neutral-200 bg-neutral-50 p-11 dark:border-neutral-700 dark:bg-neutral-800 sm:w-[auto] sm:border-b-0 sm:border-r">
         <GitHub

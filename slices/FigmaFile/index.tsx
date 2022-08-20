@@ -58,7 +58,7 @@ const FigmaFile: FC<
       rel="noopener noreferrer"
       className="group relative my-8 flex w-full flex-shrink-0 flex-grow-0 flex-col no-underline"
     >
-      <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-neutral-800">
+      <div className="flex flex-col overflow-hidden rounded-sm bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-neutral-800">
         <div className="relative aspect-[2/1] w-full">
           <Placeholder className="absolute z-0 h-full w-full" />
 

@@ -19,6 +19,19 @@ type Docs = PrismicDocumentWithUID<{
 }>[];
 
 const handler: NextApiHandler = async (req, res) => {
+  if (
+    req.headers.authorization !==
+    `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`
+  ) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return;
+  }
+
+  if (req.method !== 'GET') {
+    res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
+
   const caseStudies = (await getPages('case-study')) as Docs;
   const workPosts = (await getPages('work-post')) as WorkPostProps[];
   const landingPages = (await getPages('landing-page')) as Docs;

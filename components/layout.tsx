@@ -82,7 +82,7 @@ const Layout: FC<LayoutProps> = ({
   }
 
   return (
-    <div className="py-12 print:py-0 sm:gap-24 sm:py-48">
+    <div className="py-12 print:py-4 sm:gap-24 sm:py-48">
       <NextSeo
         title={title}
         titleTemplate="%s — Hayden Bleasel"

@@ -57,7 +57,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
       {!screenshot.error && !isEmpty && root.current && (
         <Portal>
           <span
-            className="pointer-events-none fixed z-20 flex w-[316px] translate-x-2 translate-y-2 flex-col rounded-lg bg-neutral-900/90 p-3 shadow-lg backdrop-blur-md transition-opacity group-hover:-translate-y-2 dark:bg-neutral-800"
+            className="pointer-events-none fixed z-20 flex w-[316px] translate-x-2 translate-y-2 flex-col rounded-lg bg-neutral-900/90 p-3 shadow-lg backdrop-blur-md transition-opacity group-hover:-translate-y-2 dark:bg-neutral-800 print:hidden"
             style={{
               left: relativeX,
               top: relativeY,

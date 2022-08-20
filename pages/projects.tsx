@@ -23,11 +23,13 @@ export type ProjectsProps = {
   };
 };
 
-const Project: FC<{
+type ProjectProps = {
   title: KeyTextField;
   description: KeyTextField;
   wip?: boolean;
-}> = ({ title, description, wip = false }) => (
+};
+
+const Project: FC<ProjectProps> = ({ title, description, wip = false }) => (
   <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
     <span className="flex-0 flex items-center gap-2">
       {title}

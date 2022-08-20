@@ -49,7 +49,11 @@ const loadShotData = async (shot: number) => {
   return newData;
 };
 
-const Shot: FC<{ shot: number }> = ({ shot }) => {
+type ShotProps = {
+  shot: number;
+};
+
+const Shot: FC<ShotProps> = ({ shot }) => {
   const [data, setData] = useState<DribbbleResponse['data']>();
   const url = `https://dribbble.com/shots/${shot}`;
 
@@ -116,8 +120,12 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
   );
 };
 
+type IconProps = {
+  className?: string;
+};
+
 type ArrowProps = {
-  icon: FC<{ className?: string }>;
+  icon: FC<IconProps>;
   active: boolean;
   handleClick: () => void;
 };

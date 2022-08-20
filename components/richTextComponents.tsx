@@ -12,10 +12,12 @@ import tailwindConfig from '../tailwind.config';
 
 const fullConfig = resolveConfig(tailwindConfig as RequiredConfig);
 
-const Preformatted: FC<{ node: RTPreformattedNode; key: string }> = ({
-  node,
-  key,
-}) => {
+type PreformattedProps = {
+  node: RTPreformattedNode;
+  key: string;
+};
+
+const Preformatted: FC<PreformattedProps> = ({ node, key }) => {
   const { neutral } = fullConfig.theme?.colors as unknown as DefaultColors;
   const SyntaxHighlighter = dynamic(async () => {
     const { Light } = await import(

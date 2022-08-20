@@ -29,11 +29,12 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
   <Layout
     title={data.title}
     description={data.description}
+    subtitle={`Last updated at ${format(
+      parseISO(last_publication_date),
+      'MMM dd, yyyy'
+    )}`}
     image={data.coverImage}
   >
-    <p className="animate-enter opacity-0 animation-delay-100">
-      Last updated at {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
-    </p>
     {data.coverImage.url && (
       <Image
         src={data.coverImage.url}

@@ -11,6 +11,8 @@ import StickyTitle from './stickyTitle';
 export type LayoutProps = {
   title: string | null;
   description: string | null;
+  subtitle?: string | null;
+  caption?: string;
   image?: ImageField;
   noSticky?: boolean;
   noTitle?: boolean;
@@ -43,6 +45,8 @@ const getPreviousPage = (path: string) => {
 const Layout: FC<LayoutProps> = ({
   title,
   description,
+  subtitle,
+  caption,
   image,
   children,
   noSticky = false,
@@ -113,6 +117,20 @@ const Layout: FC<LayoutProps> = ({
         {title}
       </StickyTitle>
       <div className="container prose mx-auto px-4 dark:prose-invert">
+        {(caption || subtitle) && (
+          <div className="mb-8 flex flex-col gap-1">
+            {subtitle && (
+              <p className="m-0 animate-enter opacity-0 animation-delay-100">
+                {subtitle}
+              </p>
+            )}
+            {caption && (
+              <p className="m-0 animate-enter text-sm text-neutral-500 opacity-0 animation-delay-100 dark:text-neutral-400">
+                {caption}
+              </p>
+            )}
+          </div>
+        )}
         {children}
       </div>
       {previousPage && (

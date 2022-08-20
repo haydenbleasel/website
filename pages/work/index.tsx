@@ -19,10 +19,11 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
   const years = groupBy(posts, (post) => post.data.startYear);
 
   return (
-    <Layout title={data.title} description={data.description}>
-      <p className="animate-enter opacity-0 animation-delay-100">
-        {data.description}
-      </p>
+    <Layout
+      title={data.title}
+      description={data.description}
+      subtitle={data.description}
+    >
       <div className="mt-4 flex flex-col gap-8">
         {Object.keys(years)
           .reverse()
@@ -34,7 +35,7 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
                 animationDelay: `${(index + 2) * 100}ms`,
               }}
             >
-              <p className="flex-0 m-0 w-24 text-sm text-neutral-500 dark:text-neutral-400">
+              <p className="flex-0 m-0 w-24 leading-9 text-neutral-500 dark:text-neutral-400">
                 {startYear}
               </p>
               <div className="flex flex-1 flex-col gap-4">
@@ -53,6 +54,7 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
                       )}
                     </h2>
                     <p className="flex-0 m-0 text-neutral-500 dark:text-neutral-400">
+                      {job.data.startYear} &rarr; {job.data.endYear} in{' '}
                       {job.data.location}
                     </p>
                     <PrismicRichText field={job.data.summary} />

@@ -16,7 +16,7 @@ const TextareaRef: ForwardRefRenderFunction<
   >
     <div className="flex items-center justify-between">
       <Root
-        className="block text-sm font-medium text-neutral-600 dark:text-neutral-400"
+        className="block text-sm font-medium text-neutral-500 dark:text-neutral-400"
         htmlFor={props.id}
       >
         {label}

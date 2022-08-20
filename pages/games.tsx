@@ -73,11 +73,12 @@ const Games: FC<ProjectsProps> = ({ data, games }) => {
   );
 
   return (
-    <Layout title={data.title} description={data.description}>
-      <p className="animate-enter opacity-0 animation-delay-100">
-        {totalHours} hours of tracked playtime and {totalAchievements}{' '}
-        achievements across {games.length} games.
-      </p>
+    <Layout
+      title={data.title}
+      description={data.description}
+      subtitle={data.description}
+      caption={`${totalHours} hours of tracked playtime and ${totalAchievements} achievements across ${games.length} games.`}
+    >
       <List
         className="mt-4"
         data={[

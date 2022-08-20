@@ -57,7 +57,9 @@ const WorkPost: FC<PostProps> = ({
     <Layout
       title={data.title}
       description={data.description}
+      subtitle={data.description}
       image={data.coverImage}
+      caption={`Published ${format(parseISO(publishedAt), 'MMM dd, yyyy')}`}
     >
       <ArticleJsonLd
         url={shareUrl}
@@ -75,9 +77,6 @@ const WorkPost: FC<PostProps> = ({
         }
         description={data.description ?? ''}
       />
-      <p className="animate-enter text-lg opacity-0 animation-delay-100">
-        Published {format(parseISO(publishedAt), 'MMM dd, yyyy')}
-      </p>
       {data.coverImage.url && (
         <Image
           src={data.coverImage.url}

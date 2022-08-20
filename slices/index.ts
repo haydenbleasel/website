@@ -11,25 +11,25 @@ import RichText from './RichText';
 import StoreButtons from './StoreButtons';
 
 export {
-	Blockquote,
-	Comparison,
-	DribbbleSlider,
-	FigmaFile,
-	GitHubRepo,
-	NeutralData,
-	Quote,
-	RichText,
-	StoreButtons,
+  Blockquote,
+  Comparison,
+  DribbbleSlider,
+  FigmaFile,
+  GitHubRepo,
+  NeutralData,
+  Quote,
+  RichText,
+  StoreButtons,
 };
 
 export const components = {
-	blockquote: Blockquote,
-	comparison: Comparison,
-	dribbble_slider: DribbbleSlider,
-	figma_file: FigmaFile,
-	git_hub_repo: GitHubRepo,
-	neutral_data: NeutralData,
-	quote: Quote,
-	rich_text: RichText,
-	store_buttons: StoreButtons,
+  blockquote: Blockquote,
+  comparison: Comparison,
+  dribbble_slider: DribbbleSlider,
+  figma_file: FigmaFile,
+  git_hub_repo: GitHubRepo,
+  neutral_data: NeutralData,
+  quote: Quote,
+  rich_text: RichText,
+  store_buttons: StoreButtons,
 };

@@ -111,7 +111,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline text-md font-normal text-neutral-900 transition-colors hover:text-neutral-600 dark:text-white dark:hover:text-neutral-300"
+        className="inline text-md font-normal text-neutral-900 transition-colors hover:text-neutral-500 dark:text-white dark:hover:text-neutral-300"
         {...props}
       >
         {children}

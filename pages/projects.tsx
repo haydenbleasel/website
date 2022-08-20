@@ -46,10 +46,11 @@ const Project: FC<ProjectProps> = ({ title, description, wip = false }) => (
 );
 
 const Projects: FC<ProjectsProps> = ({ data }) => (
-  <Layout title={data.title} description={data.description}>
-    <p className="animate-enter opacity-0 animation-delay-100 dark:text-neutral-400">
-      {data.description}
-    </p>
+  <Layout
+    title={data.title}
+    description={data.description}
+    subtitle={data.description}
+  >
     <List
       className="mt-4"
       data={[

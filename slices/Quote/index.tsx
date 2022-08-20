@@ -1,13 +1,13 @@
 import type { FC } from 'react';
 import type { SliceComponentProps } from '@prismicio/react';
-import type { ImageField, KeyTextField, RichTextField } from '@prismicio/types';
+import type { ImageField, KeyTextField } from '@prismicio/types';
 import Image from 'next/future/image';
 
 const Quote: FC<
   SliceComponentProps<{
     slice_type: 'quote';
     primary: {
-      content: RichTextField;
+      content: KeyTextField;
       author: KeyTextField;
       photo: ImageField;
     };

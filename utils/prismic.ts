@@ -7,6 +7,7 @@ import type {
   LinkField,
 } from '@prismicio/types';
 import type { PreviewData } from 'next';
+import type { FetchLike } from '@prismicio/client';
 
 export const linkResolver: LinkResolverFunction = (document) => {
   if (!document.uid) {
@@ -41,7 +42,7 @@ export const createClient = (config = {}): prismic.Client => {
   const client = prismic.createClient(
     process.env.NEXT_PUBLIC_PRISMIC_ENDPOINT ?? 'loading',
     {
-      fetch,
+      fetch: fetch as FetchLike,
       accessToken: process.env.PRISMIC_ACCESS_TOKEN ?? '',
       ...config,
     }

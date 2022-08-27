@@ -1,15 +1,13 @@
 import type { FC } from 'react';
-import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import type { LinkProps } from '@prismicio/react';
 import { PrismicProvider } from '@prismicio/react';
 import { SocialProfileJsonLd } from 'next-seo';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { PrismicPreview } from '@prismicio/next';
 import Link from 'next/link';
-import { useNetworkState } from '@react-hookz/web';
 import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
 import CommandBar from '../components/commandbar';
@@ -19,20 +17,13 @@ import useAnalytics from '../hooks/useAnalytics';
 import richTextComponents from '../components/richTextComponents';
 import { social } from '../utils/social';
 import Activity from '../components/activity';
+import useNetworkMonitor from '../hooks/useNetworkMonitor';
 
 const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const networkState = useNetworkState();
   useAnalytics();
-
-  useEffect(() => {
-    if (!networkState.online) {
-      toast.error(
-        'You are offline - some content may not be available until you reconnect.'
-      );
-    }
-  }, [networkState.online]);
+  useNetworkMonitor();
 
   return (
     <TooltipProvider delayDuration={0}>

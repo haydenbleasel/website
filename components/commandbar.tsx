@@ -14,7 +14,7 @@ import {
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 import type { FC, ReactNode } from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { Suspense, useState, useEffect, useCallback } from 'react';
 import type { Icon as IconType } from 'react-feather';
 import {
   ArrowUpRight,
@@ -40,6 +40,7 @@ import { useLocalStorageValue } from '@react-hookz/web';
 import dynamic from 'next/dynamic';
 import { social } from '../utils/social';
 import parseError from '../utils/parseError';
+import Placeholder from './placeholder';
 
 type RenderParams<T = ActionImpl | string> = {
   item: T;
@@ -153,13 +154,16 @@ const LoadCustomActions = () => {
 
       const newActions: Action[] = actions.map(({ link, icon, ...props }) => {
         const Icon = icon
-          ? dynamic(async () => {
-              const feather = await import(
-                /* webpackChunkName: "someModule" */
-                'react-feather'
-              );
-              return feather[icon as keyof typeof feather] as IconType;
-            })
+          ? dynamic(
+              async () => {
+                const feather = await import(
+                  /* webpackChunkName: "someModule" */
+                  'react-feather'
+                );
+                return feather[icon as keyof typeof feather] as IconType;
+              },
+              { ssr: false, suspense: true }
+            )
           : undefined;
 
         return {
@@ -168,10 +172,14 @@ const LoadCustomActions = () => {
             ? async () => push(link)
             : () => window.open(link, '_blank'),
           icon: Icon ? (
-            <Icon
-              size={16}
-              className="text-neutral-500 dark:text-neutral-400"
-            />
+            <Suspense
+              fallback={<Placeholder className="h-4 w-4 rounded-full" />}
+            >
+              <Icon
+                size={16}
+                className="text-neutral-500 dark:text-neutral-400"
+              />
+            </Suspense>
           ) : undefined,
         };
       });

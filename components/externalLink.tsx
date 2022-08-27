@@ -1,7 +1,7 @@
 import type { LinkProps } from '@prismicio/react';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { useState, useRef } from 'react';
+import { Suspense, useState, useRef } from 'react';
 import { ArrowUpRight } from 'react-feather';
 import { useAsync, useMountEffect } from '@react-hookz/web';
 
@@ -11,7 +11,6 @@ import type { PreviewResponse } from '../pages/api/link-preview';
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   const ref = useRef<HTMLSpanElement>(null);
   const [showPreview, setShowPreview] = useState(false);
-
   const LinkPreview = dynamic(
     async () =>
       import(
@@ -20,6 +19,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
       ),
     {
       ssr: false,
+      suspense: true,
     }
   );
 
@@ -51,13 +51,15 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
       role="link"
     >
       {!screenshot.error && !isEmpty && showPreview && (
-        <LinkPreview
-          image={screenshot.result?.data?.image}
-          title={screenshot.result?.data?.title}
-          description={screenshot.result?.data?.description}
-          href={href}
-          linkRef={ref}
-        />
+        <Suspense fallback={null}>
+          <LinkPreview
+            image={screenshot.result?.data?.image}
+            title={screenshot.result?.data?.title}
+            description={screenshot.result?.data?.description}
+            href={href}
+            linkRef={ref}
+          />
+        </Suspense>
       )}
       <Link
         href={href}

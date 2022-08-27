@@ -1,6 +1,7 @@
 import type { EmbedField } from '@prismicio/types';
 import dynamic from 'next/dynamic';
 import type { FC } from 'react';
+import { Suspense } from 'react';
 import type { VimeoPlayerProps } from 'react-player/vimeo';
 import Placeholder from './placeholder';
 
@@ -14,7 +15,8 @@ const Video: FC<VideoProps> = ({ data, ...props }) => {
       import(
         /* webpackChunkName: "react-player/vimeo" */
         'react-player/vimeo'
-      )
+      ),
+    { ssr: false, suspense: true }
   );
 
   return (
@@ -26,17 +28,19 @@ const Video: FC<VideoProps> = ({ data, ...props }) => {
     >
       <Placeholder className="absolute inset-0 z-0" />
       <div className="relative z-10 h-full w-full">
-        <ReactPlayer
-          url={data.embed_url}
-          loop
-          controls={false}
-          muted
-          playsinline
-          playing
-          width="100%"
-          height="100%"
-          {...props}
-        />
+        <Suspense fallback={<Placeholder className="absolute inset-0 z-0" />}>
+          <ReactPlayer
+            url={data.embed_url}
+            loop
+            controls={false}
+            muted
+            playsinline
+            playing
+            width="100%"
+            height="100%"
+            {...props}
+          />
+        </Suspense>
       </div>
     </div>
   );

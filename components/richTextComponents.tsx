@@ -5,8 +5,8 @@ import type { TwitterTweetEmbedProps } from 'react-twitter-embed/dist/components
 import resolveConfig from 'tailwindcss/resolveConfig';
 import type { DefaultColors } from 'tailwindcss/types/generated/colors';
 import type { CSSProperties, FC } from 'react';
-import { useState, useEffect } from 'react';
-import type { RTPreformattedNode } from '@prismicio/types';
+import { Suspense, useState, useEffect } from 'react';
+import type { RTEmbedNode, RTPreformattedNode } from '@prismicio/types';
 import type { RequiredConfig } from 'tailwindcss/types/config';
 import tailwindConfig from '../tailwind.config';
 
@@ -78,6 +78,7 @@ const Preformatted: FC<PreformattedProps> = ({ node, key }) => {
 
     return Light;
   });
+
   const [theme, setTheme] = useState<Record<string, CSSProperties> | undefined>(
     undefined
   );
@@ -102,24 +103,34 @@ const Preformatted: FC<PreformattedProps> = ({ node, key }) => {
 
   return (
     <div className="grid w-full font-mono font-medium">
-      <SyntaxHighlighter
-        key={key}
-        style={theme}
-        customStyle={{
-          padding: '1rem',
-          borderRadius: '0.25rem',
-          backgroundColor: neutral[800],
-        }}
-        showLineNumbers
-        lineNumberStyle={{
-          color: neutral[400],
-        }}
-      >
-        {node.text}
-      </SyntaxHighlighter>
+      <Suspense fallback={node.text}>
+        <SyntaxHighlighter
+          key={key}
+          style={theme}
+          customStyle={{
+            padding: '1rem',
+            borderRadius: '0.25rem',
+            backgroundColor: neutral[800],
+          }}
+          showLineNumbers
+          lineNumberStyle={{
+            color: neutral[400],
+          }}
+        >
+          {node.text}
+        </SyntaxHighlighter>
+      </Suspense>
     </div>
   );
 };
+
+const Fallback: FC<{ node: RTEmbedNode }> = ({ node }) => (
+  <div
+    className="mb-4"
+    // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
+    dangerouslySetInnerHTML={{ __html: node.oembed.html ?? '' }}
+  />
+);
 
 const richTextComponents: JSXMapSerializer = {
   image: ({ key, node }) => (
@@ -140,11 +151,6 @@ const richTextComponents: JSXMapSerializer = {
 
     if (node.oembed.provider_name === 'Twitter') {
       const tweetId = (node.oembed.url as string).split('/').pop();
-
-      if (!tweetId) {
-        return undefined;
-      }
-
       const TwitterTweetEmbed = dynamic<TwitterTweetEmbedProps>(async () =>
         import(
           /* webpackChunkName: "react-twitter-embed" */
@@ -152,9 +158,15 @@ const richTextComponents: JSXMapSerializer = {
         ).then((mod) => mod.TwitterTweetEmbed)
       );
 
+      if (!tweetId) {
+        return undefined;
+      }
+
       return (
         <div className="mx-auto my-8 max-w-[550px]">
-          <TwitterTweetEmbed tweetId={tweetId} />
+          <Suspense fallback={<Fallback key={key} node={node} />}>
+            <TwitterTweetEmbed tweetId={tweetId} />
+          </Suspense>
         </div>
       );
     }
@@ -168,17 +180,14 @@ const richTextComponents: JSXMapSerializer = {
           )
       );
 
-      return <Video data={node.oembed} />;
+      return (
+        <Suspense fallback={<Fallback key={key} node={node} />}>
+          <Video data={node.oembed} />
+        </Suspense>
+      );
     }
 
-    return (
-      <div
-        key={key}
-        className="mb-4"
-        // eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention
-        dangerouslySetInnerHTML={{ __html: node.oembed.html }}
-      />
-    );
+    return <Fallback key={key} node={node} />;
   },
   preformatted: Preformatted,
 };

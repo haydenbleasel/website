@@ -13,7 +13,6 @@ import dynamic from 'next/dynamic';
 import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
 import CommandBar from '../components/commandbar';
-import Menu from '../components/menu';
 import ExternalLinkComponent from '../components/externalLink';
 import useAnalytics from '../hooks/useAnalytics';
 import richTextComponents from '../components/richTextComponents';
@@ -29,6 +28,14 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       import(
         /* webpackChunkName: "activity" */
         '../components/activity'
+      ),
+    { ssr: false, suspense: true }
+  );
+  const Menu = dynamic(
+    async () =>
+      import(
+        /* webpackChunkName: "menu" */
+        '../components/menu'
       ),
     { ssr: false, suspense: true }
   );
@@ -86,8 +93,8 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         </PrismicProvider>
         <Suspense>
           <Activity />
+          <Menu />
         </Suspense>
-        <Menu />
         <Toaster
           containerClassName="print:hidden"
           toastOptions={{

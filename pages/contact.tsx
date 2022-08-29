@@ -123,25 +123,27 @@ const Contact: FC<ContactProps> = ({ data }) => {
             'Please enter a message': !message.trim(),
           }}
         />
-        <button
-          type="submit"
-          className="w-full animate-enter rounded-sm border border-none bg-neutral-900 px-3 py-2 text-md font-medium text-white opacity-0 animation-delay-500 disabled:cursor-not-allowed disabled:opacity-50"
-          disabled={
-            !name.trim() ||
-            !email.trim() ||
-            !message.trim() ||
-            sending ||
-            !emailRegex.exec(email)
-          }
-        >
-          {sending ? (
-            <span className="mx-auto flex h-[28px] w-[28px] items-center justify-center">
-              <LoadingIcon />
-            </span>
-          ) : (
-            'Send'
-          )}
-        </button>
+        <div className="animate-enter opacity-0 animation-delay-500">
+          <button
+            type="submit"
+            className="w-full rounded-sm border border-none bg-neutral-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
+            disabled={
+              !name.trim() ||
+              !email.trim() ||
+              !message.trim() ||
+              sending ||
+              !emailRegex.exec(email)
+            }
+          >
+            {sending ? (
+              <span className="mx-auto flex h-[28px] w-[28px] items-center justify-center">
+                <LoadingIcon />
+              </span>
+            ) : (
+              'Send'
+            )}
+          </button>
+        </div>
       </form>
     </Layout>
   );

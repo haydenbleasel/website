@@ -30,7 +30,7 @@ const TextareaRef: ForwardRefRenderFunction<
       )}
     </div>
     <textarea
-      className="max-h-[20rem] min-h-[8rem] w-full resize-y rounded-sm border px-3 py-2 text-md text-neutral-900 outline-neutral-900 placeholder:text-neutral-500"
+      className="max-h-[20rem] min-h-[8rem] w-full resize-y rounded-sm border border-neutral-200 bg-transparent px-3 py-2 text-md text-neutral-900 outline-neutral-900 placeholder:text-neutral-500 dark:border-neutral-700"
       onChange={({ target }) => onChange(target.value)}
       ref={ref}
       {...props}

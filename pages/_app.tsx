@@ -19,6 +19,7 @@ import useAnalytics from '../hooks/useAnalytics';
 import richTextComponents from '../components/richTextComponents';
 import { social } from '../utils/social';
 import useNetworkMonitor from '../hooks/useNetworkMonitor';
+import useThemeListener from '../hooks/useThemeListener';
 
 const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
@@ -33,6 +34,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   );
   useAnalytics();
   useNetworkMonitor();
+  useThemeListener();
 
   return (
     <TooltipProvider delayDuration={0}>

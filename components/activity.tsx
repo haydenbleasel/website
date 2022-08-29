@@ -35,9 +35,9 @@ const Activity: FC = () => {
       role="button"
     >
       <Tooltip label={label} side="left" sideOffset={4}>
-        <div className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-neutral-900 dark:text-white sm:text-md">
+        <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-neutral-900 dark:text-white sm:text-md">
           {activity.emoji}
-        </div>
+        </span>
       </Tooltip>
     </div>
   );

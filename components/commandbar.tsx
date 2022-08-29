@@ -2,7 +2,6 @@
 
 import type { Action, ActionImpl } from 'kbar';
 import {
-  KBarProvider,
   KBarPortal,
   KBarPositioner,
   KBarAnimator,
@@ -14,7 +13,7 @@ import {
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 import type { FC, ReactNode } from 'react';
-import { Suspense, useState, useEffect, useCallback } from 'react';
+import { createElement, useState, useEffect, useCallback } from 'react';
 import type { Icon as IconType } from 'react-feather';
 import {
   ArrowUpRight,
@@ -38,18 +37,215 @@ import {
 import toast from 'react-hot-toast';
 import { useLocalStorageValue } from '@react-hookz/web';
 import dynamic from 'next/dynamic';
+import slugify from 'slugify';
 import { social } from '../utils/social';
 import parseError from '../utils/parseError';
-import Placeholder from './placeholder';
+import LoadingIcon from './loadingIcon';
+import Tooltip from './tooltip';
 
 type RenderParams<T = ActionImpl | string> = {
   item: T;
   active: boolean;
 };
 
-type CommandBarProps = {
-  children: ReactNode;
+type ItemProps = {
+  id?: string;
+  name: string;
+  shortcut?: string;
+  section?: string;
+  parent?: string;
+  href?: string;
+  action?: () => void;
+  icon?: FC;
 };
+
+type ServerAction = Omit<Action, 'perform' | 'icon'> & {
+  link: string;
+  icon?: string;
+};
+
+const items: ItemProps[] = [
+  {
+    name: 'Home',
+    shortcut: 'h',
+    section: 'Pages',
+    href: '/',
+    icon: Home,
+  },
+  {
+    id: 'blog',
+    name: 'Blog',
+    section: 'Pages',
+    icon: Book,
+  },
+  {
+    id: 'projects',
+    name: 'Projects',
+    section: 'Pages',
+    icon: Zap,
+  },
+  {
+    id: 'work',
+    name: 'Work',
+    section: 'Pages',
+    icon: Briefcase,
+  },
+  {
+    name: 'All Work',
+    parent: 'work',
+    shortcut: 'w',
+    href: '/work',
+  },
+  {
+    name: 'Clients',
+    shortcut: 'c',
+    section: 'Pages',
+    href: '/clients',
+    icon: Users,
+  },
+  {
+    name: 'Recommendations',
+    shortcut: 'r',
+    section: 'Pages',
+    href: '/recommendations',
+    icon: ThumbsUp,
+  },
+  {
+    name: 'Resume',
+    shortcut: '/',
+    section: 'Pages',
+    href: '/resume',
+    icon: Send,
+  },
+  {
+    name: 'Featured',
+    shortcut: 'f',
+    section: 'Pages',
+    href: '/featured',
+    icon: Star,
+  },
+  {
+    name: 'Games',
+    shortcut: 'g',
+    section: 'Pages',
+    href: '/games',
+    icon: Award,
+  },
+  {
+    name: 'All Posts',
+    parent: 'blog',
+    shortcut: 'b',
+    href: '/blog',
+  },
+  {
+    name: 'All Projects',
+    parent: 'projects',
+    shortcut: 'x',
+    href: '/projects',
+  },
+  {
+    name: 'Playlists',
+    section: 'Pages',
+    href: '/playlists',
+    shortcut: 'p',
+    icon: Music,
+  },
+  {
+    name: 'Contact',
+    section: 'Pages',
+    href: '/contact',
+    icon: MessageSquare,
+  },
+  ...social.map(({ id, name, url, invertDark }) => ({
+    name,
+    icon: () => (
+      <Image
+        src={`/social/${id}.svg`}
+        width={16}
+        height={16}
+        quality={100}
+        alt=""
+        className={invertDark ? 'dark:brightness-0 dark:invert' : ''}
+      />
+    ),
+    section: 'Social',
+    href: url,
+  })),
+  {
+    name: 'View source code',
+    section: 'Social',
+    icon: Code,
+    href: 'https://github.com/haydenbleasel/daylight',
+  },
+];
+
+const Header: FC<{ children: ReactNode }> = ({ children }) => (
+  <div className="px-4 py-2 text-sm text-neutral-500 dark:text-neutral-400">
+    {children}
+  </div>
+);
+
+const Item: FC<RenderParams<ActionImpl> & { item: { external?: boolean } }> = ({
+  item,
+  active,
+}) => (
+  <div
+    className={`flex cursor-pointer items-center justify-between gap-2 py-3 px-4 transition-colors ${
+      active ? 'bg-neutral-100 dark:bg-neutral-800' : 'bg-transparent'
+    }`}
+  >
+    <div className="flex items-center gap-1">
+      {item.icon && <div className="mr-2 flex">{item.icon}</div>}
+      {item.parent && (
+        <>
+          <span
+            className={`text-md transition-colors ${
+              active
+                ? 'text-neutral-500 dark:text-neutral-400'
+                : 'text-neutral-400 dark:text-neutral-500'
+            }`}
+          >
+            {
+              item.ancestors.find((ancestor) => ancestor.id === item.parent)
+                ?.name
+            }
+          </span>
+          <span className="text-neutral-400 dark:text-neutral-500">
+            <ChevronRight size={16} />
+          </span>
+        </>
+      )}
+      <span className="text-md text-neutral-900 line-clamp-1 dark:text-white">
+        {item.name}
+      </span>
+    </div>
+    {item.shortcut && (
+      <div
+        className={`flex h-6 w-6 items-center justify-center rounded-sm transition-colors ${
+          active
+            ? 'bg-neutral-200 dark:bg-neutral-700'
+            : 'bg-neutral-100 dark:bg-neutral-800'
+        }`}
+      >
+        <span
+          className={`font-mono text-sm font-medium leading-normal transition-colors ${
+            active
+              ? 'text-neutral-500 dark:text-neutral-400'
+              : 'text-neutral-400 dark:text-neutral-500'
+          }`}
+        >
+          {item.shortcut}
+        </span>
+      </div>
+    )}
+    {item.external && (
+      <ArrowUpRight
+        size={16}
+        className="shrink-0 text-neutral-400 dark:text-neutral-500"
+      />
+    )}
+  </div>
+);
 
 const RenderResults: FC = () => {
   const { results } = useMatches();
@@ -57,72 +253,9 @@ const RenderResults: FC = () => {
   const onRender = useCallback(
     (props: RenderParams & { item: { external?: boolean } }) =>
       typeof props.item === 'string' ? (
-        <div className="px-4 py-2 text-sm text-neutral-500 dark:text-neutral-400">
-          {props.item}
-        </div>
+        <Header>{props.item}</Header>
       ) : (
-        <div
-          className={`flex cursor-pointer items-center justify-between gap-2 py-3 px-4 transition-colors ${
-            props.active
-              ? 'bg-neutral-100 dark:bg-neutral-800'
-              : 'bg-transparent'
-          }`}
-        >
-          <div className="flex items-center gap-1">
-            {props.item.icon && (
-              <div className="mr-2 flex">{props.item.icon}</div>
-            )}
-            {props.item.parent && (
-              <>
-                <span
-                  className={`text-md transition-colors ${
-                    props.active
-                      ? 'text-neutral-500 dark:text-neutral-400'
-                      : 'text-neutral-400 dark:text-neutral-500'
-                  }`}
-                >
-                  {
-                    props.item.ancestors.find(
-                      (ancestor) =>
-                        ancestor.id === (props.item as ActionImpl).parent
-                    )?.name
-                  }
-                </span>
-                <span className="text-neutral-400 dark:text-neutral-500">
-                  <ChevronRight size={16} />
-                </span>
-              </>
-            )}
-            <span className="text-md text-neutral-900 line-clamp-1 dark:text-white">
-              {props.item.name}
-            </span>
-          </div>
-          {props.item.shortcut && (
-            <div
-              className={`flex h-6 w-6 items-center justify-center rounded-sm transition-colors ${
-                props.active
-                  ? 'bg-neutral-200 dark:bg-neutral-700'
-                  : 'bg-neutral-100 dark:bg-neutral-800'
-              }`}
-            >
-              <span
-                className={`font-mono text-sm font-medium leading-normal transition-colors ${
-                  props.active
-                    ? 'text-neutral-500 dark:text-neutral-400'
-                    : 'text-neutral-400 dark:text-neutral-500'
-                }`}
-              >
-                {props.item.shortcut}
-              </span>
-            </div>
-          )}
-          {props.item.external && (
-            <ArrowUpRight
-              size={16}
-              className="shrink-0 text-neutral-400 dark:text-neutral-500"
-            />
-          )}
-        </div>
+        <Item item={props.item} active={props.active} />
       ),
     []
   );
@@ -130,58 +263,58 @@ const RenderResults: FC = () => {
   return <KBarResults items={results} onRender={onRender} />;
 };
 
-type ServerAction = Omit<Action, 'perform'> & {
-  link: string;
+const getCustomActions = async () => {
+  const contentActions = await fetch('/api/kbar', {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`,
+    },
+  });
+  const { actions } = (await contentActions.json()) as {
+    actions: ServerAction[];
+  };
+
+  return actions;
 };
 
-const LoadCustomActions = () => {
+const CommandBar: FC = () => {
+  const router = useRouter();
+  const [, setTheme, removeTheme] = useLocalStorageValue<string | undefined>(
+    'theme',
+    undefined
+  );
   const [customActions, setCustomActions] = useState<Action[]>([]);
-  const { push } = useRouter();
 
   useEffect(() => {
     const loadContent = async () => {
-      const contentActions = await fetch('/api/kbar', {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${
-            process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''
-          }`,
-        },
-      });
-      const { actions } = (await contentActions.json()) as {
-        actions: ServerAction[];
-      };
+      const actions = await getCustomActions();
 
       const newActions: Action[] = actions.map(({ link, icon, ...props }) => {
-        const Icon = icon
-          ? dynamic(
-              async () => {
-                const feather = await import(
-                  /* webpackChunkName: "someModule" */
-                  'react-feather'
-                );
-                return feather[icon as keyof typeof feather] as IconType;
-              },
-              { ssr: false, suspense: true }
-            )
-          : undefined;
-
-        return {
+        const action: Action = {
           ...props,
           perform: link.startsWith('/')
-            ? async () => push(link)
+            ? async () => router.push(link)
             : () => window.open(link, '_blank'),
-          icon: Icon ? (
-            <Suspense
-              fallback={<Placeholder className="h-4 w-4 rounded-full" />}
-            >
-              <Icon
-                size={16}
-                className="text-neutral-500 dark:text-neutral-400"
-              />
-            </Suspense>
-          ) : undefined,
         };
+
+        if (!icon) {
+          return action;
+        }
+
+        const Icon = dynamic(
+          async () => {
+            const feather = await import(
+              /* webpackChunkName: "someModule" */
+              'react-feather'
+            );
+            return feather[icon as keyof typeof feather] as IconType;
+          },
+          { ssr: false }
+        );
+
+        action.icon = <Icon size={16} />;
+
+        return action;
       });
 
       setCustomActions(newActions);
@@ -194,264 +327,100 @@ const LoadCustomActions = () => {
         toast.error(message);
       });
     }
-  }, [customActions.length, push]);
-
-  useRegisterActions(customActions, [customActions]);
-
-  return null;
-};
-
-const CommandBar: FC<CommandBarProps> = ({ children }) => {
-  const { push } = useRouter();
-  const [theme, setTheme, removeTheme] = useLocalStorageValue<
-    string | undefined
-  >('theme', undefined);
-  const actions: Action[] = [
-    {
-      id: 'home',
-      name: 'Home',
-      shortcut: ['h'],
-      keywords: 'home',
-      section: 'Pages',
-      perform: async () => push('/'),
-      icon: (
-        <Home size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'blog',
-      name: 'Blog',
-      keywords: 'blog',
-      section: 'Pages',
-      icon: (
-        <Book size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'projects',
-      name: 'Projects',
-      keywords: 'projects',
-      section: 'Pages',
-      icon: (
-        <Zap size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'work',
-      name: 'Work',
-      keywords: 'work',
-      section: 'Pages',
-      icon: (
-        <Briefcase
-          size={16}
-          className="text-neutral-500 dark:text-neutral-400"
-        />
-      ),
-    },
-    {
-      id: 'work-index',
-      name: 'All Work',
-      parent: 'work',
-      shortcut: ['w'],
-      perform: async () => push('/work'),
-    },
-    {
-      id: 'clients',
-      name: 'Clients',
-      shortcut: ['c'],
-      keywords: 'clients',
-      section: 'Pages',
-      perform: async () => push('/clients'),
-      icon: (
-        <Users size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'recommendations',
-      name: 'Recommendations',
-      shortcut: ['r'],
-      keywords: 'recommendations',
-      section: 'Pages',
-      perform: async () => push('/recommendations'),
-      icon: (
-        <ThumbsUp
-          size={16}
-          className="text-neutral-500 dark:text-neutral-400"
-        />
-      ),
-    },
-    {
-      id: 'resume',
-      name: 'Resume',
-      shortcut: ['/'],
-      keywords: 'resume',
-      section: 'Pages',
-      perform: async () => push('/resume'),
-      icon: (
-        <Send size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'featured',
-      name: 'Featured',
-      shortcut: ['f'],
-      keywords: 'featured',
-      section: 'Pages',
-      perform: async () => push('/featured'),
-      icon: (
-        <Star size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'games',
-      name: 'Games',
-      shortcut: ['g'],
-      keywords: 'games',
-      section: 'Pages',
-      perform: async () => push('/games'),
-      icon: (
-        <Award size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'blog-index',
-      name: 'All Posts',
-      parent: 'blog',
-      shortcut: ['b'],
-      perform: async () => push('/blog'),
-    },
-    {
-      id: 'projects-index',
-      name: 'All Projects',
-      parent: 'projects',
-      shortcut: ['x'],
-      perform: async () => push('/projects'),
-    },
-    {
-      id: 'playlists',
-      name: 'Playlists',
-      keywords: 'playlists',
-      section: 'Pages',
-      perform: async () => push('/playlists'),
-      shortcut: ['p'],
-      icon: (
-        <Music size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'contact',
-      name: 'Contact',
-      keywords: 'contact',
-      section: 'Pages',
-      perform: async () => push('/contact'),
-      icon: (
-        <MessageSquare
-          size={16}
-          className="text-neutral-500 dark:text-neutral-400"
-        />
-      ),
-    },
-    {
-      id: 'theme',
-      name: 'Change theme...',
-      shortcut: ['t'],
-      keywords: 'theme',
-      section: 'Utilities',
-      icon: (
-        <Sun size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'lightMode',
-      name: 'Light',
-      shortcut: ['l'],
-      keywords: 'light',
-      parent: 'theme',
-      perform: () => setTheme('light'),
-      icon: (
-        <Sun size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'darkMode',
-      name: 'Dark',
-      shortcut: ['d'],
-      keywords: 'dark',
-      parent: 'theme',
-      perform: () => setTheme('dark'),
-      icon: (
-        <Moon size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-    {
-      id: 'systemTheme',
-      name: 'System Default',
-      shortcut: ['s'],
-      keywords: 'light',
-      parent: 'theme',
-      perform: () => removeTheme(),
-      icon: (
-        <Sunset size={16} className="text-neutral-500 dark:text-neutral-400" />
-      ),
-    },
-  ];
-
-  const socialActions: (Action & {
-    external?: boolean;
-  })[] = social.map(({ id, name, url, invertDark }) => ({
-    id,
-    name,
-    keywords: id,
-    icon: (
-      <Image
-        src={`/social/${id}.svg`}
-        width={16}
-        height={16}
-        quality={100}
-        alt=""
-        className={invertDark ? 'dark:brightness-0 dark:invert' : ''}
-      />
-    ),
-    section: 'Social',
-    perform: () => window.open(url, '_blank'),
-    external: true,
-  }));
-
-  socialActions.push({
-    id: 'source',
-    name: 'View source code',
-    keywords: 'source',
-    section: 'Social',
-    icon: <Code size={16} className="text-neutral-900 dark:text-white" />,
-    perform: () =>
-      window.open('https://github.com/haydenbleasel/daylight', '_blank'),
-    external: true,
-  });
+  }, [customActions.length, router]);
 
   useEffect(() => {
-    if (
-      theme === 'dark' ||
-      (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
+    items.push(
+      {
+        id: 'theme',
+        name: 'Change theme...',
+        shortcut: 't',
+        section: 'Utilities',
+        icon: Sun,
+      },
+      {
+        name: 'Light',
+        shortcut: 'l',
+        parent: 'theme',
+        action: () => setTheme('light'),
+        icon: Sun,
+      },
+      {
+        name: 'Dark',
+        shortcut: 'd',
+        parent: 'theme',
+        action: () => setTheme('dark'),
+        icon: Moon,
+      },
+      {
+        name: 'System Default',
+        shortcut: 's',
+        parent: 'theme',
+        action: () => removeTheme(),
+        icon: Sunset,
+      }
+    );
+  });
+
+  const kbarActions: Action[] = items.map((item) => ({
+    id: item.id ?? slugify(item.name, { lower: true, strict: true }),
+    name: item.name,
+    icon: item.icon ? (
+      <div className="text-neutral-500 dark:text-neutral-400">
+        {createElement(item.icon, { size: 16 })}
+      </div>
+    ) : undefined,
+    keywords: item.name,
+    shortcut: item.shortcut ? [item.shortcut] : undefined,
+    parent: item.parent,
+    section: item.section,
+    perform:
+      item.action || item.href
+        ? () => {
+            if (item.action) {
+              item.action();
+              return;
+            }
+
+            if (item.href) {
+              if (item.href.startsWith('/')) {
+                router.push(item.href).catch((error) => {
+                  const message = parseError(error);
+
+                  toast.error(message);
+                });
+                return;
+              }
+
+              window.open(item.href, '_blank');
+            }
+          }
+        : undefined,
+  }));
+
+  useRegisterActions(
+    [...kbarActions, ...customActions],
+    [kbarActions.length, customActions.length]
+  );
 
   return (
-    <KBarProvider actions={[...actions, ...socialActions]}>
-      <LoadCustomActions />
-      <KBarPortal>
-        <KBarPositioner className="z-30 bg-neutral-50/80 backdrop-blur-sm dark:bg-neutral-800/80">
-          <KBarAnimator className="mx-auto w-full max-w-xl overflow-hidden rounded-lg bg-white drop-shadow-2xl dark:bg-neutral-900">
+    <KBarPortal>
+      <KBarPositioner className="z-30 bg-neutral-50/80 backdrop-blur-sm dark:bg-neutral-800/80">
+        <KBarAnimator className="mx-auto w-full max-w-xl rounded-lg bg-white drop-shadow-2xl dark:bg-neutral-900">
+          <div className="relative">
             <KBarSearch className="font-md w-full border-b border-neutral-200 bg-transparent py-3 px-4 font-normal text-neutral-900 outline-none placeholder:text-neutral-500 dark:border-neutral-700 dark:text-white" />
-            <RenderResults />
-          </KBarAnimator>
-        </KBarPositioner>
-      </KBarPortal>
-      {children}
-    </KBarProvider>
+            {!customActions.length && (
+              <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                <Tooltip label="Loading custom actions...">
+                  <LoadingIcon />
+                </Tooltip>
+              </div>
+            )}
+          </div>
+          <RenderResults />
+        </KBarAnimator>
+      </KBarPositioner>
+    </KBarPortal>
   );
 };
 

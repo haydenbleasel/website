@@ -10,9 +10,9 @@ import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { PrismicPreview } from '@prismicio/next';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { KBarProvider } from 'kbar';
 import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
-import CommandBar from '../components/commandbar';
 import ExternalLinkComponent from '../components/externalLink';
 import useAnalytics from '../hooks/useAnalytics';
 import richTextComponents from '../components/richTextComponents';
@@ -39,13 +39,21 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       ),
     { ssr: false, suspense: true }
   );
+  const CommandBar = dynamic(
+    async () =>
+      import(
+        /* webpackChunkName: "CommandBar" */
+        '../components/commandbar'
+      ),
+    { ssr: false, suspense: true }
+  );
   useAnalytics();
   useNetworkMonitor();
   useThemeListener();
 
   return (
     <TooltipProvider delayDuration={0}>
-      <CommandBar>
+      <KBarProvider>
         <Head>
           <meta charSet="utf-8" />
           <meta
@@ -94,6 +102,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         <Suspense>
           <Activity />
           <Menu />
+          <CommandBar />
         </Suspense>
         <Toaster
           containerClassName="print:hidden"
@@ -104,7 +113,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
               '!bg-neutral-900/90 !backdrop-blur-md !text-white !rounded-sm',
           }}
         />
-      </CommandBar>
+      </KBarProvider>
     </TooltipProvider>
   );
 };

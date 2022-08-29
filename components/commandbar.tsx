@@ -221,21 +221,13 @@ const Item: FC<RenderParams<ActionImpl> & { item: { external?: boolean } }> = ({
     </div>
     {item.shortcut && (
       <div
-        className={`flex h-6 w-6 items-center justify-center rounded-sm transition-colors ${
+        className={`flex h-6 w-6 items-center justify-center rounded-sm font-mono text-sm font-medium leading-normal transition-colors ${
           active
-            ? 'bg-neutral-200 dark:bg-neutral-700'
-            : 'bg-neutral-100 dark:bg-neutral-800'
+            ? 'bg-neutral-200 text-neutral-500 dark:bg-neutral-700 dark:text-neutral-400'
+            : 'bg-neutral-100 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500'
         }`}
       >
-        <span
-          className={`font-mono text-sm font-medium leading-normal transition-colors ${
-            active
-              ? 'text-neutral-500 dark:text-neutral-400'
-              : 'text-neutral-400 dark:text-neutral-500'
-          }`}
-        >
-          {item.shortcut}
-        </span>
+        {item.shortcut}
       </div>
     )}
     {item.external && (
@@ -367,7 +359,7 @@ const CommandBar: FC = () => {
     name: item.name,
     icon: item.icon ? (
       <div className="text-neutral-500 dark:text-neutral-400">
-        {createElement(item.icon, { size: 16 })}
+        {createElement(item.icon, { size: 16 } as Record<string, unknown>)}
       </div>
     ) : undefined,
     keywords: item.name,

@@ -12,8 +12,8 @@ import {
 } from 'kbar';
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';
-import type { FC, ReactNode } from 'react';
-import { createElement, useState, useEffect, useCallback } from 'react';
+import type { FC } from 'react';
+import { createElement, useState, useEffect } from 'react';
 import type { Icon as IconType } from 'react-feather';
 import {
   ArrowUpRight,
@@ -179,7 +179,7 @@ const items: ItemProps[] = [
   },
 ];
 
-const Header: FC<{ children: ReactNode }> = ({ children }) => (
+const Header: FC<{ children: string }> = ({ children }) => (
   <div className="px-4 py-2 text-sm text-neutral-500 dark:text-neutral-400">
     {children}
   </div>
@@ -246,12 +246,20 @@ const getCustomActions = async () => {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`,
     },
   });
+
   const { actions } = (await contentActions.json()) as {
     actions: ServerAction[];
   };
 
   return actions;
 };
+
+const onRender = ({ item, active }: RenderParams) =>
+  typeof item === 'string' ? (
+    <Header>{item}</Header>
+  ) : (
+    <Item item={item} active={active} />
+  );
 
 const CommandBar: FC = () => {
   const router = useRouter();
@@ -261,16 +269,6 @@ const CommandBar: FC = () => {
   );
   const [customActions, setCustomActions] = useState<Action[]>([]);
   const { results } = useMatches();
-
-  const onRender = useCallback(
-    (props: RenderParams & { item: { external?: boolean } }) =>
-      typeof props.item === 'string' ? (
-        <Header>{props.item}</Header>
-      ) : (
-        <Item item={props.item} active={props.active} />
-      ),
-    []
-  );
 
   useEffect(() => {
     const loadContent = async () => {
@@ -347,7 +345,7 @@ const CommandBar: FC = () => {
         icon: Sunset,
       }
     );
-  });
+  }, [removeTheme, setTheme]);
 
   const kbarActions: Action[] = items.map((item) => ({
     id: item.id ?? slugify(item.name, { lower: true, strict: true }),
@@ -393,7 +391,7 @@ const CommandBar: FC = () => {
   return (
     <KBarPortal>
       <KBarPositioner className="z-30 bg-neutral-50/80 backdrop-blur-sm dark:bg-neutral-800/80">
-        <KBarAnimator className="mx-auto w-full max-w-xl rounded-lg bg-white drop-shadow-2xl dark:bg-neutral-900">
+        <KBarAnimator className="mx-auto w-full max-w-xl rounded-md bg-white drop-shadow-2xl dark:bg-neutral-900">
           <div className="relative">
             <KBarSearch className="font-md w-full border-b border-neutral-200 bg-transparent py-3 px-4 font-normal text-neutral-900 outline-none placeholder:text-neutral-500 dark:border-neutral-700 dark:text-white" />
             {!customActions.length && (
@@ -404,7 +402,9 @@ const CommandBar: FC = () => {
               </div>
             )}
           </div>
-          <KBarResults items={results} onRender={onRender} />
+          <div className="overflow-hidden rounded-b-md">
+            <KBarResults items={results} onRender={onRender} />
+          </div>
         </KBarAnimator>
       </KBarPositioner>
     </KBarPortal>

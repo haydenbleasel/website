@@ -254,12 +254,15 @@ const getCustomActions = async () => {
   return actions;
 };
 
-const onRender = ({ item, active }: RenderParams) =>
-  typeof item === 'string' ? (
-    <Header>{item}</Header>
-  ) : (
-    <Item item={item} active={active} />
-  );
+const onRender = ({ item, active }: RenderParams) => (
+  <div>
+    {typeof item === 'string' ? (
+      <Header>{item}</Header>
+    ) : (
+      <Item item={item} active={active} />
+    )}
+  </div>
+);
 
 const CommandBar: FC = () => {
   const router = useRouter();
@@ -297,7 +300,9 @@ const CommandBar: FC = () => {
           { ssr: false }
         );
 
-        action.icon = <Icon size={16} />;
+        action.icon = (
+          <Icon size={16} className="text-neutral-500 dark:text-neutral-400" />
+        );
 
         return action;
       });

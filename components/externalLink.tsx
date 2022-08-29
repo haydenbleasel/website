@@ -51,7 +51,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
       role="link"
     >
       {!screenshot.error && !isEmpty && showPreview && (
-        <Suspense fallback={null}>
+        <Suspense>
           <LinkPreview
             image={screenshot.result?.data?.image}
             title={screenshot.result?.data?.title}

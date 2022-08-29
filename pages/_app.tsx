@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Suspense } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Toaster } from 'react-hot-toast';
@@ -8,6 +9,7 @@ import { SocialProfileJsonLd } from 'next-seo';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { PrismicPreview } from '@prismicio/next';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
 import CommandBar from '../components/commandbar';
@@ -16,12 +18,19 @@ import ExternalLinkComponent from '../components/externalLink';
 import useAnalytics from '../hooks/useAnalytics';
 import richTextComponents from '../components/richTextComponents';
 import { social } from '../utils/social';
-import Activity from '../components/activity';
 import useNetworkMonitor from '../hooks/useNetworkMonitor';
 
 const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
+  const Activity = dynamic(
+    async () =>
+      import(
+        /* webpackChunkName: "activity" */
+        '../components/activity'
+      ),
+    { ssr: false, suspense: true }
+  );
   useAnalytics();
   useNetworkMonitor();
 
@@ -73,7 +82,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
             <Component {...pageProps} />
           </PrismicPreview>
         </PrismicProvider>
-        <Activity />
+        <Suspense>
+          <Activity />
+        </Suspense>
         <Menu />
         <Toaster
           containerClassName="print:hidden"

@@ -239,22 +239,6 @@ const Item: FC<RenderParams<ActionImpl> & { item: { external?: boolean } }> = ({
   </div>
 );
 
-const RenderResults: FC = () => {
-  const { results } = useMatches();
-
-  const onRender = useCallback(
-    (props: RenderParams & { item: { external?: boolean } }) =>
-      typeof props.item === 'string' ? (
-        <Header>{props.item}</Header>
-      ) : (
-        <Item item={props.item} active={props.active} />
-      ),
-    []
-  );
-
-  return <KBarResults items={results} onRender={onRender} />;
-};
-
 const getCustomActions = async () => {
   const contentActions = await fetch('/api/kbar', {
     headers: {
@@ -276,6 +260,17 @@ const CommandBar: FC = () => {
     undefined
   );
   const [customActions, setCustomActions] = useState<Action[]>([]);
+  const { results } = useMatches();
+
+  const onRender = useCallback(
+    (props: RenderParams & { item: { external?: boolean } }) =>
+      typeof props.item === 'string' ? (
+        <Header>{props.item}</Header>
+      ) : (
+        <Item item={props.item} active={props.active} />
+      ),
+    []
+  );
 
   useEffect(() => {
     const loadContent = async () => {
@@ -409,7 +404,7 @@ const CommandBar: FC = () => {
               </div>
             )}
           </div>
-          <RenderResults />
+          <KBarResults items={results} onRender={onRender} />
         </KBarAnimator>
       </KBarPositioner>
     </KBarPortal>

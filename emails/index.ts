@@ -1,5 +1,19 @@
 import { createTransport } from 'nodemailer';
 import { buildSendMail } from 'mailing-core';
+import * as dotenv from 'dotenv';
+
+dotenv.config({
+  path: '.env.local',
+  debug: true,
+});
+
+if (!process.env.SENDGRID_API_KEY) {
+  throw new Error('SENDGRID_API_KEY is not set');
+}
+
+if (!process.env.EMAIL_ADDRESS) {
+  throw new Error('EMAIL_ADDRESS is not set');
+}
 
 const transport = createTransport({
   host: 'smtp.sendgrid.net',
@@ -19,7 +33,7 @@ transport.verify((error) => {
 
 const sendMail = buildSendMail({
   transport,
-  defaultFrom: process.env.EMAIL_ADDRESS ?? '',
+  defaultFrom: process.env.EMAIL_ADDRESS,
 });
 
 export default sendMail;

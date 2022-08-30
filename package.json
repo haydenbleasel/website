@@ -29,6 +29,7 @@
     "@tailwindcss/typography": "^0.5.4",
     "date-fns": "^2.29.2",
     "disposable-email-domains": "^1.0.59",
+    "dotenv": "^16.0.1",
     "embla-carousel-react": "^7.0.1",
     "fathom-client": "^3.5.0",
     "fuse.js": "^6.6.2",

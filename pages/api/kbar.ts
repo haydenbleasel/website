@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type {
   FilledLinkToWebField,
   KeyTextField,
   PrismicDocumentWithUID,
 } from '@prismicio/types';
-import type { NextApiHandler } from 'next';
+import type { NextRequest } from 'next/server';
 import { getDevPosts } from '../../utils/dev';
 import { getMediumPosts } from '../../utils/medium';
 import { getPage, getPages } from '../../utils/prismic';
+import res from '../../utils/response';
 import type { ProjectsProps } from '../projects';
 import type { WorkPostProps } from '../work/[post]';
 
@@ -19,18 +18,20 @@ type Docs = PrismicDocumentWithUID<{
   shortcut?: KeyTextField;
 }>[];
 
-const handler: NextApiHandler = async (req, res) => {
+export const config = {
+  runtime: 'experimental-edge',
+};
+
+const handler = async (req: NextRequest): Promise<Response> => {
   if (
-    req.headers.authorization !==
+    req.headers.get('authorization') !==
     `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`
   ) {
-    res.status(401).json({ error: 'Unauthorized' });
-    return;
+    return res(401, { error: 'Unauthorized' });
   }
 
   if (req.method !== 'GET') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
+    return res(405, { error: 'Method not allowed' });
   }
 
   const caseStudies = (await getPages('case-study')) as Docs;
@@ -106,7 +107,7 @@ const handler: NextApiHandler = async (req, res) => {
     ...mediumPostActions,
   ];
 
-  res.status(200).json({ actions });
+  return res(200, { actions });
 };
 
 export default handler;

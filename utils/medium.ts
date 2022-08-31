@@ -12,6 +12,8 @@ export const getMediumPosts = async (): Promise<Post[]> => {
     };
   };
 
+  console.log(JSON.stringify(feed, null, 2));
+
   if (!feed.rss.channel.item) {
     return [];
   }

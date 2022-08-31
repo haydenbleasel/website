@@ -1,31 +1,19 @@
-import { XMLParser } from 'fast-xml-parser';
+import Parser from 'rss-parser';
 import type { MediumPost } from '../types/medium';
 import type { Post } from '../types/post';
 
 export const getMediumPosts = async (): Promise<Post[]> => {
-  const response = await fetch('https://medium.com/feed/@haydenbleasel');
-  const xml = await response.text();
-  const parser = new XMLParser();
-  const feed = parser.parse(xml) as {
-    rss: {
-      channel: { item?: MediumPost[] };
-    };
-  };
+  const parser = new Parser();
+  const { items } = (await parser.parseURL(
+    'https://medium.com/feed/@haydenbleasel'
+  )) as { items: MediumPost[] };
 
-  console.log(JSON.stringify(feed, null, 2));
-
-  if (!feed.rss.channel.item) {
-    return [];
-  }
-
-  const posts: Post[] = feed.rss.channel.item.map(
-    ({ guid, title, link, isoDate }) => ({
-      id: guid,
-      title,
-      link,
-      date: isoDate,
-    })
-  );
+  const posts: Post[] = items.map(({ guid, title, link, isoDate }) => ({
+    id: guid,
+    title,
+    link,
+    date: isoDate,
+  }));
 
   return posts;
 };

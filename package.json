@@ -81,7 +81,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "mailing": "^0.6.9",
+    "mailing": "^0.7.1",
     "next-sitemap": "^3.1.18",
     "postcss": "^8.4.16",
     "pre-commit": "^1.2.2",

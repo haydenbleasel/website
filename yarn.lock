@@ -1347,17 +1347,7 @@
     "@prismicio/helpers" "^2.3.3"
     "@prismicio/types" "^0.2.1"
 
-"@prismicio/helpers@^2.2.1", "@prismicio/helpers@^2.3.0", "@prismicio/helpers@^2.3.1":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.3.2.tgz#602e3f2ab432ecbc91b2485e2b9743ebc94fee48"
-  integrity sha512-7FyvybtzvqSvFrDL/Dhb91ADrgwhWaNBA8svX/xs3BrARpGicdNBLiy8WBMM3+pD13tLFi8AxOr5563ORO+siw==
-  dependencies:
-    "@prismicio/richtext" "^2.1.0"
-    "@prismicio/types" "^0.2.0"
-    escape-html "^1.0.3"
-    imgix-url-builder "^0.0.3"
-
-"@prismicio/helpers@^2.3.3":
+"@prismicio/helpers@^2.2.1", "@prismicio/helpers@^2.3.0", "@prismicio/helpers@^2.3.1", "@prismicio/helpers@^2.3.3":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.3.3.tgz#de576b6da66ba283f56275408ad81add7b856785"
   integrity sha512-P3oYJnBeJPz/ClUBUewbE+ak73gs5JVL+C1G6TfgN5G5j0MYkwMluZXBqbC3yDTx8jxNeQUADyI8V05cl0Jdgw==
@@ -1394,18 +1384,10 @@
     eslint-plugin-react "^7.30.0"
     eslint-plugin-react-hooks "^4.5.0"
 
-"@prismicio/react@^2.4.0":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.4.1.tgz#ca13c097c3f688babf6b44c7eb42b939e97dc01b"
-  integrity sha512-t0uYiyGxo8basQjcsMvgGpyZICw/XgiUIXyx5dERHN52TbGo5zOpZht8ThBuO0nppQMgFzsrvBczJJquJL6yOw==
-  dependencies:
-    "@prismicio/helpers" "^2.3.0"
-    "@prismicio/richtext" "^2.0.1"
-
-"@prismicio/react@^2.4.4":
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.4.4.tgz#45ba15e07ed737ca362b63e437db17b59ed4409b"
-  integrity sha512-tF3YNGRF32qxjY2H6uRfgvV2R467puMeWIEoquzvQvy4tsjy5ERex54hMMr0GsMaymzNQZbx65Usu8/yGfIG5Q==
+"@prismicio/react@^2.4.0", "@prismicio/react@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.5.0.tgz#2fa27467e153db8d761b72eeec648ac4e7ed910b"
+  integrity sha512-1EYdvoU2bpVEkmVDDVyTUK22C580tTWR96HJ9PMUex0oGeJLBAMKiRinyachN42r1uCH5nRAH54A90ZtBjjZhw==
   dependencies:
     "@prismicio/helpers" "^2.3.1"
     "@prismicio/richtext" "^2.0.1"

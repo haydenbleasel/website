@@ -60,7 +60,7 @@
   "devDependencies": {
     "@haydenbleasel/harmony": "^1.0.26",
     "@next/eslint-plugin-next": "^12.2.5",
-    "@prismicio/types": "^0.2.2",
+    "@prismicio/types": "^0.2.3",
     "@types/he": "^1.1.2",
     "@types/lodash.groupby": "^4.6.7",
     "@types/mjml": "^4.7.0",

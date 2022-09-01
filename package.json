@@ -24,7 +24,7 @@
     "@react-hookz/web": "^15.1.0",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
-    "date-fns": "^2.29.1",
+    "date-fns": "^2.29.2",
     "disposable-email-domains": "^1.0.59",
     "embla-carousel-react": "^7.0.0",
     "fathom-client": "^3.5.0",

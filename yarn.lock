@@ -1331,33 +1331,15 @@
     "@prismicio/types-internal" "0.2.10"
     tslib "^2.3.1"
 
-"@prismicio/client@^6.4.3":
-  version "6.4.3"
-  resolved "https://registry.yarnpkg.com/@prismicio/client/-/client-6.4.3.tgz#9a8358fbe9f4c871a790223b572b85bf9018cadb"
-  integrity sha512-UrOMeXc4upAqBgE0MRuw/S//NTaOi6LWTb7OmTUEyWaOVURILcMLKbcL879futl7pPfx1KI7t+cyQWnH0irCHA==
-  dependencies:
-    "@prismicio/helpers" "^2.2.1"
-    "@prismicio/types" "^0.1.27"
-
-"@prismicio/client@^6.6.4":
-  version "6.6.4"
-  resolved "https://registry.yarnpkg.com/@prismicio/client/-/client-6.6.4.tgz#c282427fc1f9cd6c38257ffe83a74d43973f40ea"
-  integrity sha512-5Mx8yCWN0ZoG8BwvBSCGsOhwCwSdyyCp1VOxOOb9gB+i+POT7xeZABJOdwtSwE1/Cyy7Bvpr8w1b0ItrSc0rmw==
+"@prismicio/client@^6.4.3", "@prismicio/client@^6.7.0":
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/@prismicio/client/-/client-6.7.0.tgz#08c45b370476bada7978badf27df286aa8163278"
+  integrity sha512-ErBVCpBdjUWX0Bf22eogxnM+ljfZN0uoEOONiWs7y8scDA4fcc0ydXSTbpp+W/A3MCgDUI2J07DkxRrp2c5/Zw==
   dependencies:
     "@prismicio/helpers" "^2.3.3"
-    "@prismicio/types" "^0.2.1"
+    "@prismicio/types" "^0.2.3"
 
-"@prismicio/helpers@^2.2.1", "@prismicio/helpers@^2.3.0", "@prismicio/helpers@^2.3.1":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.3.2.tgz#602e3f2ab432ecbc91b2485e2b9743ebc94fee48"
-  integrity sha512-7FyvybtzvqSvFrDL/Dhb91ADrgwhWaNBA8svX/xs3BrARpGicdNBLiy8WBMM3+pD13tLFi8AxOr5563ORO+siw==
-  dependencies:
-    "@prismicio/richtext" "^2.1.0"
-    "@prismicio/types" "^0.2.0"
-    escape-html "^1.0.3"
-    imgix-url-builder "^0.0.3"
-
-"@prismicio/helpers@^2.3.3":
+"@prismicio/helpers@^2.3.0", "@prismicio/helpers@^2.3.1", "@prismicio/helpers@^2.3.3":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.3.3.tgz#de576b6da66ba283f56275408ad81add7b856785"
   integrity sha512-P3oYJnBeJPz/ClUBUewbE+ak73gs5JVL+C1G6TfgN5G5j0MYkwMluZXBqbC3yDTx8jxNeQUADyI8V05cl0Jdgw==
@@ -1472,15 +1454,10 @@
   resolved "https://registry.yarnpkg.com/@prismicio/types/-/types-0.1.29.tgz#52914a5ba304c8b75fdcf398e5014ac4364fdffb"
   integrity sha512-wp7DHqMK0FDMcFQfJbqTAzWNBkM6/rRq71jMw6x9m07nWCUqytJQQKg6/15uduIeSqPXmyfJW21drsmChGaxsQ==
 
-"@prismicio/types@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@prismicio/types/-/types-0.2.0.tgz#100f147bb6f63eb8721d972c9381d2774fc37f55"
-  integrity sha512-xxBSbRzKOYoqjRp+wcaA7aMp0yLp6GQ5QH5hwvLXL0ftVvX8A1pHR3mE6B8kgKgouCC2Ma8XsDRqf+AcfQDbdA==
-
-"@prismicio/types@^0.2.1", "@prismicio/types@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@prismicio/types/-/types-0.2.2.tgz#544527eb59b659851b17772773fe0a122702f45a"
-  integrity sha512-LINqeYOuW26oEZzuEdR5HAdoN/h0lWDloGJ/Ip9MO75IYPBTq/drnuuFT7qZbrbp4KIEAxAZgQxou5L1rtMPyA==
+"@prismicio/types@^0.2.0", "@prismicio/types@^0.2.1", "@prismicio/types@^0.2.2", "@prismicio/types@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@prismicio/types/-/types-0.2.3.tgz#9f4c5bce441e1d59242f1795acb77f7a583cad99"
+  integrity sha512-mHsZ9ora8He6PAn+Q/0MCVdlfc0Xv8rSEYJyfwywDApuvssGvgUbeHE6XTqPhK2dJwb0mAkJzCpZiQJRt9+bvw==
 
 "@radix-ui/primitive@1.0.0":
   version "1.0.0"

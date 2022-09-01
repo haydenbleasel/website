@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^12.2.5",
-    "@primer/octicons-react": "^17.4.1",
+    "@primer/octicons-react": "^17.5.0",
     "@prismicio/client": "^6.6.4",
     "@prismicio/helpers": "^2.3.3",
     "@prismicio/next": "^0.1.3",

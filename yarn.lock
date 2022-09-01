@@ -1318,10 +1318,10 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@primer/octicons-react@^17.4.1":
-  version "17.4.1"
-  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-17.4.1.tgz#022c13c2695119f5e2e5fc3e2edeed08164171c1"
-  integrity sha512-xTtpfgpyFyKlfNhvPOfCNVRwkoDBRKzZFwygpr4+Pwzs+selrL1phPLt2z6abeIY8cTEw1XRBGi00tylSaBJyQ==
+"@primer/octicons-react@^17.5.0":
+  version "17.5.0"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-17.5.0.tgz#3261eb75577e6287963e6c7a3d8b0320232cf07e"
+  integrity sha512-7z/uwKn/3w+DHEMFynEfHLYPHMjFzvsL88plimWhXou1hD4lriCUTvp65uDvdpyLqKyq5luEupnQmU+RiBODog==
 
 "@prismicio/api-renderer@^0.1.7":
   version "0.1.7"

@@ -1,0 +1,40 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "education",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": "single",
+    "description": "pleasant",
+    "university": [
+      {
+        "name": "skill",
+        "institution": "brought",
+        "year": 98,
+        "certificate": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      }
+    ],
+    "slices1": [],
+    "online": [
+      {
+        "name": "some",
+        "institution": "sides",
+        "year": 86,
+        "certificate": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      }
+    ]
+  }
+}

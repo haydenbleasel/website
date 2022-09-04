@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn install && open http://localhost:3000 && concurrently -n next,prismic,mailing \"next dev\" \"yarn:slicemachine\" \"npx mailing\"",
+    "dev": "yarn install && open http://localhost:3000 && open http://localhost:9999 && concurrently -n next,prismic,mailing \"next dev\" \"yarn:slicemachine\" \"npx mailing\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

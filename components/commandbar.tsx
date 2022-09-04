@@ -16,6 +16,7 @@ import type { FC } from 'react';
 import { createElement, useState, useEffect } from 'react';
 import type { Icon as IconType } from 'react-feather';
 import {
+  Compass,
   ArrowUpRight,
   Award,
   Book,
@@ -130,6 +131,13 @@ const items: ItemProps[] = [
     section: 'Pages',
     href: '/games',
     icon: Award,
+  },
+  {
+    name: 'Education',
+    shortcut: 'e',
+    section: 'Pages',
+    href: '/education',
+    icon: Compass,
   },
   {
     name: 'All Posts',

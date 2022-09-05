@@ -58,6 +58,7 @@ type ItemProps = {
   href?: string;
   action?: () => void;
   icon?: FC;
+  external?: boolean;
 };
 
 type ServerAction = Omit<Action, 'perform' | 'icon'> & {
@@ -178,12 +179,14 @@ const items: ItemProps[] = [
     ),
     section: 'Social',
     href: url,
+    external: true,
   })),
   {
     name: 'View source code',
     section: 'Social',
     icon: Code,
     href: 'https://github.com/haydenbleasel/daylight',
+    external: true,
   },
 ];
 
@@ -281,6 +284,43 @@ const CommandBar: FC = () => {
   const [customActions, setCustomActions] = useState<Action[]>([]);
   const { results } = useMatches();
 
+  const itemToAction = (item: ItemProps) => ({
+    id: item.id ?? slugify(item.name, { lower: true, strict: true }),
+    name: item.name,
+    icon: item.icon ? (
+      <div className="text-neutral-500 dark:text-neutral-400">
+        {createElement(item.icon, { size: 16 } as Record<string, unknown>)}
+      </div>
+    ) : undefined,
+    keywords: item.name,
+    shortcut: item.shortcut ? [item.shortcut] : undefined,
+    parent: item.parent,
+    section: item.section,
+    external: item.external,
+    perform:
+      item.action || item.href
+        ? () => {
+            if (item.action) {
+              item.action();
+              return;
+            }
+
+            if (item.href) {
+              if (item.href.startsWith('/')) {
+                router.push(item.href).catch((error) => {
+                  const message = parseError(error);
+
+                  toast.error(message);
+                });
+                return;
+              }
+
+              window.open(item.href, '_blank');
+            }
+          }
+        : undefined,
+  });
+
   useEffect(() => {
     const loadContent = async () => {
       const actions = await getCustomActions();
@@ -327,78 +367,42 @@ const CommandBar: FC = () => {
     }
   }, [customActions.length, router]);
 
-  useEffect(() => {
-    items.push(
-      {
-        id: 'theme',
-        name: 'Change theme...',
-        shortcut: 't',
-        section: 'Utilities',
-        icon: Sun,
-      },
-      {
-        name: 'Light',
-        shortcut: 'l',
-        parent: 'theme',
-        action: () => setTheme('light'),
-        icon: Sun,
-      },
-      {
-        name: 'Dark',
-        shortcut: 'd',
-        parent: 'theme',
-        action: () => setTheme('dark'),
-        icon: Moon,
-      },
-      {
-        name: 'System Default',
-        shortcut: 's',
-        parent: 'theme',
-        action: () => removeTheme(),
-        icon: Sunset,
-      }
-    );
-  }, [removeTheme, setTheme]);
+  const functionalActions = [
+    {
+      id: 'theme',
+      name: 'Change theme...',
+      shortcut: 't',
+      section: 'Utilities',
+      icon: Sun,
+    },
+    {
+      name: 'Light',
+      shortcut: 'l',
+      parent: 'theme',
+      action: () => setTheme('light'),
+      icon: Sun,
+    },
+    {
+      name: 'Dark',
+      shortcut: 'd',
+      parent: 'theme',
+      action: () => setTheme('dark'),
+      icon: Moon,
+    },
+    {
+      name: 'System Default',
+      shortcut: 's',
+      parent: 'theme',
+      action: () => removeTheme(),
+      icon: Sunset,
+    },
+  ].map(itemToAction);
 
-  const kbarActions: Action[] = items.map((item) => ({
-    id: item.id ?? slugify(item.name, { lower: true, strict: true }),
-    name: item.name,
-    icon: item.icon ? (
-      <div className="text-neutral-500 dark:text-neutral-400">
-        {createElement(item.icon, { size: 16 } as Record<string, unknown>)}
-      </div>
-    ) : undefined,
-    keywords: item.name,
-    shortcut: item.shortcut ? [item.shortcut] : undefined,
-    parent: item.parent,
-    section: item.section,
-    perform:
-      item.action || item.href
-        ? () => {
-            if (item.action) {
-              item.action();
-              return;
-            }
-
-            if (item.href) {
-              if (item.href.startsWith('/')) {
-                router.push(item.href).catch((error) => {
-                  const message = parseError(error);
-
-                  toast.error(message);
-                });
-                return;
-              }
-
-              window.open(item.href, '_blank');
-            }
-          }
-        : undefined,
-  }));
+  const kbarActions: Action[] = items.map(itemToAction);
 
   useRegisterActions(
-    [...kbarActions, ...customActions],
-    [kbarActions.length, customActions.length]
+    [...kbarActions, ...functionalActions, ...customActions],
+    [kbarActions.length, functionalActions.length, customActions.length]
   );
 
   return (

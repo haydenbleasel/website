@@ -115,10 +115,7 @@ const Layout: FC<LayoutProps> = ({
       return;
     }
 
-    const isKBarOpen =
-      (document.body.style as unknown as Record<string, string>)[
-        'overflow-y'
-      ] === 'hidden';
+    const isKBarOpen = document.body.style.overflowY === 'hidden';
     if (isKBarOpen) {
       const activeIndex = getActiveKBarIndex();
       const lastIndex = getLastKBarIndex();
@@ -139,10 +136,7 @@ const Layout: FC<LayoutProps> = ({
       return;
     }
 
-    const isKBarOpen =
-      (document.body.style as unknown as Record<string, string>)[
-        'overflow-y'
-      ] === 'hidden';
+    const isKBarOpen = document.body.style.overflowY === 'hidden';
     if (!isKBarOpen) {
       return;
     }
@@ -163,10 +157,7 @@ const Layout: FC<LayoutProps> = ({
       return;
     }
 
-    const isKBarOpen =
-      (document.body.style as unknown as Record<string, string>)[
-        'overflow-y'
-      ] === 'hidden';
+    const isKBarOpen = document.body.style.overflowY === 'hidden';
     if (!isKBarOpen) {
       return;
     }
@@ -179,10 +170,7 @@ const Layout: FC<LayoutProps> = ({
       return;
     }
 
-    const isKBarOpen =
-      (document.body.style as unknown as Record<string, string>)[
-        'overflow-y'
-      ] === 'hidden';
+    const isKBarOpen = document.body.style.overflowY === 'hidden';
     if (isKBarOpen) {
       const activeIndex = getActiveKBarIndex();
       if (activeIndex !== undefined && activeIndex > 0) {

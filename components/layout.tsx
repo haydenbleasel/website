@@ -5,7 +5,8 @@ import type { NextSeoProps } from 'next-seo';
 import { NextSeo } from 'next-seo';
 import type { OpenGraphMedia } from 'next-seo/lib/types';
 import { useRouter } from 'next/router';
-import { FC, ReactNode, useEffect } from 'react';
+import type { FC, ReactNode } from 'react';
+import { useEffect } from 'react';
 import { ArrowLeft } from 'react-feather';
 import useGamepadController from '../hooks/useGamepadController';
 import StickyTitle from './stickyTitle';
@@ -49,16 +50,16 @@ const getActiveKBarIndex = () => {
     '#kbar-listbox > [aria-selected="true"]'
   );
   if (!activeElement) {
-    return;
+    return undefined;
   }
   const id = activeElement.getAttribute('id');
   const index = id?.split('-').at(-1);
 
   if (!index) {
-    return;
+    return undefined;
   }
 
-  const parsedIndex = +index;
+  const parsedIndex = Number(index);
 
   return parsedIndex;
 };
@@ -72,10 +73,10 @@ const getLastKBarIndex = () => {
   const index = id?.split('-').at(-1);
 
   if (!index) {
-    return;
+    return undefined;
   }
 
-  const parsedIndex = +index;
+  const parsedIndex = Number(index);
 
   return parsedIndex;
 };
@@ -99,9 +100,15 @@ const Layout: FC<LayoutProps> = ({
 
   useEffect(() => {
     if (gamepadState.options) {
+      router.reload();
+    }
+  }, [gamepadState.options, router]);
+
+  useEffect(() => {
+    if (gamepadState.y) {
       kbar.query.toggle();
     }
-  }, [gamepadState.options]);
+  }, [gamepadState.y, kbar.query]);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !gamepadState.down) {
@@ -122,7 +129,7 @@ const Layout: FC<LayoutProps> = ({
     } else {
       window.scrollTo({ top: window.scrollY + window.innerHeight });
     }
-  }, [gamepadState.down]);
+  }, [gamepadState.down, kbar.query]);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !gamepadState.a) {
@@ -134,9 +141,9 @@ const Layout: FC<LayoutProps> = ({
       return;
     }
 
-    const activeElement = document.querySelector(
+    const activeElement = document.querySelector<HTMLDivElement>(
       '#kbar-listbox > [aria-selected="true"]'
-    ) as HTMLDivElement | null;
+    );
 
     if (!activeElement) {
       return;
@@ -156,7 +163,7 @@ const Layout: FC<LayoutProps> = ({
     }
 
     kbar.query.setCurrentRootAction(null);
-  }, [gamepadState.b]);
+  }, [gamepadState.b, kbar.query]);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !gamepadState.up) {
@@ -172,13 +179,13 @@ const Layout: FC<LayoutProps> = ({
     } else {
       window.scrollTo({ top: window.scrollY - window.innerHeight });
     }
-  }, [gamepadState.up]);
+  }, [gamepadState.up, kbar.query]);
 
   useEffect(() => {
     if (gamepadState.share && typeof window !== 'undefined') {
       router.back();
     }
-  }, [gamepadState.share]);
+  }, [gamepadState.share, router]);
 
   if (!title || !description) {
     throw new Error(

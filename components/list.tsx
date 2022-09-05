@@ -3,6 +3,7 @@ import { useEffect, useState, Fragment } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
 import toast from 'react-hot-toast';
 import { Search } from 'react-feather';
+import parseError from '../utils/parseError';
 import Divider from './divider';
 
 type ListProps = {
@@ -52,8 +53,7 @@ const List: FC<ListProps> = ({
     }
 
     filterRecommendations(search).catch((error) => {
-      const message =
-        error instanceof Error ? error.message : (error as string);
+      const message = parseError(error);
 
       toast.error(message);
     });
@@ -75,15 +75,15 @@ const List: FC<ListProps> = ({
               <Tabs.Trigger
                 className={`relative animate-enter whitespace-nowrap opacity-0 ${
                   title === activeTab
-                    ? 'text-gray-900 after:absolute after:-bottom-[9px] after:block after:h-[1px] after:w-full after:bg-gray-900 after:content-[""] dark:text-white dark:after:bg-white'
-                    : 'text-gray-500 dark:text-gray-400'
+                    ? 'text-neutral-900 after:absolute after:-bottom-[9px] after:block after:h-[1px] after:w-full after:bg-neutral-900 after:content-[""] dark:text-white dark:after:bg-white'
+                    : 'text-neutral-500 dark:text-neutral-400'
                 }`}
                 style={{ animationDelay: `${(index + 2) * 100}ms` }}
                 value={title}
                 key={title}
               >
                 {title}{' '}
-                <span className="rounded-full bg-gray-50 py-1 px-2 text-xs dark:bg-gray-800">
+                <span className="rounded-full border border-neutral-200 py-1 px-2 text-xs dark:border-neutral-700">
                   {items.length}
                 </span>
               </Tabs.Trigger>
@@ -96,11 +96,11 @@ const List: FC<ListProps> = ({
             }}
           >
             <Search
-              className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
+              className="absolute left-0 top-1/2 -translate-y-1/2 text-neutral-400 dark:text-neutral-500"
               size={14}
             />
             <input
-              className="w-full min-w-[200px] bg-transparent py-1 px-[18px] outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              className="w-full min-w-[200px] bg-transparent py-1 px-[18px] outline-none placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
               type="text"
               placeholder="Search"
               value={search}
@@ -127,7 +127,7 @@ const List: FC<ListProps> = ({
               </Fragment>
             ))
           ) : (
-            <p className="text-md text-gray-500 dark:text-gray-400">
+            <p className="text-md text-neutral-500 dark:text-neutral-400">
               No data found.
             </p>
           )}

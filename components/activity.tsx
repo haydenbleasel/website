@@ -1,15 +1,9 @@
-import type { KeyTextField } from '@prismicio/types';
 import type { FC, KeyboardEventHandler } from 'react';
 import toast from 'react-hot-toast';
 import useActivity from '../hooks/useActivity';
 import Tooltip from './tooltip';
 
-type ActivityProps = {
-  customEmoji: KeyTextField;
-  customTitle?: KeyTextField;
-};
-
-const Activity: FC<ActivityProps> = ({ customEmoji, customTitle }) => {
+const Activity: FC = () => {
   const activity = useActivity();
   const notifyActivity = () =>
     toast(
@@ -26,12 +20,6 @@ const Activity: FC<ActivityProps> = ({ customEmoji, customTitle }) => {
     }
   };
 
-  if (customEmoji && customTitle) {
-    activity.emoji = customEmoji;
-    activity.status = customTitle;
-    activity.source = 'Prismic';
-  }
-
   let label = activity.status;
 
   if (activity.source) {
@@ -40,16 +28,16 @@ const Activity: FC<ActivityProps> = ({ customEmoji, customTitle }) => {
 
   return (
     <div
-      className="absolute top-10 left-10 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-gray-100 bg-white pr-2 dark:border-gray-800 dark:bg-gray-900"
+      className="fixed top-2 right-12 z-10 flex h-[28px] w-[28px] cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-neutral-200 pr-2 dark:border-neutral-700 dark:bg-neutral-900 print:hidden"
       onClick={notifyActivity}
       onKeyDown={handleNotifyActivity}
       tabIndex={-1}
       role="button"
     >
-      <Tooltip label={label} side="right" sideOffset={4}>
-        <div className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-gray-900 dark:text-white sm:text-md">
+      <Tooltip label={label} side="left" sideOffset={4}>
+        <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center text-sm leading-none text-neutral-900 dark:text-white sm:text-md">
           {activity.emoji}
-        </div>
+        </span>
       </Tooltip>
     </div>
   );

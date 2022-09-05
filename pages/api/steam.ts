@@ -1,3 +1,5 @@
+import type { NextRequest } from 'next/server';
+import parseError from '../../utils/parseError';
 import res from '../../utils/response';
 
 type SteamResponse = {
@@ -13,7 +15,18 @@ export const config = {
   runtime: 'experimental-edge',
 };
 
-const handler = async (): Promise<Response> => {
+const handler = async (req: NextRequest): Promise<Response> => {
+  if (
+    req.headers.get('authorization') !==
+    `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`
+  ) {
+    return res(401, { error: 'Unauthorized' });
+  }
+
+  if (req.method !== 'GET') {
+    return res(405, { error: 'Method not allowed' });
+  }
+
   try {
     const response = await fetch(
       `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${
@@ -34,7 +47,7 @@ const handler = async (): Promise<Response> => {
 
     return res(200, { status: 'offline', game: undefined });
   } catch (error) {
-    const message = error instanceof Error ? error.message : (error as string);
+    const message = parseError(error);
 
     return res(500, { error: message });
   }

@@ -29,14 +29,12 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
   <Layout
     title={data.title}
     description={data.description}
+    subtitle={`Last updated at ${format(
+      parseISO(last_publication_date),
+      'MMM dd, yyyy'
+    )}`}
     image={data.coverImage}
   >
-    <div className="flex animate-enter flex-col gap-1 opacity-0 animation-delay-100">
-      <p className="mt-0 text-gray-500 dark:text-gray-400">
-        Last updated at{' '}
-        {format(parseISO(last_publication_date), 'MMM dd, yyyy')}{' '}
-      </p>
-    </div>
     {data.coverImage.url && (
       <Image
         src={data.coverImage.url}
@@ -48,7 +46,7 @@ const LandingPage: FC<LandingPageProps> = ({ data, last_publication_date }) => (
         }
         priority
         quality={100}
-        className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
+        className="flex animate-enter-burst overflow-hidden rounded-sm opacity-0 animation-delay-200"
       />
     )}
     {data.coverVideo.embed_url && (

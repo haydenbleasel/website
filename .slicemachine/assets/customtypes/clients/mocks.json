@@ -1,28 +1,26 @@
 {
-  "id": "5db6fb46-1bd9-4e92-b63e-fa2b0a9f3ae6",
-  "uid": "sequi-laboriosam-fugit",
+  "id": "mock-doc-id",
+  "url": null,
   "type": "clients",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
   "data": {
+    "title": "automobile",
+    "description": "stick",
     "rga": [
       {
-        "client": "expedite frictionless markets"
-      },
-      {
-        "client": "evolve seamless synergies"
-      },
-      {
-        "client": "architect strategic technologies"
+        "client": "bat"
       }
     ],
     "freelance": [
       {
-        "client": "enhance clicks-and-mortar architectures"
-      },
-      {
-        "client": "strategize clicks-and-mortar metrics"
-      },
-      {
-        "client": "implement robust relationships"
+        "client": "universe"
       }
     ]
   }

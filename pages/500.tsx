@@ -9,7 +9,7 @@ const ServerError: FC = () => (
       <Image src="/images/bonk.webp" alt="Bonk" width={498} height={371} />
       <h1 className="m-0">
         500:{' '}
-        <span className="text-gray-500 dark:text-gray-400">
+        <span className="text-neutral-500 dark:text-neutral-400">
           Internal server error
         </span>
       </h1>

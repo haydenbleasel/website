@@ -1,0 +1,116 @@
+{
+  "id": "education",
+  "label": "Education",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
+      }
+    },
+    "University": {
+      "university": {
+        "type": "Group",
+        "config": {
+          "label": "University",
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "Name",
+                "placeholder": ""
+              }
+            },
+            "institution": {
+              "type": "Text",
+              "config": {
+                "label": "Institution",
+                "placeholder": ""
+              }
+            },
+            "year": {
+              "type": "Number",
+              "config": {
+                "label": "Year",
+                "placeholder": ""
+              }
+            },
+            "certificate": {
+              "type": "Link",
+              "config": {
+                "label": "Certificate",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "Online": {
+      "online": {
+        "type": "Group",
+        "config": {
+          "label": "Online",
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "Name",
+                "placeholder": ""
+              }
+            },
+            "institution": {
+              "type": "Text",
+              "config": {
+                "label": "Institution",
+                "placeholder": ""
+              }
+            },
+            "year": {
+              "type": "Number",
+              "config": {
+                "label": "Year",
+                "placeholder": ""
+              }
+            },
+            "certificate": {
+              "type": "Link",
+              "config": {
+                "label": "Certificate",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

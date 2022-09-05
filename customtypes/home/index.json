@@ -28,27 +28,27 @@
       }
     },
     "Hero": {
-      "photo": {
+      "hero_title": {
         "config": {
-          "label": "Photo",
+          "label": "Hero Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "hero_description": {
+        "config": {
+          "label": "Hero Description",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "hero_image": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Image",
           "constraint": {},
           "thumbnails": []
-        },
-        "type": "Image"
-      },
-      "name": {
-        "config": {
-          "label": "Name",
-          "placeholder": ""
-        },
-        "type": "Text"
-      },
-      "role": {
-        "config": {
-          "label": "Role",
-          "placeholder": ""
-        },
-        "type": "Text"
+        }
       }
     },
     "Content": {

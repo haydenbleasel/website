@@ -22,6 +22,8 @@ import type { HomeProps } from '.';
 
 type ResumeProps = {
   data: {
+    title: KeyTextField;
+    description: KeyTextField;
     summary: RichTextField;
     testimonials: GroupField<{
       name: KeyTextField;
@@ -59,19 +61,19 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
   }, []);
 
   return (
-    <Layout title="Resume" description="My printable resume." noTitle>
-      {home.photo.url && (
+    <Layout title={data.title} description={data.description} noTitle>
+      {home.hero_image.url && (
         <Image
-          src={home.photo.url}
+          src={home.hero_image.url}
           alt="Hayden Bleasel"
-          width={64}
-          height={64}
+          width={128}
+          height={128}
           priority
           quality={100}
-          className="flex shrink-0 overflow-hidden rounded-full"
+          className="flex h-16 w-16 shrink-0 overflow-hidden rounded-full object-cover"
         />
       )}
-      <h1 className="mb-4">{home.name}</h1>
+      <h1 className="mb-4">Hayden Bleasel</h1>
       <p className="mt-0 text-lg">{home.description}</p>
       <PrismicLink href={process.env.NEXT_PUBLIC_SITE_URL}>
         Visit my website
@@ -93,7 +95,7 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
               job.data.company
             )}
           </h3>
-          <p className="text-gray-500 dark:text-gray-400">
+          <p className="text-neutral-500 dark:text-neutral-400">
             {job.data.startYear} &mdash; {job.data.endYear ?? 'Present'} in{' '}
             {job.data.location}
           </p>
@@ -119,7 +121,9 @@ const Resume: FC<ResumeProps> = ({ data, home, work }) => {
       <div>
         {data.testimonials.map((testimonial) => (
           <div key={testimonial.name}>
-            <blockquote>{testimonial.quote}</blockquote>
+            <blockquote className="font-serif text-[18px]">
+              {testimonial.quote}
+            </blockquote>
             <div className="mt-4 flex items-center gap-2">
               {testimonial.photo.url && (
                 <Image

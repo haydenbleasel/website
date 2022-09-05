@@ -11,13 +11,26 @@
           "placeholder": ""
         },
         "type": "UID"
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
       }
     },
     "R/GA": {
       "rga": {
         "config": {
           "label": "Rga",
-          "placeholder": "",
           "fields": {
             "client": {
               "config": {
@@ -35,7 +48,6 @@
       "freelance": {
         "config": {
           "label": "Freelance",
-          "placeholder": "",
           "fields": {
             "client": {
               "config": {

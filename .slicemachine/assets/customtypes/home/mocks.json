@@ -1,54 +1,42 @@
 {
-  "id": "a4751331-cacf-42aa-8625-ef13a279b083",
-  "uid": "voluptates-dolorum-voluptatem",
+  "id": "mock-doc-id",
+  "url": null,
   "type": "home",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
   "data": {
-    "title": "architect extensible interfaces",
-    "description": "utilize global convergence",
-    "photo": {
+    "title": "army",
+    "description": "riding",
+    "hero_title": "society",
+    "hero_description": "meet",
+    "hero_image": {
       "dimensions": {
         "width": 900,
         "height": 500
       },
-      "alt": "Placeholder image",
+      "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db"
     },
-    "name": "aggregate global channels",
-    "role": "exploit efficient e-tailers",
     "sections": [
       {
-        "title": "aggregate integrated solutions",
+        "title": "small",
         "content": [
           {
             "type": "paragraph",
-            "text": "Non nulla qui qui.",
-            "spans": []
-          }
-        ]
-      },
-      {
-        "title": "mesh cross-platform niches",
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "Consectetur tempor ad Lorem cupidatat fugiat dolor dolore sunt quis ex elit eu ullamco. Dolor elit occaecat pariatur reprehenderit quis velit eu incididunt ex qui.",
-            "spans": []
-          }
-        ]
-      },
-      {
-        "title": "streamline global portals",
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "Labore veniam nostrud nostrud tempor cupidatat cupidatat fugiat consectetur quis velit laboris et minim sunt pariatur. Veniam excepteur voluptate ullamco. Eiusmod anim commodo aliquip.",
+            "text": "Proident aute aliquip id nisi culpa consectetur ea magna dolore reprehenderit id duis velit. Tempor dolor deserunt aute. Minim aute dolore incididunt quis aliquip in et commodo esse ullamco anim proident ad velit consectetur.",
             "spans": []
           }
         ]
       }
     ],
-    "customActivityEmoji": "productize customized technologies",
-    "customActivityTitle": "mesh visionary ROI"
+    "customActivityEmoji": "percent",
+    "customActivityTitle": "steep"
   }
 }

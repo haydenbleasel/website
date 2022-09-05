@@ -1,74 +1,46 @@
 {
-  "id": "36afb128-6224-40c4-974c-b724fd4cb53f",
-  "uid": "maxime-eveniet-ipsa",
+  "id": "mock-doc-id",
+  "url": null,
   "type": "resume",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
   "data": {
+    "title": "throat",
+    "description": "growth",
     "summary": [
       {
         "type": "paragraph",
-        "text": "Labore sunt pariatur dolor deserunt elit voluptate voluptate.",
+        "text": "Aliqua eu laborum sit laboris qui anim magna aliquip elit eu nulla.",
         "spans": []
       }
     ],
     "testimonials": [
       {
-        "name": "unleash turn-key partnerships",
-        "quote": "productize synergistic users",
+        "name": "basic",
+        "quote": "occur",
         "photo": {
           "dimensions": {
             "width": 900,
             "height": 500
           },
-          "alt": "Placeholder image",
+          "alt": null,
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=900&h=500&fit=crop"
-        }
-      },
-      {
-        "name": "syndicate out-of-the-box partnerships",
-        "quote": "whiteboard cross-platform content",
-        "photo": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?w=900&h=500&fit=crop"
-        }
-      },
-      {
-        "name": "expedite visionary functionalities",
-        "quote": "optimize web-enabled e-tailers",
-        "photo": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6"
         }
       }
     ],
     "education": [
       {
-        "degree": "cultivate value-added web services",
-        "university": "enable visionary convergence",
-        "startYear": 828,
-        "endYear": 202
-      },
-      {
-        "degree": "optimize dynamic convergence",
-        "university": "engage back-end functionalities",
-        "startYear": 46,
-        "endYear": 2893
-      },
-      {
-        "degree": "extend efficient niches",
-        "university": "benchmark strategic models",
-        "startYear": 6883,
-        "endYear": 2545
+        "degree": "strip",
+        "university": "design",
+        "startYear": 18,
+        "endYear": 94
       }
     ]
   }

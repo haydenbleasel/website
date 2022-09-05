@@ -5,12 +5,13 @@ import type {
   KeyTextField,
   PrismicDocumentWithUID,
 } from '@prismicio/types';
-import { createClient } from '@prismicio/client';
 import Layout from '../components/layout';
 import { getPage } from '../utils/prismic';
 
 type ClientsData = {
   data: {
+    title: KeyTextField;
+    description: KeyTextField;
     rga: GroupField<{
       client: KeyTextField;
     }>;
@@ -31,8 +32,8 @@ type ClientListData = {
 };
 
 const ClientList: FC<ClientListData> = ({ name, data }) => (
-  <div className="mt-4 flex gap-8">
-    <p className="flex-0 m-0 w-24 text-sm text-gray-500 dark:text-gray-400">
+  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:gap-8">
+    <p className="flex-0 m-0 w-24 text-neutral-500 dark:text-neutral-400">
       {name}
     </p>
     <div className="flex flex-1 flex-col gap-1">
@@ -55,8 +56,9 @@ const ClientList: FC<ClientListData> = ({ name, data }) => (
 
 const Clients: FC<ClientsData> = ({ data, jellypepper }) => (
   <Layout
-    title="Clients"
-    description="A list of clients I've worked with over the years."
+    title={data.title}
+    description={data.description}
+    subtitle={data.description}
   >
     <div className="flex flex-col gap-8">
       {[
@@ -83,19 +85,25 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     { previewData },
     'clients'
   )) as PrismicDocumentWithUID;
-  const jellypepperPrismicClient = createClient(
-    process.env.JELLYPEPPER_PRISMIC_ENDPOINT ?? 'loading',
+  const jellypepperResponse = await fetch(
+    'https://jellypepper.com/api/clients',
     {
-      fetch,
-      accessToken: process.env.JELLYPEPPER_PRISMIC_ACCESS_TOKEN ?? '',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        passphrase: process.env.JELLYPEPPER_PASSPHRASE,
+      }),
     }
   );
-  const clients = (await jellypepperPrismicClient.getAllByType(
-    'client'
-  )) as unknown as PrismicDocumentWithUID<{
-    client_name: KeyTextField;
-  }>[];
-  const jellypepper = clients.map((client) => ({
+  const jellypepperClients = (await jellypepperResponse.json()) as {
+    data: {
+      client_name: string;
+    };
+  }[];
+
+  const jellypepper = jellypepperClients.map((client) => ({
     client: client.data.client_name,
   }));
 

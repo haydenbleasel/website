@@ -23,29 +23,34 @@ export type ProjectsProps = {
   };
 };
 
-const Project: FC<{
+type ProjectProps = {
   title: KeyTextField;
   description: KeyTextField;
   wip?: boolean;
-}> = ({ title, description, wip = false }) => (
+};
+
+const Project: FC<ProjectProps> = ({ title, description, wip = false }) => (
   <div className="flex flex-col gap-2 py-2 sm:flex-row sm:gap-8">
     <span className="flex-0 flex items-center gap-2">
       {title}
       {wip && (
-        <span className="text-xs text-gray-500 dark:text-gray-400">(WIP)</span>
+        <span className="text-xs text-neutral-500 dark:text-neutral-400">
+          (WIP)
+        </span>
       )}
     </span>
-    <span className="flex-1 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+    <span className="flex-1 text-sm text-neutral-500 dark:text-neutral-400 sm:text-right">
       {description}
     </span>
   </div>
 );
 
 const Projects: FC<ProjectsProps> = ({ data }) => (
-  <Layout title={data.title} description={data.description}>
-    <p className="animate-enter opacity-0 animation-delay-100 dark:text-gray-400">
-      {data.description}
-    </p>
+  <Layout
+    title={data.title}
+    description={data.description}
+    subtitle={data.description}
+  >
     <List
       className="mt-4"
       data={[

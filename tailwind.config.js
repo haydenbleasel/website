@@ -69,6 +69,8 @@ module.exports = {
       },
       animation: {
         enter: 'enter 0.6s forwards',
+        burst: 'burst 0.6s forwards',
+        'enter-burst': 'enter 0.6s forwards, burst 0.6s forwards',
       },
       keyframes: {
         enter: {
@@ -80,6 +82,11 @@ module.exports = {
             opacity: 1,
             transform: 'none',
           },
+        },
+        burst: {
+          '0%': { opacity: 0, filter: 'brightness(1) blur(20px)' },
+          '10%': { opacity: 1, filter: 'brightness(2) blur(10px)' },
+          '100%': { opacity: 1, filter: 'brightness(1) blur(0)' },
         },
       },
       typography: ({ theme }) => ({
@@ -93,12 +100,12 @@ module.exports = {
               padding: theme('padding.5'),
               overflow: 'auto',
               borderRadius: theme('borderRadius.sm'),
-              backgroundColor: theme('colors.gray.900'),
+              backgroundColor: theme('colors.neutral.900'),
             },
             code: {
               borderRadius: theme('borderRadius.sm'),
-              color: theme('colors.gray.600'),
-              backgroundColor: theme('colors.gray.50'),
+              color: theme('colors.neutral.600'),
+              backgroundColor: theme('colors.neutral.50'),
             },
             'code::before': {
               content: '',
@@ -138,9 +145,9 @@ module.exports = {
             a: {
               textDecoration: 'underline',
               fontWeight: theme('fontWeight.normal'),
-              color: theme('colors.gray.900'),
+              color: theme('colors.neutral.900'),
               '&:hover': {
-                color: theme('colors.gray.800'),
+                color: theme('colors.neutral.800'),
               },
             },
           },
@@ -148,12 +155,12 @@ module.exports = {
         invert: {
           css: {
             pre: {
-              backgroundColor: theme('colors.gray.800'),
+              backgroundColor: theme('colors.neutral.800'),
             },
             a: {
               color: theme('colors.white'),
               '&:hover': {
-                color: theme('colors.gray.100'),
+                color: theme('colors.neutral.100'),
               },
             },
           },

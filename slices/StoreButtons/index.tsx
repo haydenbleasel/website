@@ -33,7 +33,7 @@ const StoreButtons: FC<
           alt="Download on the App Store"
           priority
           quality={100}
-          className="transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
+          className="animate-burst transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
         />
       </Link>
       <Link
@@ -50,7 +50,7 @@ const StoreButtons: FC<
           alt="Download on the App Store"
           priority
           quality={100}
-          className="transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
+          className="animate-burst transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
         />
       </Link>
       <Link
@@ -67,7 +67,7 @@ const StoreButtons: FC<
           alt="Get it on Google Play"
           priority
           quality={100}
-          className="transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
+          className="animate-burst transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
         />
       </Link>
       <Link
@@ -84,7 +84,7 @@ const StoreButtons: FC<
           alt="Get it on Google Play"
           priority
           quality={100}
-          className="transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
+          className="animate-burst transition-all hover:translate-y-[-2px] hover:drop-shadow-md"
         />
       </Link>
     </div>

@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { parse } from 'node-html-parser';
+import parseError from '../../utils/parseError';
 import res from '../../utils/response';
 
 export type DribbbleResponse = {
@@ -26,6 +27,17 @@ const imageRegex = /"shotGifUrl":"(?<value>.+?)"/u;
 
 const handler = async (req: NextRequest): Promise<Response> => {
   const { shot } = (await req.json()) as { shot: number };
+
+  if (
+    req.headers.get('authorization') !==
+    `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`
+  ) {
+    return res(401, { error: 'Unauthorized' });
+  }
+
+  if (req.method !== 'POST') {
+    return res(405, { error: 'Method not allowed' });
+  }
 
   if (!shot) {
     return res(400, { error: 'No shot provided' });
@@ -58,7 +70,7 @@ const handler = async (req: NextRequest): Promise<Response> => {
       },
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : (error as string);
+    const message = parseError(error);
 
     return res(500, { error: message });
   }

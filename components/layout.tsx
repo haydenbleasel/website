@@ -4,16 +4,19 @@ import type { NextSeoProps } from 'next-seo';
 import { NextSeo } from 'next-seo';
 import type { OpenGraphMedia } from 'next-seo/lib/types';
 import { useRouter } from 'next/router';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { ArrowLeft } from 'react-feather';
 import StickyTitle from './stickyTitle';
 
 export type LayoutProps = {
   title: string | null;
   description: string | null;
+  subtitle?: string | null;
+  caption?: string;
   image?: ImageField;
   noSticky?: boolean;
   noTitle?: boolean;
+  children: ReactNode;
 } & Omit<NextSeoProps, 'title' | 'description'>;
 
 const getPreviousPage = (path: string) => {
@@ -42,6 +45,8 @@ const getPreviousPage = (path: string) => {
 const Layout: FC<LayoutProps> = ({
   title,
   description,
+  subtitle,
+  caption,
   image,
   children,
   noSticky = false,
@@ -81,7 +86,7 @@ const Layout: FC<LayoutProps> = ({
   }
 
   return (
-    <div className="py-12 print:py-0 sm:gap-24 sm:py-48">
+    <div className="py-12 print:py-4 sm:gap-24 sm:py-48">
       <NextSeo
         title={title}
         titleTemplate="%s — Hayden Bleasel"
@@ -112,14 +117,28 @@ const Layout: FC<LayoutProps> = ({
         {title}
       </StickyTitle>
       <div className="container prose mx-auto px-4 dark:prose-invert">
+        {(caption || subtitle) && (
+          <div className="mb-8 flex flex-col gap-1">
+            {subtitle && (
+              <p className="m-0 animate-enter opacity-0 animation-delay-100">
+                {subtitle}
+              </p>
+            )}
+            {caption && (
+              <p className="m-0 animate-enter text-sm text-neutral-500 opacity-0 animation-delay-100 dark:text-neutral-400">
+                {caption}
+              </p>
+            )}
+          </div>
+        )}
         {children}
       </div>
       {previousPage && (
         <div className="fixed top-0 left-0 z-20 print:hidden">
           <PrismicLink href={previousPage.href}>
-            <span className="flex items-center gap-1 p-4 text-gray-500 dark:text-gray-400">
+            <span className="flex items-center gap-1 p-4 text-neutral-500 dark:text-neutral-400">
               <ArrowLeft size={16} />
-              <span className="text-sm leading-[1rem] text-gray-500 dark:text-gray-400">
+              <span className="text-sm leading-[1rem] text-neutral-500 dark:text-neutral-400">
                 {previousPage.label}
               </span>
             </span>

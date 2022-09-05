@@ -64,7 +64,11 @@
     "project": {},
     "projects": {},
     "games": {},
-    "contact": {}
+    "contact": {},
+    "education": {
+      "online": {},
+      "university": {}
+    }
   },
   "slices": {
     "RichText": {

@@ -24,6 +24,7 @@ const nextConfig = {
   },
   experimental: {
     newNextLinkBehavior: true,
+    runtime: 'experimental-edge',
     images: {
       allowFutureImage: true,
     },

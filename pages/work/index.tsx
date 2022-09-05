@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next';
 import type { FC } from 'react';
 import groupBy from 'lodash.groupby';
 import type { KeyTextField, PrismicDocumentWithUID } from '@prismicio/types';
-import { PrismicLink } from '@prismicio/react';
+import { PrismicLink, PrismicRichText } from '@prismicio/react';
 import Layout from '../../components/layout';
 import { getPage, getPages } from '../../utils/prismic';
 import type { WorkPostProps } from './[post]';
@@ -19,7 +19,11 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
   const years = groupBy(posts, (post) => post.data.startYear);
 
   return (
-    <Layout title={data.title} description={data.description}>
+    <Layout
+      title={data.title}
+      description={data.description}
+      subtitle={data.description}
+    >
       <div className="mt-4 flex flex-col gap-8">
         {Object.keys(years)
           .reverse()
@@ -31,25 +35,29 @@ const Work: FC<WorkProps> = ({ data, posts }) => {
                 animationDelay: `${(index + 2) * 100}ms`,
               }}
             >
-              <p className="flex-0 m-0 w-24 text-sm text-gray-500 dark:text-gray-400">
+              <p className="flex-0 m-0 w-24 leading-9 text-neutral-500 dark:text-neutral-400">
                 {startYear}
               </p>
               <div className="flex flex-1 flex-col gap-4">
                 {years[startYear].map((job) => (
                   <div key={job.uid}>
-                    <p className="m-0">
+                    <h2 className="m-0 text-xl">
                       {job.data.role},{' '}
                       {job.data.slices1.length ? (
                         <PrismicLink document={job}>
-                          <span className="underline">{job.data.company}</span>
+                          <span className="font-semibold underline">
+                            {job.data.company}
+                          </span>
                         </PrismicLink>
                       ) : (
                         job.data.company
                       )}
-                    </p>
-                    <p className="flex-0 m-0 text-sm text-gray-500 dark:text-gray-400">
+                    </h2>
+                    <p className="flex-0 m-0 text-neutral-500 dark:text-neutral-400">
+                      {job.data.startYear} &rarr; {job.data.endYear} in{' '}
                       {job.data.location}
                     </p>
+                    <PrismicRichText field={job.data.summary} />
                   </div>
                 ))}
               </div>

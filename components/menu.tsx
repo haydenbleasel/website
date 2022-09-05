@@ -27,7 +27,7 @@ const Menu: FC = () => {
 
   return (
     <div
-      className="fixed top-0 right-0 z-20 p-4 text-gray-500 dark:text-gray-400 print:hidden"
+      className="fixed top-0 right-0 z-20 p-4 text-neutral-500 dark:text-neutral-400 print:hidden"
       onClick={clickHandler}
       onKeyDown={keyDownHandler}
       role="button"

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { Suspense } from 'react';
 import type { SliceComponentProps } from '@prismicio/react';
 import { PrismicLink } from '@prismicio/react';
 import type { KeyTextField } from '@prismicio/types';
@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import dynamic from 'next/dynamic';
 import type { RepositoryResponse } from '../../pages/api/github-repo';
+import Placeholder from '../../components/placeholder';
 
 const GitHubRepo: FC<
   SliceComponentProps<{
@@ -24,6 +25,11 @@ const GitHubRepo: FC<
     async (url: string) => {
       const response = await fetch(url, {
         method: 'POST',
+        headers: {
+          Authorization: `Bearer ${
+            process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''
+          }`,
+        },
         body: JSON.stringify({
           owner,
           repo,
@@ -39,92 +45,120 @@ const GitHubRepo: FC<
       return newData.data;
     }
   );
+  const EyeIcon = dynamic(
+    async () => {
+      const OctoIcons = await import(
+        /* webpackChunkName: "octoicons-react" */
+        '@primer/octicons-react'
+      );
 
-  const EyeIcon = dynamic(async () => {
-    const OctoIcons = await import(
-      /* webpackChunkName: "octoicons-react" */
-      '@primer/octicons-react'
-    );
+      return OctoIcons.EyeIcon;
+    },
+    { ssr: false, suspense: true }
+  );
 
-    return OctoIcons.EyeIcon;
-  });
+  const RepoForkedIcon = dynamic(
+    async () => {
+      const OctoIcons = await import(
+        /* webpackChunkName: "octoicons-react" */
+        '@primer/octicons-react'
+      );
 
-  const RepoForkedIcon = dynamic(async () => {
-    const OctoIcons = await import(
-      /* webpackChunkName: "octoicons-react" */
-      '@primer/octicons-react'
-    );
+      return OctoIcons.RepoForkedIcon;
+    },
+    { ssr: false, suspense: true }
+  );
 
-    return OctoIcons.RepoForkedIcon;
-  });
+  const StarIcon = dynamic(
+    async () => {
+      const OctoIcons = await import(
+        /* webpackChunkName: "octoicons-react" */
+        '@primer/octicons-react'
+      );
 
-  const StarIcon = dynamic(async () => {
-    const OctoIcons = await import(
-      /* webpackChunkName: "octoicons-react" */
-      '@primer/octicons-react'
-    );
+      return OctoIcons.StarIcon;
+    },
+    { ssr: false, suspense: true }
+  );
 
-    return OctoIcons.StarIcon;
-  });
+  const GitHub = dynamic(
+    async () => {
+      const FeatherIcons = await import(
+        /* webpackChunkName: "react-feather" */
+        'react-feather'
+      );
 
-  const GitHub = dynamic(async () => {
-    const FeatherIcons = await import(
-      /* webpackChunkName: "react-feather" */
-      'react-feather'
-    );
-
-    return FeatherIcons.GitHub;
-  });
+      return FeatherIcons.GitHub;
+    },
+    { ssr: false, suspense: true }
+  );
 
   return data ? (
     <Link
       href={data.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col items-center overflow-hidden rounded-md border border-gray-200 bg-white drop-shadow-sm transition-all hover:-translate-y-1 hover:drop-shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-900 sm:flex-row"
+      className="flex flex-col items-center overflow-hidden rounded-sm border border-neutral-200 bg-white drop-shadow-sm transition-all hover:-translate-y-1 hover:drop-shadow-md dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-900 sm:flex-row"
     >
-      <span className="w-full border-b border-gray-200 bg-gray-50 p-11 dark:border-gray-700 dark:bg-gray-800 sm:w-[auto] sm:border-b-0 sm:border-r">
-        <GitHub
-          size={24}
-          className="mx-auto text-gray-700 dark:text-gray-300"
-        />
+      <span className="w-full border-b border-neutral-200 bg-neutral-50 p-11 dark:border-neutral-700 dark:bg-neutral-800 sm:w-[auto] sm:border-b-0 sm:border-r">
+        <Suspense fallback={<Placeholder className="h-6 w-6 rounded-full" />}>
+          <GitHub
+            size={24}
+            className="mx-auto text-neutral-700 dark:text-neutral-300"
+          />
+        </Suspense>
       </span>
       <span className="flex w-full flex-1 flex-col gap-[2px] p-4">
         <span className="flex items-center justify-between">
-          <p className="text-md font-semibold text-gray-900 line-clamp-1 dark:text-white">
+          <p className="text-md font-semibold text-neutral-900 line-clamp-1 dark:text-white">
             {data.full_name}
           </p>
           <span className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <RepoForkedIcon
-                size={12}
-                className="text-gray-500 dark:text-gray-400"
-              />
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <Suspense
+                fallback={<Placeholder className="h-3 w-3 rounded-full" />}
+              >
+                <RepoForkedIcon
+                  size={12}
+                  className="text-neutral-500 dark:text-neutral-400"
+                />
+              </Suspense>
+              <p className="text-xs text-neutral-500 dark:text-neutral-400">
                 {data.forks}
               </p>
             </span>
             <span className="flex items-center gap-1">
-              <EyeIcon size={12} className="text-gray-500 dark:text-gray-400" />
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <Suspense
+                fallback={<Placeholder className="h-3 w-3 rounded-full" />}
+              >
+                <EyeIcon
+                  size={12}
+                  className="text-neutral-500 dark:text-neutral-400"
+                />
+              </Suspense>
+              <p className="text-xs text-neutral-500 dark:text-neutral-400">
                 {data.watchers}
               </p>
             </span>
             <span className="flex items-center gap-1">
-              <StarIcon
-                size={12}
-                className="text-gray-500 dark:text-gray-400"
-              />
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <Suspense
+                fallback={<Placeholder className="h-3 w-3 rounded-full" />}
+              >
+                <StarIcon
+                  size={12}
+                  className="text-neutral-500 dark:text-neutral-400"
+                />
+              </Suspense>
+              <p className="text-xs text-neutral-500 dark:text-neutral-400">
                 {data.stargazers_count}
               </p>
             </span>
           </span>
         </span>
-        <p className="text-sm text-gray-500 line-clamp-1 dark:text-gray-400">
+        <p className="text-sm text-neutral-500 line-clamp-1 dark:text-neutral-400">
           {data.description}
         </p>
-        <p className="text-xs text-gray-500 line-clamp-1 dark:text-gray-400">
+        <p className="text-xs text-neutral-500 line-clamp-1 dark:text-neutral-400">
           Last updated {format(parseISO(data.updated_at), 'MMM d, yyyy')}.
           Written in {data.language}.
         </p>

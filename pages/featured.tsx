@@ -41,9 +41,11 @@ const FeatureInner: FC<Partial<FeatureData> & { withArrow?: boolean }> = ({
         <span className="line-clamp-1">{name}</span>
         {withArrow && <ArrowUpRight className="shrink-0" size={16} />}
       </span>
-      <span className="text-sm text-gray-500 dark:text-gray-400">{source}</span>
+      <span className="text-sm text-neutral-500 dark:text-neutral-400">
+        {source}
+      </span>
     </span>
-    <span className="shrink-0 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+    <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-400 sm:text-right">
       {date && format(parse(date, 'yyyy-MM-dd', new Date()), 'MMM dd, yyyy')}
     </span>
   </span>
@@ -67,10 +69,11 @@ const sortByDate = (featureA: FeatureData, featureB: FeatureData) =>
   (featureB.date ?? '') > (featureA.date ?? '') ? 1 : -1;
 
 const Featured: FC<FeaturesData> = ({ data }) => (
-  <Layout title={data.title} description={data.description}>
-    <p className="animate-enter text-gray-500 opacity-0 animation-delay-100 dark:text-gray-400">
-      {data.description}
-    </p>
+  <Layout
+    title={data.title}
+    description={data.description}
+    subtitle={data.description}
+  >
     <List
       className="mt-4"
       data={[

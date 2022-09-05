@@ -49,7 +49,7 @@ const PostLink: FC<Post> = ({ id, title, date, link }) => {
           <ArrowUpRight className="shrink-0" size={16} />
         )}
       </span>
-      <span className="flex-0 w-24 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+      <span className="flex-0 w-24 text-sm text-neutral-500 dark:text-neutral-400 sm:text-right">
         {format(parseISO(date), 'MMM dd, yyyy')}
       </span>
     </Link>

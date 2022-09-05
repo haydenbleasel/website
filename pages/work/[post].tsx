@@ -9,7 +9,6 @@ import type {
   RichTextField,
   SliceZone as SliceZoneProps,
 } from '@prismicio/types';
-import type { SliceZoneComponents } from '@prismicio/react';
 import { SliceZone } from '@prismicio/react';
 import Image from 'next/future/image';
 import Layout from '../../components/layout';
@@ -37,10 +36,10 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
     image={data.coverImage}
   >
     <div className="animate-enter opacity-0 animation-delay-100">
-      <p className="m-0 text-lg text-gray-500 dark:text-gray-400">
+      <p className="m-0 text-lg text-neutral-500 dark:text-neutral-400">
         {data.role}
       </p>
-      <p className="mt-1 animate-enter text-gray-500 opacity-0 animation-delay-200 dark:text-gray-400">
+      <p className="mt-1 animate-enter text-neutral-500 opacity-0 animation-delay-200 dark:text-neutral-400">
         {data.startYear} &mdash; {data.endYear ?? 'Present'} &bull;{' '}
         {data.location}.
       </p>
@@ -56,7 +55,7 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
         }
         priority
         quality={100}
-        className="flex animate-enter overflow-hidden rounded-sm opacity-0 animation-delay-200"
+        className="flex animate-enter-burst overflow-hidden rounded-sm opacity-0 animation-delay-200"
       />
     )}
     {data.coverVideo.embed_url && (
@@ -65,10 +64,7 @@ const WorkPost: FC<WorkPostProps> = ({ data }) => (
       </div>
     )}
     <div className="animate-enter opacity-0 animation-delay-300">
-      <SliceZone
-        slices={data.slices1}
-        components={components as unknown as SliceZoneComponents}
-      />
+      <SliceZone slices={data.slices1} components={components} />
     </div>
   </Layout>
 );

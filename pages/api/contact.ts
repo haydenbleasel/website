@@ -4,6 +4,8 @@ import type { NextApiHandler } from 'next';
 import type { ReactElement } from 'react';
 import sendMail from '../../emails';
 import template from '../../emails/TextEmail';
+import parseBody from '../../utils/parseBody';
+import parseError from '../../utils/parseError';
 
 type ContactResponse = {
   error?: string;
@@ -11,11 +13,24 @@ type ContactResponse = {
 };
 
 const handler: NextApiHandler<ContactResponse> = async (req, res) => {
-  const { name, email, message } = req.body as {
-    name: string;
+  const { name, email, message } = parseBody<{
+    name?: string;
     email?: string;
     message?: string;
-  };
+  }>(req);
+
+  if (
+    req.headers.authorization !==
+    `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`
+  ) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return;
+  }
+
+  if (!name) {
+    res.status(400).json({ error: 'No name provided' });
+    return;
+  }
 
   if (!email) {
     res.status(400).json({ error: 'Missing email field' });
@@ -59,8 +74,7 @@ const handler: NextApiHandler<ContactResponse> = async (req, res) => {
 
     res.status(200).json({ message: 'Email sent' });
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : (error as string);
+    const errorMessage = parseError(error);
 
     res.status(500).json({ error: errorMessage });
   }

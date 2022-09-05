@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, KeyboardEventHandler } from 'react';
 import React, { useState, useEffect } from 'react';
 import type { SliceComponentProps } from '@prismicio/react';
 import {
@@ -14,6 +14,7 @@ import toast from 'react-hot-toast';
 import Image from 'next/future/image';
 import type { DribbbleResponse } from '../../pages/api/dribbble';
 import Placeholder from '../../components/placeholder';
+import parseError from '../../utils/parseError';
 
 const formatNumbers = (num: number) => {
   if (num < 1000) {
@@ -28,6 +29,9 @@ const formatNumbers = (num: number) => {
 const loadShotData = async (shot: number) => {
   const response = await fetch('/api/dribbble', {
     method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''}`,
+    },
     body: JSON.stringify({
       shot,
     }),
@@ -46,7 +50,11 @@ const loadShotData = async (shot: number) => {
   return newData;
 };
 
-const Shot: FC<{ shot: number }> = ({ shot }) => {
+type ShotProps = {
+  shot: number;
+};
+
+const Shot: FC<ShotProps> = ({ shot }) => {
   const [data, setData] = useState<DribbbleResponse['data']>();
   const url = `https://dribbble.com/shots/${shot}`;
 
@@ -54,8 +62,8 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
     loadShotData(shot)
       .then(setData)
       .catch((error) => {
-        const message =
-          error instanceof Error ? error.message : (error as string);
+        const message = parseError(error);
+
         toast.error(message);
       });
   }, [shot]);
@@ -68,7 +76,7 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
       rel="noopener noreferrer"
       className="group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col no-underline"
     >
-      <div className="flex flex-col overflow-hidden rounded-md bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-gray-800">
+      <div className="flex flex-col overflow-hidden rounded-sm bg-white shadow-md transition-all group-hover:shadow-lg dark:bg-neutral-800">
         <div className="relative aspect-[4/3] w-full">
           <Placeholder className="absolute z-0 h-full w-full" />
 
@@ -79,30 +87,30 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
               height={300}
               quality={100}
               alt=""
-              className="relative z-10 m-0"
+              className="relative z-10 m-0 animate-burst"
             />
           )}
         </div>
-        <div className="flex flex-col gap-1 border-t border-gray-100 p-4 dark:border-gray-700">
-          <p className="m-0 text-lg font-semibold text-gray-900 line-clamp-1 dark:text-white">
+        <div className="flex flex-col gap-1 border-t border-neutral-200 p-4 dark:border-neutral-700">
+          <p className="m-0 text-lg font-semibold text-neutral-900 line-clamp-1 dark:text-white">
             {data?.title ?? 'Loading'}
           </p>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <MessageSquare size={16} className="text-gray-400" />
-              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+              <MessageSquare size={16} className="text-neutral-400" />
+              <p className="m-0 text-md text-neutral-500 dark:text-neutral-400">
                 {formatNumbers(data?.comments ?? 0)}
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <ThumbsUp size={16} className="text-gray-400" />
-              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+              <ThumbsUp size={16} className="text-neutral-400" />
+              <p className="m-0 text-md text-neutral-500 dark:text-neutral-400">
                 {formatNumbers(data?.likes ?? 0)}
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <Eye size={16} className="text-gray-400" />
-              <p className="m-0 text-md text-gray-500 dark:text-gray-400">
+              <Eye size={16} className="text-neutral-400" />
+              <p className="m-0 text-md text-neutral-500 dark:text-neutral-400">
                 {formatNumbers(data?.views ?? 0)}
               </p>
             </div>
@@ -113,28 +121,41 @@ const Shot: FC<{ shot: number }> = ({ shot }) => {
   );
 };
 
+type IconProps = {
+  className?: string;
+};
+
 type ArrowProps = {
-  icon: FC<{ className?: string }>;
+  icon: FC<IconProps>;
   active: boolean;
   handleClick: () => void;
 };
 
-const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => (
-  <div
-    className={`select-none rounded-full border border-gray-200 p-4 transition-all hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800 ${
-      active ? '' : 'cursor-not-allowed opacity-50'
-    }`}
-    onClick={handleClick}
-    onKeyDown={handleClick}
-    role="button"
-    tabIndex={0}
-    aria-label="Previous"
-    aria-controls="embla-carousel"
-    aria-disabled={!active}
-  >
-    <Icon className="text-gray-500 dark:text-gray-400" />
-  </div>
-);
+const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClick();
+    }
+  };
+
+  return (
+    <div
+      className={`select-none rounded-full border border-neutral-200 p-4 transition-all hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800 ${
+        active ? '' : 'cursor-not-allowed opacity-50'
+      }`}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label="Previous"
+      aria-controls="embla-carousel"
+      aria-disabled={!active}
+    >
+      <Icon className="text-neutral-500 dark:text-neutral-400" />
+    </div>
+  );
+};
 
 const DribbbleSlider: FC<
   SliceComponentProps<{

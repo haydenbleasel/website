@@ -1,40 +1,48 @@
 {
-  "id": "9e4d8cdf-a572-4fbf-9ece-a4e4005b6247",
-  "uid": "quo-et-velit",
+  "id": "mock-doc-id",
+  "url": null,
   "type": "landing-page",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
   "data": {
-    "title": "streamline out-of-the-box architectures",
-    "description": "aggregate rich initiatives",
+    "icon": "1",
+    "title": "function",
+    "description": "shallow",
     "coverImage": {
       "dimensions": {
         "width": 900,
         "height": 500
       },
-      "alt": "Placeholder image",
+      "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea"
     },
     "coverVideo": {
-      "title": "Prismic January Product Meetup",
-      "author_name": "Prismic",
-      "author_url": "https://www.youtube.com/channel/UCJq6AEgtWeZt7ziQ-fLKOeA",
-      "type": "video",
-      "height": 113,
-      "width": 200,
-      "version": "1.0",
-      "provider_name": "YouTube",
-      "provider_url": "https://www.youtube.com/",
-      "thumbnail_height": 360,
-      "thumbnail_width": 480,
-      "thumbnail_url": "https://i.ytimg.com/vi/fiOwHYFkUz0/hqdefault.jpg",
-      "html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/fiOwHYFkUz0?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_url": "https://twitter.com/timbenniks/status/1304146886832594944",
+      "author_name": "Tim Benniks",
+      "author_url": "https://twitter.com/timbenniks",
+      "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">I’ve been diving deep on <a href=\"https://twitter.com/prismicio?ref_src=twsrc%5Etfw\">@prismicio</a> <a href=\"https://twitter.com/hashtag/slicemachine?src=hash&amp;ref_src=twsrc%5Etfw\">#slicemachine</a> today. I made all my own components and I used custom slices. It works like a charm with <a href=\"https://twitter.com/nuxt_js?ref_src=twsrc%5Etfw\">@nuxt_js</a>. Also\": I’m coding with this view. <a href=\"https://t.co/F0I8X9gz39\">pic.twitter.com/F0I8X9gz39</a></p>&mdash; Tim Benniks (@timbenniks) <a href=\"https://twitter.com/timbenniks/status/1304146886832594944?ref_src=twsrc%5Etfw\">September 10, 2020</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+      "width": 550,
+      "height": null,
+      "type": "rich",
+      "cache_age": "3153600000",
+      "provider_name": "Twitter",
+      "provider_url": "http://www.twitter.com/",
+      "version": "1.0"
     },
     "content": [
       {
         "type": "paragraph",
-        "text": "Culpa voluptate ipsum ex velit minim consequat ad.",
+        "text": "Consectetur proident eu irure anim minim ea aliqua. Sunt ipsum Lorem sunt.",
         "spans": []
       }
-    ]
+    ],
+    "shortcut": "whom"
   }
 }

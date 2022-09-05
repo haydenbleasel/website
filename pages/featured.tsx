@@ -77,6 +77,10 @@ const Featured: FC<FeaturesData> = ({ data }) => (
     <List
       className="mt-4"
       data={[
+        {
+          title: 'All',
+          items: [...data.speaking, ...data.articles].sort(sortByDate),
+        },
         { title: 'Speaking', items: data.speaking.sort(sortByDate) },
         { title: 'Articles', items: data.articles.sort(sortByDate) },
       ]}

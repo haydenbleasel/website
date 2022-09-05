@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, KeyboardEventHandler } from 'react';
 import React, { useState, useEffect } from 'react';
 import type { SliceComponentProps } from '@prismicio/react';
 import {
@@ -131,22 +131,31 @@ type ArrowProps = {
   handleClick: () => void;
 };
 
-const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => (
-  <div
-    className={`select-none rounded-full border border-neutral-200 p-4 transition-all hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800 ${
-      active ? '' : 'cursor-not-allowed opacity-50'
-    }`}
-    onClick={handleClick}
-    onKeyDown={handleClick}
-    role="button"
-    tabIndex={0}
-    aria-label="Previous"
-    aria-controls="embla-carousel"
-    aria-disabled={!active}
-  >
-    <Icon className="text-neutral-500 dark:text-neutral-400" />
-  </div>
-);
+const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClick();
+    }
+  };
+
+  return (
+    <div
+      className={`select-none rounded-full border border-neutral-200 p-4 transition-all hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800 ${
+        active ? '' : 'cursor-not-allowed opacity-50'
+      }`}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label="Previous"
+      aria-controls="embla-carousel"
+      aria-disabled={!active}
+    >
+      <Icon className="text-neutral-500 dark:text-neutral-400" />
+    </div>
+  );
+};
 
 const DribbbleSlider: FC<
   SliceComponentProps<{

@@ -47,7 +47,7 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
       onMouseEnter={() => setShowPreview(true)}
       onMouseLeave={() => setShowPreview(false)}
       onKeyDown={() => setShowPreview(false)}
-      tabIndex={0}
+      tabIndex={-1}
       role="link"
     >
       {!screenshot.error && !isEmpty && showPreview && (

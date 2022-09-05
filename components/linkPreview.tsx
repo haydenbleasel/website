@@ -33,6 +33,7 @@ const LinkPreview: FC<LinkPreviewProps> = ({
         style={{
           left: relativeX,
           top: relativeY,
+          opacity: relativeX && relativeY ? 1 : 0,
         }}
       >
         <div className="h-[174px]">

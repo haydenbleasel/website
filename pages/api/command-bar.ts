@@ -70,16 +70,16 @@ const handler: NextApiHandler = async (req, res) => {
     icon: data.icon,
   }));
 
-  const devPostActions = devPosts.map(({ id, title, href }) => ({
+  const devPostActions = devPosts.map(({ id, title, link }) => ({
     id,
     name: title,
-    href,
+    href: link,
   }));
 
-  const mediumPostActions = mediumPosts.map(({ id, title, href }) => ({
+  const mediumPostActions = mediumPosts.map(({ id, title, link }) => ({
     id,
     name: title,
-    href,
+    href: link,
   }));
 
   res.status(200).json({

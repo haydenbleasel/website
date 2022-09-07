@@ -63,25 +63,28 @@ const Item: FC<
 
   return (
     <Command.Item
-      className="-mx-2 flex cursor-pointer items-center justify-between gap-2 rounded-sm p-2 text-md aria-selected:bg-neutral-100"
+      className="-mx-2 flex cursor-pointer items-center justify-between gap-2 rounded-sm p-2 text-md aria-selected:bg-neutral-100 dark:aria-selected:bg-neutral-800"
       onSelect={handleSelect}
       {...props}
     >
       <div className="flex items-center gap-2">
         {Icon && (
-          <Icon size={16} className="text-gray-400 dark:text-gray-600" />
+          <Icon size={16} className="text-neutral-400 dark:text-neutral-600" />
         )}
         <span className="text-neutral-900 dark:text-white">{children}</span>
       </div>
       {external && (
-        <ArrowUpRight className="text-gray-400 dark:text-gray-600" size={16} />
+        <ArrowUpRight
+          className="text-neutral-400 dark:text-neutral-600"
+          size={16}
+        />
       )}
     </Command.Item>
   );
 };
 
 const Group: FC<ComponentProps<typeof Command.Group>> = (props) => (
-  <Command.Group className="mt-4 space-y-1 first:mt-0" {...props} />
+  <Command.Group className="mb-4 space-y-1 last:mb-0" {...props} />
 );
 
 const SocialItem: FC<typeof social[number]> = ({
@@ -165,14 +168,12 @@ const CommandMenu: FC = () => {
 
       if (!search || page) {
         if (event.key === 'Escape' || event.key === 'Backspace') {
-          event.preventDefault();
           setPage('');
           return;
         }
       }
 
       if (event.key === 'Escape') {
-        event.preventDefault();
         setOpen(false);
       }
     },
@@ -224,16 +225,16 @@ const CommandMenu: FC = () => {
       className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-50/80 backdrop-blur-sm dark:bg-neutral-800/80"
     >
       <div
-        className="w-full max-w-xl rounded-md border border-neutral-200 bg-white drop-shadow-2xl transition-transform dark:bg-neutral-900"
+        className="w-full max-w-xl rounded-md border border-neutral-200 bg-white drop-shadow-2xl transition-transform dark:border-neutral-700 dark:bg-neutral-900"
         ref={dialogRef}
       >
-        <div className="relative flex items-center gap-2 border-b border-neutral-200 px-3">
+        <div className="relative flex items-center gap-2 border-b border-neutral-200 px-3 dark:border-neutral-700">
           <Search
             size={16}
-            className="text-neutral-500 placeholder:text-neutral-400 dark:text-neutral-400"
+            className="text-neutral-500 dark:text-neutral-400"
           />
           <Command.Input
-            className="w-full py-3 outline-none"
+            className="w-full bg-transparent py-3 text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-white dark:placeholder:text-neutral-600"
             placeholder={page ? `${page}...` : 'Start typing...'}
             value={search}
             onValueChange={setSearch}
@@ -245,7 +246,7 @@ const CommandMenu: FC = () => {
             </Tooltip>
           )}
         </div>
-        <Command.List className="h-[70vh] max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-gray-500 dark:text-gray-400">
+        <Command.List className="h-[70vh] max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-neutral-500 dark:text-neutral-400">
           <Command.Empty>No results found.</Command.Empty>
 
           {!page && (

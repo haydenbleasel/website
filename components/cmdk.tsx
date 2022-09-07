@@ -183,6 +183,7 @@ const CommandMenu: FC = () => {
 
   useEffect(() => {
     inputRef.current?.focus();
+    setSearch('');
 
     dialogRef.current?.style.setProperty('transform', 'scale(0.98)');
 

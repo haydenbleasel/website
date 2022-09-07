@@ -49,68 +49,47 @@ const handler: NextApiHandler = async (req, res) => {
   const projectActions = projects.data.wip
     .filter(({ link }) => link.link_type === 'Web')
     .map(({ name, description, link }) => ({
-      id: name,
       name: `${name ?? ''} — ${description ?? ''}`,
-      keywords: name,
-      link: (link as FilledLinkToWebField).url,
-      parent: 'projects',
-      external: true,
+      href: (link as FilledLinkToWebField).url,
     }));
 
   const caseStudyActions = caseStudies.map(({ uid, data }) => ({
-    id: uid,
     name: `${data.title ?? ''} — ${data.description ?? ''}`,
-    keywords: data.title,
-    link: `/blog/${uid}`,
-    parent: 'blog',
+    href: `/blog/${uid}`,
   }));
 
   const workPostActions = workPosts.map(({ uid, data }) => ({
-    id: uid,
     name: `${data.role ?? ''} at ${data.company ?? ''}`,
-    keywords: data.role,
-    link: data.slices1.length ? `/work/${uid}` : '/work',
-    parent: 'work',
+    href: data.slices1.length ? `/work/${uid}` : '/work',
   }));
 
   const landingPageActions = landingPages.map(({ uid, data }) => ({
-    id: uid,
     name: data.title,
-    keywords: data.title,
-    link: `/${uid}`,
-    section: 'Pages',
-    shortcut: data.shortcut ? [data.shortcut] : undefined,
+    href: `/${uid}`,
+    shortcut: data.shortcut,
     icon: data.icon,
   }));
 
-  const devPostActions = devPosts.map(({ id, title, link }) => ({
+  const devPostActions = devPosts.map(({ id, title, href }) => ({
     id,
     name: title,
-    keywords: title,
-    link,
-    parent: 'blog',
-    external: true,
+    href,
   }));
 
-  const mediumPostActions = mediumPosts.map(({ id, title, link }) => ({
+  const mediumPostActions = mediumPosts.map(({ id, title, href }) => ({
     id,
     name: title,
-    keywords: title,
-    link,
-    parent: 'blog',
-    external: true,
+    href,
   }));
 
-  const actions = [
-    ...projectActions,
-    ...caseStudyActions,
-    ...landingPageActions,
-    ...workPostActions,
-    ...devPostActions,
-    ...mediumPostActions,
-  ];
-
-  res.status(200).json({ actions });
+  res.status(200).json({
+    projects: projectActions,
+    caseStudies: caseStudyActions,
+    landingPages: landingPageActions,
+    workPosts: workPostActions,
+    devPosts: devPostActions,
+    mediumPosts: mediumPostActions,
+  });
 };
 
 export default handler;

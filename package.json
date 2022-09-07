@@ -32,6 +32,8 @@
     "@react-hookz/web": "^15.1.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.7",
+    "@thoughtbot/tailwindcss-aria-attributes": "^0.2.0",
+    "cmdk": "^0.1.20",
     "date-fns": "^2.29.3",
     "disposable-email-domains": "^1.0.62",
     "dotenv": "^16.0.3",

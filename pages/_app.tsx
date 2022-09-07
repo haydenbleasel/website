@@ -18,6 +18,7 @@ import richTextComponents from '../components/richTextComponents';
 import { social } from '../utils/social';
 import Menu from '../components/menu';
 import CommandBar from '../components/commandbar';
+import CommandBar2 from '../components/cmdk';
 import Activity from '../components/activity';
 import useNetworkMonitor from '../hooks/useNetworkMonitor';
 
@@ -77,6 +78,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
             </PrismicPreview>
             <Menu />
             <CommandBar />
+            <CommandBar2 />
             <Activity />
           </PrismicProvider>
         </KBarProvider>

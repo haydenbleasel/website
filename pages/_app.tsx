@@ -8,7 +8,6 @@ import { SocialProfileJsonLd } from 'next-seo';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { PrismicPreview } from '@prismicio/next';
 import Link from 'next/link';
-import { KBarProvider } from 'kbar';
 import useFathom from '@haydenbleasel/next-fathom';
 import useTheme from '@haydenbleasel/use-theme';
 import { createClient, linkResolver } from '../utils/prismic';
@@ -17,8 +16,7 @@ import ExternalLinkComponent from '../components/externalLink';
 import richTextComponents from '../components/richTextComponents';
 import { social } from '../utils/social';
 import Menu from '../components/menu';
-import CommandBar from '../components/commandbar';
-import CommandBar2 from '../components/cmdk';
+import CommandBar from '../components/cmdk';
 import Activity from '../components/activity';
 import useNetworkMonitor from '../hooks/useNetworkMonitor';
 
@@ -63,25 +61,22 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         sameAs={Object.values(social).map(({ url }) => url)}
       />
       <TooltipProvider delayDuration={0}>
-        <KBarProvider>
-          <PrismicProvider
-            linkResolver={linkResolver}
-            internalLinkComponent={InternalLinkComponent}
-            externalLinkComponent={ExternalLinkComponent}
-            client={createClient()}
-            richTextComponents={richTextComponents}
+        <PrismicProvider
+          linkResolver={linkResolver}
+          internalLinkComponent={InternalLinkComponent}
+          externalLinkComponent={ExternalLinkComponent}
+          client={createClient()}
+          richTextComponents={richTextComponents}
+        >
+          <PrismicPreview
+            repositoryName={process.env.NEXT_PUBLIC_PRISMIC_ENDPOINT ?? ''}
           >
-            <PrismicPreview
-              repositoryName={process.env.NEXT_PUBLIC_PRISMIC_ENDPOINT ?? ''}
-            >
-              <Component {...pageProps} />
-            </PrismicPreview>
-            <Menu />
-            <CommandBar />
-            <CommandBar2 />
-            <Activity />
-          </PrismicProvider>
-        </KBarProvider>
+            <Component {...pageProps} />
+          </PrismicPreview>
+          <Menu />
+          <CommandBar />
+          <Activity />
+        </PrismicProvider>
       </TooltipProvider>
       <Toaster
         containerClassName="print:hidden"

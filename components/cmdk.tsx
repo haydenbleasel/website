@@ -32,7 +32,6 @@ import fetcher from '../utils/fetcher';
 import parseError from '../utils/parseError';
 import { social } from '../utils/social';
 import LoadingIcon from './loadingIcon';
-import Tooltip from './tooltip';
 
 type ServerItemProps = {
   name: string;
@@ -40,6 +39,62 @@ type ServerItemProps = {
   shortcut?: string;
   icon?: string;
 };
+
+const pages = [
+  {
+    shortcut: 'h',
+    icon: Home,
+    href: '/',
+    name: 'Home',
+  },
+  {
+    shortcut: 'c',
+    icon: Users,
+    href: '/clients',
+    name: 'Clients',
+  },
+  {
+    shortcut: 'r',
+    icon: ThumbsUp,
+    href: '/recommendations',
+    name: 'Recommendations',
+  },
+  {
+    shortcut: '/',
+    icon: Send,
+    href: '/resume',
+    name: 'Resume',
+  },
+  {
+    shortcut: 'f',
+    icon: Star,
+    href: '/featured',
+    name: 'Featured',
+  },
+  {
+    shortcut: 'g',
+    icon: Award,
+    href: '/games',
+    name: 'Games',
+  },
+  {
+    shortcut: 'e',
+    icon: Compass,
+    href: '/education',
+    name: 'Education',
+  },
+  {
+    shortcut: 'p',
+    icon: Music,
+    href: '/playlists',
+    name: 'Playlists',
+  },
+  {
+    icon: MessageSquare,
+    href: '/contact',
+    name: 'Contact',
+  },
+];
 
 const Item: FC<
   ComponentProps<typeof Command.Item> & {
@@ -175,6 +230,29 @@ const CommandMenu: FC = () => {
 
       if (event.key === 'Escape') {
         setOpen(false);
+        return;
+      }
+
+      if (event.altKey) {
+        [
+          ...(customMenuItems.data?.landingPages ?? []),
+          ...(customMenuItems.data?.projects ?? []),
+          ...(customMenuItems.data?.caseStudies ?? []),
+          ...(customMenuItems.data?.workPosts ?? []),
+          ...(customMenuItems.data?.devPosts ?? []),
+          ...(customMenuItems.data?.mediumPosts ?? []),
+          ...pages,
+        ].find((item) => {
+          if (item.shortcut === event.key && item.href) {
+            router.push(item.href).catch((error) => {
+              const message = parseError(error);
+
+              toast.error(message);
+            });
+            return true;
+          }
+          return false;
+        });
       }
     },
     [],
@@ -241,11 +319,7 @@ const CommandMenu: FC = () => {
             onValueChange={setSearch}
             ref={inputRef}
           />
-          {loading && (
-            <Tooltip label="Loading menu items...">
-              <LoadingIcon />
-            </Tooltip>
-          )}
+          {loading && <LoadingIcon />}
         </div>
         <Command.List className="h-[70vh] max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-neutral-500 dark:text-neutral-400">
           <Command.Empty>No results found.</Command.Empty>
@@ -253,9 +327,11 @@ const CommandMenu: FC = () => {
           {!page && (
             <>
               <Group heading="Pages">
-                <Item shortcut="h" icon={Home} href="/">
-                  Home
-                </Item>
+                {pages.map(({ name, ...props }) => (
+                  <Item key={name} {...props}>
+                    {name}
+                  </Item>
+                ))}
                 <Item icon={Book} onSelect={() => setPage('Blog')}>
                   Blog
                 </Item>
@@ -264,30 +340,6 @@ const CommandMenu: FC = () => {
                 </Item>
                 <Item icon={Briefcase} onSelect={() => setPage('Work')}>
                   Work
-                </Item>
-                <Item shortcut="c" icon={Users} href="/clients">
-                  Clients
-                </Item>
-                <Item shortcut="r" icon={ThumbsUp} href="/recommendations">
-                  Recommendations
-                </Item>
-                <Item shortcut="/" icon={Send} href="/resume">
-                  Resume
-                </Item>
-                <Item shortcut="f" icon={Star} href="/featured">
-                  Featured
-                </Item>
-                <Item shortcut="g" icon={Award} href="/games">
-                  Games
-                </Item>
-                <Item shortcut="e" icon={Compass} href="/education">
-                  Education
-                </Item>
-                <Item shortcut="p" icon={Music} href="/playlists">
-                  Playlists
-                </Item>
-                <Item icon={MessageSquare} href="/contact">
-                  Contact
                 </Item>
                 {customMenuItems.data?.landingPages.map(hydrateItem)}
               </Group>

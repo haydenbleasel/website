@@ -7,6 +7,7 @@ import type { ComponentProps, FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import type { Icon, Icon as IconType } from 'react-feather';
 import {
+  ChevronRight,
   Compass,
   ArrowUpRight,
   Award,
@@ -91,8 +92,10 @@ const Item: FC<
   ComponentProps<typeof Command.Item> & {
     href?: string;
     icon?: Icon;
+    page?: boolean;
+    group?: string;
   }
-> = ({ icon: Icon, children, onSelect, href, ...props }) => {
+> = ({ icon: Icon, children, onSelect, href, page, group, ...props }) => {
   let handleSelect = onSelect;
   let external = false;
   const router = useRouter();
@@ -116,11 +119,30 @@ const Item: FC<
         {Icon && (
           <Icon size={16} className="text-neutral-400 dark:text-neutral-600" />
         )}
-        <span className="text-neutral-900 dark:text-white">{children}</span>
+        {group && (
+          <>
+            <span className="shrink-0 text-neutral-600 line-clamp-1 dark:text-neutral-400">
+              {group}
+            </span>
+            <ChevronRight
+              size={16}
+              className="shrink-0 text-neutral-400 dark:text-neutral-600"
+            />
+          </>
+        )}
+        <span className="text-neutral-900 line-clamp-1 dark:text-white">
+          {children}
+        </span>
       </div>
       {external && (
         <ArrowUpRight
-          className="text-neutral-400 dark:text-neutral-600"
+          className="shrink-0 text-neutral-400 dark:text-neutral-600"
+          size={16}
+        />
+      )}
+      {page && (
+        <ChevronRight
+          className="shrink-0 text-neutral-400 dark:text-neutral-600"
           size={16}
         />
       )}
@@ -156,7 +178,10 @@ const SocialItem: FC<typeof social[number]> = ({
   );
 };
 
-const hydrateItem = ({ icon, name, ...props }: ServerItemProps) => {
+const hydrateItem = (
+  { icon, name, ...props }: ServerItemProps,
+  group?: string
+) => {
   const Icon = icon
     ? (dynamic(
         async () => {
@@ -171,7 +196,7 @@ const hydrateItem = ({ icon, name, ...props }: ServerItemProps) => {
     : undefined;
 
   return (
-    <Item key={name} icon={Icon} {...props}>
+    <Item key={name} group={group} icon={Icon} {...props}>
       {name}
     </Item>
   );
@@ -288,10 +313,10 @@ const CommandMenu: FC = () => {
           />
           {loading && <LoadingIcon />}
         </div>
-        <Command.List className="h-[70vh] max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-neutral-500 dark:text-neutral-400">
+        <Command.List className="h-full max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-neutral-500 dark:text-neutral-400">
           <Command.Empty>No results found.</Command.Empty>
 
-          {!page && (
+          {(Boolean(search) || !page) && (
             <>
               <Group heading="Pages">
                 {pages.map(({ name, ...props }) => (
@@ -299,16 +324,18 @@ const CommandMenu: FC = () => {
                     {name}
                   </Item>
                 ))}
-                <Item icon={Book} onSelect={() => setPage('Blog')}>
+                <Item icon={Book} onSelect={() => setPage('Blog')} page>
                   Blog
                 </Item>
-                <Item icon={Zap} onSelect={() => setPage('Projects')}>
+                <Item icon={Zap} onSelect={() => setPage('Projects')} page>
                   Projects
                 </Item>
-                <Item icon={Briefcase} onSelect={() => setPage('Work')}>
+                <Item icon={Briefcase} onSelect={() => setPage('Work')} page>
                   Work
                 </Item>
-                {customMenuItems.data?.landingPages.map(hydrateItem)}
+                {customMenuItems.data?.landingPages.map((item) =>
+                  hydrateItem(item)
+                )}
               </Group>
 
               <Group heading="Social">
@@ -322,44 +349,69 @@ const CommandMenu: FC = () => {
               </Group>
 
               <Group heading="Utilities">
-                <Item icon={Sun} onSelect={() => setPage('Theme')}>
+                <Item icon={Sun} onSelect={() => setPage('Theme')} page>
                   Change theme...
                 </Item>
               </Group>
             </>
           )}
 
-          {page === 'Work' && (
+          {(Boolean(search) || page === 'Work') && (
             <>
-              <Item href="/work">All work</Item>
-              {customMenuItems.data?.workPosts.map(hydrateItem)}
+              <Item href="/work" group="Work">
+                All work
+              </Item>
+              {customMenuItems.data?.workPosts.map((item) =>
+                hydrateItem(item, 'Work')
+              )}
             </>
           )}
 
-          {page === 'Blog' && (
+          {(Boolean(search) || page === 'Blog') && (
             <>
-              <Item href="/blog">All posts</Item>
-              {customMenuItems.data?.devPosts.map(hydrateItem)}
-              {customMenuItems.data?.mediumPosts.map(hydrateItem)}
+              <Item href="/blog" group="Blog">
+                All posts
+              </Item>
+              {customMenuItems.data?.devPosts.map((item) =>
+                hydrateItem(item, 'Blog')
+              )}
+              {customMenuItems.data?.mediumPosts.map((item) =>
+                hydrateItem(item, 'Blog')
+              )}
             </>
           )}
 
-          {page === 'Projects' && (
+          {(Boolean(search) || page === 'Projects') && (
             <>
-              <Item href="/projects">All projects</Item>
-              {customMenuItems.data?.projects.map(hydrateItem)}
+              <Item href="/projects" group="Projects">
+                All projects
+              </Item>
+              {customMenuItems.data?.projects.map((item) =>
+                hydrateItem(item, 'Projects')
+              )}
             </>
           )}
 
-          {page === 'Theme' && (
+          {(Boolean(search) || page === 'Theme') && (
             <>
-              <Item value="light" onSelect={() => setTheme('light')} icon={Sun}>
+              <Item
+                group="Theme"
+                value="light"
+                onSelect={() => setTheme('light')}
+                icon={Sun}
+              >
                 Light
               </Item>
-              <Item value="dark" onSelect={() => setTheme('dark')} icon={Moon}>
+              <Item
+                group="Theme"
+                value="dark"
+                onSelect={() => setTheme('dark')}
+                icon={Moon}
+              >
                 Dark
               </Item>
               <Item
+                group="Theme"
                 value="default"
                 onSelect={() => removeTheme()}
                 icon={Sunset}

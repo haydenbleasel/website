@@ -36,55 +36,46 @@ import LoadingIcon from './loadingIcon';
 type ServerItemProps = {
   name: string;
   href?: string;
-  shortcut?: string;
   icon?: string;
 };
 
 const pages = [
   {
-    shortcut: 'h',
     icon: Home,
     href: '/',
     name: 'Home',
   },
   {
-    shortcut: 'c',
     icon: Users,
     href: '/clients',
     name: 'Clients',
   },
   {
-    shortcut: 'r',
     icon: ThumbsUp,
     href: '/recommendations',
     name: 'Recommendations',
   },
   {
-    shortcut: '/',
     icon: Send,
     href: '/resume',
     name: 'Resume',
   },
   {
-    shortcut: 'f',
     icon: Star,
     href: '/featured',
     name: 'Featured',
   },
   {
-    shortcut: 'g',
     icon: Award,
     href: '/games',
     name: 'Games',
   },
   {
-    shortcut: 'e',
     icon: Compass,
     href: '/education',
     name: 'Education',
   },
   {
-    shortcut: 'p',
     icon: Music,
     href: '/playlists',
     name: 'Playlists',
@@ -100,7 +91,6 @@ const Item: FC<
   ComponentProps<typeof Command.Item> & {
     href?: string;
     icon?: Icon;
-    shortcut?: string;
   }
 > = ({ icon: Icon, children, onSelect, href, ...props }) => {
   let handleSelect = onSelect;
@@ -230,29 +220,6 @@ const CommandMenu: FC = () => {
 
       if (event.key === 'Escape') {
         setOpen(false);
-        return;
-      }
-
-      if (event.altKey) {
-        [
-          ...(customMenuItems.data?.landingPages ?? []),
-          ...(customMenuItems.data?.projects ?? []),
-          ...(customMenuItems.data?.caseStudies ?? []),
-          ...(customMenuItems.data?.workPosts ?? []),
-          ...(customMenuItems.data?.devPosts ?? []),
-          ...(customMenuItems.data?.mediumPosts ?? []),
-          ...pages,
-        ].find((item) => {
-          if (item.shortcut === event.key && item.href) {
-            router.push(item.href).catch((error) => {
-              const message = parseError(error);
-
-              toast.error(message);
-            });
-            return true;
-          }
-          return false;
-        });
       }
     },
     [],
@@ -364,18 +331,14 @@ const CommandMenu: FC = () => {
 
           {page === 'Work' && (
             <>
-              <Item shortcut="w" href="/work">
-                All work
-              </Item>
+              <Item href="/work">All work</Item>
               {customMenuItems.data?.workPosts.map(hydrateItem)}
             </>
           )}
 
           {page === 'Blog' && (
             <>
-              <Item shortcut="b" href="/blog">
-                All posts
-              </Item>
+              <Item href="/blog">All posts</Item>
               {customMenuItems.data?.devPosts.map(hydrateItem)}
               {customMenuItems.data?.mediumPosts.map(hydrateItem)}
             </>
@@ -383,9 +346,7 @@ const CommandMenu: FC = () => {
 
           {page === 'Projects' && (
             <>
-              <Item shortcut="x" href="/projects">
-                All projects
-              </Item>
+              <Item href="/projects">All projects</Item>
               {customMenuItems.data?.projects.map(hydrateItem)}
             </>
           )}

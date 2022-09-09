@@ -224,7 +224,6 @@ const CommandMenu: FC = () => {
     mediumPosts: ServerItemProps[];
   }>('/api/command-bar', fetcher, {
     revalidateOnFocus: false,
-    revalidateOnMount: false,
     revalidateOnReconnect: false,
   });
 
@@ -372,6 +371,9 @@ const CommandMenu: FC = () => {
               <Item href="/blog" group="Blog">
                 All posts
               </Item>
+              {customMenuItems.data?.caseStudies.map((item) =>
+                hydrateItem(item, 'Blog')
+              )}
               {customMenuItems.data?.devPosts.map((item) =>
                 hydrateItem(item, 'Blog')
               )}

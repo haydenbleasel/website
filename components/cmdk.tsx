@@ -29,6 +29,7 @@ import {
 } from 'react-feather';
 import toast from 'react-hot-toast';
 import useSWR from 'swr';
+import create from 'zustand';
 import fetcher from '../utils/fetcher';
 import parseError from '../utils/parseError';
 import { social } from '../utils/social';
@@ -87,6 +88,17 @@ const pages = [
     name: 'Contact',
   },
 ];
+
+export const useCommandBar = create<{
+  open: boolean;
+  toggleOpen: (open?: boolean) => void;
+}>((set) => ({
+  open: false,
+  toggleOpen: (newOpen?: boolean) =>
+    set((state) => ({
+      open: typeof newOpen === 'boolean' ? newOpen : !state.open,
+    })),
+}));
 
 const Item: FC<
   ComponentProps<typeof Command.Item> & {
@@ -206,7 +218,7 @@ const CommandMenu: FC = () => {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
+  const { open, toggleOpen } = useCommandBar();
   const [value, setValue] = useState('');
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
@@ -231,7 +243,7 @@ const CommandMenu: FC = () => {
     true,
     (event) => {
       if (event.key === 'j' && event.metaKey) {
-        setOpen((oldOpen) => !oldOpen);
+        toggleOpen();
         return;
       }
 
@@ -243,7 +255,7 @@ const CommandMenu: FC = () => {
       }
 
       if (event.key === 'Escape') {
-        setOpen(false);
+        toggleOpen(false);
       }
     },
     [],
@@ -275,7 +287,7 @@ const CommandMenu: FC = () => {
   }, [customMenuItems.data]);
 
   useEffect(() => {
-    const onRouteChangeComplete = () => setOpen(false);
+    const onRouteChangeComplete = () => toggleOpen(false);
 
     router.events.on('routeChangeComplete', onRouteChangeComplete);
     onRouteChangeComplete();
@@ -283,14 +295,14 @@ const CommandMenu: FC = () => {
     return () => {
       router.events.off('routeChangeComplete', onRouteChangeComplete);
     };
-  }, [router.events]);
+  }, [router.events, toggleOpen]);
 
   return (
     <Command.Dialog
       value={value}
       onValueChange={setValue}
       open={open}
-      onOpenChange={setOpen}
+      onOpenChange={toggleOpen}
       label="Global Command Menu"
       className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-50/80 backdrop-blur-sm dark:bg-neutral-800/80"
     >

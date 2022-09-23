@@ -91,7 +91,7 @@ const useActivity = (): ActivityResponse => {
 
     const time = Number(date.split(':')[0]);
 
-    if (time === 11 && !isWeekend) {
+    if (time === 8 && !isWeekend) {
       setStatus({
         emoji: '💪',
         status: 'Training',

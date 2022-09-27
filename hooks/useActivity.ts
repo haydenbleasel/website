@@ -45,6 +45,23 @@ const useActivity = (): ActivityResponse => {
   });
 
   useEffect(() => {
+    const date = new Date().toLocaleTimeString('en-US', {
+      timeZone: 'America/New_York',
+      hour12: false,
+    });
+
+    const day = new Date().getDay();
+    const isWeekend = day === 0 || day === 6;
+    const time = Number(date.split(':')[0]);
+
+    if (!isWeekend && time >= 9 && time <= 17) {
+      setStatus({
+        emoji: '👨‍💻',
+        status: 'Working',
+      });
+      return;
+    }
+
     if (!steam.error && steam.data?.game) {
       setStatus({
         emoji: '🎮',
@@ -81,16 +98,6 @@ const useActivity = (): ActivityResponse => {
       return;
     }
 
-    const date = new Date().toLocaleTimeString('en-US', {
-      timeZone: 'America/New_York',
-      hour12: false,
-    });
-
-    const day = new Date().getDay();
-    const isWeekend = day === 0 || day === 6;
-
-    const time = Number(date.split(':')[0]);
-
     if (time === 8 && !isWeekend) {
       setStatus({
         emoji: '💪',
@@ -103,14 +110,6 @@ const useActivity = (): ActivityResponse => {
       setStatus({
         emoji: '😴',
         status: 'Sleeping',
-      });
-      return;
-    }
-
-    if (!isWeekend) {
-      setStatus({
-        emoji: '👨‍💻',
-        status: 'Working',
       });
       return;
     }

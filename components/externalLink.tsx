@@ -1,29 +1,15 @@
 import type { LinkProps } from '@prismicio/react';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { Suspense, useState, useRef } from 'react';
+import { useRef } from 'react';
 import { ArrowUpRight } from 'react-feather';
-import { useAsync, useMountEffect } from '@react-hookz/web';
-
-import dynamic from 'next/dynamic';
-import type { PreviewResponse } from '../pages/api/link-preview';
+import Glimpse from '@haydenbleasel/glimpse/client';
+import { useMountEffect, useAsync } from '@react-hookz/web';
 
 const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const [showPreview, setShowPreview] = useState(false);
-  const LinkPreview = dynamic(
-    async () =>
-      import(
-        /* webpackChunkName: "link-preview" */
-        './linkPreview'
-      ),
-    {
-      ssr: false,
-      suspense: true,
-    }
-  );
 
-  const [screenshot, { execute }] = useAsync(async () => {
+  const [data, { execute }] = useAsync(async () => {
     const response = await fetch('/api/link-preview', {
       method: 'POST',
       body: JSON.stringify({
@@ -31,36 +17,36 @@ const ExternalLinkComponent: FC<LinkProps> = ({ children, href, ...props }) => {
       }),
     });
 
-    const data = (await response.json()) as PreviewResponse;
+    const json = (await response.json()) as {
+      error?: string;
+      data: {
+        title?: string | null;
+        description?: string | null;
+        image?: string | null;
+        url?: string | null;
+      };
+    };
 
-    return data;
+    if (json.error) {
+      throw new Error(json.error);
+    }
+
+    return json.data;
   });
-
-  const isEmpty = screenshot.result ? !screenshot.result.data?.image : false;
 
   useMountEffect(execute);
 
   return (
-    <span
-      ref={ref}
-      className="group inline-block"
-      onMouseEnter={() => setShowPreview(true)}
-      onMouseLeave={() => setShowPreview(false)}
-      onKeyDown={() => setShowPreview(false)}
-      tabIndex={-1}
-      role="link"
-    >
-      {!screenshot.error && !isEmpty && showPreview && (
-        <Suspense>
-          <LinkPreview
-            image={screenshot.result?.data?.image}
-            title={screenshot.result?.data?.title}
-            description={screenshot.result?.data?.description}
-            href={href}
-            linkRef={ref}
-          />
-        </Suspense>
-      )}
+    <span ref={ref} className="group inline-block" tabIndex={-1} role="link">
+      <Glimpse.Dialog linkRef={ref} data={data.result}>
+        <Glimpse.Image />
+        <Glimpse.Title />
+        <Glimpse.Description />
+        <span className="flex items-center gap-1">
+          <Glimpse.Link />
+          <ArrowUpRight width={12} height={12} className="text-neutral-400" />
+        </span>
+      </Glimpse.Dialog>
       <Link
         href={href}
         target="_blank"

@@ -12,7 +12,7 @@
     "upgrade": "npx npm-check-updates -u && yarn install"
   },
   "dependencies": {
-    "@haydenbleasel/use-theme": "^1.0.1",
+    "@haydenbleasel/use-theme": "^1.0.3",
     "@next/bundle-analyzer": "^12.2.5",
     "@primer/octicons-react": "^17.5.0",
     "@prismicio/client": "^6.7.0",

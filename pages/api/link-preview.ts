@@ -1,16 +1,7 @@
 import type { NextRequest } from 'next/server';
-import { parse } from 'node-html-parser';
-import parseError from '../../utils/parseError';
+import glimpse from '@haydenbleasel/glimpse/server';
 import res from '../../utils/response';
-
-export type PreviewResponse = {
-  error?: string;
-  data?: {
-    title: string | undefined;
-    description: string | undefined;
-    image: string | undefined;
-  };
-};
+import parseError from '../../utils/parseError';
 
 export const config = {
   runtime: 'experimental-edge',
@@ -24,23 +15,9 @@ const handler = async (req: NextRequest): Promise<Response> => {
   }
 
   try {
-    const response = await fetch(url);
-    const data = await response.text();
-    const dom = parse(data);
+    const data = await glimpse(url);
 
-    const title = dom.querySelector('title')?.text;
-    const description = dom.querySelector('meta[name="description"]')
-      ?.attributes.content;
-    const image = dom.querySelector('meta[property="og:image"]')?.attributes
-      .content;
-
-    return res(200, {
-      data: {
-        title,
-        description,
-        image,
-      },
-    });
+    return res(200, { data });
   } catch (error) {
     const message = parseError(error);
 

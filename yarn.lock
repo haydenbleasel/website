@@ -1140,6 +1140,13 @@
     stylelint-config-prettier "^9.0.3"
     stylelint-config-standard "^26.0.0"
 
+"@haydenbleasel/next-fathom@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/next-fathom/-/next-fathom-1.0.0.tgz#c0e1fab830d6a33310995b5e36b1a5d547a6d900"
+  integrity sha512-LdO6nbNBgvNo/zQI/lNmgbuDGMT2p9iyDmadWlcfDBp8T20SyATQGjoinxwQOxjg8kJf4u2o0NtXstmb0fKw5g==
+  dependencies:
+    fathom-client "^3.5.0"
+
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.10.4.tgz#01e7366e57d2ad104feea63e72248f22015c520c"

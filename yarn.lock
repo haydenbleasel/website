@@ -1140,6 +1140,11 @@
     stylelint-config-prettier "^9.0.3"
     stylelint-config-standard "^26.0.0"
 
+"@haydenbleasel/use-theme@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/use-theme/-/use-theme-1.0.1.tgz#399a4d1f08d16a3498274f79ae93264f89e9f2d4"
+  integrity sha512-xUOC7f7rPctfaspwvYKgvn40sOEFBRXbhZC6Vtdp5gKBUnx10Y+KPlCEfshZsMm/oKspjmAI8jIvEWA0p1D0hQ==
+
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.10.4.tgz#01e7366e57d2ad104feea63e72248f22015c520c"

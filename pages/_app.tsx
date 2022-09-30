@@ -9,6 +9,7 @@ import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { PrismicPreview } from '@prismicio/next';
 import Link from 'next/link';
 import { KBarProvider } from 'kbar';
+import useTheme from '@haydenbleasel/use-theme';
 import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
 import ExternalLinkComponent from '../components/externalLink';
@@ -19,14 +20,13 @@ import CommandBar from '../components/commandbar';
 import Activity from '../components/activity';
 import useAnalytics from '../hooks/useAnalytics';
 import useNetworkMonitor from '../hooks/useNetworkMonitor';
-import useThemeListener from '../hooks/useThemeListener';
 
 const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   useAnalytics();
   useNetworkMonitor();
-  useThemeListener();
+  useTheme();
 
   return (
     <>

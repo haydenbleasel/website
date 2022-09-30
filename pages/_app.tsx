@@ -25,7 +25,7 @@ const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   useFathom(process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? '', {
-    url: new URL('/script.js', process.env.NEXT_PUBLIC_ANALYTICS_URL).href,
+    url: process.env.NEXT_PUBLIC_ANALYTICS_URL,
   });
   useNetworkMonitor();
   useThemeListener();

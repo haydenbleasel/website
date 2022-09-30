@@ -9,6 +9,7 @@ import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { PrismicPreview } from '@prismicio/next';
 import Link from 'next/link';
 import { KBarProvider } from 'kbar';
+import useFathom from '@haydenbleasel/next-fathom';
 import useTheme from '@haydenbleasel/use-theme';
 import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
@@ -18,13 +19,14 @@ import { social } from '../utils/social';
 import Menu from '../components/menu';
 import CommandBar from '../components/commandbar';
 import Activity from '../components/activity';
-import useAnalytics from '../hooks/useAnalytics';
 import useNetworkMonitor from '../hooks/useNetworkMonitor';
 
 const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  useAnalytics();
+  useFathom(process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? '', {
+    url: process.env.NEXT_PUBLIC_ANALYTICS_URL,
+  });
   useNetworkMonitor();
   useTheme();
 

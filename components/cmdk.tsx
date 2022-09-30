@@ -242,7 +242,7 @@ const CommandMenu: FC = () => {
   useKeyboardEvent(
     true,
     (event) => {
-      if (event.key === 'j' && event.metaKey) {
+      if (event.key === 'k' && event.metaKey) {
         toggleOpen();
         return;
       }

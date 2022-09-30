@@ -10,6 +10,7 @@ import { PrismicPreview } from '@prismicio/next';
 import Link from 'next/link';
 import { KBarProvider } from 'kbar';
 import useFathom from '@haydenbleasel/next-fathom';
+import useTheme from '@haydenbleasel/use-theme';
 import { createClient, linkResolver } from '../utils/prismic';
 import '../styles/globals.css';
 import ExternalLinkComponent from '../components/externalLink';
@@ -19,7 +20,6 @@ import Menu from '../components/menu';
 import CommandBar from '../components/commandbar';
 import Activity from '../components/activity';
 import useNetworkMonitor from '../hooks/useNetworkMonitor';
-import useThemeListener from '../hooks/useThemeListener';
 
 const InternalLinkComponent = (props: LinkProps) => <Link {...props} />;
 
@@ -28,7 +28,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     url: process.env.NEXT_PUBLIC_ANALYTICS_URL,
   });
   useNetworkMonitor();
-  useThemeListener();
+  useTheme();
 
   return (
     <>

@@ -12,6 +12,10 @@ type ContactResponse = {
   message?: string;
 };
 
+export const config = {
+  runtime: 'nodejs',
+};
+
 const handler: NextApiHandler<ContactResponse> = async (req, res) => {
   const { name, email, message } = parseBody<{
     name?: string;

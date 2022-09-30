@@ -19,6 +19,10 @@ type Docs = PrismicDocumentWithUID<{
   shortcut?: KeyTextField;
 }>[];
 
+export const config = {
+  runtime: 'nodejs',
+};
+
 const handler: NextApiHandler = async (req, res) => {
   if (
     req.headers.authorization !==

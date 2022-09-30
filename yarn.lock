@@ -1140,10 +1140,10 @@
     stylelint-config-prettier "^9.0.3"
     stylelint-config-standard "^26.0.0"
 
-"@haydenbleasel/next-fathom@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@haydenbleasel/next-fathom/-/next-fathom-1.0.1.tgz#88165f69f69af2e5409131194beab090cdda507c"
-  integrity sha512-FnXcepSHVCI7jeQ5FOlF8Yxyc9MDfFoiVCJ7sJ+nlTnjrSrrSnakfTpSE/tTNTmspsmcKZKkzgembzb0pA+S0A==
+"@haydenbleasel/next-fathom@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/next-fathom/-/next-fathom-1.0.2.tgz#fb346044bb1925df5fc309d21b04c89519d27f59"
+  integrity sha512-3n8jP4/zeVgM1O1kIwQhVa6gKQrXu5ZVkaSNXLqJDpDpckS2imVzTgRen1Di8d72G9SQtiItjj4CtkbgY3uebw==
   dependencies:
     fathom-client "^3.5.0"
 

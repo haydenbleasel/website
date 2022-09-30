@@ -36,7 +36,7 @@ import {
   Zap,
 } from 'react-feather';
 import toast from 'react-hot-toast';
-import { useLocalStorageValue } from '@react-hookz/web';
+import useTheme from '@haydenbleasel/use-theme';
 import dynamic from 'next/dynamic';
 import slugify from 'slugify';
 import { social } from '../utils/social';
@@ -277,10 +277,7 @@ const onRender = ({ item, active }: RenderParams) => (
 
 const CommandBar: FC = () => {
   const router = useRouter();
-  const [, setTheme, removeTheme] = useLocalStorageValue<string | undefined>(
-    'theme',
-    undefined
-  );
+  const [, setTheme] = useTheme();
   const [customActions, setCustomActions] = useState<Action[]>([]);
   const { results } = useMatches();
 
@@ -393,7 +390,7 @@ const CommandBar: FC = () => {
       name: 'System Default',
       shortcut: 's',
       parent: 'theme',
-      action: () => removeTheme(),
+      action: () => setTheme(null),
       icon: Sunset,
     },
   ].map(itemToAction);

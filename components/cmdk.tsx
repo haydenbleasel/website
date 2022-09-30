@@ -92,12 +92,16 @@ const pages = [
 export const useCommandBar = create<{
   open: boolean;
   toggleOpen: (open?: boolean) => void;
+  page: string;
+  setPage: (page: string) => void;
 }>((set) => ({
   open: false,
   toggleOpen: (newOpen?: boolean) =>
     set((state) => ({
       open: typeof newOpen === 'boolean' ? newOpen : !state.open,
     })),
+  page: '',
+  setPage: (page) => set({ page }),
 }));
 
 const Item: FC<
@@ -218,11 +222,10 @@ const CommandMenu: FC = () => {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
-  const { open, toggleOpen } = useCommandBar();
+  const { open, toggleOpen, page, setPage } = useCommandBar();
   const [value, setValue] = useState('');
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState<string>('');
   const [, setTheme, removeTheme] = useLocalStorageValue<string | undefined>(
     'theme',
     undefined

@@ -1130,6 +1130,16 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
+"@haydenbleasel/command-bar@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/command-bar/-/command-bar-1.0.1.tgz#e2193175a874b0c39fc48105bb7870f0522b6df3"
+  integrity sha512-1pVUmnzPO7HE3gMhh48ruNB0PkI5Nc7jMq7GD6ooeK+pfuk5ZsRfIc0NGREHJ1VwIC0sagvOtDm0wpu025NFpA==
+  dependencies:
+    "@haydenbleasel/use-gamepad-events" "^1.0.2"
+    "@react-hookz/web" "^15.1.0"
+    cmdk "^0.1.20"
+    zustand "^4.1.1"
+
 "@haydenbleasel/glimpse@^1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@haydenbleasel/glimpse/-/glimpse-1.0.8.tgz#3b86002ac3bc6b948fa2bf4b98ca89e77d5704fd"

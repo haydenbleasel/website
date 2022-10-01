@@ -2,11 +2,11 @@ import { useRouter } from 'next/router';
 import useGamepadEvents from '@haydenbleasel/use-gamepad-events';
 import toast from 'react-hot-toast';
 import { useSessionStorageValue } from '@react-hookz/web';
-import { useCommandBar } from '../components/cmdk';
+import { useCommandBar } from '@haydenbleasel/command-bar';
 
 const useGamepadNavigation = (): void => {
   const router = useRouter();
-  const { toggleOpen, open, setIndex, select, setPage } = useCommandBar();
+  const { open } = useCommandBar();
   const [hasSeenControls, setHasSeenControls] = useSessionStorageValue(
     'daylight-controls',
     false
@@ -28,47 +28,22 @@ const useGamepadNavigation = (): void => {
   });
 
   gamepadEvents.on('options', router.reload);
-  gamepadEvents.on('y', toggleOpen);
   gamepadEvents.on('share', router.back);
 
   gamepadEvents.on('down', () => {
-    if (typeof window === 'undefined') {
+    if (typeof window === 'undefined' || open) {
       return;
     }
 
-    if (open) {
-      setIndex((index) => index + 1);
-    } else {
-      window.scrollTo({ top: window.scrollY + window.innerHeight });
-    }
-  });
-
-  gamepadEvents.on('a', () => {
-    if (typeof window === 'undefined' || !open) {
-      return;
-    }
-
-    select();
-  });
-
-  gamepadEvents.on('b', () => {
-    if (typeof window === 'undefined' || !open) {
-      return;
-    }
-
-    setPage('');
+    window.scrollTo({ top: window.scrollY + window.innerHeight });
   });
 
   gamepadEvents.on('up', () => {
-    if (typeof window === 'undefined') {
+    if (typeof window === 'undefined' || open) {
       return;
     }
 
-    if (open) {
-      setIndex((index) => index - 1);
-    } else {
-      window.scrollTo({ top: window.scrollY - window.innerHeight });
-    }
+    window.scrollTo({ top: window.scrollY - window.innerHeight });
   });
 };
 

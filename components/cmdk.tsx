@@ -1,10 +1,10 @@
-import { useKeyboardEvent, useLocalStorageValue } from '@react-hookz/web';
-import { Command } from 'cmdk';
+import { CommandBar, useCommandBar } from '@haydenbleasel/command-bar';
+import useTheme from '@haydenbleasel/use-theme';
 import dynamic from 'next/dynamic';
 import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 import type { ComponentProps, FC } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Icon, Icon as IconType } from 'react-feather';
 import {
   ChevronRight,
@@ -29,7 +29,6 @@ import {
 } from 'react-feather';
 import toast from 'react-hot-toast';
 import useSWR from 'swr';
-import create from 'zustand';
 import fetcher from '../utils/fetcher';
 import parseError from '../utils/parseError';
 import { social } from '../utils/social';
@@ -89,62 +88,8 @@ const pages = [
   },
 ];
 
-export const useCommandBar = create<{
-  open: boolean;
-  toggleOpen: (open?: boolean) => void;
-  page: string;
-  setPage: (page: string) => void;
-  index: number;
-  setIndex: (value: number | ((index: number) => number)) => void;
-  select: () => void;
-}>((set) => ({
-  open: false,
-  toggleOpen: (newOpen?: boolean) =>
-    set((state) => ({
-      open: typeof newOpen === 'boolean' ? newOpen : !state.open,
-    })),
-  page: '',
-  setPage: (page) => set({ page }),
-  index: 0,
-  setIndex: (value) =>
-    set((state) => {
-      const newIndex = typeof value === 'function' ? value(state.index) : value;
-
-      const allElements = document.querySelectorAll('[cmdk-item]');
-      const element = allElements[newIndex] as HTMLElement | undefined;
-
-      if (newIndex < 0 || newIndex >= allElements.length) {
-        return { index: state.index };
-      }
-
-      if (element) {
-        allElements.forEach((el) => {
-          el.removeAttribute('aria-selected');
-        });
-        element.setAttribute('aria-selected', 'true');
-        // scroll into view
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'nearest',
-        });
-      }
-
-      return { index: newIndex };
-    }),
-  select: () => {
-    const activeElement = document.querySelector(
-      '[cmdk-item][aria-selected="true"]'
-    );
-
-    if (activeElement) {
-      (activeElement as HTMLDivElement).click();
-    }
-  },
-}));
-
 const Item: FC<
-  ComponentProps<typeof Command.Item> & {
+  ComponentProps<typeof CommandBar.Item> & {
     href?: string;
     icon?: Icon;
     page?: boolean;
@@ -165,7 +110,7 @@ const Item: FC<
   }
 
   return (
-    <Command.Item
+    <CommandBar.Item
       className="-mx-2 flex cursor-pointer items-center justify-between gap-2 rounded-sm p-2 text-md aria-selected:bg-neutral-100 dark:aria-selected:bg-neutral-800"
       onSelect={handleSelect}
       {...props}
@@ -201,12 +146,12 @@ const Item: FC<
           size={16}
         />
       )}
-    </Command.Item>
+    </CommandBar.Item>
   );
 };
 
-const Group: FC<ComponentProps<typeof Command.Group>> = (props) => (
-  <Command.Group className="mb-4 space-y-1 last:mb-0" {...props} />
+const Group: FC<ComponentProps<typeof CommandBar.Group>> = (props) => (
+  <CommandBar.Group className="mb-4 space-y-1 last:mb-0" {...props} />
 );
 
 const SocialItem: FC<typeof social[number]> = ({
@@ -259,16 +204,9 @@ const hydrateItem = (
 
 const CommandMenu: FC = () => {
   const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const dialogRef = useRef<HTMLDivElement>(null);
-  const { open, toggleOpen, page, setPage, setIndex } = useCommandBar();
-  const [value, setValue] = useState('');
-  const [search, setSearch] = useState('');
+  const { open, toggleOpen, page, setPage, search } = useCommandBar();
   const [loading, setLoading] = useState(true);
-  const [, setTheme, removeTheme] = useLocalStorageValue<string | undefined>(
-    'theme',
-    undefined
-  );
+  const [, setTheme] = useTheme();
   const customMenuItems = useSWR<{
     projects: ServerItemProps[];
     caseStudies: ServerItemProps[];
@@ -280,41 +218,6 @@ const CommandMenu: FC = () => {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   });
-
-  useKeyboardEvent(
-    true,
-    (event) => {
-      if (event.key === 'k' && event.metaKey) {
-        toggleOpen();
-        return;
-      }
-
-      if (!search || page) {
-        if (event.key === 'Escape' || event.key === 'Backspace') {
-          setPage('');
-          return;
-        }
-      }
-
-      if (event.key === 'Escape') {
-        toggleOpen(false);
-      }
-    },
-    [],
-    { eventOptions: { passive: true } }
-  );
-
-  useEffect(() => {
-    inputRef.current?.focus();
-    setSearch('');
-    setIndex(0);
-
-    dialogRef.current?.style.setProperty('transform', 'scale(0.98)');
-
-    setTimeout(() => {
-      dialogRef.current?.style.setProperty('transform', 'scale(1)');
-    }, 100);
-  }, [page, setIndex]);
 
   useEffect(() => {
     if (customMenuItems.error) {
@@ -340,58 +243,23 @@ const CommandMenu: FC = () => {
     };
   }, [router.events, toggleOpen]);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const allElements = document.querySelectorAll('[cmdk-item]');
-    const activeElement = document.querySelector(
-      `[cmdk-item][data-value="${value}"]`
-    );
-
-    if (!activeElement) {
-      return;
-    }
-
-    const activeIndex = Array.from(allElements).indexOf(activeElement);
-
-    if (activeIndex === -1) {
-      return;
-    }
-
-    setIndex(activeIndex);
-  }, [value, setIndex]);
-
   return (
-    <Command.Dialog
-      value={value}
-      onValueChange={setValue}
+    <CommandBar.Dialog
       open={open}
       onOpenChange={toggleOpen}
-      label="Global Command Menu"
       className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-50/80 backdrop-blur-sm dark:bg-neutral-800/80"
     >
-      <div
-        className="w-full max-w-xl rounded-md border border-neutral-200 bg-white drop-shadow-2xl transition-transform dark:border-neutral-700 dark:bg-neutral-900"
-        ref={dialogRef}
-      >
+      <CommandBar.Container className="w-full max-w-xl rounded-md border border-neutral-200 bg-white drop-shadow-2xl transition-transform dark:border-neutral-700 dark:bg-neutral-900">
         <div className="relative flex items-center gap-2 border-b border-neutral-200 px-3 dark:border-neutral-700">
           <Search
             size={16}
             className="text-neutral-500 dark:text-neutral-400"
           />
-          <Command.Input
-            className="w-full bg-transparent py-3 text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-white dark:placeholder:text-neutral-600"
-            placeholder={page ? `${page}...` : 'Start typing...'}
-            value={search}
-            onValueChange={setSearch}
-            ref={inputRef}
-          />
+          <CommandBar.Input className="w-full bg-transparent py-3 text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-white dark:placeholder:text-neutral-600" />
           {loading && <LoadingIcon />}
         </div>
-        <Command.List className="h-full max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-neutral-500 dark:text-neutral-400">
-          <Command.Empty>No results found.</Command.Empty>
+        <CommandBar.List className="h-full max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-neutral-500 dark:text-neutral-400">
+          <CommandBar.Empty>No results found.</CommandBar.Empty>
 
           {(Boolean(search) || !page) && (
             <>
@@ -493,16 +361,16 @@ const CommandMenu: FC = () => {
               <Item
                 group="Theme"
                 value="default"
-                onSelect={() => removeTheme()}
+                onSelect={() => setTheme(null)}
                 icon={Sunset}
               >
                 System Default
               </Item>
             </>
           )}
-        </Command.List>
-      </div>
-    </Command.Dialog>
+        </CommandBar.List>
+      </CommandBar.Container>
+    </CommandBar.Dialog>
   );
 };
 

@@ -2,8 +2,8 @@ import type { FC, KeyboardEventHandler, MouseEventHandler } from 'react';
 import { useState } from 'react';
 import { Menu as MenuList } from 'react-feather';
 import toast from 'react-hot-toast';
+import { useCommandBar } from '@haydenbleasel/command-bar';
 import getCommandKey from '../utils/getCommandKey';
-import { useCommandBar } from './cmdk';
 
 const Menu: FC = () => {
   const commandBar = useCommandBar();

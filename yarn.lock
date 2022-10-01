@@ -1119,6 +1119,13 @@
   dependencies:
     "@react-hookz/web" "^15.1.0"
 
+"@haydenbleasel/use-gamepad-events@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/use-gamepad-events/-/use-gamepad-events-1.0.3.tgz#0f639b9fe9334f90da2c0490041b8a360f78d1de"
+  integrity sha512-iFCLj10L3CG0neaBIM6SHQ97QXPXrbASPHOA3nzLWF7iEKBzPs0t0tSAxbUUSgrNOzgsZNjZ6LBJwrjK/auyrw==
+  dependencies:
+    "@react-hookz/web" "^15.1.0"
+
 "@haydenbleasel/use-sticky@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@haydenbleasel/use-sticky/-/use-sticky-1.0.1.tgz#fa683d35a28cecf6e836dae788504e7a967b21a0"

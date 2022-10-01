@@ -15,7 +15,7 @@
     "@haydenbleasel/command-bar": "^1.0.1",
     "@haydenbleasel/glimpse": "^1.0.8",
     "@haydenbleasel/next-fathom": "^1.0.3",
-    "@haydenbleasel/use-gamepad-events": "^1.0.2",
+    "@haydenbleasel/use-gamepad-events": "^1.0.3",
     "@haydenbleasel/use-sticky": "^1.0.1",
     "@haydenbleasel/use-theme": "^1.0.3",
     "@next/bundle-analyzer": "^12.3.1",

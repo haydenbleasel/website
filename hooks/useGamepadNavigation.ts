@@ -1,27 +1,38 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import useGamepadEvents from '@haydenbleasel/use-gamepad-events';
+import toast from 'react-hot-toast';
+import { useSessionStorageValue } from '@react-hookz/web';
 import { useCommandBar } from '../components/cmdk';
-import useGamepadController from './useGamepadController';
 
 const useGamepadNavigation = (): void => {
   const router = useRouter();
-  const gamepadState = useGamepadController();
   const { toggleOpen, open, setIndex, select, setPage } = useCommandBar();
+  const [hasSeenControls, setHasSeenControls] = useSessionStorageValue(
+    'daylight-controls',
+    false
+  );
+  const gamepadEvents = useGamepadEvents({
+    onReady: (gamepad) => {
+      if (hasSeenControls) {
+        return;
+      }
+      toast(`${gamepad.id} connected.`);
+      toast('Press Y to open / close the menu.');
+      toast('Press A to select an option.');
+      toast('Press B to go back.');
+      toast('Press START to reload the page');
+      toast('Press SELECT to go back.');
+      toast('Use the D-Pad to navigate.');
+      setHasSeenControls(true);
+    },
+  });
 
-  useEffect(() => {
-    if (gamepadState.options) {
-      router.reload();
-    }
-  }, [gamepadState.options, router]);
+  gamepadEvents.on('options', router.reload);
+  gamepadEvents.on('y', toggleOpen);
+  gamepadEvents.on('share', router.back);
 
-  useEffect(() => {
-    if (gamepadState.y) {
-      toggleOpen();
-    }
-  }, [gamepadState.y, toggleOpen]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !gamepadState.down) {
+  gamepadEvents.on('down', () => {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -30,26 +41,26 @@ const useGamepadNavigation = (): void => {
     } else {
       window.scrollTo({ top: window.scrollY + window.innerHeight });
     }
-  }, [gamepadState.down, open, setIndex]);
+  });
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !gamepadState.a || !open) {
+  gamepadEvents.on('a', () => {
+    if (typeof window === 'undefined' || !open) {
       return;
     }
 
     select();
-  }, [select, open, gamepadState.a]);
+  });
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !gamepadState.b || !open) {
+  gamepadEvents.on('b', () => {
+    if (typeof window === 'undefined' || !open) {
       return;
     }
 
     setPage('');
-  }, [gamepadState.b, open, setPage]);
+  });
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !gamepadState.up) {
+  gamepadEvents.on('up', () => {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -58,13 +69,7 @@ const useGamepadNavigation = (): void => {
     } else {
       window.scrollTo({ top: window.scrollY - window.innerHeight });
     }
-  }, [gamepadState.up, open, setIndex]);
-
-  useEffect(() => {
-    if (gamepadState.share && typeof window !== 'undefined') {
-      router.back();
-    }
-  }, [gamepadState.share, router]);
+  });
 };
 
 export default useGamepadNavigation;

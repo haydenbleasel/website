@@ -12,7 +12,7 @@
     "upgrade": "npx npm-check-updates -u && yarn install"
   },
   "dependencies": {
-    "@haydenbleasel/glimpse": "^1.0.7",
+    "@haydenbleasel/glimpse": "^1.0.8",
     "@haydenbleasel/next-fathom": "^1.0.3",
     "@haydenbleasel/use-theme": "^1.0.3",
     "@next/bundle-analyzer": "^12.3.1",

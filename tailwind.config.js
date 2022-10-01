@@ -11,7 +11,6 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './templates/**/*.{js,ts,jsx,tsx}',
     './slices/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@haydenbleasel/glimpse/dist/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     fontFamily: {

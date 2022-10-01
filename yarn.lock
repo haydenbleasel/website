@@ -1130,10 +1130,10 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@haydenbleasel/glimpse@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@haydenbleasel/glimpse/-/glimpse-1.0.7.tgz#c1c0e4cf50ae2106c068225a8fa52f432459142c"
-  integrity sha512-iaxMhCmoEOGiH3wbmRx7FzNp57uM3aGRPblzdpy8QaYtnLlxO6GhNsEQiYsHB8zTQLAT+MtQh8CJRAew0Tl6bA==
+"@haydenbleasel/glimpse@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/glimpse/-/glimpse-1.0.8.tgz#3b86002ac3bc6b948fa2bf4b98ca89e77d5704fd"
+  integrity sha512-nNcm4FcoP1Kgvb0t/io8S5z5F1xCFwID9hpB0IwnDbD513z1xwnQHt6vlzDJxrllTE70GD147JzzWSOC4stuTg==
   dependencies:
     "@radix-ui/react-portal" "^1.0.0"
     node-html-parser "^6.1.1"

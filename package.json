@@ -41,7 +41,6 @@
     "fathom-client": "^3.5.0",
     "fuse.js": "^6.6.2",
     "he": "^1.2.0",
-    "kbar": "^0.1.0-beta.36",
     "lodash.groupby": "^4.6.0",
     "mailing-core": "^0.8.2",
     "mjml": "^4.13.0",

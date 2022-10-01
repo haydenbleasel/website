@@ -94,6 +94,9 @@ export const useCommandBar = create<{
   toggleOpen: (open?: boolean) => void;
   page: string;
   setPage: (page: string) => void;
+  index: number;
+  setIndex: (cb: (index: number) => number) => void;
+  select: () => void;
 }>((set) => ({
   open: false,
   toggleOpen: (newOpen?: boolean) =>
@@ -102,6 +105,40 @@ export const useCommandBar = create<{
     })),
   page: '',
   setPage: (page) => set({ page }),
+  index: 0,
+  setIndex: (cb) =>
+    set((state) => {
+      const newIndex = cb(state.index);
+
+      if (newIndex) {
+        const allElements = document.querySelectorAll('[cmdk-item]');
+        const element = allElements[newIndex] as HTMLElement | undefined;
+
+        if (element) {
+          allElements.forEach((el) => {
+            el.removeAttribute('aria-selected');
+          });
+          element.setAttribute('aria-selected', 'true');
+          // scroll into view
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'nearest',
+          });
+        }
+      }
+
+      return { index: newIndex };
+    }),
+  select: () => {
+    const activeElement = document.querySelector(
+      '[cmdk-item][aria-selected="true"]'
+    );
+
+    if (activeElement) {
+      (activeElement as HTMLDivElement).click();
+    }
+  },
 }));
 
 const Item: FC<
@@ -222,7 +259,7 @@ const CommandMenu: FC = () => {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
-  const { open, toggleOpen, page, setPage } = useCommandBar();
+  const { open, toggleOpen, page, setPage, setIndex } = useCommandBar();
   const [value, setValue] = useState('');
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
@@ -299,6 +336,29 @@ const CommandMenu: FC = () => {
       router.events.off('routeChangeComplete', onRouteChangeComplete);
     };
   }, [router.events, toggleOpen]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const allElements = document.querySelectorAll('[cmdk-item]');
+    const activeElement = document.querySelector(
+      `[cmdk-item][data-value="${value}"]`
+    );
+
+    if (!activeElement) {
+      return;
+    }
+
+    const activeIndex = Array.from(allElements).indexOf(activeElement);
+
+    if (activeIndex === -1) {
+      return;
+    }
+
+    setIndex(() => activeIndex);
+  }, [value, setIndex]);
 
   return (
     <Command.Dialog

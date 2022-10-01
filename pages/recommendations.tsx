@@ -49,6 +49,7 @@ const Recommendation: FC<RecommendationData> = ({
             new URL((link as FilledLinkToWebField).url).hostname
           }?size=64`}
           className="m-0 rounded-sm"
+          alt=""
         />
       )}
       <span className="line-clamp-1">{name}</span>

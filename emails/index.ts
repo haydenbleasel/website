@@ -2,6 +2,7 @@ import { createTransport } from 'nodemailer';
 import { buildSendMail } from 'mailing-core';
 import * as dotenv from 'dotenv';
 
+// eslint-disable-next-line jest/require-hook
 dotenv.config({
   path: '.env.local',
   debug: true,
@@ -25,6 +26,7 @@ const transport = createTransport({
   },
 });
 
+// eslint-disable-next-line jest/require-hook
 transport.verify((error) => {
   if (error) {
     throw new Error(error.message);
@@ -34,6 +36,7 @@ transport.verify((error) => {
 const sendMail = buildSendMail({
   transport,
   defaultFrom: process.env.EMAIL_ADDRESS,
+  configPath: '../',
 });
 
 export default sendMail;

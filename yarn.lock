@@ -1163,6 +1163,13 @@
   dependencies:
     "@react-hookz/web" "^15.1.0"
 
+"@haydenbleasel/use-sticky@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/use-sticky/-/use-sticky-1.0.1.tgz#fa683d35a28cecf6e836dae788504e7a967b21a0"
+  integrity sha512-2YtMQZNzXnBbiWo/rkPvcJXzzc7DVkoymPikA23tJhoS2ya1DeogKF0YLe0UtAyFLlEeLOl78FauzStPXqepCA==
+  dependencies:
+    "@react-hookz/web" "^15.1.0"
+
 "@haydenbleasel/use-theme@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@haydenbleasel/use-theme/-/use-theme-1.0.3.tgz#8d848a8c3f69f2c56c493b23aab8de34e44cb5ec"

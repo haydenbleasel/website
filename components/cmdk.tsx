@@ -95,7 +95,7 @@ export const useCommandBar = create<{
   page: string;
   setPage: (page: string) => void;
   index: number;
-  setIndex: (cb: (index: number) => number) => void;
+  setIndex: (value: number | ((index: number) => number)) => void;
   select: () => void;
 }>((set) => ({
   open: false,
@@ -106,26 +106,28 @@ export const useCommandBar = create<{
   page: '',
   setPage: (page) => set({ page }),
   index: 0,
-  setIndex: (cb) =>
+  setIndex: (value) =>
     set((state) => {
-      const newIndex = cb(state.index);
+      const newIndex = typeof value === 'function' ? value(state.index) : value;
 
-      if (newIndex) {
-        const allElements = document.querySelectorAll('[cmdk-item]');
-        const element = allElements[newIndex] as HTMLElement | undefined;
+      const allElements = document.querySelectorAll('[cmdk-item]');
+      const element = allElements[newIndex] as HTMLElement | undefined;
 
-        if (element) {
-          allElements.forEach((el) => {
-            el.removeAttribute('aria-selected');
-          });
-          element.setAttribute('aria-selected', 'true');
-          // scroll into view
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'nearest',
-          });
-        }
+      if (newIndex < 0 || newIndex >= allElements.length) {
+        return { index: state.index };
+      }
+
+      if (element) {
+        allElements.forEach((el) => {
+          el.removeAttribute('aria-selected');
+        });
+        element.setAttribute('aria-selected', 'true');
+        // scroll into view
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'nearest',
+        });
       }
 
       return { index: newIndex };
@@ -305,13 +307,14 @@ const CommandMenu: FC = () => {
   useEffect(() => {
     inputRef.current?.focus();
     setSearch('');
+    setIndex(0);
 
     dialogRef.current?.style.setProperty('transform', 'scale(0.98)');
 
     setTimeout(() => {
       dialogRef.current?.style.setProperty('transform', 'scale(1)');
     }, 100);
-  }, [page]);
+  }, [page, setIndex]);
 
   useEffect(() => {
     if (customMenuItems.error) {
@@ -357,7 +360,7 @@ const CommandMenu: FC = () => {
       return;
     }
 
-    setIndex(() => activeIndex);
+    setIndex(activeIndex);
   }, [value, setIndex]);
 
   return (

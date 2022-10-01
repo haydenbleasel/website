@@ -1156,6 +1156,13 @@
   dependencies:
     fathom-client "^3.5.0"
 
+"@haydenbleasel/use-gamepad-events@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/use-gamepad-events/-/use-gamepad-events-1.0.2.tgz#ab9bec3251b2397e8aa75e9571002e05dab3e3f1"
+  integrity sha512-gW83dZ1Cx2FOZ5XskZCfgNN9DT0LqXSDNyo808Ni5wZj9BgdV35nKKHHS0jIUfQ7MNOZSqjGm+ZcCOvBS/RMnA==
+  dependencies:
+    "@react-hookz/web" "^15.1.0"
+
 "@haydenbleasel/use-theme@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@haydenbleasel/use-theme/-/use-theme-1.0.3.tgz#8d848a8c3f69f2c56c493b23aab8de34e44cb5ec"

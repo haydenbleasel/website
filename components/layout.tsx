@@ -6,9 +6,10 @@ import { NextSeo } from 'next-seo';
 import type { OpenGraphMedia } from 'next-seo/lib/types';
 import { useRouter } from 'next/router';
 import type { FC, ReactNode } from 'react';
-import { useEffect } from 'react';
 import { ArrowLeft } from 'react-feather';
-import useGamepadController from '../hooks/useGamepadController';
+import useGamepadEvents from '@haydenbleasel/use-gamepad-events';
+import toast from 'react-hot-toast';
+import { useSessionStorageValue } from '@react-hookz/web';
 import StickyTitle from './stickyTitle';
 
 export type LayoutProps = {
@@ -95,23 +96,33 @@ const Layout: FC<LayoutProps> = ({
   const router = useRouter();
   const siteUrl = new URL(router.asPath, process.env.NEXT_PUBLIC_SITE_URL).href;
   const previousPage = getPreviousPage(router.asPath);
-  const gamepadState = useGamepadController();
+  const [hasSeenControls, setHasSeenControls] = useSessionStorageValue(
+    'daylight-controls',
+    false
+  );
+  const gamepadEvents = useGamepadEvents({
+    onReady: (gamepad) => {
+      if (hasSeenControls) {
+        return;
+      }
+      toast(`${gamepad.id} connected.`);
+      toast('Press Y to open / close the menu.');
+      toast('Press A to select an option.');
+      toast('Press B to go back.');
+      toast('Press START to reload the page');
+      toast('Press SELECT to go back.');
+      toast('Use the D-Pad to navigate.');
+      setHasSeenControls(true);
+    },
+  });
   const kbar = useKBar();
 
-  useEffect(() => {
-    if (gamepadState.options) {
-      router.reload();
-    }
-  }, [gamepadState.options, router]);
+  gamepadEvents.on('options', router.reload);
+  gamepadEvents.on('y', kbar.query.toggle);
+  gamepadEvents.on('share', router.back);
 
-  useEffect(() => {
-    if (gamepadState.y) {
-      kbar.query.toggle();
-    }
-  }, [gamepadState.y, kbar.query]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !gamepadState.down) {
+  gamepadEvents.on('down', () => {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -129,10 +140,10 @@ const Layout: FC<LayoutProps> = ({
     } else {
       window.scrollTo({ top: window.scrollY + window.innerHeight });
     }
-  }, [gamepadState.down, kbar.query]);
+  });
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !gamepadState.a) {
+  gamepadEvents.on('a', () => {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -150,10 +161,10 @@ const Layout: FC<LayoutProps> = ({
     }
 
     activeElement.click();
-  }, [gamepadState.a]);
+  });
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !gamepadState.b) {
+  gamepadEvents.on('b', () => {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -163,10 +174,10 @@ const Layout: FC<LayoutProps> = ({
     }
 
     kbar.query.setCurrentRootAction(null);
-  }, [gamepadState.b, kbar.query]);
+  });
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !gamepadState.up) {
+  gamepadEvents.on('up', () => {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -179,13 +190,7 @@ const Layout: FC<LayoutProps> = ({
     } else {
       window.scrollTo({ top: window.scrollY - window.innerHeight });
     }
-  }, [gamepadState.up, kbar.query]);
-
-  useEffect(() => {
-    if (gamepadState.share && typeof window !== 'undefined') {
-      router.back();
-    }
-  }, [gamepadState.share, router]);
+  });
 
   if (!title || !description) {
     throw new Error(

@@ -1,15 +1,12 @@
 import { PrismicLink } from '@prismicio/react';
 import type { ImageField } from '@prismicio/types';
-import { useKBar } from 'kbar';
 import type { NextSeoProps } from 'next-seo';
 import { NextSeo } from 'next-seo';
 import type { OpenGraphMedia } from 'next-seo/lib/types';
 import { useRouter } from 'next/router';
 import type { FC, ReactNode } from 'react';
 import { ArrowLeft } from 'react-feather';
-import useGamepadEvents from '@haydenbleasel/use-gamepad-events';
-import toast from 'react-hot-toast';
-import { useSessionStorageValue } from '@react-hookz/web';
+import useGamepadNavigation from '../hooks/useGamepadNavigation';
 import StickyTitle from './stickyTitle';
 
 export type LayoutProps = {
@@ -46,42 +43,6 @@ const getPreviousPage = (path: string) => {
   };
 };
 
-const getActiveKBarIndex = () => {
-  const activeElement = document.querySelector(
-    '#kbar-listbox > [aria-selected="true"]'
-  );
-  if (!activeElement) {
-    return undefined;
-  }
-  const id = activeElement.getAttribute('id');
-  const index = id?.split('-').at(-1);
-
-  if (!index) {
-    return undefined;
-  }
-
-  const parsedIndex = Number(index);
-
-  return parsedIndex;
-};
-
-const getLastKBarIndex = () => {
-  const activeElement = document.querySelectorAll('#kbar-listbox > div');
-
-  const lastElement = activeElement[activeElement.length - 1];
-
-  const id = lastElement.getAttribute('id');
-  const index = id?.split('-').at(-1);
-
-  if (!index) {
-    return undefined;
-  }
-
-  const parsedIndex = Number(index);
-
-  return parsedIndex;
-};
-
 const Layout: FC<LayoutProps> = ({
   title,
   description,
@@ -96,101 +57,8 @@ const Layout: FC<LayoutProps> = ({
   const router = useRouter();
   const siteUrl = new URL(router.asPath, process.env.NEXT_PUBLIC_SITE_URL).href;
   const previousPage = getPreviousPage(router.asPath);
-  const [hasSeenControls, setHasSeenControls] = useSessionStorageValue(
-    'daylight-controls',
-    false
-  );
-  const gamepadEvents = useGamepadEvents({
-    onReady: (gamepad) => {
-      if (hasSeenControls) {
-        return;
-      }
-      toast(`${gamepad.id} connected.`);
-      toast('Press Y to open / close the menu.');
-      toast('Press A to select an option.');
-      toast('Press B to go back.');
-      toast('Press START to reload the page');
-      toast('Press SELECT to go back.');
-      toast('Use the D-Pad to navigate.');
-      setHasSeenControls(true);
-    },
-  });
-  const kbar = useKBar();
 
-  gamepadEvents.on('options', router.reload);
-  gamepadEvents.on('y', kbar.query.toggle);
-  gamepadEvents.on('share', router.back);
-
-  gamepadEvents.on('down', () => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const isKBarOpen = document.body.style.overflowY === 'hidden';
-    if (isKBarOpen) {
-      const activeIndex = getActiveKBarIndex();
-      const lastIndex = getLastKBarIndex();
-      if (
-        activeIndex !== undefined &&
-        lastIndex !== undefined &&
-        activeIndex < lastIndex
-      ) {
-        kbar.query.setActiveIndex(activeIndex + 1);
-      }
-    } else {
-      window.scrollTo({ top: window.scrollY + window.innerHeight });
-    }
-  });
-
-  gamepadEvents.on('a', () => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const isKBarOpen = document.body.style.overflowY === 'hidden';
-    if (!isKBarOpen) {
-      return;
-    }
-
-    const activeElement = document.querySelector<HTMLDivElement>(
-      '#kbar-listbox > [aria-selected="true"]'
-    );
-
-    if (!activeElement) {
-      return;
-    }
-
-    activeElement.click();
-  });
-
-  gamepadEvents.on('b', () => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const isKBarOpen = document.body.style.overflowY === 'hidden';
-    if (!isKBarOpen) {
-      return;
-    }
-
-    kbar.query.setCurrentRootAction(null);
-  });
-
-  gamepadEvents.on('up', () => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const isKBarOpen = document.body.style.overflowY === 'hidden';
-    if (isKBarOpen) {
-      const activeIndex = getActiveKBarIndex();
-      if (activeIndex !== undefined && activeIndex > 0) {
-        kbar.query.setActiveIndex(activeIndex - 1);
-      }
-    } else {
-      window.scrollTo({ top: window.scrollY - window.innerHeight });
-    }
-  });
+  useGamepadNavigation();
 
   if (!title || !description) {
     throw new Error(

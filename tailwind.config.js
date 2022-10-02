@@ -1,6 +1,7 @@
 const lineClamp = require('@tailwindcss/line-clamp');
 const typography = require('@tailwindcss/typography');
 const animationDelay = require('tailwindcss-animation-delay');
+const ariaAttributes = require('@thoughtbot/tailwindcss-aria-attributes');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -168,5 +169,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [lineClamp, typography, animationDelay],
+  plugins: [lineClamp, typography, animationDelay, ariaAttributes],
 };

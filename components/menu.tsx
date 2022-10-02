@@ -1,19 +1,19 @@
-import { useKBar } from 'kbar';
 import type { FC, KeyboardEventHandler, MouseEventHandler } from 'react';
 import { useState } from 'react';
 import { Menu as MenuList } from 'react-feather';
 import toast from 'react-hot-toast';
+import { useCommandBar } from '@haydenbleasel/command-bar';
 import getCommandKey from '../utils/getCommandKey';
 
 const Menu: FC = () => {
-  const kbar = useKBar();
+  const commandBar = useCommandBar();
   const [clickNotified, setClickNotified] = useState(false);
 
   const keyDownHandler: KeyboardEventHandler<HTMLDivElement> = (event) => {
     if (event.code === 'Space') {
       event.preventDefault();
       event.stopPropagation();
-      kbar.query.toggle();
+      commandBar.toggleOpen();
     }
   };
 
@@ -22,7 +22,7 @@ const Menu: FC = () => {
       toast(`You can also press ${getCommandKey()}K to open the menu!`);
       setClickNotified(true);
     }
-    kbar.query.toggle();
+    commandBar.toggleOpen();
   };
 
   return (

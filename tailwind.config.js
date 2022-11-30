@@ -2,7 +2,12 @@
 module.exports = {
   content: ['./app/**/*.tsx', './components/**/*.tsx', './content/**/*.mdx'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-suisse-intl)'],
+        mono: ['var(--font-ibm-plex-mono)'],
+      },
+    },
   },
   plugins: [],
 };

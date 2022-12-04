@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-suisse-intl)'],
+        sans: ['var(--font-inter)'],
         mono: ['var(--font-ibm-plex-mono)'],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

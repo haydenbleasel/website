@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^13.0.5",
+    "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-tooltip": "^1.0.2",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
@@ -35,6 +36,7 @@
     "@haydenbleasel/harmony": "^1.1.9",
     "@next/eslint-plugin-next": "^13.0.5",
     "@svgr/webpack": "^6.5.1",
+    "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.8",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",

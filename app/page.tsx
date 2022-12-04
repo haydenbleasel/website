@@ -1,25 +1,11 @@
 import Image from 'next/image';
-import type { LinkProps } from 'next/link';
 import Link from 'next/link';
-import type { FC, ReactNode } from 'react';
+import type { FC } from 'react';
 
+import Logo from '@/components/logo';
 import Corellium from '@/public/logos/corellium.svg';
 import Neutral from '@/public/logos/neutral.svg';
 import { allBlogs } from '@/.contentlayer/generated';
-
-type LogoProps = LinkProps & {
-  icon: FC;
-  children: ReactNode;
-};
-
-const Logo: FC<LogoProps> = ({ icon: Icon, children, ...props }) => (
-  <Link {...props} className="no-underline inline-block">
-    <span className="inline-block">
-      <Icon />
-    </span>
-    <span className="ml-1 underline inline-block">{children}</span>
-  </Link>
-);
 
 const Home: FC = () => (
   <main className="grid gap-12">
@@ -53,7 +39,7 @@ const Home: FC = () => (
       </Logo>
       . Occasional freelancer → <Link href="/contact">get in touch</Link>.
     </p>
-    <h2 className="text-base m-0 text-gray-500 font-light">Writing</h2>
+    <h2>Writing</h2>
     <div className="grid gap-4">
       {allBlogs.map((post) => (
         <Link

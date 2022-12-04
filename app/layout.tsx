@@ -1,9 +1,9 @@
 import type { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import '@/styles/globals.css';
-import { Analytics } from './components/analytics';
-import Navbar from './components/navbar';
-import Providers from './components/providers';
+import { Analytics } from '@/components/analytics';
+import Navbar from '@/components/navbar';
+import Providers from '@/components/providers';
 import { ibmPlexMono, lausanne } from '@/lib/fonts';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (

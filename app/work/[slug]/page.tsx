@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { allWorkPosts } from 'contentlayer/generated';
 import type { ReactNode } from 'react';
 
-import { Mdx } from '@/app/components/mdx';
+import { Mdx } from '@/components/mdx';
 import { getTableOfContents } from '@/lib/tableOfContents';
 
 type DocPageProps = {

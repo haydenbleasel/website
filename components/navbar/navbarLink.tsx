@@ -25,8 +25,14 @@ const NavbarLink: FC<{
     { suspense: true }
   );
 
+  let label = name;
+
+  if (!href.startsWith('/')) {
+    label = `${name} ↗️`;
+  }
+
   return (
-    <Tooltip label={name}>
+    <Tooltip label={label}>
       <Link href={href} className="p-2 group relative">
         <>
           <Suspense>

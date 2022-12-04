@@ -1,7 +1,6 @@
-import type { LinkProps } from 'next/link';
-import Link from 'next/link';
-import type { FC, ReactNode } from 'react';
+import type { FC } from 'react';
 
+import Logo from '@/components/logo';
 import Airwallex from '@/public/logos/airwallex.svg';
 import AustralianEthical from '@/public/logos/australian-ethical.svg';
 import Canva from '@/public/logos/canva.svg';
@@ -19,39 +18,23 @@ import Timberland from '@/public/logos/timberland.svg';
 import Toyota from '@/public/logos/toyota.svg';
 import Westfield from '@/public/logos/westfield.svg';
 
-type LogoProps = LinkProps & {
-  icon: FC;
-  children: ReactNode;
-};
-
-const Logo: FC<LogoProps> = ({ icon: Icon, children, ...props }) => (
-  <Link {...props} className="no-underline inline-block">
-    <span className="inline-block">
-      <Icon />
-    </span>
-    <span className="ml-1 underline inline-block">{children}</span>
-  </Link>
-);
-
 const Home: FC = () => (
-  <main className="grid gap-12">
-    <div className="grid gap-6">
-      <h1 className="text-base font-medium">About</h1>
-      <p>
-        I’m an Australian Product Designer and Frontend Engineer living in
-        Delray Beach, Florida. I currently lead the Product and Design teams at{' '}
-        <Logo icon={Corellium as FC} href="http://corellium.com/">
-          Corellium
-        </Logo>
-        , where we blur the line between real and virtual. After hours, I work
-        on a global reforestation platform called{' '}
-        <Logo icon={Neutral as FC} href="https://tryneutral.com/">
-          Neutral
-        </Logo>
-        , with which we’ve helped plant thousands of trees and offset hundeds of
-        tonnes of CO₂ equivalent.
-      </p>
-    </div>
+  <main className="grid gap-8">
+    <h1>About</h1>
+    <p>
+      I’m an Australian Product Designer and Frontend Engineer living in Delray
+      Beach, Florida. I currently lead the Product and Design teams at{' '}
+      <Logo icon={Corellium as FC} href="http://corellium.com/">
+        Corellium
+      </Logo>
+      , where we blur the line between real and virtual. After hours, I work on
+      a global reforestation platform called{' '}
+      <Logo icon={Neutral as FC} href="https://tryneutral.com/">
+        Neutral
+      </Logo>
+      , with which we’ve helped plant thousands of trees and offset hundeds of
+      tonnes of CO₂ equivalent.
+    </p>
     <p>
       I’ve had the privilege of working with many fantastic companies including{' '}
       <Logo icon={Google as FC} href="https://www.google.com/">

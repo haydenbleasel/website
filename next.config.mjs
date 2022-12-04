@@ -19,6 +19,12 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
+
     config.infrastructureLogging = {
       level: 'error',
     };

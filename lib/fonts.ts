@@ -11,32 +11,32 @@ export const lausanne = localFont({
   variable: '--font-lausanne',
   src: [
     {
-      path: '../../public/fonts/TWK-Lausanne-300.woff2',
+      path: '../public/fonts/TWKLausanne-300.woff2',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/TWK-Lausanne-300Italic.woff2',
+      path: '../public/fonts/TWKLausanne-300Italic.woff2',
       weight: '300',
       style: 'italic',
     },
     {
-      path: '../../public/fonts/TWK-Lausanne-400.woff2',
+      path: '../public/fonts/TWKLausanne-400.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/TWK-Lausanne-400Italic.woff2',
+      path: '../public/fonts/TWKLausanne-400Italic.woff2',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '../../public/fonts/TWK-Lausanne-500.woff2',
+      path: '../public/fonts/TWKLausanne-500.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/TWK-Lausanne-500Italic.woff2',
+      path: '../public/fonts/TWKLausanne-500Italic.woff2',
       weight: '500',
       style: 'italic',
     },

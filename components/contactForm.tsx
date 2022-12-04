@@ -107,7 +107,7 @@ const ContactForm: FC = () => {
       />
       <button
         type="submit"
-        className="w-full rounded-md border border-none bg-neutral-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-md border border-none bg-gray-900 px-3 py-2 text-md font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
         disabled={
           !name.trim() ||
           !email.trim() ||

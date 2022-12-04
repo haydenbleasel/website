@@ -12,7 +12,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
     className={clsx(
       ibmPlexMono.variable,
       lausanne.variable,
-      'bg-neutral-50 font-sans font-light antialiased'
+      'bg-gray-50 font-sans font-light antialiased'
     )}
   >
     <body>

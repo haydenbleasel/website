@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -84,6 +85,7 @@ export default makeSource({
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
+      rehypeAccessibleEmojis,
       rehypeSlug,
       [
         rehypePrettyCode,

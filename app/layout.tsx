@@ -12,7 +12,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
     className={clsx(
       ibmPlexMono.variable,
       lausanne.variable,
-      'font-sans font-light antialiased'
+      'scroll-smooth font-sans font-light antialiased'
     )}
   >
     <body className="overflow-x-hidden bg-white dark:bg-zinc-900">

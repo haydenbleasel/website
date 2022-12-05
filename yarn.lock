@@ -1224,6 +1224,11 @@
     stylelint-config-prettier "^9.0.4"
     stylelint-config-standard "^29.0.0"
 
+"@haydenbleasel/use-online@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/use-online/-/use-online-1.0.3.tgz#f0de85979d9deb671a69a60aa31bd1fad9038481"
+  integrity sha512-Vc6kJxpLPHtjWDFkJne64YOjagwv9Nf/qjCUDsusPdfvmDvkBLfUQuw428RbH4ach+q9AFUKwbQH3MivbzkJkQ==
+
 "@humanwhocodes/config-array@^0.11.6":
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.7.tgz#38aec044c6c828f6ed51d5d7ae3d9b9faf6dbb0f"

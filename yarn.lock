@@ -1229,6 +1229,13 @@
   resolved "https://registry.yarnpkg.com/@haydenbleasel/use-online/-/use-online-1.0.3.tgz#f0de85979d9deb671a69a60aa31bd1fad9038481"
   integrity sha512-Vc6kJxpLPHtjWDFkJne64YOjagwv9Nf/qjCUDsusPdfvmDvkBLfUQuw428RbH4ach+q9AFUKwbQH3MivbzkJkQ==
 
+"@haydenbleasel/use-theme@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/use-theme/-/use-theme-1.0.7.tgz#a6b3e55ac80ed6a8dba692366b9718617a63f5b1"
+  integrity sha512-nabNsU22NCSrfGoFpghekNIsLKtcQ2oMpImnxdnLNP3Et3+bHvL48a4TLbXQaGyfv6z2T/vs8DgE23UJxk2ZQQ==
+  dependencies:
+    "@react-hookz/web" "^18.0.1"
+
 "@humanwhocodes/config-array@^0.11.6":
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.7.tgz#38aec044c6c828f6ed51d5d7ae3d9b9faf6dbb0f"
@@ -2119,6 +2126,18 @@
   integrity sha512-d0O68AYy/9oeEy1DdC07bz1/ZXX+DqCskRd3i4JzLSTXwefzaepQrKjXC7aNM8lTHjFLDO0pDgaEiQ7jEk+HVg==
   dependencies:
     "@babel/runtime" "^7.13.10"
+
+"@react-hookz/deep-equal@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@react-hookz/deep-equal/-/deep-equal-1.0.3.tgz#e044bca38c1612ea8c1596ef858ef7cfea49dd7a"
+  integrity sha512-lGZR5l3YRjzeIOHtJhiq96vQKrsq+9lsCyv+0fROMQeSNWtLLzX3R+psHNi6nsoP3XEhspiZ92nsiPmdNo8ztQ==
+
+"@react-hookz/web@^18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@react-hookz/web/-/web-18.0.1.tgz#aa150a6a3e82432a9be816c56bf1b8b1a6d515b3"
+  integrity sha512-c0PBAiiapmpkxzmuuwaAOFwhpKyG1MJdQRsSjVv7vqRyetO+zElPKvGyNh1MN25+uSICNkt4YosYQu81/kbpAA==
+  dependencies:
+    "@react-hookz/deep-equal" "^1.0.3"
 
 "@reecelucas/react-use-hotkeys@^1.3.5":
   version "1.3.5"

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@haydenbleasel/use-online": "^1.0.3",
+    "@haydenbleasel/use-theme": "^1.0.7",
     "@next/font": "^13.0.5",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-popover": "^1.0.2",

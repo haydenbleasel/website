@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { toast, Toaster } from 'react-hot-toast';
 import useOnline from '@haydenbleasel/use-online';
+import useTheme from '@haydenbleasel/use-theme';
 
 type ProvidersProps = {
   children: ReactNode;
@@ -11,6 +12,7 @@ type ProvidersProps = {
 
 const Providers: FC<ProvidersProps> = ({ children }) => {
   const isOnline = useOnline();
+  useTheme();
 
   useEffect(() => {
     if (!isOnline) {

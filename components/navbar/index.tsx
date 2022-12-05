@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import NavbarLink from './navbarLink';
 import ContextualMenu from './contextualMenu';
+import ThemeSwitcher from './themeSwitcher';
 
 const pages = [
   { name: 'Home', icon: Home, href: '/' },
@@ -31,6 +32,7 @@ const Navbar: FC = () => (
           <NavbarLink key={link.name} {...link} />
         ))}
       </div>
+      <ThemeSwitcher />
       <ContextualMenu />
     </div>
   </div>

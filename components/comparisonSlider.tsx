@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC } from 'react';
 import { ReactCompareSlider } from 'react-compare-slider';
 import Image from 'next/image';

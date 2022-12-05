@@ -28,7 +28,7 @@ This was an interesting project in that it was framed as product-led, growth-dri
 
 While it was different to work in very isolated views, I ended up producing some great designs and some really positive results.
 
-Process
+## Process
 
 Working in a loose Design Sprint style methodology, each week we spent:
 
@@ -38,9 +38,9 @@ Working in a loose Design Sprint style methodology, each week we spent:
 
 We typically tackled three broad categories of work:
 
-- Problems: things that needed redesigning, currently resulting in suboptimal experiences
-- Opportunities: opportunities that we had to improve a particular set of users' experience with the platform, including new features
-- Tasks: core things that needed to be done
+- **Problems**: things that needed redesigning, currently resulting in suboptimal experiences
+- **Opportunities**: opportunities that we had to improve a particular set of users' experience with the platform, including new features
+- **Tasks**: core things that needed to be done
 
 ## Work
 
@@ -58,11 +58,17 @@ To improve this experience, we transitioned the export process to a multi-screen
 
 We also toyed with the idea of adding an option for compression ratios (low, medium and high) but opted to figure that out automatically in the background for now.
 
-<ComparisonSlider before={} after={} />
+<ComparisonSlider
+  before="/blog/clipchamp/resolution-before.png"
+  after="/blog/clipchamp/resolution-after.png"
+/>
 
 Clipchamp's download screen is the end of the typical editor-focused user journey. The user has created a video they're happy with, decided to export it and possibly upgraded, then landed here. We decided to add a few key features here to keep the user moving and give them more value from their exported video. Beyond downloading the video, we added the ability to copy a video preview link, embed the video on a website and basic social sharing.
 
-<ComparisonSlider before={} after={} />
+<ComparisonSlider
+  before="/blog/clipchamp/export-before.png"
+  after="/blog/clipchamp/export-after.png"
+/>
 
 ### Pricing and Checkout
 
@@ -73,11 +79,11 @@ When a customer decides to upgrade or export their video, we needed to assist th
 
 I started by figuring out all possible user journeys through the pricing system, pricing variants (stock packages, microtransactions), features (monthly / yearly toggles, stages of checkout) and identified problems. I then distilled these flows down into 3 key diagrams for the team, as well as an accompanying document describing all possible outcomes:
 
-![Pricing Flow Diagram](/)
+![Pricing Flow Diagram](/blog/clipchamp/pricing-diagram.png)
 
 This surfaced some flows the team hadn't even considered...
 
-![Pricing Flow Chat](/)
+![Pricing Flow Chat](/blog/clipchamp/pricing-chat.jpeg)
 
 This left me with more questions and opportunities than I started with:
 
@@ -92,11 +98,17 @@ This left me with more questions and opportunities than I started with:
 
 After several rounds of iteration and testing with real users, we landed on a design that fit the bill (pun intended). We improved the content hierarchy by splitting the page into billing period → plans OR one-off transaction. Each plan featured the archetype name, dynamic price based on selected billing period and a list of key features you could compare easily. Additionally, we added tooltips to specific items to give the user a bit more detail around the change.
 
-<ComparisonSlider before={} after={} />
+<ComparisonSlider
+  before="/blog/clipchamp/plans-before.png"
+  after="/blog/clipchamp/plans-after.png"
+/>
 
 Once the user had selected their plan, they landed at the Checkout, which immediately had some basic issues that needed addressing: the Paypal button being wrong, not storing card details, the sales team wanting to add a coupon field to the checkout, etc. To improve on the checkout experience even further, we decided to focus on an improving the content hierarchy, as well as adding an accompanying itemised bill and social proof from one of our loving users.
 
-<ComparisonSlider before={} after={} />
+<ComparisonSlider
+  before="/blog/clipchamp/checkout-before.png"
+  after="/blog/clipchamp/checkout-after.png"
+/>
 
 ### Brand Centre (New)
 
@@ -133,7 +145,7 @@ We started with a few high-level, low-level and functional questions to spark ou
 
 Next up was figuring out the intersection between Brand Centre and the editor itself...
 
-![Brand Centre Diagram](/)
+![Brand Centre Diagram](/blog/clipchamp/brand-centre-diagram.png)
 
 We ended up dividing Brand Centre into releases and building on user stories as we progressed, for example:
 
@@ -159,7 +171,7 @@ Based on these user stories, we ended up with the following set of ideas:
 - **Start / End Slates**: a fixed collection of elements as a single track item, available in one or more items in the side panel. Can be comprised of simple elements e.g. background colour / blur and logo, but can only be added to the start / end of videos.
 - **Brandmarks**: flexible collections of elements as a single track item, available in the side panel. Can be comprised of call-to-actions, titles, subtitles, social media handles, etc. all with various layouts.
 
-![Brand Centre Design](/)
+![Brand Centre Design](/blog/clipchamp/brand-centre.png)
 
 ### Onboarding
 
@@ -178,7 +190,10 @@ These templates then fit neatly into the video creation flow, which needed some 
 - Offer templates or scaffolds that fit their needs
 - Potentially even generate predefined template with supplied footage and audio
 
-<ComparisonSlider before={} after={} />
+<ComparisonSlider
+  before="/blog/clipchamp/create-before.png"
+  after="/blog/clipchamp/create-after.png"
+/>
 
 ### Editor Redesign
 
@@ -195,7 +210,10 @@ The overall goal for the editor was simply a cleaner design with a better use of
 - **Drag helpers**: Clipchamp track rows can only take one type of media at a time, so we added a visual indicator for available space when you're dragging in new media.
 - **Premium labels**: We introduced stars as a visual language element to signify something Premium. This helps tie together things like high resolution exports, paid stock assets, branding and other features that require an upgraded Clipchamp account.
 
-<ComparisonSlider before={} after={} />
+<ComparisonSlider
+  before="/blog/clipchamp/editor-before.png"
+  after="/blog/clipchamp/editor-after.png"
+/>
 
 ### Other
 

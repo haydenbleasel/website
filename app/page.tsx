@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
+import { Fragment } from 'react';
 
+import Post from './blog/post';
 import Logo from '@/components/logo';
 import Corellium from '@/public/logos/corellium.svg';
 import Neutral from '@/public/logos/neutral.svg';
 import { allBlogs } from '@/.contentlayer/generated';
+import Divider from '@/components/divider';
 
 const Home: FC = () => (
   <main className="grid gap-12 prose-p:m-0">
@@ -42,20 +45,18 @@ const Home: FC = () => (
         Occasional freelancer → <Link href="/contact">get in touch</Link>.
       </p>
     </div>
-    <h2>Writing</h2>
     <div className="grid gap-4">
-      {allBlogs.map((post) => (
-        <Link
-          href={`/blog/${post.slug}`}
-          key={post.slug}
-          className="grid gap-1"
-        >
-          <h3>{post.title}</h3>
-          <p>{post.description}</p>
-        </Link>
-      ))}
+      <h2>Recent posts</h2>
+      <div>
+        {allBlogs.slice(0, 3).map((post, index) => (
+          <Fragment key={post.slug}>
+            {index > 0 && <Divider />}
+            <Post {...post} />
+          </Fragment>
+        ))}
+      </div>
+      <Link href="/blog">Keep reading &rarr;</Link>
     </div>
-    <Link href="/blog">Keep reading &rarr;</Link>
   </main>
 );
 

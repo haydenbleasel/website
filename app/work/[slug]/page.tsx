@@ -30,7 +30,7 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
   const toc = await getTableOfContents(doc.body.raw);
 
   return (
-    <main className="prose">
+    <main>
       <h1>
         {doc.role} at {doc.company}
       </h1>

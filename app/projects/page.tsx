@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
 import { Fragment } from 'react';
+import clsx from 'clsx';
 import Divider from '@/components/divider';
 import { getNPMPackages } from '@/lib/npm';
 import projects from '@/content/projects.json';
@@ -27,7 +28,13 @@ const Project: FC<ProjectProps> = ({
     <span className="flex-0 flex items-center gap-2">
       {title}
       {wip && (
-        <span className="rounded-full bg-zinc-100 px-2 text-sm text-zinc-500">
+        <span
+          className={clsx(
+            'rounded-full px-2 text-sm',
+            'bg-zinc-100 text-zinc-500',
+            'dark:bg-zinc-800 dark:text-zinc-400'
+          )}
+        >
           WIP
         </span>
       )}

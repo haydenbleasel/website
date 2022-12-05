@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import type { LucideProps } from 'lucide-react';
 import type { FC, KeyboardEventHandler } from 'react';
 
@@ -17,9 +18,14 @@ const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => {
 
   return (
     <div
-      className={`select-none rounded-full border border-zinc-200 p-4 transition-all hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800 ${
-        active ? '' : 'cursor-not-allowed opacity-50'
-      }`}
+      className={clsx(
+        'select-none rounded-full border p-4 transition-all',
+        'border-zinc-200 bg-white',
+        'dark:border-zinc-700 dark:bg-zinc-900',
+        !active && 'cursor-not-allowed opacity-50',
+        active && 'hover:bg-zinc-100',
+        active && 'dark:hover:bg-zinc-800'
+      )}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"

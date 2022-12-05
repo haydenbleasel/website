@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import { Fragment } from 'react';
 
+import clsx from 'clsx';
 import Post from './blog/post';
 import Logo from '@/components/logo';
 import Corellium from '@/public/logos/corellium.svg';
@@ -22,8 +23,18 @@ const Home: FC = () => (
         className="m-0 h-16 w-16 overflow-hidden rounded-full"
       />
       <div className="grid">
-        <h1 className="text-base font-medium text-zinc-900">Hayden Bleasel</h1>
-        <p className="font-light text-zinc-500">
+        <h1
+          className={clsx(
+            'text-base font-medium',
+            'text-zinc-900',
+            'dark:text-white'
+          )}
+        >
+          Hayden Bleasel
+        </h1>
+        <p
+          className={clsx('font-light', 'text-zinc-500', 'dark:text-zinc-400')}
+        >
           Chief Product Officer at Corellium
         </p>
       </div>

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import type { ChangeEventHandler, FC, HTMLProps } from 'react';
 import { useId } from 'react';
 import Hint from './hint';
@@ -24,7 +25,11 @@ const Input: FC<InputProps> = ({ onValueChange, hint, label, ...props }) => {
       <div className="mt-1">
         <input
           id={labelId}
-          className="block w-full rounded-md border-zinc-300 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+          className={clsx(
+            'block w-full rounded-md shadow-sm',
+            'border-zinc-300 bg-white placeholder:text-zinc-500 focus:border-teal-500 focus:ring-teal-500',
+            'dark:border-zinc-700 dark:bg-zinc-900 dark:placeholder:text-zinc-400 dark:focus:border-teal-400 dark:focus:ring-teal-400'
+          )}
           aria-describedby={hintId}
           {...props}
           onChange={handleChange}

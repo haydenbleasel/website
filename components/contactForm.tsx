@@ -3,6 +3,7 @@ import type { FC, FormEventHandler } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Loader2 } from 'lucide-react';
+import Button from './button';
 import Textarea from '@/components/textarea';
 import parseError from '@/lib/parseError';
 import Input from '@/components/input';
@@ -105,9 +106,8 @@ const ContactForm: FC = () => {
           'Please enter a message': !message.trim(),
         }}
       />
-      <button
+      <Button
         type="submit"
-        className="text-md w-full rounded-md border border-none bg-zinc-900 px-3 py-2 font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
         disabled={
           !name.trim() ||
           !email.trim() ||
@@ -115,15 +115,10 @@ const ContactForm: FC = () => {
           sending ||
           !emailRegex.exec(email)
         }
+        loading={sending}
       >
-        {sending ? (
-          <span className="mx-auto flex h-[28px] w-[28px] items-center justify-center">
-            <Loader2 className="animate-spin" />
-          </span>
-        ) : (
-          'Send'
-        )}
-      </button>
+        Send
+      </Button>
     </form>
   );
 };

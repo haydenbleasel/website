@@ -1,16 +1,13 @@
 'use client';
 
 import type { FC } from 'react';
-import { Root } from '@radix-ui/react-separator';
 import { Sun, Moon } from 'lucide-react';
 import clsx from 'clsx';
 import useTheme from '@haydenbleasel/use-theme';
-
-const Separator: FC = () => <Root className="h-full w-px bg-zinc-200" />;
+import Separator from './seperator';
 
 const ThemeSwitcher: FC = () => {
   const [theme, setTheme] = useTheme();
-
   const Icon = theme === 'dark' ? Sun : Moon;
 
   return (
@@ -22,7 +19,9 @@ const ThemeSwitcher: FC = () => {
             size={20}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className={clsx(
-              'cursor-pointer text-zinc-500 transition-colors group-hover:text-teal-600'
+              'cursor-pointer text-zinc-500 transition-colors group-hover:text-teal-600',
+              'dark:text-zinc-400 dark:group-hover:text-teal-400',
+              'group-[.active-page]:text-teal-600'
             )}
           />
           <span className="sr-only">More</span>

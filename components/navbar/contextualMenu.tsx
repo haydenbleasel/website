@@ -2,13 +2,11 @@
 
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Root } from '@radix-ui/react-separator';
 import { CircleEllipsis } from 'lucide-react';
 import clsx from 'clsx';
 import Popover from '../popover';
 import useContextMenu from './useContextMenu';
-
-const Separator: FC = () => <Root className="h-full w-px bg-zinc-200" />;
+import Separator from './seperator';
 
 const ContextualMenu: FC = () => {
   const { content } = useContextMenu();
@@ -30,6 +28,8 @@ const ContextualMenu: FC = () => {
                 size={20}
                 className={clsx(
                   'cursor-pointer text-zinc-500 transition-colors group-hover:text-teal-600',
+                  'dark:text-zinc-400 dark:group-hover:text-teal-400',
+                  'group-[.active-page]:text-teal-600',
                   open && 'text-teal-600'
                 )}
               />

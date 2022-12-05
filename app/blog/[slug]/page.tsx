@@ -28,7 +28,7 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
   const toc = await getTableOfContents(doc.body.raw);
 
   return (
-    <main className="prose">
+    <main>
       <h1>{doc.title}</h1>
       <p className="text-xl">{doc.description}</p>
       <Mdx code={doc.body.code} />

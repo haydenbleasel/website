@@ -10,14 +10,14 @@ type LogoProps = LinkProps & {
 const Logo: FC<LogoProps> = ({ icon: Icon, children, ...props }) => (
   <Link
     {...props}
-    className="no-underline inline-block"
+    className="inline-block no-underline"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <span className="inline-block align-baseline">
+    <span className="inline-block align-baseline dark:brightness-0 dark:invert">
       <Icon />
     </span>
-    <span className="ml-1 underline inline-block">{children}</span>
+    <span className="ml-1 inline-block underline">{children}</span>
   </Link>
 );
 

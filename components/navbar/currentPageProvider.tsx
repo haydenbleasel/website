@@ -8,7 +8,7 @@ const CurrentPageProvider: FC<{ href: string; children: ReactNode }> = ({
   children,
 }) => {
   const pathname = usePathname();
-  const active = pathname === href;
+  const active = href === '/' ? pathname === href : pathname.startsWith(href);
 
   return (
     <div

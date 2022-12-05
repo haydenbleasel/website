@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { FC } from 'react';
 import { Eye, MessageCircle, ThumbsUp } from 'lucide-react';
+import clsx from 'clsx';
 import type { DribbbleResponse } from '@/lib/dribbble';
 import formatNumbers from '@/lib/formatNumbers';
 
@@ -20,7 +21,11 @@ const Shot: FC<DribbbleResponse> = ({
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    className="group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col overflow-hidden rounded-md border border-zinc-200 bg-white no-underline shadow-lg shadow-zinc-800/5 dark:border-zinc-700 dark:bg-zinc-900"
+    className={clsx(
+      'group relative flex w-full max-w-[400px] flex-shrink-0 flex-grow-0 flex-col overflow-hidden rounded-md border no-underline shadow-lg shadow-zinc-800/5 transition-colors',
+      'border-zinc-200 bg-white hover:bg-zinc-100',
+      'dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800'
+    )}
   >
     <div>
       <div className="relative aspect-[4/3] w-full">

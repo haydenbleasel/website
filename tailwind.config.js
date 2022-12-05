@@ -11,7 +11,7 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.900'),
+            // color: theme('colors.zinc.900'),
             h1: {
               fontWeight: theme('fontWeight.medium'),
               marginBottom: 0,
@@ -31,12 +31,12 @@ module.exports = {
             h6: {
               fontWeight: theme('fontWeight.medium'),
             },
-            a: {
-              color: theme('colors.gray.900'),
-              '&:hover': {
-                color: theme('colors.gray.800'),
-              },
-            },
+            // a: {
+            //   color: theme('colors.zinc.900'),
+            //   '&:hover': {
+            //     color: theme('colors.zinc.800'),
+            //   },
+            // },
             strong: {
               fontWeight: theme('fontWeight.medium'),
             },

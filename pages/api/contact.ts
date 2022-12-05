@@ -2,10 +2,16 @@ import { format } from 'date-fns';
 import domains from 'disposable-email-domains';
 import type { NextApiHandler } from 'next';
 import type { ReactElement } from 'react';
-import sendMail from '../../../emails';
-import template from '../../../emails/TextEmail';
+import sendMail from '@/emails';
+import template from '@/emails/TextEmail';
 import parseBody from '@/lib/parseBody';
 import parseError from '@/lib/parseError';
+
+type ContactRequest = {
+  name?: string;
+  email?: string;
+  message?: string;
+};
 
 type ContactResponse = {
   error?: string;
@@ -17,11 +23,7 @@ export const config = {
 };
 
 const handler: NextApiHandler<ContactResponse> = async (req, res) => {
-  const { name, email, message } = parseBody<{
-    name?: string;
-    email?: string;
-    message?: string;
-  }>(req);
+  const { name, email, message } = parseBody<ContactRequest>(req);
 
   if (
     req.headers.authorization !==

@@ -21,7 +21,7 @@ const Project: FC<ProjectProps> = ({
 }) => (
   <Link
     href={href}
-    className="grid grid-cols-3 gap-4 py-2 no-underline"
+    className="grid grid-cols-3 items-center gap-4 py-2 no-underline"
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -39,7 +39,7 @@ const Project: FC<ProjectProps> = ({
         </span>
       )}
     </span>
-    <span className="col-span-2 flex-1 truncate font-light text-zinc-500 dark:text-zinc-400 sm:text-right">
+    <span className="col-span-2 flex-1 truncate text-sm font-light text-zinc-500 dark:text-zinc-400 sm:text-right">
       {description}
     </span>
   </Link>

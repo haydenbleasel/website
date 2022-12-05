@@ -5,6 +5,7 @@ import { Analytics } from '@/components/analytics';
 import Navbar from '@/components/navbar';
 import Providers from '@/components/providers';
 import { ibmPlexMono, lausanne } from '@/lib/fonts';
+import CommandBar from '@/components/command-bar';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
   <html
@@ -24,6 +25,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
           </div>
         </div>
       </Providers>
+      <CommandBar />
       <Analytics />
     </body>
   </html>

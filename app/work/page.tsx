@@ -28,12 +28,12 @@ const Role: FC<typeof allWorkPosts[number]> = ({
 }) => (
   <Link
     href={slug}
-    className="flex flex-col gap-2 py-2 no-underline sm:flex-row sm:gap-8"
+    className="flex flex-col items-center gap-2 py-2 no-underline sm:flex-row sm:gap-8"
   >
     <span className="flex-0 flex items-center gap-2">
       {role} at {company}
     </span>
-    <span className="flex-1 truncate font-light text-zinc-500 dark:text-zinc-400 sm:text-right">
+    <span className="flex-1 truncate text-sm font-light text-zinc-500 dark:text-zinc-400 sm:text-right">
       {startYear} &mdash; {endYear ?? 'Present'}
     </span>
   </Link>

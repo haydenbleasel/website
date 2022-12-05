@@ -12,13 +12,13 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
     className={clsx(
       ibmPlexMono.variable,
       lausanne.variable,
-      'bg-gray-50 font-sans font-light antialiased'
+      'font-sans font-light antialiased'
     )}
   >
     <body>
       <Providers>
         <Navbar />
-        <div className="prose mx-auto max-w-[30rem] py-24">{children}</div>
+        <div className="prose mx-auto px-4 pt-24 pb-32">{children}</div>
       </Providers>
       <Analytics />
     </body>

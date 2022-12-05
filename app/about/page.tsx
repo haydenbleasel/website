@@ -19,7 +19,7 @@ import Toyota from '@/public/logos/toyota.svg';
 import Westfield from '@/public/logos/westfield.svg';
 
 const Home: FC = () => (
-  <main className="grid gap-8">
+  <main className="grid gap-8 prose-p:m-0">
     <h1>About</h1>
     <p>
       I’m an Australian Product Designer and Frontend Engineer living in Delray

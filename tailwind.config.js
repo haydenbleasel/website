@@ -11,18 +11,14 @@ module.exports = {
         DEFAULT: {
           css: {
             h1: {
-              fontSize: theme('fontSize.base'),
               fontWeight: theme('fontWeight.medium'),
+              marginBottom: 0,
             },
             h2: {
-              fontSize: theme('fontSize.base'),
-              fontWeight: theme('fontWeight.light'),
-              margin: 0,
-              color: theme('colors.gray.500'),
+              fontWeight: theme('fontWeight.medium'),
             },
             p: {
               color: theme('colors.gray.900'),
-              margin: 0,
             },
             a: {
               color: theme('colors.gray.900'),

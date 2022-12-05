@@ -4,6 +4,7 @@ import NavbarLink from './navbarLink';
 const pages = [
   { name: 'Home', icon: 'home', href: '/' },
   { name: 'About', icon: 'user', href: '/about' },
+  { name: 'Work', icon: 'briefcase', href: '/work' },
   { name: 'Projects', icon: 'zap', href: '/projects' },
   { name: 'Blog', icon: 'book', href: '/blog' },
   { name: 'Stack', icon: 'layers', href: '/stack' },

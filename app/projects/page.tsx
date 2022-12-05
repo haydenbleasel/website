@@ -19,19 +19,19 @@ const Project: FC<ProjectProps> = ({
 }) => (
   <Link
     href={href}
-    className="no-underline flex flex-col gap-2 py-2 sm:flex-row sm:gap-8"
+    className="no-underline py-2 grid grid-cols-3 gap-4"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <span className="flex-0 text-sm flex items-center gap-2">
+    <span className="flex-0 flex items-center gap-2">
       {title}
       {wip && (
-        <span className="text-xs text-gray-500 bg-gray-100 px-1 rounded-full">
+        <span className="text-sm text-gray-500 bg-gray-100 px-2 rounded-full">
           WIP
         </span>
       )}
     </span>
-    <span className="truncate font-light flex-1 text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+    <span className="truncate font-light flex-1 text-gray-500 dark:text-gray-400 col-span-2 sm:text-right">
       {description}
     </span>
   </Link>
@@ -75,7 +75,7 @@ const Projects = async (): Promise<ReactNode> => {
   const packages = await getNPMPackages();
 
   return (
-    <main className="flex flex-col gap-6">
+    <main className="flex flex-col gap-6 prose-p:m-0 prose-h2:mb-2 prose-h2:mt-4">
       <h1>Projects</h1>
       <div className="flex flex-col gap-2">
         <h2>Apps</h2>
@@ -103,7 +103,7 @@ const Projects = async (): Promise<ReactNode> => {
           ))}
         </div>
       </div>
-      <p>
+      <p className="m-0">
         I also started some open-source libraries that have hundreds or
         thousands of stars, such as{' '}
         <Link href="https://github.com/itgalaxy/favicons">Favicons</Link> and{' '}

@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 
 import { Mdx } from '@/components/mdx';
 import { getTableOfContents } from '@/lib/tableOfContents';
+import TableOfContents from '@/app/blog/[slug]/tableOfContents';
 
 type DocPageProps = {
   params?: {
@@ -28,8 +29,6 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
 
   const toc = await getTableOfContents(doc.body.raw);
 
-  console.log({ toc });
-
   return (
     <main className="prose">
       <h1>
@@ -37,6 +36,7 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
       </h1>
       <p className="text-xl text-gray-600">{doc.description}</p>
       <Mdx code={doc.body.code} />
+      <TableOfContents toc={toc} />
     </main>
   );
 };

@@ -1,18 +1,17 @@
 'use client';
 
 import type { FC } from 'react';
-import Link from 'next/link';
 import useContextMenu from '@/components/navbar/useContextMenu';
 import type { Item, TableOfContentsProps } from '@/lib/tableOfContents';
 
 const LinkItem: FC<Item> = ({ url, title, items }) => (
   <li key={url}>
-    <Link
+    <a
       href={url}
       className="block px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-gray-700 rounded-sm"
     >
       {title}
-    </Link>
+    </a>
     {items && (
       <ul className="ml-4">
         {items.map((item) => (

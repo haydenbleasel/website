@@ -4,13 +4,36 @@ import {
   CommandBar as CommandBarComponent,
   useCommandBar,
 } from '@haydenbleasel/command-bar';
-import Link from 'next/link';
-import type { FC } from 'react';
-import { Search } from 'lucide-react';
+import type { ComponentProps, FC, HTMLProps } from 'react';
+import { Moon, Search, Sun } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import useTheme from '@haydenbleasel/use-theme';
 import pages from '@/lib/navigation';
+import { allBlogs, allWorkPosts } from '@/.contentlayer/generated';
+
+const List: FC<ComponentProps<typeof CommandBarComponent.List>> = (props) => (
+  <CommandBarComponent.List
+    className="h-full max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-zinc-500 dark:text-zinc-400"
+    {...props}
+  />
+);
+
+const Item: FC<ComponentProps<typeof CommandBarComponent.Item>> = (props) => (
+  <CommandBarComponent.Item
+    className="-mx-2 flex cursor-pointer items-center justify-between gap-2 rounded-sm p-2 text-base text-zinc-900 aria-selected:bg-zinc-100 dark:text-white dark:aria-selected:bg-zinc-800"
+    {...props}
+  />
+);
+
+const Group: FC<ComponentProps<typeof CommandBarComponent.Group>> = (props) => (
+  <CommandBarComponent.Group className="mb-4 space-y-1 last:mb-0" {...props} />
+);
 
 const CommandBar: FC = () => {
   const commandBar = useCommandBar();
+  const router = useRouter();
+  const [theme, setTheme] = useTheme();
+  const ThemeIcon = theme === 'dark' ? Sun : Moon;
 
   return (
     <CommandBarComponent.Dialog className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-50/80 backdrop-blur-sm dark:bg-zinc-800/80">
@@ -21,34 +44,65 @@ const CommandBar: FC = () => {
           </div>
           <CommandBarComponent.Input className="w-full border-none bg-transparent py-3 text-zinc-900 shadow-none outline-none placeholder:text-zinc-400 dark:text-white dark:placeholder:text-zinc-600" />
         </div>
-        <CommandBarComponent.List className="h-full max-h-[25rem] min-h-[15rem] overflow-auto p-4 text-sm text-zinc-500 dark:text-zinc-400">
+        <List>
           <CommandBarComponent.Empty>Empty State</CommandBarComponent.Empty>
           <CommandBarComponent.Loading />
-          <CommandBarComponent.Group
-            className="mb-4 space-y-1 last:mb-0"
-            heading="Pages"
-          >
+          <Group heading="Pages">
             {pages.map((page) => (
-              <CommandBarComponent.Item
+              <Item
                 key={page.name}
-                className="-mx-2 rounded-sm aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800"
-                onSelect={() => commandBar.toggleOpen(false)}
+                onSelect={() => {
+                  commandBar.toggleOpen(false);
+                  router.push(page.href);
+                }}
               >
-                <Link
-                  href={page.href}
-                  className="flex cursor-pointer items-center justify-between gap-2 p-2 text-base text-zinc-900"
-                >
-                  <div className="flex items-center gap-3">
-                    <page.icon size={16} />
-                    {page.name}
-                  </div>
-                </Link>
-              </CommandBarComponent.Item>
+                <div className="flex items-center gap-3">
+                  <page.icon size={16} />
+                  {page.name}
+                </div>
+              </Item>
             ))}
-
-            <CommandBarComponent.Separator />
-          </CommandBarComponent.Group>
-        </CommandBarComponent.List>
+          </Group>
+          <Group heading="Blog Posts">
+            {allBlogs.map((post) => (
+              <Item
+                key={post.slug}
+                onSelect={() => {
+                  commandBar.toggleOpen(false);
+                  router.push(post.slug);
+                }}
+              >
+                {post.title}
+              </Item>
+            ))}
+          </Group>
+          <Group heading="Work Posts">
+            {allWorkPosts.map((post) => (
+              <Item
+                key={post.slug}
+                onSelect={() => {
+                  commandBar.toggleOpen(false);
+                  router.push(post.slug);
+                }}
+              >
+                {post.role} at {post.company}
+              </Item>
+            ))}
+          </Group>
+          <Group heading="Utilities">
+            <Item
+              onSelect={() => {
+                commandBar.toggleOpen(false);
+                setTheme(theme === 'dark' ? 'light' : 'dark');
+              }}
+            >
+              <div className="flex items-center gap-3">
+                <ThemeIcon size={16} />
+                Toggle Theme
+              </div>
+            </Item>
+          </Group>
+        </List>
       </CommandBarComponent.Container>
     </CommandBarComponent.Dialog>
   );

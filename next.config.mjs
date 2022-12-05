@@ -11,6 +11,7 @@ const nextConfig = {
     domains: [
       'cdn.dribbble.com',
       's3-alpha-sig.figma.com',
+      's3-alpha.figma.com',
       'logo.clearbit.com',
     ],
   },

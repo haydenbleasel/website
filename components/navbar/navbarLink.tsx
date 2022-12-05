@@ -35,7 +35,7 @@ const NavbarLink: FC<{
     <Tooltip label={label}>
       <Link href={href} className="p-2 group relative">
         <>
-          <Suspense>
+          <Suspense fallback={<div className="w-5 h-5" />}>
             <Icon
               size={20}
               className={clsx(

@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import NavbarLink from './navbarLink';
+import ContextualMenu from './contextualMenu';
 
 const pages = [
   { name: 'Home', icon: 'home', href: '/' },
@@ -20,6 +21,7 @@ const Navbar: FC = () => (
           <NavbarLink key={link.name} {...link} />
         ))}
       </div>
+      <ContextualMenu />
     </div>
   </div>
 );

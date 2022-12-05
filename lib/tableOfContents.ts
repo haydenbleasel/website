@@ -15,13 +15,13 @@ const flattenNode = (node) => {
   return p.join(``);
 };
 
-type Item = {
+export type Item = {
   title: string;
   url: string;
   items?: Item[];
 };
 
-type Items = {
+export type Items = {
   items?: Item[];
 };
 

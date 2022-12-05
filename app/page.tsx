@@ -19,11 +19,11 @@ const Home: FC = () => (
         alt=""
         width={64}
         height={64}
-        className="m-0 rounded-full overflow-hidden w-16 h-16"
+        className="m-0 h-16 w-16 overflow-hidden rounded-full"
       />
       <div className="grid">
-        <h1 className="text-base font-medium text-gray-900">Hayden Bleasel</h1>
-        <p className="text-gray-500 font-light">
+        <h1 className="text-base font-medium text-zinc-900">Hayden Bleasel</h1>
+        <p className="font-light text-zinc-500">
           Chief Product Officer at Corellium
         </p>
       </div>

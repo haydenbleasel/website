@@ -20,7 +20,7 @@ const FigmaFile = async ({ id }: FigmaFileProps): Promise<ReactNode> => {
       href={`https://www.figma.com/file/${id}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="block shadow-lg shadow-gray-800/5 overflow-hidden rounded-lg border border-gray-200 bg-white no-underline transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-900 dark:hover:bg-gray-800"
+      className="block overflow-hidden rounded-lg border border-zinc-200 bg-white no-underline shadow-lg shadow-zinc-800/5 transition-colors hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900 dark:hover:bg-zinc-800"
     >
       <div className="relative aspect-[2/1] w-full">
         <Image
@@ -32,11 +32,11 @@ const FigmaFile = async ({ id }: FigmaFileProps): Promise<ReactNode> => {
           className="relative m-0 w-full rounded-none"
         />
       </div>
-      <div className="flex flex-col gap-1 border-t border-gray-200 p-4 dark:border-gray-700">
-        <p className="m-0 text-base font-medium text-gray-900 line-clamp-1 dark:text-white sm:text-lg">
+      <div className="flex flex-col gap-1 border-t border-zinc-200 p-4 dark:border-zinc-700">
+        <p className="line-clamp-1 m-0 text-base font-medium text-zinc-900 dark:text-white sm:text-lg">
           {file.name}
         </p>
-        <p className="m-0 text-sm font-normal text-gray-500 dark:text-gray-400 sm:text-base">
+        <p className="m-0 text-sm font-normal text-zinc-500 dark:text-zinc-400 sm:text-base">
           Last updated {formatDate(new Date(file.lastModified))}
         </p>
       </div>

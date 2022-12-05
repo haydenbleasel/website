@@ -17,7 +17,7 @@ const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => {
 
   return (
     <div
-      className={`select-none rounded-full border border-gray-200 p-4 transition-all hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800 ${
+      className={`select-none rounded-full border border-zinc-200 p-4 transition-all hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800 ${
         active ? '' : 'cursor-not-allowed opacity-50'
       }`}
       onClick={handleClick}
@@ -28,7 +28,7 @@ const Arrow: FC<ArrowProps> = ({ icon: Icon, active, handleClick }) => {
       aria-controls="embla-carousel"
       aria-disabled={!active}
     >
-      <Icon size={16} className="text-gray-500 dark:text-gray-400" />
+      <Icon size={16} className="text-zinc-500 dark:text-zinc-400" />
     </div>
   );
 };

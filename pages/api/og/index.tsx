@@ -45,7 +45,7 @@ const handler = async (req: NextRequest): Promise<ImageResponse> => {
   try {
     return new ImageResponse(
       (
-        <div tw="flex bg-gray-50 flex-1 w-full h-full justify-center flex-col py-12 px-32">
+        <div tw="flex bg-zinc-50 flex-1 w-full h-full justify-center flex-col py-12 px-32">
           <img
             width={64}
             height={64}
@@ -53,11 +53,11 @@ const handler = async (req: NextRequest): Promise<ImageResponse> => {
             tw="rounded-full w-16 h-16 mb-12 block"
             alt=""
           />
-          <p tw="text-5xl tracking-tight leading-[1.1] font-bold mt-0 mb-6 w-[70%] text-gray-900">
+          <p tw="text-5xl tracking-tight leading-[1.1] font-bold mt-0 mb-6 w-[70%] text-zinc-900">
             {title}
           </p>
-          <p tw="text-2xl mt-0 mb-8 w-[70%] text-gray-600">{subtitle}</p>
-          <p tw="text-md m-0 text-gray-500 w-[70%]">{url}</p>
+          <p tw="text-2xl mt-0 mb-8 w-[70%] text-zinc-600">{subtitle}</p>
+          <p tw="text-md m-0 text-zinc-500 w-[70%]">{url}</p>
         </div>
       ),
       {

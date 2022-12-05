@@ -11,15 +11,15 @@ const Post: FC<typeof allBlogs[number]> = ({
 }) => (
   <Link
     href={slug}
-    className="no-underline flex flex-col gap-1 py-2 sm:flex-row sm:gap-8"
+    className="flex flex-col gap-1 py-2 no-underline sm:flex-row sm:gap-8"
   >
     <span className="flex-1 truncate">
       <span className="flex-0 flex items-center gap-2">{title}</span>
-      <span className="truncate font-light text-sm flex-1 text-gray-500 dark:text-gray-400">
+      <span className="flex-1 truncate text-sm font-light text-zinc-500 dark:text-zinc-400">
         {description}
       </span>
     </span>
-    <span className="flex-shrink-0 text-gray-500 text-sm sm:leading-[28px] font-light">
+    <span className="flex-shrink-0 text-sm font-light text-zinc-500 sm:leading-[28px]">
       {formatDate(new Date(date))}
     </span>
   </Link>

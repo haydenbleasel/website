@@ -17,7 +17,7 @@ const Tool: FC<ToolProps> = ({ name, href, description }) => {
   return (
     <Link
       href={href}
-      className="no-underline py-2 grid grid-cols-3 gap-4"
+      className="grid grid-cols-3 gap-4 py-2 no-underline"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -27,11 +27,11 @@ const Tool: FC<ToolProps> = ({ name, href, description }) => {
           width={24}
           height={24}
           alt=""
-          className="m-0 w-6 h-6 object-contain"
+          className="m-0 h-6 w-6 object-contain"
         />
         {name}
       </span>
-      <span className="truncate font-light flex-1 text-gray-500 dark:text-gray-400 col-span-2 sm:text-right">
+      <span className="col-span-2 flex-1 truncate font-light text-zinc-500 dark:text-zinc-400 sm:text-right">
         {description}
       </span>
     </Link>
@@ -39,7 +39,7 @@ const Tool: FC<ToolProps> = ({ name, href, description }) => {
 };
 
 const Stack: FC = () => (
-  <main className="flex flex-col gap-6 prose-p:m-0 prose-h2:mb-2 prose-h2:mt-4">
+  <main className="flex flex-col gap-6 prose-h2:mb-2 prose-h2:mt-4 prose-p:m-0">
     <h1>Stack</h1>
     <div>
       {tools.map((tool, index) => (

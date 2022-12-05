@@ -3,7 +3,7 @@ import ContactForm from '@/components/contactForm';
 import SocialLinks from '@/components/socialLinks';
 
 const Contact: FC = () => (
-  <main className="flex flex-col gap-6 prose-p:m-0 prose-p:text-gray-500">
+  <main className="flex flex-col gap-6 prose-p:m-0 prose-p:text-zinc-500">
     <h1>Contact</h1>
     <p>
       Get in touch using the form below, or connect with me on social media.

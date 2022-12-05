@@ -8,7 +8,7 @@ const LinkItem: FC<Item> = ({ url, title, items }) => (
   <li key={url}>
     <a
       href={url}
-      className="block px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-gray-700 rounded-sm"
+      className="block rounded-sm px-2 py-1 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-700"
     >
       {title}
     </a>

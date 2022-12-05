@@ -20,19 +20,19 @@ const Project: FC<ProjectProps> = ({
 }) => (
   <Link
     href={href}
-    className="no-underline py-2 grid grid-cols-3 gap-4"
+    className="grid grid-cols-3 gap-4 py-2 no-underline"
     target="_blank"
     rel="noopener noreferrer"
   >
     <span className="flex-0 flex items-center gap-2">
       {title}
       {wip && (
-        <span className="text-sm text-gray-500 bg-gray-100 px-2 rounded-full">
+        <span className="rounded-full bg-zinc-100 px-2 text-sm text-zinc-500">
           WIP
         </span>
       )}
     </span>
-    <span className="truncate font-light flex-1 text-gray-500 dark:text-gray-400 col-span-2 sm:text-right">
+    <span className="col-span-2 flex-1 truncate font-light text-zinc-500 dark:text-zinc-400 sm:text-right">
       {description}
     </span>
   </Link>
@@ -42,7 +42,7 @@ const Projects = async (): Promise<ReactNode> => {
   const packages = await getNPMPackages();
 
   return (
-    <main className="flex flex-col gap-6 prose-p:m-0 prose-h2:mb-2 prose-h2:mt-4">
+    <main className="flex flex-col gap-6 prose-h2:mb-2 prose-h2:mt-4 prose-p:m-0">
       <h1>Projects</h1>
       <div className="flex flex-col gap-2">
         <h2>Apps</h2>

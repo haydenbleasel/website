@@ -25,7 +25,7 @@ const NavbarLink: FC<NavbarLinkProps> = ({ name, icon: Icon, href }) => {
           <Icon
             size={20}
             className={clsx(
-              'text-gray-500 transition-colors group-hover:text-teal-600',
+              'text-zinc-500 transition-colors group-hover:text-teal-600',
               'group-[.active-page]:text-teal-600'
             )}
           />

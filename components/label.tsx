@@ -7,7 +7,7 @@ type LabelProps = PrimitiveLabelProps;
 const Label: FC<LabelProps> = ({ htmlFor, ...props }) => (
   <Root
     htmlFor={htmlFor}
-    className="block text-sm font-medium text-gray-700"
+    className="block text-sm font-medium text-zinc-700"
     {...props}
   />
 );

@@ -34,7 +34,7 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
       <h1>
         {doc.role} at {doc.company}
       </h1>
-      <p className="text-xl text-gray-600">{doc.description}</p>
+      <p className="text-xl">{doc.description}</p>
       <Mdx code={doc.body.code} />
       <TableOfContents toc={toc} />
     </main>

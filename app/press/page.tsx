@@ -16,24 +16,24 @@ type FeatureProps = {
 const Feature: FC<FeatureProps> = ({ name, source, link, date }) => (
   <Link
     href={link ?? ''}
-    className="no-underline flex flex-col gap-1 py-2 sm:flex-row sm:gap-8"
+    className="flex flex-col gap-1 py-2 no-underline sm:flex-row sm:gap-8"
     target="_blank"
     rel="noopener noreferrer"
   >
     <span className="flex-1 truncate">
       <span className="flex-0 flex items-center gap-2">{name}</span>
-      <span className="truncate font-light text-sm flex-1 text-gray-500 dark:text-gray-400">
+      <span className="flex-1 truncate text-sm font-light text-zinc-500 dark:text-zinc-400">
         {source}
       </span>
     </span>
-    <span className="flex-shrink-0 text-gray-500 text-sm sm:leading-[28px] font-light">
+    <span className="flex-shrink-0 text-sm font-light text-zinc-500 sm:leading-[28px]">
       {formatDate(new Date(date))}
     </span>
   </Link>
 );
 
 const Press: FC = () => (
-  <main className="flex flex-col gap-6 prose-p:m-0 prose-h2:mb-2 prose-h2:mt-4">
+  <main className="flex flex-col gap-6 prose-h2:mb-2 prose-h2:mt-4 prose-p:m-0">
     <h1>Press</h1>
     <div className="flex flex-col gap-2">
       <h2>Speaking</h2>

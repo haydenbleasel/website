@@ -34,8 +34,8 @@ const ComparisonSlider: FC<ComparisonSliderProps> = ({ before, after }) => (
       }
     />
     <div className="flex items-center justify-between">
-      <p className="m-0 text-sm text-gray-500 dark:text-gray-400">Before</p>
-      <p className="m-0 text-sm text-gray-500 dark:text-gray-400">After</p>
+      <p className="m-0 text-sm text-zinc-500 dark:text-zinc-400">Before</p>
+      <p className="m-0 text-sm text-zinc-500 dark:text-zinc-400">After</p>
     </div>
   </div>
 );

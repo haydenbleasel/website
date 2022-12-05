@@ -24,7 +24,7 @@ const Input: FC<InputProps> = ({ onValueChange, hint, label, ...props }) => {
       <div className="mt-1">
         <input
           id={labelId}
-          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+          className="block w-full rounded-md border-zinc-300 shadow-sm focus:border-teal-500 focus:ring-teal-500"
           aria-describedby={hintId}
           {...props}
           onChange={handleChange}

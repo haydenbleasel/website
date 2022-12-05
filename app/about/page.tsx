@@ -22,8 +22,8 @@ const Home: FC = () => (
   <main className="grid gap-8 prose-p:m-0">
     <h1>About</h1>
     <p>
-      I’m an Australian Product Designer and Frontend Engineer living in Delray
-      Beach, Florida. I currently lead the Product and Design teams at{' '}
+      I&apos;m an Australian Product Designer and Frontend Engineer living in
+      Delray Beach, Florida. I currently lead the Product and Design teams at{' '}
       <Logo icon={Corellium as FC} href="http://corellium.com/">
         Corellium
       </Logo>
@@ -32,11 +32,12 @@ const Home: FC = () => (
       <Logo icon={Neutral as FC} href="https://tryneutral.com/">
         Neutral
       </Logo>
-      , with which we’ve helped plant thousands of trees and offset hundeds of
-      tonnes of CO₂ equivalent.
+      , with which we&apos;ve helped plant thousands of trees and offset hundeds
+      of tonnes of CO₂ equivalent.
     </p>
     <p>
-      I’ve had the privilege of working with many fantastic companies including{' '}
+      I&apos;ve had the privilege of working with many fantastic companies
+      including{' '}
       <Logo icon={Google as FC} href="https://www.google.com/">
         Google
       </Logo>

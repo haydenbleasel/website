@@ -28,19 +28,19 @@ const Role: FC<typeof allWorkPosts[number]> = ({
 }) => (
   <Link
     href={slug}
-    className="no-underline flex flex-col gap-2 py-2 sm:flex-row sm:gap-8"
+    className="flex flex-col gap-2 py-2 no-underline sm:flex-row sm:gap-8"
   >
     <span className="flex-0 flex items-center gap-2">
       {role} at {company}
     </span>
-    <span className="truncate font-light flex-1 text-gray-500 dark:text-gray-400 sm:text-right">
+    <span className="flex-1 truncate font-light text-zinc-500 dark:text-zinc-400 sm:text-right">
       {startYear} &mdash; {endYear ?? 'Present'}
     </span>
   </Link>
 );
 
 const Work: FC = () => (
-  <main className="flex flex-col gap-6 relative">
+  <main className="relative flex flex-col gap-6">
     <h1>Work</h1>
     <div>
       {allWorkPosts.sort(sortByEndYear).map((post, index) => (

@@ -30,7 +30,7 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
   return (
     <main className="prose">
       <h1>{doc.title}</h1>
-      <p className="text-xl text-gray-600">{doc.description}</p>
+      <p className="text-xl">{doc.description}</p>
       <Mdx code={doc.body.code} />
       <TableOfContents toc={toc} />
     </main>

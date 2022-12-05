@@ -13,10 +13,10 @@ const Popover: FC<PopoverProps> = ({ trigger, children, ...props }) => (
     <Trigger asChild>{trigger}</Trigger>
     <Portal>
       <Content
-        className="bg-white flex shadow-lg shadow-gray-800/5 items-center border-gray-100 border rounded-md"
+        className="flex items-center rounded-md border border-zinc-100 bg-white shadow-lg shadow-zinc-800/5"
         sideOffset={8}
       >
-        <div className="max-h-[40vh] p-2 overflow-y-auto">{children}</div>
+        <div className="max-h-[40vh] overflow-y-auto p-2">{children}</div>
         <Arrow className="fill-white" />
       </Content>
     </Portal>

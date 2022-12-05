@@ -6,7 +6,7 @@ import { Sun, Moon } from 'lucide-react';
 import clsx from 'clsx';
 import useTheme from '@haydenbleasel/use-theme';
 
-const Separator: FC = () => <Root className="h-full w-px bg-gray-200" />;
+const Separator: FC = () => <Root className="h-full w-px bg-zinc-200" />;
 
 const ThemeSwitcher: FC = () => {
   const [theme, setTheme] = useTheme();
@@ -22,7 +22,7 @@ const ThemeSwitcher: FC = () => {
             size={20}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className={clsx(
-              'cursor-pointer text-gray-500 transition-colors group-hover:text-teal-600'
+              'cursor-pointer text-zinc-500 transition-colors group-hover:text-teal-600'
             )}
           />
           <span className="sr-only">More</span>

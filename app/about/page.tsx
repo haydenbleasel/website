@@ -1,6 +1,8 @@
 import type { FC, ReactNode } from 'react';
+import { Fragment } from 'react';
 
 import Link from 'next/link';
+import Post from '../blog/post';
 import Logo from '@/components/logo';
 import Airwallex from '@/public/logos/airwallex.svg';
 import AustralianEthical from '@/public/logos/australian-ethical.svg';
@@ -21,6 +23,8 @@ import Westfield from '@/public/logos/westfield.svg';
 import { social } from '@/lib/social';
 import getSteamGames from '@/lib/steam';
 import formatList from '@/lib/formatList';
+import education from '@/content/education.json';
+import Divider from '@/components/divider';
 
 const steamUrl = social.find(({ name }) => name === 'Steam')?.url ?? '';
 
@@ -59,6 +63,7 @@ const About = async (): Promise<ReactNode> => {
         , with which we&apos;ve helped plant thousands of trees and offset
         hundeds of tonnes of CO₂ equivalent.
       </p>
+      <h2>Work History</h2>
       <p>
         I&apos;ve had the privilege of working with many fantastic companies
         including{' '}
@@ -137,6 +142,22 @@ const About = async (): Promise<ReactNode> => {
         Seed / Series A funding and created the future of superannuation in
         Australia.
       </p>
+      <h2>Education</h2>
+      <p>I&apos;ve studied at university and occasionally study online.</p>
+      <div>
+        {education.map((edu, index) => (
+          <Fragment key={edu.name}>
+            {index > 0 && <Divider />}
+            <Post
+              title={edu.name}
+              description={edu.institution}
+              date={String(edu.year)}
+              slug={edu.link ?? '#'}
+            />
+          </Fragment>
+        ))}
+      </div>
+      <h2>Other</h2>
       <p>
         I also play a lot of games, you can find me on{' '}
         <Link href={steamUrl}>Steam</Link>. I have {totalHours} hours of tracked

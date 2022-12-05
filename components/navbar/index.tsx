@@ -1,21 +1,31 @@
 import type { FC } from 'react';
+import {
+  Book,
+  Briefcase,
+  Home,
+  Layers,
+  MessageCircle,
+  Star,
+  User,
+  Zap,
+} from 'lucide-react';
 import NavbarLink from './navbarLink';
 import ContextualMenu from './contextualMenu';
 
 const pages = [
-  { name: 'Home', icon: 'home', href: '/' },
-  { name: 'About', icon: 'user', href: '/about' },
-  { name: 'Work', icon: 'briefcase', href: '/work' },
-  { name: 'Projects', icon: 'zap', href: '/projects' },
-  { name: 'Blog', icon: 'book', href: '/blog' },
-  { name: 'Stack', icon: 'layers', href: '/stack' },
-  { name: 'Press', icon: 'star', href: '/press' },
-  { name: 'Contact', icon: 'message-circle', href: '/contact' },
+  { name: 'Home', icon: Home, href: '/' },
+  { name: 'About', icon: User, href: '/about' },
+  { name: 'Work', icon: Briefcase, href: '/work' },
+  { name: 'Projects', icon: Zap, href: '/projects' },
+  { name: 'Blog', icon: Book, href: '/blog' },
+  { name: 'Stack', icon: Layers, href: '/stack' },
+  { name: 'Press', icon: Star, href: '/press' },
+  { name: 'Contact', icon: MessageCircle, href: '/contact' },
 ];
 
 const Navbar: FC = () => (
-  <div className="fixed bottom-6 left-0 right-0 flex justify-center">
-    <div className="bg-white flex shadow-lg shadow-gray-800/5 items-center border-gray-100 border rounded-full px-3">
+  <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center">
+    <div className="flex items-center rounded-full border border-gray-100 bg-white px-3 shadow-lg shadow-gray-800/5">
       <div className="flex items-center px-1">
         {pages.map((link) => (
           <NavbarLink key={link.name} {...link} />

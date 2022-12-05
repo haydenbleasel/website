@@ -1,30 +1,17 @@
-'use client';
-
 import type { FC } from 'react';
-import { Suspense } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-import dynamic from 'next/dynamic';
 import type { LucideProps } from 'lucide-react';
 import Tooltip from '../tooltip';
+import CurrentPageProvider from './currentPageProvider';
 
-const NavbarLink: FC<{
+type NavbarLinkProps = {
   href: string;
   name: string;
-  icon: string;
-}> = ({ name, icon, href }) => {
-  const pathname = usePathname();
-  const active = pathname === href;
-  const Icon = dynamic<LucideProps>(
-    async () =>
-      import(
-        /* webpackChunkName: "lucide-icon" */
-        `lucide-react/dist/esm/icons/${icon}`
-      ),
-    { suspense: true }
-  );
+  icon: FC<LucideProps>;
+};
 
+const NavbarLink: FC<NavbarLinkProps> = ({ name, icon: Icon, href }) => {
   let label = name;
 
   if (!href.startsWith('/')) {
@@ -33,26 +20,24 @@ const NavbarLink: FC<{
 
   return (
     <Tooltip label={label}>
-      <Link href={href} className="p-2 group relative">
-        <>
-          <Suspense fallback={<div className="w-5 h-5" />}>
-            <Icon
-              size={20}
-              className={clsx(
-                'text-gray-500 group-hover:text-teal-600 transition-colors',
-                active && 'text-teal-600'
-              )}
-            />
-          </Suspense>
+      <CurrentPageProvider href={href}>
+        <Link href={href} className="relative block p-2">
+          <Icon
+            size={20}
+            className={clsx(
+              'text-gray-500 transition-colors group-hover:text-teal-600',
+              'group-[.active-page]:text-teal-600'
+            )}
+          />
           <span className="sr-only">{name}</span>
           <span
             className={clsx(
-              'opacity-0 group-hover:opacity-100 transition-opacity absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0',
-              active && 'opacity-100'
+              'absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 opacity-0 transition-opacity group-hover:opacity-100 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0',
+              'group-[.active-page]:opacity-100'
             )}
           />
-        </>
-      </Link>
+        </Link>
+      </CurrentPageProvider>
     </Tooltip>
   );
 };

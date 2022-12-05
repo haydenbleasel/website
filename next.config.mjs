@@ -8,7 +8,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['cdn.dribbble.com'],
+    domains: ['cdn.dribbble.com', 's3-alpha-sig.figma.com'],
   },
 
   // Temporary

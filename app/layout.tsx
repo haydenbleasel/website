@@ -15,10 +15,12 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
       'font-sans font-light antialiased'
     )}
   >
-    <body>
+    <body className="overflow-x-hidden">
       <Providers>
         <Navbar />
-        <div className="prose mx-auto px-4 pt-24 pb-32">{children}</div>
+        <div className="w-full overflow-x-hidden">
+          <div className="prose mx-auto px-4 pt-24 pb-32">{children}</div>
+        </div>
       </Providers>
       <Analytics />
     </body>

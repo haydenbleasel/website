@@ -1,6 +1,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import type { FC, ReactNode } from 'react';
 import FigmaFile from './figmaFile';
+import ComparisonSlider from './comparisonSlider';
 import DribbbleSlider from '@/components/dribbbleSlider';
 
 type MdxProps = {
@@ -15,6 +16,7 @@ const components = {
   Callout,
   DribbbleSlider: DribbbleSlider as unknown as FC,
   FigmaFile: FigmaFile as unknown as FC,
+  ComparisonSlider: ComparisonSlider as unknown as FC,
 };
 
 export const Mdx: FC<MdxProps> = ({ code }) => {

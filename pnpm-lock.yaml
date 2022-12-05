@@ -39,6 +39,7 @@ specifiers:
   prettier: ^2.8.0
   prettier-plugin-tailwindcss: ^0.2.0
   react: 18.2.0
+  react-compare-slider: ^2.2.0
   react-dom: 18.2.0
   react-hot-toast: ^2.4.0
   rehype-autolink-headings: ^6.1.1
@@ -71,6 +72,7 @@ dependencies:
   next-contentlayer: 0.2.9_7iuvftg57tblwyxclfkwku5xo4
   node-html-parser: 6.1.4
   react: 18.2.0
+  react-compare-slider: 2.2.0_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
   react-hot-toast: 2.4.0_biqbaboplfbrettd7655fr4n2y
   rehype-autolink-headings: 6.1.1
@@ -7442,6 +7444,16 @@ packages:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
     dev: true
+
+  /react-compare-slider/2.2.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-I77xqulpoibZ9eqjn5wjpZL5IRpUZYcUlde70YaJ+MORGbUThrjTlHKl/UeGyCIPUWtPID5f5/zK9Q+1ovQLeA==}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}

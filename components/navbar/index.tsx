@@ -8,7 +8,7 @@ const pages = [
   { name: 'Projects', icon: 'zap', href: '/projects' },
   { name: 'Blog', icon: 'book', href: '/blog' },
   { name: 'Stack', icon: 'layers', href: '/stack' },
-  { name: 'Speaking', icon: 'mic', href: '/speaking' },
+  { name: 'Press', icon: 'star', href: '/press' },
   { name: 'Contact', icon: 'message-circle', href: '/contact' },
 ];
 

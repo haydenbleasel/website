@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react';
 import { Fragment } from 'react';
 import Divider from '@/components/divider';
 import { getNPMPackages } from '@/lib/npm';
+import projects from '@/content/projects.json';
 
 type ProjectProps = {
   title: string;
@@ -36,40 +37,6 @@ const Project: FC<ProjectProps> = ({
     </span>
   </Link>
 );
-
-const projects = [
-  {
-    title: 'Neutral',
-    href: 'https://tryneutral.com/',
-    description: 'Join the carbon neutral community.',
-  },
-  {
-    title: 'Neutral API',
-    href: '#',
-    description: 'Planetary reforestation at scale.',
-    wip: true,
-  },
-  {
-    title: 'Hancock',
-    description: 'A simple email signature generator.',
-    href: 'https://hancock.haydenbleasel.com/',
-  },
-  {
-    title: 'San Andreas Radio',
-    description: 'All you had to do was follow the damn train, CJ!',
-    href: 'https://sanandreasradio.com/',
-  },
-  {
-    title: 'Bokeh',
-    description: 'The new home for photographers.',
-    href: 'https://www.bokeh.photo/',
-  },
-  {
-    title: 'Vercel for VS Code',
-    description: 'A VS Code extension for Vercel deployment status.',
-    href: 'https://marketplace.visualstudio.com/items?itemName=haydenbleasel.vercel-vscode',
-  },
-];
 
 const Projects = async (): Promise<ReactNode> => {
   const packages = await getNPMPackages();

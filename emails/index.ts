@@ -9,6 +9,9 @@ const transport = createTransport({
     user: process.env.POSTMARK_API_KEY,
     pass: process.env.POSTMARK_API_KEY,
   },
+  headers: {
+    'X-PM-Message-Stream': 'outbound',
+  },
 });
 
 // eslint-disable-next-line jest/require-hook

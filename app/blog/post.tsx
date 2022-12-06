@@ -17,11 +17,13 @@ const Post: FC<PostProps> = ({ title, slug, description, date, ...props }) => (
     href={slug}
     className="flex flex-col gap-1 py-2 no-underline sm:flex-row sm:gap-8"
   >
-    <span className="flex-1 truncate">
-      <span className="flex-0 flex items-center gap-2">{title}</span>
+    <span className="flex-1">
+      <span className="flex-0 flex items-center gap-2 line-clamp-1">
+        {title}
+      </span>
       <span
         className={clsx(
-          'flex-1 text-sm font-light',
+          'flex-1 text-sm font-light line-clamp-1',
           'text-zinc-500',
           'dark:text-zinc-400'
         )}

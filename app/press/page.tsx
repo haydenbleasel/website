@@ -20,9 +20,9 @@ const Feature: FC<FeatureProps> = ({ name, source, link, date }) => (
     target="_blank"
     rel="noopener noreferrer"
   >
-    <span className="flex-1 truncate">
+    <span className="flex-1 line-clamp-1">
       <span className="flex-0 flex items-center gap-2">{name}</span>
-      <span className="flex-1 truncate text-sm font-light text-zinc-500 dark:text-zinc-400">
+      <span className="flex-1 text-sm font-light text-zinc-500 line-clamp-1 dark:text-zinc-400">
         {source}
       </span>
     </span>

@@ -39,7 +39,7 @@ const Project: FC<ProjectProps> = ({
         </span>
       )}
     </span>
-    <span className="col-span-2 flex-1 truncate text-sm font-light text-zinc-500 dark:text-zinc-400 sm:text-right">
+    <span className="col-span-2 flex-1 text-sm font-light text-zinc-500 line-clamp-1 dark:text-zinc-400 sm:text-right">
       {description}
     </span>
   </Link>

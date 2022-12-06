@@ -47,12 +47,12 @@ const Shot: FC<DribbbleResponse> = ({
             height={300}
             quality={100}
             alt=""
-            className="relative m-0 w-full rounded-none"
+            className="relative m-0 aspect-[4/3] w-full rounded-none object-cover"
           />
         )}
       </div>
       <div className="flex flex-col gap-1 border-t border-zinc-200 p-4 dark:border-zinc-700">
-        <p className="line-clamp-1 m-0 font-medium text-zinc-900 dark:text-white">
+        <p className="m-0 font-medium text-zinc-900 line-clamp-1 dark:text-white">
           {title ?? 'Loading'}
         </p>
         <div className="flex items-center gap-3">

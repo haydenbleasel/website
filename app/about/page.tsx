@@ -155,7 +155,7 @@ const About = async (): Promise<ReactNode> => {
                 title={edu.name}
                 description={edu.institution}
                 date={String(edu.year)}
-                slug={edu.link ?? '#'}
+                slug={edu.link}
               />
             </Fragment>
           ))}

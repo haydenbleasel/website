@@ -13,20 +13,14 @@ type ProjectProps = {
   wip?: boolean;
 };
 
-const Project: FC<ProjectProps> = ({
+const ProjectInner: FC<Partial<ProjectProps>> = ({
   title,
-  href,
   description,
-  wip = false,
+  wip,
 }) => (
-  <Link
-    href={href}
-    className="grid grid-cols-3 items-center gap-4 py-2 no-underline"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+  <>
     <span className="flex-0 flex items-center gap-2">
-      {title}
+      <span className="font-medium text-zinc-900 dark:text-white">{title}</span>
       {wip && (
         <span
           className={clsx(
@@ -42,8 +36,24 @@ const Project: FC<ProjectProps> = ({
     <span className="col-span-2 flex-1 text-sm font-light text-zinc-500 line-clamp-1 dark:text-zinc-400 sm:text-right">
       {description}
     </span>
-  </Link>
+  </>
 );
+
+const Project: FC<ProjectProps> = ({ href, ...props }) =>
+  href ? (
+    <Link
+      href={href}
+      className="grid grid-cols-3 items-center gap-4 py-2 no-underline"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <ProjectInner {...props} />
+    </Link>
+  ) : (
+    <div className="grid grid-cols-3 items-center gap-4 py-2 no-underline">
+      <ProjectInner {...props} />
+    </div>
+  );
 
 const Projects = async (): Promise<ReactNode> => {
   const packages = await getNPMPackages();

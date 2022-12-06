@@ -6,17 +6,17 @@ import formatDate from '@/lib/formatDate';
 
 type PostProps = LinkProps & {
   title: string;
-  slug: string;
+  slug?: string;
   description: string;
   date: string;
 };
 
-const Post: FC<PostProps> = ({ title, slug, description, date, ...props }) => (
-  <Link
-    {...props}
-    href={slug}
-    className="flex flex-col gap-1 py-2 no-underline sm:flex-row sm:gap-8"
-  >
+const PostInner: FC<Pick<PostProps, 'title' | 'description' | 'date'>> = ({
+  title,
+  description,
+  date,
+}) => (
+  <>
     <span className="flex-1">
       <span className="flex-0 flex items-center gap-2 line-clamp-1">
         {title}
@@ -40,7 +40,20 @@ const Post: FC<PostProps> = ({ title, slug, description, date, ...props }) => (
     >
       {formatDate(new Date(date))}
     </span>
-  </Link>
+  </>
 );
+
+const Post: FC<PostProps> = ({ title, slug, description, date, ...props }) =>
+  slug ? (
+    <Link
+      {...props}
+      href={slug}
+      className="flex flex-col gap-1 py-2 no-underline sm:flex-row sm:gap-8"
+    >
+      <PostInner title={title} description={description} date={date} />
+    </Link>
+  ) : (
+    <PostInner title={title} description={description} date={date} />
+  );
 
 export default Post;

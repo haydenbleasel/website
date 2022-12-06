@@ -15,6 +15,7 @@ const nextConfig = {
       'logo.clearbit.com',
       'i.scdn.co',
       'mosaic.scdn.co',
+      'source.unsplash.com',
     ],
   },
 

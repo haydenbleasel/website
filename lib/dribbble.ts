@@ -17,9 +17,23 @@ const viewsRegex = /"viewsCount":(?<value>\d+)/u;
 const titleRegex = /"title":"(?<value>.+?)"/u;
 const imageRegex = /"shotGifUrl":"(?<value>.+?)"/u;
 
+const mockImage: DribbbleResponse = {
+  id: Math.floor(Math.random() * 100).toString(),
+  url: 'https://dribbble.com/shots/123',
+  title: 'Title',
+  image: 'https://source.unsplash.com/random',
+  comments: Math.floor(Math.random() * 100).toString(),
+  likes: Math.floor(Math.random() * 100).toString(),
+  views: Math.floor(Math.random() * 100).toString(),
+};
+
 export const fetchDribbbleShot = async (
   id: number
 ): Promise<DribbbleResponse> => {
+  if (process.env.NODE_ENV === 'development') {
+    return mockImage;
+  }
+
   const response = await fetch(`https://dribbble.com/shots/${id}`);
   const data = await response.text();
 

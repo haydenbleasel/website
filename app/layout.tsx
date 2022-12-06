@@ -20,7 +20,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
       <Providers>
         <Navbar />
         <div className="w-full overflow-x-hidden">
-          <div className="prose mx-auto px-4 pt-24 pb-32 dark:prose-invert">
+          <div className="prose prose-zinc mx-auto px-4 pt-24 pb-32 dark:prose-invert">
             {children}
           </div>
         </div>

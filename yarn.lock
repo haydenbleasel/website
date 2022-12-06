@@ -9840,6 +9840,11 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
+twitter-api-v2@^1.12.9:
+  version "1.12.9"
+  resolved "https://registry.yarnpkg.com/twitter-api-v2/-/twitter-api-v2-1.12.9.tgz#447fc4efb693bbb7983a6dcec2de5da7e0f27648"
+  integrity sha512-nmKwcUiXgoEfcOtAH/hYojy0oSxbouWvvNsHVphiHSW9x9aus2Jdg9/NRB2Gzyq5G6xl+EkjUlEWwBQjp1FOfg==
+
 typanion@^3.12.1, typanion@^3.8.0:
   version "3.12.1"
   resolved "https://registry.yarnpkg.com/typanion/-/typanion-3.12.1.tgz#d33deb130aba23ef6f2a3c69e7fb28148dd9089a"

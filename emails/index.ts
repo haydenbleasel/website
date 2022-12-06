@@ -2,7 +2,7 @@ import { createTransport } from 'nodemailer';
 import { buildSendMail } from 'mailing-core';
 
 const transport = createTransport({
-  host: 'smtp.postmark.net',
+  host: 'smtp.postmarkapp.com',
   port: 587,
   secure: true,
   auth: {

@@ -1,12 +1,12 @@
 import type { FC } from 'react';
-import FormatHead from '@/components/formatHead';
+import Seo from '@/components/seo';
 
 const title = 'My Stack';
 const description = 'Tools and technologies I use.';
 const path = '/stack';
 
 const Head: FC = () => (
-  <FormatHead title={title} description={description} path={path} />
+  <Seo title={title} description={description} path={path} />
 );
 
 export default Head;

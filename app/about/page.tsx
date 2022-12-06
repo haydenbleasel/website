@@ -47,7 +47,7 @@ const About = async (): Promise<ReactNode> => {
   );
 
   return (
-    <main className="grid gap-8 prose-p:m-0">
+    <main className="grid gap-8 prose-h2:m-0 prose-p:m-0">
       <h1>About</h1>
       <p>
         I&apos;m an Australian Product Designer and Frontend Engineer living in

@@ -16,7 +16,7 @@ const Home = async (): Promise<ReactNode> => {
   const location = await getLocation();
 
   return (
-    <main className="grid gap-12 prose-p:m-0">
+    <main className="grid gap-12 prose-h2:m-0 prose-p:m-0">
       <header className="grid gap-8">
         <Image
           src="https://pbs.twimg.com/profile_images/1566284030936580096/qVeQXbQv_400x400.jpg"

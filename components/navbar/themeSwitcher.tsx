@@ -13,7 +13,7 @@ const ThemeSwitcher: FC = () => {
   return (
     <>
       <Separator />
-      <div className="flex items-center px-1">
+      <div className="flex items-center sm:px-1">
         <div className="group relative p-2">
           <Icon
             size={20}
@@ -27,7 +27,7 @@ const ThemeSwitcher: FC = () => {
           <span className="sr-only">More</span>
           <span
             className={clsx(
-              'absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 opacity-0 transition-opacity group-hover:opacity-100 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0'
+              'absolute inset-x-1 -bottom-px hidden h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 opacity-0 transition-opacity group-hover:opacity-100 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0 sm:block'
             )}
           />
         </div>

@@ -11,9 +11,9 @@ const years = groupBy(allWorkPosts, (post) => post.endYear ?? 'Present');
 const Role: FC<typeof allWorkPosts[number]> = ({ company, role, slug }) => (
   <Link
     href={slug}
-    className="flex flex-col items-center gap-2 py-2 no-underline sm:flex-row sm:gap-8"
+    className="flex flex-col gap-2 py-2 no-underline sm:flex-row sm:gap-8"
   >
-    <span className="flex-0 flex items-center gap-2">
+    <span className="flex-0 flex gap-2">
       {role} at {company}
     </span>
   </Link>
@@ -22,8 +22,8 @@ const Role: FC<typeof allWorkPosts[number]> = ({ company, role, slug }) => (
 const Year = (year: string, index: number) => (
   <div className="grid" key={year}>
     {index > 0 && <Divider />}
-    <div className="flex gap-8">
-      <p className="flex-0 m-0 w-24 text-sm leading-9 text-neutral-500 dark:text-neutral-400">
+    <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
+      <p className="flex-0 m-0 text-sm leading-9 text-neutral-500 dark:text-neutral-400 sm:w-24">
         {year}
       </p>
       <div className="flex flex-1 flex-col">{years[year].map(Role)}</div>

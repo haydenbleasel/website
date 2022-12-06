@@ -74,7 +74,7 @@ const Playlists = async (): Promise<ReactNode> => {
   const playlists = await spotifyApi.getUserPlaylists('haydenbleasel');
 
   return (
-    <main className="flex flex-col gap-6 prose-p:m-0">
+    <main className="flex flex-col gap-6 prose-h2:m-0 prose-p:m-0">
       <h1>Playlists</h1>
       <div>
         {playlists.body.items.map((playlist, index) => (

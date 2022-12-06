@@ -1,6 +1,6 @@
 import { allWorkPosts } from 'contentlayer/generated';
 import type { FC } from 'react';
-import FormatHead from '@/components/formatHead';
+import Seo from '@/components/seo';
 
 type MdxHeadProps = {
   params?: {
@@ -17,7 +17,7 @@ const Head: FC<MdxHeadProps> = ({ params }) => {
   }
 
   return (
-    <FormatHead
+    <Seo
       title={`${mdxDoc.role} at ${mdxDoc.company}`}
       description={mdxDoc.description}
       path={`/work/${mdxDoc.slug}`}

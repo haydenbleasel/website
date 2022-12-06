@@ -8,7 +8,8 @@
     "mailing": "npx mailing preview",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@haydenbleasel/command-bar": "^1.0.9",
@@ -36,7 +37,9 @@
     "mdast-util-toc": "^6.1.0",
     "next": "13.0.5",
     "next-contentlayer": "^0.2.9",
+    "next-pwa": "^5.6.0",
     "next-seo": "^5.15.0",
+    "next-sitemap": "^3.1.32",
     "node-html-parser": "^6.1.4",
     "nodemailer": "^6.8.0",
     "react": "18.2.0",
@@ -55,6 +58,7 @@
   },
   "devDependencies": {
     "@haydenbleasel/harmony": "^1.1.9",
+    "@next/bundle-analyzer": "^13.0.6",
     "@next/eslint-plugin-next": "^13.0.5",
     "@svgr/webpack": "^6.5.1",
     "@tailwindcss/forms": "^0.5.3",
@@ -78,6 +82,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "jest": "^29.3.1",
     "mailing": "^0.9.4",
+    "next-compose-plugins": "^2.2.1",
+    "next-secure-headers": "^2.2.0",
     "postcss": "^8.4.19",
     "prettier": "^2.8.0",
     "prettier-plugin-tailwindcss": "^0.2.0",

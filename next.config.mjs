@@ -1,4 +1,8 @@
 import { withContentlayer } from 'next-contentlayer';
+import { createSecureHeaders } from 'next-secure-headers';
+import withPWA from 'next-pwa';
+import withBundleAnalyzer from '@next/bundle-analyzer';
+import withPlugins from 'next-compose-plugins';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,6 +12,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     domains: [
       'cdn.dribbble.com',
       's3-alpha-sig.figma.com',
@@ -18,6 +23,14 @@ const nextConfig = {
       'source.unsplash.com',
     ],
   },
+  headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: createSecureHeaders(),
+      },
+    ];
+  },
 
   // Temporary
   eslint: {
@@ -26,10 +39,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  webpack: (config, options) => {
+  webpack: (config) => {
     config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
+      test: /\.svg$/iu,
+      issuer: /\.tsx?$/u,
       use: ['@svgr/webpack'],
     });
 
@@ -41,4 +54,24 @@ const nextConfig = {
   },
 };
 
-export default withContentlayer(nextConfig);
+const pwaConfig = {
+  pwa: {
+    dest: 'public',
+    disable: process.env.NODE_ENV === 'development',
+    dynamicStartUrl: false,
+    mode: process.env.NODE_ENV,
+  },
+};
+
+const bundle = withPlugins(
+  [
+    withContentlayer,
+    [withPWA, pwaConfig],
+    withBundleAnalyzer({
+      enabled: process.env.ANALYZE === 'true',
+    }),
+  ],
+  nextConfig
+);
+
+export default bundle;

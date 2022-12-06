@@ -13,6 +13,8 @@ const nextConfig = {
       's3-alpha-sig.figma.com',
       's3-alpha.figma.com',
       'logo.clearbit.com',
+      'i.scdn.co',
+      'mosaic.scdn.co',
     ],
   },
 

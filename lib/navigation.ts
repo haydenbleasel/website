@@ -1,6 +1,7 @@
 import {
   Book,
   Briefcase,
+  Headphones,
   Home,
   Layers,
   MessageCircle,
@@ -17,6 +18,7 @@ const pages = [
   { name: 'Blog', icon: Book, href: '/blog' },
   { name: 'Stack', icon: Layers, href: '/stack' },
   { name: 'Press', icon: Star, href: '/press' },
+  { name: 'Playlists', icon: Headphones, href: '/playlists' },
   { name: 'Contact', icon: MessageCircle, href: '/contact' },
 ];
 

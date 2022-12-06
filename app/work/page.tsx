@@ -23,7 +23,7 @@ const Year = (year: string, index: number) => (
   <div className="grid" key={year}>
     {index > 0 && <Divider />}
     <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
-      <p className="flex-0 m-0 text-sm leading-9 text-neutral-500 dark:text-neutral-400 sm:w-24">
+      <p className="flex-0 m-0 text-sm leading-9 text-zinc-500 dark:text-zinc-400 sm:w-24">
         {year}
       </p>
       <div className="flex flex-1 flex-col">{years[year].map(Role)}</div>

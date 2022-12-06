@@ -10,7 +10,7 @@ type MdxHeadProps = {
 
 const Head: FC<MdxHeadProps> = ({ params }) => {
   const slug = params?.slug;
-  const mdxDoc = allWorkPosts.find((doc) => doc.slug === slug);
+  const mdxDoc = allWorkPosts.find((doc) => doc.slugAsParams === slug);
 
   if (!mdxDoc) {
     return null;
@@ -20,7 +20,7 @@ const Head: FC<MdxHeadProps> = ({ params }) => {
     <Seo
       title={`${mdxDoc.role} at ${mdxDoc.company}`}
       description={mdxDoc.description}
-      path={`/work/${mdxDoc.slug}`}
+      path={mdxDoc.slug}
     />
   );
 };

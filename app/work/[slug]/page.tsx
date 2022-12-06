@@ -2,9 +2,11 @@ import { notFound } from 'next/navigation';
 import { allWorkPosts } from 'contentlayer/generated';
 import type { ReactNode } from 'react';
 
+import { ArticleJsonLd } from 'next-seo';
 import { Mdx } from '@/components/mdx';
 import { getTableOfContents } from '@/lib/tableOfContents';
 import TableOfContents from '@/app/blog/[slug]/tableOfContents';
+import BackLink from '@/components/backLink';
 
 type DocPageProps = {
   params?: {
@@ -30,13 +32,14 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
   const toc = await getTableOfContents(doc.body.raw);
 
   return (
-    <main>
+    <main className="relative">
       <h1>
         {doc.role} at {doc.company}
       </h1>
-      <p className="text-xl">{doc.description}</p>
+      <p className="mt-4 text-xl">{doc.description}</p>
       <Mdx code={doc.body.code} />
       <TableOfContents toc={toc} />
+      <BackLink href="/work" />
     </main>
   );
 };

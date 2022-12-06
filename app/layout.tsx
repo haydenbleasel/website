@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import '@/styles/globals.css';
-import { NextSeo, SocialProfileJsonLd } from 'next-seo';
+import { SocialProfileJsonLd } from 'next-seo';
 import { Analytics } from '@/components/analytics';
 import Navbar from '@/components/navbar';
 import Providers from '@/components/providers';
@@ -18,6 +18,15 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
       'scroll-smooth font-sans font-light antialiased'
     )}
   >
+    <head>
+      <SocialProfileJsonLd
+        useAppDir
+        type="Person"
+        name="Hayden Bleasel"
+        url={process.env.NEXT_PUBLIC_SITE_URL ?? ''}
+        sameAs={Object.values(social).map(({ url }) => url)}
+      />
+    </head>
     <body className="overflow-x-hidden bg-white dark:bg-zinc-900">
       <Providers>
         <Navbar />

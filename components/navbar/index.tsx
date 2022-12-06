@@ -24,7 +24,7 @@ const Navbar: FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-4 z-50 flex flex-col-reverse justify-center gap-2 sm:right-0 sm:left-0">
+    <div className="fixed bottom-6 right-4 z-50 flex flex-col-reverse justify-center gap-2 sm:right-0 sm:left-0 sm:flex-row">
       <Container className="flex sm:hidden">
         <button
           className="relative block p-2"

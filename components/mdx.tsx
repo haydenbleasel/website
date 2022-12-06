@@ -9,7 +9,9 @@ type MdxProps = {
 };
 
 const Callout: FC<{ children: ReactNode }> = ({ children }) => (
-  <div className="rounded-lg bg-zinc-100 p-4 dark:bg-zinc-800">{children}</div>
+  <div className="rounded bg-zinc-100 p-4 font-medium prose-p:m-0 dark:bg-zinc-800">
+    {children}
+  </div>
 );
 
 const components = {

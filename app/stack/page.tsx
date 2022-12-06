@@ -17,7 +17,7 @@ const Tool: FC<ToolProps> = ({ name, href, description }) => {
   return (
     <Link
       href={href}
-      className="grid grid-cols-3 items-center gap-4 py-2 no-underline"
+      className="grid items-center py-2 no-underline sm:grid-cols-3 sm:gap-4"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -27,7 +27,7 @@ const Tool: FC<ToolProps> = ({ name, href, description }) => {
           width={24}
           height={24}
           alt=""
-          className="m-0 h-6 w-6 object-contain"
+          className="m-0 h-4 w-4 object-contain sm:h-6 sm:w-6"
         />
         {name}
       </span>

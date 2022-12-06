@@ -18,7 +18,7 @@ const PostInner: FC<Pick<PostProps, 'title' | 'description' | 'date'>> = ({
 }) => (
   <>
     <span className="flex-1">
-      <span className="flex-0 flex items-center gap-2 line-clamp-1">
+      <span className="flex-0 flex items-center gap-2 font-medium text-zinc-900 line-clamp-1 dark:text-white">
         {title}
       </span>
       <span
@@ -53,7 +53,9 @@ const Post: FC<PostProps> = ({ title, slug, description, date, ...props }) =>
       <PostInner title={title} description={description} date={date} />
     </Link>
   ) : (
-    <PostInner title={title} description={description} date={date} />
+    <div className="flex flex-col gap-1 py-2 no-underline sm:flex-row sm:gap-8">
+      <PostInner title={title} description={description} date={date} />
+    </div>
   );
 
 export default Post;

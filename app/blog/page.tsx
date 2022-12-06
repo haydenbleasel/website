@@ -9,9 +9,9 @@ const Blog = async (): Promise<ReactNode> => {
   const devBlogArticles = await getDevPosts();
 
   return (
-    <main className="relative flex flex-col gap-6">
+    <main className="relative flex flex-col gap-12 prose-h2:m-0 prose-p:m-0">
       <h1>Blog</h1>
-      <div className="grid">
+      <div className="grid gap-4">
         <h2>Case Studies</h2>
         <div>
           {allBlogs.map((post, index) => (
@@ -22,7 +22,7 @@ const Blog = async (): Promise<ReactNode> => {
           ))}
         </div>
       </div>
-      <div className="grid">
+      <div className="grid gap-4">
         <h2>Dev.to posts</h2>
         <div>
           {devBlogArticles.map((post, index) => (

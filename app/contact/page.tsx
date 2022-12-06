@@ -8,8 +8,8 @@ const Contact: FC = () => (
     <p>
       Get in touch using the form below, or connect with me on social media.
     </p>
-    <div className="grid grid-cols-3 gap-8">
-      <div className="col-span-2">
+    <div className="grid gap-8 sm:grid-cols-3">
+      <div className="sm:col-span-2">
         <ContactForm />
       </div>
       <SocialLinks />

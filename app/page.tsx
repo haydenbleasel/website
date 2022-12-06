@@ -19,12 +19,12 @@ const Home = async (): Promise<ReactNode> => {
     <main className="grid gap-12 prose-h2:m-0 prose-p:m-0">
       <header className="grid gap-8">
         <Image
-          src="https://pbs.twimg.com/profile_images/1566284030936580096/qVeQXbQv_400x400.jpg"
-          unoptimized
+          src="/avatar.jpg"
           alt=""
           width={64}
           height={64}
           className="m-0 h-16 w-16 overflow-hidden rounded-full"
+          priority
         />
         <div className="grid">
           <h1

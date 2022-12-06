@@ -26,7 +26,7 @@ const Playlist = async ({ id }: { id: string }): Promise<ReactNode> => {
   return (
     <Link
       href={data.body.external_urls.spotify}
-      className="grid grid-cols-3 items-center gap-4 py-2 no-underline"
+      className="grid items-center py-2 no-underline sm:grid-cols-3 sm:gap-4"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -36,12 +36,12 @@ const Playlist = async ({ id }: { id: string }): Promise<ReactNode> => {
           width={24}
           height={24}
           alt=""
-          className="m-0 h-6 w-6 object-contain"
+          className="m-0 h-4 w-4 object-contain sm:h-6 sm:w-6"
         />
         {data.body.name}
       </span>
       <span className="col-span-2 flex-1 text-sm font-light text-zinc-500 line-clamp-1 dark:text-zinc-400 sm:text-right">
-        <span className="flex items-center justify-end gap-4">
+        <span className="flex items-center gap-4 sm:justify-end">
           <span className="flex items-center gap-1">
             <Disc size={12} className="text-zinc-500 dark:text-zinc-400" />
             <span>{data.body.tracks.total} tracks</span>

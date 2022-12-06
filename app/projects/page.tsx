@@ -43,14 +43,14 @@ const Project: FC<ProjectProps> = ({ href, ...props }) =>
   href ? (
     <Link
       href={href}
-      className="grid grid-cols-3 items-center gap-4 py-2 no-underline"
+      className="grid items-center py-2 no-underline sm:grid-cols-3 sm:gap-4"
       target="_blank"
       rel="noopener noreferrer"
     >
       <ProjectInner {...props} />
     </Link>
   ) : (
-    <div className="grid grid-cols-3 items-center gap-4 py-2 no-underline">
+    <div className="grid items-center py-2 no-underline sm:grid-cols-3 sm:gap-4">
       <ProjectInner {...props} />
     </div>
   );

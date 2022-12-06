@@ -10,6 +10,7 @@ const years = groupBy(allWorkPosts, (post) => post.endYear ?? 'Present');
 
 const Role: FC<typeof allWorkPosts[number]> = ({ company, role, slug }) => (
   <Link
+    key={slug}
     href={slug}
     className="flex flex-col gap-2 py-2 no-underline sm:flex-row sm:gap-8"
   >

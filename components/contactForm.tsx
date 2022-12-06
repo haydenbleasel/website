@@ -78,9 +78,6 @@ const ContactForm: FC = () => {
         autoFocus
         value={name}
         onValueChange={setName}
-        errors={{
-          'Please enter your name': !name.trim(),
-        }}
       />
       <Input
         label="Email"
@@ -90,10 +87,6 @@ const ContactForm: FC = () => {
         id="email"
         value={email}
         onValueChange={setEmail}
-        errors={{
-          'Please enter your email address': !email.trim(),
-          'Please enter a valid email address': !emailRegex.test(email),
-        }}
       />
       <Textarea
         label="Message"
@@ -102,9 +95,6 @@ const ContactForm: FC = () => {
         id="message"
         value={message}
         onValueChange={setMessage}
-        errors={{
-          'Please enter a message': !message.trim(),
-        }}
       />
       <Button
         type="submit"

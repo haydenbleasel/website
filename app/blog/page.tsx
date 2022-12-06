@@ -11,27 +11,34 @@ const Blog = async (): Promise<ReactNode> => {
   return (
     <main className="relative flex flex-col gap-6">
       <h1>Blog</h1>
-      <div>
-        {allBlogs.map((post, index) => (
-          <Fragment key={post.slug}>
-            {index > 0 && <Divider />}
-            <Post {...post} />
-          </Fragment>
-        ))}
-        <Divider />
-        {devBlogArticles.map((post, index) => (
-          <Fragment key={post.slug}>
-            {index > 0 && <Divider />}
-            <Post
-              title={post.title}
-              slug={post.url}
-              date={post.created_at}
-              description={post.description}
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-          </Fragment>
-        ))}
+      <div className="grid">
+        <h2>Case Studies</h2>
+        <div>
+          {allBlogs.map((post, index) => (
+            <Fragment key={post.slug}>
+              {index > 0 && <Divider />}
+              <Post {...post} />
+            </Fragment>
+          ))}
+        </div>
+      </div>
+      <div className="grid">
+        <h2>Dev.to posts</h2>
+        <div>
+          {devBlogArticles.map((post, index) => (
+            <Fragment key={post.slug}>
+              {index > 0 && <Divider />}
+              <Post
+                title={post.title}
+                slug={post.url}
+                date={post.created_at}
+                description={post.description}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            </Fragment>
+          ))}
+        </div>
       </div>
     </main>
   );

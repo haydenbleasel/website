@@ -24,7 +24,7 @@ const ProjectInner: FC<Partial<ProjectProps>> = ({
       {wip && (
         <span
           className={clsx(
-            'rounded-full px-2 text-sm',
+            'rounded-full px-2 text-sm font-medium',
             'bg-zinc-100 text-zinc-500',
             'dark:bg-zinc-800 dark:text-zinc-400'
           )}

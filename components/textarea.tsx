@@ -31,7 +31,7 @@ const TextArea: FC<TextAreaProps> = ({
         <textarea
           id={labelId}
           className={clsx(
-            'block w-full rounded-md shadow-sm',
+            'block max-h-[25rem] min-h-[8rem] w-full rounded-md shadow-sm',
             'border-zinc-300 bg-white placeholder:text-zinc-500 focus:border-teal-500 focus:ring-teal-500',
             'dark:border-zinc-700 dark:bg-zinc-900 dark:placeholder:text-zinc-400 dark:focus:border-teal-400 dark:focus:ring-teal-400'
           )}

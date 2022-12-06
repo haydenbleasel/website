@@ -61,116 +61,126 @@ const About = async (): Promise<ReactNode> => {
           Neutral
         </Logo>
         , with which we&apos;ve helped plant thousands of trees and offset
-        hundeds of tonnes of CO₂ equivalent.
+        hundeds of tonnes of CO₂e.
       </p>
-      <h2>Work History</h2>
-      <p>
-        I&apos;ve had the privilege of working with many fantastic companies
-        including{' '}
-        <Logo icon={Google as FC} href="https://www.google.com/">
-          Google
-        </Logo>
-        ,{' '}
-        <Logo icon={Palantir as FC} href="https://www.palantir.com/">
-          Palantir
-        </Logo>
-        ,{' '}
-        <Logo icon={Nike as FC} href="https://www.nike.com/">
-          Nike
-        </Logo>
-        ,{' '}
-        <Logo icon={Toyota as FC} href="https://www.toyota.com/">
-          Toyota
-        </Logo>
-        ,{' '}
-        <Logo
-          icon={Timberland as FC}
-          href="https://www.timberland.com/homepage.html"
-        >
-          Timberland
-        </Logo>
-        ,{' '}
-        <Logo icon={NatGeo as FC} href="https://www.nationalgeographic.com/">
-          National Geographic
-        </Logo>
-        ,{' '}
-        <Logo icon={Canva as FC} href="https://www.canva.com/en_gb/">
-          Canva
-        </Logo>
-        ,{' '}
-        <Logo icon={Westfield as FC} href="https://www.westfield.com/">
-          Westfield
-        </Logo>{' '}
-        and{' '}
-        <Logo
-          icon={AustralianEthical as FC}
-          href="https://www.australianethical.com.au/"
-        >
-          Australian Ethical
-        </Logo>
-        , some of which through{' '}
-        <Logo icon={RGA as FC} href="https://rga.com/">
-          R/GA
-        </Logo>
-        .
-      </p>
-      <p>
-        I previously ran{' '}
-        <Logo icon={Jellypepper as FC} href="https://jellypepper.com/">
-          Jellypepper
-        </Logo>
-        , a digital agency focused on startups in “disruptive industries” such
-        as self-driving cars, AI, biotechnology, cryptocurency, renewable
-        energy, drone delivery, cybersecurity and even outer-space logistics.
-        There I worked with many incredible startups who raised billions of
-        dollars in funding, such as{' '}
-        <Logo icon={Airwallex as FC} href="https://www.airwallex.com/us">
-          Airwallex
-        </Logo>
-        , and a handful of which were acquired, such as{' '}
-        <Logo icon={Clipchamp as FC} href="https://clipchamp.com/en/">
-          Clipchamp
-        </Logo>
-        .
-      </p>
-      <p>
-        Before all that, I was Head of Product and Design at{' '}
-        <Logo icon={Spaceship as FC} href="https://spaceship.com.au/">
-          Spaceship
-        </Logo>{' '}
-        where we grew a pre-launch waitlist of 28,000 people, raised $20M+ in
-        Seed / Series A funding and created the future of superannuation in
-        Australia.
-      </p>
-      <h2>Education</h2>
-      <p>I&apos;ve studied at university and occasionally study online.</p>
-      <div>
-        {education.map((edu, index) => (
-          <Fragment key={edu.name}>
-            {index > 0 && <Divider />}
-            <Post
-              title={edu.name}
-              description={edu.institution}
-              date={String(edu.year)}
-              slug={edu.link ?? '#'}
-            />
-          </Fragment>
-        ))}
+      <div className="grid gap-4">
+        <h2>Work History</h2>
+        <p>
+          I&apos;ve had the privilege of working with many fantastic companies
+          including{' '}
+          <Logo icon={Google as FC} href="https://www.google.com/">
+            Google
+          </Logo>
+          ,{' '}
+          <Logo icon={Palantir as FC} href="https://www.palantir.com/">
+            Palantir
+          </Logo>
+          ,{' '}
+          <Logo icon={Nike as FC} href="https://www.nike.com/">
+            Nike
+          </Logo>
+          ,{' '}
+          <Logo icon={Toyota as FC} href="https://www.toyota.com/">
+            Toyota
+          </Logo>
+          ,{' '}
+          <Logo
+            icon={Timberland as FC}
+            href="https://www.timberland.com/homepage.html"
+          >
+            Timberland
+          </Logo>
+          ,{' '}
+          <Logo icon={NatGeo as FC} href="https://www.nationalgeographic.com/">
+            National Geographic
+          </Logo>
+          ,{' '}
+          <Logo icon={Canva as FC} href="https://www.canva.com/en_gb/">
+            Canva
+          </Logo>
+          ,{' '}
+          <Logo icon={Westfield as FC} href="https://www.westfield.com/">
+            Westfield
+          </Logo>{' '}
+          and{' '}
+          <Logo
+            icon={AustralianEthical as FC}
+            href="https://www.australianethical.com.au/"
+          >
+            Australian Ethical
+          </Logo>
+          , some of which through{' '}
+          <Logo icon={RGA as FC} href="https://rga.com/">
+            R/GA
+          </Logo>
+          .
+        </p>
+        <p>
+          I previously ran{' '}
+          <Logo icon={Jellypepper as FC} href="https://jellypepper.com/">
+            Jellypepper
+          </Logo>
+          , a digital agency focused on startups in “disruptive industries” such
+          as self-driving cars, AI, biotechnology, cryptocurency, renewable
+          energy, drone delivery, cybersecurity and even outer-space logistics.
+          There I worked with many incredible startups who raised billions of
+          dollars in funding, such as{' '}
+          <Logo icon={Airwallex as FC} href="https://www.airwallex.com/us">
+            Airwallex
+          </Logo>
+          , and a handful of which were acquired, such as{' '}
+          <Logo icon={Clipchamp as FC} href="https://clipchamp.com/en/">
+            Clipchamp
+          </Logo>
+          .
+        </p>
+        <p>
+          Before all that, I was Head of Product and Design at{' '}
+          <Logo icon={Spaceship as FC} href="https://spaceship.com.au/">
+            Spaceship
+          </Logo>{' '}
+          where we grew a pre-launch waitlist of 28,000 people, raised $20M+ in
+          Seed / Series A funding and created the future of superannuation in
+          Australia.
+        </p>
       </div>
-      <h2>Other</h2>
-      <p>
-        I also play a lot of games, you can find me on{' '}
-        <Link href={steamUrl}>Steam</Link>. I have {totalHours} hours of tracked
-        playtime, {totalAchievements} achievements across {games.length} games
-        and {perfectGames.length} perfect games (where all achievements are
-        unlocked). My most played games are {mostPlayedGames}.
-      </p>
-      <p>
-        Other than that, I&apos;m either spending time in the gym, ideating on
-        new side projects and occasionally working with very select clients on
-        freelance / moonlight work. <Link href="/contact">Get in touch</Link> if
-        you want to work with me on something.
-      </p>
+      <div className="grid gap-4">
+        <h2>Education</h2>
+        <p>I&apos;ve studied at university and occasionally study online.</p>
+        <div>
+          {education.map((edu, index) => (
+            <Fragment key={edu.name}>
+              {index > 0 && <Divider />}
+              <Post
+                title={edu.name}
+                description={edu.institution}
+                date={String(edu.year)}
+                slug={edu.link ?? '#'}
+              />
+            </Fragment>
+          ))}
+        </div>
+      </div>
+      <div className="grid gap-4">
+        <h2>Other</h2>
+        <p>
+          I also play a lot of games, you can find me on{' '}
+          <Link href={steamUrl}>Steam</Link>. I have {totalHours} hours of
+          tracked playtime, {totalAchievements} achievements across{' '}
+          {games.length} games and {perfectGames.length} perfect games (where
+          all achievements are unlocked). My most played games are{' '}
+          {mostPlayedGames}.
+        </p>
+        <p>
+          Other than that, I&apos;m either spending time in the gym, ideating on
+          new side projects and occasionally working with very select clients on
+          freelance / moonlight work.
+        </p>
+        <p>
+          <Link href="/contact">Get in touch</Link> if you want to work with me
+          on something.
+        </p>
+      </div>
     </main>
   );
 };

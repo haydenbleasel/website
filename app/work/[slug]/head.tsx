@@ -1,5 +1,6 @@
 import { allWorkPosts } from 'contentlayer/generated';
 import type { FC } from 'react';
+import FormatHead from '@/components/formatHead';
 
 type MdxHeadProps = {
   params?: {
@@ -15,13 +16,12 @@ const Head: FC<MdxHeadProps> = ({ params }) => {
     return null;
   }
 
-  const title = `${mdxDoc.role} at ${mdxDoc.company} - Hayden Bleasel`;
-
   return (
-    <>
-      <title>{title}</title>
-      <meta name="description" content={mdxDoc.description} />
-    </>
+    <FormatHead
+      title={`${mdxDoc.role} at ${mdxDoc.company}`}
+      description={mdxDoc.description}
+      path={`/work/${mdxDoc.slug}`}
+    />
   );
 };
 

@@ -1,16 +1,19 @@
 import type { FC } from 'react';
+import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import clsx from 'clsx';
-import type { allBlogs } from '@/.contentlayer/generated';
 import formatDate from '@/lib/formatDate';
 
-const Post: FC<typeof allBlogs[number]> = ({
-  title,
-  slug,
-  description,
-  date,
-}) => (
+type PostProps = LinkProps & {
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+};
+
+const Post: FC<PostProps> = ({ title, slug, description, date, ...props }) => (
   <Link
+    {...props}
     href={slug}
     className="flex flex-col gap-1 py-2 no-underline sm:flex-row sm:gap-8"
   >
@@ -18,7 +21,7 @@ const Post: FC<typeof allBlogs[number]> = ({
       <span className="flex-0 flex items-center gap-2">{title}</span>
       <span
         className={clsx(
-          'flex-1 truncate text-sm font-light',
+          'flex-1 text-sm font-light',
           'text-zinc-500',
           'dark:text-zinc-400'
         )}

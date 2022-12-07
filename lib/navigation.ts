@@ -1,6 +1,7 @@
 import {
   Book,
   Briefcase,
+  Command,
   Headphones,
   Home,
   Layers,
@@ -16,6 +17,7 @@ const pages = [
   { name: 'Work', icon: Briefcase, href: '/work' },
   { name: 'Projects', icon: Zap, href: '/projects' },
   { name: 'Blog', icon: Book, href: '/blog' },
+  { name: 'Design', icon: Command, href: '/design' },
   { name: 'Stack', icon: Layers, href: '/stack' },
   { name: 'Press', icon: Star, href: '/press' },
   { name: 'Playlists', icon: Headphones, href: '/playlists' },

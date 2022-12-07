@@ -7,7 +7,7 @@ type TwitterProfileResponse = {
   };
 };
 
-const getTwitterLocation = async (): Promise<string | null> => {
+const getLocation = async (): Promise<string | null> => {
   try {
     const response = await fetch(
       `https://api.twitter.com/2/users/1628137603?user.fields=location`,
@@ -26,4 +26,4 @@ const getTwitterLocation = async (): Promise<string | null> => {
   }
 };
 
-export default getTwitterLocation;
+export default getLocation;

@@ -2,11 +2,17 @@ import type { ReactNode } from 'react';
 import { Fragment } from 'react';
 import { ArticleJsonLd } from 'next-seo';
 import Post from './post';
+import type { Blog } from '@/.contentlayer/generated';
 import { allBlogs } from '@/.contentlayer/generated';
 import Divider from '@/components/divider';
 import getDevPosts from '@/lib/dev';
 
-const Blog = async (): Promise<ReactNode> => {
+const sortByDate = (blogPostA: Blog, blogPostB: Blog) =>
+  new Date(blogPostB.date).getTime() > new Date(blogPostA.date).getTime()
+    ? 1
+    : -1;
+
+const AllBlogs = async (): Promise<ReactNode> => {
   const devBlogArticles = await getDevPosts();
 
   return (
@@ -24,9 +30,9 @@ const Blog = async (): Promise<ReactNode> => {
       />
       <h1>Blog</h1>
       <div className="grid gap-4">
-        <h2>Case Studies</h2>
+        <h2>Posts</h2>
         <div>
-          {allBlogs.map((post, index) => (
+          {allBlogs.sort(sortByDate).map((post, index) => (
             <Fragment key={post.slug}>
               {index > 0 && <Divider />}
               <Post {...post} />
@@ -56,4 +62,4 @@ const Blog = async (): Promise<ReactNode> => {
   );
 };
 
-export default Blog;
+export default AllBlogs;

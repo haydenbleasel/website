@@ -35,6 +35,85 @@ const nextConfig = {
       },
     ];
   },
+  redirects() {
+    return [
+      {
+        source: '/work/presumi',
+        destination: '/blog/presumi',
+        permanent: true,
+      },
+      {
+        source: '/thoughts/presumi',
+        destination: '/blog/presumi',
+        permanent: true,
+      },
+      {
+        source: '/presumi',
+        destination: '/blog/presumi',
+        permanent: true,
+      },
+      {
+        source: '/awards',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blog/jellypepper',
+        destination: '/work/jellypepper',
+        permanent: true,
+      },
+      {
+        source: '/journal/how-to-growth-hack-your-resume',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/projects/harmony',
+        destination: 'https://github.com/haydenbleasel/harmony',
+        permanent: true,
+      },
+      {
+        source: '/projects/neutral',
+        destination: 'https://tryneutral.com/',
+        permanent: true,
+      },
+      {
+        source: '/recommendations',
+        destination: '/stack',
+        permanent: true,
+      },
+      {
+        source: '/clients',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/now',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/colophon',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/education',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/resume',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/games',
+        destination: '/about',
+        permanent: true,
+      },
+    ];
+  },
 
   // Temporary
   eslint: {

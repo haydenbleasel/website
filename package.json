@@ -68,7 +68,7 @@
     "@types/lodash.groupby": "^4.6.7",
     "@types/nodemailer": "^6.4.6",
     "@types/spotify-web-api-node": "^5.0.7",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.0",
     "autoprefixer": "^10.4.13",
     "concurrently": "^7.6.0",

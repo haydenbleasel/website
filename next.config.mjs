@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { withContentlayer } from 'next-contentlayer';
 import { createSecureHeaders } from 'next-secure-headers';
-import withPWA from '@ducanh2912/next-pwa';
+import withPWA from 'next-pwa';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import withPlugins from 'next-compose-plugins';
 import redirects from './redirects.json' assert { type: 'json' };

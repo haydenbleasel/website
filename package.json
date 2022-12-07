@@ -12,7 +12,6 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@ducanh2912/next-pwa": "^7.0.2",
     "@haydenbleasel/command-bar": "^1.0.9",
     "@haydenbleasel/use-online": "^1.0.3",
     "@haydenbleasel/use-theme": "^1.0.7",
@@ -38,6 +37,7 @@
     "mdast-util-toc": "^6.1.0",
     "next": "13.0.6",
     "next-contentlayer": "^0.2.9",
+    "next-pwa": "^5.6.0",
     "next-seo": "^5.15.0",
     "next-sitemap": "^3.1.32",
     "node-html-parser": "^6.1.4",

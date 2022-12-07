@@ -11,6 +11,7 @@ import Neutral from '@/public/logos/neutral.svg';
 import { allBlogs } from '@/.contentlayer/generated';
 import Divider from '@/components/divider';
 import getLocation from '@/lib/twitter';
+import sortBlogPostByDate from '@/lib/sortBlogPost';
 
 const Home = async (): Promise<ReactNode> => {
   const location = await getLocation();
@@ -78,12 +79,15 @@ const Home = async (): Promise<ReactNode> => {
       <div className="grid gap-4">
         <h2>Recent posts</h2>
         <div>
-          {allBlogs.slice(0, 3).map((post, index) => (
-            <Fragment key={post.slug}>
-              {index > 0 && <Divider />}
-              <Post {...post} />
-            </Fragment>
-          ))}
+          {allBlogs
+            .sort(sortBlogPostByDate)
+            .slice(0, 3)
+            .map((post, index) => (
+              <Fragment key={post.slug}>
+                {index > 0 && <Divider />}
+                <Post {...post} />
+              </Fragment>
+            ))}
         </div>
         <Link href="/blog">Keep reading &rarr;</Link>
       </div>

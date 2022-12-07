@@ -8,15 +8,16 @@ type TwitterProfileResponse = {
 };
 
 const getLocation = async (): Promise<string | null> => {
+  const url = new URL('https://api.twitter.com/2/users/1628137603');
+
+  url.searchParams.set('user.fields', 'location');
+
   try {
-    const response = await fetch(
-      `https://api.twitter.com/2/users/1628137603?user.fields=location`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN ?? ''}`,
-        },
-      }
-    );
+    const response = await fetch(url.href, {
+      headers: {
+        Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN ?? ''}`,
+      },
+    });
 
     const { data } = (await response.json()) as TwitterProfileResponse;
 

@@ -21,6 +21,7 @@ const Head: FC<MdxHeadProps> = ({ params }) => {
       title={mdxDoc.title}
       description={mdxDoc.description}
       path={mdxDoc.slug}
+      image={mdxDoc.image}
     />
   );
 };

@@ -75,6 +75,14 @@ export const Blog = defineDocumentType(() => ({
       type: 'date',
       required: true,
     },
+    image: {
+      type: 'string',
+      required: false,
+    },
+    video: {
+      type: 'string',
+      required: false,
+    },
   },
   computedFields,
 }));

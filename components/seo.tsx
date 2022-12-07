@@ -1,15 +1,16 @@
 import type { NextSeoProps } from 'next-seo';
 import { NextSeo } from 'next-seo';
-import type { MetaTag } from 'next-seo/lib/types';
+import type { MetaTag, OpenGraphMedia } from 'next-seo/lib/types';
 import type { FC } from 'react';
 
 type SeoProps = NextSeoProps & {
   path?: string;
+  image?: string;
 };
 
 const name = 'Hayden Bleasel';
 const Seo: FC<SeoProps> = ({ path = '/', ...config }) => {
-  const { title, description } = config;
+  const { title, description, image } = config;
   const url = path
     ? new URL(path, process.env.NEXT_PUBLIC_SITE_URL).href
     : process.env.NEXT_PUBLIC_SITE_URL;
@@ -18,6 +19,21 @@ const Seo: FC<SeoProps> = ({ path = '/', ...config }) => {
   imageUrl.searchParams.set('title', title ?? '');
   imageUrl.searchParams.set('description', description ?? '');
   imageUrl.searchParams.set('path', path);
+
+  const images: OpenGraphMedia[] = [
+    {
+      url: imageUrl.href,
+      width: 1200,
+      height: 630,
+      alt: 'Hayden Bleasel',
+    },
+  ];
+
+  if (image) {
+    images.unshift({
+      url: new URL(image, process.env.NEXT_PUBLIC_SITE_URL).href,
+    });
+  }
 
   return (
     <NextSeo
@@ -36,14 +52,7 @@ const Seo: FC<SeoProps> = ({ path = '/', ...config }) => {
           username: 'haydenbleasel',
           gender: 'male',
         },
-        images: [
-          {
-            url: imageUrl.href,
-            width: 1200,
-            height: 630,
-            alt: 'Hayden Bleasel',
-          },
-        ],
+        images,
       }}
       twitter={{
         handle: '@haydenbleasel',

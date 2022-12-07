@@ -58,7 +58,7 @@ const About = async (): Promise<ReactNode> => {
           Neutral
         </Logo>
         , with which we&apos;ve helped plant thousands of trees and offset
-        hundeds of tonnes of CO₂e.
+        hundreds of tonnes of CO₂e.
       </p>
       <div className="grid gap-4">
         <h2>Work History</h2>

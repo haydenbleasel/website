@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { allBlogs } from 'contentlayer/generated';
 import type { ReactNode } from 'react';
 
+import { ArticleJsonLd } from 'next-seo';
 import TableOfContents from './tableOfContents';
 import { Mdx } from '@/components/mdx';
 import { getTableOfContents } from '@/lib/tableOfContents';
@@ -35,6 +36,15 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
       <Mdx code={doc.body.code} />
       <TableOfContents toc={toc} />
       <BackLink href="/blog" />
+      <ArticleJsonLd
+        useAppDir
+        url={doc.slug}
+        title={doc.title}
+        images={[]}
+        datePublished={doc.date}
+        authorName="Hayden Bleasel"
+        description={doc.description}
+      />
     </main>
   );
 };

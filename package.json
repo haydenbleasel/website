@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"yarn:next\" \"yarn:mailing\"",
-    "next": "next dev",
+    "next": "yarn install && next dev",
     "mailing": "npx mailing preview",
     "build": "next build",
     "start": "next start",

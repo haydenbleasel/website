@@ -7,7 +7,7 @@ import { createSecureHeaders } from 'next-secure-headers';
 import withPWA from 'next-pwa';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import withPlugins from 'next-compose-plugins';
-import redirects from './redirects';
+import redirects from './redirects.json' assert { type: 'json' };
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

@@ -45,7 +45,9 @@ const CommandBar: FC = () => {
           <CommandBarComponent.Input className="w-full border-none bg-transparent py-3 text-zinc-900 shadow-none outline-none placeholder:text-zinc-400 dark:text-white dark:placeholder:text-zinc-600" />
         </div>
         <List>
-          <CommandBarComponent.Empty>Empty State</CommandBarComponent.Empty>
+          <CommandBarComponent.Empty>
+            <p>Sorry, no results found.</p>
+          </CommandBarComponent.Empty>
           <CommandBarComponent.Loading />
           <Group heading="Pages">
             {pages.map((page) => (

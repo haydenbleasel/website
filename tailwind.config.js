@@ -1,7 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content: ['./app/**/*.tsx', './components/**/*.tsx', './content/**/*.mdx'],
+  content: [
+    './app/**/*.tsx',
+    './components/**/*.tsx',
+    './content/**/*.mdx',
+    './contentlayer.config.js',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -39,6 +44,27 @@ module.exports = {
             // },
             strong: {
               fontWeight: theme('fontWeight.medium'),
+            },
+            pre: {
+              borderRadius: theme('rounded.md'),
+              display: 'grid',
+              backgroundColor: theme('colors.zinc.800'),
+              paddingTop: theme('spacing.4'),
+              paddingBottom: theme('spacing.4'),
+              paddingLeft: 0,
+              paddingRight: 0,
+              '& > code': {
+                display: 'grid',
+                minWidth: '100%',
+                overflowWrap: 'break-word',
+                padding: 0,
+                '& > span': {
+                  paddingLeft: theme('spacing.4'),
+                  paddingRight: theme('spacing.4'),
+                  paddingTop: 0,
+                  paddingBottom: 0,
+                },
+              },
             },
           },
         },

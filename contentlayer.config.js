@@ -105,10 +105,12 @@ export default makeSource({
             }
           },
           onVisitHighlightedLine(node) {
-            node.properties.className.push('line--highlighted');
+            node.properties.className.push(
+              'bg-zinc-700 border-l-2 border-teal-500'
+            );
           },
           onVisitHighlightedWord(node) {
-            node.properties.className = ['word--highlighted'];
+            node.properties.className = 'bg-zinc-700 rounded p-1';
           },
         },
       ],

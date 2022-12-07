@@ -11,7 +11,16 @@ type ContactRequest = {
   name?: string;
   email?: string;
   message?: string;
-};
+} & (
+  | {
+      type: 'contact';
+    }
+  | {
+      type: 'freelance';
+      project: string;
+      budget: string;
+    }
+);
 
 type ContactResponse = {
   error?: string;
@@ -23,7 +32,8 @@ export const config = {
 };
 
 const handler: NextApiHandler<ContactResponse> = async (req, res) => {
-  const { name, email, message } = parseBody<ContactRequest>(req);
+  const { name, email, message, type, ...props } =
+    parseBody<ContactRequest>(req);
 
   if (
     req.headers.authorization !==
@@ -48,6 +58,11 @@ const handler: NextApiHandler<ContactResponse> = async (req, res) => {
     return;
   }
 
+  if (type === 'freelance' && 'project' in props && !props.project) {
+    res.status(400).json({ error: 'Missing project field' });
+    return;
+  }
+
   const domain = email.split('@')[1];
 
   if (domains.includes(domain)) {
@@ -61,20 +76,33 @@ const handler: NextApiHandler<ContactResponse> = async (req, res) => {
   const ip = req.headers['x-forwarded-for'] as string | undefined;
   const now = new Date();
 
+  const items = [
+    `Date: ${format(now, 'MMMM do, yyyy')} at ${format(now, 'h:mm a')}`,
+    `Email: ${email}`,
+    `IP: ${ip ?? req.socket.remoteAddress ?? 'Unknown'}`,
+    `Device: ${req.headers['user-agent'] ?? 'Unknown'}`,
+    `Type: ${type}`,
+  ];
+
+  if (type === 'freelance') {
+    if ('project' in props) {
+      items.push(`Project: ${props.project}`);
+    }
+
+    if ('budget' in props) {
+      items.push(`Budget: ${props.budget}`);
+    }
+  }
+
   try {
     await sendMail({
-      subject: 'Incoming message',
+      subject: `Incoming ${type} request`,
       to: process.env.EMAIL_ADDRESS,
       replyTo: email,
       component: template({
         name,
         message,
-        items: [
-          `Date: ${format(now, 'MMMM do, yyyy')} at ${format(now, 'h:mm a')}`,
-          `Email: ${email}`,
-          `IP: ${ip ?? req.socket.remoteAddress ?? 'Unknown'}`,
-          `Device: ${req.headers['user-agent'] ?? 'Unknown'}`,
-        ],
+        items,
       }) as ReactElement,
     });
 

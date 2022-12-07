@@ -6,7 +6,7 @@ import { Analytics } from '@/components/analytics';
 import Navbar from '@/components/navbar';
 import Providers from '@/components/providers';
 import { ibmPlexMono, lausanne } from '@/lib/fonts';
-import CommandBar from '@/components/command-bar';
+import CommandBar from '@/components/commandBar';
 import { social } from '@/lib/social';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (

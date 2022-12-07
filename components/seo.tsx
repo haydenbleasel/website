@@ -14,8 +14,6 @@ const Seo: FC<SeoProps> = ({ path, ...config }) => {
     ? new URL(path, process.env.NEXT_PUBLIC_SITE_URL).href
     : process.env.NEXT_PUBLIC_SITE_URL;
 
-  console.log(path, url);
-
   return (
     <NextSeo
       useAppDir

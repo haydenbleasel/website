@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { allBlogs } from 'contentlayer/generated';
 import type { ReactNode } from 'react';
 
-import type { ArticleJsonLdProps } from 'next-seo';
 import { ArticleJsonLd } from 'next-seo';
 import Image from 'next/image';
 import TableOfContents from './tableOfContents';

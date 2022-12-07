@@ -20,13 +20,10 @@ import Spaceship from '@/public/logos/spaceship.svg';
 import Timberland from '@/public/logos/timberland.svg';
 import Toyota from '@/public/logos/toyota.svg';
 import Westfield from '@/public/logos/westfield.svg';
-import { social } from '@/lib/social';
 import getSteamGames from '@/lib/steam';
 import formatList from '@/lib/formatList';
 import education from '@/content/education.json';
 import Divider from '@/components/divider';
-
-const steamUrl = social.find(({ name }) => name === 'Steam')?.url ?? '';
 
 const About = async (): Promise<ReactNode> => {
   const games = await getSteamGames();
@@ -165,11 +162,11 @@ const About = async (): Promise<ReactNode> => {
         <h2>Other</h2>
         <p>
           I also play a lot of games, you can find me on{' '}
-          <Link href={steamUrl}>Steam</Link>. I have {totalHours} hours of
-          tracked playtime, {totalAchievements} achievements across{' '}
-          {games.length} games and {perfectGames.length} perfect games (where
-          all achievements are unlocked). My most played games are{' '}
-          {mostPlayedGames}.
+          <Link href="https://steamcommunity.com/id/0x_crusader/">Steam</Link>.
+          I have {totalHours} hours of tracked playtime, {totalAchievements}{' '}
+          achievements across {games.length} games and {perfectGames.length}{' '}
+          perfect games (where all achievements are unlocked). My most played
+          games are {mostPlayedGames}.
         </p>
         <p>
           Other than that, I&apos;m either spending time in the gym, ideating on

@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import Link from 'next/link';
 import { social } from '@/lib/social';
 import { fetchFigmaProject } from '@/lib/figma';
 import FigmaFile from '@/components/figmaFile';
@@ -8,7 +7,7 @@ import DribbbleIcon from '@/public/social/dribbble.svg';
 
 const dribbbleLink = social.find(({ id }) => id === 'dribbble');
 
-const Contact = async (): Promise<ReactNode> => {
+const Design = async (): Promise<ReactNode> => {
   const project = await fetchFigmaProject('37778158');
 
   return (
@@ -38,4 +37,4 @@ const Contact = async (): Promise<ReactNode> => {
   );
 };
 
-export default Contact;
+export default Design;

@@ -24,7 +24,7 @@ export type PackageProps = {
   link: string;
 };
 
-export const getNPMPackages = async (): Promise<PackageProps[]> => {
+export const fetchNPMPackages = async (): Promise<PackageProps[]> => {
   const response = await fetch('https://www.npmjs.com/~haydenbleasel');
   const data = await response.text();
   const dom = parse(data);

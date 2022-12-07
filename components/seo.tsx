@@ -8,11 +8,16 @@ type SeoProps = NextSeoProps & {
 };
 
 const name = 'Hayden Bleasel';
-const Seo: FC<SeoProps> = ({ path, ...config }) => {
+const Seo: FC<SeoProps> = ({ path = '/', ...config }) => {
   const { title, description } = config;
   const url = path
     ? new URL(path, process.env.NEXT_PUBLIC_SITE_URL).href
     : process.env.NEXT_PUBLIC_SITE_URL;
+
+  const imageUrl = new URL('/api/og', process.env.NEXT_PUBLIC_SITE_URL);
+  imageUrl.searchParams.set('title', title ?? '');
+  imageUrl.searchParams.set('description', description ?? '');
+  imageUrl.searchParams.set('path', path);
 
   return (
     <NextSeo
@@ -31,6 +36,14 @@ const Seo: FC<SeoProps> = ({ path, ...config }) => {
           username: 'haydenbleasel',
           gender: 'male',
         },
+        images: [
+          {
+            url: imageUrl.href,
+            width: 1200,
+            height: 630,
+            alt: 'Hayden Bleasel',
+          },
+        ],
       }}
       twitter={{
         handle: '@haydenbleasel',

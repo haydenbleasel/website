@@ -34,8 +34,8 @@ const handler = async (req: NextRequest): Promise<ImageResponse> => {
     process.env.NEXT_PUBLIC_SITE_URL ?? ''
   ).href;
   const title = createString(searchParams.get('title'), 'Hayden Bleasel');
-  const subtitle = createString(
-    searchParams.get('subtitle'),
+  const description = createString(
+    searchParams.get('description'),
     'Digital Product Designer and Software Engineer'
   );
   const path = createString(searchParams.get('path'), '/');
@@ -56,7 +56,7 @@ const handler = async (req: NextRequest): Promise<ImageResponse> => {
           <p tw="text-5xl tracking-tight leading-[1.1] font-bold mt-0 mb-6 w-[70%] text-zinc-900">
             {title}
           </p>
-          <p tw="text-2xl mt-0 mb-8 w-[70%] text-zinc-600">{subtitle}</p>
+          <p tw="text-2xl mt-0 mb-8 w-[70%] text-zinc-600">{description}</p>
           <p tw="text-md m-0 text-zinc-500 w-[70%]">{url}</p>
         </div>
       ),

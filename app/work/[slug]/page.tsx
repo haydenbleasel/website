@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { allWorkPosts } from 'contentlayer/generated';
 import type { ReactNode } from 'react';
 
-import { ArticleJsonLd } from 'next-seo';
 import { Mdx } from '@/components/mdx';
 import { getTableOfContents } from '@/lib/tableOfContents';
 import TableOfContents from '@/app/blog/[slug]/tableOfContents';

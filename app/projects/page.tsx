@@ -9,7 +9,7 @@ import projects from '@/content/projects.json';
 type ProjectProps = {
   title: string;
   description: string;
-  href: string;
+  href?: string;
   wip?: boolean;
 };
 
@@ -65,7 +65,7 @@ const Projects = async (): Promise<ReactNode> => {
         <h2>Apps</h2>
         <div>
           {projects.map((project, index) => (
-            <Fragment key={project.href}>
+            <Fragment key={project.title}>
               {index > 0 && <Divider />}
               <Project {...project} />
             </Fragment>

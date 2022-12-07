@@ -1,15 +1,29 @@
-import type { UserV2Result } from 'twitter-api-v2';
-import { TwitterApi } from 'twitter-api-v2';
-
-const twitterClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN ?? '');
-const readOnlyClient = twitterClient.readOnly;
-
-const getLocation = async (): Promise<UserV2Result['data']['location']> => {
-  const { data } = await readOnlyClient.v2.user('1628137603', {
-    'user.fields': 'location',
-  });
-
-  return data.location;
+type TwitterProfileResponse = {
+  data: {
+    name: string;
+    username: string;
+    id: string;
+    location: string;
+  };
 };
 
-export default getLocation;
+const getTwitterLocation = async (): Promise<string | null> => {
+  try {
+    const response = await fetch(
+      `https://api.twitter.com/2/users/1628137603?user.fields=location`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN ?? ''}`,
+        },
+      }
+    );
+
+    const { data } = (await response.json()) as TwitterProfileResponse;
+
+    return data.location;
+  } catch (error) {
+    return null;
+  }
+};
+
+export default getTwitterLocation;

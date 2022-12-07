@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import * as Figma from 'figma-api';
 import Image from 'next/image';
 import clsx from 'clsx';
 import formatDate from '@/lib/formatDate';
@@ -9,12 +8,39 @@ type FigmaFileProps = {
   id: string;
 };
 
-const api = new Figma.Api({
-  personalAccessToken: process.env.FIGMA_ACCESS_TOKEN ?? '',
-});
+type FigmaDocument = {
+  name: string;
+  role: string;
+  lastModified: string;
+  editorType: string;
+  thumbnailUrl: string;
+  version: string;
+  document: Node;
+  components: Record<string, unknown>;
+  componentSets: Record<string, unknown>;
+  schemaVersion: number;
+  styles: Record<string, unknown>;
+  mainFileKey: string;
+  branches: [
+    {
+      key: string;
+      name: string;
+      thumbnail_url: string;
+      last_modified: string;
+      link_access: string;
+    }
+  ];
+};
 
 const FigmaFile = async ({ id }: FigmaFileProps): Promise<ReactNode> => {
-  const file = await api.getFile(id);
+  const response = await fetch(`https://api.figma.com/v1/files/${id}`, {
+    headers: {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'X-FIGMA-TOKEN': process.env.FIGMA_ACCESS_TOKEN ?? '',
+    },
+  });
+
+  const file = (await response.json()) as FigmaDocument;
 
   return (
     <Link
@@ -38,7 +64,7 @@ const FigmaFile = async ({ id }: FigmaFileProps): Promise<ReactNode> => {
         />
       </div>
       <div className="flex flex-col gap-1 border-t border-zinc-200 p-4 dark:border-zinc-700">
-        <p className="line-clamp-1 m-0 text-base font-medium sm:text-lg">
+        <p className="m-0 text-base font-medium line-clamp-1 sm:text-lg">
           {file.name}
         </p>
         <p

@@ -4,7 +4,7 @@ import {
   CommandBar as CommandBarComponent,
   useCommandBar,
 } from '@haydenbleasel/command-bar';
-import type { ComponentProps, FC, HTMLProps } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { Moon, Search, Sun } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import useTheme from '@haydenbleasel/use-theme';

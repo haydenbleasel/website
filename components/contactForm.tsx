@@ -2,7 +2,6 @@
 import type { FC, FormEventHandler } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Loader2 } from 'lucide-react';
 import Button from './button';
 import Textarea from '@/components/textarea';
 import parseError from '@/lib/parseError';

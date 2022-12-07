@@ -6,7 +6,9 @@ import { Clock, Disc, Users } from 'lucide-react';
 import Divider from '@/components/divider';
 import { getSpotifyPlaylist, getSpotifyPlaylists } from '@/lib/spotify';
 
-const Playlist = async ({ id }: { id: string }): Promise<ReactNode> => {
+type PlaylistProps = { id: string };
+
+const Playlist = async ({ id }: PlaylistProps): Promise<ReactNode> => {
   const data = await getSpotifyPlaylist(id);
 
   return (

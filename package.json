@@ -54,7 +54,7 @@
     "shiki": "^0.11.1",
     "spotify-web-api-node": "^5.0.2",
     "twitter-api-v2": "^1.12.9",
-    "zustand": "^4.1.4"
+    "zustand": "^4.1.5"
   },
   "devDependencies": {
     "@haydenbleasel/harmony": "^1.1.9",

@@ -49,7 +49,7 @@ const About = async (): Promise<ReactNode> => {
       <p>
         I&apos;m an Australian Product Designer and Frontend Engineer living in
         Delray Beach, Florida. I currently lead the Product and Design teams at{' '}
-        <Logo icon={Corellium as FC} href="http://corellium.com/">
+        <Logo icon={Corellium as FC} href="https://www.corellium.com/">
           Corellium
         </Logo>
         , where we blur the line between real and virtual. After hours, I work
@@ -133,7 +133,7 @@ const About = async (): Promise<ReactNode> => {
         </p>
         <p>
           Before all that, I was Head of Product and Design at{' '}
-          <Logo icon={Spaceship as FC} href="https://spaceship.com.au/">
+          <Logo icon={Spaceship as FC} href="https://www.spaceship.com.au/">
             Spaceship
           </Logo>{' '}
           where we grew a pre-launch waitlist of 28,000 people, raised $20M+ in

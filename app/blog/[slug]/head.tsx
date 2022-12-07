@@ -10,7 +10,7 @@ type MdxHeadProps = {
 
 const Head: FC<MdxHeadProps> = ({ params }) => {
   const slug = params?.slug;
-  const mdxDoc = allWorkPosts.find((doc) => doc.slugAsParams === slug);
+  const mdxDoc = allWorkPosts.find((doc) => doc.company === slug);
 
   if (!mdxDoc) {
     return null;

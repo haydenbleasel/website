@@ -58,7 +58,7 @@ const Home = async (): Promise<ReactNode> => {
         <p>
           Product designer and frontend engineer. Blurring the line between real
           and virtual at{' '}
-          <Logo icon={Corellium as FC} href="http://corellium.com/">
+          <Logo icon={Corellium as FC} href="https://www.corellium.com/">
             Corellium
           </Logo>
           . Scaling planetary reforestation with{' '}

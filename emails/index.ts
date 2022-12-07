@@ -1,16 +1,21 @@
 import { createTransport } from 'nodemailer';
 import { buildSendMail } from 'mailing-core';
 
+if (!process.env.SENDGRID_API_KEY) {
+  throw new Error('SENDGRID_API_KEY is not set');
+}
+
+if (!process.env.EMAIL_ADDRESS) {
+  throw new Error('EMAIL_ADDRESS is not set');
+}
+
 const transport = createTransport({
-  host: 'smtp.postmarkapp.com',
-  port: 587,
+  host: 'smtp.sendgrid.net',
+  port: 465,
   secure: true,
   auth: {
-    user: process.env.POSTMARK_API_KEY,
-    pass: process.env.POSTMARK_API_KEY,
-  },
-  headers: {
-    'X-PM-Message-Stream': 'outbound',
+    user: 'apikey',
+    pass: process.env.SENDGRID_API_KEY,
   },
 });
 
@@ -23,8 +28,8 @@ transport.verify((error) => {
 
 const sendMail = buildSendMail({
   transport,
-  defaultFrom: process.env.EMAIL_ADDRESS ?? '',
-  configPath: '../mailing.config.json',
+  defaultFrom: process.env.EMAIL_ADDRESS,
+  configPath: '../',
 });
 
 export default sendMail;

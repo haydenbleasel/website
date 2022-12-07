@@ -53,7 +53,7 @@ const Seo: FC<SeoProps> = ({ path = '/', ...config }) => {
       additionalLinkTags={[
         {
           rel: 'icon',
-          href: '/favicon.png',
+          href: '/favicon.ico',
         },
         {
           rel: 'apple-touch-icon',

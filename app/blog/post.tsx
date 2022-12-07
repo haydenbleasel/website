@@ -1,14 +1,15 @@
-import type { FC } from 'react';
-import type { LinkProps } from 'next/link';
+import type { FC, HTMLProps } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import formatDate from '@/lib/formatDate';
 
-type PostProps = LinkProps & {
+type PostProps = {
   title: string;
   slug?: string;
   description: string;
   date: string;
+  rel?: HTMLProps<HTMLAnchorElement>['rel'];
+  target?: HTMLProps<HTMLAnchorElement>['target'];
 };
 
 const PostInner: FC<Pick<PostProps, 'title' | 'description' | 'date'>> = ({
@@ -43,10 +44,11 @@ const PostInner: FC<Pick<PostProps, 'title' | 'description' | 'date'>> = ({
   </>
 );
 
-const Post: FC<PostProps> = ({ title, slug, description, date, ...props }) =>
+const Post: FC<PostProps> = ({ title, slug, description, date, rel, target }) =>
   slug ? (
     <Link
-      {...props}
+      rel={rel}
+      target={target}
       href={slug}
       className="flex flex-col gap-1 py-2 no-underline sm:flex-row sm:gap-8"
     >

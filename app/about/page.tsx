@@ -118,7 +118,7 @@ const About = async (): Promise<ReactNode> => {
             Jellypepper
           </Logo>
           , a digital agency focused on startups in “disruptive industries” such
-          as self-driving cars, AI, biotechnology, cryptocurency, renewable
+          as self-driving cars, AI, biotechnology, cryptocurrency, renewable
           energy, drone delivery, cybersecurity and even outer-space logistics.
           There I worked with many incredible startups who raised billions of
           dollars in funding, such as{' '}

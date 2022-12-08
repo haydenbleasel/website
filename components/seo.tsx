@@ -20,7 +20,7 @@ const Seo: FC<SeoProps> = ({ path = '/', ...config }) => {
   imageUrl.searchParams.set('description', description ?? '');
   imageUrl.searchParams.set('path', path);
 
-  const images: OpenGraphMedia[] = [
+  let images: OpenGraphMedia[] = [
     {
       url: imageUrl.href,
       width: 1200,
@@ -30,9 +30,11 @@ const Seo: FC<SeoProps> = ({ path = '/', ...config }) => {
   ];
 
   if (image) {
-    images.unshift({
-      url: new URL(image, process.env.NEXT_PUBLIC_SITE_URL).href,
-    });
+    images = [
+      {
+        url: new URL(image, process.env.NEXT_PUBLIC_SITE_URL).href,
+      },
+    ];
   }
 
   return (

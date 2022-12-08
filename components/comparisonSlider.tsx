@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 import { ReactCompareSlider } from 'react-compare-slider';
-import Image from 'next/image';
+import Image from '@/components/image';
 
 type ComparisonSliderProps = {
   before: string;

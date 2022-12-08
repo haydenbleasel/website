@@ -1,0 +1,115 @@
+---
+title: Building an NPM API
+description: NPM doesn't have a publicly available API for fetching package info, so I built one.
+date: 12-04-2022
+---
+
+I was mucking around with the [/code](/code) page on my website the other day and had the idea to fetch my NPM packages and display them on the page. I thought this would be a great way to show off my work and also give people a way to easily find my packages.
+
+But, lo and behold, NPM doesn't have a public API for fetching package info. This is weirdly ironic considering that NPM is the package manager for Node.js and is basically a giant API anyway.
+
+So, I decided to build my own API... of sorts. In essence it's just a web scraper that fetches the data from the NPM website and returns it as JSON, but the journey of figuring it out was super interesting.
+
+## Examining the NPM website
+
+The first step was to figure out how the NPM website works. Navigating to my [profile page](https://www.npmjs.com/~haydenbleasel), I opened up the developer tools and started poking around. Doing a quick search for a library name e.g. `harmony`, I found that the packages are actually available in JSON format in the HTML, in fact they're loaded into a `window.__context__` variable. So, I just need to boot up a headless browser and fetch the data from there, right?
+
+## Parsing the DOM with `jsdom`
+
+I knocked up a quick script to fetch the page, return it as plain text containing HTML and parse the DOM using `jsdom`. From there, we could wait for the page to load, then access the `window.__context__` variable and return the data.
+
+```tsx title="npm.ts" {19-28}
+import { JSDOM } from 'jsdom';
+
+type WindowContext = {
+  context: {
+    packages: {
+      total: number;
+      objects: {
+        name: string;
+        date: {
+          rel: string;
+        };
+        description: string;
+        version: string;
+      }[];
+    };
+  };
+};
+
+export const fetchNPMPackages = async (): Promise<
+  WindowContext['context']['packages']['objects']
+> => {
+  const response = await fetch('https://www.npmjs.com/~haydenbleasel');
+  const data = await response.text();
+  const dom = new JSDOM(data);
+
+  await new Promise((resolve) => {
+    dom.window.addEventListener('load', resolve);
+  });
+
+  return dom.window.__context__.context.packages.objects;
+};
+```
+
+Pretty good, but not perfect. There's two key issues here. First of all, the `window.__context__` variable is only available after the page has loaded, so we need to wait for the `load` event to fire before we can access it. This means it takes a few seconds to return, leading to loading states. Plus, if you're running this in a Next.js serverless function like I am, this may cause the function to timeout if it takes too long.
+
+Secondly, the JSDOM library itself. It's absolutely massive and since a few versions ago, comes with some [innate dependency](https://github.com/jsdom/jsdom/issues/3042) on the `canvas` library for parsing images, which also makes it explode when [deploying to Vercel](https://github.com/kkomelin/isomorphic-dompurify/issues/54).
+
+So, I decided to try a different approach.
+
+## Parsing the DOM with `node-html-parser`
+
+I found a much smaller library called `node-html-parser` that is great at parsing HTML without mounting it into a virtual DOM of sorts. Seeing as the `window.__context__` variable is available in the HTML as a script tag, we can just parse the DOM and find the script tag that contains the data we want.
+
+Using the same approach of fetching the page to get the raw HTML, we'll instead load it into node-html-parser, find the script tag, replace the `'window.__context__ = ` part with an empty string and parse the rest as JSON!
+
+```tsx title="npm.ts" {19-38}
+import { parse } from 'node-html-parser';
+
+type WindowContext = {
+  context: {
+    packages: {
+      total: number;
+      objects: {
+        name: string;
+        date: {
+          rel: string;
+        };
+        description: string;
+        version: string;
+      }[];
+    };
+  };
+};
+
+export const fetchNPMPackages = async (): Promise<
+  WindowContext['context']['packages']['objects']
+> => {
+  const response = await fetch('https://www.npmjs.com/~haydenbleasel');
+  const data = await response.text();
+  const dom = parse(data);
+
+  const scripts = dom.querySelectorAll('script');
+
+  const shotData = scripts.find((script) =>
+    script.text.includes('window.__context__')
+  )?.text;
+
+  if (!shotData) {
+    throw new Error('No data found');
+  }
+
+  const windowContext = JSON.parse(
+    shotData.replace('window.__context__ = ', '')
+  ) as WindowContext;
+
+  return windowContext.context.packages.objects;
+};
+```
+
+Much better! I can now run this in a Next.js serverless function and it returns in a fraction of a second. The only downside to this entire approach is that it's brittle - if the NPM website changes the way it renders raw data in HTML, this will break. But hey, that's the fun of web scraping!
+
+## Wrapping it up
+
+So, that's it! I now have a simple API that I can use to fetch my NPM packages and display them on my website. If you'd like me to spin this out as an NPM package, let me know on [Twitter](https://twitter.com/haydenbleasel). In the meantime, you can find the code in the source code for [this repo](https://github.com/haydenbleasel/daylight).

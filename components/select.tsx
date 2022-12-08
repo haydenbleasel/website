@@ -44,7 +44,7 @@ const Select: FC<SelectProps> = ({
       <Root value={selected} onValueChange={onChangeSelected}>
         <Trigger
           className={clsx(
-            'relative flex w-full cursor-pointer items-center justify-between rounded-md border py-[10px] px-3 text-left shadow-sm focus:outline-none focus:ring-1 sm:text-sm',
+            'relative flex w-full cursor-pointer items-center justify-between rounded-md border py-[6px] px-3 text-left shadow-sm focus:outline-none focus:ring-1',
             'border-zinc-300 bg-white focus:border-teal-500 focus:ring-teal-500',
             'dark:border-zinc-600 dark:bg-zinc-900 dark:focus:border-teal-400 dark:focus:ring-teal-400'
           )}
@@ -62,7 +62,7 @@ const Select: FC<SelectProps> = ({
         <Portal>
           <Content
             className={clsx(
-              'absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
+              'absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
               'bg-white',
               'dark:border dark:border-zinc-600 dark:bg-zinc-900'
             )}

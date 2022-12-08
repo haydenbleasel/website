@@ -34,7 +34,7 @@ description: ${description}
 date: ${date}
 ---\n\n`;
 
-    await fs.writeFile('./content/blog/${slug}.mdx', content);
+    await fs.writeFile(`./content/blog/${slug}.mdx`, content);
   } catch (error) {
     console.error(error);
   }

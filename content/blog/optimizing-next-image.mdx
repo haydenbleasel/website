@@ -40,6 +40,7 @@ Under the hood, I believe\* Next.js uses [Sharp](https://sharp.pixelplumbing.com
 Unfortunately, it's only possible to overwrite the quality of an image on a per-image basis. This means that you can't set a default quality for all images in your Next.js app. However, you can still set a default quality for all images in your Next.js app by using a custom `Image` component.
 
 ```tsx
+import type { FC } from 'react';
 import NextImage from 'next/image';
 import type { ImageProps } from 'next/image';
 

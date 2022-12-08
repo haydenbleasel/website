@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
 import { Fragment } from 'react';
 
 import clsx from 'clsx';
 import Post from './blog/post';
+import Image from '@/components/image';
 import Logo from '@/components/logo';
 import Corellium from '@/public/logos/corellium.svg';
 import Neutral from '@/public/logos/neutral.svg';

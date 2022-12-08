@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import clsx from 'clsx';
+import Image from '@/components/image';
 import formatDate from '@/lib/formatDate';
 import { fetchFigmaFile } from '@/lib/figma';
 

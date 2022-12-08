@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Fragment } from 'react';
 import { Clock, Disc, Users } from 'lucide-react';
+import Image from '@/components/image';
 import Divider from '@/components/divider';
 import { getSpotifyPlaylist, getSpotifyPlaylists } from '@/lib/spotify';
 

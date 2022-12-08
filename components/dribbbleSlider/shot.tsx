@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import type { FC } from 'react';
 import { Eye, MessageCircle, ThumbsUp } from 'lucide-react';
 import clsx from 'clsx';
+import Image from '@/components/image';
 import type { DribbbleResponse } from '@/lib/dribbble';
 import formatNumbers from '@/lib/formatNumbers';
 

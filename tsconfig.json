@@ -31,7 +31,8 @@
     "**/*.tsx",
     ".contentlayer/generated",
     ".next/types/**/*.ts",
-    "next.config.mjs"
+    "next.config.mjs",
+    "scripts/*.mjs"
   ],
   "exclude": ["node_modules"]
 }

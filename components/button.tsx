@@ -25,7 +25,7 @@ const ButtonInner: FC<Pick<ButtonProps, 'children' | 'loading'>> = ({
   );
 
 const buttonClassName = clsx(
-  'inline-block no-underline text-md rounded-md border border-none px-3 py-2 font-medium disabled:cursor-not-allowed disabled:opacity-50',
+  'inline-block no-underline text-md rounded-md border border-none px-3 py-[7px] font-medium disabled:cursor-not-allowed disabled:opacity-50',
   'bg-zinc-900 text-white',
   'dark:bg-white dark:text-zinc-900'
 );

@@ -7,6 +7,7 @@ import {
   Home,
   Layers,
   MessageCircle,
+  Rocket,
   Star,
   User,
   Zap,
@@ -24,6 +25,11 @@ const pages = [
   { name: 'Press', icon: Star, href: '/press' },
   { name: 'Playlists', icon: Headphones, href: '/playlists' },
   { name: 'Contact', icon: MessageCircle, href: '/contact' },
+  {
+    name: 'Modern Frontend Engineering Series',
+    icon: Rocket,
+    href: '/blog/frontend',
+  },
 ];
 
 export default pages;

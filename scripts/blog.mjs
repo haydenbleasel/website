@@ -1,9 +1,9 @@
-import inquirer from 'inquirer';
+// eslint-disable-next-line import/no-nodejs-modules
 import fs from 'fs/promises';
-
-console.log('Scaffolding a new blog post...');
+import inquirer from 'inquirer';
 
 const main = async () => {
+  console.log('Scaffolding a new blog post...');
   try {
     const { slug, title, description, date } = await inquirer.prompt([
       {
@@ -32,7 +32,7 @@ const main = async () => {
 title: ${title}
 description: ${description}
 date: ${date}
----`;
+---\n\n`;
 
     await fs.writeFile('./content/blog/${slug}.mdx', content);
   } catch (error) {

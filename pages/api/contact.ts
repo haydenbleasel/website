@@ -13,7 +13,7 @@ type ContactRequest = {
   message?: string;
 } & (
   | {
-      type: 'contact';
+      type: 'contact' | 'consulting' | 'board';
     }
   | {
       type: 'freelance';

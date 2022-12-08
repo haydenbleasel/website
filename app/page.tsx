@@ -73,7 +73,8 @@ const Home = async (): Promise<ReactNode> => {
           .
         </p>
         <p>
-          Occasional freelancer → <Link href="/contact">get in touch</Link>.
+          Occasional freelancer / consultant →{' '}
+          <Link href="/contact">get in touch</Link>.
         </p>
       </div>
       <div className="grid gap-4">

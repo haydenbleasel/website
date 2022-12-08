@@ -77,7 +77,7 @@ const Select: FC<SelectProps> = ({
                     option.value === selected
                       ? 'bg-teal-500 text-white hover:bg-teal-600'
                       : 'text-zinc-900 hover:bg-zinc-100 dark:text-white dark:hover:bg-zinc-800',
-                    'group relative cursor-pointer select-none py-2 pl-3 pr-9 transition-colors'
+                    'group relative cursor-pointer select-none py-2 pl-3 pr-9 outline-none transition-colors'
                   )}
                 >
                   <ItemText

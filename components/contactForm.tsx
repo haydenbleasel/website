@@ -3,7 +3,6 @@ import type { FC, FormEventHandler } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import Button from './button';
-import ButtonGroup from './buttonGroup';
 import Select from './select';
 import Textarea from '@/components/textarea';
 import parseError from '@/lib/parseError';
@@ -93,14 +92,22 @@ const ContactForm: FC = () => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <ButtonGroup
+        <Select
           label="I would like to..."
           options={[
             { label: 'Have a chat', value: 'contact' },
             { label: 'Hire you for freelance work', value: 'freelance' },
+            {
+              label: 'Hire you for consulting work',
+              value: 'consulting',
+            },
+            {
+              label: 'Ask you to join our board',
+              value: 'board',
+            },
           ]}
-          value={type}
-          onChangeValue={setType}
+          selected={type}
+          onChangeSelected={setType}
         />
       </div>
       <Input

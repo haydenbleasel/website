@@ -118,5 +118,10 @@
     "name": "GitHub Copilot",
     "href": "https://copilot.github.com/",
     "description": "AI-powered code completion."
+  },
+  {
+    "name": "Screen Studio",
+    "href": "https://www.screen.studio/",
+    "description": "Beautiful screen recordings in minutes."
   }
 ]

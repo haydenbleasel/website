@@ -11,10 +11,10 @@ const SocialLinks: FC = () => (
         target="_blank"
         rel="noopener noreferrer"
         aria-label={name}
-        className="group flex items-center gap-2 text-sm font-medium text-zinc-800 no-underline hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+        className="group flex items-center gap-2 text-sm font-medium text-zinc-800 no-underline transition-colors hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
       >
         <Icon
-          className="h-4 w-4 flex-none fill-zinc-500 transition group-hover:fill-teal-500"
+          className="h-4 w-4 flex-none fill-zinc-500 transition-colors group-hover:fill-teal-500"
           width={16}
           height={16}
         />

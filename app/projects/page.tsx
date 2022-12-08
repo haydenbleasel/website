@@ -7,17 +7,12 @@ import projects from '@/content/projects.json';
 const Projects: FC = () => (
   <main className="flex flex-col gap-6 prose-h2:mb-2 prose-h2:mt-4 prose-p:m-0">
     <h1>Projects</h1>
-    <div className="flex flex-col gap-2">
-      <h2>Apps</h2>
-      <div>
-        {projects.map((project, index) => (
-          <Fragment key={project.title}>
-            {index > 0 && <Divider />}
-            <Project {...project} />
-          </Fragment>
-        ))}
-      </div>
-    </div>
+    {projects.map((project, index) => (
+      <Fragment key={project.title}>
+        {index > 0 && <Divider />}
+        <Project {...project} />
+      </Fragment>
+    ))}
   </main>
 );
 

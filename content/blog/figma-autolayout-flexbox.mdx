@@ -15,9 +15,9 @@ However, the benefits don't stop there. The AutoLayout system is actually based 
 
 The AutoLayout system implemented in Figma is directly equivalent to the CSS flexbox model, which means that designers can use the same layout constraints in Figma as they would use in CSS. This makes it easy for designers to create designs that can be easily implemented by frontend engineers, as the layout constraints will already be specified and can be directly translated into CSS code.
 
-For example, this AutoLayout implementation:
+For example, this AutoLayout implementation at the end of this gif (TY Figma team):
 
-![AutoLayout implementation](/blog/posts/figma-autolayout.png)
+![AutoLayout implementation](/blog/posts/figma-autolayout.gif)
 
 Can be translated into the following CSS code:
 
@@ -27,26 +27,26 @@ Can be translated into the following CSS code:
   display: flex;
 
   /* This is the down arrow icon */
-  flex-direction: column;
+  flex-direction: row;
 
   /* This is the gap between the elements */
   gap: 8px;
 
   /* This is the vertical and horizontal padding */
-  padding: 16px 8px;
+  padding: 16px;
 
-  /* This is the horizontal alignment */
-  align-items: center;
+  /* This is the cross-axis alignment with "bottom" */
+  align-items: flex-end;
 
-  /* This is the vertical alignment */
-  justify-content: center;
+  /* This is the main-axis alignment with "space between" */
+  justify-content: space-between;
 }
 ```
 
 This becomes even easier with Tailwind as we can write it all in shorthand:
 
 ```tsx
-<div className="align-center flex flex-col justify-center gap-2 py-4 px-2" />
+<div className="flex flex-row items-end justify-between gap-2 p-4" />
 ```
 
 This is incredibly useful for frontend engineers because it allows them to easily implement the design as specified by the designer, without having to spend time trying to figure out the exact layout and positioning of each element. This can save a lot of time and effort, and can also help to ensure that the design is implemented accurately and consistently across different devices and screen sizes.

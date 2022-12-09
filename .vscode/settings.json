@@ -13,7 +13,7 @@
   },
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.enabled": true,
+  "cSpell.enabled": false,
   "cSpell.language": "en-GB",
   "cSpell.enableFiletypes": ["mdx"],
   "cSpell.words": [

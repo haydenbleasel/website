@@ -45,8 +45,20 @@ module.exports = {
             strong: {
               fontWeight: theme('fontWeight.medium'),
             },
+            code: {
+              backgroundColor: theme('colors.zinc.100'),
+              color: theme('colors.zinc.900'),
+              borderRadius: theme('borderRadius.md'),
+              padding: theme('spacing.1'),
+              '&:before': {
+                display: 'none',
+              },
+              '&:after': {
+                display: 'none',
+              },
+            },
             pre: {
-              borderRadius: theme('rounded.md'),
+              borderRadius: theme('borderRadius.md'),
               display: 'grid',
               backgroundColor: theme('colors.zinc.800'),
               paddingTop: theme('spacing.4'),

@@ -33,3 +33,15 @@ select:focus {
 [data-rehype-pretty-code-title] + pre {
   @apply mt-0 rounded-tl-none rounded-tr-none;
 }
+
+code {
+  counter-reset: line;
+}
+
+code > .line::before {
+  @apply mr-8 inline-block w-4 text-right text-zinc-400;
+
+  content: counter(line);
+  counter-increment: line;
+  text-align: right;
+}

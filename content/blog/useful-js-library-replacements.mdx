@@ -146,7 +146,7 @@ new Intl.PluralRules('ar-EG').select(18);
 
 ## Segmenters
 
-Instead of using a complex `join()` argument, you can use [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Segmenter) to segment strings. It takes into account the language's rules for segmentation (e.g. the accents and other glyphs), and even has support for pluralization, internationalization, and localization:
+Instead of using a complex `join()` argument, you can use [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) to segment strings. It takes into account the language's rules for segmentation (e.g. the accents and other glyphs), and even has support for pluralization, internationalization, and localization:
 
 ```tsx
 const segmenterFr = new Intl.Segmenter('fr', { granularity: 'word' });

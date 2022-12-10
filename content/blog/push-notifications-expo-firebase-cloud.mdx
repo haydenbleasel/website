@@ -84,7 +84,7 @@ const generatePushNotificationsToken = async (): Promise<
 export default generatePushNotificationsToken;
 ```
 
-Now we can import this file into our Settings page (or wherever) and call it. You're going to want to store the `expoPushToken` on your user's profile. I'm using the [useUser and useProfile](https://dev.to/haydenbleasel/neat-user-and-profile-react-hooks-for-firebase-v9-jh3) hooks I talked about previously.
+Now we can import this file into our Settings page (or wherever) and call it. You're going to want to store the `expoPushToken` on your user's profile. I'm using the [useUser and useProfile](/blog/user-profile-hooks-firebase-9) hooks I talked about previously.
 
 ```ts
 import generatePushNotificationsToken from '../../utils/expo/generatePushNotificationsToken';

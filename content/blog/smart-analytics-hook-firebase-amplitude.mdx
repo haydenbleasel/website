@@ -100,7 +100,7 @@ export default useAnalytics;
 
 ## Identification
 
-Next up is identifying users. This is super trivial as we _should_ know when a user has logged in or out on our app. In this example, we'll make use of the [useUser and useProfile hooks](https://dev.to/haydenbleasel/neat-user-and-profile-react-hooks-for-firebase-v9-jh3) we talked about previously.
+Next up is identifying users. This is super trivial as we _should_ know when a user has logged in or out on our app. In this example, we'll make use of the [useUser and useProfile hooks](/blog/user-profile-hooks-firebase-9) we talked about previously.
 
 Because our app is aware of changes in the user state, there's no need to actually export an `identify()` event - we can just fire this internally whenever we see the user change.
 

@@ -37,3 +37,5 @@ yarn-error.log*
 next-env.d.ts
 .contentlayer
 .mailing
+public/robots.txt
+public/sitemap*.xml

@@ -79,14 +79,6 @@ export const social: SocialPlatform[] = [
     featured: false,
   },
   {
-    id: 'devto',
-    name: 'Dev.to',
-    url: 'https://dev.to/haydenbleasel',
-    invertDark: true,
-    icon: DevToIcon as SVG,
-    featured: false,
-  },
-  {
     id: 'figma',
     name: 'Figma',
     url: 'https://www.figma.com/@haydenbleasel',

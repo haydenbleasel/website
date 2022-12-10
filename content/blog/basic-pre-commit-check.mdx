@@ -1,0 +1,47 @@
+---
+title: Adding a basic pre-commit check to a Next.js app
+description: When building a Next.js app, it can be a good idea to add some simple checks for Typescript and ESLint when you commit new code.
+date: 08-20-2021
+---
+
+When building a Next.js app, it can be a good idea to add some simple checks for Typescript and ESLint when you commit new code. It can help avoid broken Vercel builds and keep your code neat and functional for other contributors.
+
+Now, since version 11.0.0, Next.js provides an integrated ESLint experience out of the box, so we just need to make sure the following script is in our `package.json`:
+
+```json
+"scripts": {
+  "lint": "next lint"
+}
+```
+
+If we're using Typescript, we can also do add simple `tsc` check.
+
+```json
+"scripts": {
+  "type-check": "tsc"
+}
+```
+
+If we run either of these commands in Terminal, we can audit our codebase. Before we continue, it might be good to fix any issues that appear.
+
+Now, we want to run these checks every time we commit to GitHub, so we don't commit broken or poorly written code. To do this, we'll make use of an NPM module called [pre-commit](https://www.npmjs.com/package/pre-commit). It works by overriding the existing pre-commit file in your `.git/hooks` folder.
+
+We can install it with:
+
+```sh
+yarn add -D pre-commit
+# or npm install --save-dev pre-commit if you're nasty
+```
+
+Once that's installed, simply add the following property to your `package.json`:
+
+```json
+"pre-commit": [
+  "lint",
+  "type-check"
+]
+```
+
+This will run the `lint` and `type-check` commands every time we commit. If either of these fail, the commit will be blocked.
+
+That's all! If you need to submit crap code that may not work, just commit with `git commit --no-verify` and you're good to go.

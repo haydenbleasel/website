@@ -14,23 +14,11 @@ type PostProps = {
 
 const PostInner: FC<Pick<PostProps, 'title' | 'description' | 'date'>> = ({
   title,
-  description,
   date,
 }) => (
   <>
-    <span className="flex-1">
-      <span className="flex-0 flex items-center gap-2 font-medium text-zinc-900 line-clamp-1 dark:text-white">
-        {title}
-      </span>
-      <span
-        className={clsx(
-          'flex-1 text-sm font-light line-clamp-1',
-          'text-zinc-500',
-          'dark:text-zinc-400'
-        )}
-      >
-        {description}
-      </span>
+    <span className="flex-1 font-medium text-zinc-900 line-clamp-1 dark:text-white">
+      {title}
     </span>
     <span
       className={clsx(

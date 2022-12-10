@@ -82,7 +82,7 @@ const Home = async (): Promise<ReactNode> => {
         <div>
           {allBlogs
             .sort(sortBlogPostByDate)
-            .slice(0, 3)
+            .slice(0, 6)
             .map((post, index) => (
               <Fragment key={post.slug}>
                 {index > 0 && <Divider />}

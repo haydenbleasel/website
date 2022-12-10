@@ -19,8 +19,8 @@ const NavbarLink: FC<NavbarLinkProps> = ({ name, icon: Icon, href }) => {
   }
 
   return (
-    <Tooltip label={label}>
-      <CurrentPageProvider href={href}>
+    <CurrentPageProvider href={href}>
+      <Tooltip label={label}>
         <Link href={href} className="relative block p-2">
           <Icon
             size={20}
@@ -39,8 +39,8 @@ const NavbarLink: FC<NavbarLinkProps> = ({ name, icon: Icon, href }) => {
             )}
           />
         </Link>
-      </CurrentPageProvider>
-    </Tooltip>
+      </Tooltip>
+    </CurrentPageProvider>
   );
 };
 

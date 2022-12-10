@@ -90,9 +90,7 @@ Great! If we open the iOS Simulator, we should now be able to connect to our Loc
 
 Trouble is, the origin `localhost` only works with a simulator. This is because the IP address of the simulated phone is the same as the Firebase instance. If you try this with a physical device, it won't work. It's trying to connect to the `localhost` Firebase instance on the physical phone, which doesn't exist. You'll probably end up with an error similar to this one:
 
-```
-"@firebase/firestore, Firestore (7.8.1): Could not reach Cloud Firestore backend. Connection failed 1 times. Most recent error: FirebaseError: [code=unavailable]: The operation could not be completed This typically indicates that your device does not have a healthy Internet connection at the moment. The client will operate in offline mode until it is able to successfully connect to the backend."
-```
+> "@firebase/firestore, Firestore (7.8.1): Could not reach Cloud Firestore backend. Connection failed 1 times. Most recent error: FirebaseError: [code=unavailable]: The operation could not be completed This typically indicates that your device does not have a healthy Internet connection at the moment. The client will operate in offline mode until it is able to successfully connect to the backend."
 
 To fix this, we can check the Debugger Host (the IP address of the running Metro Bundler instance) which is stored in Expo Constants:
 

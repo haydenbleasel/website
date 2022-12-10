@@ -60,7 +60,7 @@ module.exports = {
             pre: {
               borderRadius: theme('borderRadius.md'),
               display: 'grid',
-              backgroundColor: theme('colors.zinc.800'),
+              backgroundColor: theme('colors.zinc.900'),
               paddingTop: theme('spacing.4'),
               paddingBottom: theme('spacing.4'),
               paddingLeft: 0,
@@ -77,6 +77,17 @@ module.exports = {
                   paddingBottom: 0,
                 },
               },
+            },
+          },
+        },
+        invert: {
+          css: {
+            code: {
+              backgroundColor: theme('colors.zinc.800'),
+              color: theme('colors.white'),
+            },
+            pre: {
+              backgroundColor: theme('colors.zinc.800'),
             },
           },
         },

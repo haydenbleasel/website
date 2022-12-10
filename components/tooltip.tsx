@@ -14,10 +14,10 @@ const Tooltip: FC<TooltipProps> = ({ label, children }) => (
     <Portal>
       <Content
         sideOffset={4}
-        className="bg-white px-3 py-2 rounded-md shadow-sm"
+        className="rounded-md bg-zinc-900/90 px-[10px] py-[6px] text-sm text-white shadow-sm backdrop-blur-sm dark:bg-white/90 dark:text-zinc-900"
       >
         {label}
-        <Arrow className="fill-white" />
+        <Arrow className="fill-zinc-900 dark:fill-white" />
       </Content>
     </Portal>
   </Root>

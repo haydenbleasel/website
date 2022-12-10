@@ -1,0 +1,162 @@
+---
+title: Neat User and Profile React Hooks for Firebase V9
+description: Writing your own little hooks for the two most common types of Firebase objects - Users and Profiles.
+date: 12-24-2021
+---
+
+For a good while, I've been relying on a little package called [react-firebase-hooks](https://github.com/CSFrequency/react-firebase-hooks) to turn my Firebase realtime document fetching into tidy hooks. However, this library has become a bit sketchy since the release of Firebase v9 a.k.a the Modular edition.
+
+So, I decided to remove the dependency and write my own little hooks for the two most common types of Firebase objects I use - Users and Profiles (a collection in Firestore).
+
+## The `useUser` Hook
+
+The User hook is pretty straightforward. Firebase already gives us access to a handy function called `onAuthStateChanged` - an observer for changes to the user's "signed-in" state. It will either return a User object or `null`, which is perfect for passing straight into a `setUser` function.
+
+The `updateUser` function is a bit trickier. I wanted to have a single function that I could pass a `displayName`, `email`, `password` or whatever other properties we could store on a User object. Firebase actually has different update functions for each of these. In the new V9, they're aptly named `updateEmail`, `updatePassword` and then `updateProfile` for everything else (name, photo, etc.)
+
+Combining all this, we get the following hook!
+
+```ts
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+  updateProfile,
+  updateEmail,
+  updatePassword,
+} from 'firebase/auth';
+import { useState } from 'react';
+import type { User } from 'firebase/auth';
+
+type UpdateUserProps = {
+  displayName?: User['displayName'];
+  photoURL?: User['photoURL'];
+  email?: User['email'];
+  password?: string | null;
+};
+
+const useUser = (): {
+  user?: User | null;
+  updateUser: (props: UpdateUserProps) => Promise<void>;
+  logout: () => Promise<void>;
+} => {
+  const auth = getAuth();
+  const [user, setUser] = useState<User | null>(auth.currentUser);
+
+  onAuthStateChanged(auth, setUser);
+
+  const updateUser = async ({
+    displayName,
+    photoURL,
+    email,
+    password,
+  }: UpdateUserProps) => {
+    if (!user) {
+      return;
+    }
+
+    if (displayName) {
+      await updateProfile(user, { displayName });
+    }
+    if (photoURL) {
+      await updateProfile(user, { photoURL });
+    }
+    if (email) {
+      await updateEmail(user, email);
+    }
+    if (password) {
+      await updatePassword(user, password);
+    }
+  };
+
+  const logout = async () => {
+    await signOut(auth);
+  };
+
+  return { user, updateUser, logout };
+};
+
+export default useUser;
+```
+
+## The `useProfile` Hook
+
+Since Firebase Users can only store high-level account and authentication info such as an email, phone number and photo, it's common practice to create a `Profile` collection in Firestore that contains any other info you want to store in relation to a particular user. It's also common practice to use the format `users/${user.uid}` for the collection path, so we'll make sure to accept a User object as a prop.
+
+Anyway, let's talk about fetching data from Firestore. The new V9 has a handy function called `onSnapshot` that attaches a listener for `DocumentSnapshot` events, which is a fancy way of saying it subscribes to a collection and listens for updates. That function takes a document reference (or query), a "next" callback (for success) and an "error" callback. It also takes an "onComplete" callback but since the snapshot stream never ends, it's never called, so 🤷‍♀️.
+
+The easiest way to manage all this is to stuff it inside a `useEffect` function, remembering to cleanup your snapshot at the end (it returns an unsubscribe function 👍). For the dependency array, we want to pass the User's UID so it re-runs every time the user changes (which is handy for clearing the profile data when the user logs out).
+
+Chuck in a loading states, some basic error handling and we've got ourselves a pretty neat profile hook!
+
+```ts
+import type { User } from 'firebase/auth';
+import { getApp } from 'firebase/app';
+import { doc, updateDoc, getFirestore, onSnapshot } from 'firebase/firestore';
+import type { FirestoreError } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+
+// Whatever your profile looks like!
+export type ProfileProps = {};
+
+type UseProfileResponse = {
+  profile: ProfileProps | null | undefined;
+  updateProfile: (newData: Partial<ProfileProps>) => Promise<void>;
+  profileLoading: boolean;
+  profileError: FirestoreError | undefined;
+};
+
+const useProfile = (
+  user: Partial<User> | null | undefined
+): UseProfileResponse => {
+  const app = getApp();
+  const firestore = getFirestore(app);
+  const [profile, setProfile] = useState<ProfileProps | null>(null);
+  const [profileError, setProfileError] = useState<
+    FirestoreError | undefined
+  >();
+  const [profileLoading, setProfileLoading] = useState(false);
+
+  useEffect(() => {
+    if (!user?.uid) {
+      setProfile(null);
+      return undefined;
+    }
+
+    setProfileLoading(true);
+    const profileRef = doc(firestore, 'users', user.uid);
+    const unsubscribe = onSnapshot(
+      profileRef,
+      (profileDoc) => {
+        setProfile(profileDoc.data() as ProfileProps);
+        setProfileLoading(false);
+      },
+      setProfileError
+    );
+
+    return unsubscribe;
+  }, [firestore, user?.uid]);
+
+  const updateProfile = async (
+    newData: Partial<ProfileProps>
+  ): Promise<void> => {
+    if (!user?.uid) {
+      return;
+    }
+
+    const profileRef = doc(firestore, 'users', user.uid);
+    await updateDoc(profileRef, newData);
+  };
+
+  return {
+    profile,
+    updateProfile,
+    profileLoading,
+    profileError,
+  };
+};
+
+export default useProfile;
+```
+
+Anyway, that's it for today. Happy hooking (and also Christmas 🎄🎅).

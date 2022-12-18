@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 
 import { Mdx } from '@/components/mdx';
 import { getTableOfContents } from '@/lib/tableOfContents';
-import TableOfContents from '@/app/blog/[slug]/tableOfContents';
+import TableOfContents from '@/components/tableOfContents';
 import BackLink from '@/components/backLink';
 
 type DocPageProps = {

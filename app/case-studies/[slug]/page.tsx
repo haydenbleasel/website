@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { allBlogs } from 'contentlayer/generated';
+import { allCaseStudies } from 'contentlayer/generated';
 import type { ReactNode } from 'react';
 
 import { ArticleJsonLd } from 'next-seo';
@@ -16,13 +16,15 @@ type DocPageProps = {
 };
 
 export const generateStaticParams = (): DocPageProps['params'][] =>
-  allBlogs.map((doc) => ({
+  allCaseStudies.map((doc) => ({
     slug: doc.slug,
   }));
 
 const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
   const currentPath = params?.slug;
-  const doc = allBlogs.find(({ slugAsParams }) => slugAsParams === currentPath);
+  const doc = allCaseStudies.find(
+    ({ slugAsParams }) => slugAsParams === currentPath
+  );
 
   if (!doc) {
     notFound();

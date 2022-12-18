@@ -55,7 +55,7 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
       {doc.video && <Video url={doc.video} loop muted playing />}
       <Mdx code={doc.body.code} />
       <TableOfContents toc={toc} />
-      <BackLink href="/blog" />
+      <BackLink href="/case-studies" />
       <ArticleJsonLd
         useAppDir
         url={doc.slug}

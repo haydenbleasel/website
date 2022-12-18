@@ -48,6 +48,7 @@
     "react-compare-slider": "^2.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
+    "react-player": "^2.11.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.5.1",
     "rehype-slug": "^5.1.0",

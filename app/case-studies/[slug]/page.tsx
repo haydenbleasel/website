@@ -8,6 +8,7 @@ import Image from '@/components/image';
 import { Mdx } from '@/components/mdx';
 import { getTableOfContents } from '@/lib/tableOfContents';
 import BackLink from '@/components/backLink';
+import Video from '@/components/video';
 
 type DocPageProps = {
   params?: {
@@ -51,6 +52,7 @@ const DocPage = async ({ params }: DocPageProps): Promise<ReactNode> => {
           className="overflow-hidden rounded"
         />
       )}
+      {doc.video && <Video url={doc.video} loop muted playing />}
       <Mdx code={doc.body.code} />
       <TableOfContents toc={toc} />
       <BackLink href="/blog" />

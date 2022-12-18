@@ -1,0 +1,168 @@
+---
+title: Lightswap
+description: Building a lightweight, scalable design system for a cryptocurrency exchange.
+date: 11-06-2019
+image: /blog/lightswap/lightswap.jpg
+---
+
+## Overview
+
+Lightswap is a London-based cryptocurrency startup that provides thorough research reports on cryptocurrencies. If you're into investing in crypto, that means you can stop guessing and start making well-informed decisions.
+
+Leon from Lightswap reached out to my agency — [Jellypepper](/work/jellypepper) — for help branding and designing a crypto exchange that didn't freak people out... a platform that empowered everyday people to find financial freedom through the use of cryptocurrencies.
+
+Lightswap was your typical end-to-end product design project, taking an idea through the process of strategy, ideation, wireframes, art direction and product design, then tying everything together with a robust design system. This case study focuses on the design system, affectionately known internally as Token (a nod to the popular term for a denomination of cryptocurrency).
+
+You've probably heard something about this "crypto" thing… all the kids are doing it these days. Crypto investors understand there's big money to be made in trading, but know that it's complex to understand and navigate the potential security risks. Our goal was to design a secure, trustworthy and beautiful exchange so users can feel comfortable and confident when making trades, based on a solid design system.
+
+It's not the most dense design system I've worked on (that was probably [Blueprint](https://blueprintjs.com/docs/)) due to typical project time / budget constraints but it's a good overview of the sort of quality you can expect from a design system that I work on or manage — everything is rigorously organised, autolayout, variants, documentation, etc.
+
+## Team Structure
+
+The team structure was fairly flat and small. We had:
+
+- The client, who oversaw the project, provided strategic input and key approver for all decisions
+- A Visual Designer on the Jellypepper team who came up with the new Lightswap brand and gave early direction on the product design.
+- A front-end developer and two back-end developers from the Lightswap team.
+- Myself handling Product Design and the Design System.
+
+## Goals
+
+Being an early-stage startup, we had a fair few goals for the Lightswap Design System:
+
+1. Created a shared design language so Lightswap can scale past our collaboration.
+2. Make sure the client is directly involved in crafting the foundations of all Lightswap products.
+3. Put the processes, guidelines and systems in place for any design team working on Lightswap products to operate more effectively.
+4. Ensure the end user is receiving a high-quality and consistent experience across all Lightswap products, present and future.
+5. Make the front-end development team's life a lot easier by providing a 1:1 design system they could implement in React.
+
+The long-term goal was build a vision for the Lightswap product team around these shared goals and create a culture of learning, experimentation and design excellence.
+
+## Process
+
+My role started upon the completion of the early visual concepts for the product, which were built primarily on the backbone user testing, user journey mapping and JTBD frameworks. From here, I had a few key things to tackle.
+
+### 1. Context and Understanding
+
+Although I was the ultimate approver on the brand and visual side of things, I wanted to concrete my understanding of what the visual designer wanted to achieve with the overall brand and product. I started by hosting a few in-depth discussions on the current and perceived future states of the brand, strategy and early product direction.
+
+### 2. Component Audit
+
+Before diving in to the product design, I wanted to make sure we had a solid foundation to build on to save time later on. I started by auditing the initial concept designs, collecting all the repeating patterns and modules and filing for review in Notion.
+
+Primarily I was looking for inconsistencies, variants and reusable functionality that would come to make or break a particular component. Once my audit was done, I brought them together into a list of simple components and figured out where I could address the inconsistencies using features like variants and autolayout to prevent similar problems and deviations in the future.
+
+### 3. Architecture
+
+Next was figuring out how to implement such a system. There's a few schools of thought on the topic and many approaches which work better for different sizes of teams. I decided to keep things informal and helpful by implementing a few high-level pages such as 🔠 Typography, 🌈 Colour Palette, 😍 Icons and 🏃‍♀️ Illustrations; as well as a few documentation pages for new starters such as 👋 Intro and 📏 Guidelines. From here, I decided to split components into two levels of categorisation:
+
+1. 🧱 Foundations: the fundamental building blocks of the platform. Typically the smallest possible element in a larger component or a module that translates directly to an HTML element.
+2. 📦 Components: the larger building blocks of the platform, typically a collection of foundation components. In Atomic Design, these would be the molecules, compounds or organisms.
+
+### 4. Initial Implementation
+
+Next up was the hard slog of implementing everything in Figma.
+
+#### Typography
+
+I started with Typography, creating a 7-step scale for headings (Title and Heading 1 → Heading 6), a 6-step scale for text (XXL → Default → Caption) and a simple 3-step scale for monospace fonts (small, medium and large).
+
+The type scales were defined using a rounded Major Third (1.250) type scale with a base font size of 18px. This means that each new font size is approximately 1.25x the previous font size. For example: 18px, 23px, 35px, etc. Font sizes are rounded to the nearest pixel to avoid subpixel issues and browser-defined rendering decisions.
+
+I diversified each of these into variants of regular, bold and underlined. Figma defines each of these as a different text style, so this approach meant we'd never have non-defined text styles on the platform.
+
+#### Spacing
+
+I implemented distances between elements in “rems” - a unit of measurement commonly used on the web, defined as a multiplier of the base font size. For example, it's common to want 18px spacing between elements. This would be “1 rem”. 180px would be 10 rems and 9px would be ½ rem, and so forth.
+
+#### Colour
+
+The colour scales in Token are algorithmically generated using a combination of linearly incrementing contrast ratios, deep-learning colour generators and manual colour picking. All colour tones from the base variant, namely the 500 style.
+
+I tried not to define the use of colour too much as we're still in the early stages of exploration. I only noted that colours should be used appropriately on Lightswap products - a balance between sparing and generous. The goal is to find the intersection between a financial platform that can be used by professionals and a simple, enjoyable experience for beginners.
+
+I then mapped the entire colour palette into Figma and organised into categories with 9 tones - from 100 being the lightest variant to 900 being the darkest variant.
+
+### 5. Variants (Ongoing)
+
+Last but not least is variants. The components I selected during the audit are designed to be used in many different places and in different format, so supporting these properties was paramount to making the design system useful.
+
+All Lightswap components use something called AutoLayout, meaning they they grow, shrink or move appropriately as you edit the contents. Many components also have Variants that define quickly changeable properties or styles of the component. For example, some components have Dark / Light modes or show different Coins.
+
+## Presenting
+
+Presenting to the Lightswap is continuous and relatively informal. We have a shared Slack space, so any time there was a significant update or something I needed to discuss, I would address it sooner than later by sparking a new discussion in the channel and opening a thread where we could dig into the details.
+
+For new components, I was a big advocate for personal experimentation. I encouraged designers to design it themselves first and explore how they think it might work in the real world. When they felt comfortable with it, they could send me a proposal on Slack with a description of why and how it would work, where you might use it, etc.
+
+We also had a continuous feedback and review process set up over Slack. Any and all ideas were taken into consideration, even if I wasn't able to address it at that time. For problems and issues, we used Figma's commenting system where I asked for a direct annotation describing the issue in as much detail as possible, with a video or screenshots if possible.
+
+## Decisions
+
+Many of the decisions when creating the Lightswap Design System were architectural decisions that built on the base of brand strategy, answering questions like:
+
+- How do our company values translate into specific design decisions around typography, rounding and spacing?
+- Where is this design system going to be used, on what platforms, and to what extent are we aiming to support them?
+- How can we make the system as flexible as possible as Lightswap is still early stage - we don't want to put too many barriers to exploration in place.
+
+The questions and decisions would eventually define my role, as [Arda Karacizmeli](https://booking.design/lessons-learned-building-a-design-system-at-scale-10ad8500e8aa) put it, as the gardener, not the gatekeeper.
+
+## Design Work
+
+We combined the idea of coins being traded with the popular symbolism of Yin and Yang from Chinese philosophy to create the foundations for the Lightswap logo.
+
+Green has long been associated with the concept of money. When paper notes were introduced in 1929 in the United States, the U.S. Bureau of Engraving and Printing opted to use green because the colour was highly resistant to chemical and physical changes, which meant longer lasting dye. We selected green as Lightswap's primary colour as a throwback to the traditional system of fiat currency, creating a subtle visual bridge between the old world and new.
+
+Lightswap uses a single typeface: Post Grotesk, a sans serif typeface with an approachable and friendly tone. It's simple, refined characters with generous line height makes it beautifully readable at small and large scales. Lightswap also relies on illustrations to breathe life into a typically dry and complex industry. We created a series of illustrations that made the brand and website feel more friendly and casual.
+
+Lightswap is designed for beginner and intermediate crypto investors. Research shows they are typically men between the ages of 20 to 45 years old, so we opted to design everyone else — people who regularly use technology, but aren't techies, developers or experienced financial traders. Crypto investors currently face a lack of trust in the existing exchanges. Our focus was designing a beautiful exchange that is secure and trustworthy, so users can feel comfortable and confident when making trades.
+
+The crypto market is currently developer-led... hard to navigate and understand. Knowledge is a huge barrier to entry for aspiring traders, meaning there's a great opportunity for to bring crypto trading to new audiences and push the industry forward. To do this, we focused on guidance and education on crypto, accessible through a simple and easy to use reports section.
+
+The marketing site didn't just need to capture emails for the upcoming launch — it had to show that Lightswap is a platform run by real people, here to support and guide them.
+
+You can view a V1 copy of the design system on Figma here:
+
+<FigmaFile id="gYv49ALSAv5zljwwbGhRji" />
+
+Here's a few examples of the design work we achieved:
+
+<DribbbleSlider
+  shots={[5499327, 5357183, 5357187, 5357189, 5357192, 5357194, 5357196]}
+/>
+
+## Outcome
+
+While still early days, the Lightswap product design and design system has already yielded fantastic results for both teams. For us, it's sparked a new project with Square Crypto (the crypto arm of payments provider Square) and fostered an ongoing relationship with the Lightswap team.
+
+More importantly for Lightswap, the effectiveness of the design system on front-end implementation has enabled them to focus on hiring developers as quickly as they can. It's also helped them launch and scale a cryptocurrency conference.
+
+## Learnings
+
+While Lightswap is still an ongoing project, I've already learned so much that I'll use to improve the design system over time (if possible) and use on future projects.
+
+For instance, the colour palette was particularly problematic. The 500-tone colours are quite piercing compared to the rest as our visual designer only designed with them in mind. The rest of the tones were algorithmically generated and as it happens, typically these generators have a linear approach to creating new tones.
+
+For example, the simple generators use contrast ratios to create new colours (e.g. start at contrast ratio 1 and add 0.5, 0.25, 0.125 for lighter tones and 2, 3, 4 for darker tones). The problem with this approach is you get a significant bell curve of tones that don't work as well together as you'd think. This made me appreciate how Stripe put so much time into figuring out [accessible colour systems](https://stripe.com/blog/accessible-color-systems).
+
+Additionally with colours, greys are particularly difficult as they need a steadily declining infusion of blue, otherwise mid-greys become slate and blacks become navy. I explored a few options here, Atlassian for example has a [range of neutrals](https://atlassian.design/foundations/color#neutrals) so they can tailor and limit the amount of blue injected.
+
+Icons were an interesting area too - we relied on the Ionicons library as they were cross-platform ready (good integration in React Native through @expo/vector-icons). Unfortunately they're only exported in a single size so we had to resize the icon in each particular instance, which will undoubtedly lead to inconsistencies. Plus their folder formatting in the Figma version is by letter which is weird.
+
+There were some interesting bits around typography and spacing. We went with a base font sizes of 18px this time around, leading to generally bigger type which definitely contributed to the readability of the platform, based makes all the relative (rem) spacing calculations difficult as your quarter-factor measurement is 4.5. This means you end up with half-pixels, odd measurements or browser-rounding occasionally which is kind of annoying.
+
+Lastly - the naming structure of our type scales. It's become a regular pattern at Jellypepper to avoid "Paragraph", "Paragraph Large", "Paragraph XX-Large" and just use the font size e.g. "Text-35", "Text-23", etc. We haven't run into this issue yet, but I'm now aware the font-size may need to be adjusted based on internationalisation. Different languages may affect the required font size which would make the naming arbitrary.
+
+## Final Thoughts
+
+The Lightswap design system has been a lot of fun to work on and an incredibly rewarding experience. Like many good design systems, it's effectively maintaining the foundations of Lightswap's product experiences so far and allowing designers on both sides to experiment and grow.
+
+Going forward, we're approaching it like we would product work - managing it's growth in a roadmap with releases and milestones, addressing early user feedback and designer-raised issues as we go along.
+
+I can't wait to see what it'll be in six months 😄
+
+## References
+
+> Hayden understood my brief, customer base and goals better than any other designer I've worked with. He explained his design process and kept me informed every step of the way. I love the way the entire process was managed and the final work delivered exceeded my expectations.
+
+&mdash; Leon Johnson, Founder of Lightswap

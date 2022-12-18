@@ -1,17 +1,17 @@
 [
   {
     "source": "/work/presumi",
-    "destination": "/blog/presumi",
+    "destination": "/case-studies/presumi",
     "permanent": true
   },
   {
     "source": "/thoughts/presumi",
-    "destination": "/blog/presumi",
+    "destination": "/case-studies/presumi",
     "permanent": true
   },
   {
     "source": "/presumi",
-    "destination": "/blog/presumi",
+    "destination": "/case-studies/presumi",
     "permanent": true
   },
   {
@@ -82,6 +82,16 @@
   {
     "source": "/ph",
     "destination": "https://www.producthunt.com/@haydenbleasel",
+    "permanent": true
+  },
+  {
+    "source": "/blog/lightswap",
+    "destination": "/case-studies/lightswap",
+    "permanent": true
+  },
+  {
+    "source": "/blog/clipchamp",
+    "destination": "/case-studies/clipchamp",
     "permanent": true
   }
 ]

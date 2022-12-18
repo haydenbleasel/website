@@ -3,7 +3,7 @@ import { allBlogs } from 'contentlayer/generated';
 import type { ReactNode } from 'react';
 
 import { ArticleJsonLd } from 'next-seo';
-import TableOfContents from './tableOfContents';
+import TableOfContents from '@/components/tableOfContents';
 import Image from '@/components/image';
 import { Mdx } from '@/components/mdx';
 import { getTableOfContents } from '@/lib/tableOfContents';

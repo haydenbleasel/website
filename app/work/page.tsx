@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import type { FC, ReactNode } from 'react';
+import type { FC } from 'react';
 import groupBy from 'lodash.groupby';
 import { allWorkPosts } from '@/.contentlayer/generated';
 import Divider from '@/components/divider';
-import getJellypepperClients from '@/lib/jellypepper';
+import jellypepperClients from '@/lib/jellypepper';
 import formatList from '@/lib/formatList';
 
 const years = groupBy(allWorkPosts, (post) => post.endYear ?? 'Present');
@@ -32,29 +32,17 @@ const Year = (year: string, index: number) => (
   </div>
 );
 
-const Work = async (): Promise<ReactNode> => {
-  const jellypepper = await getJellypepperClients();
-  let clients = jellypepper.map(({ name }) => name);
-
-  clients.push('Tyro');
-  clients.push('Nike', 'Google', 'Australian Ethical', 'Timberland', 'Toyota');
-
-  clients = clients.sort((clientA: string, clientB: string) =>
-    clientA.localeCompare(clientB)
-  );
-
-  return (
-    <main className="relative flex flex-col gap-6">
-      <h1>Work</h1>
-      <div className="mt-4 flex flex-col">
-        {Object.keys(years).reverse().map(Year)}
-      </div>
-      <div className="grid">
-        <h2>All clients</h2>
-        {formatList(clients)}.
-      </div>
-    </main>
-  );
-};
+const Work: FC = () => (
+  <main className="relative flex flex-col gap-6">
+    <h1>Work</h1>
+    <div className="mt-4 flex flex-col">
+      {Object.keys(years).reverse().map(Year)}
+    </div>
+    <div className="grid">
+      <h2>All clients</h2>
+      {formatList(jellypepperClients)}.
+    </div>
+  </main>
+);
 
 export default Work;

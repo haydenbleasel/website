@@ -5,7 +5,8 @@
 const fixPath = (path) => {
   return path
     .replace('/work/%2Fwork%2F', '/work/')
-    .replace('/blog/%2Fblog%2F', '/blog/');
+    .replace('/blog/%2Fblog%2F', '/blog/')
+    .replace('/case-studies/%2Fcase-studies%2F', '/case-studies/');
 };
 
 /** @type {import('next-sitemap').IConfig} */

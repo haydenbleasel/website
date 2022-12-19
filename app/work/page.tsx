@@ -40,7 +40,20 @@ const Work: FC = () => (
     </div>
     <div className="grid">
       <h2>All clients</h2>
-      {formatList(jellypepperClients)}.
+      {formatList(
+        [
+          'Tyro',
+          'Nike',
+          'Google',
+          'Australian Ethical',
+          'Timberland',
+          'Toyota',
+          ...jellypepperClients,
+        ].sort((clientA: string, clientB: string) =>
+          clientA.localeCompare(clientB)
+        )
+      )}
+      .
     </div>
   </main>
 );

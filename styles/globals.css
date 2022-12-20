@@ -394,7 +394,7 @@ code > .line::before {
 }
 
 .glitch {
-  @apply relative z-10 inline-block rounded-sm bg-zinc-900 p-1 font-mono text-sm leading-none text-white;
+  @apply relative z-10 inline-block rounded-sm bg-zinc-900 p-1 font-mono text-sm leading-none text-white dark:bg-zinc-800;
 }
 
 .glitch::before,

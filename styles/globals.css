@@ -395,9 +395,6 @@ code > .line::before {
 
 .glitch {
   @apply relative z-10 inline-block rounded-sm bg-zinc-900 p-1 font-mono text-sm leading-none text-white;
-
-  /* Bright things in dark environments usually cast that light, giving off a glow */
-  filter: drop-shadow(0 1px 3px);
 }
 
 .glitch::before,

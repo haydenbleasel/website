@@ -9,6 +9,12 @@ type MdxProps = {
   code: string;
 };
 
+const Redacted: FC = () => (
+  <span className="glitch" data-text="[redacted]">
+    <span>[redacted]</span>
+  </span>
+);
+
 const Callout: FC<{ children: ReactNode }> = ({ children }) => (
   <div className="rounded bg-zinc-100 p-4 font-medium prose-p:m-0 dark:bg-zinc-800">
     {children}
@@ -17,6 +23,7 @@ const Callout: FC<{ children: ReactNode }> = ({ children }) => (
 
 const components = {
   Callout,
+  Redacted,
   Video,
   DribbbleSlider: DribbbleSlider as unknown as FC,
   FigmaFile: FigmaFile as unknown as FC,

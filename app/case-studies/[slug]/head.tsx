@@ -1,4 +1,4 @@
-import { allBlogs } from 'contentlayer/generated';
+import { allCaseStudies } from 'contentlayer/generated';
 import type { FC } from 'react';
 import Seo from '@/components/seo';
 
@@ -10,7 +10,7 @@ type MdxHeadProps = {
 
 const Head: FC<MdxHeadProps> = ({ params }) => {
   const slug = params?.slug;
-  const mdxDoc = allBlogs.find((doc) => doc.slugAsParams === slug);
+  const mdxDoc = allCaseStudies.find((doc) => doc.slugAsParams === slug);
 
   if (!mdxDoc) {
     return null;

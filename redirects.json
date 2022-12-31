@@ -123,5 +123,50 @@
     "source": "/playlists",
     "destination": "https://open.spotify.com/user/haydenbleasel",
     "permanent": true
+  },
+  {
+    "source": "/work/jellypepper",
+    "destination": "https://read.cv/haydenbleasel/5CvDIZ8dRNaTGxz8pKNZ",
+    "permanent": true
+  },
+  {
+    "source": "/work/sumry",
+    "destination": "https://read.cv/haydenbleasel/VACyYZntQ1FWJek286mw",
+    "permanent": true
+  },
+  {
+    "source": "/work/zookal",
+    "destination": "https://read.cv/haydenbleasel/EsfyQgS7RJxn2AHHfaCg",
+    "permanent": true
+  },
+  {
+    "source": "/work/palantir",
+    "destination": "https://read.cv/haydenbleasel/VKsHjQdAKwagBRrTGqha",
+    "permanent": true
+  },
+  {
+    "source": "/work/mindarc",
+    "destination": "https://read.cv/haydenbleasel/e90EHtiNAcgKEErZmUK9",
+    "permanent": true
+  },
+  {
+    "source": "/work/gunmetal",
+    "destination": "https://read.cv/haydenbleasel/XIny0n6haFxj6nx1SNS5",
+    "permanent": true
+  },
+  {
+    "source": "/work/spaceship",
+    "destination": "https://read.cv/haydenbleasel/Gv4GTLVsJcTorLhf0vqB",
+    "permanent": true
+  },
+  {
+    "source": "/work/corellium",
+    "destination": "https://read.cv/haydenbleasel/LoRxZsHDY2SYlrWBolbo",
+    "permanent": true
+  },
+  {
+    "source": "/work/:path*",
+    "destination": "https://read.cv/haydenbleasel/",
+    "permanent": true
   }
 ]

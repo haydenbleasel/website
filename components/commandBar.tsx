@@ -9,7 +9,6 @@ import { Moon, Search, Sun } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import useTheme from '@haydenbleasel/use-theme';
 import pages from '@/lib/navigation';
-import { allWorkPosts } from '@/.contentlayer/generated';
 
 const List: FC<ComponentProps<typeof CommandBarComponent.List>> = (props) => (
   <CommandBarComponent.List
@@ -62,19 +61,6 @@ const CommandBar: FC = () => {
                   <page.icon size={16} />
                   {page.name}
                 </div>
-              </Item>
-            ))}
-          </Group>
-          <Group heading="Work Posts">
-            {allWorkPosts.map((post) => (
-              <Item
-                key={post.slug}
-                onSelect={() => {
-                  commandBar.toggleOpen(false);
-                  router.push(post.slug);
-                }}
-              >
-                {post.role} at {post.company}
               </Item>
             ))}
           </Group>

@@ -7,7 +7,7 @@ import type { FC } from 'react';
 const BackLink: FC<LinkProps> = (props) => (
   <Link
     className={clsx(
-      'absolute top-[10px] -left-24 hidden items-center gap-1 text-sm font-light no-underline transition-transform hover:-translate-x-1 lg:flex',
+      'absolute top-[10px] -left-24 hidden items-center gap-1 text-sm no-underline transition-transform hover:-translate-x-1 lg:flex',
       'text-zinc-500',
       'dark:text-zinc-400'
     )}

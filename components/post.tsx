@@ -22,7 +22,7 @@ const PostInner: FC<Pick<PostProps, 'title' | 'description' | 'date'>> = ({
     </span>
     <span
       className={clsx(
-        'flex-shrink-0 text-sm font-light sm:leading-[28px]',
+        'flex-shrink-0 text-sm sm:leading-[28px]',
         'text-zinc-500',
         'dark:text-zinc-400'
       )}

@@ -5,18 +5,14 @@ import { SocialProfileJsonLd } from 'next-seo';
 import { Analytics } from '@/components/analytics';
 import Navbar from '@/components/navbar';
 import Providers from '@/components/providers';
-import { ibmPlexMono, lausanne } from '@/lib/fonts';
+import { ibmPlexMono } from '@/lib/fonts';
 import CommandBar from '@/components/commandBar';
 import { social } from '@/lib/social';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
   <html
     lang="en"
-    className={clsx(
-      ibmPlexMono.variable,
-      lausanne.variable,
-      'scroll-smooth font-sans font-light antialiased'
-    )}
+    className={clsx(ibmPlexMono.variable, 'scroll-smooth antialiased')}
   >
     <head>
       <SocialProfileJsonLd

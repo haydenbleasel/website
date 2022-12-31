@@ -28,7 +28,7 @@ const Playlist = async ({ id }: PlaylistProps): Promise<ReactNode> => {
         />
         {data.name}
       </span>
-      <span className="col-span-2 flex-1 text-sm font-light text-zinc-500 line-clamp-1 dark:text-zinc-400 sm:text-right">
+      <span className="col-span-2 flex-1 text-sm text-zinc-500 line-clamp-1 dark:text-zinc-400 sm:text-right">
         <span className="flex items-center gap-4 sm:justify-end">
           <span className="flex items-center gap-1">
             <Disc size={12} className="text-zinc-500 dark:text-zinc-400" />

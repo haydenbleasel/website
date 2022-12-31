@@ -70,13 +70,7 @@ const Home = async (): Promise<ReactNode> => {
           >
             Hayden Bleasel
           </h1>
-          <p
-            className={clsx(
-              'font-light',
-              'text-zinc-500',
-              'dark:text-zinc-400'
-            )}
-          >
+          <p className={clsx('text-zinc-500', 'dark:text-zinc-400')}>
             Chief Product Officer at Corellium
           </p>
           {location && (

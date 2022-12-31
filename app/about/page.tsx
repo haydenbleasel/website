@@ -2,7 +2,7 @@ import type { FC, ReactNode } from 'react';
 import { Fragment } from 'react';
 
 import Link from 'next/link';
-import Post from '../blog/post';
+import Post from '@/components/post';
 import Logo from '@/components/logo';
 import Airwallex from '@/public/logos/airwallex.svg';
 import AustralianEthical from '@/public/logos/australian-ethical.svg';

@@ -58,35 +58,6 @@ export const WorkPost = defineDocumentType(() => ({
   computedFields,
 }));
 
-export const Blog = defineDocumentType(() => ({
-  name: 'Blog',
-  filePathPattern: `blog/**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    description: {
-      type: 'string',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      required: true,
-    },
-    image: {
-      type: 'string',
-      required: false,
-    },
-    video: {
-      type: 'string',
-      required: false,
-    },
-  },
-  computedFields,
-}));
-
 export const CaseStudy = defineDocumentType(() => ({
   name: 'CaseStudy',
   filePathPattern: `case-studies/**/*.mdx`,
@@ -118,7 +89,7 @@ export const CaseStudy = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: './content',
-  documentTypes: [WorkPost, Blog, CaseStudy],
+  documentTypes: [WorkPost, CaseStudy],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

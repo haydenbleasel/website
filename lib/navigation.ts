@@ -19,7 +19,6 @@ const pages = [
   { name: 'About', icon: User, href: '/about' },
   { name: 'Work', icon: Briefcase, href: '/work' },
   { name: 'Projects', icon: Zap, href: '/projects' },
-  { name: 'Blog', icon: Book, href: '/blog' },
   { name: 'Case Studies', icon: Lightbulb, href: '/case-studies' },
   { name: 'Design', icon: Command, href: '/design' },
   { name: 'Code', icon: Code, href: '/code' },

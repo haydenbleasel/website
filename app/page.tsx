@@ -1,17 +1,12 @@
 import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
-import { Fragment } from 'react';
 
 import clsx from 'clsx';
-import Post from './blog/post';
 import Image from '@/components/image';
 import Logo from '@/components/logo';
 import Corellium from '@/public/logos/corellium.svg';
 import Neutral from '@/public/logos/neutral.svg';
-import { allBlogs } from '@/.contentlayer/generated';
-import Divider from '@/components/divider';
 import getLocation from '@/lib/twitter';
-import sortBlogPostByDate from '@/lib/sortBlogPost';
 
 const Home = async (): Promise<ReactNode> => {
   const location = await getLocation();
@@ -76,21 +71,6 @@ const Home = async (): Promise<ReactNode> => {
           Occasional freelancer / consultant →{' '}
           <Link href="/contact">get in touch</Link>.
         </p>
-      </div>
-      <div className="grid gap-4">
-        <h2>Recent posts</h2>
-        <div>
-          {allBlogs
-            .sort(sortBlogPostByDate)
-            .slice(0, 6)
-            .map((post, index) => (
-              <Fragment key={post.slug}>
-                {index > 0 && <Divider />}
-                <Post {...post} />
-              </Fragment>
-            ))}
-        </div>
-        <Link href="/blog">Keep reading &rarr;</Link>
       </div>
     </main>
   );

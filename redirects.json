@@ -103,5 +103,15 @@
     "source": "/blog/:path*",
     "destination": "https://www.beskar.co/blog/:path*",
     "permanent": true
+  },
+  {
+    "source": "/design",
+    "destination": "https://www.beskar.co/resources",
+    "permanent": true
+  },
+  {
+    "source": "/code",
+    "destination": "https://www.beskar.co/resources",
+    "permanent": true
   }
 ]

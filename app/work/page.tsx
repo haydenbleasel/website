@@ -3,8 +3,6 @@ import type { FC } from 'react';
 import groupBy from 'lodash.groupby';
 import { allWorkPosts } from '@/.contentlayer/generated';
 import Divider from '@/components/divider';
-import jellypepperClients from '@/lib/jellypepper';
-import formatList from '@/lib/formatList';
 
 const years = groupBy(allWorkPosts, (post) => post.endYear ?? 'Present');
 
@@ -37,23 +35,6 @@ const Work: FC = () => (
     <h1>Work</h1>
     <div className="mt-4 flex flex-col">
       {Object.keys(years).reverse().map(Year)}
-    </div>
-    <div className="grid">
-      <h2>All clients</h2>
-      {formatList(
-        [
-          'Tyro',
-          'Nike',
-          'Google',
-          'Australian Ethical',
-          'Timberland',
-          'Toyota',
-          ...jellypepperClients,
-        ].sort((clientA: string, clientB: string) =>
-          clientA.localeCompare(clientB)
-        )
-      )}
-      .
     </div>
   </main>
 );

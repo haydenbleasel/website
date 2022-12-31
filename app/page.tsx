@@ -2,14 +2,12 @@ import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
 
 import clsx from 'clsx';
-import { Fragment } from 'react';
 import Image from '@/components/image';
 import Logo from '@/components/logo';
 import Corellium from '@/public/logos/corellium.svg';
 import Neutral from '@/public/logos/neutral.svg';
 import getLocation from '@/lib/twitter';
 
-import Post from '@/components/post';
 import Airwallex from '@/public/logos/airwallex.svg';
 import AustralianEthical from '@/public/logos/australian-ethical.svg';
 import Beskar from '@/public/logos/beskar.svg';
@@ -27,8 +25,50 @@ import Toyota from '@/public/logos/toyota.svg';
 import Westfield from '@/public/logos/westfield.svg';
 import getSteamGames from '@/lib/steam';
 import formatList from '@/lib/formatList';
-import education from '@/content/education.json';
-import Divider from '@/components/divider';
+
+const clients = [
+  'AdvanCell',
+  'Airwallex',
+  'Audience Republic',
+  'Baraja',
+  'Brighte',
+  'Canva',
+  'Clipchamp',
+  'Corellium',
+  'ESLint',
+  'Elevio',
+  'Faethm',
+  'Flaunter',
+  'Flirtey',
+  'Futrli',
+  'Google',
+  'Grow',
+  'Inventia',
+  'Kerbly',
+  'National Geographic Channel',
+  'Notiv',
+  'Perlin',
+  'Pursuited',
+  'Resolution Collective',
+  'Rezi',
+  'Ribit',
+  'Shippit',
+  'Siesta Campers',
+  'Simply Wall St',
+  'Snug',
+  'Space Machines Company',
+  'Spaceship',
+  'Tank Stream Ventures',
+  'UpGuard',
+  'Westfield',
+  'Zibbet',
+  'Zookal',
+  'MindArc',
+  'Gunmetal Studio',
+  'Sumry',
+  'UTS',
+  'Tyro Payments',
+].sort((companyA, companyB) => companyA.localeCompare(companyB));
 
 const Home = async (): Promise<ReactNode> => {
   const location = await getLocation();
@@ -172,7 +212,7 @@ const Home = async (): Promise<ReactNode> => {
           <Logo icon={RGA as FC} href="https://rga.com/">
             R/GA
           </Logo>
-          .
+          , plus a whole bunch of others<sup>1</sup>.
         </p>
         <p>
           I previously ran{' '}
@@ -202,32 +242,49 @@ const Home = async (): Promise<ReactNode> => {
           Seed / Series A funding and created the future of superannuation in
           Australia.
         </p>
-        <p>I&apos;ve studied at university and occasionally study online.</p>
-        <div>
-          {education.map((edu, index) => (
-            <Fragment key={edu.name}>
-              {index > 0 && <Divider />}
-              <Post
-                title={edu.name}
-                description={edu.institution}
-                date={String(edu.year)}
-                slug={edu.link}
-              />
-            </Fragment>
-          ))}
-        </div>
+        <p>
+          In 2016, I graduated with two degrees from the University of
+          Technology, Sydney &mdash; a Bachelor of Business (Management) and a
+          Bachelor of Science in Information Technology (Enterprise Systems
+          Development). I also completed{' '}
+          <Link
+            href="https://courses.edx.org/certificates/9d821d3e4d0d44afbe871ceb31c9d135"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            HarvardX&apos;s CS50x
+          </Link>{' '}
+          Computer Science course in 2021 and{' '}
+          <Link
+            href="https://courses.edx.org/certificates/598d25a2674c43fabed9da38302ca532"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Arm&apos;s ESE101
+          </Link>{' '}
+          Embedded Systems course in 2022.
+        </p>
         <p>
           I also play a lot of games, you can find me on{' '}
           <Link href="https://steamcommunity.com/id/0x_crusader/">Steam</Link>.
           I have {totalHours} hours of tracked playtime, {totalAchievements}{' '}
           achievements across {games.length} games and {perfectGames.length}{' '}
-          perfect games (where all achievements are unlocked). My most played
-          games are {mostPlayedGames}.
+          perfect games<sup>2</sup>. My most played games are {mostPlayedGames}.
         </p>
         <p>
           Other than that, I&apos;m either spending time in the gym, ideating on
           new side projects and occasionally working with very select clients on
           freelance / moonlight work.
+        </p>
+      </div>
+      <hr />
+      <div className="grid gap-4">
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <sup>1</sup> {formatList(clients)}.
+        </p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <sup>2</sup> A perfect game is one where you&apos;ve completed all
+          achievements.
         </p>
       </div>
     </main>

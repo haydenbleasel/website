@@ -113,5 +113,10 @@
     "source": "/code",
     "destination": "https://www.beskar.co/resources",
     "permanent": true
+  },
+  {
+    "source": "/press",
+    "destination": "https://read.cv/haydenbleasel",
+    "permanent": true
   }
 ]

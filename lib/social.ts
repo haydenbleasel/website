@@ -7,7 +7,6 @@ import LinkedinIcon from '@/public/social/linkedin.svg';
 import ProductHuntIcon from '@/public/social/producthunt.svg';
 import SpotifyIcon from '@/public/social/spotify.svg';
 import FigmaIcon from '@/public/social/figma.svg';
-import DevToIcon from '@/public/social/devto.svg';
 import MediumIcon from '@/public/social/medium.svg';
 
 type SVG = FC<SVGProps<SVGSVGElement>>;

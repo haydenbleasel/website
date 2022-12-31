@@ -108,7 +108,8 @@ const Home = async (): Promise<ReactNode> => {
             Beskar
           </Logo>
           . Occasional freelancer / consultant →{' '}
-          <Link href="/contact">get in touch</Link>.
+          <Link href="/contact">get in touch</Link>. Alternatively, you can{' '}
+          <Link href="https://read.cv/haydenbleasel">download my CV</Link>.
         </p>
 
         <hr className="my-8" />

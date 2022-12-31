@@ -61,27 +61,32 @@
   },
   {
     "source": "/now",
-    "destination": "/about",
+    "destination": "/",
     "permanent": true
   },
   {
     "source": "/colophon",
-    "destination": "/about",
+    "destination": "/",
     "permanent": true
   },
   {
     "source": "/education",
-    "destination": "/about",
+    "destination": "/",
+    "permanent": true
+  },
+  {
+    "source": "/games",
+    "destination": "/",
+    "permanent": true
+  },
+  {
+    "source": "/about",
+    "destination": "/",
     "permanent": true
   },
   {
     "source": "/resume",
     "destination": "/work",
-    "permanent": true
-  },
-  {
-    "source": "/games",
-    "destination": "/about",
     "permanent": true
   },
   {

@@ -17,7 +17,6 @@ import {
 const pages = [
   { name: 'Home', icon: Home, href: '/' },
   { name: 'Work', icon: Briefcase, href: '/work' },
-  { name: 'Projects', icon: Zap, href: '/projects' },
   { name: 'Case Studies', icon: Lightbulb, href: '/case-studies' },
   { name: 'Press', icon: Star, href: '/press' },
   { name: 'Playlists', icon: Headphones, href: '/playlists' },

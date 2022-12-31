@@ -35,13 +35,8 @@
     "permanent": true
   },
   {
-    "source": "/projects/harmony",
-    "destination": "https://github.com/haydenbleasel/harmony",
-    "permanent": true
-  },
-  {
-    "source": "/projects/neutral",
-    "destination": "https://tryneutral.com/",
+    "source": "/projects/:path*",
+    "destination": "https://www.beskar.co/",
     "permanent": true
   },
   {

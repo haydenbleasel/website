@@ -26,12 +26,12 @@
   },
   {
     "source": "/journal/how-to-growth-hack-your-resume",
-    "destination": "/blog",
+    "destination": "https://www.beskar.co/blog",
     "permanent": true
   },
   {
     "source": "/thoughts/revisiting-my-personal-brand-for-2021",
-    "destination": "/blog",
+    "destination": "https://www.beskar.co/blog",
     "permanent": true
   },
   {
@@ -92,6 +92,11 @@
   {
     "source": "/blog/clipchamp",
     "destination": "/case-studies/clipchamp",
+    "permanent": true
+  },
+  {
+    "source": "/blog/:path*",
+    "destination": "https://www.beskar.co/blog/:path*",
     "permanent": true
   }
 ]

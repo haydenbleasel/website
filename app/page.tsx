@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { FC, ReactNode, FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import clsx from 'clsx';
 import { Fragment } from 'react';
@@ -12,6 +12,7 @@ import getLocation from '@/lib/twitter';
 import Post from '@/components/post';
 import Airwallex from '@/public/logos/airwallex.svg';
 import AustralianEthical from '@/public/logos/australian-ethical.svg';
+import Beskar from '@/public/logos/beskar.svg';
 import Canva from '@/public/logos/canva.svg';
 import Clipchamp from '@/public/logos/clipchamp.svg';
 import Google from '@/public/logos/google.svg';
@@ -102,10 +103,11 @@ const Home = async (): Promise<ReactNode> => {
           <Logo icon={Neutral as FC} href="https://tryneutral.com/">
             Neutral
           </Logo>
-          .
-        </p>
-        <p>
-          Occasional freelancer / consultant →{' '}
+          . Building stuff at{' '}
+          <Logo icon={Beskar as FC} href="https://www.beskar.co/">
+            Beskar
+          </Logo>
+          . Occasional freelancer / consultant →{' '}
           <Link href="/contact">get in touch</Link>.
         </p>
 

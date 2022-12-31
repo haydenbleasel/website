@@ -17,23 +17,23 @@ module.exports = {
           css: {
             // color: theme('colors.zinc.900'),
             h1: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
               marginBottom: 0,
             },
             h2: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h3: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h4: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h5: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h6: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             // a: {
             //   color: theme('colors.zinc.900'),

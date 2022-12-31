@@ -1,17 +1,10 @@
 import {
-  Book,
   Briefcase,
-  Code,
-  Command,
   Headphones,
   Home,
-  Layers,
   Lightbulb,
   MessageCircle,
-  Rocket,
   Star,
-  User,
-  Zap,
 } from 'lucide-react';
 
 const pages = [

@@ -46,7 +46,12 @@
   },
   {
     "source": "/recommendations",
-    "destination": "/stack",
+    "destination": "https://www.beskar.co/stack",
+    "permanent": true
+  },
+  {
+    "source": "/stack",
+    "destination": "https://www.beskar.co/stack",
     "permanent": true
   },
   {

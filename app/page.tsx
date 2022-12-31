@@ -143,7 +143,15 @@ const Home = async (): Promise<ReactNode> => {
           </Logo>
           . Occasional freelancer / consultant →{' '}
           <Link href="/contact">get in touch</Link>. Alternatively, you can{' '}
-          <Link href="https://read.cv/haydenbleasel">download my CV</Link>.
+          <Link href="https://read.cv/haydenbleasel">download my CV</Link> or{' '}
+          <Link
+            href="https://dribbble.com/haydenbleasel"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            browse my Design portfolio
+          </Link>
+          .
         </p>
 
         <hr className="my-8" />

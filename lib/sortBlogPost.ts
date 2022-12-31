@@ -1,8 +1,8 @@
-import type { Blog, CaseStudy } from '@/.contentlayer/generated';
+import type { CaseStudy } from '@/.contentlayer/generated';
 
 const sortBlogPostByDate = (
-  blogPostA: Blog | CaseStudy,
-  blogPostB: Blog | CaseStudy
+  blogPostA: CaseStudy,
+  blogPostB: CaseStudy
 ): number =>
   new Date(blogPostB.date).getTime() > new Date(blogPostA.date).getTime()
     ? 1

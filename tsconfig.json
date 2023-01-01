@@ -15,8 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/*": ["*"]
     },
     "plugins": [
       {
@@ -29,7 +28,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".contentlayer/generated",
     ".next/types/**/*.ts",
     "next.config.mjs",
     "scripts/*.mjs"

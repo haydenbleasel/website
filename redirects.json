@@ -168,5 +168,10 @@
     "source": "/work/:path*",
     "destination": "https://read.cv/haydenbleasel/",
     "permanent": true
+  },
+  {
+    "source": "/case-studies/:path*",
+    "destination": "https://jellypepper.com/work/:path*",
+    "permanent": true
   }
 ]

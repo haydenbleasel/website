@@ -1,15 +1,13 @@
 import type { FC, ReactNode } from 'react';
-import clsx from 'clsx';
 import '@/styles/globals.css';
 import { SocialProfileJsonLd } from 'next-seo';
 import { Analytics } from '@/components/analytics';
-import { ibmPlexMono } from '@/lib/fonts';
 import { social } from '@/lib/social';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
   <html
     lang="en"
-    className={clsx(ibmPlexMono.variable, 'scroll-smooth antialiased')}
+    className="scroll-smooth antialiased"
   >
     <head>
       <SocialProfileJsonLd

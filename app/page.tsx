@@ -8,11 +8,9 @@ import Corellium from '@/public/logos/corellium.svg';
 import Neutral from '@/public/logos/neutral.svg';
 import getLocation from '@/lib/twitter';
 
-import Airwallex from '@/public/logos/airwallex.svg';
 import AustralianEthical from '@/public/logos/australian-ethical.svg';
 import Beskar from '@/public/logos/beskar.svg';
 import Canva from '@/public/logos/canva.svg';
-import Clipchamp from '@/public/logos/clipchamp.svg';
 import Google from '@/public/logos/google.svg';
 import Jellypepper from '@/public/logos/jellypepper.svg';
 import NatGeo from '@/public/logos/natgeo.svg';
@@ -128,50 +126,35 @@ const Home = async (): Promise<ReactNode> => {
       </header>
       <div className="grid gap-4">
         <p>
-          Product designer and frontend engineer. Blurring the line between real
-          and virtual at{' '}
+          Australian product designer and frontend engineer living in the U.S.
+          Currently leading Product and Design at{' '}
           <Logo icon={Corellium as FC} href="https://www.corellium.com/">
             Corellium
           </Logo>
-          . Scaling planetary reforestation with{' '}
+          , scaling global reforestation with{' '}
           <Logo icon={Neutral as FC} href="https://tryneutral.com/">
             Neutral
-          </Logo>
-          . Building stuff at{' '}
+          </Logo>{' '}
+          and building stuff at{' '}
           <Logo icon={Beskar as FC} href="https://www.beskar.co/">
             Beskar
           </Logo>
-          . Occasional freelancer / consultant →{' '}
-          <Link href="/contact">get in touch</Link>. Alternatively, you can{' '}
+          . You can{' '}
           <Link href="https://read.cv/haydenbleasel">download my CV</Link> or{' '}
           <Link
             href="https://dribbble.com/haydenbleasel"
             target="_blank"
             rel="noopener noreferrer"
           >
-            browse my Design portfolio
+            browse my portfolio
           </Link>
           .
         </p>
-
-        <hr className="my-8" />
-
         <p>
-          I&apos;m an Australian Product Designer and Frontend Engineer living
-          in Delray Beach, Florida. I currently lead the Product and Design
-          teams at{' '}
-          <Logo icon={Corellium as FC} href="https://www.corellium.com/">
-            Corellium
-          </Logo>
-          , where we blur the line between real and virtual. After hours, I work
-          on a global reforestation platform called{' '}
-          <Logo icon={Neutral as FC} href="https://tryneutral.com/">
-            Neutral
-          </Logo>
-          , with which we&apos;ve helped plant thousands of trees and offset
-          hundreds of tonnes of CO₂e.
+          Occasional freelancer / consultant →{' '}
+          <Link href="/contact">get in touch</Link>.
         </p>
-
+        <hr />
         <p>
           I&apos;ve had the privilege of working with many fantastic companies
           including{' '}
@@ -226,18 +209,6 @@ const Home = async (): Promise<ReactNode> => {
           , a digital agency focused on startups in “disruptive industries” such
           as self-driving cars, AI, biotechnology, cryptocurrency, renewable
           energy, drone delivery, cybersecurity and even outer-space logistics.
-          There I worked with many incredible startups who raised billions of
-          dollars in funding, such as{' '}
-          <Logo icon={Airwallex as FC} href="https://www.airwallex.com/us">
-            Airwallex
-          </Logo>
-          , and a handful of which were acquired, such as{' '}
-          <Logo icon={Clipchamp as FC} href="https://clipchamp.com/en/">
-            Clipchamp
-          </Logo>
-          .
-        </p>
-        <p>
           Before all that, I was Head of Product and Design at{' '}
           <Logo icon={Spaceship as FC} href="https://www.spaceship.com.au/">
             Spaceship
@@ -277,9 +248,7 @@ const Home = async (): Promise<ReactNode> => {
           achievements across {games.length} games and {perfectGames.length}{' '}
           perfect games<sup>2</sup>. My most played games are {mostPlayedGames}.
         </p>
-      </div>
-      <hr />
-      <div className="grid gap-4">
+        <hr />
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           <sup>1</sup> {formatList(clients)}.
         </p>

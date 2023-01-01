@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import Button from './button';
 import Select from './select';
+import Modal from './modal';
+import Label from './label';
 import Textarea from '@/components/textarea';
 import parseError from '@/lib/parseError';
 import Input from '@/components/input';
@@ -17,6 +19,7 @@ const budgetOptions = [
 ];
 
 const ContactForm: FC = () => {
+  const [open, setOpen] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -89,9 +92,25 @@ const ContactForm: FC = () => {
     firstInput.current?.focus();
   }, []);
 
+  const trigger = (
+    <button
+      type="button"
+      onClick={() => setOpen(!open)}
+      className="font-medium text-neutral-900 underline dark:text-white"
+    >
+      get in touch
+    </button>
+  );
+
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div>
+    <Modal trigger={trigger} open={open} setOpen={setOpen}>
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto flex max-w-sm flex-col gap-4 rounded-sm bg-white p-6 sm:p-8"
+      >
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">
+          Let&apos;s talk
+        </h2>
         <Select
           label="I would like to..."
           options={[
@@ -109,68 +128,68 @@ const ContactForm: FC = () => {
           selected={type}
           onChangeSelected={setType}
         />
-      </div>
-      <Input
-        label="Name"
-        ref={firstInput}
-        placeholder="Jane Smith"
-        required
-        type="text"
-        id="name"
-        autoFocus
-        value={name}
-        onValueChange={setName}
-      />
-      <Input
-        label="Email"
-        placeholder="jane@acme.com"
-        required
-        type="email"
-        id="email"
-        value={email}
-        onValueChange={setEmail}
-      />
-      <Textarea
-        label="Message"
-        placeholder="What's on your mind?"
-        required
-        id="message"
-        value={message}
-        onValueChange={setMessage}
-      />
-      {type === 'freelance' && (
-        <>
-          <Textarea
-            label="Project"
-            placeholder="Tell me about your project..."
-            required
-            id="project"
-            value={project}
-            onValueChange={setProject}
-          />
-          <Select
-            label="Budget"
-            options={budgetOptions}
-            selected={budget}
-            onChangeSelected={setBudget}
-          />
-        </>
-      )}
-      <Button
-        type="submit"
-        disabled={
-          !name.trim() ||
-          !email.trim() ||
-          !message.trim() ||
-          sending ||
-          !emailRegex.exec(email) ||
-          (type === 'freelance' && !project.trim())
-        }
-        loading={sending}
-      >
-        Send
-      </Button>
-    </form>
+        <Input
+          label="Name"
+          ref={firstInput}
+          placeholder="Jane Smith"
+          required
+          type="text"
+          id="name"
+          autoFocus
+          value={name}
+          onValueChange={setName}
+        />
+        <Input
+          label="Email"
+          placeholder="jane@acme.com"
+          required
+          type="email"
+          id="email"
+          value={email}
+          onValueChange={setEmail}
+        />
+        <Textarea
+          label="Message"
+          placeholder="What's on your mind?"
+          required
+          id="message"
+          value={message}
+          onValueChange={setMessage}
+        />
+        {type === 'freelance' && (
+          <>
+            <Textarea
+              label="Project"
+              placeholder="Tell me about your project..."
+              required
+              id="project"
+              value={project}
+              onValueChange={setProject}
+            />
+            <Select
+              label="Budget"
+              options={budgetOptions}
+              selected={budget}
+              onChangeSelected={setBudget}
+            />
+          </>
+        )}
+        <Button
+          type="submit"
+          disabled={
+            !name.trim() ||
+            !email.trim() ||
+            !message.trim() ||
+            sending ||
+            !emailRegex.exec(email) ||
+            (type === 'freelance' && !project.trim())
+          }
+          loading={sending}
+        >
+          Send
+        </Button>
+      </form>
+    </Modal>
   );
 };
 

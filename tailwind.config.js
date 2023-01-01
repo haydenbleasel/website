@@ -1,16 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content: [
-    './app/**/*.tsx',
-    './components/**/*.tsx',
-    './content/**/*.mdx',
-    './contentlayer.config.js',
-  ],
+  content: ['./app/**/*.tsx', './components/**/*.tsx'],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-lausanne)'],
         mono: ['var(--font-ibm-plex-mono)'],
       },
       typography: (theme) => ({
@@ -18,23 +12,23 @@ module.exports = {
           css: {
             // color: theme('colors.zinc.900'),
             h1: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
               marginBottom: 0,
             },
             h2: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h3: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h4: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h5: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h6: {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             // a: {
             //   color: theme('colors.zinc.900'),
@@ -94,10 +88,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-    require('@thoughtbot/tailwindcss-aria-attributes'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };

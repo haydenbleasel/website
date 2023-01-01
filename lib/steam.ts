@@ -41,6 +41,20 @@ export type SteamGameProps = {
   };
 };
 
+const mockData = [
+  {
+    id: '1',
+    name: 'Counter-Strike: Global Offensive',
+    playtime: 100,
+    icon: 'https://source.unsplash.com/random',
+    lastPlayed: new Date().toISOString(),
+    achievements: {
+      total: 10,
+      achieved: 6,
+    },
+  },
+];
+
 const getSteamAchievements = async (
   appid: number
 ): Promise<AchievementProps[]> => {
@@ -60,6 +74,10 @@ const getSteamAchievements = async (
 };
 
 const getSteamGames = async (): Promise<SteamGameProps[]> => {
+  if (process.env.NODE_ENV === 'development') {
+    return mockData;
+  }
+
   const response = await fetch(
     `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${
       process.env.STEAM_API_KEY ?? ''

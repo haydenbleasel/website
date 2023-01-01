@@ -1,17 +1,17 @@
 [
   {
     "source": "/work/presumi",
-    "destination": "/case-studies/presumi",
+    "destination": "https://www.beskar.co/blog/presumi",
     "permanent": true
   },
   {
     "source": "/thoughts/presumi",
-    "destination": "/case-studies/presumi",
+    "destination": "https://www.beskar.co/blog/presumi",
     "permanent": true
   },
   {
     "source": "/presumi",
-    "destination": "/case-studies/presumi",
+    "destination": "https://www.beskar.co/blog/presumi",
     "permanent": true
   },
   {
@@ -21,32 +21,32 @@
   },
   {
     "source": "/blog/jellypepper",
-    "destination": "/work/jellypepper",
+    "destination": "https://read.cv/haydenbleasel/5CvDIZ8dRNaTGxz8pKNZ",
     "permanent": true
   },
   {
     "source": "/journal/how-to-growth-hack-your-resume",
-    "destination": "/blog",
+    "destination": "https://www.beskar.co/blog",
     "permanent": true
   },
   {
     "source": "/thoughts/revisiting-my-personal-brand-for-2021",
-    "destination": "/blog",
+    "destination": "https://www.beskar.co/blog",
     "permanent": true
   },
   {
-    "source": "/projects/harmony",
-    "destination": "https://github.com/haydenbleasel/harmony",
-    "permanent": true
-  },
-  {
-    "source": "/projects/neutral",
-    "destination": "https://tryneutral.com/",
+    "source": "/projects/:path*",
+    "destination": "https://www.beskar.co/",
     "permanent": true
   },
   {
     "source": "/recommendations",
-    "destination": "/stack",
+    "destination": "https://www.beskar.co/stack",
+    "permanent": true
+  },
+  {
+    "source": "/stack",
+    "destination": "https://www.beskar.co/stack",
     "permanent": true
   },
   {
@@ -56,27 +56,32 @@
   },
   {
     "source": "/now",
-    "destination": "/about",
+    "destination": "/",
     "permanent": true
   },
   {
     "source": "/colophon",
-    "destination": "/about",
+    "destination": "/",
     "permanent": true
   },
   {
     "source": "/education",
-    "destination": "/about",
+    "destination": "/",
+    "permanent": true
+  },
+  {
+    "source": "/games",
+    "destination": "/",
+    "permanent": true
+  },
+  {
+    "source": "/about",
+    "destination": "/",
     "permanent": true
   },
   {
     "source": "/resume",
     "destination": "/work",
-    "permanent": true
-  },
-  {
-    "source": "/games",
-    "destination": "/about",
     "permanent": true
   },
   {
@@ -92,6 +97,81 @@
   {
     "source": "/blog/clipchamp",
     "destination": "/case-studies/clipchamp",
+    "permanent": true
+  },
+  {
+    "source": "/blog/:path*",
+    "destination": "https://www.beskar.co/blog/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/design",
+    "destination": "https://www.beskar.co/resources",
+    "permanent": true
+  },
+  {
+    "source": "/code",
+    "destination": "https://www.beskar.co/resources",
+    "permanent": true
+  },
+  {
+    "source": "/press",
+    "destination": "https://read.cv/haydenbleasel",
+    "permanent": true
+  },
+  {
+    "source": "/playlists",
+    "destination": "https://open.spotify.com/user/haydenbleasel",
+    "permanent": true
+  },
+  {
+    "source": "/work/jellypepper",
+    "destination": "https://read.cv/haydenbleasel/5CvDIZ8dRNaTGxz8pKNZ",
+    "permanent": true
+  },
+  {
+    "source": "/work/sumry",
+    "destination": "https://read.cv/haydenbleasel/VACyYZntQ1FWJek286mw",
+    "permanent": true
+  },
+  {
+    "source": "/work/zookal",
+    "destination": "https://read.cv/haydenbleasel/EsfyQgS7RJxn2AHHfaCg",
+    "permanent": true
+  },
+  {
+    "source": "/work/palantir",
+    "destination": "https://read.cv/haydenbleasel/VKsHjQdAKwagBRrTGqha",
+    "permanent": true
+  },
+  {
+    "source": "/work/mindarc",
+    "destination": "https://read.cv/haydenbleasel/e90EHtiNAcgKEErZmUK9",
+    "permanent": true
+  },
+  {
+    "source": "/work/gunmetal",
+    "destination": "https://read.cv/haydenbleasel/XIny0n6haFxj6nx1SNS5",
+    "permanent": true
+  },
+  {
+    "source": "/work/spaceship",
+    "destination": "https://read.cv/haydenbleasel/Gv4GTLVsJcTorLhf0vqB",
+    "permanent": true
+  },
+  {
+    "source": "/work/corellium",
+    "destination": "https://read.cv/haydenbleasel/LoRxZsHDY2SYlrWBolbo",
+    "permanent": true
+  },
+  {
+    "source": "/work/:path*",
+    "destination": "https://read.cv/haydenbleasel/",
+    "permanent": true
+  },
+  {
+    "source": "/case-studies/:path*",
+    "destination": "https://jellypepper.com/work/:path*",
     "permanent": true
   }
 ]

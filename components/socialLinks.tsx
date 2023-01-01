@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { social } from '@/lib/social';
 
 const SocialLinks: FC = () => (
-  <div className="flex flex-col flex-wrap gap-4">
+  <div className="flex flex-wrap gap-4">
     {social.map(({ icon: Icon, name, url, id }) => (
       <Link
         key={id}
@@ -18,7 +18,7 @@ const SocialLinks: FC = () => (
           width={16}
           height={16}
         />
-        <span>{name}</span>
+        <span className="sr-only">{name}</span>
       </Link>
     ))}
   </div>

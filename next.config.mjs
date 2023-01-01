@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { withContentlayer } from 'next-contentlayer';
 import { createSecureHeaders } from 'next-secure-headers';
 import withPWA from 'next-pwa';
 import withBundleAnalyzer from '@next/bundle-analyzer';
@@ -81,7 +80,6 @@ const pwaConfig = {
 
 const bundle = withPlugins(
   [
-    withContentlayer,
     [withPWA, pwaConfig],
     withBundleAnalyzer({
       enabled: process.env.ANALYZE === 'true',

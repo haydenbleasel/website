@@ -11,6 +11,8 @@ const url = process.env.NEXT_PUBLIC_SITE_URL;
 const Head: FC = () => (
   <NextSeo
     useAppDir
+    title={title}
+    description={description}
     titleTemplate={`%s — ${name}`}
     canonical={url}
     openGraph={{

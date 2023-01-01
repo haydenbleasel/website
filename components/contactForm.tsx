@@ -5,7 +5,6 @@ import toast from 'react-hot-toast';
 import Button from './button';
 import Select from './select';
 import Modal from './modal';
-import Label from './label';
 import Textarea from '@/components/textarea';
 import parseError from '@/lib/parseError';
 import Input from '@/components/input';

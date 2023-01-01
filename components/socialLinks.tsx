@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { social } from '@/lib/social';
 
 const SocialLinks: FC = () => (
-  <div className="flex flex-wrap gap-4">
+  <div className="flex flex-wrap">
     {social.map(({ icon: Icon, name, url, id }) => (
       <Link
         key={id}
@@ -11,12 +11,12 @@ const SocialLinks: FC = () => (
         target="_blank"
         rel="noopener noreferrer"
         aria-label={name}
-        className="group flex items-center gap-2 text-sm font-medium text-zinc-800 no-underline transition-colors hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+        className="group flex items-center gap-2 p-[14px] text-sm font-medium text-zinc-800 no-underline transition-colors hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
       >
         <Icon
-          className="h-4 w-4 flex-none fill-zinc-500 transition-colors group-hover:fill-teal-500"
-          width={16}
-          height={16}
+          className="h-5 w-5 flex-none fill-zinc-500 transition-colors group-hover:fill-teal-500"
+          width={20}
+          height={20}
         />
         <span className="sr-only">{name}</span>
       </Link>

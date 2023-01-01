@@ -88,10 +88,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-    require('@thoughtbot/tailwindcss-aria-attributes'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };

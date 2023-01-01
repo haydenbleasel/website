@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
 
 import clsx from 'clsx';
-import Image from '@/components/image';
+import Image from 'next/image';
 import Logo from '@/components/logo';
 import Corellium from '@/public/logos/corellium.svg';
 import Neutral from '@/public/logos/neutral.svg';
@@ -99,6 +99,7 @@ const Home = async (): Promise<ReactNode> => {
           height={64}
           className="m-0 h-16 w-16 overflow-hidden rounded-full"
           priority
+          quality={100}
         />
         <div className="grid">
           <h1

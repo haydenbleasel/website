@@ -18,6 +18,7 @@
     "@haydenbleasel/use-theme": "^1.0.7",
     "@haydenbleasel/use-waitlist": "^1.0.9",
     "@next/font": "^13.0.7",
+    "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-popover": "^1.0.2",
     "@radix-ui/react-select": "^1.1.2",

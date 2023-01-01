@@ -23,6 +23,8 @@ import Toyota from '@/public/logos/toyota.svg';
 import Westfield from '@/public/logos/westfield.svg';
 import getSteamGames from '@/lib/steam';
 import formatList from '@/lib/formatList';
+import ContactForm from '@/components/contactForm';
+import SocialLinks from '@/components/socialLinks';
 
 const clients = [
   'AdvanCell',
@@ -151,8 +153,7 @@ const Home = async (): Promise<ReactNode> => {
           .
         </p>
         <p>
-          Occasional freelancer / consultant →{' '}
-          <Link href="/contact">get in touch</Link>.
+          Occasional freelancer / consultant → <ContactForm />.
         </p>
         <hr />
         <p>
@@ -256,6 +257,8 @@ const Home = async (): Promise<ReactNode> => {
           <sup>2</sup> A perfect game is one where you&apos;ve completed all
           achievements.
         </p>
+        <hr />
+        <SocialLinks />
       </div>
     </main>
   );

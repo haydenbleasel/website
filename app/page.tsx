@@ -179,10 +179,6 @@ const Home = async (): Promise<ReactNode> => {
             Google
           </Logo>
           ,{' '}
-          <Logo icon={Palantir as FC} href="https://www.palantir.com/">
-            Palantir
-          </Logo>
-          ,{' '}
           <Logo icon={Nike as FC} href="https://www.nike.com/">
             Nike
           </Logo>
@@ -220,7 +216,7 @@ const Home = async (): Promise<ReactNode> => {
           <Logo icon={RGA as FC} href="https://rga.com/">
             R/GA
           </Logo>
-          , plus a whole bunch of others<sup>1</sup>.
+          .
         </p>
         <p>
           I previously ran{' '}
@@ -245,10 +241,12 @@ const Home = async (): Promise<ReactNode> => {
           Before all that, I was Head of Product and Design at{' '}
           <Logo icon={Spaceship as FC} href="https://www.spaceship.com.au/">
             Spaceship
+          </Logo>
+          , interned at{' '}
+          <Logo icon={Palantir as FC} href="https://www.palantir.com/">
+            Palantir
           </Logo>{' '}
-          where we grew a pre-launch waitlist of 28,000 people, raised $20M+ in
-          Seed / Series A funding and created the future of superannuation in
-          Australia.
+          and worked with a whole bunch of other companies<sup>1</sup>.
         </p>
         <p>
           In 2016, I graduated with two degrees from the University of
@@ -278,11 +276,6 @@ const Home = async (): Promise<ReactNode> => {
           I have {totalHours} hours of tracked playtime, {totalAchievements}{' '}
           achievements across {games.length} games and {perfectGames.length}{' '}
           perfect games<sup>2</sup>. My most played games are {mostPlayedGames}.
-        </p>
-        <p>
-          Other than that, I&apos;m either spending time in the gym, ideating on
-          new side projects and occasionally working with very select clients on
-          freelance / moonlight work.
         </p>
       </div>
       <hr />

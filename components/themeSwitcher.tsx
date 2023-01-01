@@ -10,7 +10,7 @@ const ThemeSwitcher: FC = () => {
   const Icon = theme === 'dark' ? Sun : Moon;
 
   return (
-    <div className="fixed right-4 bottom-4 flex items-center sm:px-1">
+    <div className="fixed right-4 bottom-4 flex items-center p-[6px]">
       <div className="group relative p-2">
         <Icon
           size={20}

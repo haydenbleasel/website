@@ -21,12 +21,8 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
         sameAs={Object.values(social).map(({ url }) => url)}
       />
     </head>
-    <body className="overflow-x-hidden bg-white dark:bg-zinc-900">
-      <div className="w-full overflow-x-hidden">
-        <div className="prose prose-zinc mx-auto px-4 py-12 pb-16 dark:prose-invert sm:pb-32 sm:pt-24">
-          {children}
-        </div>
-      </div>
+    <body className="prose prose-zinc mx-auto bg-white px-4 py-12 pb-16 dark:bg-zinc-900 dark:prose-invert sm:pb-32 sm:pt-24">
+      {children}
       <Analytics />
       <ThemeSwitcher />
     </body>

@@ -84,7 +84,7 @@ const Select: FC<SelectProps> = ({
                     className={clsx(
                       option.value === selected
                         ? 'font-semibold'
-                        : 'font-normal',
+                        : 'font-medium',
                       'block truncate'
                     )}
                   >

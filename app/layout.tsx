@@ -20,8 +20,10 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
         sameAs={Object.values(social).map(({ url }) => url)}
       />
     </head>
-    <body className="prose prose-zinc mx-auto bg-white px-4 py-12 pb-16 dark:bg-zinc-900 dark:prose-invert sm:pb-32 sm:pt-24">
-      {children}
+    <body className="bg-white dark:bg-zinc-900">
+      <div className="prose prose-zinc mx-auto px-4 py-12 prose-h2:m-0 prose-p:m-0 dark:prose-invert sm:py-32">
+        {children}
+      </div>
       <Analytics />
     </body>
   </html>

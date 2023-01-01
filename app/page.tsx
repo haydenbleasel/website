@@ -90,7 +90,7 @@ const Home = async (): Promise<ReactNode> => {
   );
 
   return (
-    <main className="grid gap-12 prose-h2:m-0 prose-p:m-0">
+    <main className="grid gap-12">
       <header className="grid gap-8">
         <Image
           src="/avatar.jpg"
@@ -143,7 +143,14 @@ const Home = async (): Promise<ReactNode> => {
             Beskar
           </Logo>
           . You can{' '}
-          <Link href="https://read.cv/haydenbleasel">download my CV</Link> or{' '}
+          <Link
+            href="https://read.cv/haydenbleasel"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            download my CV
+          </Link>{' '}
+          or{' '}
           <Link
             href="https://dribbble.com/haydenbleasel"
             target="_blank"
@@ -255,7 +262,8 @@ const Home = async (): Promise<ReactNode> => {
           <sup>1</sup> {formatList(clients)}.
         </p>
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          <sup>2</sup> A perfect game is one where you&apos;ve completed all
+          <sup>2</sup> A perfect game is one where you&apos;ve wasted so much
+          time, you&apos;ve managed to complete the entire game and collect all
           achievements.
         </p>
         <hr />

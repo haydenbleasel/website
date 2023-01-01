@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import Button from './button';
 import Select from './select';
 import Modal from './modal';
+import Label from './label';
 import Textarea from '@/components/textarea';
 import parseError from '@/lib/parseError';
 import Input from '@/components/input';
@@ -103,26 +104,30 @@ const ContactForm: FC = () => {
 
   return (
     <Modal trigger={trigger} open={open} setOpen={setOpen}>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div>
-          <Select
-            label="I would like to..."
-            options={[
-              { label: 'Have a chat', value: 'contact' },
-              { label: 'Hire you for freelance work', value: 'freelance' },
-              {
-                label: 'Hire you for consulting work',
-                value: 'consulting',
-              },
-              {
-                label: 'Ask you to join our board',
-                value: 'board',
-              },
-            ]}
-            selected={type}
-            onChangeSelected={setType}
-          />
-        </div>
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto flex max-w-sm flex-col gap-4 rounded-sm bg-white p-6 sm:p-8"
+      >
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">
+          Let&apos;s talk
+        </h2>
+        <Select
+          label="I would like to..."
+          options={[
+            { label: 'Have a chat', value: 'contact' },
+            { label: 'Hire you for freelance work', value: 'freelance' },
+            {
+              label: 'Hire you for consulting work',
+              value: 'consulting',
+            },
+            {
+              label: 'Ask you to join our board',
+              value: 'board',
+            },
+          ]}
+          selected={type}
+          onChangeSelected={setType}
+        />
         <Input
           label="Name"
           ref={firstInput}

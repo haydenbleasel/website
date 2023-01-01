@@ -1,17 +1,17 @@
 [
   {
     "source": "/work/presumi",
-    "destination": "/case-studies/presumi",
+    "destination": "https://www.beskar.co/blog/presumi",
     "permanent": true
   },
   {
     "source": "/thoughts/presumi",
-    "destination": "/case-studies/presumi",
+    "destination": "https://www.beskar.co/blog/presumi",
     "permanent": true
   },
   {
     "source": "/presumi",
-    "destination": "/case-studies/presumi",
+    "destination": "https://www.beskar.co/blog/presumi",
     "permanent": true
   },
   {
@@ -21,7 +21,7 @@
   },
   {
     "source": "/blog/jellypepper",
-    "destination": "/work/jellypepper",
+    "destination": "https://read.cv/haydenbleasel/5CvDIZ8dRNaTGxz8pKNZ",
     "permanent": true
   },
   {

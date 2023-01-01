@@ -80,7 +80,9 @@ const Home = async (): Promise<ReactNode> => {
     0
   );
   const perfectGames = games.filter(
-    (game) => game.achievements.achieved === game.achievements.total
+    (game) =>
+      game.achievements.total > 0 &&
+      game.achievements.achieved === game.achievements.total
   );
   const mostPlayedGames = formatList(
     games

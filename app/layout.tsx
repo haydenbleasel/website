@@ -5,7 +5,6 @@ import { SocialProfileJsonLd } from 'next-seo';
 import { Analytics } from '@/components/analytics';
 import { ibmPlexMono } from '@/lib/fonts';
 import { social } from '@/lib/social';
-import ThemeSwitcher from '@/components/themeSwitcher';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
   <html
@@ -24,7 +23,6 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
     <body className="prose prose-zinc mx-auto bg-white px-4 py-12 pb-16 dark:bg-zinc-900 dark:prose-invert sm:pb-32 sm:pt-24">
       {children}
       <Analytics />
-      <ThemeSwitcher />
     </body>
   </html>
 );

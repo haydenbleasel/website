@@ -12,7 +12,6 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@haydenbleasel/use-theme": "^1.0.7",
     "@next/font": "^13.0.7",
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-label": "^2.0.0",

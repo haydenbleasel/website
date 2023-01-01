@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import clsx from 'clsx';
 import useTheme from '@haydenbleasel/use-theme';
-import Separator from './seperator';
+import Separator from './navbar/seperator';
 
 const ThemeSwitcher: FC = () => {
   const [theme, setTheme] = useTheme();

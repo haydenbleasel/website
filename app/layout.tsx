@@ -3,11 +3,9 @@ import clsx from 'clsx';
 import '@/styles/globals.css';
 import { SocialProfileJsonLd } from 'next-seo';
 import { Analytics } from '@/components/analytics';
-import Navbar from '@/components/navbar';
-import Providers from '@/components/providers';
 import { ibmPlexMono } from '@/lib/fonts';
-import CommandBar from '@/components/commandBar';
 import { social } from '@/lib/social';
+import ThemeSwitcher from '@/components/themeSwitcher';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
   <html
@@ -24,16 +22,13 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
       />
     </head>
     <body className="overflow-x-hidden bg-white dark:bg-zinc-900">
-      <Providers>
-        <Navbar />
-        <div className="w-full overflow-x-hidden">
-          <div className="prose prose-zinc mx-auto px-4 py-12 pb-16 dark:prose-invert sm:pb-32 sm:pt-24">
-            {children}
-          </div>
+      <div className="w-full overflow-x-hidden">
+        <div className="prose prose-zinc mx-auto px-4 py-12 pb-16 dark:prose-invert sm:pb-32 sm:pt-24">
+          {children}
         </div>
-      </Providers>
-      <CommandBar />
+      </div>
       <Analytics />
+      <ThemeSwitcher />
     </body>
   </html>
 );

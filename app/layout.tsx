@@ -3,12 +3,10 @@ import '@/styles/globals.css';
 import { SocialProfileJsonLd } from 'next-seo';
 import { Analytics } from '@/components/analytics';
 import { social } from '@/lib/social';
+import LinkPreview from '@/components/linkPreview';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
-  <html
-    lang="en"
-    className="scroll-smooth antialiased"
-  >
+  <html lang="en" className="scroll-smooth antialiased">
     <head>
       <SocialProfileJsonLd
         useAppDir
@@ -23,6 +21,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
         {children}
       </div>
       <Analytics />
+      <LinkPreview />
     </body>
   </html>
 );

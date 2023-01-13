@@ -66,6 +66,14 @@ const clients = [
   'Tyro Payments',
 ].sort((companyA, companyB) => companyA.localeCompare(companyB));
 
+const Footnote: FC<{
+  children: string;
+}> = ({ children }) => (
+  <Link href={`#footnote-${children}`}>
+    <sup className="text-zinc-400 dark:text-zinc-500">{children}</sup>
+  </Link>
+);
+
 const Home = async (): Promise<ReactNode> => {
   const location = await getLocation();
   const games = await getSteamGames();
@@ -224,7 +232,8 @@ const Home = async (): Promise<ReactNode> => {
           <Logo icon={Palantir as FC} href="https://www.palantir.com/">
             Palantir
           </Logo>{' '}
-          and worked with a whole bunch of other companies<sup>1</sup>.
+          and worked with a whole bunch of other companies
+          <Footnote>1</Footnote>.
         </p>
         <p>
           In 2016, I graduated with two degrees from the University of
@@ -253,13 +262,14 @@ const Home = async (): Promise<ReactNode> => {
           <Link href="https://steamcommunity.com/id/0x_crusader/">Steam</Link>.
           I have {totalHours} hours of tracked playtime, {totalAchievements}{' '}
           achievements across {games.length} games and {perfectGames.length}{' '}
-          perfect games<sup>2</sup>. My most played games are {mostPlayedGames}.
+          perfect games<Footnote>2</Footnote>. My most played games are{' '}
+          {mostPlayedGames}.
         </p>
         <hr />
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+        <p id="footnote-1" className="text-sm text-zinc-500 dark:text-zinc-400">
           <sup>1</sup> I have also worked with {formatList(clients)}.
         </p>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+        <p id="footnote-2" className="text-sm text-zinc-500 dark:text-zinc-400">
           <sup>2</sup> A perfect game is one where you&apos;ve wasted so much
           time, you&apos;ve managed to complete the entire game and collect all
           achievements.

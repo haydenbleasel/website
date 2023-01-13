@@ -41,11 +41,9 @@ const clients = [
   'Flaunter',
   'Flirtey',
   'Futrli',
-  'Google',
   'Grow',
   'Inventia',
   'Kerbly',
-  'National Geographic Channel',
   'Notiv',
   'Perlin',
   'Pursuited',
@@ -57,10 +55,8 @@ const clients = [
   'Simply Wall St',
   'Snug',
   'Space Machines Company',
-  'Spaceship',
   'Tank Stream Ventures',
   'UpGuard',
-  'Westfield',
   'Zibbet',
   'Zookal',
   'MindArc',
@@ -261,7 +257,7 @@ const Home = async (): Promise<ReactNode> => {
         </p>
         <hr />
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          <sup>1</sup> {formatList(clients)}.
+          <sup>1</sup> I have also worked with {formatList(clients)}.
         </p>
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           <sup>2</sup> A perfect game is one where you&apos;ve wasted so much

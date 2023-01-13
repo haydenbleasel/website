@@ -11,10 +11,8 @@ import redirects from './redirects.json' assert { type: 'json' };
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   experimental: {
     appDir: true,
-    // runtime: 'experimental-edge',
   },
   images: {
     formats: ['image/avif', 'image/webp'],

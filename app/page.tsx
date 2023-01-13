@@ -69,9 +69,7 @@ const clients = [
 const Footnote: FC<{
   children: string;
 }> = ({ children }) => (
-  <Link href={`#footnote-${children}`}>
-    <sup className="text-zinc-400 dark:text-zinc-500">{children}</sup>
-  </Link>
+  <sup className="text-zinc-400 dark:text-zinc-500">{children}</sup>
 );
 
 const Home = async (): Promise<ReactNode> => {

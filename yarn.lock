@@ -1054,10 +1054,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@haydenbleasel/glimpse@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@haydenbleasel/glimpse/-/glimpse-2.0.3.tgz#c8164b5715f7c7dead5396f289f0fa4b6e96a06e"
-  integrity sha512-Ocg5e54SZi+gRjr+mtqFkV1ptre4ZVI+5riUN5rmKVV+xHPaztV6Mve+FA6JT2Ia6d8QSrRdVQoyMU86XRdVeg==
+"@haydenbleasel/glimpse@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@haydenbleasel/glimpse/-/glimpse-2.0.4.tgz#b40c9635698965de0b7d6e2733b0160d5737cfd5"
+  integrity sha512-3sBGOIflbG1NlNpQ912HpE22zx0Ky30OTRvnZsnjcWSqCoiC/V0NSk2PiJ0TmkbDjEn4bsn0BELWnsvTD2Hc4g==
   dependencies:
     "@radix-ui/react-portal" "^1.0.1"
     "@react-hookz/web" "^20.1.0"

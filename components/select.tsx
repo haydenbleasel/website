@@ -45,8 +45,8 @@ const Select: FC<SelectProps> = ({
         <Trigger
           className={clsx(
             'relative flex w-full cursor-pointer items-center justify-between rounded-md border py-[6px] px-3 text-left shadow-sm focus:outline-none focus:ring-1',
-            'border-zinc-300 bg-white focus:border-teal-500 focus:ring-teal-500',
-            'dark:border-zinc-600 dark:bg-zinc-900 dark:focus:border-teal-400 dark:focus:ring-teal-400'
+            'border-zinc-300 bg-white focus:border-emerald-500 focus:ring-emerald-500',
+            'dark:border-zinc-600 dark:bg-zinc-900 dark:focus:border-emerald-400 dark:focus:ring-emerald-400'
           )}
         >
           <Value className="block truncate">{activeValue?.label}</Value>
@@ -75,7 +75,7 @@ const Select: FC<SelectProps> = ({
                   key={option.value}
                   className={clsx(
                     option.value === selected
-                      ? 'bg-teal-500 text-white hover:bg-teal-600'
+                      ? 'bg-emerald-500 text-white hover:bg-emerald-600'
                       : 'text-zinc-900 hover:bg-zinc-100 dark:text-white dark:hover:bg-zinc-800',
                     'group relative cursor-pointer select-none py-2 pl-3 pr-9 outline-none transition-colors'
                   )}
@@ -97,7 +97,7 @@ const Select: FC<SelectProps> = ({
                         'absolute inset-y-0 right-0 flex h-5 w-5 items-center pr-4',
                         option.value === 'selected'
                           ? 'text-white dark:text-zinc-900'
-                          : 'text-teal-600 dark:text-teal-400'
+                          : 'text-emerald-600 dark:text-emerald-400'
                       )}
                     />
                   </ItemIndicator>

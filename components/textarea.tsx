@@ -31,8 +31,8 @@ const TextArea: FC<TextAreaProps> = ({
         id={labelId}
         className={clsx(
           'block max-h-[25rem] min-h-[8rem] w-full rounded-md shadow-sm',
-          'border-zinc-300 bg-white placeholder:text-zinc-500 focus:border-teal-500 focus:ring-teal-500',
-          'dark:border-zinc-700 dark:bg-zinc-900 dark:placeholder:text-zinc-400 dark:focus:border-teal-400 dark:focus:ring-teal-400'
+          'border-zinc-300 bg-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500',
+          'dark:border-zinc-700 dark:bg-zinc-900 dark:placeholder:text-zinc-400 dark:focus:border-emerald-400 dark:focus:ring-emerald-400'
         )}
         aria-describedby={hintId}
         {...props}

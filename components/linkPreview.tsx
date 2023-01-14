@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { Glimpse, useGlimpse } from '@haydenbleasel/glimpse/client';
+import { Glimpse, useGlimpse } from '@beskar-labs/glimpse/client';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 
@@ -43,11 +43,11 @@ const LinkPreview: FC = () => {
       >
         {data.title}
       </p>
-      <p className="line-clamp-2 block text-sm leading-normal text-zinc-300">
+      <p className="block text-sm leading-normal text-zinc-300 line-clamp-2">
         {data.description}
       </p>
       <span className="flex items-center gap-1">
-        <p className="line-clamp-1 block text-sm leading-normal text-zinc-400">
+        <p className="block text-sm leading-normal text-zinc-400 line-clamp-1">
           {data.url}
         </p>
         <ArrowUpRight width={12} height={12} className="text-zinc-400" />

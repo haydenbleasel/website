@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server';
-import glimpse from '@haydenbleasel/glimpse/server';
+import glimpse from '@beskar-labs/glimpse/server';
 
 const res = (status: ResponseInit['status'], data: object): Response =>
   new Response(JSON.stringify(data), {
@@ -10,7 +10,7 @@ const res = (status: ResponseInit['status'], data: object): Response =>
   });
 
 export const config = {
-  runtime: 'experimental-edge',
+  runtime: 'edge',
 };
 
 const handler = async (req: NextRequest): Promise<Response> => {

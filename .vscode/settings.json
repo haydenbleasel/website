@@ -52,5 +52,11 @@
     "Youtube",
     "Youtubers",
     "zljwwb"
-  ]
+  ],
+  "eslint.experimental": {
+    "useFlatConfig": true
+  },
+  "eslint.options": {
+    "overrideConfigFile": "eslint.config.mjs"
+  }
 }

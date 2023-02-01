@@ -25,7 +25,7 @@ const ContactForm: FC = () => {
   const [sending, setSending] = useState(false);
   const [type, setType] = useState<string>('contact');
   const [project, setProject] = useState('');
-  const [budget, setBudget] = useState<typeof budgetOptions[number]['value']>(
+  const [budget, setBudget] = useState<(typeof budgetOptions)[number]['value']>(
     budgetOptions[1].value
   );
   const firstInput = useRef<HTMLInputElement>(null);
@@ -66,10 +66,10 @@ const ContactForm: FC = () => {
         }),
       });
 
-      if (!response.ok) {
-        const { error } = (await response.json()) as { error: string };
+      const data = (await response.json()) as { message: string };
 
-        throw new Error(error);
+      if (!response.ok) {
+        throw new Error(data.message);
       }
 
       setName('');
@@ -77,7 +77,7 @@ const ContactForm: FC = () => {
       setMessage('');
       setProject('');
 
-      toast.success('Message sent!');
+      toast.success(data.message);
     } catch (error) {
       const errorMessage = parseError(error);
 

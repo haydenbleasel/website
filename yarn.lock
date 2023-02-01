@@ -1019,10 +1019,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@beskar-labs/glimpse@^2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@beskar-labs/glimpse/-/glimpse-2.0.8.tgz#7c8562cbd121082f4c6d7953760e23a3110348ae"
-  integrity sha512-OBlckewlZ12d+ee/urj0yvGhwbJbtG4Ff9GHatnHV3/dNS4yJEDUO9ELPg/2QFFkyTudES26xZB3Ez+j4259Cw==
+"@beskar-labs/glimpse@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@beskar-labs/glimpse/-/glimpse-2.0.10.tgz#4b31fd552b41154ecc1c989e3a6e3eb22320775b"
+  integrity sha512-F3PUpIp+NoP18tHBoAptjWEzCpcZy8zKtXS7ls7Gfgmao9waWTzGODH33AE/Vo/SUjQvtfjm2LSu19x6klAX9Q==
   dependencies:
     "@radix-ui/react-portal" "^1.0.1"
     "@react-hookz/web" "^22.0.0"

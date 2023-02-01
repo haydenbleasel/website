@@ -12,7 +12,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@beskar-labs/glimpse": "^2.0.8",
+    "@beskar-labs/glimpse": "^2.0.10",
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-select": "^1.1.2",

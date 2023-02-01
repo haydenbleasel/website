@@ -28,7 +28,7 @@
     "next": "13.1.2",
     "next-pwa": "^5.6.0",
     "next-seo": "^5.15.0",
-    "next-sitemap": "^3.1.45",
+    "next-sitemap": "^3.1.49",
     "nodemailer": "^6.9.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

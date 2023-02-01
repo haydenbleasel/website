@@ -35,6 +35,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-.mailing
 public/robots.txt
 public/sitemap*.xml

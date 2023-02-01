@@ -13,7 +13,6 @@ type ContactRequest = {
     }
   | {
       type: 'freelance';
-      project: string;
       budget: string;
     }
 );
@@ -66,10 +65,6 @@ const handler = async (req: NextRequest): Promise<Response> => {
     return res(400, 'Missing message field');
   }
 
-  if (type === 'freelance' && 'project' in props && !props.project) {
-    return res(400, 'Missing project field');
-  }
-
   const domain = email.split('@')[1];
 
   if (domains.includes(domain)) {
@@ -77,18 +72,6 @@ const handler = async (req: NextRequest): Promise<Response> => {
       400,
       "Sorry, I don't accept disposable email addresses. Please use a different email address."
     );
-  }
-
-  const items = [];
-
-  if (type === 'freelance') {
-    if ('project' in props) {
-      items.push(`Project: ${props.project}`);
-    }
-
-    if ('budget' in props) {
-      items.push(`Budget: ${props.budget}`);
-    }
   }
 
   try {
@@ -106,7 +89,7 @@ const handler = async (req: NextRequest): Promise<Response> => {
         replyTo: email,
         token: process.env.POSTMARK_SERVER_API_TOKEN,
         body: message,
-        outro: items.join(', '),
+        outro: 'budget' in props ? `Budget: ${props.budget}` : undefined,
         footer: `Sent on ${format(new Date(), 'MMMM do, yyyy')}`,
       }),
     });

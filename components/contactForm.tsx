@@ -24,7 +24,6 @@ const ContactForm: FC = () => {
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [type, setType] = useState<string>('contact');
-  const [project, setProject] = useState('');
   const [budget, setBudget] = useState<(typeof budgetOptions)[number]['value']>(
     budgetOptions[1].value
   );
@@ -35,11 +34,6 @@ const ContactForm: FC = () => {
     setSending(true);
 
     if (!name.trim() || !email.trim() || !message.trim()) {
-      toast.error('Please fill out all fields');
-      return;
-    }
-
-    if (type === 'freelance' && !project.trim()) {
       toast.error('Please fill out all fields');
       return;
     }
@@ -59,7 +53,6 @@ const ContactForm: FC = () => {
           message,
           type,
           ...(type === 'freelance' && {
-            project,
             budget: budgetOptions.find((option) => option.value === budget)
               ?.label,
           }),
@@ -75,7 +68,6 @@ const ContactForm: FC = () => {
       setName('');
       setEmail('');
       setMessage('');
-      setProject('');
 
       toast.success(data.message);
     } catch (error) {
@@ -155,29 +147,23 @@ const ContactForm: FC = () => {
         />
         <Textarea
           label="Message"
-          placeholder="What's on your mind?"
+          placeholder={
+            type === 'freelance'
+              ? 'Tell me about your project'
+              : "What's on your mind?"
+          }
           required
           id="message"
           value={message}
           onValueChange={handleMessageChange}
         />
         {type === 'freelance' && (
-          <>
-            <Textarea
-              label="Project"
-              placeholder="Tell me about your project..."
-              required
-              id="project"
-              value={project}
-              onValueChange={setProject}
-            />
-            <Select
-              label="Budget"
-              options={budgetOptions}
-              selected={budget}
-              onChangeSelected={setBudget}
-            />
-          </>
+          <Select
+            label="Budget"
+            options={budgetOptions}
+            selected={budget}
+            onChangeSelected={setBudget}
+          />
         )}
         <Button
           type="submit"
@@ -186,8 +172,7 @@ const ContactForm: FC = () => {
             !email.trim() ||
             !message.trim() ||
             sending ||
-            !emailRegex.exec(email) ||
-            (type === 'freelance' && !project.trim())
+            !emailRegex.exec(email)
           }
           loading={sending}
         >

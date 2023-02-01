@@ -101,6 +101,12 @@ const ContactForm: FC = () => {
     </button>
   );
 
+  const handleMessageChange = (newValue: string) => {
+    const parsedMessage = newValue.replaceAll('\r', '').replaceAll('\n', '');
+
+    setMessage(parsedMessage);
+  };
+
   return (
     <Modal trigger={trigger} open={open} setOpen={setOpen}>
       <form
@@ -153,7 +159,7 @@ const ContactForm: FC = () => {
           required
           id="message"
           value={message}
-          onValueChange={setMessage}
+          onValueChange={handleMessageChange}
         />
         {type === 'freelance' && (
           <>

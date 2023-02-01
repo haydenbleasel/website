@@ -99,23 +99,25 @@ const handler = async (req: NextRequest): Promise<Response> => {
       },
       method: 'POST',
       body: JSON.stringify({
-        to: process.env.EMAIL_ADDRESS,
         from: 'noreply@beskar.co',
-        replyTo: email,
-        token: process.env.POSTMARK_SERVER_API_TOKEN,
+        to: process.env.EMAIL_ADDRESS,
         subject: `Incoming ${type} message from ${name}`,
         title: `Incoming ${type} message from ${name}`,
-        message,
+        replyTo: email,
+        token: process.env.POSTMARK_SERVER_API_TOKEN,
+        body: message,
         outro: items.join(', '),
         footer: `Sent on ${format(new Date(), 'MMMM do, yyyy')}`,
       }),
     });
 
+    const data = (await response.json()) as { message: string };
+
     if (!response.ok) {
-      throw new Error('Failed to send email');
+      throw new Error(data.message);
     }
 
-    return res(200, 'Message sent successfully');
+    return res(200, data.message);
   } catch (error) {
     const errorMessage = parseError(error);
 

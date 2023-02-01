@@ -4,9 +4,7 @@ Daylight is the personal website of [Hayden Bleasel](https://haydenbleasel.com/)
 
 ## Developing locally
 
-First, run the development server with `yarn dev`. This will install the required dependencies and concurrently start the Next.js development server and the Mailing.run server.
-
-Mailing will open by itself. Open [http://localhost:3000](http://localhost:3000) with your browser to see Next.js.
+First, run the development server with `yarn dev`. This will install the required dependencies and start the Next.js development server. Emails are sent with Comlink, the Beskar Labs internal mailing system.
 
 ## Todo
 

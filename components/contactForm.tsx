@@ -24,8 +24,7 @@ const ContactForm: FC = () => {
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [type, setType] = useState<string>('contact');
-  const [project, setProject] = useState('');
-  const [budget, setBudget] = useState<typeof budgetOptions[number]['value']>(
+  const [budget, setBudget] = useState<(typeof budgetOptions)[number]['value']>(
     budgetOptions[1].value
   );
   const firstInput = useRef<HTMLInputElement>(null);
@@ -35,11 +34,6 @@ const ContactForm: FC = () => {
     setSending(true);
 
     if (!name.trim() || !email.trim() || !message.trim()) {
-      toast.error('Please fill out all fields');
-      return;
-    }
-
-    if (type === 'freelance' && !project.trim()) {
       toast.error('Please fill out all fields');
       return;
     }
@@ -59,25 +53,23 @@ const ContactForm: FC = () => {
           message,
           type,
           ...(type === 'freelance' && {
-            project,
             budget: budgetOptions.find((option) => option.value === budget)
               ?.label,
           }),
         }),
       });
 
-      if (!response.ok) {
-        const { error } = (await response.json()) as { error: string };
+      const data = (await response.json()) as { message: string };
 
-        throw new Error(error);
+      if (!response.ok) {
+        throw new Error(data.message);
       }
 
       setName('');
       setEmail('');
       setMessage('');
-      setProject('');
 
-      toast.success('Message sent!');
+      toast.success(data.message);
     } catch (error) {
       const errorMessage = parseError(error);
 
@@ -100,6 +92,12 @@ const ContactForm: FC = () => {
       get in touch
     </button>
   );
+
+  const handleMessageChange = (newValue: string) => {
+    const parsedMessage = newValue.replaceAll('\r', '').replaceAll('\n', '');
+
+    setMessage(parsedMessage);
+  };
 
   return (
     <Modal trigger={trigger} open={open} setOpen={setOpen}>
@@ -149,29 +147,23 @@ const ContactForm: FC = () => {
         />
         <Textarea
           label="Message"
-          placeholder="What's on your mind?"
+          placeholder={
+            type === 'freelance'
+              ? 'Tell me about your project'
+              : "What's on your mind?"
+          }
           required
           id="message"
           value={message}
-          onValueChange={setMessage}
+          onValueChange={handleMessageChange}
         />
         {type === 'freelance' && (
-          <>
-            <Textarea
-              label="Project"
-              placeholder="Tell me about your project..."
-              required
-              id="project"
-              value={project}
-              onValueChange={setProject}
-            />
-            <Select
-              label="Budget"
-              options={budgetOptions}
-              selected={budget}
-              onChangeSelected={setBudget}
-            />
-          </>
+          <Select
+            label="Budget"
+            options={budgetOptions}
+            selected={budget}
+            onChangeSelected={setBudget}
+          />
         )}
         <Button
           type="submit"
@@ -180,8 +172,7 @@ const ContactForm: FC = () => {
             !email.trim() ||
             !message.trim() ||
             sending ||
-            !emailRegex.exec(email) ||
-            (type === 'freelance' && !project.trim())
+            !emailRegex.exec(email)
           }
           loading={sending}
         >

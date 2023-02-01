@@ -4,6 +4,7 @@ import { SocialProfileJsonLd } from 'next-seo';
 import { Analytics } from '@/components/analytics';
 import { social } from '@/lib/social';
 import LinkPreview from '@/components/linkPreview';
+import Toaster from '@/components/toaster';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
   <html lang="en" className="scroll-smooth antialiased">
@@ -22,6 +23,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
       </div>
       <Analytics />
       <LinkPreview />
+      <Toaster />
     </body>
   </html>
 );

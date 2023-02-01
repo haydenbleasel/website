@@ -23,7 +23,7 @@
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
     "disposable-email-domains": "^1.0.62",
-    "lucide-react": "^0.104.1",
+    "lucide-react": "^0.108.0",
     "mailing-core": "^0.9.8",
     "next": "13.1.2",
     "next-pwa": "^5.6.0",

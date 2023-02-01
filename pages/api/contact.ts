@@ -23,7 +23,12 @@ export const config = {
 };
 
 const res = (status: number, message: string) =>
-  new Response(JSON.stringify({ message }), { status });
+  new Response(JSON.stringify({ message }), {
+    status,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
 const handler = async (req: NextRequest): Promise<Response> => {
   const { name, email, message, type, ...props } =

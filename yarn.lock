@@ -6097,10 +6097,10 @@ magic-string@^0.25.0, magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.8"
 
-mailing-core@^0.9.8:
-  version "0.9.8"
-  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.9.8.tgz#f73c3866f4acbf2b6c68b5ab5ea60590c02127cf"
-  integrity sha512-NrFcgixt8LUeoSgL2k6RxRqQemZYMRT+3mJc8g3PQi1+ONh7E+5ft3dPy4qwa7Mt9XVFlcOL06dNH+Htm8/GsA==
+mailing-core@^0.9.10, mailing-core@^0.9.8:
+  version "0.9.10"
+  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.9.10.tgz#352b0555b0ec29e978ef216fe39378d1c538d369"
+  integrity sha512-9Bxkwvg8Qo2QV6QS/77Vy1exYBQ4LvlGnBzbJKAsKMDrhmpiD3saPe3xrmk/9S0eHB8nYZkTL3W4fHif9/iE8Q==
   dependencies:
     chalk "^4.1.2"
     fs-extra "^10.1.0"
@@ -7312,14 +7312,7 @@ postcss@^8.4.16, postcss@^8.4.18, postcss@^8.4.19:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-posthog-node@^2.0.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/posthog-node/-/posthog-node-2.2.2.tgz#c4688381e6e6bc38b1f9f0ace963cbd89646b8cd"
-  integrity sha512-aXYe/D+28kF63W8Cz53t09ypEORz+ULeDCahdAqhVrRm2scbOXFbtnn0GGhvMpYe45grepLKuwui9KxrZ2ZuMw==
-  dependencies:
-    axios "^0.27.0"
-
-posthog-node@^2.2.3:
+posthog-node@^2.0.2, posthog-node@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/posthog-node/-/posthog-node-2.2.3.tgz#9fda0dfe92dedc0716b87a68a26c05eed95bdd5a"
   integrity sha512-dYlLZhrDus+uRov/Hh+EiRlMoMhRKchNjNa7mNE2iWmKg/ryOTipf0XYKS9UKdki7aU1NzWFhnLe11HF615XuA==

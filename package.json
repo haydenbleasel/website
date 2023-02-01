@@ -24,7 +24,7 @@
     "date-fns": "^2.29.3",
     "disposable-email-domains": "^1.0.62",
     "lucide-react": "^0.104.1",
-    "mailing-core": "^0.9.8",
+    "mailing-core": "^0.9.10",
     "next": "13.1.2",
     "next-pwa": "^5.6.0",
     "next-seo": "^5.15.0",

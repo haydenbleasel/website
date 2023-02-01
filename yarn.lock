@@ -1378,10 +1378,10 @@
     semver "^7.3.5"
     tar "^6.1.11"
 
-"@next/bundle-analyzer@^13.1.2":
-  version "13.1.2"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-13.1.2.tgz#323dac32849f30a3319741c18edb3cdc6458822a"
-  integrity sha512-wY/ZEmnFDbn/eJiGzOxTppTDZWfsiXz/QqdJ8cqU7mByAJg6TEY35b3JFDu5AxSf2g1e7yQ6LfRrPr7sy07ogw==
+"@next/bundle-analyzer@^13.1.6":
+  version "13.1.6"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-13.1.6.tgz#36ff2f9c4b19aa75cd589ee080b1e2edb24f1192"
+  integrity sha512-rJS9CtLoGT58mL+v2ISKANosFFWP/0YKYByHQ3vTaZrbQP8b1rYRxd2QVMJmnSXaFkiP9URt1XJ6OdGyVq5b6g==
   dependencies:
     webpack-bundle-analyzer "4.7.0"
 

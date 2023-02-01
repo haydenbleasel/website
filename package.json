@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@beskar-labs/harmony": "^2.0.8",
-    "@next/bundle-analyzer": "^13.1.2",
+    "@next/bundle-analyzer": "^13.1.6",
     "@svgr/webpack": "^6.5.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",

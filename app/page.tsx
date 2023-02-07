@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
+import { get } from '@vercel/edge-config';
 
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -73,7 +74,7 @@ const Footnote: FC<{
 );
 
 const Home = async (): Promise<ReactNode> => {
-  const location = await getLocation();
+  const location = await get<string>('location');
   const games = await getSteamGames();
   const totalPlaytime = games.reduce((acc, game) => acc + game.playtime, 0);
   const totalHours = Math.floor(totalPlaytime / 60);

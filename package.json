@@ -15,6 +15,7 @@
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-select": "^1.2.0",
     "@vercel/analytics": "^0.1.8",
+    "@vercel/edge-config": "^0.1.1",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
     "disposable-email-domains": "^1.0.62",

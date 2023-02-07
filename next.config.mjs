@@ -1,11 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { createSecureHeaders } from 'next-secure-headers';
-import withPWA from 'next-pwa';
-import withBundleAnalyzer from '@next/bundle-analyzer';
-import withPlugins from 'next-compose-plugins';
 import redirects from './redirects.json' assert { type: 'json' };
 
 /** @type {import('next').NextConfig} */
@@ -67,23 +60,4 @@ const nextConfig = {
   },
 };
 
-const pwaConfig = {
-  pwa: {
-    dest: 'public',
-    disable: process.env.NODE_ENV === 'development',
-    dynamicStartUrl: false,
-    mode: process.env.NODE_ENV,
-  },
-};
-
-const bundle = withPlugins(
-  [
-    [withPWA, pwaConfig],
-    withBundleAnalyzer({
-      enabled: process.env.ANALYZE === 'true',
-    }),
-  ],
-  nextConfig
-);
-
-export default bundle;
+export default nextConfig;

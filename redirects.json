@@ -170,6 +170,11 @@
     "permanent": true
   },
   {
+    "source": "/case-studies/corellium",
+    "destination": "https://read.cv/haydenbleasel/LoRxZsHDY2SYlrWBolbo",
+    "permanent": true
+  },
+  {
     "source": "/case-studies/:path*",
     "destination": "https://jellypepper.com/work/:path*",
     "permanent": true

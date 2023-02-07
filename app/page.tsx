@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Logo from '@/components/logo';
 import Corellium from '@/public/logos/corellium.svg';
 import Neutral from '@/public/logos/neutral.svg';
-import getLocation from '@/lib/twitter';
 
 import AustralianEthical from '@/public/logos/australian-ethical.svg';
 import Beskar from '@/public/logos/beskar.svg';

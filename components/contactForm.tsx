@@ -87,9 +87,9 @@ const ContactForm: FC = () => {
     <button
       type="button"
       onClick={() => setOpen(!open)}
-      className="mt-4 inline-flex w-fit rounded bg-neutral-900 px-3 py-2 font-medium text-white"
+      className="font-medium text-neutral-900 underline dark:text-white"
     >
-      Hire me
+      get in touch
     </button>
   );
 

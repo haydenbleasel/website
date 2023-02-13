@@ -170,7 +170,7 @@ const Home = async (): Promise<ReactNode> => {
             .
           </p>
           <p>
-            I'm currently leading the Product and Design at{' '}
+            I&apos;m currently leading the Product and Design at{' '}
             <Logo icon={Corellium as FC} href="https://www.corellium.com/">
               Corellium
             </Logo>

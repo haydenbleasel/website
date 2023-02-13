@@ -5,9 +5,14 @@ import { Analytics } from '@/components/analytics';
 import { social } from '@/lib/social';
 import LinkPreview from '@/components/linkPreview';
 import Toaster from '@/components/toaster';
+import { serif } from '@/lib/fonts';
+import clsx from 'clsx';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
-  <html lang="en" className="scroll-smooth antialiased">
+  <html
+    lang="en"
+    className={clsx(serif.variable, 'scroll-smooth font-serif antialiased')}
+  >
     <head>
       <SocialProfileJsonLd
         useAppDir
@@ -18,9 +23,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
       />
     </head>
     <body className="bg-white dark:bg-zinc-900">
-      <div className="prose prose-zinc mx-auto px-4 py-12 prose-h2:m-0 prose-p:m-0 dark:prose-invert sm:py-32">
-        {children}
-      </div>
+      {children}
       <Analytics />
       <LinkPreview />
       <Toaster />

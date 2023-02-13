@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['var(--font-ibm-plex-mono)'],
+        serif: ['var(--font-serif)'],
       },
       typography: (theme) => ({
         DEFAULT: {

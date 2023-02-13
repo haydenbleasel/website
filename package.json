@@ -16,6 +16,7 @@
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-popover": "^1.0.3",
     "@radix-ui/react-select": "^1.2.0",
+    "@radix-ui/react-separator": "^1.0.1",
     "@vercel/analytics": "^0.1.8",
     "@vercel/edge-config": "^0.1.1",
     "clsx": "^1.2.1",

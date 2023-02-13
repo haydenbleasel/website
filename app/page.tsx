@@ -24,6 +24,7 @@ import Westfield from '@/public/logos/westfield.svg';
 import formatList from '@/lib/formatList';
 import ContactForm from '@/components/contactForm';
 import SocialLinks from '@/components/socialLinks';
+import Divider from '@/components/divider';
 
 const clients = [
   'AdvanCell',
@@ -284,7 +285,8 @@ const Home = async (): Promise<ReactNode> => {
             .
           </p>
 
-          <hr />
+          <Divider />
+
           <p>
             In 2016, I graduated with two degrees from the University of
             Technology, Sydney &mdash; a Bachelor of Business (Management) and a
@@ -310,7 +312,9 @@ const Home = async (): Promise<ReactNode> => {
             </Link>{' '}
             Embedded Systems course in 2022.
           </p>
-          <hr />
+
+          <Divider />
+
           <p className="text-sm text-neutral-500 dark:text-neutral-400">
             As a complete list of companies and clients, I have worked with{' '}
             {formatList(clients)}.

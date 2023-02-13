@@ -21,7 +21,6 @@ import Spaceship from '@/public/logos/spaceship.svg';
 import Timberland from '@/public/logos/timberland.svg';
 import Toyota from '@/public/logos/toyota.svg';
 import Westfield from '@/public/logos/westfield.svg';
-import getSteamGames from '@/lib/steam';
 import formatList from '@/lib/formatList';
 import ContactForm from '@/components/contactForm';
 import SocialLinks from '@/components/socialLinks';
@@ -74,24 +73,6 @@ const Footnote: FC<{
 
 const Home = async (): Promise<ReactNode> => {
   const location = await get<string>('location');
-  const games = await getSteamGames();
-  const totalPlaytime = games.reduce((acc, game) => acc + game.playtime, 0);
-  const totalHours = Math.floor(totalPlaytime / 60);
-  const totalAchievements = games.reduce(
-    (acc, { achievements }) => acc + achievements.achieved,
-    0
-  );
-  const perfectGames = games.filter(
-    (game) =>
-      game.achievements.total > 0 &&
-      game.achievements.achieved === game.achievements.total
-  );
-  const mostPlayedGames = formatList(
-    games
-      .sort((gameA, gameB) => gameB.playtime - gameA.playtime)
-      .slice(0, 5)
-      .map((game) => game.name)
-  );
 
   return (
     <main className="grid gap-12">
@@ -255,22 +236,9 @@ const Home = async (): Promise<ReactNode> => {
           </Link>{' '}
           Embedded Systems course in 2022.
         </p>
-        <p>
-          I also play a lot of games, you can find me on{' '}
-          <Link href="https://steamcommunity.com/id/0x_crusader/">Steam</Link>.
-          I have {totalHours} hours of tracked playtime, {totalAchievements}{' '}
-          achievements across {games.length} games and {perfectGames.length}{' '}
-          perfect games<Footnote>2</Footnote>. My most played games are{' '}
-          {mostPlayedGames}.
-        </p>
         <hr />
         <p id="footnote-1" className="text-sm text-zinc-500 dark:text-zinc-400">
           <sup>1</sup> I have also worked with {formatList(clients)}.
-        </p>
-        <p id="footnote-2" className="text-sm text-zinc-500 dark:text-zinc-400">
-          <sup>2</sup> A perfect game is one where you&apos;ve wasted so much
-          time, you&apos;ve managed to complete the entire game and collect all
-          achievements.
         </p>
         <hr />
         <SocialLinks />

@@ -2,8 +2,8 @@
 
 import type { FC } from 'react';
 import { Glimpse, useGlimpse } from '@beskar-labs/glimpse/client';
-import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
+import { ArrowUpRightIcon } from '@heroicons/react/20/solid';
 
 const fetcher = async (url: string) => {
   const response = await fetch('/api/glimpse', {
@@ -50,7 +50,7 @@ const LinkPreview: FC = () => {
         <p className="block text-sm leading-normal text-neutral-400 line-clamp-1">
           {data.url}
         </p>
-        <ArrowUpRight width={12} height={12} className="text-neutral-400" />
+        <ArrowUpRightIcon width={12} height={12} className="text-neutral-400" />
       </span>
     </Glimpse>
   );

@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Loader2 } from 'lucide-react';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import type { ButtonHTMLAttributes, FC, HTMLProps, ReactNode } from 'react';
+import { LoaderIcon } from 'react-hot-toast';
 
 type ButtonProps = {
   loading?: boolean;
@@ -18,7 +18,7 @@ const ButtonInner: FC<Pick<ButtonProps, 'children' | 'loading'>> = ({
 }) =>
   loading ? (
     <span className="mx-auto flex h-[28px] w-[28px] items-center justify-center">
-      <Loader2 className="animate-spin" />
+      <LoaderIcon className="animate-spin" />
     </span>
   ) : (
     <span>{children}</span>

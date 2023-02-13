@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import {
   Root,
   Trigger,
@@ -9,11 +10,9 @@ import {
   Viewport,
   Item,
   ItemText,
-  ItemIndicator,
   ScrollDownButton,
 } from '@radix-ui/react-select';
 import clsx from 'clsx';
-import { Check, ChevronDown } from 'lucide-react';
 import type { FC } from 'react';
 import { useId } from 'react';
 import LabelComponent from './label';
@@ -51,10 +50,11 @@ const Select: FC<SelectProps> = ({
         >
           <Value className="block truncate">{activeValue?.label}</Value>
           <Icon>
-            <ChevronDown
+            <ChevronDownIcon
               className="h-5 w-5 text-neutral-400 dark:text-neutral-500"
               aria-hidden="true"
-              size={20}
+              width={20}
+              height={20}
             />
           </Icon>
         </Trigger>
@@ -90,17 +90,6 @@ const Select: FC<SelectProps> = ({
                   >
                     {option.label}
                   </ItemText>
-                  <ItemIndicator>
-                    <Check
-                      aria-hidden="true"
-                      className={clsx(
-                        'absolute inset-y-0 right-0 flex h-5 w-5 items-center pr-4',
-                        option.value === 'selected'
-                          ? 'text-white dark:text-neutral-900'
-                          : 'text-emerald-600 dark:text-emerald-400'
-                      )}
-                    />
-                  </ItemIndicator>
                 </Item>
               ))}
             </Viewport>

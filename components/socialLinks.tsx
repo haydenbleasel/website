@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import type { FC } from 'react';
 import { social } from '@/lib/social';
-import { MoreHorizontal } from 'lucide-react';
 import Popover from './popover';
 import Tooltip from './tooltip';
+import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid';
 
 const SocialLinks: FC = () => (
   <div className="-m-[14px] flex max-w-[16rem] flex-wrap">
@@ -57,7 +57,7 @@ const SocialLinks: FC = () => (
       }
     >
       <div className="group flex cursor-pointer items-center gap-2 p-[14px] text-sm font-medium text-neutral-800 no-underline transition-colors hover:text-emerald-500 dark:text-neutral-200 dark:hover:text-emerald-500">
-        <MoreHorizontal className="h-5 w-5 flex-none text-neutral-500 transition-colors group-hover:text-emerald-500" />
+        <EllipsisHorizontalIcon className="h-5 w-5 flex-none text-neutral-500 transition-colors group-hover:text-emerald-500" />
       </div>
     </Popover>
   </div>

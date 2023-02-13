@@ -1104,6 +1104,11 @@
     "@floating-ui/dom" "^0.5.3"
     use-isomorphic-layout-effect "^1.1.1"
 
+"@heroicons/react@^2.0.15":
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-2.0.15.tgz#e1fc966350577a1ab0e38211e7b58e4bf8285b49"
+  integrity sha512-CZ2dGWgWG3/z5LEoD5D3MEr1syn45JM/OB2aDpw531Ryecgkz2V7TWQ808P0lva7zP003PVW6WlwbofsYyga3A==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -4743,11 +4748,6 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
-
-lucide-react@^0.113.0:
-  version "0.113.0"
-  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.113.0.tgz#203c1442f36508194621890af4a14b65f32431bc"
-  integrity sha512-2v4v+or80vCHxjzxKvxfwrmeDzqGt3qs/wRe1JVRIxE4heyOkq4mdbW4WDRDzB0n4gN4HHaU9mzZmkY/QS7ZGQ==
 
 make-dir@^3.0.0:
   version "3.1.0"

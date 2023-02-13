@@ -85,13 +85,13 @@ const Home = async (): Promise<ReactNode> => {
             <h1
               className={clsx(
                 'mt-4 text-xl font-semibold',
-                'text-zinc-900',
+                'text-neutral-900',
                 'dark:text-white'
               )}
             >
               Hayden Bleasel
             </h1>
-            <p className="mt-1 text-zinc-500 dark:text-zinc-400">
+            <p className="mt-1 text-neutral-500 dark:text-neutral-400">
               Chief Product Officer at Corellium
             </p>
             {location && (
@@ -121,7 +121,7 @@ const Home = async (): Promise<ReactNode> => {
         <SocialLinks />
       </header>
       <div className="lg:col-span-2">
-        <div className="prose prose-lg prose-zinc mx-auto px-4 py-12 dark:prose-invert sm:py-32">
+        <div className="prose prose-lg prose-neutral mx-auto px-4 py-12 dark:prose-invert sm:py-32">
           <p>
             Hello, I&apos;m Hayden Bleasel. I&apos;m an Australian product
             designer and frontend engineer living in the United States.{' '}
@@ -311,7 +311,7 @@ const Home = async (): Promise<ReactNode> => {
             Embedded Systems course in 2022.
           </p>
           <hr />
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="text-sm text-neutral-500 dark:text-neutral-400">
             As a complete list of companies and clients, I have worked with{' '}
             {formatList(clients)}.
           </p>

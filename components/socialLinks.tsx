@@ -17,11 +17,11 @@ const SocialLinks: FC = () => (
           target="_blank"
           rel="noopener noreferrer"
           aria-label={name}
-          className="group flex items-center gap-2 p-[14px] text-sm font-medium text-zinc-800 no-underline transition-colors hover:text-emerald-500 dark:text-zinc-200 dark:hover:text-emerald-500"
+          className="group flex items-center gap-2 p-[14px] text-sm font-medium text-neutral-800 no-underline transition-colors hover:text-emerald-500 dark:text-neutral-200 dark:hover:text-emerald-500"
           data-no-glimpse
         >
           <Icon
-            className="h-5 w-5 flex-none fill-zinc-500 transition-colors group-hover:fill-emerald-500"
+            className="h-5 w-5 flex-none fill-neutral-500 transition-colors group-hover:fill-emerald-500"
             width={20}
             height={20}
           />
@@ -40,11 +40,11 @@ const SocialLinks: FC = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={name}
-                className="group flex items-center gap-2 p-2 text-sm font-medium text-zinc-800 no-underline transition-colors hover:text-emerald-500 dark:text-zinc-200 dark:hover:text-emerald-500"
+                className="group flex items-center gap-2 p-2 text-sm font-medium text-neutral-800 no-underline transition-colors hover:text-emerald-500 dark:text-neutral-200 dark:hover:text-emerald-500"
                 data-no-glimpse
               >
                 <Icon
-                  className="h-5 w-5 flex-none fill-zinc-500 transition-colors group-hover:fill-emerald-500"
+                  className="h-5 w-5 flex-none fill-neutral-500 transition-colors group-hover:fill-emerald-500"
                   width={20}
                   height={20}
                 />
@@ -54,8 +54,8 @@ const SocialLinks: FC = () => (
         </div>
       }
     >
-      <div className="group flex cursor-pointer items-center gap-2 p-[14px] text-sm font-medium text-zinc-800 no-underline transition-colors hover:text-emerald-500 dark:text-zinc-200 dark:hover:text-emerald-500">
-        <MoreHorizontal className="h-5 w-5 flex-none text-zinc-500 transition-colors group-hover:text-emerald-500" />
+      <div className="group flex cursor-pointer items-center gap-2 p-[14px] text-sm font-medium text-neutral-800 no-underline transition-colors hover:text-emerald-500 dark:text-neutral-200 dark:hover:text-emerald-500">
+        <MoreHorizontal className="h-5 w-5 flex-none text-neutral-500 transition-colors group-hover:text-emerald-500" />
       </div>
     </Popover>
   </div>

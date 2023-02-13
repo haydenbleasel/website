@@ -5,7 +5,11 @@ type HintProps = HTMLProps<HTMLParagraphElement>;
 
 const Hint: FC<HintProps> = (props) => (
   <p
-    className={clsx('mt-2 text-sm', 'text-zinc-500', 'dark:text-zinc-400')}
+    className={clsx(
+      'mt-2 text-sm',
+      'text-neutral-500',
+      'dark:text-neutral-400'
+    )}
     {...props}
   />
 );

@@ -45,14 +45,14 @@ const Select: FC<SelectProps> = ({
         <Trigger
           className={clsx(
             'relative flex w-full cursor-pointer items-center justify-between rounded-md border py-[6px] px-3 text-left shadow-sm focus:outline-none focus:ring-1',
-            'border-zinc-300 bg-white focus:border-emerald-500 focus:ring-emerald-500',
-            'dark:border-zinc-600 dark:bg-zinc-900 dark:focus:border-emerald-400 dark:focus:ring-emerald-400'
+            'border-neutral-300 bg-white focus:border-emerald-500 focus:ring-emerald-500',
+            'dark:border-neutral-600 dark:bg-neutral-900 dark:focus:border-emerald-400 dark:focus:ring-emerald-400'
           )}
         >
           <Value className="block truncate">{activeValue?.label}</Value>
           <Icon>
             <ChevronDown
-              className="h-5 w-5 text-zinc-400 dark:text-zinc-500"
+              className="h-5 w-5 text-neutral-400 dark:text-neutral-500"
               aria-hidden="true"
               size={20}
             />
@@ -64,7 +64,7 @@ const Select: FC<SelectProps> = ({
             className={clsx(
               'absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
               'bg-white',
-              'dark:border dark:border-zinc-600 dark:bg-zinc-900'
+              'dark:border dark:border-neutral-600 dark:bg-neutral-900'
             )}
           >
             <ScrollUpButton />
@@ -76,7 +76,7 @@ const Select: FC<SelectProps> = ({
                   className={clsx(
                     option.value === selected
                       ? 'bg-emerald-500 text-white hover:bg-emerald-600'
-                      : 'text-zinc-900 hover:bg-zinc-100 dark:text-white dark:hover:bg-zinc-800',
+                      : 'text-neutral-900 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800',
                     'group relative cursor-pointer select-none py-2 pl-3 pr-9 outline-none transition-colors'
                   )}
                 >
@@ -96,7 +96,7 @@ const Select: FC<SelectProps> = ({
                       className={clsx(
                         'absolute inset-y-0 right-0 flex h-5 w-5 items-center pr-4',
                         option.value === 'selected'
-                          ? 'text-white dark:text-zinc-900'
+                          ? 'text-white dark:text-neutral-900'
                           : 'text-emerald-600 dark:text-emerald-400'
                       )}
                     />

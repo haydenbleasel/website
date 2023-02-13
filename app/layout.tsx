@@ -22,7 +22,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
         sameAs={Object.values(social).map(({ url }) => url)}
       />
     </head>
-    <body className="bg-white dark:bg-zinc-900">
+    <body className="bg-white dark:bg-neutral-900">
       {children}
       <Analytics />
       <LinkPreview />

@@ -76,7 +76,7 @@ const Home = async (): Promise<ReactNode> => {
 
   return (
     <main className="grid grid-cols-3">
-      <header className="sticky top-0 flex h-screen flex-col justify-between gap-8 border-r border-neutral-200 p-16">
+      <header className="sticky top-0 flex h-screen flex-col items-start justify-between gap-8 border-r border-neutral-200 p-16">
         <div>
           <Image
             src="/avatar.jpg"
@@ -111,12 +111,13 @@ const Home = async (): Promise<ReactNode> => {
                 </span>
               </div>
             )}
+            <ContactForm />
           </div>
         </div>
         <SocialLinks />
       </header>
       <div className="col-span-2">
-        <div className="prose prose-zinc mx-auto px-4 py-12 prose-h2:m-0 prose-p:m-0 dark:prose-invert sm:py-32">
+        <div className="prose prose-lg prose-zinc mx-auto px-4 py-12 dark:prose-invert sm:py-32">
           <p>
             Australian product designer and frontend engineer living in the U.S.
             Currently leading Product and Design at{' '}
@@ -149,10 +150,6 @@ const Home = async (): Promise<ReactNode> => {
             </Link>
             .
           </p>
-          <p>
-            Occasional freelancer / consultant → <ContactForm />.
-          </p>
-          <hr />
           <p>
             I&apos;ve had the privilege of working with many fantastic companies
             including{' '}

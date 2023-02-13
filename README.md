@@ -5,8 +5,3 @@ Daylight is the personal website of [Hayden Bleasel](https://haydenbleasel.com/)
 ## Developing locally
 
 First, run the development server with `yarn dev`. This will install the required dependencies and start the Next.js development server. Emails are sent with Comlink, the Beskar Labs internal mailing system.
-
-## Todo
-
-- Add "Back to top" button to contextual nav when scrolling down
-- Add better content and rich media to work pages

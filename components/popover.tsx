@@ -17,7 +17,7 @@ const Popover: FC<{
     <Trigger asChild>{children}</Trigger>
     <Anchor />
     <Portal>
-      <Content className="rounded border border-neutral-200 bg-white">
+      <Content className="rounded border border-neutral-200 bg-white outline-none">
         {content}
       </Content>
     </Portal>

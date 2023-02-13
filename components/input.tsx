@@ -32,8 +32,8 @@ const Input: FC<InputProps> = ({
         id={labelId}
         className={clsx(
           'block w-full rounded-md shadow-sm',
-          'border-zinc-300 bg-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500',
-          'dark:border-zinc-700 dark:bg-zinc-900 dark:placeholder:text-zinc-400 dark:focus:border-emerald-400 dark:focus:ring-emerald-400'
+          'border-neutral-300 bg-white placeholder:text-neutral-500 focus:border-emerald-500 focus:ring-emerald-500',
+          'dark:border-neutral-700 dark:bg-neutral-900 dark:placeholder:text-neutral-400 dark:focus:border-emerald-400 dark:focus:ring-emerald-400'
         )}
         aria-describedby={hintId}
         {...props}

@@ -10,8 +10,8 @@ const Label: FC<LabelProps> = ({ htmlFor, ...props }) => (
     htmlFor={htmlFor}
     className={clsx(
       'block text-sm font-medium',
-      'text-zinc-700',
-      'dark:text-zinc-400'
+      'text-neutral-700',
+      'dark:text-neutral-400'
     )}
     {...props}
   />

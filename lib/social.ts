@@ -8,6 +8,7 @@ import ProductHuntIcon from '@/public/social/producthunt.svg';
 import SpotifyIcon from '@/public/social/spotify.svg';
 import FigmaIcon from '@/public/social/figma.svg';
 import MediumIcon from '@/public/social/medium.svg';
+import { CubeTransparentIcon } from '@heroicons/react/20/solid';
 
 type SVG = FC<SVGProps<SVGSVGElement>>;
 
@@ -91,6 +92,14 @@ export const social: SocialPlatform[] = [
     url: 'https://haydenbleasel.medium.com/',
     invertDark: true,
     icon: MediumIcon as SVG,
+    featured: false,
+  },
+  {
+    id: 'desync',
+    name: 'Desync',
+    url: 'https://www.desync.art/haydenbleasel',
+    invertDark: true,
+    icon: CubeTransparentIcon,
     featured: false,
   },
 ];

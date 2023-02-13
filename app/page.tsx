@@ -65,18 +65,12 @@ const clients = [
   'Tyro Payments',
 ].sort((companyA, companyB) => companyA.localeCompare(companyB));
 
-const Footnote: FC<{
-  children: string;
-}> = ({ children }) => (
-  <sup className="text-zinc-400 dark:text-zinc-500">{children}</sup>
-);
-
 const Home = async (): Promise<ReactNode> => {
   const location = await get<string>('location');
 
   return (
-    <main className="grid grid-cols-3">
-      <header className="sticky top-0 flex h-screen flex-col items-start justify-between gap-8 border-r border-neutral-200 p-16">
+    <main className="grid lg:grid-cols-3">
+      <header className="top-0 flex flex-col items-start justify-between gap-8 border-neutral-200 p-4 lg:sticky lg:h-screen lg:border-r lg:p-16">
         <div>
           <Image
             src="/avatar.jpg"
@@ -126,7 +120,7 @@ const Home = async (): Promise<ReactNode> => {
         </div>
         <SocialLinks />
       </header>
-      <div className="col-span-2">
+      <div className="lg:col-span-2">
         <div className="prose prose-lg prose-zinc mx-auto px-4 py-12 dark:prose-invert sm:py-32">
           <p>
             Hello, I&apos;m Hayden Bleasel. I&apos;m an Australian product

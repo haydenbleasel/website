@@ -71,7 +71,7 @@ const Home = async (): Promise<ReactNode> => {
 
   return (
     <main className="grid lg:grid-cols-3">
-      <header className="top-0 flex flex-col items-start justify-between gap-8 border-neutral-200 p-4 lg:sticky lg:h-screen lg:border-r lg:p-16">
+      <header className="top-0 flex flex-col items-start justify-between gap-8 border-neutral-200 px-4 pt-12 lg:sticky lg:h-screen lg:border-r lg:p-16">
         <div>
           <Image
             src="/avatar.jpg"
@@ -85,7 +85,7 @@ const Home = async (): Promise<ReactNode> => {
           <div className="grid">
             <h1
               className={clsx(
-                'mt-4 text-xl font-semibold',
+                'mt-8 text-xl font-semibold',
                 'text-neutral-900',
                 'dark:text-white'
               )}
@@ -101,17 +101,17 @@ const Home = async (): Promise<ReactNode> => {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                 </span>
-                <span className="text-sm font-medium">
+                <span className="text-sm font-medium tracking-tight">
                   Currently in {location}
                 </span>
               </div>
             )}
-            <div className="mt-8">
+            <div className="mt-8 text-neutral-500 dark:text-neutral-400">
               <Link
                 href="https://read.cv/haydenbleasel"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline"
+                className="font-medium text-neutral-900 underline"
               >
                 Download my CV
               </Link>{' '}
@@ -122,7 +122,7 @@ const Home = async (): Promise<ReactNode> => {
         <SocialLinks />
       </header>
       <div className="lg:col-span-2">
-        <div className="prose prose-lg prose-neutral mx-auto px-4 py-12 dark:prose-invert sm:py-32">
+        <div className="prose prose-lg prose-neutral mx-auto px-4 py-12 font-serif dark:prose-invert sm:py-32">
           <p>
             Hello, I&apos;m Hayden Bleasel. I&apos;m an Australian product
             designer and frontend engineer living in the United States.{' '}
@@ -188,32 +188,62 @@ const Home = async (): Promise<ReactNode> => {
             </Logo>
             , a digital playground and my corner of the internet to publish
             content, build apps and experiment with new technologies. So far,
-            I've published a few apps such as:
+            I&apos;ve published a few apps such as:
           </p>
           <ul>
             <li>
-              <Link href="https://tryneutral.com/">Neutral</Link> — a carbon
-              offsetting app.
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://tryneutral.com/"
+              >
+                Neutral
+              </Link>{' '}
+              — a carbon offsetting app.
             </li>
             <li>
-              <Link href="https://neutral.sh">Neutral API</Link> — for scaling
-              global reforestation (coming soon).
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://neutral.sh"
+              >
+                Neutral API
+              </Link>{' '}
+              — for scaling global reforestation (coming soon).
             </li>
             <li>
-              <Link href="https://www.refraction.dev">Refraction</Link> — an
-              AI-powered code improvement suite.
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.refraction.dev"
+              >
+                Refraction
+              </Link>{' '}
+              — an AI-powered code improvement suite.
             </li>
             <li>
-              <Link href="https://www.waitlist.email">waitlist.email</Link> —
-              fast, unbranded waitlists for developers
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.waitlist.email"
+              >
+                waitlist.email
+              </Link>{' '}
+              — fast, unbranded waitlists for developers
             </li>
             <li>
-              <Link href="https://www.desync.art">Desync</Link> — share and find
-              inspiration from AI-generated art.
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.desync.art"
+              >
+                Desync
+              </Link>{' '}
+              — share and find inspiration from AI-generated art.
             </li>
           </ul>
           <p>
-            Towards the end of 2020, I started contracting for{' '}
+            Towards the end of 2020, I contracted for{' '}
             <Logo icon={RGA as FC} href="https://rga.com/">
               R/GA
             </Logo>

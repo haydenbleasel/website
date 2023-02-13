@@ -12,7 +12,7 @@ import Providers from '@/components/providers';
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
   <html
     lang="en"
-    className={clsx(serif.variable, 'scroll-smooth font-serif antialiased')}
+    className={clsx(serif.variable, 'scroll-smooth font-sans antialiased')}
   >
     <head>
       <SocialProfileJsonLd

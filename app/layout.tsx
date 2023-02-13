@@ -7,6 +7,7 @@ import LinkPreview from '@/components/linkPreview';
 import Toaster from '@/components/toaster';
 import { serif } from '@/lib/fonts';
 import clsx from 'clsx';
+import Providers from '@/components/providers';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
   <html
@@ -23,7 +24,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
       />
     </head>
     <body className="bg-white dark:bg-neutral-900">
-      {children}
+      <Providers>{children}</Providers>
       <Analytics />
       <LinkPreview />
       <Toaster />

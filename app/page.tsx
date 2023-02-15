@@ -21,6 +21,9 @@ import Spaceship from '@/public/logos/spaceship.svg';
 import Timberland from '@/public/logos/timberland.svg';
 import Toyota from '@/public/logos/toyota.svg';
 import Westfield from '@/public/logos/westfield.svg';
+import OpenJS from '@/public/logos/openjsf.svg';
+import ESLint from '@/public/logos/eslint.svg';
+
 import formatList from '@/lib/formatList';
 import ContactForm from '@/components/contactForm';
 import SocialLinks from '@/components/socialLinks';
@@ -259,13 +262,21 @@ const Home = async (): Promise<ReactNode> => {
             where I focused on startups in “disruptive industries” such as
             self-driving cars, AI, biotechnology, cryptocurrency, renewable
             energy, drone delivery, cybersecurity and even outer-space
-            logistics. Many of the startups I worked with continued on to raise
-            millions of dollars in funding and some even went on to be acquired,
-            such as{' '}
+            logistics. Many startups I worked with continued on to raise
+            millions in funding and some even got acquired, such as{' '}
             <Logo icon={Clipchamp as FC} href="https://clipchamp.com/en/">
               Clipchamp
             </Logo>{' '}
-            by Microsoft.
+            by Microsoft. I was also fortunate enough to work with the
+            open-source community, such as the{' '}
+            <Logo icon={OpenJS as FC} href="https://openjsf.org/">
+              OpenJS Foundation
+            </Logo>{' '}
+            and{' '}
+            <Logo icon={ESLint as FC} href="https://eslint.org/">
+              ESLint
+            </Logo>
+            .
           </p>
 
           <p>
@@ -321,7 +332,16 @@ const Home = async (): Promise<ReactNode> => {
             In 2016, I graduated with two degrees from the University of
             Technology, Sydney &mdash; a Bachelor of Business (Management) and a
             Bachelor of Science in Information Technology (Enterprise Systems
-            Development).
+            Development). While I was at university, I created{' '}
+            <Link
+              href="https://www.beskar.co/blog/presumi"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Presumi
+            </Link>{' '}
+            — a job application and resume tracking platform that I ended up
+            licensing to SEEK in Hong Kong for a bit.
           </p>
           <p>
             I also completed{' '}

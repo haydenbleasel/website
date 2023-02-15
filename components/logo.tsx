@@ -10,7 +10,7 @@ type LogoProps = LinkProps & {
 const Logo: FC<LogoProps> = ({ icon: Icon, children, ...props }) => (
   <Link
     {...props}
-    className="inline-block no-underline"
+    className="inline-flex items-center align-bottom no-underline"
     target="_blank"
     rel="noopener noreferrer"
   >

@@ -70,7 +70,9 @@ const clients = [
 ].sort((companyA, companyB) => companyA.localeCompare(companyB));
 
 const Home = async (): Promise<ReactNode> => {
-  const location = await get<string>('location');
+  const daylight = await get<{
+    location: string;
+  }>('daylight');
 
   return (
     <main className="grid lg:grid-cols-3">
@@ -98,14 +100,14 @@ const Home = async (): Promise<ReactNode> => {
             <p className="mt-1 text-neutral-500 dark:text-neutral-400">
               Chief Product Officer at Corellium
             </p>
-            {location && (
+            {daylight?.location && (
               <div className="mt-3 inline-flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                 </span>
                 <span className="text-sm font-medium tracking-tight">
-                  Currently in {location}
+                  Currently in {daylight.location}
                 </span>
               </div>
             )}

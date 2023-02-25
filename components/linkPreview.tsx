@@ -29,7 +29,7 @@ const LinkPreview: FC = () => {
   return (
     <Glimpse className="pointer-events-none fixed z-20 flex w-[316px] translate-x-2 translate-y-2 flex-col rounded-lg bg-neutral-900/90 p-3 shadow-lg backdrop-blur-md transition-opacity group-hover:-translate-y-2 dark:bg-neutral-800 print:hidden">
       <Image
-        className="m-0 h-[174px] w-full rounded-sm object-cover"
+        className="m-0 aspect-[316/174] w-full rounded-sm object-cover"
         src={data.image}
         width={316}
         height={174}

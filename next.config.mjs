@@ -13,15 +13,6 @@ const nextConfig = {
   },
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: [
-      'cdn.dribbble.com',
-      's3-alpha-sig.figma.com',
-      's3-alpha.figma.com',
-      'logo.clearbit.com',
-      'i.scdn.co',
-      'mosaic.scdn.co',
-      'source.unsplash.com',
-    ],
   },
   headers() {
     return [

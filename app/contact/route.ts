@@ -17,7 +17,7 @@ type ContactRequest = {
     }
 );
 
-export const POST = async (req: Request) => {
+export const POST = async (req: Request): Promise<Response> => {
   const { name, email, message, type, ...props } =
     (await req.json()) as ContactRequest;
   const authorization = req.headers.get('authorization');

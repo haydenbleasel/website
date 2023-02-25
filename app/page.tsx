@@ -28,6 +28,8 @@ import formatList from '@/lib/formatList';
 import ContactForm from '@/components/contactForm';
 import SocialLinks from '@/components/socialLinks';
 import Divider from '@/components/divider';
+import type { Metadata } from 'next/types';
+import ExternalLink from '@/components/externalLink';
 
 const clients = [
   'AdvanCell',
@@ -68,6 +70,70 @@ const clients = [
   'UTS',
   'Tyro Payments',
 ].sort((companyA, companyB) => companyA.localeCompare(companyB));
+
+const name = 'Hayden Bleasel';
+const title = 'Product designer and frontend engineer';
+const description =
+  'Blurring the line between real and virtual at Corellium and scaling planetary reforestation with Neutral.';
+const url = process.env.NEXT_PUBLIC_SITE_URL;
+
+if (!url) {
+  throw new Error('NEXT_PUBLIC_SITE_URL is not defined');
+}
+
+export const metadata: Metadata = {
+  title: `${title} — ${name}`,
+  description,
+  openGraph: {
+    title,
+    description,
+    url,
+    type: 'profile',
+    siteName: name,
+    gender: 'male',
+    firstName: 'Hayden',
+    lastName: 'Bleasel',
+    username: 'haydenbleasel',
+    images: [
+      {
+        url: '/cover.jpg',
+        width: 1200,
+        height: 630,
+        alt: name,
+      },
+    ],
+    locale: 'en-US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@haydenbleasel',
+    creator: '@haydenbleasel',
+  },
+  appleWebApp: {
+    capable: true,
+    title: name,
+    statusBarStyle: 'black-translucent',
+  },
+  applicationName: name,
+  authors: [
+    {
+      name,
+      url,
+    },
+  ],
+  creator: name,
+  generator: 'Next.js',
+  icons: [
+    { rel: 'icon', url: '/favicon.ico' },
+    { rel: 'apple-touch-icon', url: '/apple-icon.png' },
+  ],
+  keywords: ['hayden', 'bleasel', 'product', 'design', 'frontend', 'engineer'],
+  manifest: '/manifest.json',
+  metadataBase: new URL(url),
+  themeColor: '#000000',
+  viewport:
+    'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover',
+};
 
 const Home = async (): Promise<ReactNode> => {
   const daylight = await get<{
@@ -112,14 +178,12 @@ const Home = async (): Promise<ReactNode> => {
               </div>
             )}
             <div className="mt-8 text-neutral-500 dark:text-neutral-400">
-              <Link
+              <ExternalLink
                 href="https://read.cv/haydenbleasel"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="font-medium text-neutral-900 underline"
               >
                 Download my CV
-              </Link>{' '}
+              </ExternalLink>{' '}
               or <ContactForm />.
             </div>
           </div>
@@ -197,53 +261,29 @@ const Home = async (): Promise<ReactNode> => {
           </p>
           <ul>
             <li>
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://tryneutral.com/"
-              >
+              <ExternalLink href="https://tryneutral.com/">
                 Neutral
-              </Link>{' '}
+              </ExternalLink>{' '}
               — a carbon offsetting app.
             </li>
             <li>
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://neutral.sh"
-              >
-                Neutral API
-              </Link>{' '}
+              <ExternalLink href="https://neutral.sh">Neutral API</ExternalLink>{' '}
               — for scaling global reforestation (coming soon).
             </li>
             <li>
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.refraction.dev"
-              >
+              <ExternalLink href="https://www.refraction.dev">
                 Refraction
-              </Link>{' '}
+              </ExternalLink>{' '}
               — an AI-powered code improvement suite.
             </li>
             <li>
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.waitlist.email"
-              >
+              <ExternalLink href="https://www.waitlist.email">
                 waitlist.email
-              </Link>{' '}
+              </ExternalLink>{' '}
               — fast, unbranded waitlists for developers
             </li>
             <li>
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.desync.art"
-              >
-                Desync
-              </Link>{' '}
+              <ExternalLink href="https://www.desync.art">Desync</ExternalLink>{' '}
               — share and find inspiration from AI-generated art.
             </li>
           </ul>
@@ -308,23 +348,19 @@ const Home = async (): Promise<ReactNode> => {
             Gunmetal Studio, Automation Engineer at MindArc, Frontend Engineer
             at Zookal and so on. You can find a more detailed list of my
             experience on my{' '}
-            <Link
+            <ExternalLink
               href="https://read.cv/haydenbleasel"
-              target="_blank"
-              rel="noopener noreferrer"
               className="underline"
             >
               read.cv
-            </Link>{' '}
+            </ExternalLink>{' '}
             or{' '}
-            <Link
+            <ExternalLink
               href="https://www.linkedin.com/in/haydenbleasel/"
-              target="_blank"
-              rel="noopener noreferrer"
               className="underline"
             >
               LinkedIn
-            </Link>
+            </ExternalLink>
             .
           </p>
 
@@ -335,33 +371,21 @@ const Home = async (): Promise<ReactNode> => {
             Technology, Sydney &mdash; a Bachelor of Business (Management) and a
             Bachelor of Science in Information Technology (Enterprise Systems
             Development). While I was at university, I created{' '}
-            <Link
-              href="https://www.beskar.co/blog/presumi"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <ExternalLink href="https://www.beskar.co/blog/presumi">
               Presumi
-            </Link>{' '}
+            </ExternalLink>{' '}
             — a job application and resume tracking platform that I ended up
             licensing to SEEK in Hong Kong for a bit.
           </p>
           <p>
             I also completed{' '}
-            <Link
-              href="https://courses.edx.org/certificates/9d821d3e4d0d44afbe871ceb31c9d135"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <ExternalLink href="https://courses.edx.org/certificates/9d821d3e4d0d44afbe871ceb31c9d135">
               HarvardX&apos;s CS50x
-            </Link>{' '}
+            </ExternalLink>{' '}
             Computer Science course in 2021 and{' '}
-            <Link
-              href="https://courses.edx.org/certificates/598d25a2674c43fabed9da38302ca532"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <ExternalLink href="https://courses.edx.org/certificates/598d25a2674c43fabed9da38302ca532">
               Arm&apos;s ESE101
-            </Link>{' '}
+            </ExternalLink>{' '}
             Embedded Systems course in 2022.
           </p>
 

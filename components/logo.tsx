@@ -1,24 +1,20 @@
-import type { LinkProps } from 'next/link';
-import Link from 'next/link';
-import type { FC, ReactNode } from 'react';
+import type { FC, HTMLProps } from 'react';
+import ExternalLink from './externalLink';
 
-type LogoProps = LinkProps & {
+type LogoProps = HTMLProps<HTMLAnchorElement> & {
   icon: FC;
-  children: ReactNode;
 };
 
 const Logo: FC<LogoProps> = ({ icon: Icon, children, ...props }) => (
-  <Link
+  <ExternalLink
     {...props}
     className="inline-flex items-center align-bottom no-underline"
-    target="_blank"
-    rel="noopener noreferrer"
   >
     <span className="inline-block align-baseline dark:brightness-0 dark:invert">
       <Icon />
     </span>
     <span className="ml-1 inline-block underline">{children}</span>
-  </Link>
+  </ExternalLink>
 );
 
 export default Logo;

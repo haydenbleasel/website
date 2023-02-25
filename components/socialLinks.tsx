@@ -6,6 +6,7 @@ import { social } from '@/lib/social';
 import Popover from './popover';
 import Tooltip from './tooltip';
 import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid';
+import ExternalLink from './externalLink';
 
 const SocialLinks: FC = () => (
   <div className="-m-[14px] flex max-w-[16rem] flex-wrap">
@@ -13,10 +14,8 @@ const SocialLinks: FC = () => (
       .filter(({ featured }) => featured)
       .map(({ icon: Icon, name, url, id }) => (
         <Tooltip key={id} content={name}>
-          <Link
+          <ExternalLink
             href={url}
-            target="_blank"
-            rel="noopener noreferrer"
             aria-label={name}
             className="group flex items-center gap-2 p-[14px] text-sm font-medium text-neutral-800 no-underline transition-colors hover:text-emerald-500 dark:text-neutral-200 dark:hover:text-emerald-500"
             data-no-glimpse
@@ -27,7 +26,7 @@ const SocialLinks: FC = () => (
               height={20}
             />
             <span className="sr-only">{name}</span>
-          </Link>
+          </ExternalLink>
         </Tooltip>
       ))}
     <Popover
@@ -36,11 +35,9 @@ const SocialLinks: FC = () => (
           {social
             .filter(({ featured }) => !featured)
             .map(({ icon: Icon, name, url, id }) => (
-              <Link
+              <ExternalLink
                 key={id}
                 href={url}
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label={name}
                 className="group flex items-center gap-2 p-2 text-sm font-medium text-neutral-800 no-underline transition-colors hover:text-emerald-500 dark:text-neutral-200 dark:hover:text-emerald-500"
                 data-no-glimpse
@@ -51,7 +48,7 @@ const SocialLinks: FC = () => (
                   height={20}
                 />
                 <span>{name}</span>
-              </Link>
+              </ExternalLink>
             ))}
         </div>
       }

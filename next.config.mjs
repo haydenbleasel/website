@@ -32,14 +32,6 @@ const nextConfig = {
   redirects() {
     return redirects;
   },
-
-  // Temporary
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/iu,

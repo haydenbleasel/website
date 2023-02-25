@@ -12,7 +12,6 @@
   "dependencies": {
     "@beskar-labs/glimpse": "^2.0.11",
     "@heroicons/react": "^2.0.16",
-    "@next/font": "^13.2.1",
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-popover": "^1.0.4",

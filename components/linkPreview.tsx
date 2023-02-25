@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ArrowUpRightIcon } from '@heroicons/react/20/solid';
 
 const fetcher = async (url: string) => {
-  const response = await fetch('/api/glimpse', {
+  const response = await fetch('/glimpse', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

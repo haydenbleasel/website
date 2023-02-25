@@ -28,6 +28,7 @@ import formatList from '@/lib/formatList';
 import ContactForm from '@/components/contactForm';
 import SocialLinks from '@/components/socialLinks';
 import Divider from '@/components/divider';
+import type { Metadata } from 'next';
 
 const clients = [
   'AdvanCell',
@@ -68,6 +69,70 @@ const clients = [
   'UTS',
   'Tyro Payments',
 ].sort((companyA, companyB) => companyA.localeCompare(companyB));
+
+const name = 'Hayden Bleasel';
+const title = 'Product designer and frontend engineer';
+const description =
+  'Blurring the line between real and virtual at Corellium and scaling planetary reforestation with Neutral.';
+const url = process.env.NEXT_PUBLIC_SITE_URL;
+
+if (!url) {
+  throw new Error('NEXT_PUBLIC_SITE_URL is not defined');
+}
+
+export const metadata: Metadata = {
+  title: `${title} — ${name}`,
+  description,
+  openGraph: {
+    title,
+    description,
+    url,
+    type: 'profile',
+    siteName: name,
+    gender: 'male',
+    firstName: 'Hayden',
+    lastName: 'Bleasel',
+    username: 'haydenbleasel',
+    images: [
+      {
+        url: '/cover.jpg',
+        width: 1200,
+        height: 630,
+        alt: name,
+      },
+    ],
+    locale: 'en-US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@haydenbleasel',
+    creator: '@haydenbleasel',
+  },
+  appleWebApp: {
+    capable: true,
+    title: name,
+    statusBarStyle: 'black-translucent',
+  },
+  applicationName: name,
+  authors: [
+    {
+      name,
+      url,
+    },
+  ],
+  creator: name,
+  generator: 'Next.js',
+  icons: [
+    { rel: 'icon', url: '/favicon.ico' },
+    { rel: 'apple-touch-icon', url: '/apple-icon.png' },
+  ],
+  keywords: ['hayden', 'bleasel', 'product', 'design', 'frontend', 'engineer'],
+  manifest: '/manifest.json',
+  metadataBase: new URL(url),
+  themeColor: '#000000',
+  viewport:
+    'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover',
+};
 
 const Home = async (): Promise<ReactNode> => {
   const daylight = await get<{

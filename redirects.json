@@ -178,10 +178,5 @@
     "source": "/case-studies/:path*",
     "destination": "https://jellypepper.com/work/:path*",
     "permanent": true
-  },
-  {
-    "source": "/contact",
-    "destination": "/",
-    "permanent": true
   }
 ]

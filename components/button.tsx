@@ -1,16 +1,12 @@
 import clsx from 'clsx';
-import type { LinkProps } from 'next/link';
-import Link from 'next/link';
 import type { ButtonHTMLAttributes, FC, HTMLProps, ReactNode } from 'react';
 import { LoaderIcon } from 'react-hot-toast';
+import ExternalLink from './externalLink';
 
 type ButtonProps = {
   loading?: boolean;
   children: ReactNode;
-} & (
-  | ButtonHTMLAttributes<HTMLButtonElement>
-  | (LinkProps & HTMLProps<HTMLAnchorElement>)
-);
+} & (ButtonHTMLAttributes<HTMLButtonElement> | HTMLProps<HTMLAnchorElement>);
 
 const ButtonInner: FC<Pick<ButtonProps, 'children' | 'loading'>> = ({
   children,
@@ -32,9 +28,12 @@ const buttonClassName = clsx(
 
 const Button: FC<ButtonProps> = ({ children, loading = false, ...props }) =>
   'href' in props ? (
-    <Link className={buttonClassName} {...(props as LinkProps)}>
+    <ExternalLink
+      className={buttonClassName}
+      {...(props as HTMLProps<HTMLAnchorElement>)}
+    >
       <ButtonInner loading={loading}>{children}</ButtonInner>
-    </Link>
+    </ExternalLink>
   ) : (
     // eslint-disable-next-line react/button-has-type
     <button

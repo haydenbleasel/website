@@ -25,7 +25,7 @@
     "disposable-email-domains": "^1.0.62",
     "next": "13.2.1",
     "next-seo": "^5.15.0",
-    "next-sitemap": "^3.1.52",
+    "next-sitemap": "^3.1.55",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0"

@@ -18,7 +18,7 @@
     "@radix-ui/react-select": "^1.2.0",
     "@radix-ui/react-separator": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.4",
-    "@vercel/analytics": "^0.1.10",
+    "@vercel/analytics": "^0.1.11",
     "@vercel/edge-config": "^0.1.1",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",

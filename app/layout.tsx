@@ -5,15 +5,10 @@ import { Analytics } from '@/components/analytics';
 import { social } from '@/lib/social';
 import LinkPreview from '@/components/linkPreview';
 import Toaster from '@/components/toaster';
-import { serif } from '@/lib/fonts';
-import clsx from 'clsx';
 import Providers from '@/components/providers';
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
-  <html
-    lang="en"
-    className={clsx(serif.variable, 'scroll-smooth font-sans antialiased')}
-  >
+  <html lang="en" className="scroll-smooth font-sans antialiased">
     <head>
       <SocialProfileJsonLd
         useAppDir

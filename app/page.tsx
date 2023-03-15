@@ -191,7 +191,7 @@ const Home = async (): Promise<ReactNode> => {
         <SocialLinks />
       </header>
       <div className="lg:col-span-2">
-        <div className="prose prose-lg prose-neutral mx-auto px-4 py-12 font-serif dark:prose-invert sm:py-32">
+        <div className="prose prose-lg prose-neutral mx-auto px-4 py-12 dark:prose-invert sm:py-32">
           <p>
             Hello, I&apos;m Hayden Bleasel. I&apos;m an Australian product
             designer and frontend engineer living in the United States.{' '}

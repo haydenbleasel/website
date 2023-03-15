@@ -4,9 +4,6 @@ module.exports = {
   content: ['./app/**/*.tsx', './components/**/*.tsx'],
   theme: {
     extend: {
-      fontFamily: {
-        serif: ['var(--font-serif)'],
-      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

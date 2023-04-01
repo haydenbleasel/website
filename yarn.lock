@@ -2209,10 +2209,10 @@
   resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-0.1.11.tgz#727a0ac655a4a89104cdea3e6925476470299428"
   integrity sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==
 
-"@vercel/edge-config@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@vercel/edge-config/-/edge-config-0.1.1.tgz#e5f32ea31fded2a7c4b781a8fbdb26aa69f97f7f"
-  integrity sha512-HDl+12tzW2RHIu8Y804kXg2VpZ02KVb7Nqsa+e1AFoACXXMb+7TfjI1wR19tXoDIu5enQz1dbat40YMEgaH13Q==
+"@vercel/edge-config@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@vercel/edge-config/-/edge-config-0.1.5.tgz#bae545933479454008d1bccfca5c2158b39dbec4"
+  integrity sha512-hwOkwwSIQe+DlCU8aHGzGl4L67fNNekZ/kVcCl9VVORehJxSEn6npoK0xx85vyF4c9Q2BnlnJDZ7CLPtN0oQHw==
 
 "@xobotyi/scrollbar-width@^1.9.5":
   version "1.9.5"

@@ -5,6 +5,7 @@ const freelanceClients = [
   'OpenJS Foundation',
   'UTS',
   'Tyro Payments',
+  'Teleqo Technologies',
 ].sort(sortByName);
 
 export default freelanceClients;

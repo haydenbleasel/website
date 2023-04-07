@@ -23,7 +23,7 @@ const Home = async (): Promise<ReactNode> => {
   const updatedAt = await getLastDeployDate();
 
   return (
-    <main className="prose prose-neutral m-[180px] grid gap-16 dark:prose-invert">
+    <main className="prose prose-neutral m-[11%] grid gap-16 dark:prose-invert lg:m-[180px]">
       <Section>
         <Image
           src="/images/profile.jpg"

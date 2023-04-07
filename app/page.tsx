@@ -7,6 +7,7 @@ import Section from '@/components/section';
 import jellypepperClients from '@/data/jellypepper';
 import freelanceClients from '@/data/freelance';
 import Footnote from '@/components/footnote';
+import type { Metadata } from 'next';
 
 const logos = [
   '/images/australian-ethical.svg',
@@ -18,6 +19,12 @@ const logos = [
   '/images/toyota.svg',
   '/images/westfield.svg',
 ];
+
+export const metadata: Metadata = {
+  title: 'Hayden Bleasel — Product and Design Lead at Corellium',
+  description:
+    "Hi, I'm Hayden Bleasel — Australian product designer and Typescript developer living in the U.S.",
+};
 
 const Home = async (): Promise<ReactNode> => {
   const updatedAt = await getLastDeployDate();

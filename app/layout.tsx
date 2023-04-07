@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from 'react';
 import './globals.css';
+import clsx from 'clsx';
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,7 +13,7 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
-    <body>{children}</body>
+    <body className={clsx('font-sans')}>{children}</body>
   </html>
 );
 

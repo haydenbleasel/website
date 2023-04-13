@@ -9,6 +9,8 @@ import freelanceClients from '@/data/freelance';
 import Footnote from '@/components/footnote';
 import type { Metadata } from 'next';
 
+import avatar from '@/public/images/profile.jpg';
+
 const logos = [
   '/images/australian-ethical.svg',
   '/images/canva.svg',
@@ -35,7 +37,7 @@ const Home = async (): Promise<ReactNode> => {
     <main className="prose prose-neutral m-[11%] grid gap-16 dark:prose-invert lg:m-[180px]">
       <Section>
         <Image
-          src="/images/profile.jpg"
+          src={avatar}
           width={64}
           height={64}
           alt="A photo of Hayden Bleasel."

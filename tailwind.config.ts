@@ -1,7 +1,6 @@
 /* eslint-disable id-length */
 import type { Config } from 'tailwindcss';
 import typography from '@tailwindcss/typography';
-import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   content: ['./{app,components}/**/*.{ts,tsx}'],
@@ -14,7 +13,7 @@ const config: Config = {
             '-webkit-font-smoothing': 'antialiased',
             '-moz-osx-font-smoothing': 'grayscale',
             textRendering: 'geometricPrecision',
-            color: theme('colors.neutral.950'),
+            // color: theme('colors.neutral.950'),
             p: {
               lineHeight: '154%',
             },
@@ -40,6 +39,9 @@ const config: Config = {
               color: theme('colors.neutral.500'),
               fontSize: theme('fontSize.xs'),
               fontWeight: theme('fontWeight.normal'),
+            },
+            ol: {
+              marginBottom: 0,
             },
           },
         },

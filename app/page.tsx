@@ -26,6 +26,8 @@ export const metadata: Metadata = {
     "Hi, I'm Hayden Bleasel — Australian product designer and Typescript developer living in the U.S.",
 };
 
+export const runtime = 'experimental-edge';
+
 const Home = async (): Promise<ReactNode> => {
   const updatedAt = await getLastDeployDate();
 
@@ -39,6 +41,7 @@ const Home = async (): Promise<ReactNode> => {
           alt="A photo of Hayden Bleasel."
           className="mt-0 h-16 w-16 rounded-full"
           priority
+          placeholder="blur"
         />
         <div className="flex flex-col gap-4">
           <h1>

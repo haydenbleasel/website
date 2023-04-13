@@ -1,3 +1,5 @@
+import 'server-only';
+
 type VercelDeploymentsResponse = {
   deployments: {
     /** The unique identifier of the deployment. */

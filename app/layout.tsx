@@ -3,6 +3,7 @@ import './globals.css';
 import clsx from 'clsx';
 import { TooltipProvider } from '@/components/tooltip';
 import ThemeSwitcher from '@/components/themeSwitcher';
+import { sans } from '@/lib/fonts';
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -10,7 +11,9 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
-    <body className={clsx('bg-white font-sans dark:bg-neutral-950')}>
+    <body
+      className={clsx(sans.variable, 'bg-white font-sans dark:bg-neutral-950')}
+    >
       <TooltipProvider>
         {children}
         <ThemeSwitcher />

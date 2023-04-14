@@ -26,7 +26,7 @@ const logos = [
 export const metadata: Metadata = {
   title: 'Hayden Bleasel — Product and Design Lead at Corellium',
   description:
-    "Hi, I'm Hayden Bleasel — Australian product designer and Typescript developer living in the U.S.",
+    "Hi, I'm Hayden Bleasel — Australian product designer and TypeScript developer living in the U.S.",
 };
 
 export const runtime = 'experimental-edge';
@@ -48,7 +48,7 @@ const Home = async (): Promise<ReactNode> => {
         />
         <div className="flex flex-col gap-4">
           <h1>
-            Australian product designer and Typescript developer living in the
+            Australian product designer and TypeScript developer living in the
             U.S.
           </h1>
           <div className="grid">

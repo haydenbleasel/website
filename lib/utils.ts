@@ -6,11 +6,9 @@ export const listFormatter = new Intl.ListFormat('en', {
   type: 'conjunction',
 });
 
-export const formatDate = (date: Date): string =>
-  new Intl.DateTimeFormat('en', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeStyle: 'short',
+export const getDate = (): string =>
+  new Date().toLocaleString('en-US', {
     timeZone: 'America/New_York',
-  }).format(date);
+    dateStyle: 'long',
+    timeStyle: 'short',
+  });

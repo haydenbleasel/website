@@ -1,6 +1,6 @@
 import { parseError } from '@/lib/error';
 import { res } from '@/lib/response';
-import { formatDate } from '@/lib/utils';
+import { getDate } from '@/lib/utils';
 
 type ContactRequest = {
   name?: string;
@@ -11,7 +11,7 @@ type ContactRequest = {
 
 export const POST = async (req: Request): Promise<Response> => {
   const { name, email, message, type } = (await req.json()) as ContactRequest;
-  const origin = req.headers.get('origin');
+  const origin = new URL(req.headers.get('origin') ?? '').href;
   const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '').href;
 
   if (origin !== siteUrl) {
@@ -57,7 +57,7 @@ export const POST = async (req: Request): Promise<Response> => {
         replyTo: email,
         token: process.env.POSTMARK_SERVER_API_TOKEN,
         body: message,
-        footer: `Sent on ${formatDate(new Date())}`,
+        footer: `Sent on ${getDate()}`,
       }),
     });
 

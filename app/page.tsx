@@ -1,7 +1,7 @@
 import Image from '@/components/image';
 import Link from '@/components/link';
 import type { FC } from 'react';
-import { listFormatter } from '@/lib/utils';
+import { getDate, listFormatter } from '@/lib/utils';
 import Section from '@/components/section';
 import jellypepperClients from '@/data/jellypepper';
 import freelanceClients from '@/data/freelance';
@@ -22,11 +22,7 @@ const logos = [
   '/images/westfield.svg',
 ];
 
-const updatedAt = new Date().toLocaleString('en-US', {
-  timeZone: 'America/New_York',
-  dateStyle: 'long',
-  timeStyle: 'short',
-});
+const updatedAt = getDate();
 
 export const metadata: Metadata = {
   title: 'Hayden Bleasel — Product and Design Lead at Corellium',

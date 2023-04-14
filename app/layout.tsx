@@ -6,6 +6,8 @@ import ThemeSwitcher from '@/components/themeSwitcher';
 import { sans } from '@/lib/fonts';
 import ContactForm from '@/components/contactForm';
 import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline';
+import Link from '@/components/link';
+import Image from '@/components/image';
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -19,6 +21,25 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       <TooltipProvider>
         {children}
         <div className="fixed bottom-4 right-4 flex flex-col gap-1">
+          <Tooltip content="Twitter">
+            <Link
+              href="https://twitter.com/haydenbleasel"
+              className={clsx(
+                'rounded p-2',
+                'text-neutral-500 dark:text-neutral-400',
+                'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+              )}
+              aria-label="Twitter"
+            >
+              <Image
+                src="/images/social/twitter.svg"
+                width={16}
+                height={16}
+                alt="Twitter"
+              />
+            </Link>
+          </Tooltip>
+
           <ContactForm>
             <div>
               <Tooltip content="Get in touch">

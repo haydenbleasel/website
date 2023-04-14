@@ -180,13 +180,6 @@ const Home = async (): Promise<ReactNode> => {
         </p>
       </Section>
       <Section>
-        <div className="flex gap-4">
-          <Link href="#">Email</Link>
-          <Link href="https://twitter.com/haydenbleasel">Twitter</Link>
-          <Link href="https://read.cv/haydenbleasel">CV</Link>
-        </div>
-      </Section>
-      <Section>
         <ol className="text-xs text-neutral-500">
           <li id="fn-1">{listFormatter.format(jellypepperClients)}.</li>
           <li id="fn-2">{listFormatter.format(freelanceClients)}.</li>

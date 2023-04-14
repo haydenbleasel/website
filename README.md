@@ -32,6 +32,8 @@ Create an `.env.local` file with the following variables:
 
 ```sh
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+COMLINK_PASSPHRASE=""
+POSTMARK_SERVER_API_TOKEN=""
 ```
 
 Then run the local development server with:

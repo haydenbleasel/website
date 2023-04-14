@@ -14,6 +14,7 @@ import Link from '@/components/link';
 import Image from '@/components/image';
 import ScrollAreaProvider from '@/components/scrollArea';
 import AnchorHighlightProvider from '@/components/anchorHighlightProvider';
+import { Toaster } from '@/components/toaster';
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -89,6 +90,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
         </ScrollAreaProvider>
       </AnchorHighlightProvider>
       <Analytics />
+      <Toaster />
     </body>
   </html>
 );

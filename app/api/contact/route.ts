@@ -6,25 +6,15 @@ type ContactRequest = {
   name?: string;
   email?: string;
   message?: string;
-} & (
-  | {
-      type: 'contact' | 'consulting' | 'board';
-    }
-  | {
-      type: 'freelance';
-      budget: string;
-    }
-);
+  type?: string;
+};
 
 export const POST = async (req: Request): Promise<Response> => {
-  const { name, email, message, type, ...props } =
-    (await req.json()) as ContactRequest;
-  const authorization = req.headers.get('authorization');
-  const expectedAuthorization = `Bearer ${
-    process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''
-  }`;
+  const { name, email, message, type } = (await req.json()) as ContactRequest;
+  const origin = req.headers.get('origin');
+  const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '').href;
 
-  if (authorization !== expectedAuthorization) {
+  if (origin !== siteUrl) {
     return res(401, { message: 'Unauthorized' });
   }
 
@@ -34,10 +24,6 @@ export const POST = async (req: Request): Promise<Response> => {
 
   if (!process.env.POSTMARK_SERVER_API_TOKEN) {
     return res(500, { message: 'No Postmark API token provided' });
-  }
-
-  if (!process.env.EMAIL_ADDRESS) {
-    return res(500, { message: 'No destination email address provided' });
   }
 
   if (!name) {
@@ -50,6 +36,10 @@ export const POST = async (req: Request): Promise<Response> => {
 
   if (!message) {
     return res(400, { message: 'Missing message field' });
+  }
+
+  if (!type) {
+    return res(400, { message: 'Missing type field' });
   }
 
   try {
@@ -67,7 +57,6 @@ export const POST = async (req: Request): Promise<Response> => {
         replyTo: email,
         token: process.env.POSTMARK_SERVER_API_TOKEN,
         body: message,
-        outro: 'budget' in props ? `Budget: ${props.budget}` : undefined,
         footer: `Sent on ${formatDate(new Date())}`,
       }),
     });

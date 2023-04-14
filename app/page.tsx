@@ -52,6 +52,7 @@ const Home = async (): Promise<ReactNode> => {
           </h1>
           <div className="grid">
             <small>Last updated {updatedAt}.</small>
+            <small>Currently in Delray Beach, Florida.</small>
             <small>© {new Date().getFullYear()} Hayden Bleasel.</small>
           </div>
         </div>

@@ -156,7 +156,7 @@ export const getLastDeployDate = async (): Promise<string> => {
 
   return date.toLocaleString('en-US', {
     timeZone: 'America/New_York',
-    dateStyle: 'medium',
+    dateStyle: 'long',
     timeStyle: 'short',
   });
 };

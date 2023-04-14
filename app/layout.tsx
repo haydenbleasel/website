@@ -5,7 +5,10 @@ import { Tooltip, TooltipProvider } from '@/components/tooltip';
 import ThemeSwitcher from '@/components/themeSwitcher';
 import { sans, serif } from '@/lib/fonts';
 import ContactForm from '@/components/contactForm';
-import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline';
+import {
+  ChatBubbleOvalLeftEllipsisIcon,
+  InformationCircleIcon,
+} from '@heroicons/react/24/outline';
 import Link from '@/components/link';
 import Image from '@/components/image';
 import ScrollAreaProvider from '@/components/scrollArea';
@@ -43,6 +46,20 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
                   height={16}
                   alt="Twitter"
                 />
+              </Link>
+            </Tooltip>
+
+            <Tooltip content="Colophon">
+              <Link
+                href="https://github.com/haydenbleasel/daylight/blob/main/README.md"
+                className={clsx(
+                  'rounded p-2',
+                  'text-neutral-500 dark:text-neutral-400',
+                  'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                )}
+                aria-label="Colophon"
+              >
+                <InformationCircleIcon width={16} height={16} />
               </Link>
             </Tooltip>
 

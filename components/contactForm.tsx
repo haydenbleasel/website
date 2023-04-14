@@ -6,11 +6,26 @@ import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import clsx from 'clsx';
 import Input from './input';
 import Textarea from './textarea';
+import Select from './select';
+
+const contactTypes = [
+  { label: 'Have a chat', value: 'contact' },
+  { label: 'Hire you for freelance work', value: 'freelance' },
+  {
+    label: 'Hire you for consulting work',
+    value: 'consulting',
+  },
+  {
+    label: 'Ask you to join our board',
+    value: 'board',
+  },
+];
 
 const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [type, setType] = useState(contactTypes[0].value);
 
   return (
     <AlertDialogPrimitive.Root>
@@ -63,6 +78,19 @@ const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
                 onChangeText={setEmail}
                 placeholder="
                 janedoe@example.com"
+              />
+              <Select
+                label="I would like to..."
+                name="type"
+                placeholder="Select a type"
+                data={[
+                  {
+                    label: 'Types',
+                    items: contactTypes,
+                  },
+                ]}
+                value={type}
+                onValueChange={setType}
               />
               <Textarea
                 label="Message"

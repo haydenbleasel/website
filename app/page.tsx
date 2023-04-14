@@ -65,7 +65,7 @@ const Home = async (): Promise<ReactNode> => {
         </p>
         <p>
           While my work at Corellium is product strategy and direction, my
-          background is in product design and software engineering. throughout
+          background is in product design and software engineering. Throughout
           my career, I&apos;ve had the privilege of working with many fantastic
           companies and people.
         </p>

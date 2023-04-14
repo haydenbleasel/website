@@ -1,8 +1,10 @@
 /* eslint-disable id-length */
 import type { Config } from 'tailwindcss';
 import typography from '@tailwindcss/typography';
+import animate from 'tailwindcss-animate';
 
 const config: Config = {
+  darkMode: 'class',
   content: ['./{app,components}/**/*.{ts,tsx}'],
   theme: {
     extend: {
@@ -13,7 +15,6 @@ const config: Config = {
             '-webkit-font-smoothing': 'antialiased',
             '-moz-osx-font-smoothing': 'grayscale',
             textRendering: 'geometricPrecision',
-            // color: theme('colors.neutral.950'),
             p: {
               lineHeight: '154%',
             },
@@ -45,10 +46,26 @@ const config: Config = {
             },
           },
         },
+        invert: {
+          css: {
+            h1: {
+              color: theme('colors.white'),
+            },
+            h2: {
+              color: theme('colors.neutral.400'),
+            },
+            small: {
+              color: theme('colors.neutral.400'),
+            },
+            sup: {
+              color: theme('colors.neutral.400'),
+            },
+          },
+        },
       }),
     },
   },
-  plugins: [typography],
+  plugins: [typography, animate],
 };
 
 export default config;

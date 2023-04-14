@@ -5,6 +5,7 @@ import { Tooltip, TooltipProvider } from '@/components/tooltip';
 import ThemeSwitcher from '@/components/themeSwitcher';
 import { sans, serif } from '@/lib/fonts';
 import ContactForm from '@/components/contactForm';
+import { Analytics } from '@vercel/analytics/react';
 import {
   ChatBubbleOvalLeftEllipsisIcon,
   InformationCircleIcon,
@@ -84,6 +85,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
           </div>
         </TooltipProvider>
       </ScrollAreaProvider>
+      <Analytics />
     </body>
   </html>
 );

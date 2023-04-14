@@ -29,8 +29,6 @@ yarn install
 Create an `.env.local` file with the following variables:
 
 ```sh
-VERCEL_TOKEN=""
-VERCEL_PROJECT_ID=""
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 ```
 

@@ -5,3 +5,7 @@
 ::selection {
   background: rgb(229 229 229);
 }
+
+.dark ::selection {
+  background: rgb(64 64 64);
+}

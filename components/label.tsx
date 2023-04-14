@@ -12,8 +12,8 @@ const Label = forwardRef<
   <LabelPrimitive.Root
     ref={ref}
     className={clsx(
-      'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
-      'text-neutral-900 dark:text-white',
+      'text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+      'text-neutral-950 dark:text-white',
       className
     )}
     {...props}

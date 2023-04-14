@@ -29,7 +29,7 @@ const ThemeSwitcher: FC = () => {
       <button
         type="button"
         className={clsx(
-          'fixed bottom-4 right-4 rounded p-2',
+          'rounded p-2',
           'text-neutral-500 dark:text-neutral-400',
           'hover:bg-neutral-100 dark:hover:bg-neutral-800'
         )}

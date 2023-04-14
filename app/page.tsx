@@ -29,8 +29,6 @@ export const metadata: Metadata = {
     "Hi, I'm Hayden Bleasel — Australian product designer and TypeScript developer living in the U.S.",
 };
 
-export const runtime = 'experimental-edge';
-
 const Home = async (): Promise<ReactNode> => {
   const updatedAt = await getLastDeployDate();
 

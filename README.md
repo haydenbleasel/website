@@ -1,38 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Daylight
 
-## Getting Started
+Daylight is the personal website of [Hayden Bleasel](https://haydenbleasel.com/).
 
-First, run the development server:
+![Cover Photo](./app/opengraph-image.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Colophon
+
+This website is something between a CV and a reflection of my identity — my personal design style. Refined simplicity is my way of achieving mental clarity, so I spent most of my time focused on creating a rich narrative without a word wasted.
+
+I’ve redesigned and rebuilt this website maybe 30 times. Every time I do, I bring in influences from around the internet that add to my personal moodboard of sorts. In turn, everything I change and add makes me more comfortable with the style and in turn, helps me discover myself a little more.
+
+## Design
+
+The design for this iteration is inspired by the layout of [Siddharth Arun](https://sdrn.co/) with typography from [Paco Coursey](https://paco.me/) (specifically Söhne) mixed with GT Super. Some of the components are inspired by shadcn's [UI Kit](https://ui.shadcn.com/).
+
+## Technology
+
+It’s built from ground-up with my favourite technologies, starting with Next.js and Vercel for the construct, then Tailwind for utility classes for rapid development.
+
+## Installation
+
+Download the repository and install the dependencies with:
+
+```sh
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create an `.env.local` file with the following variables:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+VERCEL_TOKEN=""
+VERCEL_PROJECT_ID=""
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Then run the local development server with:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```sh
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contributing
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you find any issues or have any suggestions, please feel free to open an issue or pull request.

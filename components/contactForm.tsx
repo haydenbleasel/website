@@ -9,19 +9,7 @@ import Textarea from './textarea';
 import Select from './select';
 import { toast } from '@/components/toaster';
 import { parseError } from '@/lib/error';
-
-const contactTypes = [
-  { label: 'Have a chat', value: 'contact' },
-  { label: 'Hire you for freelance work', value: 'freelance' },
-  {
-    label: 'Hire you for consulting work',
-    value: 'consulting',
-  },
-  {
-    label: 'Ask you to join our board',
-    value: 'board',
-  },
-];
+import contactTypes from '@/lib/contact';
 
 const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
   const [name, setName] = useState('');

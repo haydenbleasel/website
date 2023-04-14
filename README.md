@@ -31,9 +31,10 @@ yarn install
 Create an `.env.local` file with the following variables:
 
 ```sh
-NEXT_PUBLIC_SITE_URL="http://localhost:3000"
-COMLINK_PASSPHRASE=""
-POSTMARK_SERVER_API_TOKEN=""
+NEXT_PUBLIC_SITE_URL="http://localhost:3000" # The URL of the website
+COMLINK_PASSPHRASE="" # The passphrase for the Comlink API
+POSTMARK_SERVER_API_TOKEN="" # The API token for Postmark
+EMAIL_ADDRESS="" # The email address to send emails to
 ```
 
 Then run the local development server with:

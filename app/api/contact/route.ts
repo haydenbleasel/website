@@ -1,3 +1,4 @@
+import contactTypes from '@/lib/contact';
 import { parseError } from '@/lib/error';
 import { res } from '@/lib/response';
 import { getDate } from '@/lib/utils';
@@ -26,6 +27,10 @@ export const POST = async (req: Request): Promise<Response> => {
     return res(500, { message: 'No Postmark API token provided' });
   }
 
+  if (!process.env.EMAIL_ADDRESS) {
+    return res(500, { message: 'No email address provided' });
+  }
+
   if (!name) {
     return res(400, { message: 'Missing name field' });
   }
@@ -42,6 +47,10 @@ export const POST = async (req: Request): Promise<Response> => {
     return res(400, { message: 'Missing type field' });
   }
 
+  const typeLabel = contactTypes.find(
+    (contactType) => contactType.value === type
+  )?.label;
+
   try {
     const response = await fetch('https://comlink.beskar.co/api/send', {
       headers: {
@@ -52,11 +61,12 @@ export const POST = async (req: Request): Promise<Response> => {
       body: JSON.stringify({
         from: 'noreply@beskar.co',
         to: process.env.EMAIL_ADDRESS,
-        subject: `Incoming ${type} message from ${name}`,
-        title: `Incoming ${type} message from ${name}`,
+        subject: `Incoming message from ${name}`,
+        title: `Incoming message from ${name}`,
         replyTo: email,
         token: process.env.POSTMARK_SERVER_API_TOKEN,
-        body: message,
+        body: `I would like to ${typeLabel?.toLowerCase() ?? 'do something'}.`,
+        outro: message,
         footer: `Sent on ${getDate()}`,
       }),
     });

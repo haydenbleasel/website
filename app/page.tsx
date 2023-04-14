@@ -60,10 +60,12 @@ const Home = async (): Promise<ReactNode> => {
       <Section>
         <p>
           I currently lead the Product and Design teams at{' '}
-          <Link href="#">Corellium</Link>, a virtual hardware lab for security
-          researchers, pen-testers, IoT developers and government defense
-          contractors. Our mission is to make the world a safer, more secure
-          place by accelerating security R&D.
+          <Link href="https://read.cv/haydenbleasel/LoRxZsHDY2SYlrWBolbo">
+            Corellium
+          </Link>
+          , a virtual hardware lab for security researchers, pen-testers, IoT
+          developers and government defense contractors. Our mission is to make
+          the world a safer, more secure place by accelerating security R&amp;D.
         </p>
         <p>
           While my work at Corellium is product strategy and direction, my

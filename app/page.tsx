@@ -10,6 +10,7 @@ import Footnote from '@/components/footnote';
 import type { Metadata } from 'next';
 
 import avatar from '@/public/images/profile.jpg';
+import clsx from 'clsx';
 
 const logos = [
   '/images/australian-ethical.svg',
@@ -78,7 +79,10 @@ const Home = async (): Promise<ReactNode> => {
                 width={113}
                 height={113}
                 alt=""
-                className="m-0 h-auto max-h-[2.5rem] w-full opacity-40"
+                className={clsx(
+                  'm-0 h-auto max-h-[2.5rem] w-full opacity-40',
+                  'dark:brightness-0 dark:invert'
+                )}
               />
             </div>
           ))}

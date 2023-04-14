@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   title: 'Hayden Bleasel — Product and Design Lead at Corellium',
   description:
     "Hi, I'm Hayden Bleasel — Australian product designer and TypeScript developer living in the U.S.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? ''),
 };
 
 const Home = async (): Promise<ReactNode> => {

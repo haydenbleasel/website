@@ -3,7 +3,7 @@ import './globals.css';
 import clsx from 'clsx';
 import { Tooltip, TooltipProvider } from '@/components/tooltip';
 import ThemeSwitcher from '@/components/themeSwitcher';
-import { sans } from '@/lib/fonts';
+import { sans, serif } from '@/lib/fonts';
 import ContactForm from '@/components/contactForm';
 import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline';
 import Link from '@/components/link';
@@ -17,7 +17,11 @@ type RootLayoutProps = {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
     <body
-      className={clsx(sans.variable, 'bg-white font-sans dark:bg-neutral-950')}
+      className={clsx(
+        sans.variable,
+        serif.variable,
+        'bg-white font-sans dark:bg-neutral-950'
+      )}
     >
       <ScrollAreaProvider>
         <TooltipProvider>

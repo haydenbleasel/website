@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        serif: ['var(--font-serif)', ...defaultTheme.fontFamily.serif],
         sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
       },
       typography: (theme: (str: string) => string) => ({
@@ -31,7 +32,10 @@ const config: Config = {
             h1: {
               color: theme('colors.neutral.950'),
               margin: 0,
-              fontWeight: theme('fontWeight.semibold'),
+              fontWeight: theme('fontWeight.normal'),
+              fontFamily: [theme('fontFamily.serif')],
+              fontSize: '2.75rem',
+              fontStyle: 'italic',
             },
             h2: {
               marginTop: 0,
@@ -51,6 +55,9 @@ const config: Config = {
             },
             ol: {
               marginBottom: 0,
+            },
+            li: {
+              lineHeight: '160%',
             },
           },
         },

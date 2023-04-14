@@ -1,4 +1,12 @@
 import localFont from 'next/font/local';
+import { Newsreader as createSerif } from 'next/font/google';
+
+export const serif = createSerif({
+  variable: '--font-serif',
+  weight: '400',
+  subsets: ['latin'],
+  style: 'italic',
+});
 
 export const sans = localFont({
   variable: '--font-sans',

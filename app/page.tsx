@@ -102,14 +102,17 @@ const Home = async (): Promise<ReactNode> => {
           and even orbital (outer space) logistics.
         </p>
         <p>
-          Towards the end of 2020 I also contracted for R/GA, where I worked on
-          a variety of projects for large clients with various teams of talented
-          people. From 2016 &mdash; 2017, I was Head of Product and Design at{' '}
+          Towards the end of 2020 I contracted for R/GA as an Experience
+          Designer, where I worked on a variety of projects for large clients
+          with various teams of talented people.
+        </p>
+        <p>
+          From 2016 &mdash; 2017, I was Head of Product and Design at{' '}
           <Link href="https://read.cv/haydenbleasel/Gv4GTLVsJcTorLhf0vqB">
             Spaceship
           </Link>{' '}
           where we raised $20M+ in funding, grew a waitlist of 28K+ people and
-          grew to $100M+ in FUM.
+          grew to $100M+ in funds under management.
         </p>
         <p>
           In the summer of 2015, I was a Product Design intern at{' '}
@@ -117,8 +120,10 @@ const Home = async (): Promise<ReactNode> => {
             Palantir
           </Link>{' '}
           where I worked with a small team on an anti-fraud and big data
-          analysis project for a U.S. government agency. Before all that, I did
-          a whole bunch of other stuff you can read on my{' '}
+          analysis project for a U.S. government agency.
+        </p>
+        <p>
+          For more work history, see my{' '}
           <Link href="https://read.cv/haydenbleasel">CV</Link>.
         </p>
       </Section>
@@ -144,10 +149,10 @@ const Home = async (): Promise<ReactNode> => {
           </li>
         </ul>
         <p>
-          Years ago while I was at university, I created{' '}
-          <Link href="https://www.beskar.co/blog/presumi">Presumi</Link> — a job
-          application and resume tracking platform that I ended up licensing to
-          SEEK in Hong Kong for a while. During that time, we managed 100K+ job
+          Years ago, I created{' '}
+          <Link href="https://www.beskar.co/blog/presumi">Presumi</Link>{' '}
+          (closed) — a job application and resume tracking platform. I licensed
+          it to SEEK in Hong Kong for a while, where we managed 100K+ job
           applications and processed 1M+ data points.
         </p>
         <p>
@@ -158,10 +163,9 @@ const Home = async (): Promise<ReactNode> => {
       </Section>
       <Section title="Education">
         <p>
-          In 2016, I graduated with two degrees from the University of
-          Technology, Sydney — a Bachelor of Business (majoring in Management)
-          and a Bachelor of Science in Information Technology (majoring in
-          Enterprise Systems Development).
+          In 2016, I graduated from the University of Technology, Sydney with a
+          Bachelor of Business (Management) and a Bachelor of Science in
+          Information Technology (Enterprise Systems Development).
         </p>
         <p>
           I also completed{' '}

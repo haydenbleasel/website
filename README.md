@@ -12,7 +12,9 @@ I’ve redesigned and rebuilt this website maybe 30 times. Every time I do, I br
 
 ## Design
 
-The design for this iteration is inspired by the layout of [Siddharth Arun](https://sdrn.co/) with typography from [Paco Coursey](https://paco.me/) (specifically Söhne) mixed with GT Super. Some of the components are inspired by shadcn's [UI Kit](https://ui.shadcn.com/).
+The design for this iteration is inspired by the layout of [Siddharth Arun](https://sdrn.co/) and the typography of [Paco Coursey](https://paco.me/). Some of the components are inspired by shadcn's [UI Kit](https://ui.shadcn.com/).
+
+The primary typeface is [TWK Lausanne](https://www.weltkern.com/shop/detail-typeface/lausanne) by [Weltkern](https://www.weltkern.com/), a compact and sophisticated sans-serif that reminds me of historical typefaces that I love using in a super-mimimalist way, with (as the author Nizar Kazan noted) an “ultra-organic” aesthetic. It's backed up by [Tiempos Fine](https://klim.co.nz/retail-fonts/tiempos-fine/), a contemporary serif for editorial typography by [Klim Type Foundry](https://klim.co.nz/).
 
 ## Technology
 

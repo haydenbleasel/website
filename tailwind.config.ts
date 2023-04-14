@@ -19,22 +19,28 @@ const config: Config = {
             maxWidth: '31.25rem',
             '-webkit-font-smoothing': 'antialiased',
             '-moz-osx-font-smoothing': 'grayscale',
-            textRendering: 'geometricPrecision',
+            textRendering: 'optimizeLegibility',
             fontWeight: theme('fontWeight.light'),
-            color: theme('colors.neutral.950'),
             p: {
               lineHeight: '160%',
+              transition: 'color 0.2s ease-in-out',
             },
             a: {
               fontWeight: theme('fontWeight.light'),
-              color: 'inherit',
+              textDecorationColor: theme('colors.neutral.300'),
+              textDecorationThickness: '1px',
+              textUnderlineOffset: '2.5px',
+              transition: 'text-decoration-color 0.2s ease-in-out',
+              '&:hover': {
+                textDecorationColor: 'inherit',
+              },
             },
             h1: {
               color: theme('colors.neutral.950'),
               margin: 0,
-              fontWeight: theme('fontWeight.normal'),
+              fontWeight: theme('fontWeight.light'),
               fontFamily: [theme('fontFamily.serif')],
-              fontSize: '2.75rem',
+              fontSize: '2.625rem',
               fontStyle: 'italic',
             },
             h2: {
@@ -63,7 +69,6 @@ const config: Config = {
         },
         invert: {
           css: {
-            color: theme('colors.white'),
             h1: {
               color: theme('colors.white'),
             },

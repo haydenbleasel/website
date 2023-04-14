@@ -1,11 +1,14 @@
 import localFont from 'next/font/local';
-import { Newsreader as createSerif } from 'next/font/google';
 
-export const serif = createSerif({
+export const serif = localFont({
   variable: '--font-serif',
-  weight: '400',
-  subsets: ['latin'],
-  style: 'italic',
+  src: [
+    {
+      path: '../public/fonts/tiempos-fine-light-italic.woff2',
+      weight: '300',
+      style: 'italic',
+    },
+  ],
 });
 
 export const sans = localFont({

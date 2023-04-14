@@ -16,6 +16,7 @@
     "@radix-ui/react-scroll-area": "^1.0.3",
     "@radix-ui/react-select": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.0.5",
+    "@react-hookz/web": "^23.0.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",

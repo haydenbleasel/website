@@ -1,6 +1,6 @@
 # Daylight
 
-Daylight is the personal website of [Hayden Bleasel](https://haydenbleasel.com/).
+The personal website of [Hayden Bleasel](https://haydenbleasel.com/).
 
 ![Cover Photo](./app/opengraph-image.png)
 

@@ -35,6 +35,7 @@ NEXT_PUBLIC_SITE_URL="http://localhost:3000" # The URL of the website
 COMLINK_PASSPHRASE="" # The passphrase for the Comlink API
 POSTMARK_SERVER_API_TOKEN="" # The API token for Postmark
 EMAIL_ADDRESS="" # The email address to send emails to
+EDGE_CONFIG="" # The configuration for the Vercel Edge Config
 ```
 
 Then run the local development server with:

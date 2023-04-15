@@ -34,6 +34,12 @@ const config: Config = {
               '&:hover': {
                 textDecorationColor: 'inherit',
               },
+              '&:focus': {
+                outline: 'none',
+                boxShadow: `0 0 0 1px ${theme('colors.neutral.300')}`,
+                textDecoration: 'none',
+                borderRadius: theme('borderRadius.sm'),
+              },
             },
             h1: {
               color: theme('colors.neutral.950'),

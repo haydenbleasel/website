@@ -11,6 +11,8 @@ import { toast } from '@/components/toaster';
 import { parseError } from '@/lib/error';
 import contactTypes from '@/lib/contact';
 
+const emailRegex = /^\S+@\S+\.\S+$/u;
+
 const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -111,6 +113,8 @@ const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
                 value={name}
                 onChangeText={setName}
                 placeholder="Jane Doe"
+                autoFocus
+                required
               />
               <Input
                 label="Email"
@@ -118,6 +122,8 @@ const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
                 onChangeText={setEmail}
                 placeholder="
                 janedoe@example.com"
+                pattern={emailRegex.source}
+                required
               />
               <Select
                 label="I would like to..."
@@ -131,12 +137,14 @@ const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
                 ]}
                 value={type}
                 onValueChange={setType}
+                required
               />
               <Textarea
                 label="Message"
                 value={message}
                 onChangeText={setMessage}
                 placeholder="Hi, I would like to..."
+                required
               />
             </div>
             <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">

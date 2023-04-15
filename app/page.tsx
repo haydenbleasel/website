@@ -1,6 +1,6 @@
 import Image from '@/components/image';
 import Link from '@/components/link';
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { getDate, listFormatter } from '@/lib/utils';
 import Section from '@/components/section';
 import jellypepperClients from '@/data/jellypepper';
@@ -11,6 +11,7 @@ import type { Metadata } from 'next';
 import avatar from '@/public/images/profile.jpg';
 import Logos from '@/components/logos';
 import { get } from '@vercel/edge-config';
+import ContactButton from '@/components/contactButton';
 
 const updatedAt = getDate();
 
@@ -157,11 +158,12 @@ const Home = async (): Promise<ReactNode> => {
       </Section>
       <Section title="Availability">
         <p>
-          I have limited availability and occasionally take on shorter
-          engagements, such as freelance and consulting roles. I&apos;m also
-          open to joining boards and advisory roles. If you&apos;re looking for
-          help with your product or design, please do reach out via email.
+          I have limited availability and occasionally take on select projects,
+          such as freelance and consulting roles. I&apos;m also open to joining
+          boards and advisory roles. If you&apos;re interested, please get in
+          touch.
         </p>
+        <ContactButton />
       </Section>
       <Section>
         <ol className="text-xs text-neutral-500">

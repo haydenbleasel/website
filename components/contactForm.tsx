@@ -1,6 +1,6 @@
 'use client';
 
-import type { FC, FormEventHandler, ReactNode } from 'react';
+import type { FC, FormEventHandler } from 'react';
 import { useState } from 'react';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import clsx from 'clsx';
@@ -10,15 +10,17 @@ import Select from './select';
 import { toast } from '@/components/toaster';
 import { parseError } from '@/lib/error';
 import contactTypes from '@/lib/contact';
+import useContactForm from '@/hooks/useContactForm';
 
 const emailRegex = /^\S+@\S+\.\S+$/u;
 
-const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
+const ContactForm: FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [type, setType] = useState(contactTypes[0].value);
   const [sending, setSending] = useState(false);
+  const { open, setOpen } = useContactForm();
 
   const handleSubmit: FormEventHandler = async (event) => {
     event.preventDefault();
@@ -67,10 +69,7 @@ const ContactForm: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   return (
-    <AlertDialogPrimitive.Root>
-      <AlertDialogPrimitive.Trigger asChild>
-        {children}
-      </AlertDialogPrimitive.Trigger>
+    <AlertDialogPrimitive.Root open={open} onOpenChange={setOpen}>
       <AlertDialogPrimitive.Portal>
         <form
           className="fixed inset-0 z-50 flex items-end justify-center sm:items-center"

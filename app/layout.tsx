@@ -6,10 +6,7 @@ import ThemeSwitcher from '@/components/themeSwitcher';
 import { sans, serif } from '@/lib/fonts';
 import ContactForm from '@/components/contactForm';
 import { Analytics } from '@vercel/analytics/react';
-import {
-  ChatBubbleOvalLeftEllipsisIcon,
-  InformationCircleIcon,
-} from '@heroicons/react/24/outline';
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import Link from '@/components/link';
 import Image from '@/components/image';
 import ScrollAreaProvider from '@/components/scrollArea';
@@ -17,6 +14,7 @@ import AnchorHighlightProvider from '@/components/anchorHighlightProvider';
 import { Toaster } from '@/components/toaster';
 import type { Person } from 'schema-dts';
 import { toJsonLd } from '@/lib/utils';
+import ContactIcon from '@/components/contactIcon';
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -154,26 +152,11 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
                   </Link>
                 </Tooltip>
 
-                <ContactForm>
-                  <div>
-                    <Tooltip content="Get in touch">
-                      <button
-                        type="button"
-                        className={clsx(
-                          'rounded p-2',
-                          'text-neutral-500 dark:text-neutral-400',
-                          'hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                        )}
-                        aria-label="Toggle dark mode"
-                      >
-                        <ChatBubbleOvalLeftEllipsisIcon
-                          width={16}
-                          height={16}
-                        />
-                      </button>
-                    </Tooltip>
-                  </div>
-                </ContactForm>
+                <div>
+                  <Tooltip content="Get in touch">
+                    <ContactIcon />
+                  </Tooltip>
+                </div>
                 <ThemeSwitcher />
               </div>
             </main>
@@ -182,6 +165,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       </AnchorHighlightProvider>
       <Analytics />
       <Toaster />
+      <ContactForm />
       {/* eslint-disable-next-line react/no-danger, @typescript-eslint/naming-convention */}
       <div dangerouslySetInnerHTML={{ __html: profileJsonLd }} />
     </body>

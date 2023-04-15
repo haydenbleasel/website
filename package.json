@@ -30,7 +30,8 @@
     "server-only": "^0.0.1",
     "slugify": "^1.6.6",
     "sonner": "^0.3.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@beskar-labs/harmony": "^2.1.1",

@@ -3,17 +3,13 @@ import NextLink from 'next/link';
 
 type NextLinkProps = ComponentPropsWithRef<typeof NextLink>;
 
-type LinkProps = Omit<NextLinkProps, 'href'> & {
-  href: string;
-};
-
-const Link: FC<LinkProps> = ({ href, ...props }) => {
-  const isExternal = href.startsWith('http');
+const Link: FC<NextLinkProps> = (props) => {
+  const { href } = props;
+  const isExternal = typeof href === 'string' ? href.startsWith('http') : false;
 
   return (
     <NextLink
       {...props}
-      href={href}
       rel={isExternal ? 'noopener noreferrer' : undefined}
       target={isExternal ? '_blank' : undefined}
     />

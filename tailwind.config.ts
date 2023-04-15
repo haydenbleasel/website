@@ -36,7 +36,7 @@ const config: Config = {
               },
               '&:focus': {
                 outline: 'none',
-                boxShadow: `0 0 0 1px ${theme('colors.neutral.300')}`,
+                boxShadow: `0 0 0 2px ${theme('colors.neutral.400')}`,
                 textDecoration: 'none',
                 borderRadius: theme('borderRadius.sm'),
               },
@@ -83,6 +83,9 @@ const config: Config = {
               textDecorationColor: theme('colors.neutral.600'),
               '&:hover': {
                 textDecorationColor: 'inherit',
+              },
+              '&:focus': {
+                boxShadow: `0 0 0 2px ${theme('colors.neutral.500')}`,
               },
             },
             h1: {

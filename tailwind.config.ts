@@ -67,6 +67,7 @@ const config: Config = {
             },
             li: {
               lineHeight: '160%',
+              transition: 'color 0.2s ease-in-out',
             },
           },
         },

@@ -4,16 +4,26 @@ import type { FC, ReactNode } from 'react';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import clsx from 'clsx';
 
-const ScrollAreaProvider: FC<{ children: ReactNode }> = ({ children }) => (
+type ScrollAreaProviderProps = {
+  orientation?: ScrollArea.ScrollAreaScrollbarProps['orientation'];
+  children: ReactNode;
+};
+
+const ScrollAreaProvider: FC<ScrollAreaProviderProps> = ({
+  orientation = 'vertical',
+  children,
+}) => (
   <ScrollArea.Root className="relative h-screen w-full overflow-hidden">
     <ScrollArea.Viewport className="h-full w-full">
       {children}
     </ScrollArea.Viewport>
     <ScrollArea.Scrollbar
-      orientation="vertical"
+      orientation={orientation}
       className={clsx(
         'flex touch-none select-none transition-colors',
-        'h-full w-2.5 border-l border-l-transparent p-[1px]'
+        orientation === 'vertical'
+          ? 'h-full w-2.5 border-l border-l-transparent p-[1px]'
+          : 'h-2.5 border-t border-t-transparent p-[1px]'
       )}
     />
     <ScrollArea.Corner />

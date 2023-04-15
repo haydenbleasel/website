@@ -74,6 +74,29 @@ const profileJsonLd = toJsonLd<Person>({
   },
 });
 
+const socialLinks = [
+  {
+    href: 'https://twitter.com/haydenbleasel',
+    name: 'Twitter',
+    image: '/images/social/twitter.svg',
+  },
+  {
+    href: 'https://github.com/haydenbleasel',
+    name: 'GitHub',
+    image: '/images/social/github.svg',
+  },
+  {
+    href: 'https://dribbble.com/haydenbleasel',
+    name: 'Dribbble',
+    image: '/images/social/dribbble.svg',
+  },
+  {
+    href: 'https://www.linkedin.com/in/haydenbleasel/',
+    name: 'LinkedIn',
+    image: '/images/social/linkedin.svg',
+  },
+];
+
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
     <body
@@ -88,24 +111,32 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
           <TooltipProvider>
             {children}
             <div className="fixed bottom-4 right-4 flex flex-col gap-1">
-              <Tooltip content="Twitter">
-                <Link
-                  href="https://twitter.com/haydenbleasel"
-                  className={clsx(
-                    'rounded p-2',
-                    'text-neutral-500 dark:text-neutral-400',
-                    'hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                  )}
-                  aria-label="Twitter"
-                >
-                  <Image
-                    src="/images/social/twitter.svg"
-                    width={16}
-                    height={16}
-                    alt="Twitter"
-                  />
-                </Link>
-              </Tooltip>
+              {socialLinks.map((link) => (
+                <Tooltip content={link.name} key={link.name}>
+                  <Link
+                    href={link.href}
+                    className={clsx(
+                      'rounded p-2',
+                      'text-neutral-500 dark:text-neutral-400',
+                      'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                    )}
+                    aria-label={link.name}
+                  >
+                    <Image
+                      src={link.image}
+                      width={16}
+                      height={16}
+                      alt={link.name}
+                      className={clsx(
+                        link.name === 'GitHub' &&
+                          'dark:brightness-0 dark:invert'
+                      )}
+                    />
+                  </Link>
+                </Tooltip>
+              ))}
+
+              <hr className="m-2 border-neutral-300 dark:border-neutral-700" />
 
               <Tooltip content="Colophon">
                 <Link

@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import ScrollAreaProvider from './scrollArea';
 
 const logos = [
-  '/images/logos/australian-ethical.svg',
   '/images/logos/canva.svg',
+  '/images/logos/eslint.svg',
   '/images/logos/google.svg',
   '/images/logos/national-geographic.svg',
   '/images/logos/nike.svg',
@@ -25,7 +25,7 @@ const Logos: FC = () => (
             height={113}
             alt=""
             className={clsx(
-              'm-0 h-auto max-h-[2.5rem] w-full opacity-40',
+              'm-0 h-auto max-h-[2.5rem] w-full object-contain',
               'dark:brightness-0 dark:invert'
             )}
           />

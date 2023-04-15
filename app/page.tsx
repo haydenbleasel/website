@@ -12,6 +12,7 @@ import avatar from '@/public/images/profile.jpg';
 import Logos from '@/components/logos';
 import { get } from '@vercel/edge-config';
 import ContactButton from '@/components/contactButton';
+import rgaClients from '@/data/rga';
 
 const updatedAt = getDate();
 
@@ -81,7 +82,7 @@ const Home = async (): Promise<ReactNode> => {
         <p>
           Towards the end of 2020 I contracted for R/GA as an Experience
           Designer, where I worked on a variety of projects for large clients
-          with various teams of talented people.
+          <Footnote index={2} />. with various teams of talented people.
         </p>
         <p>
           From 2016 &mdash; 2017, I was Head of Product and Design at{' '}
@@ -135,7 +136,7 @@ const Home = async (): Promise<ReactNode> => {
         <p>
           I also freelance occasionally and have worked with some brilliant
           companies and organizations
-          <Footnote index={2} />.
+          <Footnote index={3} />.
         </p>
       </Section>
       <Section title="Education">
@@ -168,7 +169,8 @@ const Home = async (): Promise<ReactNode> => {
       <Section>
         <ol className="text-xs text-neutral-500">
           <li id="fn-1">{listFormatter.format(jellypepperClients)}.</li>
-          <li id="fn-2">{listFormatter.format(freelanceClients)}.</li>
+          <li id="fn-2">{listFormatter.format(rgaClients)}.</li>
+          <li id="fn-3">{listFormatter.format(freelanceClients)}.</li>
         </ol>
       </Section>
     </>

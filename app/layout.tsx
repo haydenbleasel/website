@@ -154,7 +154,9 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
 
                 <div>
                   <Tooltip content="Get in touch">
-                    <ContactIcon />
+                    <div>
+                      <ContactIcon />
+                    </div>
                   </Tooltip>
                 </div>
                 <ThemeSwitcher />

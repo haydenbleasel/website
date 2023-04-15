@@ -107,7 +107,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       )}
     >
       <AnchorHighlightProvider>
-        <ScrollAreaProvider>
+        <ScrollAreaProvider className="h-screen">
           <TooltipProvider>
             {children}
             <div className="bottom-4 right-4 flex flex-row gap-1 sm:fixed sm:flex-col">

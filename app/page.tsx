@@ -9,18 +9,7 @@ import Footnote from '@/components/footnote';
 import type { Metadata } from 'next';
 
 import avatar from '@/public/images/profile.jpg';
-import clsx from 'clsx';
-
-const logos = [
-  '/images/australian-ethical.svg',
-  '/images/canva.svg',
-  '/images/google.svg',
-  '/images/national-geographic.svg',
-  '/images/nike.svg',
-  '/images/timberland.svg',
-  '/images/toyota.svg',
-  '/images/westfield.svg',
-];
+import Logos from '@/components/logos';
 
 const updatedAt = getDate();
 
@@ -71,22 +60,7 @@ const Home: FC = () => (
         career, I&apos;ve had the privilege of working with many fantastic
         companies and people.
       </p>
-      <div className="mt-8 grid grid-cols-4 gap-x-16 gap-y-8">
-        {logos.map((logo) => (
-          <div className="flex aspect-video w-full items-center" key={logo}>
-            <Image
-              src={logo}
-              width={113}
-              height={113}
-              alt=""
-              className={clsx(
-                'm-0 h-auto max-h-[2.5rem] w-full opacity-40',
-                'dark:brightness-0 dark:invert'
-              )}
-            />
-          </div>
-        ))}
-      </div>
+      <Logos />
     </Section>
     <Section title="Work">
       <p>

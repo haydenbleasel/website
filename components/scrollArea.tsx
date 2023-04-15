@@ -7,13 +7,17 @@ import clsx from 'clsx';
 type ScrollAreaProviderProps = {
   orientation?: ScrollArea.ScrollAreaScrollbarProps['orientation'];
   children: ReactNode;
+  className?: string;
 };
 
 const ScrollAreaProvider: FC<ScrollAreaProviderProps> = ({
   orientation = 'vertical',
   children,
+  className,
 }) => (
-  <ScrollArea.Root className="relative h-screen w-full overflow-hidden">
+  <ScrollArea.Root
+    className={clsx('relative w-full overflow-hidden', className)}
+  >
     <ScrollArea.Viewport className="h-full w-full">
       {children}
     </ScrollArea.Viewport>

@@ -1,18 +1,21 @@
-import type { ComponentPropsWithRef, FC } from 'react';
-import NextLink from 'next/link';
+import type { FC, HTMLProps } from 'react';
 
-type NextLinkProps = ComponentPropsWithRef<typeof NextLink>;
+type LinkProps = Omit<HTMLProps<HTMLAnchorElement>, 'href'> & {
+  href: string;
+};
 
-const Link: FC<NextLinkProps> = (props) => {
-  const { href } = props;
-  const isExternal = typeof href === 'string' ? href.startsWith('http') : false;
+const Link: FC<LinkProps> = ({ href, children, ...props }) => {
+  const isExternal = href.startsWith('http');
 
   return (
-    <NextLink
+    <a
       {...props}
+      href={href}
       rel={isExternal ? 'noopener noreferrer' : undefined}
       target={isExternal ? '_blank' : undefined}
-    />
+    >
+      {children}
+    </a>
   );
 };
 

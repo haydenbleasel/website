@@ -83,7 +83,7 @@ const Home = (): ReactNode => {
         <p>
           Towards the end of 2020 I contracted for R/GA as an Experience
           Designer, where I worked on a variety of projects for large clients
-          <Footnote index={2} />. with various teams of talented people.
+          <Footnote index={2} /> with various teams of talented people.
         </p>
         <p>
           From 2016 &mdash; 2017, I was Head of Product and Design at{' '}

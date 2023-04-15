@@ -129,7 +129,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
                         height={16}
                         alt={link.name}
                         className={clsx(
-                          'm-0 h-4 w-4',
+                          'm-0 h-4 w-4 object-contain',
                           link.name === 'GitHub' &&
                             'dark:brightness-0 dark:invert'
                         )}

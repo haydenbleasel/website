@@ -109,68 +109,74 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       <AnchorHighlightProvider>
         <ScrollAreaProvider className="h-screen">
           <TooltipProvider>
-            {children}
-            <div className="bottom-4 right-4 flex flex-row gap-1 sm:fixed sm:flex-col">
-              {socialLinks.map((link) => (
-                <Tooltip content={link.name} key={link.name}>
-                  <Link
-                    href={link.href}
-                    className={clsx(
-                      'rounded p-2',
-                      'text-neutral-500 dark:text-neutral-400',
-                      'hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                    )}
-                    aria-label={link.name}
-                  >
-                    <Image
-                      src={link.image}
-                      width={16}
-                      height={16}
-                      alt={link.name}
-                      className={clsx(
-                        link.name === 'GitHub' &&
-                          'dark:brightness-0 dark:invert'
-                      )}
-                    />
-                  </Link>
-                </Tooltip>
-              ))}
-
-              <hr className="m-2 border-neutral-300 dark:border-neutral-700" />
-
-              <Tooltip content="Colophon">
-                <Link
-                  href="https://github.com/haydenbleasel/daylight/blob/main/README.md"
-                  className={clsx(
-                    'rounded p-2',
-                    'text-neutral-500 dark:text-neutral-400',
-                    'hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                  )}
-                  aria-label="Colophon"
-                >
-                  <InformationCircleIcon width={16} height={16} />
-                </Link>
-              </Tooltip>
-
-              <ContactForm>
-                <div>
-                  <Tooltip content="Get in touch">
-                    <button
-                      type="button"
+            <main className="prose prose-neutral mx-4 my-24 grid gap-16 dark:prose-invert sm:m-[11%] lg:m-[180px]">
+              {children}
+              <div className="bottom-4 right-4 flex flex-row gap-1 sm:fixed sm:flex-col">
+                {socialLinks.map((link) => (
+                  <Tooltip content={link.name} key={link.name}>
+                    <Link
+                      href={link.href}
                       className={clsx(
                         'rounded p-2',
                         'text-neutral-500 dark:text-neutral-400',
                         'hover:bg-neutral-100 dark:hover:bg-neutral-800'
                       )}
-                      aria-label="Toggle dark mode"
+                      aria-label={link.name}
                     >
-                      <ChatBubbleOvalLeftEllipsisIcon width={16} height={16} />
-                    </button>
+                      <Image
+                        src={link.image}
+                        width={16}
+                        height={16}
+                        alt={link.name}
+                        className={clsx(
+                          'm-0 h-4 w-4',
+                          link.name === 'GitHub' &&
+                            'dark:brightness-0 dark:invert'
+                        )}
+                      />
+                    </Link>
                   </Tooltip>
-                </div>
-              </ContactForm>
-              <ThemeSwitcher />
-            </div>
+                ))}
+
+                <hr className="m-2 border-neutral-300 dark:border-neutral-700" />
+
+                <Tooltip content="Colophon">
+                  <Link
+                    href="https://github.com/haydenbleasel/daylight/blob/main/README.md"
+                    className={clsx(
+                      'rounded p-2',
+                      'text-neutral-500 dark:text-neutral-400',
+                      'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                    )}
+                    aria-label="Colophon"
+                  >
+                    <InformationCircleIcon width={16} height={16} />
+                  </Link>
+                </Tooltip>
+
+                <ContactForm>
+                  <div>
+                    <Tooltip content="Get in touch">
+                      <button
+                        type="button"
+                        className={clsx(
+                          'rounded p-2',
+                          'text-neutral-500 dark:text-neutral-400',
+                          'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                        )}
+                        aria-label="Toggle dark mode"
+                      >
+                        <ChatBubbleOvalLeftEllipsisIcon
+                          width={16}
+                          height={16}
+                        />
+                      </button>
+                    </Tooltip>
+                  </div>
+                </ContactForm>
+                <ThemeSwitcher />
+              </div>
+            </main>
           </TooltipProvider>
         </ScrollAreaProvider>
       </AnchorHighlightProvider>

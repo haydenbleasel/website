@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 const Home: FC = () => (
-  <main className="prose prose-neutral mx-4 my-24 grid gap-16 dark:prose-invert sm:m-[11%] lg:m-[180px]">
+  <>
     <Section>
       <Image
         src={avatar}
@@ -165,7 +165,7 @@ const Home: FC = () => (
         <li id="fn-2">{listFormatter.format(freelanceClients)}.</li>
       </ol>
     </Section>
-  </main>
+  </>
 );
 
 export default Home;

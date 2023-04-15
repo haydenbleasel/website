@@ -69,6 +69,12 @@ const config: Config = {
         },
         invert: {
           css: {
+            a: {
+              textDecorationColor: theme('colors.neutral.600'),
+              '&:hover': {
+                textDecorationColor: 'inherit',
+              },
+            },
             h1: {
               color: theme('colors.white'),
             },

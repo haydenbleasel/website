@@ -40,8 +40,11 @@ const config: Config = {
               margin: 0,
               fontWeight: theme('fontWeight.light'),
               fontFamily: [theme('fontFamily.serif')],
-              fontSize: '2.625rem',
+              fontSize: '2rem',
               fontStyle: 'italic',
+              '@screen sm': {
+                fontSize: '2.625rem',
+              },
             },
             h2: {
               marginTop: 0,

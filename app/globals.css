@@ -9,3 +9,11 @@
 .dark ::selection {
   background: rgb(64 64 64);
 }
+
+section > p:first-of-type {
+  margin-top: 0;
+}
+
+section > p:last-of-type {
+  margin-bottom: 0;
+}

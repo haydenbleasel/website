@@ -110,7 +110,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
         <ScrollAreaProvider>
           <TooltipProvider>
             {children}
-            <div className="fixed bottom-4 right-4 flex flex-col gap-1">
+            <div className="bottom-4 right-4 flex flex-row gap-1 sm:fixed sm:flex-col">
               {socialLinks.map((link) => (
                 <Tooltip content={link.name} key={link.name}>
                   <Link

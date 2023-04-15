@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 const Home: FC = () => (
-  <main className="prose prose-neutral m-[11%] grid gap-16 dark:prose-invert lg:m-[180px]">
+  <main className="prose prose-neutral mx-4 my-24 grid gap-16 dark:prose-invert sm:m-[11%] lg:m-[180px]">
     <Section>
       <Image
         src={avatar}

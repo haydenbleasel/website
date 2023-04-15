@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 
 import avatar from '@/public/images/profile.jpg';
 import Logos from '@/components/logos';
-import { get } from '@vercel/edge-config';
+// import { get } from '@vercel/edge-config';
 import ContactButton from '@/components/contactButton';
 import rgaClients from '@/data/rga';
 
@@ -23,8 +23,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? ''),
 };
 
-const Home = async (): Promise<ReactNode> => {
-  const edge = await get<{ location: string }>('daylight');
+const Home = (): ReactNode => {
+  // const edge = await get<{ location: string }>('daylight');
+  const edge = { location: 'Delray Beach, Florida' };
 
   return (
     <>
@@ -44,7 +45,7 @@ const Home = async (): Promise<ReactNode> => {
             internet software.
           </h1>
           <div className="grid">
-            <small>Currently living in {edge?.location}.</small>
+            <small>Currently living in {edge.location}.</small>
             <small>Last updated {updatedAt}.</small>
             <small>© {new Date().getFullYear()} Hayden Bleasel.</small>
           </div>

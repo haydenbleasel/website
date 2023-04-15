@@ -4,14 +4,14 @@ import clsx from 'clsx';
 import ScrollAreaProvider from './scrollArea';
 
 const logos = [
-  '/images/australian-ethical.svg',
-  '/images/canva.svg',
-  '/images/google.svg',
-  '/images/national-geographic.svg',
-  '/images/nike.svg',
-  '/images/timberland.svg',
-  '/images/toyota.svg',
-  '/images/westfield.svg',
+  '/images/logos/australian-ethical.svg',
+  '/images/logos/canva.svg',
+  '/images/logos/google.svg',
+  '/images/logos/national-geographic.svg',
+  '/images/logos/nike.svg',
+  '/images/logos/timberland.svg',
+  '/images/logos/toyota.svg',
+  '/images/logos/westfield.svg',
 ];
 
 const Logos: FC = () => (

@@ -1,3 +1,5 @@
+import type { Thing, WithContext } from 'schema-dts';
+
 export const sortByName = (companyA: string, companyB: string): number =>
   companyA.localeCompare(companyB);
 
@@ -12,3 +14,9 @@ export const getDate = (): string =>
     dateStyle: 'long',
     timeStyle: 'short',
   });
+
+export const toJsonLd = <T extends Thing>(
+  json: WithContext<T>
+): string => `<script type="application/ld+json">
+${JSON.stringify(json, null, 2)}
+</script>`;

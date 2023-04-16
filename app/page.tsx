@@ -1,16 +1,13 @@
+import { get } from '@vercel/edge-config';
 import Image from '@/components/image';
 import Link from '@/components/link';
-import { getDate, listFormatter } from '@/lib/utils';
+import { formatList, getDate } from '@/lib/utils';
 import Section from '@/components/section';
-import jellypepperClients from '@/data/jellypepper';
-import freelanceClients from '@/data/freelance';
 import Footnote from '@/components/footnote';
 
 import avatar from '@/public/images/profile.jpg';
 import Logos from '@/components/logos';
-// import { get } from '@vercel/edge-config';
 import ContactButton from '@/components/contactButton';
-import rgaClients from '@/data/rga';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
@@ -23,9 +20,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? ''),
 };
 
-const Home = (): ReactNode => {
-  // const edge = await get<{ location: string }>('daylight');
-  const edge = { location: 'Delray Beach, Florida' };
+const Home = async (): Promise<ReactNode> => {
+  const edge = await get<{
+    location: string;
+    rga: string[];
+    jellypepper: string[];
+    freelance: string[];
+  }>('daylight');
+
+  if (!edge) {
+    throw new Error('Failed to fetch Edge config');
+  }
 
   return (
     <>
@@ -169,9 +174,9 @@ const Home = (): ReactNode => {
       </Section>
       <Section>
         <ol className="text-xs text-neutral-500">
-          <li id="fn-1">{listFormatter.format(jellypepperClients)}.</li>
-          <li id="fn-2">{listFormatter.format(rgaClients)}.</li>
-          <li id="fn-3">{listFormatter.format(freelanceClients)}.</li>
+          <li id="fn-1">{formatList(edge.jellypepper)}.</li>
+          <li id="fn-2">{formatList(edge.rga)}.</li>
+          <li id="fn-3">{formatList(edge.freelance)}.</li>
         </ol>
       </Section>
     </>

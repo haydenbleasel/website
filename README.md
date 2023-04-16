@@ -46,4 +46,4 @@ yarn dev
 
 ## Contributing
 
-If you find any issues or have any suggestions, please feel free to open an issue or pull request.
+If you find any issues or have any suggestions, please feel free to open a pull request.

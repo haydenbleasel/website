@@ -1,5 +1,5 @@
-import type { FC, HTMLProps } from 'react';
 import slugify from 'slugify';
+import type { FC, HTMLProps } from 'react';
 
 type SectionProps = HTMLProps<HTMLDivElement> & {
   title?: string;

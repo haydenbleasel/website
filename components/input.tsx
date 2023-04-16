@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import type { InputHTMLAttributes } from 'react';
 import { useId, forwardRef } from 'react';
 import Label from './label';
 import Hint from './hint';
+import type { InputHTMLAttributes } from 'react';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;

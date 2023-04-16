@@ -1,20 +1,20 @@
-import type { FC, ReactNode } from 'react';
 import './globals.css';
 import clsx from 'clsx';
-import { Tooltip, TooltipProvider } from '@/components/tooltip';
-import ThemeSwitcher from '@/components/themeSwitcher';
-import { sans, serif } from '@/lib/fonts';
-import ContactForm from '@/components/contactForm';
 import { Analytics } from '@vercel/analytics/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
+import ContactForm from '@/components/contactForm';
+import { sans, serif } from '@/lib/fonts';
+import ThemeSwitcher from '@/components/themeSwitcher';
+import { Tooltip, TooltipProvider } from '@/components/tooltip';
 import Link from '@/components/link';
 import Image from '@/components/image';
 import ScrollAreaProvider from '@/components/scrollArea';
 import AnchorHighlightProvider from '@/components/anchorHighlightProvider';
 import { Toaster } from '@/components/toaster';
-import type { Person } from 'schema-dts';
 import { toJsonLd } from '@/lib/utils';
 import ContactIcon from '@/components/contactIcon';
+import type { FC, ReactNode } from 'react';
+import type { Person } from 'schema-dts';
 
 type RootLayoutProps = {
   children: ReactNode;

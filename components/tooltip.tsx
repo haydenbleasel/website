@@ -1,9 +1,9 @@
 'use client';
 
-import type { ComponentPropsWithoutRef, ElementRef, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import clsx from 'clsx';
+import type { ComponentPropsWithoutRef, ElementRef, ReactNode } from 'react';
 
 const { TooltipProvider } = TooltipPrimitive;
 

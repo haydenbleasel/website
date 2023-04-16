@@ -1,8 +1,8 @@
 'use client';
 
-import useContactForm from '@/hooks/useContactForm';
 import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
+import useContactForm from '@/hooks/useContactForm';
 import type { FC } from 'react';
 
 const ContactIcon: FC = () => {

@@ -1,8 +1,8 @@
 'use client';
 
-import type { FC, ReactNode } from 'react';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import clsx from 'clsx';
+import type { FC, ReactNode } from 'react';
 
 type ScrollAreaProviderProps = {
   orientation?: ScrollArea.ScrollAreaScrollbarProps['orientation'];

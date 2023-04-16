@@ -1,10 +1,10 @@
 'use client';
 
-import type { FC } from 'react';
 import useTheme from '@beskar-labs/use-theme';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { Tooltip } from './tooltip';
+import type { FC } from 'react';
 
 const ThemeSwitcher: FC = () => {
   const [theme, setTheme] = useTheme();

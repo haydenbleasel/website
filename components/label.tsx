@@ -2,8 +2,8 @@
 
 import * as LabelPrimitive from '@radix-ui/react-label';
 import clsx from 'clsx';
-import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 import { forwardRef } from 'react';
+import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 
 const Label = forwardRef<
   ElementRef<typeof LabelPrimitive.Root>,

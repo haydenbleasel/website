@@ -1,10 +1,10 @@
 'use client';
 
-import type { ElementRef, ComponentPropsWithoutRef } from 'react';
 import { Fragment, forwardRef } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 import Label from './label';
+import type { ElementRef, ComponentPropsWithoutRef } from 'react';
 
 type SelectProps = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   placeholder: string;

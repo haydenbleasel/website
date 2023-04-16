@@ -1,18 +1,18 @@
 import Image from '@/components/image';
 import Link from '@/components/link';
-import type { ReactNode } from 'react';
 import { getDate, listFormatter } from '@/lib/utils';
 import Section from '@/components/section';
 import jellypepperClients from '@/data/jellypepper';
 import freelanceClients from '@/data/freelance';
 import Footnote from '@/components/footnote';
-import type { Metadata } from 'next';
 
 import avatar from '@/public/images/profile.jpg';
 import Logos from '@/components/logos';
 // import { get } from '@vercel/edge-config';
 import ContactButton from '@/components/contactButton';
 import rgaClients from '@/data/rga';
+import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 
 const updatedAt = getDate();
 

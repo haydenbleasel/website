@@ -1,16 +1,16 @@
 'use client';
 
-import type { FC, FormEventHandler } from 'react';
 import { useState } from 'react';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import clsx from 'clsx';
-import Input from './input';
-import Textarea from './textarea';
-import Select from './select';
 import { toast } from '@/components/toaster';
 import { parseError } from '@/lib/error';
 import contactTypes from '@/lib/contact';
 import useContactForm from '@/hooks/useContactForm';
+import Select from './select';
+import Textarea from './textarea';
+import Input from './input';
+import type { FC, FormEventHandler } from 'react';
 
 const emailRegex = /^\S+@\S+\.\S+$/u;
 

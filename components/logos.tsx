@@ -1,7 +1,7 @@
-import type { FC } from 'react';
-import Image from './image';
 import clsx from 'clsx';
+import Image from './image';
 import ScrollAreaProvider from './scrollArea';
+import type { FC } from 'react';
 
 const logos = [
   '/images/logos/canva.svg',

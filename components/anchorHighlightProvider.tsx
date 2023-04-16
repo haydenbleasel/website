@@ -1,12 +1,12 @@
 'use client';
 
 import { useEventListener } from '@react-hookz/web';
-import type { FC, ReactNode } from 'react';
 import { useRef } from 'react';
 import resolveConfig from 'tailwindcss/resolveConfig';
+import useTheme from '@beskar-labs/use-theme';
 import tailwindConfig from '@/tailwind.config';
 import type { DefaultColors } from 'tailwindcss/types/generated/colors';
-import useTheme from '@beskar-labs/use-theme';
+import type { FC, ReactNode } from 'react';
 
 const fullConfig = resolveConfig(tailwindConfig);
 

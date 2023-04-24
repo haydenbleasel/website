@@ -116,20 +116,24 @@ const Home = async (): Promise<ReactNode> => {
           After hours I run <Link href="https://www.beskar.co/">Beskar</Link>{' '}
           &mdash; a digital playground and my corner of the internet to publish
           content, build apps and experiment with new technologies. So far,
-          I&apos;ve built a handful of apps, including:
+          I&apos;ve built a handful of apps and tools, including:
         </p>
         <ul>
-          <li>
-            <Link href="https://tryneutral.com/">Neutral</Link> &mdash; a carbon
-            offsetting app.
-          </li>
           <li>
             <Link href="https://www.refraction.dev/">Refraction</Link> &mdash;
             an AI-powered code improvement suite.
           </li>
           <li>
+            <Link href="https://tryneutral.com/">Neutral</Link> &mdash; a carbon
+            offsetting app.
+          </li>
+          <li>
             <Link href="https://www.waitlist.email/">Waitlist</Link> &mdash;
             fast, unbranded waitlists for developers.
+          </li>
+          <li>
+            <Link href="https://harmony.beskar.co/">Harmony</Link> &mdash; a
+            unified, opinionated linting config.
           </li>
         </ul>
         <p>

@@ -1,8 +1,8 @@
 /* eslint-disable id-length */
-import type { Config } from 'tailwindcss';
 import typography from '@tailwindcss/typography';
 import animate from 'tailwindcss-animate';
 import defaultTheme from 'tailwindcss/defaultTheme';
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   darkMode: 'class',

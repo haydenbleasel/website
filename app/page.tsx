@@ -173,6 +173,7 @@ const Home = async (): Promise<ReactNode> => {
         </p>
         <ContactButton />
       </Section>
+      <hr className="sr-only" />
       <Section>
         <ol className="text-xs text-neutral-500">
           <li id="fn-1">{formatList(edge.jellypepper)}.</li>

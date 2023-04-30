@@ -16,12 +16,13 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          ...createSecureHeaders(),
-          // HSTS Preload: https://hstspreload.org/
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
+          ...createSecureHeaders({
+            // HSTS Preload: https://hstspreload.org/
+            forceHTTPSRedirect: [
+              true,
+              { maxAge: 63072000, includeSubDomains: true, preload: true },
+            ],
+          }),
         ],
       },
     ];

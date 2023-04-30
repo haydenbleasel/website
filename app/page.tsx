@@ -8,6 +8,7 @@ import Footnote from '@/components/footnote';
 import avatar from '@/public/images/profile.jpg';
 import Logos from '@/components/logos';
 import ContactButton from '@/components/contactButton';
+import { getTwitterLocation } from '@/lib/twitter';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
@@ -21,8 +22,8 @@ export const metadata: Metadata = {
 };
 
 const Home = async (): Promise<ReactNode> => {
+  const location = await getTwitterLocation();
   const edge = await get<{
-    location: string;
     rga: string[];
     jellypepper: string[];
     freelance: string[];
@@ -50,7 +51,7 @@ const Home = async (): Promise<ReactNode> => {
             internet software.
           </h1>
           <div className="grid">
-            <small>Currently living in {edge.location}.</small>
+            <small>Currently living in {location}.</small>
             <small>Last updated {updatedAt}.</small>
             <small>© {new Date().getFullYear()} Hayden Bleasel.</small>
           </div>

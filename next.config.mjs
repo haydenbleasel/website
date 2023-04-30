@@ -15,15 +15,13 @@ const nextConfig = {
     return [
       {
         source: '/(.*)',
-        headers: [
-          ...createSecureHeaders({
-            // HSTS Preload: https://hstspreload.org/
-            forceHTTPSRedirect: [
-              true,
-              { maxAge: 63072000, includeSubDomains: true, preload: true },
-            ],
-          }),
-        ],
+        headers: createSecureHeaders({
+          // HSTS Preload: https://hstspreload.org/
+          forceHTTPSRedirect: [
+            true,
+            { maxAge: 63072000, includeSubDomains: true, preload: true },
+          ],
+        }),
       },
     ];
   },

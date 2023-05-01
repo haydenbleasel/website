@@ -22,12 +22,14 @@ export const metadata: Metadata = {
 };
 
 const Home = async (): Promise<ReactNode> => {
-  const location = await getTwitterLocation();
-  const edge = await get<{
-    rga: string[];
-    jellypepper: string[];
-    freelance: string[];
-  }>('daylight');
+  const [location, edge] = await Promise.all([
+    await getTwitterLocation(),
+    await get<{
+      rga: string[];
+      jellypepper: string[];
+      freelance: string[];
+    }>('daylight'),
+  ]);
 
   if (!edge) {
     throw new Error('Failed to fetch Edge config');

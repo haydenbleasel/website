@@ -51,8 +51,8 @@ const Home = async (): Promise<ReactNode> => {
             internet software.
           </h1>
           <div className="grid">
-            <small>Currently living in {location}.</small>
             <small>Last updated {updatedAt}.</small>
+            <small>Currently in {location}.</small>
             <small>© {new Date().getFullYear()} Hayden Bleasel.</small>
           </div>
         </div>

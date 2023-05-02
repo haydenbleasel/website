@@ -77,7 +77,9 @@ const ContactForm: FC = () => {
         >
           <AlertDialogPrimitive.Overlay
             className={clsx(
-              'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity animate-in fade-in'
+              'fixed inset-0 z-50 backdrop-blur-sm transition-opacity animate-in fade-in',
+              'bg-black/50',
+              'dark:bg-neutral-900/50'
             )}
             onClick={() => setOpen(false)}
           />
@@ -91,16 +93,17 @@ const ContactForm: FC = () => {
             <div className="flex flex-col space-y-2 text-center sm:text-left">
               <AlertDialogPrimitive.Title
                 className={clsx(
-                  'text-lg font-semibold text-neutral-950',
-                  'dark:text-neutral-50',
-                  'mb-0'
+                  'mb-0 text-lg font-semibold',
+                  'text-neutral-950',
+                  'dark:text-neutral-50'
                 )}
               >
                 Get in touch
               </AlertDialogPrimitive.Title>
               <AlertDialogPrimitive.Description
                 className={clsx(
-                  'text-sm text-neutral-500',
+                  'text-sm',
+                  'text-neutral-500',
                   'dark:text-neutral-400'
                 )}
               >

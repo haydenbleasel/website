@@ -79,6 +79,7 @@ const ContactForm: FC = () => {
             className={clsx(
               'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity animate-in fade-in'
             )}
+            onClick={() => setOpen(false)}
           />
           <AlertDialogPrimitive.Content
             className={clsx(

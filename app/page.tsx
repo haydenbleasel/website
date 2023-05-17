@@ -62,7 +62,9 @@ const Home = async (): Promise<ReactNode> => {
       <Section>
         <p>
           I currently lead the Product and Design teams at{' '}
-          <Link href="https://link.haydenbleasel.com/corellium">Corellium</Link>
+          <Link href="https://read.cv/haydenbleasel/LoRxZsHDY2SYlrWBolbo">
+            Corellium
+          </Link>
           , a virtual hardware lab for security researchers, pen-testers, IoT
           developers and government defense contractors. Our mission is to make
           the world a safer, more secure place by accelerating security R&amp;D.
@@ -78,7 +80,7 @@ const Home = async (): Promise<ReactNode> => {
       <Section title="Work">
         <p>
           Prior to joining Corellium, I spent several years running{' '}
-          <Link href="https://link.haydenbleasel.com/jellypepper">
+          <Link href="https://read.cv/haydenbleasel/5CvDIZ8dRNaTGxz8pKNZ">
             Jellypepper
           </Link>
           , a creative agency, where I worked with many incredible startups
@@ -93,52 +95,53 @@ const Home = async (): Promise<ReactNode> => {
         </p>
         <p>
           From 2016 &mdash; 2017, I was Head of Product and Design at{' '}
-          <Link href="https://link.haydenbleasel.com/spaceship">Spaceship</Link>{' '}
+          <Link href="https://read.cv/haydenbleasel/Gv4GTLVsJcTorLhf0vqB">
+            Spaceship
+          </Link>{' '}
           where we raised $20M+ in funding, grew a waitlist of 28K+ people and
           grew to $100M+ in funds under management.
         </p>
         <p>
           In the summer of 2015, I was a Product Design intern at{' '}
-          <Link href="https://link.haydenbleasel.com/palantir">Palantir</Link>{' '}
+          <Link href="https://read.cv/haydenbleasel/VKsHjQdAKwagBRrTGqha">
+            Palantir
+          </Link>{' '}
           where I worked with a small team on an anti-fraud and big data
           analysis project for a U.S. government agency.
         </p>
         <p>
           For more work history, see my{' '}
-          <Link href="https://link.haydenbleasel.com/cv">CV</Link>.
+          <Link href="https://read.cv/haydenbleasel">CV</Link>.
         </p>
       </Section>
       <Section title="After Hours">
         <p>
-          After hours I run{' '}
-          <Link href="https://link.haydenbleasel.com/beskar">Beskar</Link>{' '}
+          After hours I run <Link href="https://www.beskar.co/">Beskar</Link>{' '}
           &mdash; a digital playground and my corner of the internet to publish
           content, build apps and experiment with new technologies. So far,
           I&apos;ve built a handful of apps and tools, including:
         </p>
         <ul>
           <li>
-            <Link href="https://link.haydenbleasel.com/refraction">
-              Refraction
-            </Link>{' '}
-            &mdash; an AI-powered code improvement suite.
+            <Link href="https://www.refraction.dev/">Refraction</Link> &mdash;
+            an AI-powered code improvement suite.
           </li>
           <li>
-            <Link href="https://link.haydenbleasel.com/neutral">Neutral</Link>{' '}
-            &mdash; a carbon offsetting app.
+            <Link href="https://tryneutral.com/">Neutral</Link> &mdash; a carbon
+            offsetting app.
           </li>
           <li>
-            <Link href="https://link.haydenbleasel.com/waitlist">Waitlist</Link>{' '}
-            &mdash; fast, unbranded waitlists for developers.
+            <Link href="https://www.waitlist.email/">Waitlist</Link> &mdash;
+            fast, unbranded waitlists for developers.
           </li>
           <li>
-            <Link href="https://link.haydenbleasel.com/harmony">Harmony</Link>{' '}
-            &mdash; a unified, opinionated linting config.
+            <Link href="https://harmony.beskar.co/">Harmony</Link> &mdash; a
+            unified, opinionated linting config.
           </li>
         </ul>
         <p>
           Years ago, I created{' '}
-          <Link href="https://link.haydenbleasel.com/presumi">Presumi</Link>{' '}
+          <Link href="https://www.beskar.co/blog/presumi">Presumi</Link>{' '}
           (closed) — a job application and resume tracking platform. I licensed
           it to SEEK in Hong Kong for a while, where we managed 100K+ job
           applications and processed 1M+ data points.
@@ -157,11 +160,11 @@ const Home = async (): Promise<ReactNode> => {
         </p>
         <p>
           I also completed{' '}
-          <Link href="https://link.haydenbleasel.com/cs50x">
+          <Link href="https://courses.edx.org/certificates/9d821d3e4d0d44afbe871ceb31c9d135">
             HarvardX&apos;s CS50x
           </Link>{' '}
           Computer Science course in 2021 and{' '}
-          <Link href="https://link.haydenbleasel.com/ese101">
+          <Link href="https://courses.edx.org/certificates/598d25a2674c43fabed9da38302ca532">
             Arm&apos;s ESE101
           </Link>{' '}
           Embedded Systems course in 2022.

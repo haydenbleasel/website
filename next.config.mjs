@@ -5,7 +5,6 @@ import redirects from './redirects.json' assert { type: 'json' };
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    appDir: true,
     typedRoutes: true,
   },
   images: {

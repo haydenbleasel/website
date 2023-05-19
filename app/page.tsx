@@ -10,7 +10,7 @@ import Logos from '@/components/logos';
 import ContactButton from '@/components/contactButton';
 import { getTwitterLocation } from '@/lib/twitter';
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 
 const updatedAt = getDate();
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? ''),
 };
 
-const Home = async (): Promise<ReactNode> => {
+const Home = async (): Promise<ReactElement> => {
   const [location, edge] = await Promise.all([
     await getTwitterLocation(),
     await get<{

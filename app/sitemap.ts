@@ -1,10 +1,10 @@
 import type { MetadataRoute } from 'next';
 
-const sitemap = (): MetadataRoute.Sitemap => [
-  {
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? '',
-    lastModified: new Date(),
-  },
-];
-
-export default sitemap;
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '').href,
+      lastModified: new Date(),
+    },
+  ];
+}

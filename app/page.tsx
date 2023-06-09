@@ -8,7 +8,6 @@ import Footnote from '@/components/footnote';
 import avatar from '@/public/images/profile.jpg';
 import Logos from '@/components/logos';
 import ContactButton from '@/components/contactButton';
-import { getTwitterLocation } from '@/lib/twitter';
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 
@@ -22,14 +21,12 @@ export const metadata: Metadata = {
 };
 
 const Home = async (): Promise<ReactElement> => {
-  const [location, edge] = await Promise.all([
-    await getTwitterLocation(),
-    await get<{
-      rga: string[];
-      jellypepper: string[];
-      freelance: string[];
-    }>('daylight'),
-  ]);
+  const edge = await get<{
+    rga: string[];
+    jellypepper: string[];
+    freelance: string[];
+    location: string;
+  }>('daylight');
 
   if (!edge) {
     throw new Error('Failed to fetch Edge config');
@@ -54,7 +51,7 @@ const Home = async (): Promise<ReactElement> => {
           </h1>
           <div className="grid">
             <small>Last updated {updatedAt}.</small>
-            <small>Currently in {location}.</small>
+            <small>Currently in {edge.location}.</small>
             <small>© {new Date().getFullYear()} Hayden Bleasel.</small>
           </div>
         </div>

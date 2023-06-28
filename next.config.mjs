@@ -6,6 +6,7 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     typedRoutes: true,
+    serverActions: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],

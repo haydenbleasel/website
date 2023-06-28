@@ -5,14 +5,26 @@ import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import clsx from 'clsx';
 import { toast } from '@/components/toaster';
 import { parseError } from '@/lib/error';
-import contactTypes from '@/lib/contact';
 import useContactForm from '@/hooks/useContactForm';
+import { sendEmail } from '@/actions/sendEmail';
 import Select from './select';
 import Textarea from './textarea';
 import Input from './input';
 import type { FC, FormEventHandler } from 'react';
 
 const emailRegex = /^\S+@\S+\.\S+$/u;
+const contactTypes = [
+  { label: 'Have a chat', value: 'contact' },
+  { label: 'Hire you for freelance work', value: 'freelance' },
+  {
+    label: 'Hire you for consulting work',
+    value: 'consulting',
+  },
+  {
+    label: 'Ask you to join our board',
+    value: 'board',
+  },
+];
 
 const ContactForm: FC = () => {
   const [name, setName] = useState('');
@@ -32,33 +44,18 @@ const ContactForm: FC = () => {
     }
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${
-            process.env.NEXT_PUBLIC_API_PASSPHRASE ?? ''
-          }`,
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-          type,
-        }),
+      const response = await sendEmail({
+        name,
+        email,
+        message,
+        type: contactTypes.find((item) => item.value === type)?.label ?? '',
       });
-
-      const data = (await response.json()) as { message: string };
-
-      if (!response.ok) {
-        throw new Error(data.message);
-      }
 
       setName('');
       setEmail('');
       setMessage('');
 
-      toast.success(data.message);
+      toast.success(response);
     } catch (error) {
       const errorMessage = parseError(error);
 

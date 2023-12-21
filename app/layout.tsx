@@ -1,6 +1,5 @@
 import '@/styles/globals.css';
 import { Analytics } from '@vercel/analytics/react';
-import { ClerkProvider } from '@clerk/nextjs';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { Toaster } from '@/components/ui/toaster';
@@ -16,34 +15,32 @@ type RootLayoutProps = {
 };
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
-  <ClerkProvider>
-    <html
-      lang="en"
-      className={cn(
-        GeistSans.variable,
-        GeistMono.variable,
-        'antialiased touch-manipulation font-sans'
-      )}
-    >
-      <body className="bg-zinc-100 dark:bg-zinc-950">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <TooltipProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </TooltipProvider>
-        </ThemeProvider>
-        <Toaster />
-        <Analytics />
-        <GoogleAnalytics />
-      </body>
-    </html>
-  </ClerkProvider>
+  <html
+    lang="en"
+    className={cn(
+      GeistSans.variable,
+      GeistMono.variable,
+      'antialiased touch-manipulation font-sans'
+    )}
+  >
+    <body className="bg-zinc-100 dark:bg-zinc-950">
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <TooltipProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </TooltipProvider>
+      </ThemeProvider>
+      <Toaster />
+      <Analytics />
+      <GoogleAnalytics />
+    </body>
+  </html>
 );
 
 export default RootLayout;

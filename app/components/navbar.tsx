@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ModeToggle } from '@/components/mode-toggle';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Notifications } from '@/components/notifications';
 import { ActiveProvider } from '@/providers/active-provider';
 import { pages } from '@/consts/navigation';
 import { Container } from '@/components/container';
@@ -40,7 +39,6 @@ export const Navbar = async (): Promise<ReactElement> => {
         </div>
         <div className="flex items-center gap-2">
           <ModeToggle />
-          <Notifications />
           {user ? (
             <UserButton afterSignOutUrl="/" />
           ) : (

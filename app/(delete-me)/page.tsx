@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { createMetadata } from '@/lib/metadata';
 import { Container } from '@/components/container';
-import { Chat } from '../components/chat';
 import { Waitlist } from '../components/waitlist';
 import { Command } from './components/command';
 import type { Metadata } from 'next';

@@ -6,7 +6,6 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { cn } from '@/lib/utils';
-import { GoogleAnalytics } from '@/components/google-analytics';
 import { Navbar } from './components/navbar';
 import { Footer } from './components/footer';
 import type { FC, ReactNode } from 'react';

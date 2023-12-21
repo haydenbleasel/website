@@ -38,7 +38,6 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       </ThemeProvider>
       <Toaster />
       <Analytics />
-      <GoogleAnalytics />
     </body>
   </html>
 );

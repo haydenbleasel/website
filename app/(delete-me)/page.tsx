@@ -52,7 +52,6 @@ const Hero: FC = () => (
 const Home: FC = () => (
   <div className="flex flex-col py-16">
     <Hero />
-    <Chat />
   </div>
 );
 

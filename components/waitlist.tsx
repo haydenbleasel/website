@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { isValidEmail } from '@/lib/email';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { parseError } from '@/lib/error';
-import { useToast } from '@/components/ui/use-toast';
 import type { FC, FormEventHandler } from 'react';
 
 const domain = 'app.loops.so';
@@ -15,7 +15,6 @@ const formId = 'clmnqcb4e024xma0or3stgrkd';
 export const Waitlist: FC = () => {
   const [email, setEmail] = useState('');
   const [disabled, setDisabled] = useState(false);
-  const { toast } = useToast();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
@@ -73,14 +72,11 @@ export const Waitlist: FC = () => {
       }
 
       setEmail('');
-      toast({ description: "Thanks! We'll be in touch!" });
+      toast.success("Thanks! We'll be in touch!");
     } catch (error) {
       const message = parseError(error);
 
-      toast({
-        description: message,
-        variant: 'destructive',
-      });
+      toast.error(message);
     } finally {
       localStorage.setItem('loops-form-timestamp', '');
       setDisabled(false);

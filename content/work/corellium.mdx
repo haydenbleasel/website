@@ -1,0 +1,62 @@
+---
+role: Chief Product Officer
+company: Corellium
+startYear: 2021
+image: /work/corellium.svg
+location: Delray Beach, FL
+featured: true
+---
+
+**This is a working page — I'm still deep into Corellium work right now so I'll update this page whenever I get a chance. It's a good way for me to keep track of all the things I've had the opportunity to work on so far. Watch this space 👀**
+
+I've joined Corellium, pioneers of an incredible Arm-virtualisation platform, to shape the direction of our digital experiences and blur the line between real and virtual. Our device virtualization platform is designed to assist with Security Research (typically government agencies and defense contractors looking for OS-level vulnerabilities), Testing (MAST / SAST / DAST, DevSecOps and such), Training and more.
+
+## Product Design
+
+I originally started at Corellium as the Chief Design Officer and quickly got to work laying the foundations for strong and coherent visual languages for our product design and brand.
+
+I created a new design system and component library, as well as a range of supporting digital experiences that run on it, such as our cloud administration platform and on-site customer dashboard. The design system is a functionally perfect Figma implementation, with everything built on autolayout and variants with full text, colour and effect styles. I've also improved the general experience and interface of our existing product in some areas as we work towards a broader design refresh.
+
+There's still a lot to do on the Product Design part of things — obviously ensuring maximum visual appeal of our experiences, but I'm also working on creating a process of learning-based, iterative and scalable design, as well as a general sense of design culture and appreciation throughout the company.
+
+## Frontend Engineering
+
+While still focusing on the design and experience side of things, I started a new Frontend team for the Engineering department who could take on the important work of delivering stellar experiences to our customers. After bringing on board a few fantastic frontend engineers, we set to work building the future of Corellium's digital experiences on a super modern tech stack.
+
+At the start, I ran frontend and product design together as a Design-Engineering Team, a Q-Branch of sorts for the business, using tools like Linear to rapidly iterate and ship high-quality improvements and strategic updates to our product and web experience.
+
+From there, we built out the new Storybook-based design system on React (Next), Typescript, Vercel, CSS Modules (w/ PostCSS) and Tailwind. It's incredibly comprehensive and contains a full build process in GitHub actions which creates releases, automates package deployment with GitHub Packages and builds the static version on Vercel. It, like many of our other apps, has automated Dependabot updates and relies on **[Harmony](https://github.com/haydenbleasel/harmony)**, a unified, strict editor configuration I wrote for modern React apps.
+
+We combined the design system with the same stack to create new, more beautiful microservices experiences for our customers and internal team. Beyond the visual style, the improved tech stack also paved the way for enhancements in security, reliability and developer experience. For example, our revised trial request system resulted in more proactive measures for fraud prevention (powered by elements of the Stripe API and some custom logic), lowered the barrier to entry for new customers, automatically reported runtime exceptions and collected more analytics for our Marketing and Product teams.
+
+We then moved on to our flagship app currently in production, where we wiped out the backlog of outstanding frontend bugs in a few sprints before moving on to optimisation work and active regression prevention. I took on a bunch of IC work during this time to get acquainted with our tech stack and product. Additionally, we set yearly OKRs for a frontend-team level which included goals such as improving the overall developer experience, empowering other teams through custom tooling and implementing measuring tools for our efforts.
+
+Beyond the code itself, we strived to streamline the approval process for the Frontend team with a round-robin assigning system, reduce bottlenecks in code merging and releasing, promote cross-department transparency and enhance the overall experience for our team and customers through the power of great code.
+
+While I've migrated out of running the frontend team day-to-day, I still work closely with them from an execution perspective and dive into the codebases from time to time for special projects.
+
+## Analytics and Data Pipelines
+
+Tangential to the work in Frontend Engineering and leading into the wider Product role was data and analytics - essentially wiring up the different tools and data streams we required from Product, Business and Marketing perspectives to make decisions based on evidence, whether that's growth trends, aggregated user behavioural metrics, funnels and more.
+
+To achieve this in a scalable way, I designed a simple (albeit increasingly intricate over time) architecture diagram that found the most reliable and straightforward way of capturing the required data from various systems. With an ambitious end goal of ensuring that every event can be tied back to a customer, as well as being able to track a single customer's entire journey from website to app through multiple channels and experiences, I started by replacing our homegrown analytics event database with **[Segment](https://segment.com/)** as a central customer data platform.
+
+From here, I worked with some of the frontend team to build out a series of Node-based analytics utilities and wired them into our website, trial request flow, backend and more. We chose Node over client-side JS and built our own ID provider to create a cookie-less system that respected user privacy and wasn't subject to adblockers so they could be a reliable source of truth. I'll probably write an article on this later.
+
+We wired all these up to Segment and sent the events and personas out to our new tools, which included things like Google Analytics and HubSpot on the Marketing side, Amplitude on the Product side, Sentry on the Engineering side (to hydrate user info in automated exception capturing) and Zapier to handle some other bits and pieces. I also wrote software that seamlessly bridges the gap between our billing, CRM and middleware systems.
+
+## Brand and Visual Design
+
+Next up is the overall brand itself. We performed an **[initial brand refresh](https://jellypepper.com/work/corellium)** for Corellium back at **[Jellypepper](https://haydenbleasel.com/work/jellypepper)**, where we focused on the idea of the "magic" behind our product. Since then, the team continues to grow at a rapid pace, we're taking on new segments and broadening our horizons. All this change provided reason to stop and reflect on our current brand and the message it was conveying to our customers and to ourselves.
+
+In 2023, we rolled out a **[brand new look for Corellium](https://www.corellium.com/blog/a-brief-look-at-the-new-corellium)** centered around the idea that our product is not some mystical thing — it’s an incredibly powerful utility or tool, closer metaphorically to a surgeon’s scalpel than a magician’s wand. Our new direction focuses on simplicity, purpose and function over flair; promoting concepts of structure, simplicity and precision throughout our experiences.
+
+## Product
+
+Now that I'm settling in to my Product role, I'm working on all sorts of fun stuff — creating the product roadmap, driving initiatives, triaging and decomping new feature requests against strategic driver alignment, encouraging a seamless product to engineering workflow, assisting with partnership discussions and board reports, and much more.
+
+One of my first focuses was a new ProductBoard setup where we could track and triage incoming user and internal feedback; and score and prioritize potential new features. The internal feedback part specifically was interesting — I'm a big believer that people should be allowed to work in their own tools. There's no one tool to rule them all and it can be disruptive to make them use yours. So, I built a set of automations for apps we use like Pipedrive, HubSpot and Intercom so they can all seamlessly send user feedback directly from conversions, contacts, leads and deals into ProductBoard without leaving the app.
+
+So far, we've managed to ship some brilliant new product enhancements, such as the **[Support Center](https://support.corellium.com/)**, **[Hypertrace](https://support.corellium.com/features/hypertrace)**, **[Webplayer](https://support.corellium.com/webplayer)**, our **[CLI](https://support.corellium.com/cli)**, the **[VS Code Extension](https://marketplace.visualstudio.com/items?itemName=corellium.corellium-vscode)** I built with **[@HawaiiFive0Day](https://twitter.com/HawaiiFive0day)** and more. I've also tried to empower our Customer Support team where I could — migrating us from Zendesk to Intercom, installing our Messenger and improving user identification within our products.
+
+Over the coming months, I'll be working to create a larger Product team, establishing a creative and product vision for the future based on a combination of data and insight; and, through a stronger, more coherent brand and product, create a tighter relationship with our users, partners and investors. Stay tuned for more!

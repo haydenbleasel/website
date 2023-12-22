@@ -1,0 +1,106 @@
+---
+title: Upload images to Firebase using Expo 39+ managed workflow
+description: Typically, uploading images to Firebase using the JavaScript SDK is pretty straightforward. In Expo, it's a bit trickier.
+date: 05-18-2021
+---
+
+Typically, uploading images to Firebase using the JavaScript SDK is pretty straightforward. All we need to do is create a root reference to our storage:
+
+```js
+// Get the local file
+const file = fetch('...');
+
+// Create a root reference
+const storageRef = firebase.storage().ref();
+
+// Create a folder reference
+const ref = storageRef.child('images');
+
+// Upload the file
+const snapshot = await ref.put(file);
+
+// Bob's your uncle... or some relative.
+console.log('Uploaded a file!', snapshot);
+```
+
+However, React Native has made some compatibility-breaking alterations to the Blob implementation, meaning we can't simply fetch the local file.
+
+There are two ways to get around this.
+
+The first is by reimplementing the Blob promise through a custom `XMLHTTPRequest`. @sjchmiela did an awesome deep dive on this on GitHub that you can read about [here](https://github.com/expo/expo/issues/2402#issuecomment-443726662).
+
+```ts
+import * as ImagePicker from 'expo-image-picker';
+import * as firebase from 'firebase/app';
+
+// Pick the photo
+const pickerResult = await ImagePicker.launchImageLibraryAsync({
+  allowsEditing: true,
+  aspect: [1, 1],
+});
+
+// Implement a new Blob promise with XMLHTTPRequest
+const blob: Blob = await new Promise((resolve, reject) => {
+  const xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    resolve(xhr.response);
+  };
+  xhr.onerror = function () {
+    reject(new TypeError('Network request failed'));
+  };
+  xhr.responseType = 'blob';
+  xhr.open('GET', pickerResult.uri, true);
+  xhr.send(null);
+});
+
+// Create a ref in Firebase (I'm using my user's ID)
+const ref = firebase.storage().ref().child(`avatars/${user.uid}`);
+
+// Upload blob to Firebase
+const snapshot = await ref.put(blob, { contentType: 'image/png' });
+
+// Create a download URL
+const remoteURL = await snapshot.ref.getDownloadURL();
+
+// Return the URL
+return remoteURL;
+```
+
+The second option I mentioned [on GitHub](https://github.com/expo/expo/issues/10394#issuecomment-700509863) is to consider that Firebase doesn't just support blobs. It also supports Base64 images, so if you want to get around this, you can get the image with `expo-file-system` instead of fetch / XMLHTTPRequest.
+
+The problem here is that Base64 images are inherently much bigger than blobs and can possibly break the file size limits of your phone, Firebase setup or network connection. Still, it's a viable solution for smaller images:
+
+```ts
+import * as FileSystem from 'expo-file-system';
+import * as firebase from 'firebase/app';
+import * as ImagePicker from 'expo-image-picker';
+
+// Pick the photo
+const pickerResult = await ImagePicker.launchImageLibraryAsync({
+  allowsEditing: true,
+  aspect: [1, 1],
+});
+
+// Fetch the photo with it's local URI
+const file = await FileSystem.readAsStringAsync(pickerResult.uri, {
+  encoding: FileSystem.EncodingType.Base64,
+});
+
+// Create a ref in Firebase (I'm using my user's ID)
+const ref = firebase.storage().ref().child(`avatars/${user.uid}`);
+
+// Upload Base64 image to Firebase
+const snapshot = await ref.putString(file, 'base64');
+
+// Create a download URL
+const remoteURL = await snapshot.ref.getDownloadURL();
+
+// Return the URL
+return remoteURL;
+```
+
+There's also a potential third option. According to @ajwhite on GitHub, `fetch` uses the FileReader to consume the contents of the blob, as to be compliant with fetch.
+
+React Native has a FileReader implementation, which takes the "JS blob pointer" and resolves it natively. The native FileReaderModule take the "blob pointer" and reads its bytes, then resolves them down as a string.
+
+As such, it's possible that using a library such as `axios` may not use a `FileReader` to extract the blob and could work. If you test this out, let me know how you go!

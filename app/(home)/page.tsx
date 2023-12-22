@@ -72,7 +72,7 @@ const Home = async (): Promise<ReactElement> => {
         </p>
       </div>
       <div className="mt-8 grid grid-cols-2 divide-x divide-zinc-200 dark:divide-zinc-700">
-        <div className="text-sm pr-4">
+        <div className="text-sm pr-8">
           <p className="font-semibold text-zinc-900 dark:text-zinc-100">
             Latest Update
           </p>
@@ -85,7 +85,7 @@ const Home = async (): Promise<ReactElement> => {
             </Link>
           </Button>
         </div>
-        <div className="text-sm pl-4">
+        <div className="text-sm pl-8">
           <p className="font-semibold text-zinc-900 dark:text-zinc-100">
             Newsletter
           </p>

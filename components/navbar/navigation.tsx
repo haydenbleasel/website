@@ -35,11 +35,20 @@ import Dribbble from './icons/dribbble.svg';
 import type { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import type { FC } from 'react';
 
+type NavbarItem = {
+  readonly name: string;
+  readonly href: string;
+  readonly icon?: typeof HomeIcon | typeof PeopleIcon;
+  readonly image?: StaticImport;
+  readonly shortcut?: string;
+  readonly active?: boolean;
+};
+
 export const Navigation: FC = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const pages = [
+  const pages: NavbarItem[] = [
     {
       name: 'Home',
       href: '/',
@@ -70,7 +79,7 @@ export const Navigation: FC = () => {
     },
   ];
 
-  const work = [
+  const work: NavbarItem[] = [
     {
       name: 'Work',
       href: '/work',
@@ -122,7 +131,7 @@ export const Navigation: FC = () => {
     },
   ];
 
-  const personal = [
+  const personal: NavbarItem[] = [
     {
       name: 'Blog',
       href: '/blog',
@@ -146,7 +155,7 @@ export const Navigation: FC = () => {
     },
   ];
 
-  const resources = [
+  const resources: NavbarItem[] = [
     {
       name: 'Design',
       href: '/design',
@@ -163,7 +172,7 @@ export const Navigation: FC = () => {
     },
   ];
 
-  const connect = [
+  const connect: NavbarItem[] = [
     {
       name: 'Store',
       href: 'https://store.haydenbleasel.com/',

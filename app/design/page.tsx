@@ -43,7 +43,7 @@ const Design = async (): Promise<ReactElement> => {
               <CardHeader>
                 <CardTitle>{figmaFile.name}</CardTitle>
                 <CardDescription>
-                  Last updated {formatDate(new Date(figmaFile.last_modified))}
+                  Last updated {formatDate(figmaFile.last_modified)}
                 </CardDescription>
               </CardHeader>
             </Card>

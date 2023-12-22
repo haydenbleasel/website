@@ -1,11 +1,11 @@
 import { twMerge } from 'tailwind-merge';
 import { formatDate } from '@/lib/utils';
 import type { FC } from 'react';
-import type { Blog, Legal } from '@/.contentlayer/generated';
+import type { Blog } from '@/.contentlayer/generated';
 import type { Toc } from 'contentlayer-datapad';
 
 type SidebarProps = {
-  readonly doc: Blog | Legal;
+  readonly doc: Blog;
 };
 
 export const Sidebar: FC<SidebarProps> = ({ doc }) => {
@@ -21,7 +21,7 @@ export const Sidebar: FC<SidebarProps> = ({ doc }) => {
       <div className="grid gap-2">
         <p className="text-sm text-zinc-500">Published</p>
         <p className="rounded-sm text-sm text-black dark:text-white">
-          {formatDate(new Date(doc.date))}
+          {formatDate(doc.date)}
         </p>
       </div>
       <div className="grid gap-2">

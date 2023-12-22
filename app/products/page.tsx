@@ -48,9 +48,6 @@ const Project = async ({
               {data.featuredAt}
             </span>
           </div>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-            {data.topics.edges.map((topic) => topic.node.name).join(', ')}
-          </p>
         </CardContent>
       </Card>
     </Link>

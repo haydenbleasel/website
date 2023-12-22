@@ -30,9 +30,46 @@ export const Blog = defineDocumentType(() => ({
   computedFields: computeFields<'Blog'>({}),
 }));
 
-export const Legal = defineDocumentType(() => ({
-  name: 'Legal',
-  filePathPattern: `legal/**/*.mdx`,
+export const Work = defineDocumentType(() => ({
+  name: 'Work',
+  filePathPattern: `work/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    role: {
+      type: 'string',
+      required: true,
+    },
+    company: {
+      type: 'string',
+      required: true,
+    },
+    image: {
+      type: 'string',
+      required: true,
+    },
+    startYear: {
+      type: 'number',
+      required: true,
+    },
+    endYear: {
+      type: 'number',
+      required: false,
+    },
+    location: {
+      type: 'string',
+      required: true,
+    },
+    featured: {
+      type: 'boolean',
+      required: false,
+    },
+  },
+  computedFields: computeFields<'Work'>({}),
+}));
+
+export const App = defineDocumentType(() => ({
+  name: 'App',
+  filePathPattern: `app/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -47,17 +84,21 @@ export const Legal = defineDocumentType(() => ({
       type: 'date',
       required: true,
     },
+    image: {
+      type: 'string',
+      required: false,
+    },
   },
-  computedFields: computeFields<'Legal'>({}),
+  computedFields: computeFields<'App'>({}),
 }));
 
 const source = makeSource({
   contentDirPath: './content',
-  documentTypes: [Blog, Legal],
+  documentTypes: [Blog, Work, App],
   mdx: {
     remarkPlugins: remarkPlugins(),
     rehypePlugins: rehypePlugins({
-      theme: 'rose-pine-moon',
+      theme: 'one-dark-pro',
     }),
   },
 });

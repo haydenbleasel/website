@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { createMetadata } from '@/lib/metadata';
-import clients from '@/data/clients.json';
 import { Container } from '@/components/container';
 import { cn } from '@/lib/utils';
+import { clients } from '@/data/clients';
 import type { FC } from 'react';
 
 const title = 'Clients';
@@ -32,12 +32,12 @@ const Clients: FC = () => (
             <Image
               src={logo}
               alt={name}
-              className="m-0 h-16 w-16 object-contain translate-y-6 group-hover:translate-y-0 transition-transform"
+              className="my-0 mx-auto h-12 w-16 object-contain translate-y-8 group-hover:translate-y-3 transition-transform"
               width={64}
-              height={64}
+              height={48}
             />
-            <div className="text-center opacity-0 group-hover:opacity-100 translate-y-6 transition-all text-sm group-hover:translate-y-0">
-              <p className="text-zinc-900 dark:text-zinc-100 font-medium">
+            <div className="text-center opacity-0 group-hover:opacity-100 translate-y-6 transition-all text-sm group-hover:translate-y-4">
+              <p className="text-zinc-900 dark:text-zinc-100 font-medium line-clamp-1">
                 {name}
               </p>
               <p className="text-zinc-500 dark:text-zinc-400">{source}</p>

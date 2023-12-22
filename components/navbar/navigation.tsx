@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  AvatarIcon,
   CalendarIcon,
   ChatBubbleIcon,
   EnvelopeClosedIcon,
@@ -57,13 +56,6 @@ export const Navigation: FC = () => {
       active: pathname === '/',
     },
     {
-      name: 'About',
-      href: '/about',
-      icon: AvatarIcon,
-      shortcut: 'a',
-      active: pathname.startsWith('/about'),
-    },
-    {
       name: 'Mailing List',
       href: '/mailing-list',
       icon: EnvelopeClosedIcon,
@@ -98,7 +90,7 @@ export const Navigation: FC = () => {
       name: 'Apps',
       href: '/apps',
       icon: TokensIcon,
-      shortcut: 'p',
+      shortcut: 'a',
       active: pathname.startsWith('/apps'),
     },
     {
@@ -160,7 +152,7 @@ export const Navigation: FC = () => {
       name: 'Design',
       href: '/design',
       icon: FigmaLogoIcon,
-      shortcut: 'f',
+      shortcut: 'd',
       active: pathname.startsWith('/design'),
     },
     {
@@ -210,6 +202,28 @@ export const Navigation: FC = () => {
     },
   ];
 
+  const collections = [
+    ...pages,
+    ...resources,
+    ...work,
+    ...personal,
+    ...connect,
+  ];
+
+  const shortcuts = collections.map(({ shortcut }) => shortcut).filter(Boolean);
+
+  if (shortcuts.length !== new Set(shortcuts).size) {
+    const duplicates = shortcuts.filter(
+      (shortcut, index, array) => array.indexOf(shortcut) !== index
+    );
+
+    throw new Error(
+      `Duplicate shortcuts found: ${duplicates
+        .map((shortcut) => `"${shortcut}"`)
+        .join(', ')}`
+    );
+  }
+
   const sections = [
     { links: pages },
     { name: 'Work', links: work },
@@ -231,13 +245,7 @@ export const Navigation: FC = () => {
         return;
       }
 
-      const page = [
-        ...pages,
-        ...resources,
-        ...work,
-        ...personal,
-        ...connect,
-      ].find(({ shortcut }) => shortcut === event.key);
+      const page = collections.find(({ shortcut }) => shortcut === event.key);
 
       if (page) {
         router.push(page.href);

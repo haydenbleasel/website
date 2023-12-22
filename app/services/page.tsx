@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '@/components/link';
 import { Container } from '@/components/container';
 import { Button } from '@/components/ui/button';
 import {
@@ -34,9 +34,9 @@ const Services: FC = () => (
             <p>asd</p>
           </CardContent>
           <CardFooter>
-            <Link href={service.link}>
-              <Button>{service.cta}</Button>
-            </Link>
+            <Button asChild>
+              <Link href={service.link}>{service.cta}</Link>
+            </Button>
           </CardFooter>
         </Card>
       ))}

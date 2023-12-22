@@ -16,7 +16,7 @@ export const metadata: Metadata = createMetadata({
 
 const Contact: FC = () => (
   <Container>
-    <h1>{title}</h1>
+    <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
     <div className="mt-8">
       <ContactForm />

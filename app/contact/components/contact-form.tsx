@@ -56,7 +56,7 @@ const ContactForm: FC = () => {
           value={name}
           onChange={({ target }) => setName(target.value)}
           placeholder="Jane Smith"
-          className="bg-zinc-100 dark:bg-zinc-800"
+          className="bg-white dark:bg-zinc-800"
         />
       </div>
       <div className="space-y-1">
@@ -66,7 +66,7 @@ const ContactForm: FC = () => {
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           placeholder="jane@acme.com"
-          className="bg-zinc-100 dark:bg-zinc-800"
+          className="bg-white dark:bg-zinc-800"
           pattern={emailRegex.source}
         />
       </div>
@@ -77,7 +77,7 @@ const ContactForm: FC = () => {
           value={message}
           onChange={({ target }) => setMessage(target.value)}
           placeholder="Hi there, I'm interested in..."
-          className="bg-zinc-100 dark:bg-zinc-800"
+          className="bg-white dark:bg-zinc-800"
         />
       </div>
       <Button disabled={disabled} type="submit" className="w-fit">

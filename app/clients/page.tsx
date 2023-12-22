@@ -16,9 +16,9 @@ export const metadata = createMetadata({
 
 const Clients: FC = () => (
   <Container>
-    <h1>{title}</h1>
+    <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
-    <div className="grid grid-cols-4 gap-px not-prose">
+    <div className="mt-8 grid grid-cols-4 gap-px not-prose">
       {Object.values(clients).map(({ source, items }) =>
         items.map(({ name, logo }) => (
           <div

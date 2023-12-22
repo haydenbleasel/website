@@ -1,0 +1,115 @@
+[
+  {
+    "name": "Refraction",
+    "description": "Generate unit tests and refactor code using AI.",
+    "link": "https://www.refraction.dev/",
+    "featured": true,
+    "image": "/apps/refraction.png",
+    "caption": {
+      "text": "acquired",
+      "link": "/apps/refraction"
+    }
+  },
+  {
+    "name": "Eververse",
+    "description": "A new Product Management tool, powered by AI.",
+    "link": "https://www.eververse.ai/",
+    "image": "/apps/eververse.svg",
+    "featured": true
+  },
+  {
+    "name": "San Andreas Radio",
+    "description": "All you had to do was follow the damn train, CJ!",
+    "link": "https://radio.haydenbleasel.com",
+    "image": "/apps/san-andreas-radio.png"
+  },
+  {
+    "name": "texts.run",
+    "description": "Create a simple, messenger-style personal webpage.",
+    "link": "https://www.texts.run/",
+    "image": "/apps/texts.svg",
+    "featured": true
+  },
+  {
+    "name": "Waitlist",
+    "description": "Fast, unbranded waitlists for developers.",
+    "link": "https://www.waitlist.email/",
+    "image": "/apps/waitlist.svg",
+    "featured": true
+  },
+  {
+    "name": "Alchemy",
+    "description": "A visual journey of The Alchemist, powered by Midjourney.",
+    "link": "https://alchemy.haydenbleasel.com/",
+    "image": "/apps/alchemy.png"
+  },
+  {
+    "name": "Neutral",
+    "description": "Join the carbon neutral community.",
+    "link": "/apps/neutral",
+    "image": "/apps/neutral.svg",
+    "caption": {
+      "text": "closed"
+    }
+  },
+  {
+    "name": "Hancock",
+    "description": "Simple email signature generator.",
+    "link": "https://hancock.haydenbleasel.com/",
+    "image": "/apps/hancock.svg"
+  },
+  {
+    "name": "Presumi",
+    "description": "How I started a data analytics startup and partnered with SEEK.",
+    "link": "/apps/presumi",
+    "image": "/apps/presumi.svg",
+    "caption": {
+      "text": "closed",
+      "link": "/apps/presumi"
+    }
+  },
+  {
+    "name": "Bokeh",
+    "description": "Meet your new photography portfolio.",
+    "link": "https://www.bokeh.photo/",
+    "image": "/apps/bokeh.svg",
+    "caption": {
+      "text": "transferred"
+    }
+  },
+  {
+    "name": "Favicons",
+    "description": "Node.js Favicon Generator. My first project to reach 1K stars.",
+    "link": "https://www.npmjs.com/package/favicons",
+    "image": "/apps/favicons.svg",
+    "caption": {
+      "text": "transferred"
+    }
+  },
+  {
+    "name": "Phantom",
+    "description": "A blog theme for Ghost.",
+    "link": "https://github.com/nitinthewiz/ghost-phantom",
+    "image": "/apps/phantom.svg",
+    "caption": {
+      "text": "transferred"
+    }
+  },
+  {
+    "name": "Desync",
+    "description": "A place to share and find inspiration from AI-generated art!",
+    "link": "https://www.desync.art/",
+    "image": "/apps/desync.png",
+    "caption": {
+      "text": "transferred",
+      "link": "/apps/desync"
+    }
+  },
+  {
+    "name": "Vercel for VS Code",
+    "description": "A VS Code extension for Vercel deployment status.",
+    "image": "/apps/vercel.svg",
+    "link": "https://marketplace.visualstudio.com/items?itemName=HaydenBleasel.vercel-vscode",
+    "featured": true
+  }
+]

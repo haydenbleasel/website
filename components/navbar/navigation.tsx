@@ -240,7 +240,7 @@ export const Navigation: FC = () => {
   return (
     <nav>
       {sections.map((section, sectionIndex) => (
-        <section className="p-4" key={sectionIndex}>
+        <section className="p-3" key={sectionIndex}>
           {section.name ? (
             <p className="mx-2 mb-2 text-xs font-semibold tracking-wide uppercase text-zinc-600 dark:text-zinc-400">
               {section.name}
@@ -257,7 +257,7 @@ export const Navigation: FC = () => {
                     href.startsWith('http') ? 'noopener noreferrer' : undefined
                   }
                   className={cn(
-                    'group p-2 flex items-center gap-2.5 rounded-md border transition-colors',
+                    'group px-3 py-2 flex items-center gap-2.5 rounded-md border transition-colors',
                     active
                       ? 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-zinc-200 dark:border-zinc-700'
                       : 'text-zinc-500 dark:text-zinc-400 border-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100'

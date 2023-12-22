@@ -1,40 +1,58 @@
 'use client';
 
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { useTheme } from 'next-themes';
 
-import { Button } from '@/components/ui/button';
+import { DesktopIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import type { FC } from 'react';
 
-export const ModeToggle: FC = () => {
-  const { setTheme } = useTheme();
+const themeIcons: Record<string, typeof MoonIcon> = {
+  light: SunIcon,
+  dark: MoonIcon,
+  system: DesktopIcon,
+};
+
+const ThemeSelectItem: FC<{ readonly value: string }> = ({ value }) => {
+  const Icon = themeIcons[value];
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <SunIcon className="text-zinc-900 h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="text-white absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <SelectItem value={value} key={value}>
+      <div className="flex items-center gap-2.5">
+        <Icon className="w-4 h-4 shrink-0" />
+        {value.charAt(0).toUpperCase() + value.slice(1)}
+      </div>
+    </SelectItem>
+  );
+};
+
+export const ModeToggle: FC = () => {
+  const { setTheme, themes, theme } = useTheme();
+  const Icon = themeIcons[theme ?? 'system'];
+
+  return (
+    <Select value={theme} onValueChange={setTheme}>
+      <SelectTrigger className="dark:border-zinc-700">
+        <SelectValue placeholder="Theme">
+          <div className="flex items-center gap-2.5">
+            <Icon className="w-4 h-4 shrink-0" />
+            {theme
+              ? `${theme.charAt(0).toUpperCase()}${theme.slice(1)}`
+              : 'System'}
+            {}
+          </div>
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent>
+        {themes.map((option) => (
+          <ThemeSelectItem key={theme} value={option} />
+        ))}
+      </SelectContent>
+    </Select>
   );
 };

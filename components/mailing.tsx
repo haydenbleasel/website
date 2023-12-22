@@ -104,7 +104,7 @@ export const MailingList: FC = () => {
         className="shrink-0"
         disabled={disabled || !email.trim() || !isValidEmail(email)}
       >
-        {disabled ? 'Please wait...' : 'Join the mailing list'}
+        {disabled ? 'Loading...' : 'Subscribe'}
       </Button>
     </form>
   );

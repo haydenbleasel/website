@@ -21,7 +21,7 @@ const Home = async (): Promise<ReactElement> => {
   const announcement = await get<AnnouncementProps>('announcement');
 
   return (
-    <Container>
+    <Container wide>
       <h1>
         Chief Product Officer.
         <br />
@@ -33,7 +33,17 @@ const Home = async (): Promise<ReactElement> => {
       </h1>
       {announcement ? <Announcement {...announcement} /> : null}
       <p>Hi, I&apos;m Hayden Bleasel.</p>
-      <MailingList />
+      <div className="not-prose bg-white dark:bg-zinc-800 rounded border border-zinc-200 dark:border-zinc-700 p-4 my-4 flex items-center justify-between gap-4">
+        <div className="text-sm space-y-1">
+          <p className="text-zinc-900 dark:text-zinc-100 font-medium">
+            Join 1800+ readers
+          </p>
+          <p className="text-zinc-500 dark:text-zinc-400">
+            Get periodic updates on new projects. No spam, ever.
+          </p>
+        </div>
+        <MailingList />
+      </div>
       <Social />
     </Container>
   );

@@ -64,6 +64,7 @@
     "react-day-picker": "^8.9.1",
     "react-dom": "18.2.0",
     "react-email": "1.9.5",
+    "react-glimpse": "^2.0.14",
     "react-hook-form": "^7.48.2",
     "react-player": "^2.14.1",
     "react-wrap-balancer": "^1.1.0",

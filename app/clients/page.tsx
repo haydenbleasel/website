@@ -24,7 +24,7 @@ const Clients: FC = () => (
           <div
             key={name}
             className={cn(
-              'group flex flex-col gap-2 items-center justify-center p-4 aspect-square ring-1 transition-colors',
+              'group space-y-2 items-center justify-center p-4 aspect-square ring-1 transition-colors',
               'ring-zinc-200 bg-transparent hover:bg-zinc-100',
               'dark:ring-zinc-800 dark:hover:bg-zinc-800'
             )}

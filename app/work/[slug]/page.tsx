@@ -53,7 +53,7 @@ const WorkPage: FC<WorkPageProps> = ({ params }) => {
   }
 
   return (
-    <div className="flex flex-col gap-8 relative">
+    <div className="space-y-8 relative">
       {job.image && job.imageBlur ? (
         <Image
           src={job.image}

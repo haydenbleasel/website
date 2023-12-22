@@ -54,7 +54,7 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
 
   return (
     <Container>
-      <div className="flex flex-col gap-8">
+      <div className="space-y-8">
         <div>
           <div className="relative">
             <Link

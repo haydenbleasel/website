@@ -52,7 +52,7 @@ const ContactForm: FC = () => {
       onSubmit={handleSubmit}
       className="flex w-full flex-col max-w-lg gap-8"
     >
-      <div className="flex flex-col gap-1">
+      <div className="space-y-1">
         <Label htmlFor="name">Full name</Label>
         <Input
           id="name"
@@ -62,7 +62,7 @@ const ContactForm: FC = () => {
           className="bg-white dark:bg-zinc-900"
         />
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="space-y-1">
         <Label htmlFor="email">Email address</Label>
         <Input
           id="email"
@@ -73,7 +73,7 @@ const ContactForm: FC = () => {
           pattern={emailRegex.source}
         />
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="space-y-1">
         <Label htmlFor="message">Message</Label>
         <Textarea
           id="message"

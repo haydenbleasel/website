@@ -38,11 +38,6 @@ const About: FC = () => (
       </Link>{' '}
       in 2023 by Raw Studio, where I joined them as an Advisor.
     </p>
-    <p>
-      I have limited availability and occasionally take on freelance projects
-      and consulting. I&apos;m also open to joining boards and advisory roles.
-      If you&apos;re interested, please get in touch.
-    </p>
   </Container>
 );
 

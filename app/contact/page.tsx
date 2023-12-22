@@ -16,7 +16,7 @@ export const metadata: Metadata = createMetadata({
 
 const Contact: FC = () => (
   <Container>
-    <div className="flex flex-col gap-1">
+    <div className="space-y-1">
       <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl">
         {title}
       </h1>

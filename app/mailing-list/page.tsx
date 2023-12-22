@@ -16,7 +16,7 @@ export const metadata = createMetadata({
 
 const MailingListPage: FC = () => (
   <Container>
-    <section className="flex flex-col gap-1">
+    <section className="space-y-1">
       <p className="m-0 text-zinc-900 dark:text-white font-medium text-sm">
         {title}
       </p>

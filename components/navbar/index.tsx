@@ -19,7 +19,7 @@ export const Navbar: FC = () => (
       <p className="mx-2 mb-2 text-xs font-semibold tracking-wide uppercase text-zinc-600 dark:text-zinc-400">
         Other
       </p>
-      <div className="flex flex-col gap-0.5">
+      <div className="space-y-0.5">
         <ModeToggle />
         <Status />
       </div>

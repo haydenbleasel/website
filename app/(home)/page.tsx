@@ -2,7 +2,6 @@ import { get } from '@vercel/edge-config';
 import { createMetadata } from '@/lib/metadata';
 import { MailingList } from '@/components/mailing';
 import { Container } from '@/components/container';
-import { Social } from './components/social';
 import { Announcement } from './components/announcement';
 import type { AnnouncementProps } from './components/announcement';
 import type { Metadata } from 'next';
@@ -33,7 +32,7 @@ const Home = async (): Promise<ReactElement> => {
       </h1>
       {announcement ? <Announcement {...announcement} /> : null}
       <p>Hi, I&apos;m Hayden Bleasel.</p>
-      <div className="not-prose bg-white dark:bg-zinc-800 rounded border border-zinc-200 dark:border-zinc-700 p-4 my-4 flex items-center justify-between gap-4">
+      <div className="not-prose bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 p-4 my-4 flex items-center justify-between gap-4 shadow">
         <div className="text-sm space-y-1">
           <p className="text-zinc-900 dark:text-zinc-100 font-medium">
             Join 1800+ readers
@@ -44,7 +43,6 @@ const Home = async (): Promise<ReactElement> => {
         </div>
         <MailingList />
       </div>
-      <Social />
     </Container>
   );
 };

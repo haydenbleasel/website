@@ -290,12 +290,12 @@ export const Navigation: FC = () => {
                   {shortcut ? (
                     <div
                       className={cn(
-                        'border rounded w-4 shrink-0 h-5 text-xs font-medium flex items-center justify-center',
+                        'border rounded w-4 shrink-0 h-5 text-[10px] font-medium flex items-center justify-center',
                         'border-zinc-300 dark:border-zinc-700',
                         'text-zinc-500 dark:text-zinc-400'
                       )}
                     >
-                      {shortcut}
+                      {shortcut.toUpperCase()}
                     </div>
                   ) : null}
                   {href.startsWith('http') ? (

@@ -16,14 +16,8 @@ export const metadata = createMetadata({
 
 const MailingListPage: FC = () => (
   <Container>
-    <section className="space-y-1">
-      <p className="m-0 text-zinc-900 dark:text-white font-medium text-sm">
-        {title}
-      </p>
-      <p className="m-0 text-zinc-600 dark:text-zinc-400 text-sm">
-        {description}
-      </p>
-    </section>
+    <h1>{title}</h1>
+
     <div className="space-y-1">
       <Label htmlFor="email">Email address</Label>
       <MailingList />

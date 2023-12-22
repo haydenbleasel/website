@@ -48,10 +48,7 @@ const ContactForm: FC = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex w-full flex-col max-w-lg gap-8"
-    >
+    <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-4">
       <div className="space-y-1">
         <Label htmlFor="name">Full name</Label>
         <Input
@@ -59,7 +56,7 @@ const ContactForm: FC = () => {
           value={name}
           onChange={({ target }) => setName(target.value)}
           placeholder="Jane Smith"
-          className="bg-white dark:bg-zinc-900"
+          className="bg-zinc-100 dark:bg-zinc-800"
         />
       </div>
       <div className="space-y-1">
@@ -69,7 +66,7 @@ const ContactForm: FC = () => {
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           placeholder="jane@acme.com"
-          className="bg-white dark:bg-zinc-900"
+          className="bg-zinc-100 dark:bg-zinc-800"
           pattern={emailRegex.source}
         />
       </div>
@@ -80,7 +77,7 @@ const ContactForm: FC = () => {
           value={message}
           onChange={({ target }) => setMessage(target.value)}
           placeholder="Hi there, I'm interested in..."
-          className="bg-white dark:bg-zinc-900"
+          className="bg-zinc-100 dark:bg-zinc-800"
         />
       </div>
       <Button disabled={disabled} type="submit" className="w-fit">

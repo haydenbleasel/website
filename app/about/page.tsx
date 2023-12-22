@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/container';
-import { MailingList } from '@/components/mailing';
 import Profile from './profile.jpg';
 import type { FC } from 'react';
 
@@ -44,13 +43,6 @@ const About: FC = () => (
       and consulting. I&apos;m also open to joining boards and advisory roles.
       If you&apos;re interested, please get in touch.
     </p>
-    <p>
-      Also, I have a <Link href="https://store.haydenbleasel.com/">store</Link>{' '}
-      where I sell cool merch; and a private mailing list where I keep 1000+
-      people up to date with what I&apos;m working on. Feel free to join if
-      you&apos;re interested.
-    </p>
-    <MailingList />
   </Container>
 );
 

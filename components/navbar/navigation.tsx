@@ -15,6 +15,7 @@ import {
   VideoIcon,
   GitHubLogoIcon,
   LayersIcon,
+  CrumpledPaperIcon,
 } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -137,6 +138,11 @@ export const Navigation: FC = () => {
       href: 'https://twitter.com/haydenbleasel',
       icon: ChatBubbleIcon,
       active: false,
+    },
+    {
+      name: 'Store',
+      href: 'https://store.haydenbleasel.com/',
+      icon: CrumpledPaperIcon,
     },
   ];
 

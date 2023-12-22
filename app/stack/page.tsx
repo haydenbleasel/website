@@ -1,45 +1,81 @@
+import { GlobeIcon } from '@radix-ui/react-icons';
+import glimpse from 'react-glimpse/server';
+import Image from 'next/image';
 import { Link } from '@/components/link';
 import { createMetadata } from '@/lib/metadata';
-import { Section } from '@/components/section';
 import stack from '@/data/stack.json';
 import { Container } from '@/components/container';
-import type { FC } from 'react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import type { FC, ReactElement } from 'react';
 
 const title = 'Stack';
 const description = 'Tools and technologies I use.';
 
 export const metadata = createMetadata({ title, description, path: '/stack' });
 
+const Tool = async ({
+  data,
+}: {
+  data: (typeof stack)[0];
+}): Promise<ReactElement> => {
+  let image = null;
+
+  try {
+    const response = await glimpse(data.href);
+    image = response.image;
+  } catch (error) {
+    console.error(error);
+  }
+
+  return (
+    <Link
+      href={data.href}
+      key={data.href}
+      className="no-underline hover:-translate-y-1 transition-transform"
+    >
+      <Card className="not-prose overflow-hidden">
+        {image ? (
+          <Image
+            src={image}
+            alt=""
+            width={1200}
+            height={630}
+            unoptimized
+            className="aspect-[1200/630] object-cover"
+          />
+        ) : null}
+        <CardHeader>
+          <CardTitle>{data.name}</CardTitle>
+          <CardDescription className="line-clamp-2">
+            {data.description}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+            <span className="flex items-center gap-1">
+              <GlobeIcon className="w-3 h-3" />
+              {new URL(data.href).hostname}
+            </span>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
+  );
+};
+
 const Stack: FC = () => (
-  <Container>
-    <section className="flex flex-col gap-1">
-      <p className="m-0 text-zinc-900 dark:text-white font-medium text-sm">
-        {title}
-      </p>
-      <p className="m-0 text-zinc-600 dark:text-zinc-400 text-sm">
-        {description}
-      </p>
-    </section>
-    <div className="flex flex-col gap-2">
-      {stack.map(({ type, items }) => (
-        <Section title={type} key={type}>
-          {items.map((tool) => (
-            <div
-              className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 justify-between"
-              key={tool.name}
-            >
-              <Link
-                className="m-0 text-zinc-900 dark:text-white text-sm sm:truncate w-[7rem]"
-                href={tool.href}
-              >
-                {tool.name}
-              </Link>
-              <p className="m-0 text-zinc-600 dark:text-zinc-400 text-xs sm:text-right">
-                {tool.description}
-              </p>
-            </div>
-          ))}
-        </Section>
+  <Container wide>
+    <h1>{title}</h1>
+    <p>{description}</p>
+    <div className="grid grid-cols-2 gap-8">
+      {stack.map((tool) => (
+        <Tool data={tool} key={tool.name} />
       ))}
     </div>
   </Container>

@@ -22,24 +22,26 @@ const Status = async (): Promise<ReactElement> => {
 
   return (
     <a
-      className="flex items-center gap-3 text-sm font-medium"
+      className="flex items-center gap-2.5 text-sm font-medium p-2"
       target="_blank"
       rel="noreferrer"
       href={process.env.BETTERSTACK_URL}
     >
-      <span className="relative flex h-2 w-2">
-        <span
-          className={cn(
-            'absolute inline-flex h-full w-full animate-ping rounded-full opacity-75',
-            statusColor
-          )}
-        />
-        <span
-          className={cn(
-            'relative inline-flex h-2 w-2 rounded-full',
-            statusColor
-          )}
-        />
+      <span className="flex items-center justify-center w-5 h-5">
+        <span className="relative flex h-2 w-2">
+          <span
+            className={cn(
+              'absolute inline-flex h-full w-full animate-ping rounded-full opacity-75',
+              statusColor
+            )}
+          />
+          <span
+            className={cn(
+              'relative inline-flex h-2 w-2 rounded-full',
+              statusColor
+            )}
+          />
+        </span>
       </span>
       <span>{statusLabel}</span>
     </a>

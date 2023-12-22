@@ -98,6 +98,9 @@ dependencies:
   '@react-email/render':
     specifier: ^0.0.9
     version: 0.0.9
+  '@react-hookz/web':
+    specifier: ^24.0.2
+    version: 24.0.2(react-dom@18.2.0)(react@18.2.0)
   '@sentry/nextjs':
     specifier: ^7.78.0
     version: 7.78.0(next@14.0.1)(react@18.2.0)
@@ -119,9 +122,6 @@ dependencies:
   contentlayer-datapad:
     specifier: ^1.0.21
     version: 1.0.21(@algolia/client-search@4.20.0)(@types/react-dom@18.2.15)(@types/react@18.2.39)(esbuild@0.19.4)(next@14.0.1)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.8.3)
-  copy-to-clipboard:
-    specifier: ^3.3.3
-    version: 3.3.3
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
@@ -3962,6 +3962,26 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@react-hookz/deep-equal@1.0.4:
+    resolution: {integrity: sha512-N56fTrAPUDz/R423pag+n6TXWbvlBZDtTehaGFjK0InmN+V2OFWLE/WmORhmn6Ce7dlwH5+tQN1LJFw3ngTJVg==}
+    dev: false
+
+  /@react-hookz/web@24.0.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-LhWw/LzhxKYRZDRIKd42mCMqRa9pTMSpwpwnfpa0hYoUNcrHw//3NlpoPlynkmKT3G88mumTTuV0HeWnNkarog==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      js-cookie: ^3.0.5
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
+    peerDependenciesMeta:
+      js-cookie:
+        optional: true
+    dependencies:
+      '@react-hookz/deep-equal': 1.0.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@rollup/plugin-commonjs@24.0.0(rollup@2.78.0):
     resolution: {integrity: sha512-0w0wyykzdyRRPHOb0cQt14mIBLujfAv6GgP6g8nvg/iBxEm112t3YPPq+Buqe2+imvElTka+bjNlJ/gB56TD8g==}
     engines: {node: '>=14.0.0'}
@@ -5506,12 +5526,6 @@ packages:
 
   /cookiejar@2.1.4:
     resolution: {integrity: sha512-LDx6oHrK+PhzLKJU9j5S7/Y3jM/mUHvD/DeI1WQmJn652iPC5Y4TBzC9l+5OMOXlyTTA+SmVUPm0HQUwpD5Jqw==}
-    dev: false
-
-  /copy-to-clipboard@3.3.3:
-    resolution: {integrity: sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==}
-    dependencies:
-      toggle-selection: 1.0.6
     dev: false
 
   /copyfiles@2.4.1:
@@ -11889,10 +11903,6 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
-
-  /toggle-selection@1.0.6:
-    resolution: {integrity: sha512-BiZS+C1OS8g/q2RRbJmy59xpyghNBqrr6k5L/uKBGRsTfxmu3ffiRnd8mlGPUVayg8pvfi5urfnu8TU7DVOkLQ==}
-    dev: false
 
   /toml@3.0.0:
     resolution: {integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==}

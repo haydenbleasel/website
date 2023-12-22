@@ -7,7 +7,6 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { cn } from '@/lib/utils';
 import { Navbar } from './components/navbar';
-import { Footer } from './components/footer';
 import type { FC, ReactNode } from 'react';
 
 type RootLayoutProps = {
@@ -23,7 +22,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       'antialiased touch-manipulation font-sans'
     )}
   >
-    <body className="bg-zinc-100 dark:bg-zinc-950">
+    <body className="bg-zinc-50 dark:bg-zinc-950">
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -32,8 +31,9 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       >
         <TooltipProvider>
           <Navbar />
-          {children}
-          <Footer />
+          <div className="ml-60">
+            <div className="container px-4 max-w-2xl mx-auto">{children}</div>
+          </div>
         </TooltipProvider>
       </ThemeProvider>
       <Toaster />

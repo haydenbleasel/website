@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge';
-import { formatDate } from '@/lib/format';
+import { formatDate } from '@/lib/utils';
 import type { FC } from 'react';
 import type { Blog, Legal } from '@/.contentlayer/generated';
 import type { Toc } from 'contentlayer-datapad';

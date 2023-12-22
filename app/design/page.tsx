@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { formatDate } from '@/lib/format';
+import { formatDate } from '@/lib/utils';
 import { Container } from '@/components/container';
 import type { ReactElement } from 'react';
 

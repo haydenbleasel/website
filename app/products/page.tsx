@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/card';
 import { Container } from '@/components/container';
 import { fetchProducts } from '@/lib/producthunt';
-import { formatDate } from '@/lib/utils';
 import type { ProductHuntResponse } from '@/lib/producthunt';
 import type { ReactElement } from 'react';
 
@@ -46,16 +45,19 @@ const Project = async ({
             </span>
             <span className="flex items-center gap-1">
               <CalendarIcon className="w-3 h-3" />
-              {formatDate(data.createdAt)}
+              {data.featuredAt}
             </span>
           </div>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+            {data.topics.edges.map((topic) => topic.node.name).join(', ')}
+          </p>
         </CardContent>
       </Card>
     </Link>
   );
 };
 
-const Apps = async (): Promise<ReactElement> => {
+const Code = async (): Promise<ReactElement> => {
   const products = await fetchProducts();
 
   return (
@@ -70,4 +72,4 @@ const Apps = async (): Promise<ReactElement> => {
   );
 };
 
-export default Apps;
+export default Code;

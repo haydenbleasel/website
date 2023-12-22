@@ -6,6 +6,7 @@ import { allBlogs } from '@contentlayer/generated';
 import { createMetadata } from '@/lib/metadata';
 import { Mdx } from '@/components/mdx';
 import { formatDate } from '@/lib/utils';
+import { Container } from '@/components/container';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
 
@@ -52,41 +53,43 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
   }
 
   return (
-    <div className="flex flex-col gap-8">
-      <div>
-        <div className="relative">
-          <Link
-            className="absolute inline-flex items-center gap-1 text-xs -left-24 text-zinc-600 dark:text-zinc-400 top-0.5"
-            href="/blog"
-          >
-            <ArrowLeftIcon className="h-4 w-4" />
-            Blog
-          </Link>
-          <h1 className="m-0 text-sm text-zinc-900 dark:text-white font-medium">
-            {doc.title}
-          </h1>
+    <Container>
+      <div className="flex flex-col gap-8">
+        <div>
+          <div className="relative">
+            <Link
+              className="absolute inline-flex items-center gap-1 text-xs -left-24 text-zinc-600 dark:text-zinc-400 top-0.5"
+              href="/blog"
+            >
+              <ArrowLeftIcon className="h-4 w-4" />
+              Blog
+            </Link>
+            <h1 className="m-0 text-sm text-zinc-900 dark:text-white font-medium">
+              {doc.title}
+            </h1>
+          </div>
+          <p className="my-1 mb-0">{doc.description}</p>
+          <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-4">
+            Published on {formatDate(doc.date)} • {doc.readingTime}
+          </p>
         </div>
-        <p className="my-1 mb-0">{doc.description}</p>
-        <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-4">
-          Published on {formatDate(doc.date)} • {doc.readingTime}
-        </p>
+        {doc.image && doc.imageBlur ? (
+          <Image
+            src={doc.image}
+            width={1920}
+            height={1080}
+            alt=""
+            className="m-0 h-full w-full object-cover rounded overflow-hidden"
+            priority
+            blurDataURL={`data:image/jpg;base64,${doc.imageBlur}`}
+            placeholder="blur"
+          />
+        ) : null}
+        <div>
+          <Mdx code={doc.body.code} />
+        </div>
       </div>
-      {doc.image && doc.imageBlur ? (
-        <Image
-          src={doc.image}
-          width={1920}
-          height={1080}
-          alt=""
-          className="m-0 h-full w-full object-cover rounded overflow-hidden"
-          priority
-          blurDataURL={`data:image/jpg;base64,${doc.imageBlur}`}
-          placeholder="blur"
-        />
-      ) : null}
-      <div>
-        <Mdx code={doc.body.code} />
-      </div>
-    </div>
+    </Container>
   );
 };
 

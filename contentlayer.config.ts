@@ -43,7 +43,7 @@ export const Work = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
-    image: {
+    link: {
       type: 'string',
       required: true,
     },
@@ -58,10 +58,6 @@ export const Work = defineDocumentType(() => ({
     location: {
       type: 'string',
       required: true,
-    },
-    featured: {
-      type: 'boolean',
-      required: false,
     },
   },
   computedFields: computeFields<'Work'>({}),

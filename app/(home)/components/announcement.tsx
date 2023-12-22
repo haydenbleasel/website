@@ -13,11 +13,11 @@ export const Announcement: FC<AnnouncementProps> = ({ text, cta, link }) => (
   <div
     className={cn(
       'flex flex-col items-start gap-4 border rounded-lg p-4',
-      'bg-neutral-50 border-neutral-200',
-      'dark:bg-neutral-900 dark:border-neutral-700'
+      'bg-zinc-50 border-zinc-200',
+      'dark:bg-zinc-900 dark:border-zinc-700'
     )}
   >
-    <p className="text-neutral-900 dark:text-white text-sm m-0">{text}</p>
+    <p className="text-zinc-900 dark:text-white text-sm m-0">{text}</p>
     <Button asChild>
       <Link href={link} className="no-underline">
         {cta}

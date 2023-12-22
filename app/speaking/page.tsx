@@ -16,10 +16,10 @@ export const metadata = createMetadata({
 const Speaking: FC = () => (
   <Container>
     <section className="flex flex-col gap-1">
-      <p className="m-0 text-neutral-900 dark:text-white font-medium text-sm">
+      <p className="m-0 text-zinc-900 dark:text-white font-medium text-sm">
         {title}
       </p>
-      <p className="m-0 text-neutral-600 dark:text-neutral-400 text-sm">
+      <p className="m-0 text-zinc-600 dark:text-zinc-400 text-sm">
         {description}
       </p>
     </section>
@@ -29,7 +29,7 @@ const Speaking: FC = () => (
           className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4"
           key={name}
         >
-          <p className="m-0 sm:truncate font-medium text-neutral-900 dark:text-white">
+          <p className="m-0 sm:truncate font-medium text-zinc-900 dark:text-white">
             {href ? (
               <Link href={href}>
                 {name}, {location}
@@ -38,7 +38,7 @@ const Speaking: FC = () => (
               `${name}, ${location}`
             )}
           </p>
-          <p className="m-0 text-neutral-600 dark:text-neutral-400 text-xs w-10 sm:text-right shrink-0">
+          <p className="m-0 text-zinc-600 dark:text-zinc-400 text-xs w-10 sm:text-right shrink-0">
             {year}
           </p>
         </div>

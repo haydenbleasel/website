@@ -16,10 +16,10 @@ export const metadata = createMetadata({
 const Clients: FC = () => (
   <Container>
     <section className="flex flex-col gap-1">
-      <p className="m-0 text-neutral-900 dark:text-white font-medium text-sm">
+      <p className="m-0 text-zinc-900 dark:text-white font-medium text-sm">
         {title}
       </p>
-      <p className="m-0 text-neutral-600 dark:text-neutral-400 text-sm">
+      <p className="m-0 text-zinc-600 dark:text-zinc-400 text-sm">
         {description}
       </p>
     </section>
@@ -28,7 +28,7 @@ const Clients: FC = () => (
         <Section title={source} key={source}>
           {items.map((client) => (
             <p
-              className="m-0 text-neutral-900 dark:text-white text-sm"
+              className="m-0 text-zinc-900 dark:text-white text-sm"
               key={client}
             >
               {client}

@@ -97,7 +97,7 @@ export const MailingList: FC = () => {
         value={email}
         onChange={({ target }) => setEmail(target.value)}
         required
-        className="bg-white dark:bg-neutral-900"
+        className="bg-white dark:bg-zinc-900"
       />
       <Button
         type="submit"

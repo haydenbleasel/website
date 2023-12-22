@@ -13,10 +13,10 @@ export const metadata = createMetadata({ title, description, path: '/stack' });
 const Stack: FC = () => (
   <Container>
     <section className="flex flex-col gap-1">
-      <p className="m-0 text-neutral-900 dark:text-white font-medium text-sm">
+      <p className="m-0 text-zinc-900 dark:text-white font-medium text-sm">
         {title}
       </p>
-      <p className="m-0 text-neutral-600 dark:text-neutral-400 text-sm">
+      <p className="m-0 text-zinc-600 dark:text-zinc-400 text-sm">
         {description}
       </p>
     </section>
@@ -29,12 +29,12 @@ const Stack: FC = () => (
               key={tool.name}
             >
               <Link
-                className="m-0 text-neutral-900 dark:text-white text-sm sm:truncate w-[7rem]"
+                className="m-0 text-zinc-900 dark:text-white text-sm sm:truncate w-[7rem]"
                 href={tool.href}
               >
                 {tool.name}
               </Link>
-              <p className="m-0 text-neutral-600 dark:text-neutral-400 text-xs sm:text-right">
+              <p className="m-0 text-zinc-600 dark:text-zinc-400 text-xs sm:text-right">
                 {tool.description}
               </p>
             </div>

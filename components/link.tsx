@@ -12,8 +12,8 @@ export const Link: FC<LinkProps> = ({ href, className, ...props }) => {
   const isExternal = href.startsWith('http');
   const classNames = cn(
     'transition-colors',
-    'decoration-neutral-300 hover:decoration-neutral-400',
-    'dark:decoration-neutral-700 dark:hover:decoration-neutral-600',
+    'decoration-zinc-300 hover:decoration-zinc-400',
+    'dark:decoration-zinc-700 dark:hover:decoration-zinc-600',
     className
   );
 

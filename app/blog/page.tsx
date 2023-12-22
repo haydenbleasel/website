@@ -23,10 +23,10 @@ const blogPostsByYear = allBlogs.reduce<Record<number, typeof allBlogs>>(
 const Blog: FC = () => (
   <Container wide>
     <section className="flex flex-col gap-1">
-      <p className="m-0 text-neutral-900 dark:text-white font-medium text-sm">
+      <p className="m-0 text-zinc-900 dark:text-white font-medium text-sm">
         {title}
       </p>
-      <p className="m-0 text-neutral-600 dark:text-neutral-400 text-sm">
+      <p className="m-0 text-zinc-600 dark:text-zinc-400 text-sm">
         {description}
       </p>
     </section>
@@ -41,12 +41,12 @@ const Blog: FC = () => (
                 key={post.slug}
               >
                 <Link
-                  className="m-0 text-neutral-900 dark:text-white text-sm sm:truncate"
+                  className="m-0 text-zinc-900 dark:text-white text-sm sm:truncate"
                   href={post.slug}
                 >
                   {post.title}
                 </Link>
-                <p className="w-[7rem] m-0 text-neutral-600 dark:text-neutral-400 text-xs sm:text-right">
+                <p className="w-[7rem] m-0 text-zinc-600 dark:text-zinc-400 text-xs sm:text-right">
                   {formatDate(post.date)}
                 </p>
               </div>

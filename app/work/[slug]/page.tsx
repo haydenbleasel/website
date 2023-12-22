@@ -62,8 +62,8 @@ const WorkPage: FC<WorkPageProps> = ({ params }) => {
           alt=""
           className={cn(
             'm-0 h-8 w-8 object-cover rounded-full overflow-hidden absolute -top-16 ring-2 left-6',
-            'ring-neutral-100',
-            'dark:ring-neutral-950'
+            'ring-zinc-100',
+            'dark:ring-zinc-950'
           )}
           priority
           blurDataURL={`data:image/jpg;base64,${job.imageBlur}`}
@@ -73,18 +73,18 @@ const WorkPage: FC<WorkPageProps> = ({ params }) => {
       <div>
         <div className="relative">
           <Link
-            className="absolute inline-flex items-center gap-1 text-xs -left-24 text-neutral-600 dark:text-neutral-400 top-0.5"
+            className="absolute inline-flex items-center gap-1 text-xs -left-24 text-zinc-600 dark:text-zinc-400 top-0.5"
             href="/work"
           >
             <ArrowLeftIcon className="h-4 w-4" />
             Work
           </Link>
-          <h1 className="m-0 text-sm text-neutral-900 dark:text-white font-medium">
+          <h1 className="m-0 text-sm text-zinc-900 dark:text-white font-medium">
             {job.role}
           </h1>
         </div>
         <p className="my-1 mb-0">{job.company}</p>
-        <p className="text-neutral-600 dark:text-neutral-400 text-xs mt-4">
+        <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-4">
           {job.startYear} &mdash; {job.endYear ?? 'Present'} • {job.location}
         </p>
       </div>

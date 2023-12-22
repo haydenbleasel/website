@@ -12,7 +12,7 @@ Tailwind's utility classes are great for quickly creating simple designs, but th
 ```tsx title="button.tsx"
 <button
   type="button"
-  className="relative inline-flex items-center border border-neutral-300 bg-white px-4 py-2 text-sm font-semibold text-neutral-700"
+  className="relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700"
 >
   Hello, world.
 </button>
@@ -23,7 +23,7 @@ Pretty good so far. However, that's just the base style for the button. Let's tr
 ```tsx title="button.tsx"
 <button
   type="button"
-  className="relative inline-flex items-center border border-neutral-300 bg-white px-4 py-2 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50"
+  className="relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50"
 >
   Hello, world.
 </button>
@@ -34,7 +34,7 @@ Not too bad. Now let's try adding some focus styles, so that the button changes 
 ```tsx title="button.tsx"
 <button
   type="button"
-  className="relative inline-flex items-center border border-neutral-300 bg-white px-4 py-2 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50 focus:z-10 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+  className="relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 focus:z-10 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
 >
   Hello, world.
 </button>
@@ -45,7 +45,7 @@ Getting a bit intense now. How about dark mode support?
 ```tsx title="button.tsx"
 <button
   type="button"
-  className="relative inline-flex items-center border border-neutral-300 bg-white px-4 py-2 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50 focus:z-10 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:border-teal-400 dark:focus:ring-teal-400"
+  className="relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 focus:z-10 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:focus:border-teal-400 dark:focus:ring-teal-400"
 >
   Hello, world.
 </button>
@@ -77,12 +77,12 @@ Taking the code above, we can use `clsx` to make it a bit more readable and main
       ? 'border-teal-500 bg-teal-500 text-white hover:bg-teal-600'
 
       // Unselected / hover state
-      : 'border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50',
+      : 'border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50',
 
     value !== item.value &&
 
       // Dark-mode unselected state (selected is the same)
-      'dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800',
+      'dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800',
   )}
 >
   Hello, world.

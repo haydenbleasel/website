@@ -33,8 +33,8 @@ export const Navigation: FC = () => (
   <div
     className={cn(
       'z-50 py-16 sm:py-0 sm:backdrop-blur-sm border-t sm:border-b sm:border-x sm:shadow sm:fixed sm:left-1/2 sm:-translate-x-1/2 sm:bottom-8 sm:rounded-full',
-      'sm:bg-white/90 border-neutral-200',
-      'dark:sm:bg-neutral-950/90 dark:border-neutral-800'
+      'sm:bg-white/90 border-zinc-200',
+      'dark:sm:bg-zinc-950/90 dark:border-zinc-800'
     )}
   >
     <div className="flex flex-col sm:flex-row flex-wrap sm:flex-nowrap sm:items-center sm:p-1">
@@ -46,16 +46,16 @@ export const Navigation: FC = () => (
                 <div
                   className={cn(
                     'flex items-center gap-2 p-3 bg-transparent transition-colors relative rounded-full',
-                    'group-[.active-page]:bg-neutral-100',
-                    'dark:group-[.active-page]:bg-neutral-800'
+                    'group-[.active-page]:bg-zinc-100',
+                    'dark:group-[.active-page]:bg-zinc-800'
                   )}
                 >
                   <Icon
                     className={cn(
                       'w-4 h-4 transition-colors',
-                      'text-neutral-600 hover:text-neutral-900',
-                      'dark:text-neutral-400 dark:hover:text-white',
-                      'group-[.active-page]:text-neutral-900',
+                      'text-zinc-600 hover:text-zinc-900',
+                      'dark:text-zinc-400 dark:hover:text-white',
+                      'group-[.active-page]:text-zinc-900',
                       'dark:group-[.active-page]:text-white'
                     )}
                   />

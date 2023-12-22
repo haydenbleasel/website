@@ -13,10 +13,10 @@ export const metadata = createMetadata({ title, description, path: '/apps' });
 const Apps: FC = () => (
   <Container>
     <section className="flex flex-col gap-1">
-      <p className="m-0 text-neutral-900 dark:text-white font-medium text-sm">
+      <p className="m-0 text-zinc-900 dark:text-white font-medium text-sm">
         {title}
       </p>
-      <p className="m-0 text-neutral-600 dark:text-neutral-400 text-sm">
+      <p className="m-0 text-zinc-600 dark:text-zinc-400 text-sm">
         {description}
       </p>
     </section>
@@ -34,7 +34,7 @@ const Apps: FC = () => (
             <p className="m-0">
               <Link href={app.link}>{app.name}</Link>
               {app.caption ? (
-                <span className="ml-1 text-sm text-neutral-600 dark:text-neutral-400 font-medium">
+                <span className="ml-1 text-sm text-zinc-600 dark:text-zinc-400 font-medium">
                   {app.caption.link ? (
                     <Link className="text-inherit" href={app.caption.link}>
                       ({app.caption.text})
@@ -45,7 +45,7 @@ const Apps: FC = () => (
                 </span>
               ) : null}
             </p>
-            <p className="m-0 text-neutral-600 dark:text-neutral-400 text-xs">
+            <p className="m-0 text-zinc-600 dark:text-zinc-400 text-xs">
               {app.description}
             </p>
           </div>

@@ -11,11 +11,11 @@ body {
 }
 
 [data-rehype-pretty-code-title] {
-  @apply rounded-t border-b border-neutral-800 bg-neutral-900 px-3 py-2 text-xs text-white;
+  @apply rounded-t border-b border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-white;
 }
 
 .dark [data-rehype-pretty-code-title] {
-  @apply bg-neutral-800;
+  @apply bg-zinc-800;
 }
 
 [data-highlighted-line] {

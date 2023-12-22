@@ -3,7 +3,6 @@ import { createMetadata } from '@/lib/metadata';
 import { MailingList } from '@/components/mailing';
 import { Container } from '@/components/container';
 import { Social } from './components/social';
-import { Clients } from './components/clients';
 import { Announcement } from './components/announcement';
 import type { AnnouncementProps } from './components/announcement';
 import type { Metadata } from 'next';
@@ -35,7 +34,6 @@ const Home = async (): Promise<ReactElement> => {
       {announcement ? <Announcement {...announcement} /> : null}
       <p>Hi, I&apos;m Hayden Bleasel.</p>
       <MailingList />
-      <Clients />
       <Social />
     </Container>
   );

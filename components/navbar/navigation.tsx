@@ -75,7 +75,7 @@ export const Navigation: FC = () => {
       name: 'Apps',
       href: '/apps',
       icon: TokensIcon,
-      shortcut: 'a',
+      shortcut: 'p',
       active: pathname.startsWith('/apps'),
     },
     {

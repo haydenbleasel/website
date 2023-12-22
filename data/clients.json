@@ -2,65 +2,80 @@
   {
     "source": "Jellypepper",
     "items": [
-      "AdvanCell",
-      "Advancing Bitcoin",
-      "Airwallex",
-      "Audience Republic",
-      "Baraja",
-      "BridgeLane Group",
-      "Brighte",
-      "Canva",
-      "Clipchamp",
-      "Elevio",
-      "Faethm",
-      "Flaunter",
-      "Flirtey",
-      "Futrli",
-      "Google",
-      "Grow",
-      "Inventia",
-      "Kerbly",
-      "Lightswap",
-      "Lookahead.bio",
-      "National Geographic Channel",
-      "Notiv",
-      "Perlin",
-      "Pursuited",
-      "Resolution Collective",
-      "Rezi",
-      "Ribit",
-      "Shippit",
-      "Siesta Campers",
-      "Simply Wall St",
-      "Snug",
-      "Space Machines Company",
-      "Spaceship",
-      "Tank Stream Ventures",
-      "UpGuard",
-      "Westfield",
-      "Zibbet",
-      "Zookal"
+      { "name": "AdvanCell", "logo": "/clients/advancell.svg" },
+      { "name": "Advancing Bitcoin", "logo": "/clients/advancing bitcoin.svg" },
+      { "name": "Airwallex", "logo": "/clients/airwallex.svg" },
+      { "name": "Audience Republic", "logo": "/clients/audience republic.svg" },
+      { "name": "Baraja", "logo": "/clients/baraja.svg" },
+      { "name": "BridgeLane Group", "logo": "/clients/bridgelane group.svg" },
+      { "name": "Brighte", "logo": "/clients/brighte.svg" },
+      { "name": "Canva", "logo": "/clients/canva.svg" },
+      { "name": "Clipchamp", "logo": "/clients/clipchamp.svg" },
+      { "name": "Elevio", "logo": "/clients/elevio.svg" },
+      { "name": "Faethm", "logo": "/clients/faethm.svg" },
+      { "name": "Flaunter", "logo": "/clients/flaunter.svg" },
+      { "name": "Flirtey", "logo": "/clients/flirtey.svg" },
+      { "name": "Futrli", "logo": "/clients/futrli.svg" },
+      { "name": "Google", "logo": "/clients/google.svg" },
+      { "name": "Grow", "logo": "/clients/grow.svg" },
+      { "name": "Inventia", "logo": "/clients/inventia.svg" },
+      { "name": "Kerbly", "logo": "/clients/kerbly.svg" },
+      { "name": "Lightswap", "logo": "/clients/lightswap.svg" },
+      { "name": "Lookahead.bio", "logo": "/clients/lookahead.bio.svg" },
+      { "name": "National Geographic Channel", "logo": "/clients/natgeo.svg" },
+      { "name": "Notiv", "logo": "/clients/notiv.svg" },
+      { "name": "Perlin", "logo": "/clients/perlin.svg" },
+      { "name": "Pursuited", "logo": "/clients/pursuited.svg" },
+      {
+        "name": "Resolution Collective",
+        "logo": "/clients/resolution collective.svg"
+      },
+      { "name": "Rezi", "logo": "/clients/rezi.svg" },
+      { "name": "Ribit", "logo": "/clients/ribit.svg" },
+      { "name": "Shippit", "logo": "/clients/shippit.svg" },
+      { "name": "Siesta Campers", "logo": "/clients/siesta campers.svg" },
+      { "name": "Simply Wall St", "logo": "/clients/simply wall st.svg" },
+      { "name": "Snug", "logo": "/clients/snug.svg" },
+      {
+        "name": "Space Machines Company",
+        "logo": "/clients/space machines company.svg"
+      },
+      { "name": "Spaceship", "logo": "/clients/spaceship.svg" },
+      {
+        "name": "Tank Stream Ventures",
+        "logo": "/clients/tank stream ventures.svg"
+      },
+      { "name": "UpGuard", "logo": "/clients/upguard.svg" },
+      { "name": "Westfield", "logo": "/clients/westfield.svg" },
+      { "name": "Zibbet", "logo": "/clients/zibbet.svg" },
+      { "name": "Zookal", "logo": "/clients/zookal.svg" }
     ]
   },
   {
     "source": "R/GA",
     "items": [
-      "Australian Ethical",
-      "Comfort Delgro",
-      "Google",
-      "Nike",
-      "Timberland",
-      "Toyota"
+      {
+        "name": "Australian Ethical",
+        "logo": "/clients/australian ethical.svg"
+      },
+      { "name": "Comfort Delgro", "logo": "/clients/comfort delgro.svg" },
+      { "name": "Google", "logo": "/clients/google.svg" },
+      { "name": "Nike", "logo": "/clients/nike.svg" },
+      { "name": "Timberland", "logo": "/clients/timberland.svg" },
+      { "name": "Toyota", "logo": "/clients/toyota.svg" }
     ]
   },
   {
     "source": "Freelance",
     "items": [
-      "ESLint",
-      "OpenJS Foundation",
-      "Teleqo Technologies",
-      "Tyro Payments",
-      "UTS"
+      { "name": "ESLint", "logo": "/clients/eslint.svg" },
+      { "name": "OpenJS Foundation", "logo": "/clients/openjs foundation.svg" },
+      {
+        "name": "Teleqo Technologies",
+        "logo": "/clients/teleqo technologies.svg"
+      },
+      { "name": "Tyro Payments", "logo": "/clients/tyro payments.svg" },
+      { "name": "UTS", "logo": "/clients/uts.svg" }
     ]
   }
 ]

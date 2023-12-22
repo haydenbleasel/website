@@ -38,6 +38,17 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            letterSpacing: '-0.0125em',
+            'h1, h2, h3, h4, h5, h6': {
+              fontWeight: theme('fontWeight.semibold'),
+              letterSpacing: theme('letterSpacing.tight'),
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [animate, typography],

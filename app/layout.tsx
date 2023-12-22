@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { cn } from '@/lib/utils';
-import { Navbar } from './components/navbar';
+import { Navbar } from '../components/navbar';
 import type { FC, ReactNode } from 'react';
 
 type RootLayoutProps = {
@@ -31,9 +31,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       >
         <TooltipProvider>
           <Navbar />
-          <div className="ml-60">
-            <div className="container px-4 max-w-2xl mx-auto">{children}</div>
-          </div>
+          <div className="ml-60">{children}</div>
         </TooltipProvider>
       </ThemeProvider>
       <Toaster />

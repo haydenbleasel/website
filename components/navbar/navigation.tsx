@@ -5,18 +5,22 @@ import {
   CalendarIcon,
   ChatBubbleIcon,
   EnvelopeClosedIcon,
+  ExternalLinkIcon,
   FigmaLogoIcon,
   GlobeIcon,
   HomeIcon,
   ListBulletIcon,
   Pencil2Icon,
-  ReaderIcon,
   TokensIcon,
+  VideoIcon,
+  GitHubLogoIcon,
+  LayersIcon,
 } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEventListener } from '@react-hookz/web';
 import { cn } from '@/lib/utils';
+import { PeopleIcon } from '@/components/icons';
 import type { FC } from 'react';
 
 export const Navigation: FC = () => {
@@ -30,6 +34,13 @@ export const Navigation: FC = () => {
       icon: HomeIcon,
       shortcut: 'h',
       active: pathname === '/',
+    },
+    {
+      name: 'About',
+      href: '/about',
+      icon: AvatarIcon,
+      shortcut: 'a',
+      active: pathname.startsWith('/about'),
     },
     {
       name: 'Work',
@@ -48,14 +59,14 @@ export const Navigation: FC = () => {
     {
       name: 'Stack',
       href: '/stack',
-      icon: ReaderIcon,
+      icon: LayersIcon,
       shortcut: 's',
       active: pathname.startsWith('/stack'),
     },
     {
       name: 'Clients',
       href: '/clients',
-      icon: AvatarIcon,
+      icon: PeopleIcon,
       shortcut: 'c',
       active: pathname.startsWith('/clients'),
     },
@@ -80,15 +91,29 @@ export const Navigation: FC = () => {
       shortcut: 'f',
       active: pathname.startsWith('/features'),
     },
+    {
+      name: 'Video',
+      href: '/video',
+      icon: VideoIcon,
+      shortcut: 'v',
+      active: pathname.startsWith('/video'),
+    },
   ];
 
   const resources = [
     {
-      name: 'Figma',
+      name: 'Design',
       href: '/design',
       icon: FigmaLogoIcon,
       shortcut: 'f',
       active: pathname.startsWith('/design'),
+    },
+    {
+      name: 'Code',
+      href: '/code',
+      icon: GitHubLogoIcon,
+      shortcut: 'g',
+      active: pathname.startsWith('/code'),
     },
   ];
 
@@ -111,7 +136,6 @@ export const Navigation: FC = () => {
       name: 'X',
       href: 'https://twitter.com/haydenbleasel',
       icon: ChatBubbleIcon,
-      shortcut: 'x',
       active: false,
     },
   ];
@@ -142,36 +166,47 @@ export const Navigation: FC = () => {
       {sections.map((section, sectionIndex) => (
         <section className="p-4" key={sectionIndex}>
           {section.name ? (
-            <p className="mb-2 text-xs font-semibold tracking-wide uppercase text-zinc-600 dark:text-zinc-400">
+            <p className="mx-2 mb-2 text-xs font-semibold tracking-wide uppercase text-zinc-600 dark:text-zinc-400">
               {section.name}
             </p>
           ) : null}
-          {section.links.map(({ name, href, icon: Icon, shortcut, active }) => (
-            <Link
-              href={href}
-              key={name}
-              className={cn(
-                'p-2 flex items-center gap-2.5 rounded-md border',
-                active
-                  ? 'bg-zinc-200 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-zinc-300 dark:border-zinc-800'
-                  : 'text-zinc-500 dark:text-zinc-400 border-transparent'
-              )}
-            >
-              <Icon className="w-4 h-4 shrink-0" />
-              <p className={cn('text-sm leading-[22px] font-medium flex-1')}>
-                {name}
-              </p>
-              <div
-                className={cn(
-                  'border rounded w-4 shrink-0 h-5 text-xs font-medium flex items-center justify-center',
-                  'border-zinc-300 dark:border-zinc-700',
-                  'text-zinc-500 dark:text-zinc-400'
-                )}
-              >
-                {shortcut}
-              </div>
-            </Link>
-          ))}
+          <div className="flex flex-col gap-0.5">
+            {section.links.map(
+              ({ name, href, icon: Icon, shortcut, active }) => (
+                <Link
+                  href={href}
+                  key={name}
+                  className={cn(
+                    'p-2 flex items-center gap-2.5 rounded-md border',
+                    active
+                      ? 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-zinc-200 dark:border-zinc-800'
+                      : 'text-zinc-500 dark:text-zinc-400 border-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100'
+                  )}
+                >
+                  <Icon className="w-4 h-4 shrink-0" />
+                  <p
+                    className={cn('text-sm leading-[22px] font-medium flex-1')}
+                  >
+                    {name}
+                  </p>
+                  {shortcut ? (
+                    <div
+                      className={cn(
+                        'border rounded w-4 shrink-0 h-5 text-xs font-medium flex items-center justify-center',
+                        'border-zinc-300 dark:border-zinc-700',
+                        'text-zinc-500 dark:text-zinc-400'
+                      )}
+                    >
+                      {shortcut}
+                    </div>
+                  ) : null}
+                  {href.startsWith('http') ? (
+                    <ExternalLinkIcon className="w-4 h-4 shrink-0 text-zinc-400 dark:text-zinc-500" />
+                  ) : null}
+                </Link>
+              )
+            )}
+          </div>
         </section>
       ))}
     </nav>

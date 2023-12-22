@@ -1,8 +1,18 @@
 import { cn } from '@/lib/utils';
-import type { ComponentProps, FC } from 'react';
+import type { FC, ReactNode } from 'react';
 
-type ContainerProps = ComponentProps<'div'>;
+type ContainerProps = {
+  readonly wide?: boolean;
+  readonly children: ReactNode;
+};
 
-export const Container: FC<ContainerProps> = ({ className, ...props }) => (
-  <div className={cn('container mx-auto px-4', className)} {...props} />
+export const Container: FC<ContainerProps> = ({ wide, children }) => (
+  <div
+    className={cn(
+      'container px-4 py-24 mx-auto prose prose-zinc dark:prose-invert',
+      wide && 'max-w-4xl'
+    )}
+  >
+    {children}
+  </div>
 );

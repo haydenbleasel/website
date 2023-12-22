@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import { Link } from '@/components/link';
-import { allBlogs } from '@contentlayer/generated';
+import { allApps } from '@contentlayer/generated';
 import { createMetadata } from '@/lib/metadata';
 import { Mdx } from '@/components/mdx';
 import { formatDate } from '@/lib/utils';
@@ -17,7 +17,7 @@ type DocPageProps = {
 
 export const generateMetadata = ({ params }: DocPageProps): Metadata => {
   const currentPath = params.slug;
-  const doc = allBlogs.find(({ slugAsParams }) => slugAsParams === currentPath);
+  const doc = allApps.find(({ slugAsParams }) => slugAsParams === currentPath);
 
   if (!doc) {
     return {};
@@ -32,13 +32,13 @@ export const generateMetadata = ({ params }: DocPageProps): Metadata => {
 };
 
 export const generateStaticParams = (): DocPageProps['params'][] =>
-  allBlogs.map((doc) => ({
+  allApps.map((doc) => ({
     slug: doc.slug,
   }));
 
 const DocPage: FC<DocPageProps> = ({ params }) => {
   const currentPath = params.slug;
-  const doc = allBlogs.find(({ slugAsParams }) => slugAsParams === currentPath);
+  const doc = allApps.find(({ slugAsParams }) => slugAsParams === currentPath);
 
   if (!doc) {
     notFound();
@@ -57,10 +57,10 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
         <div className="relative">
           <Link
             className="absolute inline-flex items-center gap-1 text-xs -left-24 text-neutral-600 dark:text-neutral-400 top-0.5"
-            href="/blog"
+            href="/apps"
           >
             <ArrowLeftIcon className="h-4 w-4" />
-            Blog
+            Apps
           </Link>
           <h1 className="m-0 text-sm text-neutral-900 dark:text-white font-medium">
             {doc.title}

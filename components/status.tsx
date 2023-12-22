@@ -43,7 +43,7 @@ const Status = async (): Promise<ReactElement> => {
           />
         </span>
       </span>
-      <span>{statusLabel}</span>
+      <span className="text-zinc-500 dark:text-zinc-400">{statusLabel}</span>
     </a>
   );
 };

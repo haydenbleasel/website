@@ -10,7 +10,7 @@ export const Navbar: FC = () => (
     className={cn(
       'fixed left-0 top-0 bottom-0 w-60 flex flex-col py-2 border-r overflow-y-auto',
       'bg-white dark:bg-zinc-800',
-      'border-zinc-200 dark:border-zinc-800'
+      'border-zinc-200 dark:border-zinc-700'
     )}
   >
     <Profile />

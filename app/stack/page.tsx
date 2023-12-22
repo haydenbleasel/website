@@ -39,7 +39,7 @@ const Tool = async ({
       key={data.href}
       className="no-underline hover:-translate-y-1 transition-transform"
     >
-      <Card className="not-prose overflow-hidden">
+      <Card className="not-prose overflow-hidden bg-white dark:bg-zinc-800">
         {image ? (
           <Image
             src={image}

@@ -33,7 +33,7 @@ const Design = async (): Promise<ReactElement> => {
             rel="noopener noreferrer"
             aria-label={`Open ${figmaFile.name} in Figma`}
           >
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden bg-white dark:bg-zinc-800">
               <Image
                 src={figmaFile.thumbnail_url}
                 width={1200}

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Contract Work",
+    "description": "Contract work for various clients",
+    "cta": "Get in touch",
+    "link": "/contact?type=contract"
+  },
+  {
+    "name": "Advisory",
+    "description": "Advisory work for various clients",
+    "cta": "Book an intro call",
+    "link": "/contact?type=advisory"
+  },
+  {
+    "name": "Agency Project",
+    "description": "Agency project for various clients",
+    "cta": "Book a chat",
+    "link": "/contact?type=agency"
+  }
+]

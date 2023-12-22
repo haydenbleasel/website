@@ -36,7 +36,7 @@ const Game = async ({
       key={data.name}
       className="no-underline hover:-translate-y-1 transition-transform"
     >
-      <Card className="not-prose overflow-hidden">
+      <Card className="not-prose overflow-hidden bg-white dark:bg-zinc-800">
         {imageUrl ? (
           <Image
             src={imageUrl}

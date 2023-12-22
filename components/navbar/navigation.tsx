@@ -65,7 +65,7 @@ export const Navigation: FC = () => {
       name: 'Contact',
       href: '/contact',
       icon: ChatBubbleIcon,
-      shortcut: 'o',
+      shortcut: 'c',
       active: pathname.startsWith('/contact'),
     },
   ];
@@ -82,7 +82,7 @@ export const Navigation: FC = () => {
       name: 'Clients',
       href: '/clients',
       icon: PeopleIcon,
-      shortcut: 'c',
+      shortcut: 'l',
       active: pathname.startsWith('/clients'),
     },
     {

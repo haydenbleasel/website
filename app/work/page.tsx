@@ -34,7 +34,7 @@ const WorkPage: FC = () => (
     <p>{description}</p>
     <div className="mt-8 divide-y divide-zinc-200 dark:divide-zinc-800 border-t border-zinc-200 dark:border-zinc-800">
       {Object.entries(workPostsByYear)
-        .sort(([yearA], [yearB]) => yearB - yearA)
+        .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
         .map(([year, posts]) => (
           <div key={year} className="grid grid-cols-4">
             <p className="text-sm p-4 m-0">{year}</p>

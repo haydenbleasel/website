@@ -48,16 +48,17 @@
     "image": "/apps/refraction.png",
     "caption": {
       "text": "acquired",
-      "link": "/apps/refraction"
+      "link": "/blog/refraction"
     }
   },
   {
     "name": "Neutral",
     "description": "Join the carbon neutral community.",
-    "link": "/apps/neutral",
+    "link": "/blog/neutral",
     "image": "/apps/neutral.svg",
     "caption": {
-      "text": "closed"
+      "text": "closed",
+      "link": "/blog/neutral"
     }
   },
   {

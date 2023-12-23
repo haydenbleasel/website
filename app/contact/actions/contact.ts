@@ -39,15 +39,23 @@ export const contact = async ({
     throw new Error('RESEND_FROM environment variable is not set');
   }
 
+  if (!process.env.RESEND_TO) {
+    throw new Error('RESEND_TO environment variable is not set');
+  }
+
   try {
-    await resend.emails.send({
+    const response = await resend.emails.send({
       from: process.env.RESEND_FROM,
-      to: process.env.RESEND_FROM,
+      to: process.env.RESEND_TO,
       subject: 'Contact form submission',
       reply_to: email,
       react,
       text,
     });
+
+    if (response.error) {
+      throw new Error(response.error.message);
+    }
 
     return {};
   } catch (error) {

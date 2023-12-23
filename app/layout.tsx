@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { cn } from '@/lib/utils';
+import { CommandBar } from '@/components/command-bar';
 import { Navbar } from '../components/navbar';
 import type { FC, ReactNode } from 'react';
 
@@ -32,6 +33,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
         <TooltipProvider>
           <Navbar />
           <div className="lg:ml-60">{children}</div>
+          <CommandBar />
         </TooltipProvider>
       </ThemeProvider>
       <Toaster />

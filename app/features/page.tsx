@@ -27,12 +27,18 @@ const Feature = async ({
 }: {
   data: (typeof features)[0];
 }): Promise<ReactElement> => {
-  let image = null;
+  let { image } = data;
 
-  if (data.href) {
+  if (!image) {
     try {
       const response = await glimpse(data.href);
-      image = response.image;
+
+      if (response.image) {
+        // eslint-disable-next-line prefer-destructuring, @typescript-eslint/prefer-destructuring
+        image = response.image.startsWith('http')
+          ? response.image
+          : `https://${response.image}`;
+      }
     } catch (error) {
       console.error(error);
     }
@@ -56,9 +62,9 @@ const Feature = async ({
           />
         ) : null}
         <CardHeader>
-          <CardTitle>{data.name}</CardTitle>
+          <CardTitle className="leading-tight">{data.name}</CardTitle>
           <CardDescription className="line-clamp-2">
-            {data.href}
+            {new URL(data.href).hostname}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex items-center justify-between gap-4">

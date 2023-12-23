@@ -63,7 +63,7 @@ const Tool = async ({
           </div>
         )}
         <CardHeader>
-          <CardTitle>{data.name}</CardTitle>
+          <CardTitle className="leading-tight">{data.name}</CardTitle>
           <CardDescription className="line-clamp-2">
             {data.description}
           </CardDescription>

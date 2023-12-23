@@ -22,12 +22,7 @@ const Project: FC<{
   <Link
     href={data.link}
     key={data.name}
-    className={cn(
-      'no-underline relative pl-6',
-      data.caption &&
-        ['closed', 'transferred'].includes(data.caption.text) &&
-        'opacity-50'
-    )}
+    className={cn('no-underline relative pl-6', data.caption && 'opacity-50')}
   >
     <div className="bg-zinc-100 dark:bg-zinc-800 absolute -left-2 top-1.5 w-4 h-4 rounded-full ml-[0.5px]" />
     <div className="flex items-center gap-2">

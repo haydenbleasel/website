@@ -39,7 +39,7 @@ const Services: FC = () => (
           key={service.name}
         >
           <CardHeader>
-            <CardTitle>{service.name}</CardTitle>
+            <CardTitle className="leading-tight">{service.name}</CardTitle>
             <CardDescription>{service.description}</CardDescription>
           </CardHeader>
           <CardContent className="flex items-center justify-between gap-4">

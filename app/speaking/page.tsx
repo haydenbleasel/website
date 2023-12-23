@@ -56,7 +56,7 @@ const Talk = async ({
           />
         ) : null}
         <CardHeader>
-          <CardTitle>{data.name}</CardTitle>
+          <CardTitle className="leading-tight">{data.name}</CardTitle>
           <CardDescription className="line-clamp-2">
             {data.location}
           </CardDescription>

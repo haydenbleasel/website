@@ -44,7 +44,7 @@ const Project = async ({
           <Image src={image} alt="" width={1200} height={600} unoptimized />
         ) : null}
         <CardHeader>
-          <CardTitle>{data.name}</CardTitle>
+          <CardTitle className="leading-tight">{data.name}</CardTitle>
           <CardDescription>{data.description}</CardDescription>
         </CardHeader>
         <CardContent className="flex items-center justify-between gap-4">

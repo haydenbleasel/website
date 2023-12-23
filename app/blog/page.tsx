@@ -46,7 +46,7 @@ const Blog: FC = () => (
               />
             ) : null}
             <CardHeader>
-              <CardTitle>{post.title}</CardTitle>
+              <CardTitle className="leading-tight">{post.title}</CardTitle>
               <CardDescription className="line-clamp-2">
                 {post.description}
               </CardDescription>

@@ -61,7 +61,7 @@ const Game = async ({
           <div className="aspect-[1920/620] bg-zinc-500 dark:bg-zinc-400" />
         )}
         <CardHeader>
-          <CardTitle>{data.name}</CardTitle>
+          <CardTitle className="leading-tight">{data.name}</CardTitle>
         </CardHeader>
         <CardContent className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400 font-medium">

@@ -4,7 +4,7 @@ import { CalendarIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { Link } from '@/components/link';
 import { allWorks } from '@/.contentlayer/generated';
 import { createMetadata } from '@/lib/metadata';
-import { sortByStartYear } from '@/lib/utils';
+import { cn, sortByStartYear } from '@/lib/utils';
 import { Container } from '@/components/container';
 import {
   Card,
@@ -31,7 +31,10 @@ const Role = async ({
     <Link
       href={data.slug}
       key={data.company}
-      className="no-underline hover:-translate-y-1 transition-transform"
+      className={cn(
+        'no-underline hover:-translate-y-1 transition-transform',
+        data.endYear && 'opacity-50'
+      )}
     >
       <Card className="not-prose overflow-hidden bg-white dark:bg-zinc-800">
         {image ? (
@@ -45,7 +48,7 @@ const Role = async ({
           />
         ) : null}
         <CardHeader>
-          <CardTitle>{data.role}</CardTitle>
+          <CardTitle className="leading-tight">{data.role}</CardTitle>
           <CardDescription>{data.company}</CardDescription>
         </CardHeader>
         <CardContent className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400 font-medium">

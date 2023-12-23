@@ -16,7 +16,7 @@ export const Navbar: FC = () => (
     <Profile />
     <Navigation />
     <section className="p-3 space-y-2">
-      <p className="mx-2 text-xs font-semibold tracking-wide uppercase text-zinc-600 dark:text-zinc-400">
+      <p className="mx-3 text-xs font-semibold tracking-wide uppercase text-zinc-600 dark:text-zinc-400">
         Other
       </p>
       <div className="space-y-0.5">

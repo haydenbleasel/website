@@ -42,7 +42,9 @@ const Design = async (): Promise<ReactElement> => {
                 alt=""
               />
               <CardHeader>
-                <CardTitle>{figmaFile.name}</CardTitle>
+                <CardTitle className="leading-tight">
+                  {figmaFile.name}
+                </CardTitle>
                 <CardDescription>
                   Last updated {formatDate(figmaFile.last_modified)}
                 </CardDescription>

@@ -6,22 +6,6 @@
     "image": "/apps/eververse.svg"
   },
   {
-    "name": "Refraction",
-    "description": "Generate unit tests and refactor code using AI.",
-    "link": "https://www.refraction.dev/",
-    "image": "/apps/refraction.png",
-    "caption": {
-      "text": "acquired",
-      "link": "/apps/refraction"
-    }
-  },
-  {
-    "name": "San Andreas Radio",
-    "description": "All you had to do was follow the damn train, CJ!",
-    "link": "https://radio.haydenbleasel.com",
-    "image": "/apps/san-andreas-radio.png"
-  },
-  {
     "name": "texts.run",
     "description": "Create a simple, messenger-style personal webpage.",
     "link": "https://www.texts.run/",
@@ -34,10 +18,38 @@
     "image": "/apps/waitlist.svg"
   },
   {
+    "name": "San Andreas Radio",
+    "description": "All you had to do was follow the damn train, CJ!",
+    "link": "https://radio.haydenbleasel.com",
+    "image": "/apps/san-andreas-radio.png"
+  },
+  {
     "name": "Alchemy",
     "description": "A visual journey of The Alchemist, powered by Midjourney.",
     "link": "https://alchemy.haydenbleasel.com/",
     "image": "/apps/alchemy.png"
+  },
+  {
+    "name": "Hancock",
+    "description": "Simple email signature generator.",
+    "link": "https://hancock.haydenbleasel.com/",
+    "image": "/apps/hancock.svg"
+  },
+  {
+    "name": "Vercel for VS Code",
+    "description": "A VS Code extension for Vercel deployment status.",
+    "image": "/apps/vercel.svg",
+    "link": "https://marketplace.visualstudio.com/items?itemName=HaydenBleasel.vercel-vscode"
+  },
+  {
+    "name": "Refraction",
+    "description": "Generate unit tests and refactor code using AI.",
+    "link": "https://www.refraction.dev/",
+    "image": "/apps/refraction.png",
+    "caption": {
+      "text": "acquired",
+      "link": "/apps/refraction"
+    }
   },
   {
     "name": "Neutral",
@@ -47,12 +59,6 @@
     "caption": {
       "text": "closed"
     }
-  },
-  {
-    "name": "Hancock",
-    "description": "Simple email signature generator.",
-    "link": "https://hancock.haydenbleasel.com/",
-    "image": "/apps/hancock.svg"
   },
   {
     "name": "Presumi",
@@ -99,11 +105,5 @@
     "caption": {
       "text": "transferred"
     }
-  },
-  {
-    "name": "Vercel for VS Code",
-    "description": "A VS Code extension for Vercel deployment status.",
-    "image": "/apps/vercel.svg",
-    "link": "https://marketplace.visualstudio.com/items?itemName=HaydenBleasel.vercel-vscode"
   }
 ]

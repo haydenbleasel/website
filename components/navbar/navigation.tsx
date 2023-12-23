@@ -78,7 +78,7 @@ export const Navigation: FC = () => {
                     {name}
                   </p>
                   {shortcut ? (
-                    <div
+                    <kbd
                       className={cn(
                         'border rounded w-4 shrink-0 h-5 text-[10px] font-medium flex items-center justify-center',
                         'border-zinc-300 dark:border-zinc-700',
@@ -86,7 +86,7 @@ export const Navigation: FC = () => {
                       )}
                     >
                       {shortcut.toUpperCase()}
-                    </div>
+                    </kbd>
                   ) : null}
                   {href.startsWith('http') ? (
                     <ExternalLinkIcon

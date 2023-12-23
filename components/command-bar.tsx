@@ -13,6 +13,7 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { sections } from '@/data/navigation';
+import { cn } from '@/lib/utils';
 import type { FC } from 'react';
 
 export const CommandBar: FC = () => {
@@ -53,8 +54,20 @@ export const CommandBar: FC = () => {
               <CommandItem
                 key={item.name}
                 onSelect={() => handleSelect(item.href)}
+                className="flex items-center gap-4 justify-between"
               >
-                {item.name}
+                <p>{item.name}</p>
+                {item.shortcut ? (
+                  <kbd
+                    className={cn(
+                      'border rounded w-4 shrink-0 h-5 text-[10px] font-medium flex items-center justify-center',
+                      'border-zinc-300 dark:border-zinc-700',
+                      'text-zinc-500 dark:text-zinc-400'
+                    )}
+                  >
+                    {item.shortcut.toUpperCase()}
+                  </kbd>
+                ) : null}
               </CommandItem>
             ))}
           </CommandGroup>

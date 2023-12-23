@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { Toaster } from '@/components/ui/sonner';
@@ -38,6 +39,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       </ThemeProvider>
       <Toaster />
       <Analytics />
+      <SpeedInsights />
     </body>
   </html>
 );

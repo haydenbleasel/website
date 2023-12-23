@@ -5,3 +5,7 @@
 html {
   text-rendering: optimizelegibility;
 }
+
+::selection {
+  @apply bg-blue-500 text-white;
+}

@@ -64,11 +64,11 @@
   {
     "name": "Presumi",
     "description": "How I started a data analytics startup and partnered with SEEK.",
-    "link": "/apps/presumi",
+    "link": "/blog/presumi",
     "image": "/apps/presumi.svg",
     "caption": {
       "text": "closed",
-      "link": "/apps/presumi"
+      "link": "/blog/presumi"
     }
   },
   {

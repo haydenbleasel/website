@@ -50,7 +50,6 @@ const Game = async ({
             alt=""
             width={1920}
             height={620}
-            unoptimized
             className="aspect-[1920/620] object-cover"
           />
         ) : (

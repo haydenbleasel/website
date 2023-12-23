@@ -2,11 +2,12 @@
   {
     "name": "GitHub Desktop",
     "href": "https://desktop.github.com/",
-    "description": "Simple repository management."
+    "description": "Simple repository management.",
+    "image": "https://desktop.github.com/images/screenshot-macos-dark.png"
   },
   {
     "name": "Postman",
-    "href": "https://www.postman.com/",
+    "href": "https://www.postman.com/downloads/",
     "description": "Build and test APIs."
   },
   {
@@ -16,8 +17,9 @@
   },
   {
     "name": "GitHub Copilot",
-    "href": "https://copilot.github.com/",
-    "description": "AI-powered code completion."
+    "href": "https://github.com/features/copilot/",
+    "description": "AI-powered code completion.",
+    "image": "https://github.githubassets.com/assets/copilot-2023-83117d7c0b8a.png"
   },
   {
     "name": "Hyper",
@@ -32,7 +34,8 @@
   {
     "name": "NordVPN",
     "href": "https://ref.nordvpn.com/LtLyFxYFRmA",
-    "description": "Secure and private internet access."
+    "description": "Secure and private internet access.",
+    "image": "https://s1.nordcdn.com/nordvpn/media/1.2111.0/images/cms/product/bundle/laptop-nordvpn-nordpass-nordlocker-bundle-md@2x.webp"
   },
   {
     "name": "Skiff",
@@ -102,7 +105,8 @@
   {
     "name": "ImageOptim",
     "href": "https://imageoptim.com/mac",
-    "description": "Losslessly optimize images for the web."
+    "description": "Losslessly optimize images for the web.",
+    "image": "https://imageoptim.com/ImageOptim-app@2x.png"
   },
   {
     "name": "Unsplash",
@@ -111,8 +115,9 @@
   },
   {
     "name": "Untitled UI",
-    "href": "https://untitledui.lemonsqueezy.com/?aff=VMdMv",
-    "description": "The ultimate UI kit and design system for Figma."
+    "href": "https://store.untitledui.com?aff=VMdMv",
+    "description": "The ultimate UI kit and design system for Figma.",
+    "image": "https://assets-global.website-files.com/636496d3f0ebfdaba9784655/646b8e798fb7b11360121f75_untitled-ui-open-graph-img.webp"
   },
   {
     "name": "Stake",

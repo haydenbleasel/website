@@ -1,4 +1,4 @@
-import { GlobeIcon } from '@radix-ui/react-icons';
+import { ExternalLinkIcon, GlobeIcon } from '@radix-ui/react-icons';
 import glimpse from 'react-glimpse/server';
 import Image from 'next/image';
 import { Link } from '@/components/link';
@@ -24,13 +24,21 @@ const Tool = async ({
 }: {
   data: (typeof stack)[0];
 }): Promise<ReactElement> => {
-  let image = null;
+  let { image } = data;
 
-  try {
-    const response = await glimpse(data.href);
-    image = response.image;
-  } catch (error) {
-    console.error(error);
+  if (!image) {
+    try {
+      const response = await glimpse(data.href);
+
+      if (response.image) {
+        // eslint-disable-next-line prefer-destructuring, @typescript-eslint/prefer-destructuring
+        image = response.image.startsWith('http')
+          ? response.image
+          : `https://${response.image}`;
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -49,7 +57,11 @@ const Tool = async ({
             unoptimized
             className="aspect-[1200/630] object-cover"
           />
-        ) : null}
+        ) : (
+          <div className="aspect-[1200/630] bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+            <ExternalLinkIcon className="w-6 h-6" />
+          </div>
+        )}
         <CardHeader>
           <CardTitle>{data.name}</CardTitle>
           <CardDescription className="line-clamp-2">
@@ -71,9 +83,9 @@ const Tool = async ({
 
 const Stack: FC = () => (
   <Container wide>
-    <h1>{title}</h1>
+    <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
-    <div className="grid grid-cols-2 gap-8">
+    <div className="mt-8 grid grid-cols-2 gap-8">
       {stack.map((tool) => (
         <Tool data={tool} key={tool.name} />
       ))}

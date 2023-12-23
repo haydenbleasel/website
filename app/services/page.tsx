@@ -10,17 +10,29 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import services from '@/data/services.json';
+import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from 'next';
 import type { FC } from 'react';
+
+const title = 'Services';
+const description = 'What I can do for you.';
+
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path: '/services',
+});
 
 const Services: FC = () => (
   <Container>
-    <h1>Services</h1>
+    <h1 className="mb-0">{title}</h1>
+    <p>{description}</p>
     <p>
       I have limited availability and occasionally take on freelance projects
       and consulting. I&apos;m also open to joining boards and advisory roles.
       If you&apos;re interested, please get in touch.
     </p>
-    <div className="space-y-4">
+    <div className="mt-8 space-y-4">
       {services.map((service) => (
         <Card
           className="not-prose overflow-hidden bg-white dark:bg-zinc-800"

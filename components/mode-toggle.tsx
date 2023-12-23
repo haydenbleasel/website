@@ -50,7 +50,7 @@ export const ModeToggle: FC = () => {
       </SelectTrigger>
       <SelectContent>
         {themes.map((option) => (
-          <ThemeSelectItem key={theme} value={option} />
+          <ThemeSelectItem key={option} value={option} />
         ))}
       </SelectContent>
     </Select>

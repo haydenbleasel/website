@@ -12,8 +12,19 @@ import {
 } from '@/components/ui/card';
 import { ForkIcon } from '@/components/icons';
 import { Container } from '@/components/container';
+import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from 'next';
 import type { RestEndpointMethodTypes } from '@octokit/rest';
 import type { ReactElement } from 'react';
+
+const title = 'Code';
+const description = 'Open source projects and contributions.';
+
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path: '/code',
+});
 
 const Project = async ({
   data,
@@ -64,7 +75,8 @@ const Code = async (): Promise<ReactElement> => {
 
   return (
     <Container wide>
-      <h1>Open Source</h1>
+      <h1 className="mb-0">{title}</h1>
+      <p>{description}</p>
       <div className="grid grid-cols-2 gap-8">
         {repos.data
           .filter((repo) => !repo.fork)

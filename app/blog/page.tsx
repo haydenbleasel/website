@@ -12,18 +12,23 @@ import {
 } from '@/components/ui/card';
 import { Link } from '@/components/link';
 import { Container } from '@/components/container';
+import type { Metadata } from 'next';
 import type { FC } from 'react';
 
 const title = 'Blog';
 const description = 'Thoughts, ideas, and opinions.';
 
-export const metadata = createMetadata({ title, description, path: '/blog' });
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path: '/blog',
+});
 
 const Blog: FC = () => (
   <Container wide>
-    <h1>{title}</h1>
+    <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
-    <div className="grid grid-cols-2 gap-8">
+    <div className="mt-8 grid grid-cols-2 gap-8">
       {allBlogs.sort(sortBlogPostByDate).map((post) => (
         <Link
           href={post.slug}

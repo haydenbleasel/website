@@ -10,8 +10,19 @@ import {
 import { Container } from '@/components/container';
 import { fetchProducts } from '@/lib/producthunt';
 import { formatDate } from '@/lib/utils';
+import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from 'next';
 import type { ProductHuntResponse } from '@/lib/producthunt';
 import type { FC, ReactElement } from 'react';
+
+const title = 'Product Launches';
+const description = 'Things I have built.';
+
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path: '/apps',
+});
 
 const Project: FC<{
   readonly data: ProductHuntResponse['data']['user']['madePosts']['edges'][0]['node'];
@@ -42,16 +53,34 @@ const Project: FC<{
   </Link>
 );
 
+const sortByDate = (
+  postA: ProductHuntResponse['data']['user']['madePosts']['edges'][0]['node'],
+  postB: ProductHuntResponse['data']['user']['madePosts']['edges'][0]['node']
+): number => {
+  const dateA = new Date(postA.createdAt);
+  const dateB = new Date(postB.createdAt);
+
+  return dateB.getTime() - dateA.getTime();
+};
+
+const filterApps = (
+  post: ProductHuntResponse['data']['user']['madePosts']['edges'][0]['node']
+): boolean => !['106081', '5783', '48438', '384554'].includes(post.id);
+
 const Apps = async (): Promise<ReactElement> => {
   const products = await fetchProducts();
 
   return (
     <Container wide>
-      <h1>Product Launches</h1>
-      <div className="grid grid-cols-2 gap-8">
-        {products.map((product) => (
-          <Project data={product} key={product.id} />
-        ))}
+      <h1 className="mb-0">{title}</h1>
+      <p>{description}</p>
+      <div className="mt-8 grid grid-cols-2 gap-8">
+        {products
+          .sort(sortByDate)
+          .filter(filterApps)
+          .map((product) => (
+            <Project data={product} key={product.id} />
+          ))}
       </div>
     </Container>
   );

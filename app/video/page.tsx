@@ -1,10 +1,22 @@
 import { Video } from '@/components/video';
 import { Container } from '@/components/container';
+import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from 'next';
 import type { FC } from 'react';
+
+const title = 'Videos';
+const description = 'Drone footage of my travels.';
+
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path: '/videos',
+});
 
 const VideoPage: FC = () => (
   <Container>
-    <h1>Videos</h1>
+    <h1 className="mb-0">{title}</h1>
+    <p>{description}</p>
     <h2>Delray Beach</h2>
     <Video controls url="https://www.youtube.com/watch?v=gBl6Ue9LQlU" />
     <h2>Pompano Beach</h2>

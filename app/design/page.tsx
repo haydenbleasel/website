@@ -21,7 +21,8 @@ const Design = async (): Promise<ReactElement> => {
 
   return (
     <Container wide>
-      <h1>Design Files</h1>
+      <h1 className="mb-0">{title}</h1>
+      <p>{description}</p>
 
       <div className="grid grid-cols-2 gap-8">
         {figmaFiles.files.map((figmaFile) => (

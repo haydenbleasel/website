@@ -6,7 +6,7 @@ import type { FC } from 'react';
 
 const title = 'Mailing List';
 const description =
-  'Sign up for my mailing list to receive updates on new posts and projects.';
+  'Join 1800+ readers and get periodic updates on new projects and updates. No spam, ever.';
 
 export const metadata = createMetadata({
   title,
@@ -17,10 +17,7 @@ export const metadata = createMetadata({
 const MailingListPage: FC = () => (
   <Container>
     <h1 className="mb-0">{title}</h1>
-    <p>
-      Join 1800+ readers and get periodic updates on new projects and updates.
-      No spam, ever.
-    </p>
+    <p>{description}</p>
     <div className="mt-8 space-y-1">
       <Label htmlFor="email">Email address</Label>
       <MailingList />

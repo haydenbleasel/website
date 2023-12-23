@@ -4,8 +4,19 @@ import { Link } from '@/components/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Container } from '@/components/container';
 import { getOwnedGames, getUserStatsForGame } from '@/lib/steam';
+import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from 'next';
 import type { SteamGame } from '@/lib/steam';
 import type { ReactElement } from 'react';
+
+const title = 'Games';
+const description = 'Playtime and achievements.';
+
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path: '/games',
+});
 
 const Game = async ({
   data,
@@ -76,8 +87,9 @@ const Games = async (): Promise<ReactElement> => {
 
   return (
     <Container wide>
-      <h1>Games</h1>
-      <div className="grid grid-cols-2 gap-8">
+      <h1 className="mb-0">{title}</h1>
+      <p>{description}</p>
+      <div className="mt-8 grid grid-cols-2 gap-8">
         {games
           .sort(
             (gameA, gameB) => gameB.playtime_forever - gameA.playtime_forever

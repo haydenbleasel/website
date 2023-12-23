@@ -1,21 +1,19 @@
 [
   {
+    "name": "Eververse",
+    "description": "A new Product Management tool, powered by AI.",
+    "link": "https://www.eververse.ai/",
+    "image": "/apps/eververse.svg"
+  },
+  {
     "name": "Refraction",
     "description": "Generate unit tests and refactor code using AI.",
     "link": "https://www.refraction.dev/",
-    "featured": true,
     "image": "/apps/refraction.png",
     "caption": {
       "text": "acquired",
       "link": "/apps/refraction"
     }
-  },
-  {
-    "name": "Eververse",
-    "description": "A new Product Management tool, powered by AI.",
-    "link": "https://www.eververse.ai/",
-    "image": "/apps/eververse.svg",
-    "featured": true
   },
   {
     "name": "San Andreas Radio",
@@ -27,15 +25,13 @@
     "name": "texts.run",
     "description": "Create a simple, messenger-style personal webpage.",
     "link": "https://www.texts.run/",
-    "image": "/apps/texts.svg",
-    "featured": true
+    "image": "/apps/texts.svg"
   },
   {
     "name": "Waitlist",
     "description": "Fast, unbranded waitlists for developers.",
     "link": "https://www.waitlist.email/",
-    "image": "/apps/waitlist.svg",
-    "featured": true
+    "image": "/apps/waitlist.svg"
   },
   {
     "name": "Alchemy",
@@ -101,15 +97,13 @@
     "link": "https://www.desync.art/",
     "image": "/apps/desync.png",
     "caption": {
-      "text": "transferred",
-      "link": "/apps/desync"
+      "text": "transferred"
     }
   },
   {
     "name": "Vercel for VS Code",
     "description": "A VS Code extension for Vercel deployment status.",
     "image": "/apps/vercel.svg",
-    "link": "https://marketplace.visualstudio.com/items?itemName=HaydenBleasel.vercel-vscode",
-    "featured": true
+    "link": "https://marketplace.visualstudio.com/items?itemName=HaydenBleasel.vercel-vscode"
   }
 ]

@@ -1,11 +1,8 @@
 import { notFound } from 'next/navigation';
-import { ArrowLeftIcon } from '@radix-ui/react-icons';
-import Image from 'next/image';
-import { Link } from '@/components/link';
+import { CalendarIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { allWorks } from '@contentlayer/generated';
 import { createMetadata } from '@/lib/metadata';
 import { Mdx } from '@/components/mdx';
-import { cn } from '@/lib/utils';
 import { Container } from '@/components/container';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
@@ -55,44 +52,22 @@ const WorkPage: FC<WorkPageProps> = ({ params }) => {
 
   return (
     <Container>
-      <div className="space-y-8 relative">
-        {job.image && job.imageBlur ? (
-          <Image
-            src={job.image}
-            width={1920}
-            height={1080}
-            alt=""
-            className={cn(
-              'm-0 h-8 w-8 object-cover rounded-full overflow-hidden absolute -top-16 ring-2 left-6',
-              'ring-zinc-100',
-              'dark:ring-zinc-950'
-            )}
-            priority
-            blurDataURL={`data:image/jpg;base64,${job.imageBlur}`}
-            placeholder="blur"
-          />
-        ) : null}
-        <div>
-          <div className="relative">
-            <Link
-              className="absolute inline-flex items-center gap-1 text-xs -left-24 text-zinc-600 dark:text-zinc-400 top-0.5"
-              href="/work"
-            >
-              <ArrowLeftIcon className="h-4 w-4" />
-              Work
-            </Link>
-            <h1 className="m-0 text-sm text-zinc-900 dark:text-white font-medium">
-              {job.role}
-            </h1>
-          </div>
-          <p className="my-1 mb-0">{job.company}</p>
-          <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-4">
-            {job.startYear} &mdash; {job.endYear ?? 'Present'} • {job.location}
-          </p>
+      <h1 className="mb-0">{job.role}</h1>
+      <h1 className="text-zinc-500 dark:text-zinc-400">{job.company}</h1>
+      <div className="flex items-center gap-8">
+        <div className="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+          <CalendarIcon className="w-4 h-4" />
+          <span className="font-medium">
+            {job.startYear} &mdash; {job.endYear ?? 'Present'}
+          </span>
         </div>
-        <div>
-          <Mdx code={job.body.code} />
+        <div className="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+          <PaperPlaneIcon className="w-4 h-4" />
+          <span className="font-medium">{job.location}</span>
         </div>
+      </div>
+      <div className="mt-8">
+        <Mdx code={job.body.code} />
       </div>
     </Container>
   );

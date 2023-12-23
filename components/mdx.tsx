@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { getMDXComponent } from 'next-contentlayer/hooks';
+import { Video } from './video';
 import type { FC, HTMLProps } from 'react';
 
 type MdxProps = {
@@ -49,6 +50,7 @@ export const Mdx: FC<MdxProps> = ({ code }) => {
         // eslint-disable-next-line id-length
         a,
         img,
+        Video,
       }}
     />
   );

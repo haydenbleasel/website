@@ -29,7 +29,7 @@ const Role = async ({
 
   return (
     <Link
-      href={data.link}
+      href={data.slug}
       key={data.company}
       className="no-underline hover:-translate-y-1 transition-transform"
     >

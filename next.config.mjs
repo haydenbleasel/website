@@ -2,7 +2,7 @@ import { createSecureHeaders } from 'next-secure-headers';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { withSentryConfig } from '@sentry/nextjs';
 import { createContentlayerPlugin } from 'next-contentlayer';
-import { withLogtail } from 'logtail-next';
+import { withLogtail } from '@logtail/next';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

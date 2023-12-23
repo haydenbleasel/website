@@ -18,22 +18,24 @@ type GetOwnedGamesResponse = {
   };
 };
 
-type GetUserStatsForGameResponse = {
-  playerstats?: {
+type GetPlayerAchievementsResponse = {
+  playerstats: {
     steamID: string;
     gameName: string;
-    achievements?: {
-      name: string;
+    achievements: {
+      apiname: string;
       achieved: number;
+      unlocktime: number;
     }[];
+    success: boolean;
   };
 };
 
 const steamId = '76561198049792324';
 
-export const getUserStatsForGame = async (
+export const getPlayerAchievements = async (
   appId: number
-): Promise<GetUserStatsForGameResponse['playerstats']> => {
+): Promise<GetPlayerAchievementsResponse['playerstats']> => {
   if (!process.env.STEAM_API_KEY) {
     throw new Error('Missing Steam API key');
   }
@@ -42,7 +44,7 @@ export const getUserStatsForGame = async (
     `https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=${process.env.STEAM_API_KEY}&steamid=${steamId}&format=json`
   );
 
-  const data = (await response.json()) as GetUserStatsForGameResponse;
+  const data = (await response.json()) as GetPlayerAchievementsResponse;
 
   return data.playerstats;
 };

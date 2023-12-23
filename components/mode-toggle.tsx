@@ -23,10 +23,10 @@ const ThemeSelectItem: FC<{ readonly value: string }> = ({ value }) => {
 
   return (
     <SelectItem value={value} key={value}>
-      <span className="flex items-center gap-2.5">
+      <div className="flex items-center gap-2.5">
         <Icon className="w-4 h-4 shrink-0" />
         {value.charAt(0).toUpperCase() + value.slice(1)}
-      </span>
+      </div>
     </SelectItem>
   );
 };
@@ -39,13 +39,12 @@ export const ModeToggle: FC = () => {
     <Select value={theme} onValueChange={setTheme}>
       <SelectTrigger className="dark:border-zinc-700">
         <SelectValue placeholder="Theme">
-          <span className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5">
             <Icon className="w-4 h-4 shrink-0" />
             {theme
               ? `${theme.charAt(0).toUpperCase()}${theme.slice(1)}`
               : 'System'}
-            {}
-          </span>
+          </div>
         </SelectValue>
       </SelectTrigger>
       <SelectContent>

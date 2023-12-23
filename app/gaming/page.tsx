@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Link } from '@/components/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Container } from '@/components/container';
-import { getOwnedGames, getUserStatsForGame } from '@/lib/steam';
+import { getOwnedGames, getPlayerAchievements } from '@/lib/steam';
 import { createMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
 import type { SteamGame } from '@/lib/steam';
@@ -23,11 +23,11 @@ const Game = async ({
 }: {
   readonly data: SteamGame;
 }): Promise<ReactElement> => {
-  const stats = await getUserStatsForGame(data.appid);
+  const stats = await getPlayerAchievements(data.appid);
   let imageUrl: string | null =
     `https://steamcdn-a.akamaihd.net/steam/apps/${data.appid}/library_hero.jpg`;
 
-  const complete = stats?.achievements?.filter(
+  const complete = stats.achievements.filter(
     (achievement) => achievement.achieved === 1
   ).length;
 
@@ -69,7 +69,7 @@ const Game = async ({
               <ClockIcon className="w-3 h-3" />
               {Math.round(data.playtime_forever / 60)} hours
             </span>
-            {stats?.achievements?.length ? (
+            {stats.achievements.length ? (
               <span className="flex items-center gap-1">
                 <StarIcon className="w-3 h-3" />
                 {complete} / {stats.achievements.length} achievements

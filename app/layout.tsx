@@ -27,7 +27,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
     <body className="bg-zinc-50 dark:bg-zinc-900">
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
+        defaultTheme="dark"
         enableSystem
         disableTransitionOnChange
       >

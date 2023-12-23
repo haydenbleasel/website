@@ -3,21 +3,5 @@
 @tailwind utilities;
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.01rem;
   text-rendering: optimizelegibility;
-  touch-action: manipulation;
-}
-
-[data-rehype-pretty-code-title] {
-  @apply rounded-t border-b border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-white;
-}
-
-.dark [data-rehype-pretty-code-title] {
-  @apply bg-zinc-800;
-}
-
-[data-highlighted-line] {
-  @apply bg-white/10 -ml-4 pl-4;
 }

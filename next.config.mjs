@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 's3-alpha.figma.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'logo.clearbit.com',
+      },
     ],
   },
   headers() {

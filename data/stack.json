@@ -1,163 +1,197 @@
 [
   {
-    "name": "GitHub Desktop",
-    "href": "https://desktop.github.com/",
-    "description": "Simple repository management.",
-    "image": "https://desktop.github.com/images/screenshot-macos-dark.png"
+    "type": "Coding",
+    "items": [
+      {
+        "name": "GitHub Desktop",
+        "href": "https://desktop.github.com/",
+        "description": "Simple repository management.",
+        "image": "https://desktop.github.com/images/screenshot-macos-dark.png"
+      },
+      {
+        "name": "Postman",
+        "href": "https://www.postman.com/",
+        "description": "Build and test APIs."
+      },
+      {
+        "name": "VS Code",
+        "href": "https://code.visualstudio.com/",
+        "description": "The code editor for the modern web."
+      },
+      {
+        "name": "GitHub Copilot",
+        "href": "https://github.com/features/copilot/",
+        "description": "AI-powered code completion.",
+        "image": "https://github.githubassets.com/assets/copilot-2023-83117d7c0b8a.png"
+      },
+      {
+        "name": "Hyper",
+        "href": "https://hyper.is/",
+        "description": "Extensible and minimal Electron-based terminal."
+      }
+    ]
   },
   {
-    "name": "Postman",
-    "href": "https://www.postman.com/downloads/",
-    "description": "Build and test APIs."
+    "type": "Security",
+    "items": [
+      {
+        "name": "NordVPN",
+        "href": "https://ref.nordvpn.com/LtLyFxYFRmA",
+        "description": "Secure and private internet access.",
+        "featured": true
+      },
+      {
+        "name": "1Password",
+        "href": "https://1password.com/",
+        "description": "Stop remembering passwords."
+      }
+    ]
   },
   {
-    "name": "VS Code",
-    "href": "https://code.visualstudio.com/",
-    "description": "The code editor for the modern web."
+    "type": "Productivity",
+    "items": [
+      {
+        "name": "Skiff",
+        "href": "https://app.skiff.com/signup?mail&referral=hayden%40eververse.ai",
+        "description": "Privacy-first end-to-end encrypted email.",
+        "featured": true
+      },
+      {
+        "name": "Screen Studio",
+        "href": "https://screenstudio.lemonsqueezy.com/?aff=VMdMv",
+        "description": "Beautiful screen recordings in minutes.",
+        "featured": true
+      },
+      {
+        "name": "CleanShot X",
+        "href": "https://cleanshot.com/",
+        "description": "Screen capture, enhanced."
+      },
+      {
+        "name": "DaisyDisk",
+        "href": "https://daisydiskapp.com/",
+        "description": "Visually analyze your MacOS disk usage."
+      },
+      {
+        "name": "Linear",
+        "href": "https://linear.app/",
+        "description": "Simple, focused issue tracking."
+      },
+      {
+        "name": "Notion",
+        "href": "https://www.notion.so/",
+        "description": "Documents with endless possibilities."
+      },
+      {
+        "name": "Pitch",
+        "href": "https://pitch.com/",
+        "description": "Modern, collaborative presentation tool."
+      },
+      {
+        "name": "Slack",
+        "href": "https://slack.com/",
+        "description": "The platform for teamwork."
+      },
+      {
+        "name": "Spark",
+        "href": "https://sparkmailapp.com/",
+        "description": "Unified, native and powerful email client."
+      },
+      {
+        "name": "Zoom",
+        "href": "https://zoom.us/",
+        "description": "Video conferencing, simplified."
+      },
+      {
+        "name": "Hotlist",
+        "href": "https://pqina.nl/hotlist",
+        "description": "A simple todo list in your MacOS menubar."
+      }
+    ]
   },
   {
-    "name": "GitHub Copilot",
-    "href": "https://github.com/features/copilot/",
-    "description": "AI-powered code completion.",
-    "image": "https://github.githubassets.com/assets/copilot-2023-83117d7c0b8a.png"
+    "type": "Design",
+    "items": [
+      {
+        "name": "Untitled UI",
+        "href": "https://store.untitledui.com?aff=VMdMv",
+        "description": "The ultimate UI kit and design system for Figma.",
+        "image": "https://assets-global.website-files.com/636496d3f0ebfdaba9784655/646b8e798fb7b11360121f75_untitled-ui-open-graph-img.webp",
+        "featured": true
+      },
+      {
+        "name": "Dovetail",
+        "href": "https://dovetailapp.com/",
+        "description": "Where customer knowledge lives."
+      },
+      {
+        "name": "Figma",
+        "href": "https://www.figma.com/",
+        "description": "Collaborative interface design tool."
+      },
+      {
+        "name": "ImageOptim",
+        "href": "https://imageoptim.com/mac",
+        "description": "Losslessly optimize images for the web."
+      },
+      {
+        "name": "Unsplash",
+        "href": "https://unsplash.com/",
+        "description": "Free, high-quality photos."
+      }
+    ]
   },
   {
-    "name": "Hyper",
-    "href": "https://hyper.is/",
-    "description": "Extensible and minimal Electron-based terminal."
+    "type": "Finance",
+    "items": [
+      {
+        "name": "Wise",
+        "href": "https://wise.com/invite/dic/haydenb95",
+        "description": "Global bank accounts with lower FX fees.",
+        "featured": true
+      },
+      {
+        "name": "Robinhood",
+        "href": "https://join.robinhood.com/haydenb-e0f142",
+        "description": "Commission-free stock trading.",
+        "featured": true
+      },
+      {
+        "name": "Stake",
+        "href": "https://hellostake.com/",
+        "description": "Trade U.S. stocks from Australia."
+      }
+    ]
   },
   {
-    "name": "1Password",
-    "href": "https://1password.com/",
-    "description": "Stop remembering passwords."
+    "type": "Social",
+    "items": [
+      {
+        "name": "Typefully",
+        "href": "https://typefully.com/write",
+        "description": "Professional tools for Twitter."
+      },
+      {
+        "name": "Ray.so",
+        "href": "https://ray.so/",
+        "description": "Make pretty code snippet screenshots."
+      }
+    ]
   },
   {
-    "name": "NordVPN",
-    "href": "https://ref.nordvpn.com/LtLyFxYFRmA",
-    "description": "Secure and private internet access.",
-    "image": "https://s1.nordcdn.com/nordvpn/media/1.2111.0/images/cms/product/bundle/laptop-nordvpn-nordpass-nordlocker-bundle-md@2x.webp"
-  },
-  {
-    "name": "Skiff",
-    "href": "https://app.skiff.com/signup?mail&referral=hayden%40eververse.ai",
-    "description": "Privacy-first end-to-end encrypted email."
-  },
-  {
-    "name": "CleanShot X",
-    "href": "https://cleanshot.com/",
-    "description": "Screen capture, enhanced."
-  },
-  {
-    "name": "DaisyDisk",
-    "href": "https://daisydiskapp.com/",
-    "description": "Visually analyze your MacOS disk usage."
-  },
-  {
-    "name": "Linear",
-    "href": "https://linear.app/",
-    "description": "Simple, focused issue tracking."
-  },
-  {
-    "name": "Notion",
-    "href": "https://www.notion.so/",
-    "description": "Documents with endless possibilities."
-  },
-  {
-    "name": "Pitch",
-    "href": "https://pitch.com/",
-    "description": "Modern, collaborative presentation tool."
-  },
-  {
-    "name": "Slack",
-    "href": "https://slack.com/",
-    "description": "The platform for teamwork."
-  },
-  {
-    "name": "Spark",
-    "href": "https://sparkmailapp.com/",
-    "description": "Unified, native and powerful email client."
-  },
-  {
-    "name": "Zoom",
-    "href": "https://zoom.us/",
-    "description": "Video conferencing, simplified."
-  },
-  {
-    "name": "Screen Studio",
-    "href": "https://screenstudio.lemonsqueezy.com/?aff=VMdMv",
-    "description": "Beautiful screen recordings in minutes."
-  },
-  {
-    "name": "Hotlist",
-    "href": "https://pqina.nl/hotlist",
-    "description": "A simple todo list in your MacOS menubar."
-  },
-  {
-    "name": "Dovetail",
-    "href": "https://dovetailapp.com/",
-    "description": "Where customer knowledge lives."
-  },
-  {
-    "name": "Figma",
-    "href": "https://www.figma.com/",
-    "description": "Collaborative interface design tool."
-  },
-  {
-    "name": "ImageOptim",
-    "href": "https://imageoptim.com/mac",
-    "description": "Losslessly optimize images for the web.",
-    "image": "https://imageoptim.com/ImageOptim-app@2x.png"
-  },
-  {
-    "name": "Unsplash",
-    "href": "https://unsplash.com/",
-    "description": "Free, high-quality photos."
-  },
-  {
-    "name": "Untitled UI",
-    "href": "https://store.untitledui.com?aff=VMdMv",
-    "description": "The ultimate UI kit and design system for Figma.",
-    "image": "https://assets-global.website-files.com/636496d3f0ebfdaba9784655/646b8e798fb7b11360121f75_untitled-ui-open-graph-img.webp"
-  },
-  {
-    "name": "Stake",
-    "href": "https://hellostake.com/",
-    "description": "Trade U.S. stocks from Australia."
-  },
-  {
-    "name": "Wise",
-    "href": "https://wise.com/invite/dic/haydenb95",
-    "description": "Global bank accounts with lower FX fees."
-  },
-  {
-    "name": "Robinhood",
-    "href": "https://join.robinhood.com/haydenb-e0f142",
-    "description": "Commission-free stock trading."
-  },
-  {
-    "name": "Beeper",
-    "href": "https://www.beeper.com/",
-    "description": "All of your messages in one inbox."
-  },
-  {
-    "name": "Typefully",
-    "href": "https://typefully.com/write",
-    "description": "Professional tools for Twitter."
-  },
-  {
-    "name": "Ray.so",
-    "href": "https://ray.so/",
-    "description": "Make pretty code snippet screenshots."
-  },
-  {
-    "name": "Spotify",
-    "href": "https://open.spotify.com/",
-    "description": "Enjoy and curate the world's music."
-  },
+    "type": "Other",
+    "items": [
+      {
+        "name": "Spotify",
+        "href": "https://open.spotify.com/",
+        "description": "Enjoy and curate the world's music."
+      },
 
-  {
-    "name": "Klack",
-    "href": "https://tryklack.com/",
-    "description": "Satisfying mechanical keyboard sounds for MacOS."
+      {
+        "name": "Klack",
+        "href": "https://tryklack.com/",
+        "description": "Satisfying mechanical keyboard sounds for MacOS."
+      }
+    ]
   }
 ]

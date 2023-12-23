@@ -1,19 +1,19 @@
 [
   {
     "name": "Contract Work",
-    "description": "Contract work for various clients",
+    "description": "Freelance design or engineering work for your project.",
     "cta": "Get in touch",
     "link": "/contact?type=contract"
   },
   {
     "name": "Advisory",
-    "description": "Advisory work for various clients",
+    "description": "Ask me to join your board or advise your team.",
     "cta": "Book an intro call",
     "link": "/contact?type=advisory"
   },
   {
     "name": "Agency Project",
-    "description": "Agency project for various clients",
+    "description": "Introduction to a trusted agency for a big, important project.",
     "cta": "Book a chat",
     "link": "/contact?type=agency"
   }

@@ -3,7 +3,6 @@ import { Container } from '@/components/container';
 import { Button } from '@/components/ui/button';
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -39,12 +38,11 @@ const Services: FC = () => (
           key={service.name}
         >
           <CardHeader>
-            <CardTitle className="leading-tight">{service.name}</CardTitle>
+            <CardTitle className="leading-tight font-medium">
+              {service.name}
+            </CardTitle>
             <CardDescription>{service.description}</CardDescription>
           </CardHeader>
-          <CardContent className="flex items-center justify-between gap-4">
-            <p>asd</p>
-          </CardContent>
           <CardFooter>
             <Button asChild>
               <Link href={service.link}>{service.cta}</Link>

@@ -24,9 +24,9 @@ const Project: FC<{
     key={data.name}
     className={cn('no-underline relative pl-6', data.caption && 'opacity-50')}
   >
-    <div className="bg-zinc-100 dark:bg-zinc-800 absolute -left-2 top-1.5 w-4 h-4 rounded-full ml-[0.5px]" />
+    <div className="bg-zinc-200 dark:bg-zinc-800 absolute -left-2 top-1.5 w-4 h-4 rounded-full ml-[0.5px]" />
     <div className="flex items-center gap-2">
-      <p className="m-0 font-semibold">{data.name}</p>
+      <p className="m-0 font-medium">{data.name}</p>
       {data.caption ? (
         <div>
           {data.caption.link ? (
@@ -43,7 +43,9 @@ const Project: FC<{
         </div>
       ) : null}
     </div>
-    <p className="m-0 text-zinc-500 dark:text-zinc-400">{data.description}</p>
+    <p className="font-normal m-0 text-zinc-500 dark:text-zinc-400">
+      {data.description}
+    </p>
   </Link>
 );
 

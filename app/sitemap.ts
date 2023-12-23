@@ -14,12 +14,12 @@ const pages = fs
 const blogs = fs
   .readdirSync('content/blog', { withFileTypes: true })
   .filter((file) => !file.isDirectory())
-  .map((folder) => folder.name);
+  .map((file) => file.name.replace('.mdx', ''));
 
 const works = fs
   .readdirSync('content/work', { withFileTypes: true })
   .filter((file) => !file.isDirectory())
-  .map((folder) => folder.name);
+  .map((file) => file.name.replace('.mdx', ''));
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

@@ -13,12 +13,12 @@ const pages = fs
 
 const blogs = fs
   .readdirSync('content/blog', { withFileTypes: true })
-  .filter((file) => file.isDirectory())
+  .filter((file) => !file.isDirectory())
   .map((folder) => folder.name);
 
 const works = fs
   .readdirSync('content/work', { withFileTypes: true })
-  .filter((file) => file.isDirectory())
+  .filter((file) => !file.isDirectory())
   .map((folder) => folder.name);
 
 export default function sitemap(): MetadataRoute.Sitemap {

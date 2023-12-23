@@ -8,6 +8,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.3.2
     version: 3.3.2(react-hook-form@7.49.2)
+  '@logtail/next':
+    specifier: ^0.1.4
+    version: 0.1.4(next@14.0.4)
   '@octokit/rest':
     specifier: ^20.0.2
     version: 20.0.2
@@ -143,9 +146,6 @@ dependencies:
   next:
     specifier: 14.0.4
     version: 14.0.4(@babel/core@7.23.0)(@opentelemetry/api@1.6.0)(react-dom@18.2.0)(react@18.2.0)
-  next-axiom:
-    specifier: ^1.1.1
-    version: 1.1.1(next@14.0.4)(react@18.2.0)
   next-contentlayer:
     specifier: ^0.3.4
     version: 0.3.4(contentlayer@0.3.4)(esbuild@0.19.4)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
@@ -1817,6 +1817,16 @@ packages:
     resolution: {integrity: sha512-QuTgnG52Poic7uM1AN5yJ09QMe0O28e10XzSvWDz02TJiiKee4stsiownEIadWm8nYzyDAyT+gKzUoZmiWQtsQ==}
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.1.2
+    dev: false
+
+  /@logtail/next@0.1.4(next@14.0.4):
+    resolution: {integrity: sha512-pqNqeZAJwUn99+w4ywjCd1j2AP/B3/gCUFJwC0L+7GiQz9n6AiqK3vomPJ1jnTWc6m0pqsWkoTt1TShnfEpUBQ==}
+    engines: {node: '>=15'}
+    peerDependencies:
+      next: ^12.1.4 || ^13 || ^14
+    dependencies:
+      next: 14.0.4(@babel/core@7.23.0)(@opentelemetry/api@1.6.0)(react-dom@18.2.0)(react@18.2.0)
+      whatwg-fetch: 3.6.20
     dev: false
 
   /@mailchimp/mailchimp_marketing@3.0.80:
@@ -9836,19 +9846,6 @@ packages:
       - supports-color
     dev: false
 
-  /next-axiom@1.1.1(next@14.0.4)(react@18.2.0):
-    resolution: {integrity: sha512-0r/TJ+/zetD+uDc7B+2E7WpC86hEtQ1U+DuWYrP/JNmUz+ZdPFbrZgzOSqaZ6TwYbXP56VVlPfYwq1YsKHTHYQ==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      next: '>=13.4'
-      react: '>=18.0.0'
-    dependencies:
-      next: 14.0.4(@babel/core@7.23.0)(@opentelemetry/api@1.6.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      remeda: 1.33.0
-      whatwg-fetch: 3.6.19
-    dev: false
-
   /next-contentlayer@0.3.4(contentlayer@0.3.4)(esbuild@0.19.4)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-UtUCwgAl159KwfhNaOwyiI7Lg6sdioyKMeh+E7jxx0CJ29JuXGxBEYmCI6+72NxFGIFZKx8lvttbbQhbnYWYSw==}
     peerDependencies:
@@ -11391,10 +11388,6 @@ packages:
       - supports-color
     dev: false
 
-  /remeda@1.33.0:
-    resolution: {integrity: sha512-GExMiOhTB0eg1Rc7hvBMBNxwlVRYIulGfIj5pkuuAfy9HB3ms4PmLvbhMMjQ2btoCit0iN7eQmHgwTaGZTVWwg==}
-    dev: false
-
   /repeat-string@1.6.1:
     resolution: {integrity: sha512-PV0dzCYDNfRi1jCDbJzpW7jNNDRuCOG/jI5ctQcGKt/clZD+YcPS3yIlWuTJMmESC8aevCFmWJy5wjAFgNqN6w==}
     engines: {node: '>=0.10'}
@@ -12925,8 +12918,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
-  /whatwg-fetch@3.6.19:
-    resolution: {integrity: sha512-d67JP4dHSbm2TrpFj8AbO8DnL1JXL5J9u0Kq2xW6d0TFDbCA3Muhdt8orXC22utleTVj7Prqt82baN6RBvnEgw==}
+  /whatwg-fetch@3.6.20:
+    resolution: {integrity: sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg==}
     dev: false
 
   /whatwg-url@5.0.0:

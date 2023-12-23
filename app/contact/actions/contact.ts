@@ -2,6 +2,7 @@
 
 import { Resend } from 'resend';
 import { render } from '@react-email/render';
+import { log } from '@logtail/next';
 import { ContactTemplate as template } from '@/emails/contact';
 import { parseError } from '@/lib/error';
 import type { ReactElement } from 'react';
@@ -27,13 +28,7 @@ export const contact = async ({
 }: ContactProps): Promise<{
   error?: string;
 }> => {
-  const react = template({
-    name,
-    email,
-    message,
-    type,
-  }) as ReactElement;
-  const text = render(react, { plainText: true });
+  log.info('📧 Contact form submission', { name, email, message, type });
 
   if (!process.env.RESEND_FROM) {
     throw new Error('RESEND_FROM environment variable is not set');
@@ -43,7 +38,22 @@ export const contact = async ({
     throw new Error('RESEND_TO environment variable is not set');
   }
 
+  log.info('📧 Constructing React template...');
+
+  const react = template({
+    name,
+    email,
+    message,
+    type,
+  }) as ReactElement;
+
+  log.info('📧 Constructing text template...');
+
+  const text = render(react, { plainText: true });
+
   try {
+    log.info('📧 Sending email...');
+
     const response = await resend.emails.send({
       from: process.env.RESEND_FROM,
       to: process.env.RESEND_TO,
@@ -53,13 +63,19 @@ export const contact = async ({
       text,
     });
 
+    log.info('📧 Email sent', { response });
+
     if (response.error) {
       throw new Error(response.error.message);
     }
 
+    log.info('📧 Contact form submission successful');
+
     return {};
   } catch (error) {
     const errorMessage = parseError(error);
+
+    log.error('📧 Contact form submission failed', { error: errorMessage });
 
     return { error: errorMessage };
   }

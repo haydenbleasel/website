@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
+    "@logtail/next": "^0.1.4",
     "@octokit/rest": "^20.0.2",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
@@ -57,7 +58,6 @@
     "geist": "^1.2.0",
     "lodash.merge": "^4.6.2",
     "next": "14.0.4",
-    "next-axiom": "^1.1.1",
     "next-contentlayer": "^0.3.4",
     "next-secure-headers": "^2.2.0",
     "next-themes": "^0.2.1",

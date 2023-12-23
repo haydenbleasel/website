@@ -1,81 +1,60 @@
-import Image from 'next/image';
-import glimpse from 'react-glimpse/server';
-import { CalendarIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
-import { Link } from '@/components/link';
 import { allWorks } from '@/.contentlayer/generated';
 import { createMetadata } from '@/lib/metadata';
-import { cn, sortByStartYear } from '@/lib/utils';
+
+import { Link } from '@/components/link';
 import { Container } from '@/components/container';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import type { FC, ReactElement } from 'react';
+import type { Work } from '@/.contentlayer/generated';
+import type { Metadata } from 'next';
+import type { FC } from 'react';
 
-const title = 'Work';
-const description = 'My previous and current roles.';
+const title = 'Blog';
+const description = 'Thoughts, ideas, and opinions.';
 
-export const metadata = createMetadata({ title, description, path: '/work' });
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path: '/blog',
+});
 
-const Role = async ({
-  data,
-}: {
-  readonly data: (typeof allWorks)[number];
-}): Promise<ReactElement> => {
-  const { image } = await glimpse(data.link);
+const workPostsByYear = allWorks.reduce<Record<number, typeof allWorks>>(
+  (acc, post) => {
+    const year = post.startYear;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    return { ...acc, [year]: [...(acc[year] || []), post] };
+  },
+  {}
+);
 
-  return (
-    <Link
-      href={data.slug}
-      key={data.company}
-      className={cn(
-        'no-underline hover:-translate-y-1 transition-transform',
-        data.endYear && 'opacity-50'
-      )}
-    >
-      <Card className="not-prose overflow-hidden bg-white dark:bg-zinc-800">
-        {image ? (
-          <Image
-            src={image}
-            alt=""
-            width={1200}
-            height={600}
-            unoptimized
-            className="aspect-[1200/630] object-cover"
-          />
-        ) : null}
-        <CardHeader>
-          <CardTitle className="leading-tight">{data.role}</CardTitle>
-          <CardDescription>{data.company}</CardDescription>
-        </CardHeader>
-        <CardContent className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-          <span className="flex items-center gap-1">
-            <CalendarIcon className="w-3 h-3" />
-            {data.startYear} &mdash; {data.endYear ?? 'Present'}
-          </span>
-          <span className="flex items-center gap-1">
-            <PaperPlaneIcon className="w-3 h-3" />
-            {data.location}
-          </span>
-        </CardContent>
-      </Card>
-    </Link>
-  );
-};
+const sortWorkPostByDate = (roleA: Work, roleB: Work): number =>
+  roleB.startYear > roleA.startYear ? 1 : -1;
 
-const Work: FC = () => (
+const WorkPage: FC = () => (
   <Container wide>
     <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
-    <div className="mt-8 grid sm:grid-cols-2 gap-8">
-      {allWorks.sort(sortByStartYear).map((job) => (
-        <Role key={job.slug} data={job} />
-      ))}
+    <div className="mt-8 divide-y divide-zinc-200 dark:divide-zinc-800 border-t border-zinc-200 dark:border-zinc-800">
+      {Object.entries(workPostsByYear)
+        .sort(([yearA], [yearB]) => yearB - yearA)
+        .map(([year, posts]) => (
+          <div key={year} className="grid grid-cols-4">
+            <p className="text-sm p-4 m-0">{year}</p>
+            <div className="col-span-3 divide-y divide-zinc-200 dark:divide-zinc-800">
+              {posts.sort(sortWorkPostByDate).map((post) => (
+                <Link
+                  className="flex flex-col no-underline hover:bg-zinc-100 dark:hover:bg-zinc-800 sm:flex-row sm:items-center gap-1 sm:gap-4 justify-between p-4"
+                  key={post.slug}
+                  href={post.slug}
+                >
+                  <span className="m-0 text-neutral-900 dark:text-white text-sm sm:truncate">
+                    {post.role}, {post.company}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
     </div>
   </Container>
 );
 
-export default Work;
+export default WorkPage;

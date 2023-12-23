@@ -35,7 +35,7 @@ const Blog: FC = () => (
   <Container wide>
     <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
-    <div className="divide-y divide-zinc-200 dark:divide-zinc-800 border-t border-zinc-200 dark:border-zinc-800">
+    <div className="mt-8 divide-y divide-zinc-200 dark:divide-zinc-800 border-t border-zinc-200 dark:border-zinc-800">
       {Object.entries(blogPostsByYear)
         .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
         .map(([year, posts]) => (

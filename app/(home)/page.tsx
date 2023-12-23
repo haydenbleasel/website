@@ -37,7 +37,9 @@ const Home = async (): Promise<ReactElement> => {
         height={1593}
         alt=""
         placeholder="blur"
-        className="rounded overflow-hidden float-right max-w-[15rem] m-8 mt-0"
+        loading="eager"
+        priority
+        className="rounded overflow-hidden hidden sm:block float-right max-w-[15rem] m-8 mt-0"
       />
 
       <div className="max-w-prose">
@@ -71,8 +73,8 @@ const Home = async (): Promise<ReactElement> => {
           in 2023 by Raw Studio, where I joined them as an Advisor.
         </p>
       </div>
-      <div className="mt-8 grid grid-cols-2 divide-x divide-zinc-200 dark:divide-zinc-700">
-        <div className="text-sm pr-8">
+      <div className="mt-8 grid sm:grid-cols-2 gap-8 sm:gap-0 sm:divide-x divide-zinc-200 dark:divide-zinc-700">
+        <div className="text-sm sm:pr-8">
           <p className="font-semibold text-zinc-900 dark:text-zinc-100">
             Latest Update
           </p>
@@ -85,7 +87,7 @@ const Home = async (): Promise<ReactElement> => {
             </Link>
           </Button>
         </div>
-        <div className="text-sm pl-8">
+        <div className="text-sm sm:pl-8">
           <p className="font-semibold text-zinc-900 dark:text-zinc-100">
             Newsletter
           </p>

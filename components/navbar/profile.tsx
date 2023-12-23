@@ -1,12 +1,15 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import Avatar from './avatar.jpg';
 import type { FC } from 'react';
 
 export const Profile: FC = () => (
   <div className="p-4 flex items-center gap-3">
     <Image
-      src="https://pbs.twimg.com/profile_images/1702751101248770048/OdvwPdoQ_400x400.jpg"
-      unoptimized
+      src={Avatar}
+      loading="eager"
+      priority
+      placeholder="blur"
       width={40}
       height={40}
       className="rounded-full w-10 h-10"

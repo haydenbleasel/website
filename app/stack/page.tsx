@@ -85,7 +85,7 @@ const Stack: FC = () => (
   <Container wide>
     <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
-    <div className="mt-8 grid grid-cols-2 gap-8">
+    <div className="mt-8 grid sm:grid-cols-2 gap-8">
       {stack.map((tool) => (
         <Tool data={tool} key={tool.name} />
       ))}

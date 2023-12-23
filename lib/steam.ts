@@ -19,10 +19,10 @@ type GetOwnedGamesResponse = {
 };
 
 type GetPlayerAchievementsResponse = {
-  playerstats: {
+  playerstats?: {
     steamID: string;
     gameName: string;
-    achievements: {
+    achievements?: {
       apiname: string;
       achieved: number;
       unlocktime: number;

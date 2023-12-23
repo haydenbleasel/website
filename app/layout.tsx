@@ -31,7 +31,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       >
         <TooltipProvider>
           <Navbar />
-          <div className="ml-60">{children}</div>
+          <div className="lg:ml-60">{children}</div>
         </TooltipProvider>
       </ThemeProvider>
       <Toaster />

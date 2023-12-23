@@ -1,15 +1,7 @@
-import Image from 'next/image';
-import { CalendarIcon } from '@radix-ui/react-icons';
 import { allBlogs } from '@/.contentlayer/generated';
 import { createMetadata } from '@/lib/metadata';
-import { formatDate, sortBlogPostByDate } from '@/lib/utils';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { sortBlogPostByDate } from '@/lib/utils';
+
 import { Link } from '@/components/link';
 import { Container } from '@/components/container';
 import type { Metadata } from 'next';
@@ -24,44 +16,49 @@ export const metadata: Metadata = createMetadata({
   path: '/blog',
 });
 
+const blogPostsByYear = allBlogs.reduce<Record<number, typeof allBlogs>>(
+  (acc, post) => {
+    const year = new Date(post.date).getFullYear();
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    return { ...acc, [year]: [...(acc[year] || []), post] };
+  },
+  {}
+);
+
+const formatBlogDate = (date: string) =>
+  new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+  }).format(new Date(date));
+
 const Blog: FC = () => (
   <Container wide>
     <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
-    <div className="mt-8 grid grid-cols-2 gap-8">
-      {allBlogs.sort(sortBlogPostByDate).map((post) => (
-        <Link
-          href={post.slug}
-          key={post.slug}
-          className="no-underline hover:-translate-y-1 transition-transform"
-        >
-          <Card className="not-prose overflow-hidden bg-white dark:bg-zinc-800">
-            {post.image ? (
-              <Image
-                src={post.image}
-                alt=""
-                width={1200}
-                height={600}
-                unoptimized
-              />
-            ) : null}
-            <CardHeader>
-              <CardTitle className="leading-tight">{post.title}</CardTitle>
-              <CardDescription className="line-clamp-2">
-                {post.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-                <span className="flex items-center gap-1">
-                  <CalendarIcon className="w-3 h-3" />
-                  {formatDate(post.date)}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
+    <div className="divide-y divide-zinc-200 dark:divide-zinc-800 border-t border-zinc-200 dark:border-zinc-800">
+      {Object.entries(blogPostsByYear)
+        .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+        .map(([year, posts]) => (
+          <div key={year} className="grid grid-cols-4">
+            <p className="text-sm p-4 m-0">{year}</p>
+            <div className="col-span-3 divide-y divide-zinc-200 dark:divide-zinc-800">
+              {posts.sort(sortBlogPostByDate).map((post) => (
+                <Link
+                  className="flex flex-col no-underline hover:bg-zinc-100 dark:hover:bg-zinc-800 sm:flex-row sm:items-center gap-1 sm:gap-4 justify-between p-4"
+                  key={post.slug}
+                  href={post.slug}
+                >
+                  <span className="m-0 text-neutral-900 dark:text-white text-sm sm:truncate">
+                    {post.title}
+                  </span>
+                  <span className="w-[7rem] m-0 text-neutral-600 dark:text-neutral-400 text-sm sm:text-right">
+                    {formatBlogDate(post.date)}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
     </div>
   </Container>
 );

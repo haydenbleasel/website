@@ -27,10 +27,6 @@ const Game = async ({
   let imageUrl: string | null =
     `https://steamcdn-a.akamaihd.net/steam/apps/${data.appid}/library_hero.jpg`;
 
-  const complete = stats.achievements.filter(
-    (achievement) => achievement.achieved === 1
-  ).length;
-
   try {
     const response = await fetch(imageUrl);
 
@@ -69,10 +65,10 @@ const Game = async ({
               <ClockIcon className="w-3 h-3" />
               {Math.round(data.playtime_forever / 60)} hours
             </span>
-            {stats.achievements.length ? (
+            {stats?.achievements?.length ? (
               <span className="flex items-center gap-1">
                 <StarIcon className="w-3 h-3" />
-                {complete} / {stats.achievements.length} achievements
+                {stats.achievements.length} achievements
               </span>
             ) : null}
           </div>
@@ -89,7 +85,7 @@ const Games = async (): Promise<ReactElement> => {
     <Container wide>
       <h1 className="mb-0">{title}</h1>
       <p>{description}</p>
-      <div className="mt-8 grid grid-cols-2 gap-8">
+      <div className="mt-8 grid sm:grid-cols-2 gap-8">
         {games
           .sort(
             (gameA, gameB) => gameB.playtime_forever - gameA.playtime_forever

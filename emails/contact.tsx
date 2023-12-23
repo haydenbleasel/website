@@ -17,12 +17,14 @@ type ContactTemplateProps = {
   readonly name: string;
   readonly email: string;
   readonly message: string;
+  readonly type: string;
 };
 
 export const ContactTemplate: FC<ContactTemplateProps> = ({
   name,
   email,
   message,
+  type,
 }) => (
   <Tailwind>
     <Html>
@@ -40,6 +42,8 @@ export const ContactTemplate: FC<ContactTemplateProps> = ({
               </Text>
               <Hr className="my-4" />
               <Text className="m-0 text-zinc-500">{message}</Text>
+              <Hr className="my-4" />
+              <Text className="m-0 text-zinc-500">{type}</Text>
             </Section>
           </Section>
         </Container>
@@ -53,6 +57,7 @@ const ExampleContactEmail: FC = () => (
     name="Jane Smith"
     email="jane@example.com"
     message="Hello, how do I get started?"
+    type="General inquiry"
   />
 );
 

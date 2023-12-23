@@ -36,7 +36,7 @@ const ContactForm: FC = () => {
     setLoading(true);
 
     try {
-      const { error } = await contact(name, email, message);
+      const { error } = await contact({ name, email, message, type });
 
       if (error) {
         throw new Error(error);

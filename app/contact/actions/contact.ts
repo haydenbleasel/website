@@ -12,17 +12,26 @@ if (!process.env.RESEND_TOKEN) {
 
 const resend = new Resend(process.env.RESEND_TOKEN);
 
-export const contact = async (
-  name: string,
-  email: string,
-  message: string
-): Promise<{
+type ContactProps = {
+  name: string;
+  email: string;
+  message: string;
+  type: string;
+};
+
+export const contact = async ({
+  name,
+  email,
+  message,
+  type,
+}: ContactProps): Promise<{
   error?: string;
 }> => {
   const react = template({
     name,
     email,
     message,
+    type,
   }) as ReactElement;
   const text = render(react, { plainText: true });
 

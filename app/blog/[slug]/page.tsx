@@ -54,22 +54,12 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
 
   return (
     <Container>
+      <h1 className="mb-0">{doc.title}</h1>
+      <p>{doc.description}</p>
+
       <div className="space-y-8">
         <div>
-          <div className="relative">
-            <Link
-              className="absolute inline-flex items-center gap-1 text-xs -left-24 text-zinc-600 dark:text-zinc-400 top-0.5"
-              href="/blog"
-            >
-              <ArrowLeftIcon className="h-4 w-4" />
-              Blog
-            </Link>
-            <h1 className="m-0 text-sm text-zinc-900 dark:text-white font-medium">
-              {doc.title}
-            </h1>
-          </div>
-          <p className="my-1 mb-0">{doc.description}</p>
-          <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-4">
+          <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-4">
             Published on {formatDate(doc.date)} • {doc.readingTime}
           </p>
         </div>
@@ -89,6 +79,14 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
           <Mdx code={doc.body.code} />
         </div>
       </div>
+      <hr className="my-8" />
+      <Link
+        className="flex items-center gap-1 text-xs -left-24 text-zinc-600 dark:text-zinc-400 top-0.5"
+        href="/blog"
+      >
+        <ArrowLeftIcon className="h-4 w-4" />
+        Back to Blog
+      </Link>
     </Container>
   );
 };

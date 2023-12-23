@@ -28,19 +28,9 @@ const Project: FC<{
     <div className="flex items-center gap-2">
       <p className="m-0 font-medium">{data.name}</p>
       {data.caption ? (
-        <div>
-          {data.caption.link ? (
-            <Link href={data.caption.link}>
-              <Badge variant="secondary" className="rounded-full">
-                {data.caption.text}
-              </Badge>
-            </Link>
-          ) : (
-            <Badge variant="secondary" className="rounded-full">
-              {data.caption.text}
-            </Badge>
-          )}
-        </div>
+        <Badge variant="secondary" className="rounded-full">
+          {data.caption}
+        </Badge>
       ) : null}
     </div>
     <p className="font-normal m-0 text-zinc-500 dark:text-zinc-400">

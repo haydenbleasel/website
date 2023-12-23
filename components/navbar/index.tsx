@@ -40,7 +40,7 @@ export const Navbar: FC = () => (
         'dark:bg-zinc-900/90 dark:border-zinc-700'
       )}
     >
-      <Link href="/">
+      <Link href="/" aria-label="Home">
         <Image
           src={Avatar}
           loading="eager"
@@ -53,8 +53,8 @@ export const Navbar: FC = () => (
         />
       </Link>
       <Drawer>
-        <DrawerTrigger>
-          <Button variant="secondary" size="icon">
+        <DrawerTrigger asChild>
+          <Button variant="secondary" size="icon" aria-label="Open navigation">
             <HamburgerMenuIcon />
           </Button>
         </DrawerTrigger>

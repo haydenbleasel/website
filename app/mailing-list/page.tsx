@@ -18,7 +18,7 @@ const MailingListPage: FC = () => (
   <Container>
     <h1 className="mb-0">{title}</h1>
     <p>{description}</p>
-    <div className="mt-8 space-y-1">
+    <div className="mt-8 space-y-1 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4">
       <Label htmlFor="email">Email address</Label>
       <MailingList />
     </div>

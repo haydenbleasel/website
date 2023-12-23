@@ -57,7 +57,10 @@ const ContactForm: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full max-w-lg space-y-4 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4"
+    >
       <div className="space-y-1">
         <Label htmlFor="name">Full name</Label>
         <Input

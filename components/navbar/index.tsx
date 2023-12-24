@@ -35,7 +35,7 @@ export const Navbar: FC = () => (
 
     <div
       className={cn(
-        'sticky top-0 lg:hidden px-8 z-50 py-3 backdrop-blur-sm flex justify-between gap-4 border-b',
+        'sticky top-0 lg:hidden px-4 sm:px-8 z-50 py-3 backdrop-blur-sm flex justify-between gap-4 border-b',
         'bg-white/90 border-zinc-200',
         'dark:bg-zinc-900/90 dark:border-zinc-700'
       )}

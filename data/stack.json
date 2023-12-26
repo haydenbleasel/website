@@ -25,9 +25,9 @@
         "image": "https://github.githubassets.com/assets/copilot-2023-83117d7c0b8a.png"
       },
       {
-        "name": "Hyper",
-        "href": "https://hyper.is/",
-        "description": "Extensible and minimal Electron-based terminal."
+        "name": "Warp",
+        "href": "https://www.warp.dev/",
+        "description": "Modern, Rust-based terminal with AI."
       }
     ]
   },

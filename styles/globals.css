@@ -4,6 +4,7 @@
 
 html {
   text-rendering: optimizelegibility;
+  font-synthesis-weight: none;
 }
 
 ::selection {

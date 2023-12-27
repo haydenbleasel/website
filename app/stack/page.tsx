@@ -67,7 +67,7 @@ const Stack: FC = () => (
           <p className="text-zinc-900 dark:text-zinc-100 font-semibold">
             {type}
           </p>
-          <div className="grid grid-cols-2">
+          <div className="grid sm:grid-cols-2">
             {items.map((item) => (
               <Tool data={item} key={item.name} />
             ))}

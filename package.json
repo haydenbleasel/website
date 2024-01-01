@@ -50,7 +50,7 @@
     "@vercel/edge-config": "^0.4.1",
     "@vercel/speed-insights": "^1.0.2",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
+    "clsx": "^2.1.0",
     "cmdk": "^0.2.0",
     "contentlayer": "^0.3.4",
     "contentlayer-datapad": "^1.0.21",

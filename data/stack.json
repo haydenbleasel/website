@@ -168,8 +168,9 @@
     "items": [
       {
         "name": "Typefully",
-        "href": "https://typefully.com/write",
-        "description": "Professional tools for Twitter."
+        "href": "https://typefully.com/?via=haydenbleasel",
+        "description": "Professional tools for Twitter.",
+        "featured": true
       },
       {
         "name": "Ray.so",

@@ -48,11 +48,11 @@ export const CommandBar: FC = () => {
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
-        {sections.map((section) => (
-          <CommandGroup key={section.name} heading={section.name}>
-            {section.links.map((item) => (
+        {sections.map((section, sectionIndex) => (
+          <CommandGroup key={sectionIndex} heading={section.name}>
+            {section.links.map((item, itemIndex) => (
               <CommandItem
-                key={item.name}
+                key={itemIndex}
                 onSelect={() => handleSelect(item.href)}
                 className="flex items-center gap-4 justify-between"
               >

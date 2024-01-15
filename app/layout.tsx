@@ -25,12 +25,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
     )}
   >
     <body className="bg-zinc-50 dark:bg-zinc-900">
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
-      >
+      <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
         <TooltipProvider>
           <Navbar />
           <div className="lg:ml-60">{children}</div>

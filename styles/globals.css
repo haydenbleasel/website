@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  min-width: 0;
+}
+
 html {
   text-rendering: optimizelegibility;
 }
@@ -10,6 +14,10 @@ html {
 html,
 body {
   font-synthesis-weight: none;
+}
+
+body {
+  min-height: 100dvh;
 }
 
 ::selection {

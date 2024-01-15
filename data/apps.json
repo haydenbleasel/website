@@ -6,18 +6,6 @@
     "image": "/apps/eververse.svg"
   },
   {
-    "name": "texts.run",
-    "description": "Create a simple, messenger-style personal webpage.",
-    "link": "https://www.texts.run/",
-    "image": "/apps/texts.svg"
-  },
-  {
-    "name": "Waitlist",
-    "description": "Fast, unbranded waitlists for developers.",
-    "link": "https://www.waitlist.email/",
-    "image": "/apps/waitlist.svg"
-  },
-  {
     "name": "San Andreas Radio",
     "description": "All you had to do was follow the damn train, CJ!",
     "link": "https://radio.haydenbleasel.com",
@@ -61,6 +49,20 @@
     "link": "/blog/presumi",
     "image": "/apps/presumi.svg",
     "caption": "closed"
+  },
+  {
+    "name": "texts.run",
+    "description": "Create a simple, messenger-style personal webpage.",
+    "link": "https://www.texts.run/",
+    "image": "/apps/texts.svg",
+    "caption": "transferred"
+  },
+  {
+    "name": "Waitlist",
+    "description": "Fast, unbranded waitlists for developers.",
+    "link": "https://www.waitlist.email/",
+    "image": "/apps/waitlist.svg",
+    "caption": "transferred"
   },
   {
     "name": "Bokeh",

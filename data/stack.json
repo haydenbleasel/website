@@ -192,6 +192,11 @@
         "name": "Klack",
         "href": "https://tryklack.com/",
         "description": "Satisfying mechanical keyboard sounds for MacOS."
+      },
+      {
+        "name": "Hand Mirror",
+        "href": "https://handmirror.app/",
+        "description": "A one-click camera check in your menu bar."
       }
     ]
   }

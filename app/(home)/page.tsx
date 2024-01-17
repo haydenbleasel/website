@@ -62,6 +62,13 @@ const Home = async (): Promise<ReactElement> => {
           teams and am currently based in Delray Beach, Florida.
         </p>
         <p>
+          After hours, I&apos;m building{' '}
+          <Link href="https://www.eververse.ai/">Eververse</Link>, designed to
+          help Product teams explore problems, ideate solutions, prioritize
+          features and plan roadmaps with the help of generative and predictive
+          AI.
+        </p>
+        <p>
           Previously I ran an agency called{' '}
           <Link href="/work/jellypepper">Jellypepper</Link>. We worked with
           startups in self-driving car tech, AI, biotech, crypto, drone

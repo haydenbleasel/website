@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
 import { isValidEmail } from '@/lib/email';
@@ -21,7 +21,7 @@ import type { FC, FormEventHandler } from 'react';
 
 const emailRegex = /^\S+@\S+\.\S+$/u;
 
-const ContactForm: FC = () => {
+const ContactFormInner: FC = () => {
   const params = useSearchParams();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -113,4 +113,8 @@ const ContactForm: FC = () => {
   );
 };
 
-export default ContactForm;
+export const ContactForm: FC = () => (
+  <Suspense>
+    <ContactFormInner />
+  </Suspense>
+);

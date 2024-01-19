@@ -7,13 +7,13 @@ import type { Work } from '@/.contentlayer/generated';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 
-const title = 'Blog';
-const description = 'Thoughts, ideas, and opinions.';
+const title = 'Work';
+const description = 'Past work roles and experience.';
 
 export const metadata: Metadata = createMetadata({
   title,
   description,
-  path: '/blog',
+  path: '/work',
 });
 
 const workPostsByYear = allWorks.reduce<Record<number, typeof allWorks>>(

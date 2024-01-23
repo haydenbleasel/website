@@ -1,3 +1,5 @@
+'use server';
+
 import { parseError } from '@/lib/error';
 import { resend } from '@/lib/resend';
 

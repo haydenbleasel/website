@@ -34,6 +34,8 @@ export const MailingList: FC = () => {
       const message = parseError(error);
 
       toast.error(message);
+    } finally {
+      setDisabled(false);
     }
   };
 

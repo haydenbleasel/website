@@ -2,7 +2,7 @@ import { get } from '@vercel/edge-config';
 import Image from 'next/image';
 import { Link } from '@/components/link';
 import { createMetadata } from '@/lib/metadata';
-import { MailingList } from '@/components/mailing';
+import { MailingList } from '@/components/mailing-list';
 import { Container } from '@/components/container';
 import { Button } from '@/components/ui/button';
 import Profile from './profile.jpg';

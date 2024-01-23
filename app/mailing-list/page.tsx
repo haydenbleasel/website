@@ -1,5 +1,5 @@
 import { Container } from '@/components/container';
-import { MailingList } from '@/components/mailing';
+import { MailingList } from '@/components/mailing-list';
 import { Label } from '@/components/ui/label';
 import { createMetadata } from '@/lib/metadata';
 import type { FC } from 'react';

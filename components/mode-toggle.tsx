@@ -33,19 +33,11 @@ const ThemeSelectItem: FC<{ readonly value: string }> = ({ value }) => {
 
 export const ModeToggle: FC = () => {
   const { setTheme, themes, theme } = useTheme();
-  const Icon = themeIcons[theme ?? 'system'];
 
   return (
     <Select value={theme} onValueChange={setTheme}>
-      <SelectTrigger className="dark:border-zinc-700">
-        <SelectValue placeholder="Theme">
-          <div className="flex items-center gap-2.5">
-            <Icon className="w-4 h-4 shrink-0" />
-            {theme
-              ? `${theme.charAt(0).toUpperCase()}${theme.slice(1)}`
-              : 'System'}
-          </div>
-        </SelectValue>
+      <SelectTrigger className="dark:border-zinc-700 flex items-center gap-2.5">
+        <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>
         {themes.map((option) => (

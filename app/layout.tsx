@@ -23,6 +23,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       GeistMono.variable,
       'antialiased touch-manipulation font-sans'
     )}
+    suppressHydrationWarning
   >
     <body className="bg-zinc-50 dark:bg-zinc-900">
       <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>

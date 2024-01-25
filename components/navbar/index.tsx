@@ -2,13 +2,13 @@ import Image from 'next/image';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { ModeToggle } from '@/components/mode-toggle';
 import Status from '@/components/status';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Button } from '../ui/button';
 import { Navigation } from './navigation';
 import { Profile } from './profile';
 import Avatar from './avatar.jpg';
+import { ThemePicker } from './theme-picker';
 import type { FC } from 'react';
 
 export const Navbar: FC = () => (
@@ -27,7 +27,7 @@ export const Navbar: FC = () => (
           Other
         </p>
         <div className="space-y-0.5">
-          <ModeToggle />
+          <ThemePicker />
           <Status />
         </div>
       </section>

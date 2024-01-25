@@ -40,6 +40,7 @@ const Home = async (): Promise<ReactElement> => {
         loading="eager"
         priority
         className="rounded overflow-hidden hidden sm:block float-right max-w-[15rem] m-8 mt-0"
+        quality={100}
       />
 
       <div className="max-w-prose">

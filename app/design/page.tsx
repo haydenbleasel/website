@@ -40,6 +40,7 @@ const Design = async (): Promise<ReactElement> => {
                 width={1200}
                 height={630}
                 alt=""
+                quality={100}
               />
               <CardHeader>
                 <CardTitle className="leading-tight">

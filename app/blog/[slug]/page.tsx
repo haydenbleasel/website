@@ -73,6 +73,7 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
             priority
             blurDataURL={`data:image/jpg;base64,${doc.imageBlur}`}
             placeholder="blur"
+            quality={100}
           />
         ) : null}
         <div>

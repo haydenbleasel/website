@@ -70,6 +70,7 @@ export const Navigation: FC = () => {
                       className="m-0 w-4 h-4 group-hover:brightness-0 dark:group-hover:invert transition-all"
                       width={20}
                       height={20}
+                      quality={100}
                     />
                   ) : null}
                   <p

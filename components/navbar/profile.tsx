@@ -14,6 +14,7 @@ export const Profile: FC = () => (
       height={40}
       className="rounded-full w-10 h-10"
       alt=""
+      quality={100}
     />
     <div>
       <p

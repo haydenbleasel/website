@@ -35,6 +35,7 @@ const Clients: FC = () => (
               className="my-0 mx-auto h-12 w-16 object-contain translate-y-8 group-hover:translate-y-3 transition-transform"
               width={64}
               height={48}
+              quality={100}
             />
             <div className="text-center opacity-0 group-hover:opacity-100 translate-y-6 transition-all text-sm group-hover:translate-y-4">
               <p className="text-zinc-900 dark:text-zinc-100 font-medium line-clamp-1">

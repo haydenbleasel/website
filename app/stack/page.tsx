@@ -34,6 +34,7 @@ const Tool: FC<{
         width={32}
         height={32}
         className="rounded-md"
+        quality={100}
       />
       <div>
         <div className="flex items-center gap-2">

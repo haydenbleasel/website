@@ -53,6 +53,7 @@ const Game = async ({
           width={99}
           height={32}
           className="rounded-md shrink-0"
+          quality={100}
         />
       ) : (
         <div className="w-[99px] h-8 rounded-md bg-zinc-200 dark:bg-zinc-800" />

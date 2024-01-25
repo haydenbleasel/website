@@ -53,6 +53,7 @@ const Talk = async ({
             height={630}
             unoptimized
             className="aspect-[1200/630] object-cover"
+            quality={100}
           />
         ) : null}
         <CardHeader>

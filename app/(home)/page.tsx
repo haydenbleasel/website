@@ -33,8 +33,8 @@ const Home = async (): Promise<ReactElement> => {
     <Container wide>
       <Image
         src={Profile}
-        width={1158}
-        height={1593}
+        width={480}
+        height={660}
         alt=""
         placeholder="blur"
         loading="eager"

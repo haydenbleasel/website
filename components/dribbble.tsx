@@ -15,7 +15,7 @@ const Dribbble = async ({ shot }: { shot: number }): Promise<ReactElement> => {
             src={data.image}
             width={800}
             height={600}
-            className="w-full aspect-[4/3"
+            className="w-full aspect-[4/3]"
             quality={100}
           />
         ) : null}

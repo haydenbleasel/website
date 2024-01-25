@@ -95,7 +95,10 @@ const ContactFormInner: FC = () => {
       <div className="space-y-1">
         <Label htmlFor="type">Type</Label>
         <Select value={type} onValueChange={setType}>
-          <SelectTrigger className="bg-white dark:bg-zinc-800">
+          <SelectTrigger
+            className="bg-white dark:bg-zinc-800"
+            aria-label="Select a type"
+          >
             <SelectValue placeholder="Select a type" />
           </SelectTrigger>
           <SelectContent>

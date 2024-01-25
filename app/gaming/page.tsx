@@ -56,7 +56,7 @@ const Game = async ({
           quality={100}
         />
       ) : (
-        <div className="w-[99px] h-8 rounded-md bg-zinc-200 dark:bg-zinc-800" />
+        <div className="w-[99px] h-8 rounded-md bg-zinc-200 dark:bg-zinc-800 shrink-0" />
       )}
       <div>
         <div className="truncate">

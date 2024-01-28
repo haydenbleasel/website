@@ -54,14 +54,3 @@ export const fetchFigmaFile = async (id: string): Promise<FigmaDocument> => {
 
   return file;
 };
-
-export const fetchFigmaProject = async (id: string): Promise<FigmaProject> => {
-  const response = await fetch(
-    `https://api.figma.com/v1/projects/${id}/files`,
-    options
-  );
-
-  const project = (await response.json()) as FigmaProject;
-
-  return project;
-};

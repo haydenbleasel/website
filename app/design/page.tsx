@@ -22,8 +22,8 @@ const FigmaFileCard = async ({ id }: { id: string }) => {
 
   return (
     <a
-      href={`https://www.figma.com/file/${figmaFile.mainFileKey}`}
-      key={figmaFile.mainFileKey}
+      href={`https://www.figma.com/file/${id}`}
+      key={id}
       className="not-prose hover:-translate-y-1 transition-transform"
       target="_blank"
       rel="noopener noreferrer"

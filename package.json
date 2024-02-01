@@ -68,7 +68,7 @@
     "react-dom": "18.2.0",
     "react-email": "2.0.0",
     "react-glimpse": "^2.0.15",
-    "react-hook-form": "^7.49.3",
+    "react-hook-form": "^7.50.0",
     "react-player": "^2.14.1",
     "react-resizable-panels": "^1.0.9",
     "react-wrap-balancer": "^1.1.0",

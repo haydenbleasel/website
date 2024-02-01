@@ -45,7 +45,7 @@
     "@react-email/components": "0.0.14",
     "@react-email/render": "^0.0.12",
     "@react-hookz/web": "^24.0.2",
-    "@sentry/nextjs": "^7.95.0",
+    "@sentry/nextjs": "^7.99.0",
     "@vercel/analytics": "^1.1.2",
     "@vercel/edge-config": "^0.4.1",
     "@vercel/speed-insights": "^1.0.7",

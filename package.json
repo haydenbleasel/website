@@ -55,7 +55,7 @@
     "contentlayer": "^0.3.4",
     "contentlayer-datapad": "^1.0.22",
     "date-fns": "^3.3.1",
-    "embla-carousel-react": "8.0.0-rc20",
+    "embla-carousel-react": "8.0.0-rc22",
     "geist": "^1.2.1",
     "lodash.merge": "^4.6.2",
     "next": "14.1.0",

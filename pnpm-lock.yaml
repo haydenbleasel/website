@@ -117,8 +117,8 @@ dependencies:
     specifier: ^0.4.1
     version: 0.4.1
   '@vercel/speed-insights':
-    specifier: ^1.0.7
-    version: 1.0.7(next@14.1.0)(react@18.2.0)
+    specifier: ^1.0.9
+    version: 1.0.9(next@14.1.0)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -4955,8 +4955,8 @@ packages:
       '@vercel/edge-config-fs': 0.1.0
     dev: false
 
-  /@vercel/speed-insights@1.0.7(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-1XYZO/OlrAco8QPoXXIOPoMrj0O+slB9k6poRo1drQJ+DWTbdUUT18Mtm4ybA8KMj4mGEMEgbw0BKR/yq/VPhA==}
+  /@vercel/speed-insights@1.0.9(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-f+XFP0O+aZ4Olj9h+BitkB1b4NJQaxtyCb69wWuDxytJHY6Pa4QtZPdBUftHOcajUCHRVeq062fk3MKXKtjNVQ==}
     requiresBuild: true
     peerDependencies:
       '@sveltejs/kit': ^1 || ^2

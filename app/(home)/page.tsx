@@ -100,7 +100,7 @@ const Home = async (): Promise<ReactElement> => {
             Newsletter
           </p>
           <p className="text-zinc-500 dark:text-zinc-400">
-            Join 1800+ readers and get periodic updates on new projects and
+            Join 2100+ readers and get periodic updates on new projects and
             updates. No spam, ever.
           </p>
           <MailingList />

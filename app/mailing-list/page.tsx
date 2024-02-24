@@ -6,7 +6,7 @@ import type { FC } from 'react';
 
 const title = 'Mailing List';
 const description =
-  'Join 1800+ readers and get periodic updates on new projects and updates. No spam, ever.';
+  'Join 2100+ readers and get periodic updates on new projects and updates. No spam, ever.';
 
 export const metadata = createMetadata({
   title,

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Link } from '@/components/link';
 import stack from '@/data/stack.json';
+import { Card } from '@/components/card';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 
@@ -64,16 +65,15 @@ const Stack: FC = () => (
       </header>
       <div className="mt-8 grid gap-8 not-prose">
         {Object.values(stack).map(({ items, type }) => (
-          <div className="rounded-2xl bg-gray-100 p-1" key={type}>
-            <p className="text-neutral-900 dark:text-neutral-100 font-medium py-2 px-4">
-              {type}
-            </p>
-            <div className="grid sm:grid-cols-2 bg-white border border-gray-200 rounded-xl overflow-hidden p-2 gap-x-2 shadow-sm">
-              {items.map((item) => (
-                <Tool data={item} key={item.name} />
-              ))}
-            </div>
-          </div>
+          <Card
+            key={type}
+            title={type}
+            className="p-2 grid sm:grid-cols-2 gap-x-2"
+          >
+            {items.map((item) => (
+              <Tool data={item} key={item.name} />
+            ))}
+          </Card>
         ))}
       </div>
     </div>

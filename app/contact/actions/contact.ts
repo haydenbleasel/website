@@ -1,10 +1,9 @@
+/* eslint-disable no-console */
+
 'use server';
 
-import { render } from '@react-email/render';
 import { resend } from '@/lib/resend';
-import type { ReactElement } from 'react';
-import { ContactTemplate as template } from '@/emails/contact';
-import { parseError } from '@/lib/error';
+import { parseError } from '@/lib/utils';
 
 type ContactProps = {
   name: string;
@@ -21,7 +20,7 @@ export const contact = async ({
 }: ContactProps): Promise<{
   error?: string;
 }> => {
-  log.info('📧 Contact form submission', { name, email, message, type });
+  console.log('📧 Contact form submission', { name, email, message, type });
 
   if (!process.env.RESEND_FROM) {
     throw new Error('RESEND_FROM environment variable is not set');
@@ -31,44 +30,37 @@ export const contact = async ({
     throw new Error('RESEND_TO environment variable is not set');
   }
 
-  log.info('📧 Constructing React template...');
-
-  const react = template({
-    name,
-    email,
-    message,
-    type,
-  }) as ReactElement;
-
-  log.info('📧 Constructing text template...');
-
-  const text = render(react, { plainText: true });
+  console.log('📧 Constructing React template...');
 
   try {
-    log.info('📧 Sending email...');
+    console.log('📧 Sending email...');
 
     const response = await resend.emails.send({
       from: process.env.RESEND_FROM,
       to: process.env.RESEND_TO,
       subject: 'Contact form submission',
       reply_to: email,
-      react,
-      text,
+      text: [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Type: ${type}`,
+        `Message: ${message}`,
+      ].join('\n\n'),
     });
 
-    log.info('📧 Email sent', { response });
+    console.log('📧 Email sent', { response });
 
     if (response.error) {
       throw new Error(response.error.message);
     }
 
-    log.info('📧 Contact form submission successful');
+    console.log('📧 Contact form submission successful');
 
     return {};
   } catch (error) {
     const errorMessage = parseError(error);
 
-    log.error('📧 Contact form submission failed', { error: errorMessage });
+    console.error('📧 Contact form submission failed', { error: errorMessage });
 
     return { error: errorMessage };
   }

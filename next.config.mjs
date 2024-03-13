@@ -8,6 +8,22 @@ const nextConfig = {
       },
     ],
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/gaming',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/videos',
+        destination:
+          'https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

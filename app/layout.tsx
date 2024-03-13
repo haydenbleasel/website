@@ -16,7 +16,13 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
-    <body className={cn(GeistSans.variable, GeistMono.variable, 'font-sans')}>
+    <body
+      className={cn(
+        GeistSans.variable,
+        GeistMono.variable,
+        'bg-white dark:bg-neutral-950 font-sans'
+      )}
+    >
       {children}
     </body>
   </html>

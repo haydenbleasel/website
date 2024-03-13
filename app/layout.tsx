@@ -1,9 +1,8 @@
-import { Inter as createInter } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import type { Metadata } from 'next';
 import './globals.css';
 import type { FC, ReactNode } from 'react';
-
-const inter = createInter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +15,9 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
-    <body className={inter.className}>{children}</body>
+    <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      {children}
+    </body>
   </html>
 );
 

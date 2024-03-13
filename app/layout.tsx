@@ -15,7 +15,7 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
-    <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans`}>
       {children}
     </body>
   </html>

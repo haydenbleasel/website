@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'steamcdn-a.akamaihd.net',
+        protocol: 'https',
+      },
+    ],
+  },
+};
 
 export default nextConfig;

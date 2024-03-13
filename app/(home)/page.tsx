@@ -1,8 +1,38 @@
 import Image from 'next/image';
 import { Link } from '@/components/link';
 import { Newsletter } from '@/components/newsletter';
+import { getRecentGame } from '@/lib/steam';
 import Profile from './profile.jpg';
-import type { FC } from 'react';
+import type { FC, ReactElement } from 'react';
+
+const MostRecentGame = async (): Promise<ReactElement | null> => {
+  const mostRecentGame = await getRecentGame();
+
+  if (!mostRecentGame) {
+    return null;
+  }
+
+  return (
+    <span>
+      Recently I’ve been playing{' '}
+      <Link
+        href={mostRecentGame.url}
+        className="ml-0.5 inline-flex gap-1 items-center align-bottom"
+      >
+        <Image
+          src={mostRecentGame.image}
+          alt=""
+          width={20}
+          height={20}
+          className="m-0 w-5 h-5 rounded-sm"
+          quality={100}
+        />
+        <span>{mostRecentGame.name}</span>
+      </Link>{' '}
+      on Steam.
+    </span>
+  );
+};
 
 const Home: FC = () => (
   <div className="flex items-start">
@@ -10,7 +40,9 @@ const Home: FC = () => (
       <div className="space-y-12 py-32 prose prose-neutral prose-orange max-w-xl mx-auto">
         <header className="space-y-2">
           <h1 className="text-3xl m-0">Hayden Bleasel</h1>
-          <p className="m-0 text-lg">Product Designer and Software Engineer</p>
+          <p className="m-0 text-lg">
+            Design &middot; Engineering &middot; Startups &middot; Video Games
+          </p>
         </header>
         <main>
           <p>
@@ -32,7 +64,7 @@ const Home: FC = () => (
             and plan roadmaps with the help of AI.
           </p>
           <p>
-            Before that, I ran an agency called{' '}
+            Previously, I ran an agency called{' '}
             <Link href="https://jellypepper.com/">Jellypepper</Link> where I
             worked with startups in self-driving cars, AI, biotech, crypto,
             drone delivery, cybersecurity and even outer space logistics.
@@ -49,9 +81,8 @@ const Home: FC = () => (
             <Link href="/blog/refraction">acquired</Link> in 2023 by Twistag.
           </p>
           <p>
-            I’ve been fortunate to work with some incredible people and
-            companies over the years, including Google, Facebook, Twitter,
-            Dropbox, Atlassian, Canva, and many more.
+            In my spare time, I enjoy working out and playing video games.{' '}
+            <MostRecentGame />
           </p>
         </main>
         <footer>

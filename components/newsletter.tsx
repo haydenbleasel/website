@@ -9,7 +9,7 @@ const SubmitButton: FC = () => {
 
   return (
     <button
-      className="absolute right-0.5 top-0.5 rounded-full bg-orange-500 text-white text-sm font-medium py-2 px-6"
+      className="absolute right-0.5 top-0.5 rounded-full bg-orange-500 text-white text-sm font-medium py-2 px-6 select-none"
       type="submit"
       disabled={pending}
     >
@@ -36,7 +36,7 @@ export const Newsletter: FC = () => {
         placeholder="jane@acme.com"
         pattern=".+@.+\..+"
         required
-        className="bg-neutral-50 rounded-full text-sm py-2.5 pl-4 pr-[94px] w-full"
+        className="bg-neutral-100 rounded-full text-sm py-2.5 pl-4 pr-[94px] w-full placeholder:text-neutral-500 text-neutral-950"
       />
       <SubmitButton />
       <p aria-live="polite">{state.message}</p>

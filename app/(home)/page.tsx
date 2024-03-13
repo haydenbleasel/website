@@ -33,7 +33,7 @@ const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
       alt=""
       width={16}
       height={16}
-      className="m-0 w-4 h-4 rounded-sm object-contain"
+      className="m-0 w-4 h-4 rounded-sm object-contain select-none"
       quality={100}
     />
     <span>{text}</span>
@@ -142,7 +142,7 @@ const Home: FC = () => (
       alt=""
       width={3584}
       height={4608}
-      className="object-cover flex-0 h-screen sticky top-0 bottom-0 aspect-[3584/4608] w-auto max-w-[50vw]"
+      className="object-cover flex-0 h-screen sticky top-0 bottom-0 aspect-[3584/4608] w-auto max-w-[50vw] select-none"
       quality={100}
       loading="eager"
       priority

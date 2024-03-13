@@ -14,3 +14,7 @@ html {
 body {
   min-height: 100dvh;
 }
+
+::selection {
+  @apply bg-orange-100;
+}

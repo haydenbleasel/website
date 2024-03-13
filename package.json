@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,7 +13,9 @@
     "geist": "^1.2.2",
     "next": "14.1.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "resend": "^3.2.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",

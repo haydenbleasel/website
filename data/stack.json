@@ -1,0 +1,219 @@
+[
+  {
+    "type": "Coding",
+    "items": [
+      {
+        "name": "LocalCan",
+        "href": "https://www.localcan.com?aff=VMdMv",
+        "description": ".local development, simplified.",
+        "featured": true
+      },
+      {
+        "name": "GitHub Desktop",
+        "href": "https://desktop.github.com/",
+        "description": "Simple repository management.",
+        "image": "https://desktop.github.com/images/screenshot-macos-dark.png"
+      },
+      {
+        "name": "Postman",
+        "href": "https://www.postman.com/",
+        "description": "Build and test APIs."
+      },
+      {
+        "name": "VS Code",
+        "href": "https://code.visualstudio.com/",
+        "description": "The code editor for the modern web."
+      },
+      {
+        "name": "GitHub Copilot",
+        "href": "https://github.com/features/copilot/",
+        "description": "AI-powered code completion.",
+        "image": "https://github.githubassets.com/assets/copilot-2023-83117d7c0b8a.png"
+      },
+      {
+        "name": "Warp",
+        "href": "https://www.warp.dev/",
+        "description": "Modern, Rust-based terminal with AI."
+      }
+    ]
+  },
+  {
+    "type": "Security",
+    "items": [
+      {
+        "name": "NordVPN",
+        "href": "https://ref.nordvpn.com/LtLyFxYFRmA",
+        "description": "Secure and private internet access.",
+        "featured": true
+      },
+      {
+        "name": "1Password",
+        "href": "https://1password.com/",
+        "description": "Stop remembering passwords."
+      }
+    ]
+  },
+  {
+    "type": "Productivity",
+    "items": [
+      {
+        "name": "Eververse",
+        "href": "https://www.eververse.ai/",
+        "description": "Product Management, reimagined.",
+        "featured": true
+      },
+      {
+        "name": "Screen Studio",
+        "href": "https://screenstudio.lemonsqueezy.com/?aff=VMdMv",
+        "description": "Beautiful screen recordings in minutes.",
+        "featured": true
+      },
+      {
+        "name": "Proton Mail",
+        "href": "https://proton.me/mail",
+        "description": "Secure, privacy-first email."
+      },
+      {
+        "name": "CleanShot X",
+        "href": "https://cleanshot.com/",
+        "description": "Screen capture, enhanced."
+      },
+      {
+        "name": "DaisyDisk",
+        "href": "https://daisydiskapp.com/",
+        "description": "Visually analyze MacOS disk usage."
+      },
+      {
+        "name": "Linear",
+        "href": "https://linear.app/",
+        "description": "Simple, focused issue tracking."
+      },
+      {
+        "name": "Notion",
+        "href": "https://www.notion.so/",
+        "description": "Documents with endless possibilities."
+      },
+      {
+        "name": "Pitch",
+        "href": "https://pitch.com/",
+        "description": "Modern, collaborative presentation tool."
+      },
+      {
+        "name": "Slack",
+        "href": "https://slack.com/",
+        "description": "The platform for teamwork."
+      },
+      {
+        "name": "Spark",
+        "href": "https://sparkmailapp.com/",
+        "description": "Unified, native and powerful email client."
+      },
+      {
+        "name": "Zoom",
+        "href": "https://zoom.us/",
+        "description": "Video conferencing, simplified."
+      },
+      {
+        "name": "Hotlist",
+        "href": "https://pqina.nl/hotlist",
+        "description": "A simple todo list in your MacOS menubar."
+      },
+      {
+        "name": "Arc",
+        "href": "https://arc.net/",
+        "description": "Headless web browsing."
+      }
+    ]
+  },
+  {
+    "type": "Design",
+    "items": [
+      {
+        "name": "Untitled UI",
+        "href": "https://store.untitledui.com?aff=VMdMv",
+        "description": "The ultimate UI Kit for Figma.",
+        "image": "https://assets-global.website-files.com/636496d3f0ebfdaba9784655/646b8e798fb7b11360121f75_untitled-ui-open-graph-img.webp",
+        "featured": true
+      },
+      {
+        "name": "Dovetail",
+        "href": "https://dovetailapp.com/",
+        "description": "Where customer knowledge lives."
+      },
+      {
+        "name": "Figma",
+        "href": "https://www.figma.com/",
+        "description": "Collaborative interface design tool."
+      },
+      {
+        "name": "ImageOptim",
+        "href": "https://imageoptim.com/mac",
+        "description": "Losslessly optimize images."
+      },
+      {
+        "name": "Unsplash",
+        "href": "https://unsplash.com/",
+        "description": "Free, high-quality photos."
+      }
+    ]
+  },
+  {
+    "type": "Finance",
+    "items": [
+      {
+        "name": "Wise",
+        "href": "https://wise.com/invite/dic/haydenb95",
+        "description": "Low FX international transfers.",
+        "featured": true
+      },
+      {
+        "name": "Robinhood",
+        "href": "https://join.robinhood.com/haydenb-e0f142",
+        "description": "Commission-free stock trading.",
+        "featured": true
+      },
+      {
+        "name": "Stake",
+        "href": "https://hellostake.com/",
+        "description": "Trade U.S. stocks from Australia."
+      }
+    ]
+  },
+  {
+    "type": "Social",
+    "items": [
+      {
+        "name": "Typefully",
+        "href": "https://typefully.com/?via=haydenbleasel",
+        "description": "Professional tools for Twitter.",
+        "featured": true
+      },
+      {
+        "name": "Ray.so",
+        "href": "https://ray.so/",
+        "description": "Pretty code snippet screenshots."
+      }
+    ]
+  },
+  {
+    "type": "Other",
+    "items": [
+      {
+        "name": "Spotify",
+        "href": "https://open.spotify.com/",
+        "description": "Enjoy and curate the world's music."
+      },
+
+      {
+        "name": "Klack",
+        "href": "https://tryklack.com/",
+        "description": "Mechanical keystroke sounds."
+      },
+      {
+        "name": "Hand Mirror",
+        "href": "https://handmirror.app/",
+        "description": "A camera in your menu bar."
+      }
+    ]
+  }
+]

@@ -6,6 +6,10 @@ const nextConfig = {
         hostname: 'steamcdn-a.akamaihd.net',
         protocol: 'https',
       },
+      {
+        hostname: 'logo.clearbit.com',
+        protocol: 'https',
+      },
     ],
   },
 

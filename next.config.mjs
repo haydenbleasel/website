@@ -26,6 +26,11 @@ const nextConfig = {
           'https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2',
         permanent: true,
       },
+      {
+        source: '/work/:slug',
+        destination: 'https://www.linkedin.com/in/haydenbleasel/',
+        permanent: true,
+      },
     ];
   },
 };

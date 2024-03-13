@@ -1,6 +1,5 @@
 'use client';
 
-import * as Label from '@radix-ui/react-label';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -65,30 +64,27 @@ export const ContactForm: FC = () => {
           {...register('message')}
           placeholder="Hi there! I wanted to reach out to you about..."
         />
-        <fieldset className="space-y-1">
-          <Label.Root htmlFor="type">Type</Label.Root>
-          <Select
-            label="Type"
-            data={[
-              {
-                value: 'general',
-                label: 'Just saying hi!',
-              },
-              {
-                value: 'contract',
-                label: 'Contract work',
-              },
-              {
-                value: 'advisory',
-                label: 'Advisory work',
-              },
-              {
-                value: 'agency',
-                label: 'Agency introduction',
-              },
-            ]}
-          />
-        </fieldset>
+        <Select
+          label="Type"
+          data={[
+            {
+              value: 'general',
+              label: 'Just saying hi!',
+            },
+            {
+              value: 'contract',
+              label: 'Contract work',
+            },
+            {
+              value: 'advisory',
+              label: 'Advisory work',
+            },
+            {
+              value: 'agency',
+              label: 'Agency introduction',
+            },
+          ]}
+        />
         <SubmitButton />
       </form>
     </Card>

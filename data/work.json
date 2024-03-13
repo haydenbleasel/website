@@ -1,0 +1,71 @@
+[
+  {
+    "startYear": 2021,
+    "role": "Chief Product Officer",
+    "company": "Corellium",
+    "url": "https://www.corellium.com/"
+  },
+  {
+    "startYear": 2017,
+    "endYear": 2023,
+    "role": "Director",
+    "company": "Jellypepper",
+    "url": "https://jellypepper.com/"
+  },
+  {
+    "startYear": 2020,
+    "endYear": 2021,
+    "role": "Contract Senior User Experience Designer",
+    "company": "R/GA",
+    "url": "https://rga.com/"
+  },
+  {
+    "startYear": 2016,
+    "endYear": 2017,
+    "role": "Head of Product and Design",
+    "company": "Spaceship",
+    "url": "https://www.spaceship.com.au/"
+  },
+  {
+    "startYear": 2016,
+    "endYear": 2016,
+    "role": "Contract Visual Designer",
+    "company": "Tyro Payments",
+    "url": "https://www.tyro.com/"
+  },
+  {
+    "startYear": 2015,
+    "endYear": 2015,
+    "role": "Product Design Intern",
+    "company": "Palantir",
+    "url": "https://www.palantir.com/"
+  },
+  {
+    "startYear": 2014,
+    "endYear": 2015,
+    "role": "Product Designer and Frontend Developer",
+    "company": "Sumry",
+    "url": "https://sumry.me/"
+  },
+  {
+    "startYear": 2014,
+    "endYear": 2015,
+    "role": "Co-founder",
+    "company": "Gunmetal",
+    "url": "https://gunmetal.com.au/"
+  },
+  {
+    "startYear": 2014,
+    "endYear": 2015,
+    "role": "Automation Engineer",
+    "company": "MindArc Digital Agency",
+    "url": "https://www.mindarc.com.au/"
+  },
+  {
+    "startYear": 2013,
+    "endYear": 2014,
+    "role": "Front-End Developer",
+    "company": "Zookal",
+    "url": "https://www.zookal.com/"
+  }
+]

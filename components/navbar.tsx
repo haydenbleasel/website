@@ -29,7 +29,9 @@ export const Navbar: FC = () => {
           href={link.path}
           className={cn(
             'relative py-3',
-            pathname === link.path ? 'text-orange-500' : 'text-neutral-500'
+            pathname === link.path
+              ? 'font-medium text-orange-500'
+              : 'text-neutral-500'
           )}
         >
           {link.name}

@@ -38,6 +38,13 @@ const config: Config = {
           css: {
             color: theme('colors.gray.600'),
             letterSpacing: '-0.01em',
+            a: {
+              color: theme('colors.orange.500'),
+              transition: 'color 0.2s ease',
+              '&:hover': {
+                color: theme('colors.orange.600'),
+              },
+            },
             'h1, h2, h3, h4, h5, h6': {
               fontWeight: theme('fontWeight.semibold'),
               letterSpacing: '-0.02em',

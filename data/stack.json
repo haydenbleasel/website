@@ -122,6 +122,11 @@
         "name": "Arc",
         "href": "https://arc.net/",
         "description": "Headless web browsing."
+      },
+      {
+        "name": "mymind",
+        "href": "https://mymind.com/",
+        "description": "An extension of your mind."
       }
     ]
   },

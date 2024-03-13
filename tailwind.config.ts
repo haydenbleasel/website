@@ -37,9 +37,10 @@ const config: Config = {
         DEFAULT: {
           css: {
             color: theme('colors.gray.600'),
-            letterSpacing: '-0.005em',
+            letterSpacing: '-0.01em',
             'h1, h2, h3, h4, h5, h6': {
-              fontWeight: theme('fontWeight.medium'),
+              fontWeight: theme('fontWeight.semibold'),
+              letterSpacing: '-0.02em',
             },
           },
         },

@@ -1,13 +1,12 @@
 'use client';
 
-import * as Select from '@radix-ui/react-select';
 import * as Label from '@radix-ui/react-label';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Card } from '@/components/card';
-import { Input, Textarea } from '@/components/form';
+import { Input, Select, Textarea } from '@/components/form';
 import { cn } from '@/lib/utils';
 import { contact } from '../actions/contact';
 import type { FC } from 'react';
@@ -68,20 +67,27 @@ export const ContactForm: FC = () => {
         />
         <fieldset className="space-y-1">
           <Label.Root htmlFor="type">Type</Label.Root>
-          <Select.Root value="" onValueChange={() => {}}>
-            <Select.Trigger
-              className="bg-white dark:bg-neutral-900"
-              aria-label="Select a type"
-            >
-              <Select.Value placeholder="Select a type" />
-            </Select.Trigger>
-            <Select.Content>
-              <Select.Item value="general">Just saying hi!</Select.Item>
-              <Select.Item value="contract">Contract work</Select.Item>
-              <Select.Item value="advisory">Advisory work</Select.Item>
-              <Select.Item value="agency">Agency introduction</Select.Item>
-            </Select.Content>
-          </Select.Root>
+          <Select
+            label="Type"
+            data={[
+              {
+                value: 'general',
+                label: 'Just saying hi!',
+              },
+              {
+                value: 'contract',
+                label: 'Contract work',
+              },
+              {
+                value: 'advisory',
+                label: 'Advisory work',
+              },
+              {
+                value: 'agency',
+                label: 'Agency introduction',
+              },
+            ]}
+          />
         </fieldset>
         <SubmitButton />
       </form>

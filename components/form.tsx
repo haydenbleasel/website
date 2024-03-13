@@ -11,8 +11,8 @@ type CustomProps = {
 type InputProps = CustomProps & Omit<ComponentProps<'input'>, 'id'>;
 
 const baseClassName = cn(
-  'w-full px-3 py-2 rounded-lg border shadow-sm block text-sm',
-  'bg-white border-neutral-200 text-neutral-950 placeholder:text-neutral-400'
+  'w-full px-3 py-2 rounded-lg border shadow-sm block text-sm transition-all',
+  'outline-orange-500 bg-white border-neutral-200 text-neutral-950 placeholder:text-neutral-400'
 );
 
 const Label: FC<LabelProps> = ({ children, ...props }) => (

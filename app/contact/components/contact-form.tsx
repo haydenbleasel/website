@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Card } from '@/components/card';
 import { Input, Textarea } from '@/components/form';
+import { cn } from '@/lib/utils';
 import { contact } from '../actions/contact';
 import type { FC } from 'react';
 
@@ -22,7 +23,13 @@ const SubmitButton: FC = () => {
   const { pending } = useFormStatus();
 
   return (
-    <button disabled={pending} type="submit" className="w-fit">
+    <button
+      disabled={pending}
+      type="submit"
+      className={cn(
+        'bg-orange-500 text-white rounded-lg px-6 py-3 text-sm font-medium'
+      )}
+    >
       Send message
     </button>
   );

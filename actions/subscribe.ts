@@ -1,7 +1,7 @@
 'use server';
 
 import { z } from 'zod';
-import { resend } from 'resend';
+import { resend } from '@/lib/resend';
 
 export const subscribe = async (
   prevState: any,

@@ -1,5 +1,6 @@
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import './globals.css';
 import type { FC, ReactNode } from 'react';
@@ -15,7 +16,7 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
-    <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans`}>
+    <body className={cn(GeistSans.variable, GeistMono.variable, 'font-sans')}>
       {children}
     </body>
   </html>

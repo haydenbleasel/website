@@ -3,7 +3,14 @@ import { Link } from '@/components/link';
 import { Newsletter } from '@/components/newsletter';
 import { getRecentGame } from '@/lib/steam';
 import Profile from './profile.jpg';
+import type { Metadata } from 'next';
 import type { FC, ReactElement } from 'react';
+
+export const metadata: Metadata = {
+  title: 'Hayden Bleasel',
+  description:
+    'I’m an Australian Product Designer and Software Engineer currently based in Delray Beach, Florida. I’m currently the Chief Product Officer at Corellium and the founder of Eververse.',
+};
 
 const MostRecentGame = async (): Promise<ReactElement | null> => {
   const mostRecentGame = await getRecentGame();

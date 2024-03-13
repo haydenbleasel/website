@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import './globals.css';
 import type { FC, ReactNode } from 'react';
+import { Toaster } from 'sonner';
 
 type RootLayoutProps = {
   readonly children: ReactNode;
@@ -57,6 +58,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       {children}
 
       <Navbar />
+      <Toaster />
     </body>
   </html>
 );

@@ -133,7 +133,7 @@ const Home: FC = () => (
           </p>
         </main>
         <footer>
-          <p>Join my mailing list for infrequent updates.</p>
+          <p>Join 2100+ readers and get infrequent updates on new projects.</p>
           <Newsletter />
         </footer>
       </div>

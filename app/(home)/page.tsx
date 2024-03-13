@@ -40,22 +40,22 @@ const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
   </Link>
 );
 
-const MostRecentGame = async (): Promise<ReactElement | null> => {
+const MostRecentGame = async (): Promise<ReactElement | string> => {
   const mostRecentGame = await getRecentGame();
 
   if (!mostRecentGame) {
-    return null;
+    return '.';
   }
 
   return (
     <span>
-      Recently I’ve been playing{' '}
+      &mdash; most recently{' '}
       <InlineImage
         src={mostRecentGame.image}
         text={mostRecentGame.name}
         url={mostRecentGame.url}
-      />{' '}
-      on Steam.
+      />
+      .
     </span>
   );
 };
@@ -128,11 +128,12 @@ const Home: FC = () => (
             <Link href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2">
               drone
             </Link>{' '}
-            and playing video games. <MostRecentGame />
+            and playing video games
+            <MostRecentGame />
           </p>
         </main>
         <footer>
-          <p>Join my mailing list for infrequent updates</p>
+          <p>Join my mailing list for infrequent updates.</p>
           <Newsletter />
         </footer>
       </div>

@@ -36,7 +36,7 @@ const config: Config = {
       typography: (theme: (path: string) => string) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.600'),
+            color: theme('colors.neutral.600'),
             letterSpacing: '-0.01em',
             a: {
               color: theme('colors.orange.500'),

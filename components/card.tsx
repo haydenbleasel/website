@@ -8,13 +8,13 @@ type CardProps = {
 };
 
 export const Card: FC<CardProps> = ({ title, children, className }) => (
-  <div className="rounded-2xl bg-gray-100 p-1">
+  <div className="rounded-2xl bg-neutral-100 p-1">
     <p className="text-neutral-900 dark:text-neutral-100 font-medium py-2 px-4">
       {title}
     </p>
     <div
       className={cn(
-        'bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm',
+        'bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm',
         className
       )}
     >

@@ -9,6 +9,7 @@ const pages = [
   { name: 'Home', path: '/' },
   { name: 'Work', path: '/work' },
   { name: 'Blog', path: '/blog' },
+  { name: 'Features', path: '/features' },
   { name: 'Stack', path: '/stack' },
   { name: 'Contact', path: '/contact' },
 ];

@@ -1,3 +1,7 @@
+import withBundleAnalyzer from '@next/bundle-analyzer';
+import { createContentlayerPlugin } from 'next-contentlayer';
+import { createSecureHeaders } from 'next-secure-headers';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -11,6 +15,21 @@ const nextConfig = {
         protocol: 'https',
       },
     ],
+  },
+
+  headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: createSecureHeaders({
+          // HSTS Preload: https://hstspreload.org/
+          forceHTTPSRedirect: [
+            true,
+            { maxAge: 63072000, includeSubDomains: true, preload: true },
+          ],
+        }),
+      },
+    ];
   },
 
   async redirects() {
@@ -33,6 +52,28 @@ const nextConfig = {
       },
     ];
   },
+
+  // Silence, contentlayer
+  webpack: (config) => {
+    config.infrastructureLogging = {
+      level: 'error',
+    };
+
+    return config;
+  },
 };
 
-export default nextConfig;
+const withContentlayer = createContentlayerPlugin({
+  // Additional Contentlayer config options
+});
+
+// eslint-disable-next-line import/no-mutable-exports
+let config = nextConfig;
+
+if (process.env.ANALYZE === 'true') {
+  config = withBundleAnalyzer()(config);
+} else {
+  config = withContentlayer(nextConfig);
+}
+
+export default config;

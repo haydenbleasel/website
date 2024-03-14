@@ -1,0 +1,258 @@
+---
+title: Finding a user's friends in their Contacts with Firebase and Expo
+description: How to fetch contacts off your user's phone, then see which of those contacts are also using your app.
+date: 05-18-2021
+---
+
+I'm currently building an app that runs of phone numbers as the primary authentication method, then lets you add friends by allowing access to your contacts list.
+
+While this sounds pretty straightforward, it's actually pretty hectic once you get into it. Here's the general flow of things to start us off:
+
+```ts
+// Fetch the contacts from the phone
+const deviceContacts = await fetchContacts();
+
+// Clean the contacts
+const cleanedContacts = await cleanContacts(deviceContacts);
+
+// Check the contacts against Firebase
+const firebaseContacts = await checkContacts(cleanedContacts as any);
+```
+
+Now, let's write each of those functions.
+
+## Fetching Contacts
+
+Expo provides a handy module called [`expo-contacts`](https://docs.expo.io/versions/latest/sdk/contacts/) that provides access to the device's system contacts, allowing you to get contact information as well as adding, editing, or removing contacts.
+
+When we fetch contacts, we can specify what fields we need. In this instance, I'm using PhoneNumbers (which returns an array of phone numbers) as well as Name and Image to display to the user.
+
+```ts
+import * as Contacts from 'expo-contacts';
+
+async function fetchContacts() {
+  console.log('Fetching contacts from device...');
+
+  try {
+    const { data } = await Contacts.getContactsAsync({
+      fields: [
+        Contacts.Fields.Name,
+        Contacts.Fields.Image,
+        Contacts.Fields.PhoneNumbers,
+      ],
+    });
+
+    console.log(`Successfully fetched ${data.length} contacts from device.`);
+    return data;
+  } catch ({ message }) {
+    Alert.alert('Error', message);
+  }
+}
+```
+
+## Cleaning Contacts
+
+Now, there's a couple of issues when fetching contacts from the user's device.
+
+First up, it's really easy to get duplicate numbers for a particular contact in different formats, e.g. local (0234 567 890) and international (+61 234 567 890). When we check Firebase to see if a phone number exists (i.e. is attached as an authentication method to a particular user), it needs to be in E.164 format (the international one shown above).
+
+Secondly, it's also pretty common to get a bunch of junk numbers with hashes, or 1300 numbers, or numbers like "1555" (TelCo numbers from applicable devices). To save time, let's strip out these numbers as well.
+
+This function is more complicated than it sounds. You have an array of contacts, each with an array of phone numbers. We also need to format the number for sending to Firebase. So we don't mess with our types too much, we'll use the general shape of the original Contact with a `user` prop that will keep track of whether this contact is in Firebase or not.
+
+```ts
+import { parsePhoneNumberFromString, CountryCode } from 'libphonenumber-js';
+import * as Contacts from 'expo-contacts';
+
+function cleanContact({ id, phoneNumbers = [] }: Contacts.Contact) {
+  const numbers = new Set();
+
+  phoneNumbers.map(({ countryCode = 'au', digits, number }) => {
+    const phone = digits || number;
+
+    if (
+      !phone ||
+      phone.includes('#') ||
+      phone.startsWith('1300') ||
+      phone.length < 10
+    ) {
+      return null;
+    }
+
+    const internationalNumber = parsePhoneNumberFromString(
+      phone,
+      countryCode.toUpperCase() as CountryCode
+    );
+
+    if (internationalNumber) {
+      const formattedNumber = internationalNumber.format('E.164');
+
+      if (formattedNumber !== firebase.auth().currentUser?.phoneNumber) {
+        numbers.add(formattedNumber);
+      }
+    }
+  });
+
+  return {
+    id,
+    phoneNumbers: [...numbers].map((number) => ({
+      number,
+      user: null,
+    })),
+  };
+}
+
+function cleanContacts(contacts: Contacts.Contact[] = []) {
+  console.log(`Cleaning ${contacts.length} contacts...`);
+
+  const cleanedContacts = contacts.map(cleanContact);
+
+  console.log(`Successfully cleaned ${contacts.length} contacts...`);
+
+  return cleanedContacts;
+}
+```
+
+## Checking Contacts in Firebase
+
+Next up, let's check if these contacts exist in Firebase. To do this, we'll use `getUserByPhoneNumber`, a function which is only accessible using the Firebase Admin API. So, we'll also need to write a Cloud Function to handle this.
+
+Also, to prevent making hundreds of separate API calls to Firebase, I decided to send the entire cleaned Contacts object and do the processing once. Let me know if that's not a great idea for any reason 😅
+
+So, on the app:
+
+```ts
+async function checkContacts(contacts: CleanedContact[]) {
+  console.log(`Checking for ${contacts.length} contacts in Firebase...`);
+  const findFriends = firebase.functions().httpsCallable('checkPhoneNumbers');
+
+  try {
+    const { data } = await findFriends({ contacts });
+
+    console.log(`Successfully found ${data.length} contacts in Firebase...`);
+    return data;
+  } catch ({ message }) {
+    Alert.alert('Error', message);
+  }
+}
+```
+
+... and our Cloud Function (prepare yourself), it's important that we only return the user data we need, for privacy and safety. We also need to make sure that if our Cloud Function throws an error because a user isn't found, it doesn't disrupt the rest of the promises. Lastly, if a user is found, we should update the object we originally sent with the user's details.
+
+I'm positive there's a better way to handle that but here goes:
+
+```ts
+import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin';
+
+type PhoneNumber = {
+  number: string;
+  user: admin.auth.UserRecord | null;
+};
+
+type Contact = {
+  id: string;
+  phoneNumbers: PhoneNumber[];
+};
+
+type IFindFriends = {
+  contacts: Contact[];
+};
+
+async function findFriendByNumber({ number, user }: PhoneNumber) {
+  console.log(`Checking for ${number}...`);
+  try {
+    const userRecord = await admin.auth().getUserByPhoneNumber(number);
+    const { displayName, uid } = userRecord;
+
+    return Promise.resolve({
+      number,
+      user: {
+        displayName,
+        number,
+        uid,
+      },
+    });
+  } catch (error) {
+    if (error.code !== 'auth/user-not-found') {
+      console.log(error);
+    }
+    return Promise.resolve({ number, user });
+  }
+}
+
+async function findFriendByNumbers({ id, phoneNumbers }: Contact) {
+  try {
+    const numbers = await Promise.all(phoneNumbers.map(findFriendByNumber));
+
+    return {
+      id,
+      phoneNumbers: numbers,
+    };
+  } catch ({ message }) {
+    console.log(message);
+    return null;
+  }
+}
+
+export const findFriends = functions.https.onCall(
+  async ({ contacts }: IFindFriends) => {
+    try {
+      return Promise.all(contacts.map(findFriendByNumbers));
+    } catch ({ message }) {
+      throw new Error(message);
+    }
+  }
+);
+```
+
+Once this is all done, we need to split these contacts by "availability" (whether they're a Firebase user or not) and save them to states:
+
+```ts
+// Create some states to manage contacts
+const [availableContacts, setAvailableContacts] = useState<any[]>([]);
+const [unavailableContacts, setUnavailableContacts] = useState<any[]>([]);
+
+// Fetch the contacts from the phone
+const deviceContacts = await fetchContacts();
+
+// Clean the contacts
+const cleanedContacts = await cleanContacts(deviceContacts);
+
+// Check the contacts against Firebase
+const firebaseContacts = await checkContacts(cleanedContacts as any);
+
+// Find users for a specific contact
+async function findUsersforContact(id: string, phoneNumber: any) {
+  if (phoneNumber.user) {
+    newAvailableContacts.push(phoneNumber);
+  } else {
+    const meta = await fetchContact(id)!;
+    newUnavailableContacts.push({
+      number: phoneNumber.number,
+      user: {
+        displayName: meta?.name,
+        image: meta?.image?.uri,
+        id,
+      },
+    });
+  }
+}
+
+// Find users for all contacts
+async function findUsersforContacts({ id, phoneNumbers }: any) {
+  await Promise.all(
+    phoneNumbers.map((phoneNumber: string) =>
+      findUsersforContact(id, phoneNumber)
+    )
+  );
+}
+
+// Await promises
+await Promise.all(firebaseContacts.map(findUsersforContacts));
+
+setAvailableContacts(newAvailableContacts);
+setUnavailableContacts(newUnavailableContacts);
+```
+
+That's it! Hopefully that makes sense, let me know if you find a cleaner way of handling any of these sections 😄

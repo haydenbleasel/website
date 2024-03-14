@@ -16,6 +16,8 @@ const pages = [
 
 export const Navbar: FC = () => {
   const pathname = usePathname();
+  const isActive = (path: string) =>
+    path === '/' ? path === pathname : pathname.startsWith(path);
 
   return (
     <nav
@@ -30,14 +32,13 @@ export const Navbar: FC = () => {
           href={link.path}
           className={cn(
             'relative py-3',
-            pathname === link.path
+            isActive(link.path)
               ? 'font-medium text-orange-500'
               : 'text-neutral-500'
           )}
         >
           {link.name}
-
-          {pathname === link.path && (
+          {isActive(link.path) && (
             <span className="w-full h-px bg-current absolute left-0 top-full" />
           )}
         </Link>

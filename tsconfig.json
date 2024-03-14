@@ -18,9 +18,11 @@
       }
     ],
     "paths": {
+      "@contentlayer/generated": ["./.contentlayer/generated"],
       "@/*": ["./*"]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": "."
   },
   "include": [
     "eslint.config.mjs",

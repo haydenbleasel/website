@@ -25,7 +25,7 @@ export const subscribe = async (
     });
 
     if (response.error) {
-      throw new Error(response.error);
+      throw new Error(response.error.message);
     }
 
     return { message: 'Subscribed!' };

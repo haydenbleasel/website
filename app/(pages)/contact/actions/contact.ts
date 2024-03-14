@@ -22,12 +22,7 @@ export const contact = async (
 ): Promise<{
   message: string;
 }> => {
-  const data = formSchema.parse({
-    name: formData.get('name'),
-    email: formData.get('email'),
-    type: formData.get('type'),
-    message: formData.get('message'),
-  });
+  const data = formSchema.parse(Object.fromEntries(formData));
 
   console.log('📧 Contact form submission', data);
 

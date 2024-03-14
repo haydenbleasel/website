@@ -39,6 +39,7 @@ export const Navbar: FC = () => {
         <Link
           key={link.path}
           href={link.path}
+          label={link.name}
           className={cn(
             'relative py-3',
             isActive(link.path)

@@ -1,6 +1,7 @@
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { createContentlayerPlugin } from 'next-contentlayer';
 import { createSecureHeaders } from 'next-secure-headers';
+import redirects from './redirects.json';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -33,24 +34,7 @@ const nextConfig = {
   },
 
   async redirects() {
-    return [
-      {
-        source: '/gaming',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/videos',
-        destination:
-          'https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2',
-        permanent: true,
-      },
-      {
-        source: '/work/:slug',
-        destination: 'https://www.linkedin.com/in/haydenbleasel/',
-        permanent: true,
-      },
-    ];
+    return redirects;
   },
 
   // Silence, contentlayer

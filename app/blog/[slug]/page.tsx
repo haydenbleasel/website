@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import { ArrowLeftToLineIcon } from 'lucide-react';
 import { allBlogs } from '@contentlayer/generated';
 import { Mdx } from '@/components/mdx';
+import { Link } from '@/components/link';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
 
@@ -66,6 +68,15 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
   return (
     <main className="px-4 py-16 sm:py-32">
       <div className="space-y-12 prose prose-neutral prose-orange mx-auto">
+        <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-orange-500 dark:hover:text-orange-400">
+          <ArrowLeftToLineIcon className="w-4 h-4 text-inherit" />
+          <Link
+            className="text-inherit text-sm no-underline hover:text-inherit"
+            href="/blog"
+          >
+            Back to blog
+          </Link>
+        </div>
         <header className="space-y-2">
           <h1 className="text-3xl m-0">{doc.title}</h1>
           <p className="m-0 text-lg">{doc.description}</p>
@@ -86,7 +97,8 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
         <div>
           <Mdx code={doc.body.code} />
         </div>
-        <p>
+        <hr />
+        <p className="text-sm">
           Published on{' '}
           {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(
             new Date(doc.date)

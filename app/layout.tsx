@@ -1,11 +1,12 @@
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+import { Toaster } from 'sonner';
+import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from '@/components/navbar';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import './globals.css';
 import type { FC, ReactNode } from 'react';
-import { Toaster } from 'sonner';
 
 type RootLayoutProps = {
   readonly children: ReactNode;
@@ -58,6 +59,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       {children}
       <Navbar />
       <Toaster />
+      <Analytics />
     </body>
   </html>
 );

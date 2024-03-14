@@ -5,8 +5,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from '@/components/navbar';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
-import './globals.css';
 import type { FC, ReactNode } from 'react';
+import './globals.css';
 
 type RootLayoutProps = {
   readonly children: ReactNode;

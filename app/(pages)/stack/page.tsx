@@ -58,24 +58,22 @@ const Tool: FC<{
 };
 
 const Stack: FC = () => (
-  <main className="px-4 py-16 sm:py-32">
-    <div className="space-y-12 prose prose-neutral prose-orange mx-auto">
-      <Header title={title} description={description} />
-      <div className="mt-8 grid gap-8 not-prose">
-        {Object.values(stack).map(({ items, type }) => (
-          <Card
-            key={type}
-            title={type}
-            className="p-2 grid sm:grid-cols-2 gap-x-2"
-          >
-            {items.map((item) => (
-              <Tool data={item} key={item.name} />
-            ))}
-          </Card>
-        ))}
-      </div>
+  <>
+    <Header title={title} description={description} />
+    <div className="mt-8 grid gap-8 not-prose">
+      {Object.values(stack).map(({ items, type }) => (
+        <Card
+          key={type}
+          title={type}
+          className="p-2 grid sm:grid-cols-2 gap-x-2"
+        >
+          {items.map((item) => (
+            <Tool data={item} key={item.name} />
+          ))}
+        </Card>
+      ))}
     </div>
-  </main>
+  </>
 );
 
 export default Stack;

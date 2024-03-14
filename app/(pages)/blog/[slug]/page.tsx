@@ -67,44 +67,42 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
   }
 
   return (
-    <main className="px-4 py-16 sm:py-32">
-      <div className="space-y-12 prose prose-neutral prose-orange mx-auto">
-        <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-orange-500 dark:hover:text-orange-400">
-          <ArrowLeftToLineIcon className="w-4 h-4 text-inherit" />
-          <Link
-            className="text-inherit text-sm no-underline hover:text-inherit"
-            href="/blog"
-          >
-            Back to blog
-          </Link>
-        </div>
-        <Header title={doc.title} description={doc.description} />
-        {doc.image && doc.imageBlur ? (
-          <Image
-            src={doc.image}
-            width={1920}
-            height={1080}
-            alt=""
-            className="m-0 h-full w-full object-cover rounded overflow-hidden"
-            priority
-            blurDataURL={`data:image/jpg;base64,${doc.imageBlur}`}
-            placeholder="blur"
-            quality={100}
-          />
-        ) : null}
-        <div>
-          <Mdx code={doc.body.code} />
-        </div>
-        <hr />
-        <p className="text-sm">
-          Published on{' '}
-          {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(
-            new Date(doc.date)
-          )}{' '}
-          • {doc.readingTime}
-        </p>
+    <>
+      <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-orange-500 dark:hover:text-orange-400">
+        <ArrowLeftToLineIcon className="w-4 h-4 text-inherit" />
+        <Link
+          className="text-inherit text-sm no-underline hover:text-inherit"
+          href="/blog"
+        >
+          Back to blog
+        </Link>
       </div>
-    </main>
+      <Header title={doc.title} description={doc.description} />
+      {doc.image && doc.imageBlur ? (
+        <Image
+          src={doc.image}
+          width={1920}
+          height={1080}
+          alt=""
+          className="m-0 h-full w-full object-cover rounded overflow-hidden"
+          priority
+          blurDataURL={`data:image/jpg;base64,${doc.imageBlur}`}
+          placeholder="blur"
+          quality={100}
+        />
+      ) : null}
+      <div>
+        <Mdx code={doc.body.code} />
+      </div>
+      <hr />
+      <p className="text-sm">
+        Published on{' '}
+        {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(
+          new Date(doc.date)
+        )}{' '}
+        • {doc.readingTime}
+      </p>
+    </>
   );
 };
 

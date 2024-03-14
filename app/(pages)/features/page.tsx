@@ -54,16 +54,14 @@ const Feature: FC<(typeof data)[0]> = ({ name, year, location, url }) => {
 };
 
 const Work: FC = () => (
-  <main className="px-4 py-16 sm:py-32">
-    <div className="space-y-12 prose prose-neutral prose-orange mx-auto">
-      <Header title={title} description={description} />
-      <div className="mt-8 grid gap-4">
-        {data.map((feature) => (
-          <Feature key={feature.name} {...feature} />
-        ))}
-      </div>
+  <>
+    <Header title={title} description={description} />
+    <div className="mt-8 grid gap-4">
+      {data.map((feature) => (
+        <Feature key={feature.name} {...feature} />
+      ))}
     </div>
-  </main>
+  </>
 );
 
 export default Work;

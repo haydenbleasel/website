@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { Link } from '@/components/link';
 import { Newsletter } from '@/components/newsletter';
 import { getRecentGame } from '@/lib/steam';
+import { cn } from '@/lib/utils';
+import Avatar from './avatar.jpg';
 import Profile from './profile.jpg';
 import Refraction from './refraction.jpg';
 import Corellium from './corellium.svg';
@@ -64,6 +66,19 @@ const Home: FC = () => (
   <div className="flex items-start">
     <div className="px-4 flex-1">
       <div className="space-y-12 py-32 prose prose-neutral prose-orange max-w-xl mx-auto">
+        <Image
+          src={Avatar}
+          alt=""
+          width={96}
+          height={96}
+          className={cn(
+            'block xl:hidden',
+            'object-cover w-12 h-12 rounded-full'
+          )}
+          quality={100}
+          loading="eager"
+          priority
+        />
         <header className="space-y-2">
           <h1 className="text-3xl m-0">Hayden Bleasel</h1>
           <p className="m-0 text-lg">
@@ -143,7 +158,10 @@ const Home: FC = () => (
       alt=""
       width={3584}
       height={4608}
-      className="object-cover flex-0 h-screen sticky top-0 bottom-0 aspect-[3584/4608] w-auto max-w-[50vw] select-none"
+      className={cn(
+        'hidden xl:block',
+        'object-cover flex-0 h-screen sticky top-0 bottom-0 aspect-[3584/4608] w-auto max-w-[50vw] select-none'
+      )}
       quality={100}
       loading="eager"
       priority

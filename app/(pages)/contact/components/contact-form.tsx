@@ -32,19 +32,27 @@ export const ContactForm: FC = () => {
   return (
     <Card title="Get in touch">
       <form action={formAction} className="w-full space-y-4 p-4">
-        <Input label="Full name" placeholder="Jane Doe" name="name" required />
+        <Input
+          label="Full name"
+          placeholder="Jane Doe"
+          name="name"
+          required
+          maxLength={180}
+        />
         <Input
           label="Email address"
           type="email"
           name="email"
           placeholder="jane@example.com"
           required
+          maxLength={180}
         />
         <Textarea
           label="Message"
           name="message"
           placeholder="Hi there! I wanted to reach out to you about..."
           required
+          maxLength={1000}
         />
         <Select
           label="Type"

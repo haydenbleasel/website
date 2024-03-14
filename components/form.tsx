@@ -1,10 +1,10 @@
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import * as RadixLabel from '@radix-ui/react-label';
 import * as RadixSelect from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { LabelProps } from '@radix-ui/react-label';
-import type { ComponentProps, FC } from 'react';
+import type { ChangeEventHandler, ComponentProps, FC } from 'react';
 
 type CustomProps = {
   readonly label: string;
@@ -24,16 +24,41 @@ const Label: FC<LabelProps> = ({ children, ...props }) => (
   </RadixLabel.Root>
 );
 
-export const Input: FC<InputProps> = ({ label, ...props }) => {
+const Counter: FC<{ readonly count: number; readonly maxLength: number }> = ({
+  count,
+  maxLength,
+}) => (
+  <p className="text-xs text-neutral-500 dark:text-neutral-400 text-right">
+    {count}/{maxLength}
+  </p>
+);
+
+export const Input: FC<InputProps> = ({
+  label,
+  maxLength,
+  onChange,
+  ...props
+}) => {
   const id = useId();
+  const [count, setCount] = useState(0);
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    onChange?.(event);
+    setCount(event.target.value.length);
+  };
 
   return (
     <fieldset className="space-y-1">
-      <Label htmlFor={id}>{label}</Label>
+      <div className="flex justify-between gap-4 items-center">
+        <Label htmlFor={id}>{label}</Label>
+        {maxLength ? <Counter count={count} maxLength={maxLength} /> : null}
+      </div>
       <input
         id={id}
         placeholder="Jane Doe"
         className={baseClassName}
+        maxLength={maxLength}
+        onChange={handleChange}
         {...props}
       />
     </fieldset>
@@ -42,16 +67,32 @@ export const Input: FC<InputProps> = ({ label, ...props }) => {
 
 type TextareaProps = CustomProps & Omit<ComponentProps<'textarea'>, 'id'>;
 
-export const Textarea: FC<TextareaProps> = ({ label, ...props }) => {
+export const Textarea: FC<TextareaProps> = ({
+  label,
+  maxLength,
+  onChange,
+  ...props
+}) => {
   const id = useId();
+  const [count, setCount] = useState(0);
+
+  const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+    onChange?.(event);
+    setCount(event.target.value.length);
+  };
 
   return (
     <fieldset className="space-y-1">
-      <Label htmlFor={id}>{label}</Label>
+      <div className="flex justify-between gap-4 items-center">
+        <Label htmlFor={id}>{label}</Label>
+        {maxLength ? <Counter count={count} maxLength={maxLength} /> : null}
+      </div>
       <textarea
         id={id}
         placeholder="Jane Doe"
         className={cn(baseClassName, 'resize-y min-h-[5rem] max-h-[15rem]')}
+        maxLength={maxLength}
+        onChange={handleChange}
         {...props}
       />
     </fieldset>

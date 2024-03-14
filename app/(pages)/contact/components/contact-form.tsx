@@ -1,21 +1,11 @@
 'use client';
 
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Card } from '@/components/card';
 import { Input, Select, Textarea } from '@/components/form';
 import { cn } from '@/lib/utils';
 import { contact } from '../actions/contact';
 import type { FC } from 'react';
-
-const formSchema = z.object({
-  name: z.string().min(1).max(255),
-  email: z.string().email(),
-  message: z.string().min(1).max(1000),
-  type: z.enum(['general', 'contract', 'advisory', 'agency']),
-});
 
 const SubmitButton: FC = () => {
   const { pending } = useFormStatus();
@@ -25,7 +15,7 @@ const SubmitButton: FC = () => {
       disabled={pending}
       type="submit"
       className={cn(
-        'bg-orange-500 text-white rounded-lg px-6 py-3 text-sm font-medium'
+        'bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium'
       )}
     >
       Send message
@@ -37,32 +27,23 @@ export const ContactForm: FC = () => {
   const [state, formAction] = useFormState(contact, {
     message: '',
   });
-  const { register, handleSubmit } = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      message: '',
-      type: 'general',
-    },
-  });
 
   return (
     <Card title="Get in touch">
-      <form
-        onSubmit={handleSubmit(formAction)}
-        className="w-full space-y-4 p-4"
-      >
-        <Input label="Full name" {...register('name')} placeholder="Jane Doe" />
+      <form action={formAction} className="w-full space-y-4 p-4">
+        <Input label="Full name" placeholder="Jane Doe" name="name" required />
         <Input
           label="Email address"
-          {...register('email')}
+          type="email"
+          name="email"
           placeholder="jane@example.com"
+          required
         />
         <Textarea
           label="Message"
-          {...register('message')}
+          name="message"
           placeholder="Hi there! I wanted to reach out to you about..."
+          required
         />
         <Select
           label="Type"
@@ -86,6 +67,9 @@ export const ContactForm: FC = () => {
           ]}
         />
         <SubmitButton />
+        <output aria-live="polite" className="sr-only">
+          {state.message}
+        </output>
       </form>
     </Card>
   );

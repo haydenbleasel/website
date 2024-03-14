@@ -2,25 +2,27 @@
 
 'use server';
 
+import { z } from 'zod';
+import { revalidatePath } from 'next/cache';
 import { resend } from '@/lib/resend';
 import { parseError } from '@/lib/utils';
 
-type ContactProps = {
-  name: string;
-  email: string;
-  message: string;
-  type: string;
-};
+export const formSchema = z.object({
+  name: z.string().min(1).max(255),
+  email: z.string().email(),
+  message: z.string().min(1).max(1000),
+  type: z.enum(['general', 'contract', 'advisory', 'agency']),
+});
 
-export const contact = async ({
-  name,
-  email,
-  message,
-  type,
-}: ContactProps): Promise<{
-  error?: string;
+export const contact = async (
+  prevState: any,
+  formData: FormData
+): Promise<{
+  message: string;
 }> => {
-  console.log('📧 Contact form submission', { name, email, message, type });
+  const data = formSchema.parse(formData);
+
+  console.log('📧 Contact form submission', data);
 
   if (!process.env.RESEND_FROM) {
     throw new Error('RESEND_FROM environment variable is not set');
@@ -39,12 +41,12 @@ export const contact = async ({
       from: process.env.RESEND_FROM,
       to: process.env.RESEND_TO,
       subject: 'Contact form submission',
-      reply_to: email,
+      reply_to: data.email,
       text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Type: ${type}`,
-        `Message: ${message}`,
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        `Type: ${data.type}`,
+        `Message: ${data.message}`,
       ].join('\n\n'),
     });
 
@@ -56,12 +58,14 @@ export const contact = async ({
 
     console.log('📧 Contact form submission successful');
 
-    return {};
+    revalidatePath('/contact');
+
+    return { message: 'Thanks! Your message has been sent.' };
   } catch (error) {
     const errorMessage = parseError(error);
 
     console.error('📧 Contact form submission failed', { error: errorMessage });
 
-    return { error: errorMessage };
+    return { message: errorMessage };
   }
 };

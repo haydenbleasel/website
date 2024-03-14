@@ -67,91 +67,95 @@ const MostRecentGame = async (): Promise<ReactElement | string> => {
 const Home: FC = () => (
   <div className="flex items-start">
     <div className="flex-1">
-      <PageLayout>
-        <Image
-          src={Avatar}
-          alt=""
-          width={96}
-          height={96}
-          className={cn(
-            'block xl:hidden',
-            'object-cover w-12 h-12 rounded-full'
-          )}
-          quality={100}
-          loading="eager"
-          priority
-        />
-        <Header
-          title="Hayden Bleasel"
-          description="Design · Engineering · Startups · Video Games"
-        />
-        <main>
-          <p>
-            Hi, I’m Hayden Bleasel. I’m an Australian Product Designer and
-            Software Engineer currently based in Delray Beach, Florida.
-          </p>
-          <p>
-            I’m currently the Chief Product Officer at{' '}
-            <InlineImage
-              src={Corellium as StaticImageData}
-              text="Corellium"
-              url="https://www.corellium.com/"
-            />{' '}
-            — a virtual hardware platform designed for governments, defense
-            contractors and enterprises to perform security research and testing
-            on Arm-based devices.
-          </p>
-          <p>
-            After hours, I’m working on{' '}
-            <InlineImage
-              src={Eververse as StaticImageData}
-              text="Eververse"
-              url="https://www.eververse.ai/"
-            />
-            , a new type of Product Management tool designed to help Product
-            teams triage feedback, explore problems, ideate solutions,
-            prioritize features and plan roadmaps with the help of AI.
-          </p>
-          <p>
-            Previously, I ran an agency called{' '}
-            <InlineImage
-              src={Jellypepper as StaticImageData}
-              text="Jellypepper"
-              url="https://jellypepper.com/"
-            />{' '}
-            where I worked with startups in self-driving cars, AI, biotech,
-            crypto, drone delivery, cybersecurity and even outer space
-            logistics. Jellypepper was{' '}
-            <Link href="https://raw.studio/blog/raw-studio-acquires-jellypepper-to-expand-its-reach-to-the-startup-ecosystem/">
-              acquired
-            </Link>{' '}
-            in 2023 by Raw Studio.
-          </p>
-          <p>
-            I also founded{' '}
-            <InlineImage
-              src={Refraction}
-              text="Refraction"
-              url="https://refraction.dev/"
-            />
-            , a suite of AI-based code improvement tools for developers, which
-            was <Link href="/blog/refraction">acquired</Link> in 2023 by
-            Twistag.
-          </p>
-          <p>
-            In my spare time, I enjoy working out, flying my{' '}
-            <Link href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2">
-              drone
-            </Link>{' '}
-            and playing video games
-            <MostRecentGame />
-          </p>
-        </main>
-        <footer>
-          <p>Join 2100+ readers and get infrequent updates on new projects.</p>
-          <Newsletter />
-        </footer>
-      </PageLayout>
+      <div className="max-w-2xl mx-auto">
+        <PageLayout>
+          <Image
+            src={Avatar}
+            alt=""
+            width={96}
+            height={96}
+            className={cn(
+              'block xl:hidden m-0',
+              'object-cover w-12 h-12 rounded-full'
+            )}
+            quality={100}
+            loading="eager"
+            priority
+          />
+          <Header
+            title="Hayden Bleasel"
+            description="Design · Engineering · Startups · Video Games"
+          />
+          <main>
+            <p>
+              Hi, I’m Hayden Bleasel. I’m an Australian Product Designer and
+              Software Engineer currently based in Delray Beach, Florida.
+            </p>
+            <p>
+              I’m currently the Chief Product Officer at{' '}
+              <InlineImage
+                src={Corellium as StaticImageData}
+                text="Corellium"
+                url="https://www.corellium.com/"
+              />{' '}
+              — a virtual hardware platform designed for governments, defense
+              contractors and enterprises to perform security research and
+              testing on Arm-based devices.
+            </p>
+            <p>
+              After hours, I’m working on{' '}
+              <InlineImage
+                src={Eververse as StaticImageData}
+                text="Eververse"
+                url="https://www.eververse.ai/"
+              />
+              , a new type of Product Management tool designed to help Product
+              teams triage feedback, explore problems, ideate solutions,
+              prioritize features and plan roadmaps with the help of AI.
+            </p>
+            <p>
+              Previously, I ran an agency called{' '}
+              <InlineImage
+                src={Jellypepper as StaticImageData}
+                text="Jellypepper"
+                url="https://jellypepper.com/"
+              />{' '}
+              where I worked with startups in self-driving cars, AI, biotech,
+              crypto, drone delivery, cybersecurity and even outer space
+              logistics. Jellypepper was{' '}
+              <Link href="https://raw.studio/blog/raw-studio-acquires-jellypepper-to-expand-its-reach-to-the-startup-ecosystem/">
+                acquired
+              </Link>{' '}
+              in 2023 by Raw Studio.
+            </p>
+            <p>
+              I also founded{' '}
+              <InlineImage
+                src={Refraction}
+                text="Refraction"
+                url="https://refraction.dev/"
+              />
+              , a suite of AI-based code improvement tools for developers, which
+              was <Link href="/blog/refraction">acquired</Link> in 2023 by
+              Twistag.
+            </p>
+            <p>
+              In my spare time, I enjoy working out, flying my{' '}
+              <Link href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2">
+                drone
+              </Link>{' '}
+              and playing video games
+              <MostRecentGame />
+            </p>
+          </main>
+          <footer>
+            <p>
+              Join 2100+ readers and get infrequent updates on new projects.
+            </p>
+            <Newsletter />
+          </footer>
+        </PageLayout>
+      </div>
     </div>
     <Image
       src={Profile}

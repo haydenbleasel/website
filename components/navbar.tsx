@@ -1,17 +1,25 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import {
+  BriefcaseBusinessIcon,
+  HomeIcon,
+  LayersIcon,
+  MessagesSquareIcon,
+  NewspaperIcon,
+  NotebookPenIcon,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from './link';
 import type { FC } from 'react';
 
 const pages = [
-  { name: 'Home', path: '/' },
-  { name: 'Work', path: '/work' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Features', path: '/features' },
-  { name: 'Stack', path: '/stack' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Home', path: '/', icon: HomeIcon },
+  { name: 'Work', path: '/work', icon: BriefcaseBusinessIcon },
+  { name: 'Blog', path: '/blog', icon: NotebookPenIcon },
+  { name: 'Features', path: '/features', icon: NewspaperIcon },
+  { name: 'Stack', path: '/stack', icon: LayersIcon },
+  { name: 'Contact', path: '/contact', icon: MessagesSquareIcon },
 ];
 
 export const Navbar: FC = () => {
@@ -37,7 +45,10 @@ export const Navbar: FC = () => {
               : 'text-neutral-500'
           )}
         >
-          {link.name}
+          <span className="block sm:hidden">
+            <link.icon className="w-5 h-5" />
+          </span>
+          <span className="hidden sm:block">{link.name}</span>
           {isActive(link.path) && (
             <span className="w-full h-px bg-current absolute left-0 top-full" />
           )}

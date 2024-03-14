@@ -15,7 +15,8 @@ const SubmitButton: FC = () => {
       disabled={pending}
       type="submit"
       className={cn(
-        'bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium'
+        'bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium',
+        'disabled:opacity-50 disabled:cursor-not-allowed'
       )}
     >
       Send message
@@ -24,7 +25,7 @@ const SubmitButton: FC = () => {
 };
 
 export const ContactForm: FC = () => {
-  const [state, formAction] = useFormState(contact, {
+  const [state, formAction] = useFormState(contact as never, {
     message: '',
   });
 
@@ -47,6 +48,7 @@ export const ContactForm: FC = () => {
         />
         <Select
           label="Type"
+          name="type"
           data={[
             {
               value: 'general',
@@ -67,7 +69,7 @@ export const ContactForm: FC = () => {
           ]}
         />
         <SubmitButton />
-        <output aria-live="polite" className="sr-only">
+        <output aria-live="polite" className="text-sm block">
           {state.message}
         </output>
       </form>

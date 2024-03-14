@@ -30,14 +30,14 @@ type InlineImageProps = {
 const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
   <Link
     href={url}
-    className="ml-0.5 inline-flex gap-1 items-center align-bottom"
+    className="ml-0.5 dark:ml-0 inline-flex gap-1 items-center align-bottom"
   >
     <Image
       src={src}
       alt=""
       width={16}
       height={16}
-      className="m-0 w-4 h-4 rounded-sm object-contain select-none"
+      className="dark:hidden m-0 w-4 h-4 rounded-sm object-contain select-none"
       quality={100}
     />
     <span>{text}</span>

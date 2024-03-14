@@ -51,6 +51,11 @@ const config: Config = {
             },
           },
         },
+        invert: {
+          css: {
+            color: theme('colors.neutral.400'),
+          },
+        },
       }),
     },
   },

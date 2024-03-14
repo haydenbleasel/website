@@ -3,6 +3,7 @@ import { Link } from '@/components/link';
 import stack from '@/data/stack.json';
 import { Card } from '@/components/card';
 import { Header } from '@/components/header';
+import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 
@@ -28,7 +29,11 @@ const Tool: FC<{
     <Link
       href={data.href}
       key={data.href}
-      className="no-underline items-center flex gap-4 hover:bg-neutral-100 dark:hover:bg-neutral-800 p-4 rounded-lg transition-colors"
+      className={cn(
+        'no-underline items-center flex gap-4 p-4 rounded-lg transition-colors',
+        'hover:bg-neutral-100',
+        'dark:hover:bg-neutral-800'
+      )}
     >
       <Image
         src={`https://logo.clearbit.com/${hostname.replace('www.', '')}`}
@@ -40,11 +45,23 @@ const Tool: FC<{
       />
       <div>
         <div className="flex items-center gap-2">
-          <p className="text-sm text-neutral-900 dark:text-neutral-100 font-medium">
+          <p
+            className={cn(
+              'text-sm font-medium',
+              'text-neutral-900',
+              'dark:text-neutral-100'
+            )}
+          >
             {data.name}
           </p>
           {data.featured ? (
-            <span className="text-xs px-2 bg-neutral-100 rounded-full font-medium">
+            <span
+              className={cn(
+                'text-xs px-2 rounded-full font-medium',
+                'bg-neutral-100 text-neutral-700',
+                'dark:bg-neutral-800 dark:text-neutral-300'
+              )}
+            >
               Featured
             </span>
           ) : null}

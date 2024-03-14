@@ -31,7 +31,8 @@ export const Navbar: FC = () => {
     <nav
       className={cn(
         'rounded-full px-6 flex items-center gap-6 fixed bottom-6 left-1/2 -translate-x-1/2 backdrop-blur-sm backdrop-filter bg-opacity-50 shadow-lg border text-sm',
-        'bg-white/80 border-neutral-950/10'
+        'bg-white/80 border-neutral-950/10',
+        'dark:bg-neutral-950/80 dark:border-neutral-100/10'
       )}
     >
       {pages.map((link) => (
@@ -42,7 +43,7 @@ export const Navbar: FC = () => {
             'relative py-3',
             isActive(link.path)
               ? 'font-medium text-orange-500'
-              : 'text-neutral-500'
+              : 'text-neutral-500 dark:text-neutral-400'
           )}
         >
           <span className="block sm:hidden">

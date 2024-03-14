@@ -43,7 +43,8 @@ export const Newsletter: FC = () => {
           required
           className={cn(
             'rounded-full text-sm py-2.5 pl-4 pr-[94px] w-full',
-            'bg-neutral-100 text-neutral-950 placeholder:text-neutral-500 outline-orange-500'
+            'bg-neutral-100 text-neutral-950 placeholder:text-neutral-500 outline-orange-500',
+            'dark:bg-neutral-900 dark:text-white dark:placeholder-text-neutral-600'
           )}
         />
         <SubmitButton />

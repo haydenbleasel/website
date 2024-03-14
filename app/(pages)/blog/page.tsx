@@ -28,7 +28,7 @@ const Post: FC<{
     key={slug}
     href={slug}
   >
-    <p className="m-0 sm:truncate text-neutral-950 font-medium group-hover:text-orange-500 transition-colors">
+    <p className="m-0 sm:truncate text-neutral-950 dark:text-white font-medium group-hover:text-orange-500 transition-colors">
       {postTitle}
     </p>
     <hr className="hidden sm:block min-w-7 flex-1 m-0 group-hover:border-orange-400 transition-colors" />

@@ -56,7 +56,6 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       )}
     >
       {children}
-
       <Navbar />
       <Toaster />
     </body>

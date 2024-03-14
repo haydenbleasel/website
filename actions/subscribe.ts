@@ -4,6 +4,12 @@ import { z } from 'zod';
 import { resend } from '@/lib/resend';
 import { parseError } from '@/lib/utils';
 
+const audienceId = process.env.RESEND_AUDIENCE_ID;
+
+if (!audienceId) {
+  throw new Error('Missing RESEND_AUDIENCE_ID');
+}
+
 export const subscribe = async (
   prevState: never,
   formData: FormData
@@ -17,11 +23,10 @@ export const subscribe = async (
   const data = schema.parse(Object.fromEntries(formData));
 
   try {
-    const response = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
-      to: ['delivered@resend.dev'],
-      subject: 'Hello world',
-      text: `Hello, ${data.email}!`,
+    const response = await resend.contacts.create({
+      email: data.email,
+      unsubscribed: false,
+      audienceId,
     });
 
     if (response.error) {

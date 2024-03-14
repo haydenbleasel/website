@@ -67,7 +67,7 @@ const MostRecentGame = async (): Promise<ReactElement | string> => {
 const Home: FC = () => (
   <div className="flex items-start">
     <div className="flex-1">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-[38rem] mx-auto">
         <PageLayout>
           <Image
             src={Avatar}

@@ -24,6 +24,29 @@ const SubmitButton: FC = () => {
   );
 };
 
+const typeOptions = [
+  {
+    value: 'general',
+    label: 'General inquiry',
+    subtitle: 'I have a job offer / question / feedback.',
+  },
+  {
+    value: 'contract',
+    label: 'Contract work',
+    subtitle: 'I want to hire you for a project.',
+  },
+  {
+    value: 'advisory',
+    label: 'Advisory work',
+    subtitle: 'Can you join my board or be an advisor?',
+  },
+  {
+    value: 'agency',
+    label: 'Agency introduction',
+    subtitle: "I'm looking for an agency recommendation.",
+  },
+];
+
 export const ContactForm: FC = () => {
   const [state, formAction] = useFormState(contact as never, {
     message: '',
@@ -54,28 +77,7 @@ export const ContactForm: FC = () => {
           required
           maxLength={1000}
         />
-        <Select
-          label="Type"
-          name="type"
-          data={[
-            {
-              value: 'general',
-              label: 'Just saying hi!',
-            },
-            {
-              value: 'contract',
-              label: 'Contract work',
-            },
-            {
-              value: 'advisory',
-              label: 'Advisory work',
-            },
-            {
-              value: 'agency',
-              label: 'Agency introduction',
-            },
-          ]}
-        />
+        <Select label="Type" name="type" data={typeOptions} />
         <SubmitButton />
         <output aria-live="polite" className="text-sm block">
           {state.message}

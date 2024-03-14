@@ -104,6 +104,7 @@ type SelectProps = CustomProps &
     readonly data: {
       readonly value: string;
       readonly label: string;
+      readonly subtitle: string;
     }[];
   };
 
@@ -153,6 +154,9 @@ export const Select: FC<SelectProps> = ({ label, data, name }) => {
                     </RadixSelect.ItemIndicator>
                   </span>
                   <RadixSelect.ItemText>{item.label}</RadixSelect.ItemText>
+                  <span className="hidden sm:block ml-2 text-gray-500 dark:text-gray-400">
+                    {item.subtitle}
+                  </span>
                 </RadixSelect.Item>
               ))}
             </RadixSelect.Viewport>

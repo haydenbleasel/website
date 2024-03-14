@@ -18,3 +18,12 @@ body {
 ::selection {
   @apply bg-orange-100 dark:bg-orange-900;
 }
+
+[data-rehype-pretty-code-title] {
+  @apply text-sm font-medium rounded-t-lg py-3 px-6;
+  @apply bg-neutral-900 text-white font-mono;
+}
+
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none;
+}

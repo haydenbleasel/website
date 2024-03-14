@@ -49,6 +49,13 @@ const config: Config = {
               fontWeight: theme('fontWeight.semibold'),
               letterSpacing: '-0.02em',
             },
+            pre: {
+              padding: theme('spacing.6'),
+              backgroundColor: theme('colors.neutral.900'),
+              borderWidth: 1,
+              borderColor: theme('colors.neutral.800'),
+              borderRadius: theme('borderRadius.lg'),
+            },
           },
         },
         invert: {

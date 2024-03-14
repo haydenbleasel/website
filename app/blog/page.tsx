@@ -1,3 +1,4 @@
+import { Header } from '@/components/header';
 import { Link } from '@/components/link';
 import { allBlogs } from '@contentlayer/generated';
 import type { Metadata } from 'next';
@@ -20,10 +21,7 @@ const formatBlogDate = (date: string) =>
 const Blog: FC = () => (
   <main className="px-4 py-16 sm:py-32">
     <div className="space-y-12 prose prose-neutral prose-orange mx-auto">
-      <header className="space-y-2">
-        <h1 className="text-3xl m-0">{title}</h1>
-        <p className="m-0 text-lg">{description}</p>
-      </header>
+      <Header title={title} description={description} />
       <div className="mt-8 grid gap-4">
         {allBlogs
           .sort((postA, postB) => (postA.date > postB.date ? -1 : 1))

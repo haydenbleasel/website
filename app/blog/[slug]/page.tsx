@@ -4,6 +4,7 @@ import { ArrowLeftToLineIcon } from 'lucide-react';
 import { allBlogs } from '@contentlayer/generated';
 import { Mdx } from '@/components/mdx';
 import { Link } from '@/components/link';
+import { Header } from '@/components/header';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
 
@@ -77,10 +78,7 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
             Back to blog
           </Link>
         </div>
-        <header className="space-y-2">
-          <h1 className="text-3xl m-0">{doc.title}</h1>
-          <p className="m-0 text-lg">{doc.description}</p>
-        </header>
+        <Header title={doc.title} description={doc.description} />
         {doc.image && doc.imageBlur ? (
           <Image
             src={doc.image}

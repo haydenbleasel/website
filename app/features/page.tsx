@@ -1,6 +1,7 @@
 import { Link } from '@/components/link';
 import speaking from '@/data/speaking.json';
 import features from '@/data/features.json';
+import { Header } from '@/components/header';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 
@@ -18,7 +19,7 @@ const data = [...speaking, ...features].sort((itemA, itemB) =>
 
 const FeatureInner: FC<{
   readonly name: string;
-  readonly year: string;
+  readonly year: number;
   readonly location: string;
 }> = ({ name, year, location }) => (
   <>
@@ -55,13 +56,10 @@ const Feature: FC<(typeof data)[0]> = ({ name, year, location, url }) => {
 const Work: FC = () => (
   <main className="px-4 py-16 sm:py-32">
     <div className="space-y-12 prose prose-neutral prose-orange mx-auto">
-      <header className="space-y-2">
-        <h1 className="text-3xl m-0">{title}</h1>
-        <p className="m-0 text-lg">{description}</p>
-      </header>
+      <Header title={title} description={description} />
       <div className="mt-8 grid gap-4">
         {data.map((feature) => (
-          <Feature key={feature.title} {...feature} />
+          <Feature key={feature.name} {...feature} />
         ))}
       </div>
     </div>

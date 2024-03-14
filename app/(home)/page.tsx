@@ -3,6 +3,7 @@ import { Link } from '@/components/link';
 import { Newsletter } from '@/components/newsletter';
 import { getRecentGame } from '@/lib/steam';
 import { cn } from '@/lib/utils';
+import { Header } from '@/components/header';
 import Avatar from './avatar.jpg';
 import Profile from './profile.jpg';
 import Refraction from './refraction.jpg';
@@ -79,12 +80,10 @@ const Home: FC = () => (
           loading="eager"
           priority
         />
-        <header className="space-y-2">
-          <h1 className="text-3xl m-0">Hayden Bleasel</h1>
-          <p className="m-0 text-lg">
-            Design &middot; Engineering &middot; Startups &middot; Video Games
-          </p>
-        </header>
+        <Header
+          title="Hayden Bleasel"
+          description="Design · Engineering · Startups · Video Games"
+        />
         <main>
           <p>
             Hi, I’m Hayden Bleasel. I’m an Australian Product Designer and

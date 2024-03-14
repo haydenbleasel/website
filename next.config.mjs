@@ -5,6 +5,7 @@ import { createSecureHeaders } from 'next-secure-headers';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         hostname: 'steamcdn-a.akamaihd.net',

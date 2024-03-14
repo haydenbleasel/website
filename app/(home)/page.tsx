@@ -4,6 +4,7 @@ import { Newsletter } from '@/components/newsletter';
 import { getRecentGame } from '@/lib/steam';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/header';
+import PageLayout from '@/app/(pages)/layout';
 import Avatar from './avatar.jpg';
 import Profile from './profile.jpg';
 import Refraction from './refraction.jpg';
@@ -65,8 +66,8 @@ const MostRecentGame = async (): Promise<ReactElement | string> => {
 
 const Home: FC = () => (
   <div className="flex items-start">
-    <div className="px-4 flex-1">
-      <div className="space-y-12 py-32 prose prose-neutral prose-orange max-w-xl mx-auto">
+    <div className="flex-1">
+      <PageLayout>
         <Image
           src={Avatar}
           alt=""
@@ -150,7 +151,7 @@ const Home: FC = () => (
           <p>Join 2100+ readers and get infrequent updates on new projects.</p>
           <Newsletter />
         </footer>
-      </div>
+      </PageLayout>
     </div>
     <Image
       src={Profile}

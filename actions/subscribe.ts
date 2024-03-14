@@ -2,9 +2,10 @@
 
 import { z } from 'zod';
 import { resend } from '@/lib/resend';
+import { parseError } from '@/lib/utils';
 
 export const subscribe = async (
-  prevState: any,
+  prevState: never,
   formData: FormData
 ): Promise<{
   message: string;
@@ -29,6 +30,8 @@ export const subscribe = async (
 
     return { message: 'Subscribed!' };
   } catch (error) {
-    return { message: error.message };
+    const message = parseError(error);
+
+    return { message };
   }
 };

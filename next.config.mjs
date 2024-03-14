@@ -1,7 +1,6 @@
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { createContentlayerPlugin } from 'next-contentlayer';
 import { createSecureHeaders } from 'next-secure-headers';
-import redirects from './redirects.json';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -34,7 +33,59 @@ const nextConfig = {
   },
 
   async redirects() {
-    return redirects;
+    return [
+      {
+        source: '/video',
+        destination:
+          'https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2',
+        permanent: true,
+      },
+      {
+        source: '/work/:slug',
+        destination: 'https://www.linkedin.com/in/haydenbleasel/',
+        permanent: true,
+      },
+      {
+        source: '/mailing-list',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/clients',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/apps',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/speaking',
+        destination: '/features',
+        permanent: true,
+      },
+      {
+        source: '/services',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/gaming',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/design',
+        destination: 'https://www.figma.com/@haydenbleasel',
+        permanent: true,
+      },
+      {
+        source: '/code',
+        destination: 'https://github.com/haydenbleasel',
+        permanent: true,
+      },
+    ];
   },
 
   // Silence, contentlayer

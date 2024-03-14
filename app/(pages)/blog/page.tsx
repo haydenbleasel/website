@@ -18,6 +18,26 @@ const formatBlogDate = (date: string) =>
     year: '2-digit',
   }).format(new Date(date));
 
+const Post: FC<{
+  readonly title: string;
+  readonly date: string;
+  readonly slug: string;
+}> = ({ title: postTitle, date, slug }) => (
+  <Link
+    className="flex items-center gap-4 no-underline text-inherit font-normal group transition-colors sm:trunate"
+    key={slug}
+    href={slug}
+  >
+    <p className="m-0 sm:truncate text-neutral-950 font-medium group-hover:text-orange-500 transition-colors">
+      {postTitle}
+    </p>
+    <hr className="hidden sm:block min-w-7 flex-1 m-0 group-hover:border-orange-400 transition-colors" />
+    <p className="hidden sm:block shrink-0 m-0 text-sm group-hover:text-orange-400 transition-colors">
+      {formatBlogDate(date)}
+    </p>
+  </Link>
+);
+
 const Blog: FC = () => (
   <>
     <Header title={title} description={description} />
@@ -25,19 +45,12 @@ const Blog: FC = () => (
       {allBlogs
         .sort((postA, postB) => (postA.date > postB.date ? -1 : 1))
         .map((post) => (
-          <Link
-            className="flex items-center gap-4 no-underline text-inherit font-normal group transition-colors"
+          <Post
             key={post.slug}
-            href={post.slug}
-          >
-            <p className="m-0 text-neutral-950 font-medium group-hover:text-orange-500 transition-colors">
-              {post.title}
-            </p>
-            <hr className="flex-1 m-0 group-hover:border-orange-400 transition-colors" />
-            <p className="m-0 text-sm group-hover:text-orange-400 transition-colors">
-              {formatBlogDate(post.date)}
-            </p>
-          </Link>
+            title={post.title}
+            date={post.date}
+            slug={post.slug}
+          />
         ))}
     </div>
   </>

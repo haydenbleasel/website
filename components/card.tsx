@@ -13,7 +13,7 @@ export const Card: FC<CardProps> = ({ title, children, className }) => (
   >
     <p
       className={cn(
-        'font-medium py-2 px-4',
+        'text-sm font-medium py-2 px-4',
         'text-neutral-900',
         'dark:text-neutral-100'
       )}

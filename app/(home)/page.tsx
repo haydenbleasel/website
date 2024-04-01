@@ -9,7 +9,7 @@ import Avatar from './avatar.jpg';
 import Profile from './profile.jpg';
 import Refraction from './refraction.jpg';
 import Corellium from './corellium.svg';
-import Eververse from './eververse.svg';
+import Eververse from './eververse.png';
 import Jellypepper from './jellypepper.svg';
 import type { StaticImageData } from 'next/image';
 import type { Metadata } from 'next';
@@ -105,7 +105,7 @@ const Home: FC = () => (
             <p>
               After hours, I’m working on{' '}
               <InlineImage
-                src={Eververse as StaticImageData}
+                src={Eververse}
                 text="Eververse"
                 url="https://www.eververse.ai/"
               />

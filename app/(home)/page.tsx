@@ -9,7 +9,7 @@ import Avatar from './avatar.jpg';
 import Profile from './profile.jpg';
 import Refraction from './refraction.jpg';
 import Corellium from './corellium.svg';
-import Eververse from './eververse.png';
+import Eververse from './eververse.svg';
 import Jellypepper from './jellypepper.svg';
 import type { StaticImageData } from 'next/image';
 import type { Metadata } from 'next';

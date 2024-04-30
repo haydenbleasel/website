@@ -150,7 +150,7 @@ const Home: FC = () => (
           </main>
           <footer>
             <p>
-              Join 2100+ readers and get infrequent updates on new projects.
+              Join 2200+ readers and get infrequent updates on new projects.
             </p>
             <Newsletter />
           </footer>

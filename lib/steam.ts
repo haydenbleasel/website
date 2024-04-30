@@ -11,6 +11,7 @@ export const getRecentGame = async (): Promise<{
   name: string;
   url: string;
   image: string;
+  playtime: number;
 } | null> => {
   const url = new URL(
     '/IPlayerService/GetRecentlyPlayedGames/v0001/',
@@ -28,6 +29,7 @@ export const getRecentGame = async (): Promise<{
         appid: number;
         name: string;
         img_icon_url: string;
+        playtime_forever: number;
       }[];
     };
   };
@@ -42,5 +44,6 @@ export const getRecentGame = async (): Promise<{
     name: game.name,
     url: `https://store.steampowered.com/app/${game.appid}`,
     image: `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`,
+    playtime: game.playtime_forever,
   };
 };

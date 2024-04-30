@@ -59,7 +59,7 @@ const MostRecentGame = async (): Promise<ReactElement | string> => {
         text={mostRecentGame.name}
         url={mostRecentGame.url}
       />{' '}
-      <span>({Math.round(mostRecentGame.playtime / 60)} hours)</span>.
+      <span>({Math.round(mostRecentGame.playtime / 60)} hours so far)</span>.
     </span>
   );
 };

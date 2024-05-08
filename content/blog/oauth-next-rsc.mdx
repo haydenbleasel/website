@@ -71,7 +71,7 @@ import { currentOrganization } from '@/lib/clerk';
 import { database } from '@/lib/database';
 
 const linearClientId = process.env.LINEAR_CLIENT_ID;
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 
 if (!linearClientId || !siteUrl) {
   throw new Error('Linear Client ID or site URL not found');
@@ -146,7 +146,7 @@ type LinearCallbackPageProps = {
 
 const linearClientId = process.env.LINEAR_CLIENT_ID;
 const linearClientSecret = process.env.LINEAR_CLIENT_SECRET;
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 
 if (!linearClientId || !linearClientSecret) {
   throw new Error('Linear client ID or secret is missing');

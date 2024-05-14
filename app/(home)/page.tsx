@@ -140,7 +140,13 @@ const Home: FC = () => (
               Twistag.
             </p>
             <p>
-              In my spare time, I enjoy working out, flying my{' '}
+              In my spare time, I enjoy working out, building open source
+              projects like{' '}
+              <Link href="https://www.next-forge.com/">next-forge</Link> and{' '}
+              <Link href="https://www.npmjs.com/package/eslint-config-harmony">
+                Harmony
+              </Link>
+              , flying my{' '}
               <Link href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2">
                 drone
               </Link>{' '}

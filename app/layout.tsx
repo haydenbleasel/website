@@ -47,6 +47,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const runtime = 'edge';
+
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
     <body

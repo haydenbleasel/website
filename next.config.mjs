@@ -15,6 +15,10 @@ const nextConfig = {
         hostname: 'logo.clearbit.com',
         protocol: 'https',
       },
+      {
+        hostname: 'i.scdn.co',
+        protocol: 'https',
+      },
     ],
   },
 

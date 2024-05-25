@@ -3,24 +3,28 @@ import { updateEdgeConfig } from '@/lib/vercel';
 import { parseError } from '@/lib/utils';
 
 export type SpotifyProps = {
-  lastUpdated?: number;
-  name?: string;
-  artist?: string;
-  image?: string;
-  href?: string;
+  lastUpdated: number;
+  name: string;
+  artist: string;
+  image: string;
+  href: string;
 };
 
-const getAccessToken = async (refreshToken: string): Promise<string> => {
-  if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET) {
-    throw new Error('Missing Spotify Client ID or Client Secret');
-  }
+const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
+const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+const spotifyRefreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
 
+if (!spotifyClientId || !spotifyClientSecret || !spotifyRefreshToken) {
+  throw new Error('Missing Spotify Client ID, Client Secret, or Refresh Token');
+}
+
+const getAccessToken = async (refreshToken: string): Promise<string> => {
   const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: `Basic ${Buffer.from(
-        `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+        `${spotifyClientId}:${spotifyClientSecret}`
       ).toString('base64')}`,
     },
     body: new URLSearchParams({
@@ -40,13 +44,9 @@ const getAccessToken = async (refreshToken: string): Promise<string> => {
 };
 
 export const GET = async (): Promise<Response> => {
-  if (!process.env.SPOTIFY_REFRESH_TOKEN) {
-    throw new Error('Missing Spotify Refresh Token');
-  }
-
   try {
-    const token = await getAccessToken(process.env.SPOTIFY_REFRESH_TOKEN);
-    const currentTrack = await get<CurrentTrackProps>('currentTrack');
+    const token = await getAccessToken(spotifyRefreshToken);
+    const currentTrack = await get<SpotifyProps>('spotify');
 
     const response = await fetch(
       'https://api.spotify.com/v1/me/player/currently-playing',

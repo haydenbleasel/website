@@ -47,10 +47,8 @@ const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
 );
 
 const Home = async (): Promise<ReactElement> => {
-  const game = (await get('steam')) as GameProps;
-  const spotify = (await get('spotify')) as SpotifyProps;
-
-  console.log(spotify);
+  const game = await get<GameProps>('steam');
+  const song = await get<SpotifyProps>('spotify');
 
   return (
     <div className="flex items-start">
@@ -138,16 +136,55 @@ const Home = async (): Promise<ReactElement> => {
                 <Link href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2">
                   drone
                 </Link>{' '}
-                and playing video games &mdash; most recently{' '}
-                <InlineImage src={game.image} text={game.name} url={game.url} />{' '}
-                ({Math.round(game.playtime / 60)} hours so far).
+                and playing video games.
               </p>
             </main>
-            <footer>
+            <div>
               <p>
                 Join 2200+ readers and get infrequent updates on new projects.
               </p>
               <Newsletter />
+            </div>
+            <footer>
+              <p className="m-0 font-medium text-sm text-neutral-500 dark:text-neutral-400">
+                Latest activity
+              </p>
+              <div className="space-y-1 mt-4">
+                {game && (
+                  <div className="flex items-center gap-1">
+                    <Image
+                      src={game.image}
+                      alt=""
+                      width={16}
+                      height={16}
+                      className="w-4 h-4 rounded-sm object-contain select-none m-0"
+                      quality={100}
+                    />
+                    Playing{' '}
+                    <Link href={game.url} className="underline">
+                      {game.name}
+                    </Link>{' '}
+                    (currently at {Math.round(game.playtime / 60)} hours)
+                  </div>
+                )}
+                {song && (
+                  <div className="flex items-center gap-1">
+                    <Image
+                      src={song.image}
+                      alt=""
+                      width={16}
+                      height={16}
+                      className="w-4 h-4 rounded-sm object-contain select-none m-0"
+                      quality={100}
+                    />
+                    Listening to{' '}
+                    <Link href={song.href} className="underline">
+                      {song.name}
+                    </Link>{' '}
+                    by {song.artist}
+                  </div>
+                )}
+              </div>
             </footer>
           </PageLayout>
         </div>

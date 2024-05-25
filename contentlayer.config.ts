@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-nodejs-modules
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
@@ -11,8 +11,7 @@ import { extractTocHeadings } from 'pliny/mdx-plugins/remark-toc-headings.js';
 import { sqip } from 'sqip';
 import type { Options as PrettyCodeOptions } from 'rehype-pretty-code';
 import type { Options as RehypeAutoLinkHeadingsOptions } from 'rehype-autolink-headings';
-import type { ComputedFields } from 'contentlayer/source-files';
-import { BlendIcon } from 'lucide-react';
+import type { ComputedFields } from 'contentlayer2/source-files';
 
 export const computeFields = <T extends string>({
   openGraphEndpoint = '/api/og',

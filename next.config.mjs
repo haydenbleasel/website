@@ -1,5 +1,5 @@
 import withBundleAnalyzer from '@next/bundle-analyzer';
-import { createContentlayerPlugin } from 'next-contentlayer';
+import { createContentlayerPlugin } from 'next-contentlayer2';
 import { createSecureHeaders } from 'next-secure-headers';
 
 /** @type {import('next').NextConfig} */

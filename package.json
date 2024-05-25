@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "contentlayer": "npx contentlayer build",
+    "contentlayer": "npx contentlayer2 build",
     "bump-deps": "npx npm-check-updates -u -x eslint && npm install"
   },
   "dependencies": {
@@ -20,11 +20,11 @@
     "@vercel/edge-config": "^1.1.1",
     "@vercel/kv": "^1.0.1",
     "clsx": "^2.1.1",
-    "contentlayer": "^0.3.4",
+    "contentlayer2": "^0.4.6",
     "geist": "^1.3.0",
     "lucide-react": "^0.379.0",
     "next": "14.2.3",
-    "next-contentlayer": "^0.3.4",
+    "next-contentlayer2": "^0.4.6",
     "next-secure-headers": "^2.2.0",
     "pliny": "^0.2.1",
     "react": "^18",

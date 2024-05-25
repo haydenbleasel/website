@@ -14,6 +14,8 @@ import type { StaticImageData } from 'next/image';
 import type { Metadata } from 'next';
 import type { FC, ReactElement } from 'react';
 import { get } from '@vercel/edge-config';
+import { GameProps } from '../api/cron/steam/route';
+import { SpotifyProps } from '../api/cron/spotify/route';
 
 export const metadata: Metadata = {
   title: 'Hayden Bleasel',
@@ -45,12 +47,10 @@ const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
 );
 
 const Home = async (): Promise<ReactElement> => {
-  const game = (await get('game')) as {
-    image: string;
-    name: string;
-    playtime: number;
-    url: string;
-  };
+  const game = (await get('steam')) as GameProps;
+  const spotify = (await get('spotify')) as SpotifyProps;
+
+  console.log(spotify);
 
   return (
     <div className="flex items-start">

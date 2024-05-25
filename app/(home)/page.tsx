@@ -70,7 +70,7 @@ const Home = async (): Promise<ReactElement> => {
             />
             <Header
               title="Hayden Bleasel"
-              description="Design · Engineering · Startups · Video Games"
+              description="Design · Engineering · Startups"
             />
             <main>
               <p>

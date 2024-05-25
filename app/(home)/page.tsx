@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { Link } from '@/components/link';
 import { Newsletter } from '@/components/newsletter';
-import { getRecentGame } from '@/lib/steam';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/header';
 import PageLayout from '@/app/(pages)/layout';
@@ -14,6 +13,7 @@ import Jellypepper from './jellypepper.svg';
 import type { StaticImageData } from 'next/image';
 import type { Metadata } from 'next';
 import type { FC, ReactElement } from 'react';
+import { get } from '@vercel/edge-config';
 
 export const metadata: Metadata = {
   title: 'Hayden Bleasel',
@@ -44,139 +44,129 @@ const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
   </Link>
 );
 
-const MostRecentGame = async (): Promise<ReactElement | string> => {
-  const mostRecentGame = await getRecentGame();
-
-  if (!mostRecentGame) {
-    return '.';
-  }
+const Home = async (): Promise<ReactElement> => {
+  const game = (await get('game')) as {
+    image: string;
+    name: string;
+    playtime: number;
+    url: string;
+  };
 
   return (
-    <span>
-      &mdash; most recently{' '}
-      <InlineImage
-        src={mostRecentGame.image}
-        text={mostRecentGame.name}
-        url={mostRecentGame.url}
-      />{' '}
-      <span>({Math.round(mostRecentGame.playtime / 60)} hours so far)</span>.
-    </span>
+    <div className="flex items-start">
+      <div className="flex-1">
+        <div className="max-w-[38rem] mx-auto">
+          <PageLayout>
+            <Image
+              src={Avatar}
+              alt=""
+              width={96}
+              height={96}
+              className={cn(
+                'block xl:hidden m-0',
+                'object-cover w-12 h-12 rounded-full'
+              )}
+              quality={100}
+              loading="eager"
+              priority
+            />
+            <Header
+              title="Hayden Bleasel"
+              description="Design · Engineering · Startups · Video Games"
+            />
+            <main>
+              <p>
+                Hi, I’m Hayden Bleasel. I’m an Australian Product Designer and
+                Software Engineer currently based in Delray Beach, Florida.
+              </p>
+              <p>
+                I’m currently the Chief Product Officer at{' '}
+                <InlineImage
+                  src={Corellium as StaticImageData}
+                  text="Corellium"
+                  url="https://www.corellium.com/"
+                />{' '}
+                — a virtual hardware platform designed for governments, defense
+                contractors and enterprises to perform security research and
+                testing on Arm-based devices.
+              </p>
+              <p>
+                After hours, I’m working on{' '}
+                <InlineImage
+                  src={Eververse}
+                  text="Eververse"
+                  url="https://www.eververse.ai/"
+                />
+                , a new type of Product Management tool designed to help Product
+                teams triage feedback, explore problems, ideate solutions,
+                prioritize features and plan roadmaps with the help of AI.
+              </p>
+              <p>
+                Previously, I ran an agency called{' '}
+                <InlineImage
+                  src={Jellypepper as StaticImageData}
+                  text="Jellypepper"
+                  url="https://jellypepper.com/"
+                />{' '}
+                where I worked with startups in self-driving cars, AI, biotech,
+                crypto, drone delivery, cybersecurity and even outer space
+                logistics. Jellypepper was{' '}
+                <Link href="https://raw.studio/blog/raw-studio-acquires-jellypepper-to-expand-its-reach-to-the-startup-ecosystem/">
+                  acquired
+                </Link>{' '}
+                in 2023 by Raw Studio.
+              </p>
+              <p>
+                I also founded{' '}
+                <InlineImage
+                  src={Refraction}
+                  text="Refraction"
+                  url="https://refraction.dev/"
+                />
+                , a suite of AI-based code improvement tools for developers,
+                which was <Link href="/blog/refraction">acquired</Link> in 2023
+                by Twistag.
+              </p>
+              <p>
+                In my spare time, I enjoy working out, building open source
+                projects like{' '}
+                <Link href="https://www.next-forge.com/">next-forge</Link> and{' '}
+                <Link href="https://www.npmjs.com/package/eslint-config-harmony">
+                  Harmony
+                </Link>
+                , flying my{' '}
+                <Link href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2">
+                  drone
+                </Link>{' '}
+                and playing video games &mdash; most recently{' '}
+                <InlineImage src={game.image} text={game.name} url={game.url} />{' '}
+                ({Math.round(game.playtime / 60)} hours so far).
+              </p>
+            </main>
+            <footer>
+              <p>
+                Join 2200+ readers and get infrequent updates on new projects.
+              </p>
+              <Newsletter />
+            </footer>
+          </PageLayout>
+        </div>
+      </div>
+      <Image
+        src={Profile}
+        alt=""
+        width={3584}
+        height={4608}
+        className={cn(
+          'hidden xl:block',
+          'object-cover flex-0 h-screen sticky top-0 bottom-0 aspect-[3584/4608] w-auto max-w-[50vw] select-none'
+        )}
+        quality={100}
+        loading="eager"
+        priority
+      />
+    </div>
   );
 };
-
-const Home: FC = () => (
-  <div className="flex items-start">
-    <div className="flex-1">
-      <div className="max-w-[38rem] mx-auto">
-        <PageLayout>
-          <Image
-            src={Avatar}
-            alt=""
-            width={96}
-            height={96}
-            className={cn(
-              'block xl:hidden m-0',
-              'object-cover w-12 h-12 rounded-full'
-            )}
-            quality={100}
-            loading="eager"
-            priority
-          />
-          <Header
-            title="Hayden Bleasel"
-            description="Design · Engineering · Startups · Video Games"
-          />
-          <main>
-            <p>
-              Hi, I’m Hayden Bleasel. I’m an Australian Product Designer and
-              Software Engineer currently based in Delray Beach, Florida.
-            </p>
-            <p>
-              I’m currently the Chief Product Officer at{' '}
-              <InlineImage
-                src={Corellium as StaticImageData}
-                text="Corellium"
-                url="https://www.corellium.com/"
-              />{' '}
-              — a virtual hardware platform designed for governments, defense
-              contractors and enterprises to perform security research and
-              testing on Arm-based devices.
-            </p>
-            <p>
-              After hours, I’m working on{' '}
-              <InlineImage
-                src={Eververse}
-                text="Eververse"
-                url="https://www.eververse.ai/"
-              />
-              , a new type of Product Management tool designed to help Product
-              teams triage feedback, explore problems, ideate solutions,
-              prioritize features and plan roadmaps with the help of AI.
-            </p>
-            <p>
-              Previously, I ran an agency called{' '}
-              <InlineImage
-                src={Jellypepper as StaticImageData}
-                text="Jellypepper"
-                url="https://jellypepper.com/"
-              />{' '}
-              where I worked with startups in self-driving cars, AI, biotech,
-              crypto, drone delivery, cybersecurity and even outer space
-              logistics. Jellypepper was{' '}
-              <Link href="https://raw.studio/blog/raw-studio-acquires-jellypepper-to-expand-its-reach-to-the-startup-ecosystem/">
-                acquired
-              </Link>{' '}
-              in 2023 by Raw Studio.
-            </p>
-            <p>
-              I also founded{' '}
-              <InlineImage
-                src={Refraction}
-                text="Refraction"
-                url="https://refraction.dev/"
-              />
-              , a suite of AI-based code improvement tools for developers, which
-              was <Link href="/blog/refraction">acquired</Link> in 2023 by
-              Twistag.
-            </p>
-            <p>
-              In my spare time, I enjoy working out, building open source
-              projects like{' '}
-              <Link href="https://www.next-forge.com/">next-forge</Link> and{' '}
-              <Link href="https://www.npmjs.com/package/eslint-config-harmony">
-                Harmony
-              </Link>
-              , flying my{' '}
-              <Link href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2">
-                drone
-              </Link>{' '}
-              and playing video games
-              <MostRecentGame />
-            </p>
-          </main>
-          <footer>
-            <p>
-              Join 2200+ readers and get infrequent updates on new projects.
-            </p>
-            <Newsletter />
-          </footer>
-        </PageLayout>
-      </div>
-    </div>
-    <Image
-      src={Profile}
-      alt=""
-      width={3584}
-      height={4608}
-      className={cn(
-        'hidden xl:block',
-        'object-cover flex-0 h-screen sticky top-0 bottom-0 aspect-[3584/4608] w-auto max-w-[50vw] select-none'
-      )}
-      quality={100}
-      loading="eager"
-      priority
-    />
-  </div>
-);
 
 export default Home;

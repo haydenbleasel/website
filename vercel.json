@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/steam",
+      "schedule": "0 2 * * *"
+    }
+  ]
+}

@@ -41,6 +41,8 @@
     "sonner": "^1.4.41",
     "sqip": "1.0.0-alpha.51",
     "sqip-plugin-data-uri": "1.0.0-alpha.52",
+    "sqip-plugin-primitive": "1.0.0-alpha.53",
+    "sqip-plugin-svgo": "1.0.0-alpha.54",
     "tailwind-merge": "^2.3.0",
     "zod": "^3.23.8"
   },

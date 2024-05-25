@@ -77,6 +77,11 @@ export const computeFields = <T extends string>({
 
       const blur = await sqip({
         input: `${folderBase}${doc.image}`,
+        plugins: [
+          'sqip-plugin-primitive',
+          'sqip-plugin-svgo',
+          'sqip-plugin-data-uri',
+        ],
       });
 
       const result = Array.isArray(blur) ? blur[0] : blur;

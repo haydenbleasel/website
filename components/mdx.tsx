@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getMDXComponent } from 'next-contentlayer/hooks';
+import { getMDXComponent } from 'next-contentlayer2/hooks';
 import { Video } from './video';
 import type { FC, HTMLProps, ReactNode } from 'react';
 

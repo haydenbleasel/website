@@ -7,16 +7,11 @@ import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 import './globals.css';
+import { siteUrl } from '@/lib/consts';
 
 type RootLayoutProps = {
   readonly children: ReactNode;
 };
-
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
-if (!siteUrl) {
-  throw new Error('Missing VERCEL_PROJECT_PRODUCTION_URL');
-}
 
 export const metadata: Metadata = {
   applicationName: 'Hayden Bleasel',

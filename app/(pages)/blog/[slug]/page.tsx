@@ -7,18 +7,13 @@ import { Link } from '@/components/link';
 import { Header } from '@/components/header';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
+import { siteUrl } from '@/lib/consts';
 
 type DocPageProps = {
   readonly params: {
     slug: string;
   };
 };
-
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
-if (!siteUrl) {
-  throw new Error('VERCEL_PROJECT_PRODUCTION_URL is not set');
-}
 
 export const generateMetadata = ({ params }: DocPageProps): Metadata => {
   const currentPath = params.slug;

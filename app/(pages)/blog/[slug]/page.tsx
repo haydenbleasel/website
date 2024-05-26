@@ -15,6 +15,8 @@ type DocPageProps = {
   };
 };
 
+export const runtime = 'nodejs';
+
 export const generateMetadata = ({ params }: DocPageProps): Metadata => {
   const currentPath = params.slug;
   const doc = allBlogs.find(({ slugAsParams }) => slugAsParams === currentPath);

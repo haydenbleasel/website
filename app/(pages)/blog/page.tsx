@@ -7,6 +7,8 @@ import type { FC } from 'react';
 const title = 'Blog';
 const description = 'Thoughts, ideas, and opinions.';
 
+export const runtime = 'nodejs';
+
 export const metadata: Metadata = {
   title,
   description,

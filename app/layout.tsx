@@ -12,10 +12,10 @@ type RootLayoutProps = {
   readonly children: ReactNode;
 };
 
-const siteUrl = process.env.VERCEL_PRODUCTION_URL;
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 
 if (!siteUrl) {
-  throw new Error('Missing VERCEL_PRODUCTION_URL');
+  throw new Error('Missing VERCEL_PROJECT_PRODUCTION_URL');
 }
 
 export const metadata: Metadata = {

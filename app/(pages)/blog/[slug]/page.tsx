@@ -14,10 +14,10 @@ type DocPageProps = {
   };
 };
 
-const siteUrl = process.env.VERCEL_PRODUCTION_URL;
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 
 if (!siteUrl) {
-  throw new Error('VERCEL_PRODUCTION_URL is not set');
+  throw new Error('VERCEL_PROJECT_PRODUCTION_URL is not set');
 }
 
 export const generateMetadata = ({ params }: DocPageProps): Metadata => {

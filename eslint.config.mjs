@@ -1,3 +1,1 @@
-import harmony from 'ultracite';
-
-export default harmony;
+export { default } from 'ultracite';

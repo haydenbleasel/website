@@ -3,11 +3,11 @@ import { GeistMono } from 'geist/font/mono';
 import { Toaster } from 'sonner';
 import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from '@/components/navbar';
+import { siteUrl } from '@/lib/consts';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 import './globals.css';
-import { siteUrl } from '@/lib/consts';
 
 type RootLayoutProps = {
   readonly children: ReactNode;

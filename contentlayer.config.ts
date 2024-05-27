@@ -9,10 +9,10 @@ import readingTime from 'reading-time';
 import rehypePresetMinify from 'rehype-preset-minify';
 import { extractTocHeadings } from 'pliny/mdx-plugins/remark-toc-headings.js';
 import { sqip } from 'sqip';
+import moonlightTheme from './public/moonlight-ii.json' with { type: 'json' };
 import type { Options as PrettyCodeOptions } from 'rehype-pretty-code';
 import type { Options as RehypeAutoLinkHeadingsOptions } from 'rehype-autolink-headings';
 import type { ComputedFields } from 'contentlayer2/source-files';
-import moonlightTheme from './public/moonlight-ii.json' with { type: 'json' };
 
 export const computeFields = <T extends string>({
   openGraphEndpoint = '/api/og',

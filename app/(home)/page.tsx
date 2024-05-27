@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { get } from '@vercel/edge-config';
 import { Link } from '@/components/link';
 import { Newsletter } from '@/components/newsletter';
 import { cn } from '@/lib/utils';
@@ -13,9 +14,8 @@ import Jellypepper from './jellypepper.svg';
 import type { StaticImageData } from 'next/image';
 import type { Metadata } from 'next';
 import type { FC, ReactElement } from 'react';
-import { get } from '@vercel/edge-config';
-import { GameProps } from '../api/cron/steam/route';
-import { SpotifyProps } from '../api/cron/spotify/route';
+import type { GameProps } from '../api/cron/steam/route';
+import type { SpotifyProps } from '../api/cron/spotify/route';
 
 export const metadata: Metadata = {
   title: 'Hayden Bleasel',
@@ -49,6 +49,10 @@ const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
 const Home = async (): Promise<ReactElement> => {
   const game = await get<GameProps>('steam');
   const song = await get<SpotifyProps>('spotify');
+  const announcement = await get<{
+    readonly text: string;
+    readonly link: string;
+  }>('announcement');
 
   return (
     <div className="flex items-start">
@@ -148,7 +152,13 @@ const Home = async (): Promise<ReactElement> => {
                 Latest activity
               </p>
               <div className="space-y-1 mt-4">
-                {game && (
+                {announcement ? (
+                  <>
+                    {announcement.text}.{' '}
+                    <Link href={announcement.link}>See more</Link>
+                  </>
+                ) : null}
+                {game ? (
                   <div className="flex items-center gap-1">
                     <Image
                       src={game.image}
@@ -164,8 +174,8 @@ const Home = async (): Promise<ReactElement> => {
                     </Link>{' '}
                     (currently at {Math.round(game.playtime / 60)} hours)
                   </div>
-                )}
-                {song && (
+                ) : null}
+                {song ? (
                   <div className="flex items-center gap-1">
                     <Image
                       src={song.image}
@@ -181,7 +191,7 @@ const Home = async (): Promise<ReactElement> => {
                     </Link>{' '}
                     by {song.artist}
                   </div>
-                )}
+                ) : null}
               </div>
             </footer>
           </PageLayout>

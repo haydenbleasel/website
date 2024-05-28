@@ -153,10 +153,7 @@ const Home = async (): Promise<ReactElement> => {
               </p>
               <div className="space-y-1 mt-4">
                 {announcement ? (
-                  <>
-                    {announcement.text}.{' '}
-                    <Link href={announcement.link}>See more</Link>
-                  </>
+                  <Link href={announcement.link}>{announcement.text}</Link>
                 ) : undefined}
                 {game ? (
                   <div className="flex items-center gap-1">

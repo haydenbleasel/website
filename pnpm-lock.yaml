@@ -151,8 +151,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       ultracite:
-        specifier: ^3.7.2
-        version: 3.7.2(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.2))(postcss@8.4.35)(prettier@3.2.5)(stylelint@16.6.0(typescript@5.4.5))(tailwindcss@3.4.3)(typescript@5.4.5)
+        specifier: ^3.7.4
+        version: 3.7.4(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.2))(postcss@8.4.35)(prettier@3.2.5)(stylelint@16.6.0(typescript@5.4.5))(tailwindcss@3.4.3)(typescript@5.4.5)
 
 packages:
 
@@ -5636,8 +5636,8 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
 
-  ultracite@3.7.2:
-    resolution: {integrity: sha512-einfxeaAa2Z+Skkb7UCe/wKDwQ1VECrA+hW05a9UTp0tvazx39JIky9ijV8c2YZDEvt+0jqi8AXEYEh0XAr+sA==}
+  ultracite@3.7.4:
+    resolution: {integrity: sha512-U710Ry/R6MJDsQLudrmBE55Lizwg6ia1C3bk9sPaVE8SOap8w+F/K/Xl1HTGmHw7Jlt99tjXl3sQ39tTiOT1cQ==}
     peerDependencies:
       eslint: 8.56.0
       jest: ^29.7.0
@@ -12743,7 +12743,7 @@ snapshots:
 
   uglify-js@3.17.4: {}
 
-  ultracite@3.7.2(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.2))(postcss@8.4.35)(prettier@3.2.5)(stylelint@16.6.0(typescript@5.4.5))(tailwindcss@3.4.3)(typescript@5.4.5):
+  ultracite@3.7.4(eslint@8.57.0)(jest@29.7.0(@types/node@20.12.2))(postcss@8.4.35)(prettier@3.2.5)(stylelint@16.6.0(typescript@5.4.5))(tailwindcss@3.4.3)(typescript@5.4.5):
     dependencies:
       '@next/eslint-plugin-next': 14.2.3
       '@typescript-eslint/eslint-plugin': 7.11.0(@typescript-eslint/parser@7.11.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)

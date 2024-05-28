@@ -64,7 +64,7 @@ const Tool: FC<{
             >
               Featured
             </span>
-          ) : null}
+          ) : undefined}
         </div>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">
           {data.description}

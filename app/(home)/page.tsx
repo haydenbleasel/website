@@ -14,8 +14,8 @@ import Jellypepper from './jellypepper.svg';
 import type { StaticImageData } from 'next/image';
 import type { Metadata } from 'next';
 import type { FC, ReactElement } from 'react';
-import type { GameProps } from '../api/cron/steam/route';
-import type { SpotifyProps } from '../api/cron/spotify/route';
+import type { GameProperties } from '../api/cron/steam/route';
+import type { SpotifyProperties } from '../api/cron/spotify/route';
 
 export const metadata: Metadata = {
   title: 'Hayden Bleasel',
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
     'I’m an Australian Product Designer and Software Engineer currently based in Delray Beach, Florida. I’m currently the Chief Product Officer at Corellium and the founder of Eververse.',
 };
 
-type InlineImageProps = {
+type InlineImageProperties = {
   readonly src: StaticImageData | string;
   readonly text: string;
   readonly url: string;
 };
 
-const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
+const InlineImage: FC<InlineImageProperties> = ({ src, text, url }) => (
   <Link
     href={url}
     className="ml-0.5 dark:ml-0 inline-flex gap-1 items-center align-bottom"
@@ -47,8 +47,8 @@ const InlineImage: FC<InlineImageProps> = ({ src, text, url }) => (
 );
 
 const Home = async (): Promise<ReactElement> => {
-  const game = await get<GameProps>('steam');
-  const song = await get<SpotifyProps>('spotify');
+  const game = await get<GameProperties>('steam');
+  const song = await get<SpotifyProperties>('spotify');
   const announcement = await get<{
     readonly text: string;
     readonly link: string;
@@ -95,7 +95,7 @@ const Home = async (): Promise<ReactElement> => {
               <p>
                 After hours, I’m working on{' '}
                 <InlineImage
-                  src={Eververse}
+                  src={Eververse as StaticImageData}
                   text="Eververse"
                   url="https://www.eververse.ai/"
                 />
@@ -157,7 +157,7 @@ const Home = async (): Promise<ReactElement> => {
                     {announcement.text}.{' '}
                     <Link href={announcement.link}>See more</Link>
                   </>
-                ) : null}
+                ) : undefined}
                 {game ? (
                   <div className="flex items-center gap-1">
                     <Image
@@ -174,7 +174,7 @@ const Home = async (): Promise<ReactElement> => {
                     </Link>{' '}
                     (currently at {Math.round(game.playtime / 60)} hours)
                   </div>
-                ) : null}
+                ) : undefined}
                 {song ? (
                   <div className="flex items-center gap-1">
                     <Image
@@ -191,7 +191,7 @@ const Home = async (): Promise<ReactElement> => {
                     </Link>{' '}
                     by {song.artist}
                   </div>
-                ) : null}
+                ) : undefined}
               </div>
             </footer>
           </PageLayout>

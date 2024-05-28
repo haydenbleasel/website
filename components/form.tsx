@@ -6,11 +6,11 @@ import { cn } from '@/lib/utils';
 import type { LabelProps } from '@radix-ui/react-label';
 import type { ChangeEventHandler, ComponentProps, FC } from 'react';
 
-type CustomProps = {
+type CustomProperties = {
   readonly label: string;
 };
 
-type InputProps = CustomProps & Omit<ComponentProps<'input'>, 'id'>;
+type InputProperties = CustomProperties & Omit<ComponentProps<'input'>, 'id'>;
 
 const baseClassName = cn(
   'w-full px-3 py-[9px] rounded-lg border shadow-sm block text-sm transition-all leading-5',
@@ -18,8 +18,8 @@ const baseClassName = cn(
   'dark:bg-neutral-950 dark:border-neutral-700 dark:text-white dark:placeholder:text-neutral-500'
 );
 
-const Label: FC<LabelProps> = ({ children, ...props }) => (
-  <RadixLabel.Root className="text-sm font-medium" {...props}>
+const Label: FC<LabelProps> = ({ children, ...properties }) => (
+  <RadixLabel.Root className="text-sm font-medium" {...properties}>
     {children}
   </RadixLabel.Root>
 );
@@ -33,11 +33,11 @@ const Counter: FC<{ readonly count: number; readonly maxLength: number }> = ({
   </p>
 );
 
-export const Input: FC<InputProps> = ({
+export const Input: FC<InputProperties> = ({
   label,
   maxLength,
   onChange,
-  ...props
+  ...properties
 }) => {
   const id = useId();
   const [count, setCount] = useState(0);
@@ -51,7 +51,9 @@ export const Input: FC<InputProps> = ({
     <fieldset className="space-y-1">
       <div className="flex justify-between gap-4 items-center">
         <Label htmlFor={id}>{label}</Label>
-        {maxLength ? <Counter count={count} maxLength={maxLength} /> : null}
+        {maxLength ? (
+          <Counter count={count} maxLength={maxLength} />
+        ) : undefined}
       </div>
       <input
         id={id}
@@ -59,19 +61,20 @@ export const Input: FC<InputProps> = ({
         className={baseClassName}
         maxLength={maxLength}
         onChange={handleChange}
-        {...props}
+        {...properties}
       />
     </fieldset>
   );
 };
 
-type TextareaProps = CustomProps & Omit<ComponentProps<'textarea'>, 'id'>;
+type TextareaProperties = CustomProperties &
+  Omit<ComponentProps<'textarea'>, 'id'>;
 
-export const Textarea: FC<TextareaProps> = ({
+export const Textarea: FC<TextareaProperties> = ({
   label,
   maxLength,
   onChange,
-  ...props
+  ...properties
 }) => {
   const id = useId();
   const [count, setCount] = useState(0);
@@ -85,7 +88,9 @@ export const Textarea: FC<TextareaProps> = ({
     <fieldset className="space-y-1">
       <div className="flex justify-between gap-4 items-center">
         <Label htmlFor={id}>{label}</Label>
-        {maxLength ? <Counter count={count} maxLength={maxLength} /> : null}
+        {maxLength ? (
+          <Counter count={count} maxLength={maxLength} />
+        ) : undefined}
       </div>
       <textarea
         id={id}
@@ -93,13 +98,13 @@ export const Textarea: FC<TextareaProps> = ({
         className={cn(baseClassName, 'resize-y min-h-[5rem] max-h-[15rem]')}
         maxLength={maxLength}
         onChange={handleChange}
-        {...props}
+        {...properties}
       />
     </fieldset>
   );
 };
 
-type SelectProps = CustomProps &
+type SelectProperties = CustomProperties &
   Omit<ComponentProps<'select'>, 'id'> & {
     readonly data: {
       readonly value: string;
@@ -108,7 +113,7 @@ type SelectProps = CustomProps &
     }[];
   };
 
-export const Select: FC<SelectProps> = ({ label, data, name }) => {
+export const Select: FC<SelectProperties> = ({ label, data, name }) => {
   const id = useId();
 
   return (

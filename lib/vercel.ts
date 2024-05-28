@@ -11,14 +11,14 @@ if (!steamId || !steamApiKey || !vercelToken || !edgeConfigId) {
 
 export const updateEdgeConfig = async (
   key: string,
-  value: string | number | object
-) => {
+  value: number | object | string
+): Promise<void> => {
   const endpoint = new URL(
     `/v1/edge-config/${edgeConfigId}/items`,
     'https://api.vercel.com'
   );
 
-  const updateEdgeConfig = await fetch(endpoint, {
+  const response = await fetch(endpoint, {
     method: 'PATCH',
     headers: {
       Authorization: `Bearer ${vercelToken}`,
@@ -28,15 +28,15 @@ export const updateEdgeConfig = async (
       items: [
         {
           operation: 'upsert',
-          key: key,
-          value: value,
+          key,
+          value,
         },
       ],
     }),
   });
 
-  if (!updateEdgeConfig.ok) {
-    const data = (await updateEdgeConfig.json()) as {
+  if (!response.ok) {
+    const data = (await response.json()) as {
       error: { message: string };
     };
     throw new Error(data.error.message);

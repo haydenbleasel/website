@@ -29,7 +29,7 @@ if (!kvRestApiUrl || !kvRestApiToken) {
 }
 
 export const contact = async (
-  prevState: never,
+  previousState: never,
   formData: FormData
 ): Promise<{
   message: string;

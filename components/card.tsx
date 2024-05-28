@@ -1,13 +1,13 @@
 import { cn } from '@/lib/utils';
 import type { FC, ReactNode } from 'react';
 
-type CardProps = {
+type CardProperties = {
   readonly title: string;
   readonly children: ReactNode;
   readonly className?: string;
 };
 
-export const Card: FC<CardProps> = ({ title, children, className }) => (
+export const Card: FC<CardProperties> = ({ title, children, className }) => (
   <div
     className={cn('rounded-2xl p-1', 'bg-neutral-100', 'dark:bg-neutral-900')}
   >

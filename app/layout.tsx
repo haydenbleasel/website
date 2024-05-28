@@ -9,19 +9,21 @@ import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 import './globals.css';
 
-type RootLayoutProps = {
+type RootLayoutProperties = {
   readonly children: ReactNode;
 };
 
+const name = 'Hayden Bleasel';
+
 export const metadata: Metadata = {
-  applicationName: 'Hayden Bleasel',
+  applicationName: name,
   authors: [
     {
-      name: 'Hayden Bleasel',
+      name,
       url: siteUrl,
     },
   ],
-  creator: 'Hayden Bleasel',
+  creator: name,
   metadataBase: new URL(siteUrl),
   formatDetection: {
     telephone: false,
@@ -32,10 +34,10 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    siteName: 'Hayden Bleasel',
+    siteName: name,
     locale: 'en_US',
   },
-  publisher: 'Hayden Bleasel',
+  publisher: name,
   twitter: {
     card: 'summary_large_image',
     creator: '@haydenbleasel',
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
 
 export const runtime = 'edge';
 
-const RootLayout: FC<RootLayoutProps> = ({ children }) => (
+const RootLayout: FC<RootLayoutProperties> = ({ children }) => (
   <html lang="en">
     <body
       className={cn(

@@ -14,16 +14,16 @@ const ReactPlayer = dynamic(
   { ssr: false }
 );
 
-type VideoProps = ReactPlayerProps & {
+type VideoProperties = ReactPlayerProps & {
   readonly className?: string;
 };
 
-export const Video: FC<VideoProps> = ({ className, ...props }) => (
+export const Video: FC<VideoProperties> = ({ className, ...properties }) => (
   <div
     className={cn('relative aspect-video rounded overflow-hidden', className)}
   >
     <ReactPlayer
-      {...props}
+      {...properties}
       width="100%"
       height="100%"
       style={{ position: 'absolute', inset: 0 }}

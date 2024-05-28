@@ -2,7 +2,7 @@ import { get } from '@vercel/edge-config';
 import { updateEdgeConfig } from '@/lib/vercel';
 import { parseError } from '@/lib/utils';
 
-export type SpotifyProps = {
+export type SpotifyProperties = {
   lastUpdated: number;
   name: string;
   artist: string;
@@ -46,7 +46,7 @@ const getAccessToken = async (refreshToken: string): Promise<string> => {
 export const GET = async (): Promise<Response> => {
   try {
     const token = await getAccessToken(spotifyRefreshToken);
-    const currentTrack = await get<SpotifyProps>('spotify');
+    const currentTrack = await get<SpotifyProperties>('spotify');
 
     const response = await fetch(
       'https://api.spotify.com/v1/me/player/currently-playing',
@@ -62,7 +62,7 @@ export const GET = async (): Promise<Response> => {
     );
 
     if (response.status === 204) {
-      return new Response(null, { status: 204 });
+      return new Response(undefined, { status: 204 });
     }
 
     if (!response.ok) {
@@ -85,16 +85,16 @@ export const GET = async (): Promise<Response> => {
     };
 
     if (!data.item) {
-      return new Response(null, { status: 204 });
+      return new Response(undefined, { status: 204 });
     }
 
     if (data.item.name === currentTrack?.name) {
       await updateEdgeConfig('spotify', { lastUpdated: Date.now() });
 
-      return new Response(null, { status: 204 });
+      return new Response(undefined, { status: 204 });
     }
 
-    const content: SpotifyProps = {
+    const content: SpotifyProperties = {
       lastUpdated: Date.now(),
       name: data.item.name,
       artist: data.item.artists[0].name,
@@ -104,7 +104,7 @@ export const GET = async (): Promise<Response> => {
 
     await updateEdgeConfig('spotify', content);
 
-    return new Response(null, { status: 204 });
+    return new Response(undefined, { status: 204 });
   } catch (error) {
     const message = parseError(error);
 

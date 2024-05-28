@@ -5,11 +5,11 @@ import { allBlogs } from '@contentlayer/generated';
 import { Mdx } from '@/components/mdx';
 import { Link } from '@/components/link';
 import { Header } from '@/components/header';
+import { siteUrl } from '@/lib/consts';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
-import { siteUrl } from '@/lib/consts';
 
-type DocPageProps = {
+type PageProperties = {
   readonly params: {
     slug: string;
   };
@@ -17,25 +17,27 @@ type DocPageProps = {
 
 export const runtime = 'nodejs';
 
-export const generateMetadata = ({ params }: DocPageProps): Metadata => {
+export const generateMetadata = ({ params }: PageProperties): Metadata => {
   const currentPath = params.slug;
-  const doc = allBlogs.find(({ slugAsParams }) => slugAsParams === currentPath);
+  const page = allBlogs.find(
+    ({ slugAsParams }) => slugAsParams === currentPath
+  );
 
-  if (!doc) {
+  if (!page) {
     return {};
   }
 
   return {
-    title: doc.title,
-    description: doc.description,
-    openGraph: doc.image
+    title: page.title,
+    description: page.description,
+    openGraph: page.image
       ? {
           images: [
             {
-              url: new URL(doc.image, siteUrl).href,
+              url: new URL(page.image, siteUrl).href,
               width: 1920,
               height: 1080,
-              alt: doc.title,
+              alt: page.title,
             },
           ],
         }
@@ -43,24 +45,19 @@ export const generateMetadata = ({ params }: DocPageProps): Metadata => {
   };
 };
 
-export const generateStaticParams = (): DocPageProps['params'][] =>
-  allBlogs.map((doc) => ({
-    slug: doc.slug,
+export const generateStaticParams = (): PageProperties['params'][] =>
+  allBlogs.map((page) => ({
+    slug: page.slug,
   }));
 
-const DocPage: FC<DocPageProps> = ({ params }) => {
+const Page: FC<PageProperties> = ({ params }) => {
   const currentPath = params.slug;
-  const doc = allBlogs.find(({ slugAsParams }) => slugAsParams === currentPath);
+  const page = allBlogs.find(
+    ({ slugAsParams }) => slugAsParams === currentPath
+  );
 
-  if (!doc) {
+  if (!page) {
     notFound();
-  }
-
-  const images: string[] = [];
-
-  if (doc.image) {
-    const imageUrl = new URL(doc.image, siteUrl).href;
-    images.push(imageUrl);
   }
 
   return (
@@ -74,33 +71,33 @@ const DocPage: FC<DocPageProps> = ({ params }) => {
           Back to blog
         </Link>
       </div>
-      <Header title={doc.title} description={doc.description} />
-      {doc.image && doc.imageBlur ? (
+      <Header title={page.title} description={page.description} />
+      {page.image && page.imageBlur ? (
         <Image
-          src={doc.image}
+          src={page.image}
           width={1920}
           height={1080}
           alt=""
           className="m-0 h-full w-full object-cover rounded overflow-hidden"
           priority
-          blurDataURL={`data:image/jpg;base64,${doc.imageBlur}`}
+          blurDataURL={`data:image/jpg;base64,${page.imageBlur}`}
           placeholder="blur"
           quality={100}
         />
-      ) : null}
+      ) : undefined}
       <div>
-        <Mdx code={doc.body.code} />
+        <Mdx code={page.body.code} />
       </div>
       <hr />
       <p className="text-sm">
         Published on{' '}
         {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(
-          new Date(doc.date)
+          new Date(page.date)
         )}{' '}
-        • {doc.readingTime}
+        • {page.readingTime}
       </p>
     </>
   );
 };
 
-export default DocPage;
+export default Page;

@@ -53,7 +53,7 @@ export const Newsletter: FC = () => {
         <p aria-live="polite" className="mt-4 text-sm block m-0">
           {state.message}
         </p>
-      ) : null}
+      ) : undefined}
     </>
   );
 };

@@ -72,7 +72,9 @@ export const GET = async (): Promise<Response> => {
     const data = (await response.json()) as {
       item: {
         name: string;
-        href: string;
+        external_urls: {
+          spotify: string;
+        };
         album: {
           images: {
             url: string;
@@ -99,7 +101,7 @@ export const GET = async (): Promise<Response> => {
       name: data.item.name,
       artist: data.item.artists[0].name,
       image: data.item.album.images[0].url,
-      href: data.item.href,
+      href: data.item.external_urls.spotify,
     };
 
     await updateEdgeConfig('spotify', content);

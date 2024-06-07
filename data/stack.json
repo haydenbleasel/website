@@ -201,6 +201,17 @@
     ]
   },
   {
+    "type": "Gear",
+    "items": [
+      {
+        "name": "July",
+        "href": "https://go.shopmy.us/p-5598980",
+        "description": "Premium Australian luggage.",
+        "featured": true
+      }
+    ]
+  },
+  {
     "type": "Other",
     "items": [
       {

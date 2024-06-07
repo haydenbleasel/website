@@ -156,13 +156,13 @@ const Home = async (): Promise<ReactElement> => {
                   <Link href={announcement.link}>{announcement.text}</Link>
                 ) : undefined}
                 {game ? (
-                  <div className="flex items-center gap-1">
+                  <div className="flex flex-wrap items-center gap-1">
                     <Image
                       src={game.image}
                       alt=""
                       width={16}
                       height={16}
-                      className="w-4 h-4 rounded-sm object-contain select-none m-0"
+                      className="w-4 h-4 shrink-0 rounded-sm object-contain select-none m-0"
                       quality={100}
                     />
                     Playing{' '}
@@ -173,13 +173,13 @@ const Home = async (): Promise<ReactElement> => {
                   </div>
                 ) : undefined}
                 {song ? (
-                  <div className="flex items-center gap-1">
+                  <div className="flex flex-wrap items-center gap-1">
                     <Image
                       src={song.image}
                       alt=""
                       width={16}
                       height={16}
-                      className="w-4 h-4 rounded-sm object-contain select-none m-0"
+                      className="w-4 h-4 shrink-0 rounded-sm object-contain select-none m-0"
                       quality={100}
                     />
                     Listening to{' '}

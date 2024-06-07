@@ -209,6 +209,12 @@
         "description": "Premium Australian luggage.",
         "featured": true,
         "image": "https://july.com/static/julyOlympicBlack-1c34f88144d235f850129808b5f25bbe.svg"
+      },
+      {
+        "name": "Beskar Store",
+        "href": "https://store.haydenbleasel.com/",
+        "description": "Some cool stuff I've made.",
+        "featured": true
       }
     ]
   },

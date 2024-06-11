@@ -32,7 +32,7 @@ export const Navbar: FC = () => {
   return (
     <nav
       className={cn(
-        'rounded-full px-6 flex items-center gap-6 fixed bottom-6 left-1/2 -translate-x-1/2 backdrop-blur-sm backdrop-filter bg-opacity-50 shadow-lg border text-sm',
+        'isolate z-50 rounded-full px-6 flex items-center gap-6 fixed bottom-6 left-1/2 -translate-x-1/2 backdrop-blur-sm backdrop-filter bg-opacity-50 shadow-lg border text-sm',
         'bg-white/80 border-neutral-950/10',
         'dark:bg-neutral-950/80 dark:border-neutral-100/10'
       )}

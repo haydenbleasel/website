@@ -1,7 +1,7 @@
 import { get } from '@vercel/edge-config';
 import Image from 'next/image';
 import { Link } from '@/components/link';
-import { Card } from '../../components/card';
+import { Card } from '@/components/card';
 import Spotify from './spotify.svg';
 import type { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import type { ReactElement } from 'react';
@@ -15,7 +15,10 @@ const SpotifyCard = async (): Promise<ReactElement> => {
   }
 
   return (
-    <Card>
+    <Card
+      title="Now Listening"
+      className="p-4 flex flex-col justify-between gap-4"
+    >
       <Image
         src={Spotify as StaticImport}
         alt=""
@@ -23,33 +26,17 @@ const SpotifyCard = async (): Promise<ReactElement> => {
         height={24}
         className="absolute top-4 right-4 w-6 h-6 z-10"
       />
-      <div className="relative z-10 flex flex-col justify-between h-full w-full">
-        <a
-          className="flex flex-col gap-4"
-          href={song.href}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {song.image ? (
-            <Image
-              src={song.image}
-              alt=""
-              width={300}
-              height={300}
-              className="w-12 h-12 shrink-0 rounded"
-              unoptimized
-            />
-          ) : null}
-          <div>
-            <h2 className="text font-semibold text-neutral-950 dark:text-white">
-              Listening To
-            </h2>
-            <p className="text-neutral-500 dark:text-neutral-400 text-sm">
-              <Link href={song.href}>{song.name}</Link> by {song.artist}
-            </p>
-          </div>
-        </a>
-      </div>
+      <Image
+        src={song.image}
+        alt=""
+        width={300}
+        height={300}
+        className="w-12 h-12 shrink-0 rounded"
+        unoptimized
+      />
+      <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+        <Link href={song.href}>{song.name}</Link> by {song.artist}
+      </p>
     </Card>
   );
 };

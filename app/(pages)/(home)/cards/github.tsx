@@ -2,7 +2,7 @@
 
 import GitHubCalendar from 'react-github-calendar';
 import { useState } from 'react';
-import { Card } from '../components/card';
+import { Card } from '@/components/card';
 import type { FC } from 'react';
 
 type Activity = {
@@ -48,39 +48,36 @@ const GitHubCard: FC = () => {
   const [total, setTotal] = useState(0);
 
   return (
-    <Card className="col-span-2">
-      <div className="flex flex-col gap-4">
-        <div>
-          <h2 className="text font-semibold text-neutral-950 dark:text-white">
-            GitHub Activity
-          </h2>
+    <div className="col-span-2">
+      <Card title="GitHub Activity" className="p-4">
+        <div className="flex flex-col gap-4">
           <p className="text-neutral-500 dark:text-neutral-400 text-sm">
             {total} contributions this year
           </p>
-        </div>
-        <div className="flex flex-col gap-[3px]">
-          <GitHubCalendar
-            username="haydenbleasel"
-            hideMonthLabels
-            hideColorLegend
-            hideTotalCount
-            showWeekdayLabels={false}
-            colorScheme="light"
-            transformData={(data) => {
-              if (!total) {
-                const commits = data.reduce(
-                  (newTotal, { count }) => newTotal + count,
-                  0
-                );
-                setTotal(commits);
-              }
+          <div className="flex flex-col gap-[3px]">
+            <GitHubCalendar
+              username="haydenbleasel"
+              hideMonthLabels
+              hideColorLegend
+              hideTotalCount
+              showWeekdayLabels={false}
+              colorScheme="light"
+              transformData={(data) => {
+                if (!total) {
+                  const commits = data.reduce(
+                    (newTotal, { count }) => newTotal + count,
+                    0
+                  );
+                  setTotal(commits);
+                }
 
-              return getContributions(data, 0);
-            }}
-          />
+                return getContributions(data, 0);
+              }}
+            />
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 };
 

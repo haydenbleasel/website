@@ -17,7 +17,7 @@ const Home: FC = () => (
   <>
     <Hero />
     <Newsletter />
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-3 gap-3 not-prose">
       <GitHubCard />
       <AnnouncementCard />
       <SpotifyCard />

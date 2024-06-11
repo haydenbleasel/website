@@ -1,7 +1,7 @@
 import { get } from '@vercel/edge-config';
 import { Link } from '@/components/link';
 import { cn } from '@/lib/utils';
-import { Card } from '../components/card';
+import { Card } from '@/components/card';
 import type { ReactElement } from 'react';
 
 export const AnnouncementCard = async (): Promise<ReactElement> => {
@@ -15,15 +15,13 @@ export const AnnouncementCard = async (): Promise<ReactElement> => {
   }
 
   return (
-    <Card className="flex flex-col items-start justify-between gap-4">
-      <div>
-        <h2 className="text font-semibold text-neutral-950 dark:text-white">
-          Latest Update
-        </h2>
-        <p className="text-neutral-500 dark:text-neutral-400 text-sm">
-          {announcement.text}
-        </p>
-      </div>
+    <Card
+      title="Latest Update"
+      className="flex flex-col items-start justify-between gap-4 p-4"
+    >
+      <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+        {announcement.text}
+      </p>
       <Link
         href={announcement.link}
         className={cn(

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { get } from '@vercel/edge-config';
 import { Link } from '@/components/link';
-import { Card } from '../../components/card';
+import { Card } from '@/components/card';
 import Steam from './steam.svg';
 import type { GameProperties } from '@/app/api/cron/steam/route';
 import type { StaticImport } from 'next/dist/shared/lib/get-img-props';
@@ -15,42 +15,40 @@ const SteamCard = async (): Promise<ReactElement> => {
   }
 
   return (
-    <Card className="col-span-2 flex items-start gap-4">
-      <Image
-        src={Steam as StaticImport}
-        alt=""
-        width={24}
-        height={24}
-        className="absolute z-10 bottom-4 right-4 w-6 h-6"
-      />
-      <div className="relative z-10 flex flex-col justify-between h-full w-full">
-        <div>
-          <h2 className="text font-semibold text-neutral-950 dark:text-white">
-            Recently Played
-          </h2>
-          <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+    <div className="col-span-2">
+      <Card title="Recently Played" className="p-4 flex justify-between gap-4">
+        <Image
+          src={Steam as StaticImport}
+          alt=""
+          width={24}
+          height={24}
+          className="absolute z-10 bottom-4 right-4 w-6 h-6"
+        />
+        <div className="flex flex-col justify-between gap-4">
+          <p className="font-semibold text-neutral-950 dark:text-white line-clamp-2">
             <Link href={`https://store.steampowered.com/app/${game.id}`}>
               {game.name}
             </Link>
           </p>
+          <div className="text-neutral-500 dark:text-neutral-400 text-sm">
+            <p className="truncate">
+              🕦 {Math.round(game.playtime / 60)} hours
+            </p>
+            <p className="truncate">
+              🏆 {game.completeAchievements} / {game.totalAchievements}
+            </p>
+          </div>
         </div>
-        <p className="text-neutral-950/70 text-sm line-clamp-2">
-          🕦 {Math.round(game.playtime / 60)} hours{' '}
-          <span className="text-neutral-950/30">&bull;</span> 🏆{' '}
-          {game.completeAchievements} / {game.totalAchievements}
-        </p>
-      </div>
-      {game.image ? (
         <Image
           src={game.image}
           alt=""
           width={300}
           height={300}
           unoptimized
-          className="rounded m-0"
+          className="rounded m-0 shrink-0"
         />
-      ) : null}
-    </Card>
+      </Card>
+    </div>
   );
 };
 

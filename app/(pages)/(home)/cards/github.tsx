@@ -48,36 +48,34 @@ const GitHubCard: FC = () => {
   const [total, setTotal] = useState(0);
 
   return (
-    <div className="col-span-2">
-      <Card title="GitHub Activity" className="p-4">
-        <div className="flex flex-col gap-4">
-          <p className="text-neutral-500 dark:text-neutral-400 text-sm">
-            {total} contributions this year
-          </p>
-          <div className="flex flex-col gap-[3px]">
-            <GitHubCalendar
-              username="haydenbleasel"
-              hideMonthLabels
-              hideColorLegend
-              hideTotalCount
-              showWeekdayLabels={false}
-              colorScheme="light"
-              transformData={(data) => {
-                if (!total) {
-                  const commits = data.reduce(
-                    (newTotal, { count }) => newTotal + count,
-                    0
-                  );
-                  setTotal(commits);
-                }
+    <Card title="GitHub Activity" className="p-4">
+      <div className="flex flex-col gap-4">
+        <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+          {total} contributions this year
+        </p>
+        <div className="flex flex-col gap-[3px]">
+          <GitHubCalendar
+            username="haydenbleasel"
+            hideMonthLabels
+            hideColorLegend
+            hideTotalCount
+            showWeekdayLabels={false}
+            colorScheme="light"
+            transformData={(data) => {
+              if (!total) {
+                const commits = data.reduce(
+                  (newTotal, { count }) => newTotal + count,
+                  0
+                );
+                setTotal(commits);
+              }
 
-                return getContributions(data, 0);
-              }}
-            />
-          </div>
+              return getContributions(data, 0);
+            }}
+          />
         </div>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
 };
 

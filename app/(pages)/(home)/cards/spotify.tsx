@@ -15,7 +15,7 @@ const SpotifyCard = async (): Promise<ReactElement> => {
   return (
     <Card
       title="Now Listening"
-      className="p-4 flex flex-col justify-between gap-4"
+      className="p-4 flex flex-row md:flex-col md:justify-between gap-4"
     >
       <Image
         src={song.image}

@@ -17,11 +17,15 @@ const Home: FC = () => (
   <>
     <Hero />
     <Newsletter />
-    <div className="grid grid-cols-3 gap-3 prose-p:m-0 prose-img:m-0">
-      <GitHubCard />
+    <div className="grid md:grid-cols-3 gap-3 prose-p:m-0 prose-img:m-0">
+      <div className="md:col-span-2">
+        <GitHubCard />
+      </div>
       <AnnouncementCard />
       <SpotifyCard />
-      <SteamCard />
+      <div className="md:col-span-2">
+        <SteamCard />
+      </div>
     </div>
   </>
 );

@@ -1,5 +1,6 @@
 import { get } from '@vercel/edge-config';
 import { Link } from '@/components/link';
+import { cn } from '@/lib/utils';
 import { Card } from '../components/card';
 import type { ReactElement } from 'react';
 
@@ -9,11 +10,30 @@ export const AnnouncementCard = async (): Promise<ReactElement> => {
     readonly link: string;
   }>('announcement');
 
+  if (!announcement) {
+    return <div />;
+  }
+
   return (
-    <Card>
-      {announcement ? (
-        <Link href={announcement.link}>{announcement.text}</Link>
-      ) : undefined}
+    <Card className="flex flex-col items-start justify-between gap-4">
+      <div>
+        <h2 className="text font-semibold text-neutral-950 dark:text-white">
+          Latest Update
+        </h2>
+        <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+          {announcement.text}
+        </p>
+      </div>
+      <Link
+        href={announcement.link}
+        className={cn(
+          'rounded-full text-sm py-2.5 px-4 font-medium',
+          'bg-neutral-100 text-neutral-950 placeholder:text-neutral-500 outline-orange-500',
+          'dark:bg-neutral-900 dark:text-white dark:placeholder-text-neutral-600'
+        )}
+      >
+        Learn more
+      </Link>
     </Card>
   );
 };

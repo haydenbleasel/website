@@ -21,15 +21,19 @@ const SteamCard = async (): Promise<ReactElement> => {
         alt=""
         width={24}
         height={24}
-        className="absolute z-10 top-6 right-6 w-6 h-6"
+        className="absolute z-10 bottom-4 right-4 w-6 h-6"
       />
       <div className="relative z-10 flex flex-col justify-between h-full w-full">
-        <p className="text-sm">
-          Playing{' '}
-          <Link href={`https://store.steampowered.com/app/${game.id}`}>
-            {game.name}
-          </Link>
-        </p>
+        <div>
+          <h2 className="text font-semibold text-neutral-950 dark:text-white">
+            Recently Played
+          </h2>
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+            <Link href={`https://store.steampowered.com/app/${game.id}`}>
+              {game.name}
+            </Link>
+          </p>
+        </div>
         <p className="text-neutral-950/70 text-sm line-clamp-2">
           🕦 {Math.round(game.playtime / 60)} hours{' '}
           <span className="text-neutral-950/30">&bull;</span> 🏆{' '}

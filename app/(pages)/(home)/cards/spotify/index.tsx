@@ -15,15 +15,15 @@ const SpotifyCard = async (): Promise<ReactElement> => {
   }
 
   return (
-    <Card className="p-0">
+    <Card>
       <Image
         src={Spotify as StaticImport}
         alt=""
         width={24}
         height={24}
-        className="absolute top-6 right-6 w-6 h-6 z-10"
+        className="absolute top-4 right-4 w-6 h-6 z-10"
       />
-      <div className="relative z-10 p-6 flex flex-col justify-between h-full w-full">
+      <div className="relative z-10 flex flex-col justify-between h-full w-full">
         <a
           className="flex flex-col gap-4"
           href={song.href}
@@ -40,10 +40,14 @@ const SpotifyCard = async (): Promise<ReactElement> => {
               unoptimized
             />
           ) : null}
-          <p className="text-sm">
-            Listening to <Link href={song.href}>{song.name}</Link> by{' '}
-            {song.artist}
-          </p>
+          <div>
+            <h2 className="text font-semibold text-neutral-950 dark:text-white">
+              Listening To
+            </h2>
+            <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+              <Link href={song.href}>{song.name}</Link> by {song.artist}
+            </p>
+          </div>
         </a>
       </div>
     </Card>

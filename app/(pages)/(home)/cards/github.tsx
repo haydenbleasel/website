@@ -51,10 +51,10 @@ const GitHubCard: FC = () => {
     <Card className="col-span-2">
       <div className="flex flex-col gap-4">
         <div>
-          <h2 className="text font-semibold text-neutral-950">
+          <h2 className="text font-semibold text-neutral-950 dark:text-white">
             GitHub Activity
           </h2>
-          <p className="text-neutral-600 text-sm">
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm">
             {total} contributions this year
           </p>
         </div>

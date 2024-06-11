@@ -1,0 +1,11 @@
+import Image from 'next/image';
+import Profile from './avatar.jpg';
+import type { FC } from 'react';
+
+export const Avatar: FC = () => (
+  <Image
+    alt=""
+    className="m-0 inline w-8 aspect-square overflow-hidden object-cover rounded-md border border-neutral-200 rotate-6 -translate-y-0.5"
+    src={Profile}
+  />
+);

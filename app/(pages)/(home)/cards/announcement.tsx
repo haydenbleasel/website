@@ -25,7 +25,7 @@ export const AnnouncementCard = async (): Promise<ReactElement> => {
       <Link
         href={announcement.link}
         className={cn(
-          'rounded-full text-sm py-2.5 px-4 font-medium',
+          'rounded-full text-sm py-2.5 px-4 font-medium no-underline',
           'bg-neutral-100 text-neutral-950 placeholder:text-neutral-500 outline-orange-500',
           'dark:bg-neutral-900 dark:text-white dark:placeholder-text-neutral-600'
         )}

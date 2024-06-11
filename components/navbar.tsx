@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import {
   BriefcaseBusinessIcon,
+  CircleUserIcon,
   HomeIcon,
   LayersIcon,
   MessagesSquareIcon,
@@ -15,6 +16,7 @@ import type { FC } from 'react';
 
 const pages = [
   { name: 'Home', path: '/', icon: HomeIcon },
+  { name: 'About', path: '/about', icon: CircleUserIcon },
   { name: 'Work', path: '/work', icon: BriefcaseBusinessIcon },
   { name: 'Blog', path: '/blog', icon: NotebookPenIcon },
   { name: 'Features', path: '/features', icon: NewspaperIcon },

@@ -28,7 +28,10 @@ export const Newsletter: FC = () => {
   });
 
   return (
-    <>
+    <div className="space-y-2">
+      <p className="mb-0">
+        Join 2200+ readers and get infrequent updates on new projects.
+      </p>
       <form action={formAction} className="relative max-w-96">
         <label htmlFor="email" className="sr-only">
           Email
@@ -54,6 +57,6 @@ export const Newsletter: FC = () => {
           {state.message}
         </p>
       ) : undefined}
-    </>
+    </div>
   );
 };

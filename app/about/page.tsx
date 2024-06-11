@@ -4,12 +4,15 @@ import { Link } from '@/components/link';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/header';
 import PageLayout from '@/app/(pages)/layout';
+import { Travel } from '../components/travel';
 import Avatar from './avatar.jpg';
 import Profile from './profile.jpg';
 import Refraction from './refraction.jpg';
 import Corellium from './corellium.svg';
 import Eververse from './eververse.svg';
 import Jellypepper from './jellypepper.svg';
+import { InlineImage } from './inline-image';
+import type { COBEOptions } from 'cobe';
 import type { StaticImageData } from 'next/image';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
@@ -20,28 +23,57 @@ export const metadata: Metadata = {
     'I’m Hayden Bleasel — an Australian Product Designer and Software Engineer currently based in Delray Beach, Florida.',
 };
 
-type InlineImageProperties = {
-  readonly src: StaticImageData | string;
-  readonly text: string;
-  readonly url: string;
-};
+const lived: COBEOptions['markers'] = [
+  // Sydney, Australia
+  { location: [-33.8688, 151.2093], size: 0.2 },
 
-const InlineImage: FC<InlineImageProperties> = ({ src, text, url }) => (
-  <Link
-    href={url}
-    className="ml-0.5 dark:ml-0 inline-flex gap-1 items-center align-bottom"
-  >
-    <Image
-      src={src}
-      alt=""
-      width={16}
-      height={16}
-      className="dark:hidden m-0 w-4 h-4 rounded-sm object-contain select-none"
-      quality={100}
-    />
-    <span>{text}</span>
-  </Link>
-);
+  // Boca Raton, Florida
+  { location: [26.4615, -80.0728], size: 0.2 },
+
+  // Palo Alto, California
+  { location: [37.4419, -122.143], size: 0.2 },
+];
+
+const visited: COBEOptions['markers'] = [
+  // Boston, Massachusetts
+  { location: [42.3601, -71.0589], size: 0.1 },
+
+  // Honolulu, Hawaii
+  { location: [21.3069, -157.8583], size: 0.1 },
+
+  // San Francisco, California
+  { location: [37.7749, -122.4194], size: 0.1 },
+
+  // Los Angeles, California
+  { location: [34.0522, -118.2437], size: 0.1 },
+
+  // Las Vegas, Nevada
+  { location: [36.1699, -115.1398], size: 0.1 },
+
+  // New York, New York
+  { location: [40.7128, -74.006], size: 0.1 },
+
+  // Nuremberg, Germany
+  { location: [49.452, 11.0768], size: 0.1 },
+
+  // Melbourne, Australia
+  { location: [-37.8136, 144.9631], size: 0.1 },
+
+  // Brisbane, Australia
+  { location: [-27.4698, 153.0251], size: 0.1 },
+
+  // Rotorua, New Zealand
+  { location: [-38.1368, 176.2497], size: 0.1 },
+
+  // Reno, Nevada
+  { location: [39.5296, -119.8138], size: 0.1 },
+
+  // Boulder, Colorado
+  { location: [40.015, -105.2705], size: 0.1 },
+
+  // Denver, Colorado
+  { location: [39.7392, -104.9903], size: 0.1 },
+];
 
 const About: FC = () => (
   <div className="flex items-start">
@@ -114,6 +146,24 @@ const About: FC = () => (
               was <Link href="/blog/refraction">acquired</Link> in 2023 by
               Twistag.
             </p>
+            <p>
+              I&apos;ve lived in Sydney, Palo Alto and now Florida; but
+              I&apos;ve also visited a few other places around the world.
+              Eventually I&apos;ll make it everywhere.
+            </p>
+            <div
+              className={cn(
+                'aspect-[4/3] rounded-xl border overflow-hidden',
+                'bg-neutral-100 border-neutral-200',
+                'dark:bg-neutral-800 dark:border-neutral-700'
+              )}
+            >
+              <Travel
+                width={576}
+                height={(576 * 3) / 4}
+                markers={[...lived, ...visited]}
+              />
+            </div>
             <p>
               I’ve had the privilege of working with many fantastic companies
               including Google, Palantir, Nike, Toyota, National Geographic,

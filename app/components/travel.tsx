@@ -14,18 +14,13 @@ const tailwindToRgb = (color: string): [number, number, number] =>
     .map((number) => number / 255)
     .slice(0, 3) as [number, number, number];
 
-const markers: COBEOptions['markers'] = [
-  // Sydney, Australia
-  { location: [-33.8688, 151.2093], size: 0.1 },
+type TravelProperties = {
+  readonly width: number;
+  readonly height: number;
+  readonly markers: COBEOptions['markers'];
+};
 
-  // Boca Raton, Florida
-  { location: [26.4615, -80.0728], size: 0.1 },
-
-  // Palo Alto, California
-  { location: [37.4419, -122.143], size: 0.1 },
-];
-
-export const Travel: FC = () => {
+export const Travel: FC<TravelProperties> = ({ width, height, markers }) => {
   const canvasReference = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -38,8 +33,8 @@ export const Travel: FC = () => {
 
     const globe = createGlobe(canvasReference.current, {
       devicePixelRatio: 2,
-      width: 655 * 2,
-      height: 491 * 2,
+      width: width * 2,
+      height: height * 2,
       phi: 0,
       theta: 0,
       dark: 1,
@@ -57,7 +52,7 @@ export const Travel: FC = () => {
     });
 
     return () => globe.destroy();
-  }, []);
+  }, [width, height]);
 
   return (
     <canvas

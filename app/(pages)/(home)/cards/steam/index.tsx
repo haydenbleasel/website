@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { get } from '@vercel/edge-config';
+import { Link } from '@/components/link';
 import { Card } from '../../components/card';
 import Steam from './steam.svg';
 import type { GameProperties } from '@/app/api/cron/steam/route';
@@ -23,22 +24,17 @@ const SteamCard = async (): Promise<ReactElement> => {
         className="absolute z-10 top-6 right-6 w-6 h-6"
       />
       <div className="relative z-10 flex flex-col justify-between h-full w-full">
-        <p className="text-neutral-950/70 text-sm">Last played game</p>
-        <a
-          className="block overflow-hidden"
-          href={`https://store.steampowered.com/app/${game.id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="font-semibold text-neutral-950 truncate w-full">
+        <p className="text-sm">
+          Playing{' '}
+          <Link href={`https://store.steampowered.com/app/${game.id}`}>
             {game.name}
-          </h2>
-          <p className="text-neutral-950/70 text-sm line-clamp-2">
-            🕦 {Math.round(game.playtime / 60)} hours{' '}
-            <span className="text-neutral-950/30">&bull;</span> 🏆{' '}
-            {game.completeAchievements} / {game.totalAchievements}
-          </p>
-        </a>
+          </Link>
+        </p>
+        <p className="text-neutral-950/70 text-sm line-clamp-2">
+          🕦 {Math.round(game.playtime / 60)} hours{' '}
+          <span className="text-neutral-950/30">&bull;</span> 🏆{' '}
+          {game.completeAchievements} / {game.totalAchievements}
+        </p>
       </div>
       {game.image ? (
         <Image
@@ -47,7 +43,7 @@ const SteamCard = async (): Promise<ReactElement> => {
           width={300}
           height={300}
           unoptimized
-          className="rounded"
+          className="rounded m-0"
         />
       ) : null}
     </Card>

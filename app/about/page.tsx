@@ -115,6 +115,16 @@ const About: FC = () => (
               Twistag.
             </p>
             <p>
+              I’ve had the privilege of working with many fantastic companies
+              including Google, Palantir, Nike, Toyota, National Geographic,
+              Timberland, Canva, Westfield, Australian Ethical and many more.
+            </p>
+            <p>
+              I have a Bachelor of Business (Management) and Bachelor of Science
+              in Information Technology (Enterprise Systems Development) from
+              the University of Technology, Sydney.
+            </p>
+            <p>
               In my spare time, I enjoy working out, building open source
               projects like{' '}
               <Link href="https://www.next-forge.com/">next-forge</Link> and{' '}
@@ -146,51 +156,3 @@ const About: FC = () => (
 );
 
 export default About;
-
-/*
- * import { cn } from '@/lib/utils';
- * import { Travel } from '../../components/travel';
- * import { Logos } from '../../components/logos';
- * import type { FC } from 'react';
- */
-
-/*
- * const About: FC = () => (
- *   <div>
- *     <p>Hello! I'm Hayden Bleasel.</p>
- *     <p>
- *       I’ve had the privilege of working with many fantastic companies including
- *       Google, Palantir, Nike, Toyota, National Geographic, Timberland, Canva,
- *       Westfield, Australian Ethical and many more.
- *     </p>
- *     <Logos />
- *     <div
- *       className={cn(
- *         'border p-4 rounded-lg',
- *         'bg-neutral-100 border:bg-neutral-200',
- *         'dark:bg-neutral-900 dark:border-neutral-700'
- *       )}
- *     >
- *       <Travel />
- *     </div>
- *     <p>
- *       I work on Neutral — an app which so far has helped plant thousands of
- *       trees and offset hundreds of tonnes of CO₂e through global reforestation
- *       programs. I build random projects every so often like Hancock and San
- *       Andreas Radio. I also designed the initial version of Bokeh. Other than
- *       that, I'm either spending time in the gym, ideating on new side projects
- *       and occasionally working with very select clients on freelance / moonlight
- *       work. Get in touch if you want to work with me on something.
- *     </p>
- *     <p>
- *       Education Bachelor of Business (Management) University of Technology,
- *       Sydney, 2016 Bachelor of Science in Information Technology (Enterprise
- *       Systems Development) University of Technology, Sydney, 2016 CS50x: CS50's
- *       Introduction to Computer Science HarvardX, 2021 ESE101: Embedded Systems
- *       Essentials with Arm: Getting Started ArmEducation, 2022
- *     </p>
- *   </div>
- * );
- */
-
-// export default About;

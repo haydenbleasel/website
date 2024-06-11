@@ -24,7 +24,7 @@ const Post: FC<{
   readonly slug: string;
 }> = ({ title: postTitle, date, slug }) => (
   <Link
-    className="flex items-center gap-4 no-underline text-inherit font-normal group transition-colors sm:trunate"
+    className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 no-underline text-inherit font-normal group transition-colors sm:truncate"
     key={slug}
     href={slug}
   >
@@ -32,7 +32,7 @@ const Post: FC<{
       {postTitle}
     </p>
     <hr className="hidden sm:block min-w-7 flex-1 m-0 group-hover:border-orange-400 transition-colors" />
-    <p className="hidden sm:block shrink-0 m-0 text-sm group-hover:text-orange-400 transition-colors">
+    <p className="shrink-0 m-0 text-sm group-hover:text-orange-400 transition-colors">
       {formatBlogDate(date)}
     </p>
   </Link>

@@ -26,7 +26,7 @@ const Role: FC<{
   readonly url: string;
 }> = ({ role, company, startYear, endYear, url }) => (
   <Link
-    className="sm:truncate flex items-center gap-4 no-underline text-inherit font-normal group transition-colors"
+    className="sm:truncate flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 no-underline text-inherit font-normal group transition-colors"
     key={company}
     href={url}
   >
@@ -39,7 +39,7 @@ const Role: FC<{
       </span>
     </p>
     <hr className="hidden sm:block min-w-7 flex-1 m-0 group-hover:border-orange-400 transition-colors" />
-    <p className="hidden sm:block m-0 text-sm group-hover:text-orange-400 transition-colors">
+    <p className="m-0 text-sm group-hover:text-orange-400 transition-colors">
       {startYear} &mdash; {endYear ?? 'Present'}
     </p>
   </Link>

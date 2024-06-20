@@ -1,5 +1,11 @@
 [
   {
+    "year": 2024,
+    "name": "Diving into the Node.js Website Redesign",
+    "location": "Node.js",
+    "url": "https://nodejs.org/en/blog/announcements/diving-into-the-nodejs-website-redesign"
+  },
+  {
     "year": 2023,
     "name": "Ducks in a row",
     "location": "Lookahead",

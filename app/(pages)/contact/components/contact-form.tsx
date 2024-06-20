@@ -43,7 +43,7 @@ const typeOptions = [
   {
     value: 'agency',
     label: 'Agency introduction',
-    subtitle: "I'm looking for an agency recommendation.",
+    subtitle: "I'm looking for an good design / dev agency.",
   },
 ];
 

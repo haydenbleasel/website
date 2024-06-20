@@ -63,8 +63,10 @@
     "items": [
       { "name": "ESLint" },
       { "name": "OpenJS Foundation" },
+      { "name": "Node.js" },
       { "name": "Tyro Payments" },
-      { "name": "UTS" }
+      { "name": "UTS" },
+      { "name": "Teleqo Technologies" }
     ]
   }
 ]

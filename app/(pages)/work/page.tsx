@@ -54,8 +54,8 @@ const Work: FC = () => (
       ))}
     </div>
     <p>
-      I&apos;ve also been fortunate to work with the following amazing companies
-      on a contract basis:{' '}
+      I&apos;ve also been fortunate enough to work with the following amazing
+      companies on a contract basis:{' '}
       {new Intl.ListFormat('en', { type: 'conjunction' }).format(clientList)}.
     </p>
   </>

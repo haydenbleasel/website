@@ -188,13 +188,19 @@ const getRecentlyPlayedGames = async () => {
     );
   }
 
-  const data = (await response.json()) as GetRecentlyPlayedGamesResponse;
+  try {
+    const data = (await response.json()) as GetRecentlyPlayedGamesResponse;
 
-  if (!data.response?.games) {
-    throw new Error('Invalid response format from Steam API');
+    if (!data.response?.games) {
+      throw new Error('Invalid response format from Steam API');
+    }
+
+    return data.response.games[0];
+  } catch {
+    throw new Error(
+      'Cannot parse response from Steam API: getRecentlyPlayedGames'
+    );
   }
-
-  return data.response.games[0];
 };
 
 const getAppDetails = async (appId: number) => {
@@ -211,13 +217,17 @@ const getAppDetails = async (appId: number) => {
     throw new Error('Invalid response format from Steam API: getAppDetails');
   }
 
-  const data = (await response.json()) as AppDetailsResponse;
+  try {
+    const data = (await response.json()) as AppDetailsResponse;
 
-  if (!data[appId].success) {
-    throw new Error('Invalid response format from Steam API');
+    if (!data[appId].success) {
+      throw new Error('Invalid response format from Steam API');
+    }
+
+    return data;
+  } catch {
+    throw new Error('Cannot parse response from Steam API: getAppDetails');
   }
-
-  return data;
 };
 
 const getUserStatsForGame = async (appId: number) => {
@@ -236,7 +246,13 @@ const getUserStatsForGame = async (appId: number) => {
     );
   }
 
-  return (await response.json()) as GetUserStatsForGameResponse;
+  try {
+    return (await response.json()) as GetUserStatsForGameResponse;
+  } catch {
+    throw new Error(
+      'Cannot parse response from Steam API: getUserStatsForGame'
+    );
+  }
 };
 
 export const GET = async (): Promise<Response> => {

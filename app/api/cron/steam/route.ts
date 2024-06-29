@@ -182,6 +182,12 @@ const getRecentlyPlayedGames = async () => {
     }
   );
 
+  if (!response.ok) {
+    throw new Error(
+      'Invalid response format from Steam API: getRecentlyPlayedGames'
+    );
+  }
+
   const data = (await response.json()) as GetRecentlyPlayedGamesResponse;
 
   if (!data.response?.games) {
@@ -201,6 +207,10 @@ const getAppDetails = async (appId: number) => {
     }
   );
 
+  if (!response.ok) {
+    throw new Error('Invalid response format from Steam API: getAppDetails');
+  }
+
   const data = (await response.json()) as AppDetailsResponse;
 
   if (!data[appId].success) {
@@ -219,6 +229,12 @@ const getUserStatsForGame = async (appId: number) => {
       },
     }
   );
+
+  if (!response.ok) {
+    throw new Error(
+      'Invalid response format from Steam API: getUserStatsForGame'
+    );
+  }
 
   return (await response.json()) as GetUserStatsForGameResponse;
 };

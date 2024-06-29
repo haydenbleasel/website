@@ -208,7 +208,7 @@ const getRecentlyPlayedGames = async () => {
 
 const getAppDetails = async (appId: number) => {
   const response = await fetch(
-    `https://store.steampowered.com/api/appdetails?appids=${appId}?format=json`,
+    `https://store.steampowered.com/api/appdetails?appids=${appId}`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -218,6 +218,8 @@ const getAppDetails = async (appId: number) => {
       },
     }
   );
+
+  console.log(response);
 
   if (!response.ok) {
     throw new Error('Invalid response format from Steam API: getAppDetails');

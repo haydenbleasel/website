@@ -110,6 +110,9 @@ export const GET = async (): Promise<Response> => {
   } catch (error) {
     const message = parseError(error);
 
+    // eslint-disable-next-line no-console
+    console.error(message);
+
     return new Response(message, { status: 500 });
   }
 };

@@ -176,6 +176,9 @@ const getRecentlyPlayedGames = async () => {
   const response = await fetch(
     `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${steamApiKey}&steamid=${steamId}&format=json`,
     {
+      headers: {
+        'Content-Type': 'application/json',
+      },
       next: {
         revalidate: 0,
       },
@@ -205,8 +208,11 @@ const getRecentlyPlayedGames = async () => {
 
 const getAppDetails = async (appId: number) => {
   const response = await fetch(
-    `https://store.steampowered.com/api/appdetails?appids=${appId}`,
+    `https://store.steampowered.com/api/appdetails?appids=${appId}?format=json`,
     {
+      headers: {
+        'Content-Type': 'application/json',
+      },
       next: {
         revalidate: 0,
       },
@@ -234,6 +240,9 @@ const getUserStatsForGame = async (appId: number) => {
   const response = await fetch(
     `https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=${steamApiKey}&steamid=${steamId}&format=json`,
     {
+      headers: {
+        'Content-Type': 'application/json',
+      },
       next: {
         revalidate: 0,
       },

@@ -242,7 +242,7 @@ export const GET = async (): Promise<Response> => {
       playtime: data.playtime_forever,
       name: gameData[data.appid].data.name,
       completeAchievements: complete,
-      totalAchievements: userStatsData.playerstats.achievements.length,
+      totalAchievements: gameData[data.appid].data.achievements.total,
     };
 
     await updateEdgeConfig('steam', properties);

@@ -51,7 +51,7 @@ const GitHubCard: FC = () => {
     <Card title="GitHub Activity" className="p-4">
       <div className="flex flex-col gap-4">
         <p className="text-neutral-500 dark:text-neutral-400 text-sm">
-          {total} contributions this year
+          {total} contributions in the last year
         </p>
         <div className="flex flex-col gap-[3px]">
           <GitHubCalendar

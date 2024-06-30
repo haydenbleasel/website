@@ -90,12 +90,6 @@ export const GET = async (): Promise<Response> => {
       return new Response(undefined, { status: 204 });
     }
 
-    if (data.item.name === currentTrack?.name) {
-      await updateEdgeConfig('spotify', { lastUpdated: Date.now() });
-
-      return new Response(undefined, { status: 204 });
-    }
-
     const content: SpotifyProperties = {
       lastUpdated: Date.now(),
       name: data.item.name,

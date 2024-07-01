@@ -33,7 +33,7 @@
     "pliny": "^0.2.2",
     "react": "19.0.0-rc-935180c7e0-20240524",
     "react-dom": "19.0.0-rc-935180c7e0-20240524",
-    "react-github-calendar": "^4.1.5",
+    "react-github-calendar": "^4.1.6",
     "react-player": "^2.16.0",
     "react-wrap-balancer": "^1.1.1",
     "reading-time": "^1.5.0",

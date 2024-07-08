@@ -73,6 +73,9 @@ const visited: COBEOptions['markers'] = [
 
   // Denver, Colorado
   { location: [39.7392, -104.9903], size: 0.1 },
+
+  // Houston, Texas
+  { location: [29.7604, -95.3698], size: 0.1 },
 ];
 
 const About: FC = () => (

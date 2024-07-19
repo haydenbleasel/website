@@ -12,15 +12,15 @@ export const metadata: Metadata = {
   description,
 };
 
-const formatBlogDate = (date: string) =>
+const formatBlogDate = (date: Date) =>
   new Intl.DateTimeFormat('en-US', {
     month: '2-digit',
     year: '2-digit',
-  }).format(new Date(date));
+  }).format(date);
 
 const Post: FC<{
   readonly title: string;
-  readonly date: string;
+  readonly date: Date;
   readonly slug: string;
 }> = ({ title: postTitle, date, slug }) => (
   <Link

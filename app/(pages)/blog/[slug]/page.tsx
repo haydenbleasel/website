@@ -90,7 +90,7 @@ const Page: FC<PageProperties> = ({ params }) => {
       <p className="text-sm">
         Published on{' '}
         {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(
-          new Date(page.date)
+          page.date
         )}{' '}
         • {page.readingTime}
       </p>

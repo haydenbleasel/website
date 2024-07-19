@@ -1,5 +1,5 @@
+import { withContentCollections } from "@content-collections/next";
 import withBundleAnalyzer from '@next/bundle-analyzer';
-import { createContentlayerPlugin } from 'next-contentlayer2';
 import { createSecureHeaders } from 'next-secure-headers';
 
 /** @type {import('next').NextConfig} */
@@ -107,16 +107,12 @@ const nextConfig = {
   },
 };
 
-const withContentlayer = createContentlayerPlugin({
-  // Additional Contentlayer config options
-});
-
 let config = nextConfig;
 
 if (process.env.ANALYZE === 'true') {
   config = withBundleAnalyzer()(config);
 } else {
-  config = withContentlayer(nextConfig);
+  config = withContentCollections(config);
 }
 
 export default config;

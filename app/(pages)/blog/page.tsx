@@ -1,6 +1,6 @@
 import { Header } from '@/components/header';
 import { Link } from '@/components/link';
-import { allBlogs } from '@contentlayer/generated';
+import { allBlogs } from 'content-collections';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 
@@ -26,7 +26,7 @@ const Post: FC<{
   <Link
     className="group flex flex-col gap-1 font-normal text-inherit no-underline transition-colors sm:flex-row sm:items-center sm:gap-4 sm:truncate"
     key={slug}
-    href={slug}
+    href={`/blog/${slug}`}
   >
     <p className="m-0 font-medium text-neutral-950 transition-colors group-hover:text-orange-500 sm:truncate dark:text-white">
       {postTitle}

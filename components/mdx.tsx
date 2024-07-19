@@ -1,4 +1,4 @@
-import { getMDXComponent } from 'next-contentlayer2/hooks';
+import { useMDXComponent } from "@content-collections/mdx/react";
 import Image from 'next/image';
 import type { FC, HTMLProps, ReactNode } from 'react';
 import { Video } from './video';
@@ -63,7 +63,7 @@ const Callout: FC<{ readonly children: ReactNode }> = ({ children }) => (
 );
 
 export const Mdx: FC<MdxProperties> = ({ code }) => {
-  const Component = getMDXComponent(code);
+  const Component = useMDXComponent(code);
 
   return (
     <Component

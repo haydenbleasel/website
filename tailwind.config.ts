@@ -3,9 +3,9 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './blog/**/*.mdx',
   ],
   theme: {
     extend: {
@@ -51,9 +51,9 @@ const config: Config = {
             },
             pre: {
               padding: theme('spacing.6'),
-              backgroundColor: theme('colors.neutral.900'),
+              backgroundColor: 'inherit',
               borderWidth: 1,
-              borderColor: theme('colors.neutral.800'),
+              borderColor: 'inherit',
               borderRadius: theme('borderRadius.lg'),
             },
           },

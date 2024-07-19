@@ -18,7 +18,7 @@ Anyway, enough preamble. Let's get into it.
 
 The first thing we need to do is connect to the OpenAI API. While you can use the [OpenAI JS SDK](https://github.com/openai/openai-node/), there is a bit of a question around [streaming responses](https://github.com/openai/openai-node/issues/18), so I found it easier to hit the API directly with `fetch`. Let's create an Edge Function that will connect to the OpenAI API and send the response back to the client.
 
-```ts showLineNumbers title="pages/api/generate.ts"
+```ts title="pages/api/generate.ts"
 import type { NextRequest } from 'next/server';
 
 if (!process.env.OPENAI_API_KEY) {
@@ -74,7 +74,7 @@ export default handler;
 
 Too easy! This will connect to the OpenAI API and return the response to the client. The only thing we need to do now is modify the response to be a stream.
 
-```ts showLineNumbers title="pages/api/generate.ts" {32,45,47-49}
+```ts title="pages/api/generate.ts" {32,45,47-49}
 import type { NextRequest } from 'next/server';
 
 if (!process.env.OPENAI_API_KEY) {
@@ -155,7 +155,7 @@ data: { id: 'test', object: 'test', created: 123, choices: [/* ...*/], model: 't
 
 Anyway, that's where my slightly insane parsing logic below comes from. I'm sure there's a better way to do this, but this works for now. If you have any suggestions, please let me know!
 
-```tsx showLineNumbers title="pages/generate.tsx"
+```tsx title="pages/generate.tsx"
 const [text, setText] = useState('');
 
 /* ... */
@@ -237,7 +237,7 @@ While I originally thought this might be a bug, Malte Ubl (CTO of Vercel) [noted
 
 Regardless, this is a problem because we can't parse the JSON until we have the full response. My solution was simply to wrap the `JSON.parse` in a try/catch statement which, if it fails, will shove the response into a temporary state and wait for the next response to come in. When the next response arrives, it prepends the temporary state to the response and tries to parse it again. If it fails again, it just keeps doing that until it succeeds.
 
-```tsx showLineNumbers title="pages/generate.tsx" {29,37-40,44,65-67}
+```tsx title="pages/generate.tsx"
 const [text, setText] = useState('');
 
 /* ... */

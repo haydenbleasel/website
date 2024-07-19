@@ -36,7 +36,7 @@ return (
 
 Now, let's add a `textarea` that is hidden behind the `react-syntax-highlighter` component. We'll use the `textarea` to capture the user's input.
 
-```tsx {1,11-16,27}
+```tsx
 const [code, setCode] = useState(`
  const fib = (n) => {
    if (n <= 1) {
@@ -71,7 +71,7 @@ Last, we want to focus the `textarea` when the user clicks or presses a key on (
 
 Most importantly, we need to make sure the styles of the `textarea` are roughly the same as the `react-syntax-highlighter` component. Otherwise, the text selection on the `textarea` won't look right.
 
-```tsx {1,13-16,21}
+```tsx
 const textareaRef = useRef<HTMLTextAreaElement>(null);
 const [code, setCode] = useState(`
  const fib = (n) => {

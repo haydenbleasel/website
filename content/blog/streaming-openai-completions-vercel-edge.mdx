@@ -186,12 +186,10 @@ const decoder = new TextDecoder();
 let done = false;
 
 while (!done) {
-  // eslint-disable-next-line no-await-in-loop
   const { value, done: doneReading } = await reader.read();
   done = doneReading;
   const newValue = decoder.decode(value).split('\n\n').filter(Boolean);
 
-  // eslint-disable-next-line @typescript-eslint/no-loop-func
   newValue.forEach((newVal) => {
     const json = JSON.parse(newVal.replace('data: ', '')) as {
       id: string;
@@ -271,7 +269,6 @@ let done = false;
 let tempState = '';
 
 while (!done) {
-  // eslint-disable-next-line no-await-in-loop
   const { value, done: doneReading } = await reader.read();
   done = doneReading;
   const newValue = decoder.decode(value).split('\n\n').filter(Boolean);
@@ -281,7 +278,6 @@ while (!done) {
     tempState = '';
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-loop-func
   newValue.forEach((newVal) => {
     try {
       const json = JSON.parse(newVal.replace('data: ', '')) as {

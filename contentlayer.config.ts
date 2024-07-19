@@ -118,7 +118,7 @@ const rehypeAutolinkHeadingsOptions: RehypeAutoLinkHeadingsOptions = {
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: `blog/*.mdx`,
+  filePathPattern: 'blog/*.mdx',
   contentType: 'mdx',
   fields: {
     title: {

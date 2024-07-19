@@ -15,8 +15,8 @@ const SubmitButton: FC = () => {
       disabled={pending}
       type="submit"
       className={cn(
-        'bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium',
-        'disabled:opacity-50 disabled:cursor-not-allowed'
+        'rounded-lg bg-orange-500 px-6 py-2.5 font-medium text-sm text-white',
+        'disabled:cursor-not-allowed disabled:opacity-50'
       )}
     >
       Send message
@@ -79,7 +79,7 @@ export const ContactForm: FC = () => {
         />
         <Select label="Type" name="type" data={typeOptions} />
         <SubmitButton />
-        <output aria-live="polite" className="text-sm block">
+        <output aria-live="polite" className="block text-sm">
           {state.message}
         </output>
       </form>

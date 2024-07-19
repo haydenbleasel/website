@@ -11,7 +11,7 @@ if (!audienceId) {
 }
 
 export const subscribe = async (
-  prevState: never,
+  _prevState: never,
   formData: FormData
 ): Promise<{
   message: string;

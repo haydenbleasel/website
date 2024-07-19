@@ -30,7 +30,7 @@ const Tool: FC<{
       href={data.href}
       key={data.href}
       className={cn(
-        'no-underline items-center flex gap-4 p-4 rounded-lg transition-colors',
+        'flex items-center gap-4 rounded-lg p-4 no-underline transition-colors',
         'hover:bg-neutral-100',
         'dark:hover:bg-neutral-800'
       )}
@@ -47,7 +47,7 @@ const Tool: FC<{
         <div className="flex items-center gap-2">
           <p
             className={cn(
-              'text-sm font-medium',
+              'font-medium text-sm',
               'text-neutral-900',
               'dark:text-neutral-100'
             )}
@@ -57,7 +57,7 @@ const Tool: FC<{
           {data.featured ? (
             <span
               className={cn(
-                'text-xs px-2 rounded-full font-medium',
+                'rounded-full px-2 font-medium text-xs',
                 'bg-neutral-100 text-neutral-700',
                 'dark:bg-neutral-800 dark:text-neutral-300'
               )}
@@ -66,7 +66,7 @@ const Tool: FC<{
             </span>
           ) : undefined}
         </div>
-        <p className="text-sm text-neutral-500 dark:text-neutral-400">
+        <p className="text-neutral-500 text-sm dark:text-neutral-400">
           {data.description}
         </p>
       </div>
@@ -77,12 +77,12 @@ const Tool: FC<{
 const Stack: FC = () => (
   <>
     <Header title={title} description={description} />
-    <div className="mt-8 grid gap-8 not-prose">
+    <div className="not-prose mt-8 grid gap-8">
       {Object.values(stack).map(({ items, type }) => (
         <Card
           key={type}
           title={type}
-          className="p-2 grid sm:grid-cols-2 gap-x-2"
+          className="grid gap-x-2 p-2 sm:grid-cols-2"
         >
           {items.map((item) => (
             <Tool data={item} key={item.name} />

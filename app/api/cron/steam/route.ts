@@ -217,8 +217,6 @@ const getAppDetails = async (appId: number) => {
     }
   );
 
-  console.log(response);
-
   if (!response.ok) {
     throw new Error('Invalid response format from Steam API: getAppDetails');
   }
@@ -291,8 +289,6 @@ export const GET = async (): Promise<Response> => {
     return new Response(undefined, { status: 204 });
   } catch (error) {
     const message = parseError(error);
-
-    console.error(message);
 
     return new Response(message, { status: 500 });
   }

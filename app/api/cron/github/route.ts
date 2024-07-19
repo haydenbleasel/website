@@ -18,8 +18,6 @@ export const GET = async (): Promise<Response> => {
   } catch (error) {
     const message = parseError(error);
 
-    console.error(message);
-
     return new Response(message, { status: 500 });
   }
 };

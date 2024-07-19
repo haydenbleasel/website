@@ -62,8 +62,8 @@ const Page: FC<PageProperties> = ({ params }) => {
 
   return (
     <>
-      <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-orange-500 dark:hover:text-orange-400">
-        <ArrowLeftToLineIcon className="w-4 h-4 text-inherit" />
+      <div className="flex items-center gap-2 text-neutral-500 hover:text-orange-500 dark:text-neutral-400 dark:hover:text-orange-400">
+        <ArrowLeftToLineIcon className="h-4 w-4 text-inherit" />
         <Link
           className="text-inherit text-sm no-underline hover:text-inherit"
           href="/blog"
@@ -78,7 +78,7 @@ const Page: FC<PageProperties> = ({ params }) => {
           width={1920}
           height={1080}
           alt=""
-          className="m-0 h-full w-full object-cover rounded overflow-hidden"
+          className="m-0 h-full w-full overflow-hidden rounded object-cover"
           priority
           blurDataURL={`data:image/jpg;base64,${page.imageBlur}`}
           placeholder="blur"

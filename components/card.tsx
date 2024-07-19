@@ -17,7 +17,7 @@ export const Card: FC<CardProperties> = ({ title, children, className }) => (
   >
     <p
       className={cn(
-        'm-0 shrink-0 block text-sm font-medium py-2 px-4',
+        'm-0 block shrink-0 px-4 py-2 font-medium text-sm',
         'text-neutral-900',
         'dark:text-neutral-100'
       )}
@@ -26,9 +26,9 @@ export const Card: FC<CardProperties> = ({ title, children, className }) => (
     </p>
     <div
       className={cn(
-        'relative border flex-1 rounded-xl overflow-hidden shadow-sm',
-        'bg-white border-neutral-200',
-        'dark:bg-neutral-950 dark:border-neutral-800',
+        'relative flex-1 overflow-hidden rounded-xl border shadow-sm',
+        'border-neutral-200 bg-white',
+        'dark:border-neutral-800 dark:bg-neutral-950',
         className
       )}
     >

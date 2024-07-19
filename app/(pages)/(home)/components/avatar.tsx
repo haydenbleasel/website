@@ -7,7 +7,7 @@ export const Avatar: FC = () => (
   <Image
     alt=""
     className={cn(
-      'm-0 inline w-8 aspect-square overflow-hidden object-cover rounded-md border rotate-6 -translate-y-0.5',
+      '-translate-y-0.5 m-0 inline aspect-square w-8 rotate-6 overflow-hidden rounded-md border object-cover',
       'border-neutral-200',
       'dark:border-neutral-700'
     )}

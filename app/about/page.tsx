@@ -81,7 +81,7 @@ const visited: COBEOptions['markers'] = [
 const About: FC = () => (
   <div className="flex items-start">
     <div className="flex-1">
-      <div className="max-w-[38rem] mx-auto">
+      <div className="mx-auto max-w-[38rem]">
         <PageLayout>
           <Image
             src={Avatar}
@@ -89,8 +89,8 @@ const About: FC = () => (
             width={96}
             height={96}
             className={cn(
-              'block xl:hidden m-0',
-              'object-cover w-12 h-12 rounded-full'
+              'm-0 block xl:hidden',
+              'h-12 w-12 rounded-full object-cover'
             )}
             quality={100}
             loading="eager"
@@ -156,9 +156,9 @@ const About: FC = () => (
             </p>
             <div
               className={cn(
-                'aspect-[4/3] rounded-xl border overflow-hidden',
-                'bg-neutral-100 border-neutral-200',
-                'dark:bg-neutral-800 dark:border-neutral-700'
+                'aspect-[4/3] overflow-hidden rounded-xl border',
+                'border-neutral-200 bg-neutral-100',
+                'dark:border-neutral-700 dark:bg-neutral-800'
               )}
             >
               <Travel
@@ -199,7 +199,7 @@ const About: FC = () => (
       height={4608}
       className={cn(
         'hidden xl:block',
-        'object-cover flex-0 h-screen sticky top-0 bottom-0 aspect-[3584/4608] w-auto max-w-[50vw] select-none'
+        'sticky top-0 bottom-0 aspect-[3584/4608] h-screen w-auto max-w-[50vw] flex-0 select-none object-cover'
       )}
       quality={100}
       loading="eager"

@@ -24,15 +24,15 @@ const FeatureInner: FC<{
 }> = ({ name, year, location }) => (
   <>
     <p className="m-0 sm:truncate">
-      <span className="text-neutral-950 dark:text-white font-medium group-hover:text-orange-500 transition-colors">
+      <span className="font-medium text-neutral-950 transition-colors group-hover:text-orange-500 dark:text-white">
         {name}
       </span>
-      <span className="text-neutral-500 dark:text-neutral-400 group-hover:text-orange-400 transition-colors">
+      <span className="text-neutral-500 transition-colors group-hover:text-orange-400 dark:text-neutral-400">
         , {location}
       </span>
     </p>
-    <hr className="hidden sm:block min-w-7 flex-1 m-0 group-hover:border-orange-400 transition-colors" />
-    <p className="shrink-0 m-0 text-sm group-hover:text-orange-400 transition-colors">
+    <hr className="m-0 hidden min-w-7 flex-1 transition-colors group-hover:border-orange-400 sm:block" />
+    <p className="m-0 shrink-0 text-sm transition-colors group-hover:text-orange-400">
       {year}
     </p>
   </>

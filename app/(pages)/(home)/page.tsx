@@ -18,13 +18,13 @@ export const metadata: Metadata = {
 
 const Home: FC = () => (
   <>
-    <h1 className="tracking-tight leading-tight text-3xl sm:text-4xl">
+    <h1 className="text-3xl leading-tight tracking-tight sm:text-4xl">
       Hello <Wave /> I’m Hayden Bleasel <Avatar />. I’m an Australian 🦘 Product
       Designer 🖼️ and Software Engineer <GitHub /> currently based in{' '}
       <Location />.
     </h1>
     <Newsletter />
-    <div className="grid md:grid-cols-3 gap-3 prose-p:m-0 prose-img:m-0">
+    <div className="prose-img:m-0 prose-p:m-0 grid gap-3 md:grid-cols-3">
       <div className="md:col-span-2">
         <GitHubCard />
       </div>

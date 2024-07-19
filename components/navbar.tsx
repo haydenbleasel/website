@@ -32,9 +32,9 @@ export const Navbar: FC = () => {
   return (
     <nav
       className={cn(
-        'isolate z-50 rounded-full px-6 flex items-center gap-6 fixed bottom-6 left-1/2 -translate-x-1/2 backdrop-blur-sm backdrop-filter bg-opacity-50 shadow-lg border text-sm',
-        'bg-white/80 border-neutral-950/10',
-        'dark:bg-neutral-950/80 dark:border-neutral-100/10'
+        '-translate-x-1/2 fixed bottom-6 left-1/2 isolate z-50 flex items-center gap-6 rounded-full border bg-opacity-50 px-6 text-sm shadow-lg backdrop-blur-sm backdrop-filter',
+        'border-neutral-950/10 bg-white/80',
+        'dark:border-neutral-100/10 dark:bg-neutral-950/80'
       )}
     >
       {pages.map((link) => (
@@ -50,11 +50,11 @@ export const Navbar: FC = () => {
           )}
         >
           <span className="block sm:hidden">
-            <link.icon className="w-5 h-5" />
+            <link.icon className="h-5 w-5" />
           </span>
           <span className="hidden sm:block">{link.name}</span>
           {isActive(link.path) && (
-            <span className="w-full h-px bg-current absolute left-0 top-full" />
+            <span className="absolute top-full left-0 h-px w-full bg-current" />
           )}
         </Link>
       ))}

@@ -20,7 +20,7 @@ type VideoProperties = ReactPlayerProps & {
 
 export const Video: FC<VideoProperties> = ({ className, ...properties }) => (
   <div
-    className={cn('relative aspect-video rounded overflow-hidden', className)}
+    className={cn('relative aspect-video overflow-hidden rounded', className)}
   >
     <ReactPlayer
       {...properties}

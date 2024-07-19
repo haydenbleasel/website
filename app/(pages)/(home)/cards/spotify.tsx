@@ -15,17 +15,17 @@ const SpotifyCard = async (): Promise<ReactElement> => {
   return (
     <Card
       title="Now Listening"
-      className="p-4 flex flex-row md:flex-col md:justify-between gap-4"
+      className="flex flex-row gap-4 p-4 md:flex-col md:justify-between"
     >
       <Image
         src={song.image}
         alt=""
         width={300}
         height={300}
-        className="w-12 h-12 shrink-0 rounded"
+        className="h-12 w-12 shrink-0 rounded"
         unoptimized
       />
-      <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+      <p className="text-neutral-500 text-sm dark:text-neutral-400">
         <Link href={song.href}>{song.name}</Link> by {song.artist}
       </p>
     </Card>

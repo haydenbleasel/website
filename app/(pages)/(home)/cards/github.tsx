@@ -50,7 +50,7 @@ const GitHubCard: FC = () => {
   return (
     <Card title="GitHub Activity" className="p-4">
       <div className="flex flex-col gap-4">
-        <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+        <p className="text-neutral-500 text-sm dark:text-neutral-400">
           {total} contributions in the last year
         </p>
         <div className="flex flex-col gap-[3px]">

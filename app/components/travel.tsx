@@ -57,7 +57,7 @@ export const Travel: FC<TravelProperties> = ({ width, height, markers }) => {
     <canvas
       aria-label="Globe"
       ref={canvasReference}
-      className="w-full aspect-[4/3] max-w-full"
+      className="aspect-[4/3] w-full max-w-full"
     />
   );
 };

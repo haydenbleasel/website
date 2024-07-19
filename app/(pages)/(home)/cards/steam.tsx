@@ -15,9 +15,9 @@ const SteamCard = async (): Promise<ReactElement> => {
   return (
     <Card
       title="Recently Played"
-      className="p-4 flex flex-col sm:flex-row justify-between gap-4"
+      className="flex flex-col justify-between gap-4 p-4 sm:flex-row"
     >
-      <div className="text-sm flex flex-col justify-between gap-4">
+      <div className="flex flex-col justify-between gap-4 text-sm">
         <p>
           <Link href={`https://store.steampowered.com/app/${game.id}`}>
             {game.name}
@@ -36,7 +36,7 @@ const SteamCard = async (): Promise<ReactElement> => {
         width={300}
         height={300}
         unoptimized
-        className="rounded m-0 shrink-0"
+        className="m-0 shrink-0 rounded"
       />
     </Card>
   );

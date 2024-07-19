@@ -52,7 +52,7 @@ const RootLayout: FC<RootLayoutProperties> = ({ children }) => (
       className={cn(
         GeistSans.variable,
         GeistMono.variable,
-        'bg-white dark:bg-neutral-950 font-sans'
+        'bg-white font-sans dark:bg-neutral-950'
       )}
     >
       {children}

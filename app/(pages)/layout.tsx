@@ -6,7 +6,7 @@ type PageLayoutProperties = {
 
 const PageLayout: FC<PageLayoutProperties> = ({ children }) => (
   <main className="px-4 pt-16 pb-32 sm:pt-32">
-    <div className="space-y-12 prose prose-neutral prose-orange mx-auto dark:prose-invert">
+    <div className="prose prose-neutral prose-orange dark:prose-invert mx-auto space-y-12">
       {children}
     </div>
   </main>

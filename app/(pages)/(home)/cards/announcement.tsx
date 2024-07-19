@@ -19,14 +19,14 @@ export const AnnouncementCard = async (): Promise<ReactElement> => {
       title="Latest Update"
       className="flex flex-col items-start justify-between gap-4 p-4"
     >
-      <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+      <p className="text-neutral-500 text-sm dark:text-neutral-400">
         {announcement.text}
       </p>
       <Link
         href={announcement.link}
         className={cn(
-          'rounded-full text-sm py-2.5 px-4 font-medium no-underline',
-          'bg-neutral-100 text-neutral-950 placeholder:text-neutral-500 outline-orange-500',
+          'rounded-full px-4 py-2.5 font-medium text-sm no-underline',
+          'bg-neutral-100 text-neutral-950 outline-orange-500 placeholder:text-neutral-500',
           'dark:bg-neutral-900 dark:text-white dark:placeholder-text-neutral-600'
         )}
       >

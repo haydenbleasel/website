@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const Contact: FC = () => (
   <>
     <Header title={title} description={description} />
-    <div className="mt-8 grid gap-8 not-prose">
+    <div className="not-prose mt-8 grid gap-8">
       <ContactForm />
     </div>
   </>

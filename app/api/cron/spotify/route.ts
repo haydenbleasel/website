@@ -1,6 +1,5 @@
 import { parseError } from '@/lib/utils';
 import { updateEdgeConfig } from '@/lib/vercel';
-import { get } from '@vercel/edge-config';
 
 export type SpotifyProperties = {
   lastUpdated: number;
@@ -46,8 +45,6 @@ const getAccessToken = async (refreshToken: string): Promise<string> => {
 export const GET = async (): Promise<Response> => {
   try {
     const token = await getAccessToken(spotifyRefreshToken);
-    const currentTrack = await get<SpotifyProperties>('spotify');
-
     const response = await fetch(
       'https://api.spotify.com/v1/me/player/currently-playing',
       {
@@ -103,8 +100,6 @@ export const GET = async (): Promise<Response> => {
     return new Response(undefined, { status: 204 });
   } catch (error) {
     const message = parseError(error);
-
-    console.error(message);
 
     return new Response(message, { status: 500 });
   }

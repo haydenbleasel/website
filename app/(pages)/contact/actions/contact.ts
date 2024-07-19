@@ -21,20 +21,18 @@ const kvRestApiUrl = process.env.KV_REST_API_URL;
 const kvRestApiToken = process.env.KV_REST_API_TOKEN;
 
 if (!kvRestApiUrl || !kvRestApiToken) {
-  console.warn(
+  throw new Error(
     'KV_REST_API_URL and KV_REST_API_TOKEN environment variables are not set'
   );
 }
 
 export const contact = async (
-  previousState: never,
+  _previousState: never,
   formData: FormData
 ): Promise<{
   message: string;
 }> => {
   const data = formSchema.parse(Object.fromEntries(formData));
-
-  console.log('📧 Contact form submission', data);
 
   try {
     const ip = headers().get('x-forwarded-for');
@@ -52,8 +50,6 @@ export const contact = async (
       );
     }
 
-    console.log('📧 Sending email...');
-
     const response = await resend.emails.send({
       from,
       to,
@@ -62,21 +58,15 @@ export const contact = async (
       text: data.message,
     });
 
-    console.log('📧 Email sent', { response });
-
     if (response.error) {
       throw new Error(response.error.message);
     }
-
-    console.log('📧 Contact form submission successful');
 
     revalidatePath('/contact');
 
     return { message: 'Thanks! Your message has been sent.' };
   } catch (error) {
     const errorMessage = parseError(error);
-
-    console.error('📧 Contact form submission failed', { error: errorMessage });
 
     return { message: errorMessage };
   }

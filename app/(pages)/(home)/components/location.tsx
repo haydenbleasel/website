@@ -15,14 +15,14 @@ export const Location = async (): Promise<ReactElement> => {
       {location}{' '}
       <div
         className={cn(
-          'not-prose align-text-bottom inline-flex overflow-hidden border rounded-md shadow-[0_1px_8px_0_rgba(0,0,0,0.04)] scale-[0.8] md:scale-100',
+          'not-prose inline-flex scale-[0.8] overflow-hidden rounded-md border align-text-bottom shadow-[0_1px_8px_0_rgba(0,0,0,0.04)] md:scale-100',
           'border-neutral-200',
           'dark:border-neutral-700'
         )}
       >
         <span
           className={cn(
-            'px-2 py-1.5 text-sm font-medium shadow-[inset_0_-2px_5px_0_rgba(0,0,0,0.07)]',
+            'px-2 py-1.5 font-medium text-sm shadow-[inset_0_-2px_5px_0_rgba(0,0,0,0.07)]',
             'bg-neutral-100',
             'dark:bg-neutral-800'
           )}
@@ -31,7 +31,7 @@ export const Location = async (): Promise<ReactElement> => {
         </span>{' '}
         <span
           className={cn(
-            'px-2 py-1.5 text-sm font-medium shadow-[inset_0_-2px_5px_0_rgba(0,0,0,0.07)]',
+            'px-2 py-1.5 font-medium text-sm shadow-[inset_0_-2px_5px_0_rgba(0,0,0,0.07)]',
             'bg-white',
             'dark:bg-neutral-800'
           )}

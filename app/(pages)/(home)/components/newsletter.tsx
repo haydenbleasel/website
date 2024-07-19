@@ -11,8 +11,8 @@ const SubmitButton: FC = () => {
   return (
     <button
       className={cn(
-        'absolute right-0.5 top-0.5 rounded-full bg-orange-500 text-white text-sm font-medium py-2 px-6 select-none',
-        'disabled:opacity-50 disabled:cursor-not-allowed'
+        'absolute top-0.5 right-0.5 select-none rounded-full bg-orange-500 px-6 py-2 font-medium text-sm text-white',
+        'disabled:cursor-not-allowed disabled:opacity-50'
       )}
       type="submit"
       disabled={pending}
@@ -45,15 +45,15 @@ export const Newsletter: FC = () => {
           pattern=".+@.+\..+"
           required
           className={cn(
-            'rounded-full text-sm py-2.5 pl-4 pr-[94px] w-full',
-            'bg-neutral-100 text-neutral-950 placeholder:text-neutral-500 outline-orange-500',
+            'w-full rounded-full py-2.5 pr-[94px] pl-4 text-sm',
+            'bg-neutral-100 text-neutral-950 outline-orange-500 placeholder:text-neutral-500',
             'dark:bg-neutral-900 dark:text-white dark:placeholder-text-neutral-600'
           )}
         />
         <SubmitButton />
       </form>
       {state.message ? (
-        <p aria-live="polite" className="mt-4 text-sm block m-0">
+        <p aria-live="polite" className="m-0 mt-4 block text-sm">
           {state.message}
         </p>
       ) : undefined}

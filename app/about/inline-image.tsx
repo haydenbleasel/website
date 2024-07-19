@@ -12,14 +12,14 @@ type InlineImageProperties = {
 export const InlineImage: FC<InlineImageProperties> = ({ src, text, url }) => (
   <Link
     href={url}
-    className="ml-0.5 dark:ml-0 inline-flex gap-1 items-center align-bottom"
+    className="ml-0.5 inline-flex items-center gap-1 align-bottom dark:ml-0"
   >
     <Image
       src={src}
       alt=""
       width={16}
       height={16}
-      className="dark:hidden m-0 w-4 h-4 rounded-sm object-contain select-none"
+      className="m-0 h-4 w-4 select-none rounded-sm object-contain dark:hidden"
       quality={100}
     />
     <span>{text}</span>

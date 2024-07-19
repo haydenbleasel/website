@@ -1,9 +1,9 @@
+import type { SpotifyProperties } from '@/app/api/cron/spotify/route';
+import { Card } from '@/components/card';
+import { Link } from '@/components/link';
 import { get } from '@vercel/edge-config';
 import Image from 'next/image';
-import { Link } from '@/components/link';
-import { Card } from '@/components/card';
 import type { ReactElement } from 'react';
-import type { SpotifyProperties } from '@/app/api/cron/spotify/route';
 
 const SpotifyCard = async (): Promise<ReactElement> => {
   const song = await get<SpotifyProperties>('spotify');

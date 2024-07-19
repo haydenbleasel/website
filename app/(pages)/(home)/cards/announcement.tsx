@@ -1,7 +1,7 @@
-import { get } from '@vercel/edge-config';
+import { Card } from '@/components/card';
 import { Link } from '@/components/link';
 import { cn } from '@/lib/utils';
-import { Card } from '@/components/card';
+import { get } from '@vercel/edge-config';
 import type { ReactElement } from 'react';
 
 export const AnnouncementCard = async (): Promise<ReactElement> => {

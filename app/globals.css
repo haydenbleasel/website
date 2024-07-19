@@ -39,11 +39,11 @@ code > [data-line]::before {
   counter-increment: line;
 }
 
-code[data-line-numbers-max-digits='2'] > [data-line]::before {
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
   @apply w-6;
 }
 
-code[data-line-numbers-max-digits='3'] > [data-line]::before {
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
   @apply w-8;
 }
 

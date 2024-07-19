@@ -1,7 +1,7 @@
-import { Link } from '@/components/link';
-import work from '@/data/work.json';
-import clients from '@/data/clients.json';
 import { Header } from '@/components/header';
+import { Link } from '@/components/link';
+import clients from '@/data/clients.json';
+import work from '@/data/work.json';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 

@@ -1,12 +1,12 @@
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
-import { Toaster } from 'sonner';
-import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from '@/components/navbar';
 import { siteUrl } from '@/lib/consts';
 import { cn } from '@/lib/utils';
+import { Analytics } from '@vercel/analytics/react';
+import { GeistMono } from 'geist/font/mono';
+import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
+import { Toaster } from 'sonner';
 import './globals.css';
 
 type RootLayoutProperties = {

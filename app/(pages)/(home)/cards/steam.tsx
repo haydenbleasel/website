@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import { get } from '@vercel/edge-config';
-import { Link } from '@/components/link';
-import { Card } from '@/components/card';
 import type { GameProperties } from '@/app/api/cron/steam/route';
+import { Card } from '@/components/card';
+import { Link } from '@/components/link';
+import { get } from '@vercel/edge-config';
+import Image from 'next/image';
 import type { ReactElement } from 'react';
 
 const SteamCard = async (): Promise<ReactElement> => {

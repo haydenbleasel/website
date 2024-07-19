@@ -1,7 +1,7 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
+import dynamic from 'next/dynamic';
 import type { FC } from 'react';
 import type { ReactPlayerProps } from 'react-player';
 

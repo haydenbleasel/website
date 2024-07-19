@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import { get } from '@vercel/edge-config';
-import { cn } from '@/lib/utils';
 import { Link } from '@/components/link';
-import GitHubLogo from './github.svg';
-import type { ReactElement } from 'react';
+import { cn } from '@/lib/utils';
+import { get } from '@vercel/edge-config';
+import Image from 'next/image';
 import type { StaticImageData } from 'next/image';
+import type { ReactElement } from 'react';
+import GitHubLogo from './github.svg';
 
 export const GitHub = async (): Promise<ReactElement> => {
   const github = await get<{ followers: number }>('github');

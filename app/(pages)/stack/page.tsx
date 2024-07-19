@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import { Link } from '@/components/link';
-import stack from '@/data/stack.json';
 import { Card } from '@/components/card';
 import { Header } from '@/components/header';
+import { Link } from '@/components/link';
+import stack from '@/data/stack.json';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import type { FC } from 'react';
 
 const title = 'Stack';

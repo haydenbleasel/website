@@ -1,21 +1,21 @@
 import Image from 'next/image';
 
+import PageLayout from '@/app/(pages)/layout';
+import { Header } from '@/components/header';
 import { Link } from '@/components/link';
 import { cn } from '@/lib/utils';
-import { Header } from '@/components/header';
-import PageLayout from '@/app/(pages)/layout';
+import type { COBEOptions } from 'cobe';
+import type { Metadata } from 'next';
+import type { StaticImageData } from 'next/image';
+import type { FC } from 'react';
 import { Travel } from '../components/travel';
 import Avatar from './avatar.jpg';
-import Profile from './profile.jpg';
-import Refraction from './refraction.jpg';
 import Corellium from './corellium.svg';
 import Eververse from './eververse.svg';
-import Jellypepper from './jellypepper.svg';
 import { InlineImage } from './inline-image';
-import type { COBEOptions } from 'cobe';
-import type { StaticImageData } from 'next/image';
-import type { Metadata } from 'next';
-import type { FC } from 'react';
+import Jellypepper from './jellypepper.svg';
+import Profile from './profile.jpg';
+import Refraction from './refraction.jpg';
 
 export const metadata: Metadata = {
   title: 'About',

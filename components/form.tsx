@@ -1,9 +1,9 @@
-import { useId, useState } from 'react';
+import { cn } from '@/lib/utils';
 import * as RadixLabel from '@radix-ui/react-label';
+import type { LabelProps } from '@radix-ui/react-label';
 import * as RadixSelect from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import type { LabelProps } from '@radix-ui/react-label';
+import { useId, useState } from 'react';
 import type { ChangeEventHandler, ComponentProps, FC } from 'react';
 
 type CustomProperties = {

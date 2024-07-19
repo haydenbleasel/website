@@ -1,14 +1,14 @@
-import { Newsletter } from './components/newsletter';
-import GitHubCard from './cards/github';
+import type { Metadata } from 'next';
+import type { FC } from 'react';
 import { AnnouncementCard } from './cards/announcement';
+import GitHubCard from './cards/github';
 import SpotifyCard from './cards/spotify';
 import SteamCard from './cards/steam';
-import { Location } from './components/location';
-import { Wave } from './components/wave';
-import { GitHub } from './components/github';
 import { Avatar } from './components/avatar';
-import type { FC } from 'react';
-import type { Metadata } from 'next';
+import { GitHub } from './components/github';
+import { Location } from './components/location';
+import { Newsletter } from './components/newsletter';
+import { Wave } from './components/wave';
 
 export const metadata: Metadata = {
   title: 'Hayden Bleasel',

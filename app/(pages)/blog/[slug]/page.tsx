@@ -1,13 +1,13 @@
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import { ArrowLeftToLineIcon } from 'lucide-react';
-import { allBlogs } from '@contentlayer/generated';
-import { Mdx } from '@/components/mdx';
-import { Link } from '@/components/link';
 import { Header } from '@/components/header';
+import { Link } from '@/components/link';
+import { Mdx } from '@/components/mdx';
 import { siteUrl } from '@/lib/consts';
-import type { FC } from 'react';
+import { allBlogs } from '@contentlayer/generated';
+import { ArrowLeftToLineIcon } from 'lucide-react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import type { FC } from 'react';
 
 type PageProperties = {
   readonly params: {

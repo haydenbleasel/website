@@ -1,17 +1,17 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
-import remarkGfm from 'remark-gfm';
-import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
-import readingTime from 'reading-time';
-import rehypePresetMinify from 'rehype-preset-minify';
+import type { ComputedFields } from 'contentlayer2/source-files';
 import { extractTocHeadings } from 'pliny/mdx-plugins/remark-toc-headings.js';
+import readingTime from 'reading-time';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import type { Options as RehypeAutoLinkHeadingsOptions } from 'rehype-autolink-headings';
+import rehypePresetMinify from 'rehype-preset-minify';
+import rehypePrettyCode from 'rehype-pretty-code';
+import type { Options as PrettyCodeOptions } from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 import { sqip } from 'sqip';
 import moonlightTheme from './public/moonlight-ii.json' with { type: 'json' };
-import type { Options as PrettyCodeOptions } from 'rehype-pretty-code';
-import type { Options as RehypeAutoLinkHeadingsOptions } from 'rehype-autolink-headings';
-import type { ComputedFields } from 'contentlayer2/source-files';
 
 export const computeFields = <T extends string>({
   openGraphEndpoint = '/api/og',

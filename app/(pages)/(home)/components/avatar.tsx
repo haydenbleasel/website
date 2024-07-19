@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import Profile from './avatar.jpg';
+import Image from 'next/image';
 import type { FC } from 'react';
+import Profile from './avatar.jpg';
 
 export const Avatar: FC = () => (
   <Image

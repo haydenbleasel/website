@@ -1,7 +1,7 @@
 import { Header } from '@/components/header';
-import { ContactForm } from './components/contact-form';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
+import { ContactForm } from './components/contact-form';
 
 const title = 'Contact';
 const description =

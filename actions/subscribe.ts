@@ -1,8 +1,8 @@
 'use server';
 
-import { z } from 'zod';
 import { resend } from '@/lib/resend';
 import { parseError } from '@/lib/utils';
+import { z } from 'zod';
 
 const audienceId = process.env.RESEND_AUDIENCE_ID;
 

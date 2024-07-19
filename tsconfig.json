@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -22,24 +18,13 @@
       }
     ],
     "paths": {
-      "@contentlayer/generated": [
-        "./.contentlayer/generated"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "@contentlayer/generated": ["./.contentlayer/generated"],
+      "@/*": ["./*"]
     },
     "strictNullChecks": true,
     "baseUrl": ".",
     "target": "ES2017"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

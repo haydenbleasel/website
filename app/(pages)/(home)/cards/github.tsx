@@ -1,9 +1,9 @@
 'use client';
 
-import GitHubCalendar from 'react-github-calendar';
-import { useState } from 'react';
 import { Card } from '@/components/card';
+import { useState } from 'react';
 import type { FC } from 'react';
+import GitHubCalendar from 'react-github-calendar';
 
 type Activity = {
   date: string;

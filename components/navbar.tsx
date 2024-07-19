@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 import {
   BriefcaseBusinessIcon,
   CircleUserIcon,
@@ -10,9 +10,9 @@ import {
   NewspaperIcon,
   NotebookPenIcon,
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Link } from './link';
+import { usePathname } from 'next/navigation';
 import type { FC } from 'react';
+import { Link } from './link';
 
 const pages = [
   { name: 'Home', path: '/', icon: HomeIcon },

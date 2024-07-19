@@ -1,9 +1,9 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
 import { subscribe } from '@/actions/subscribe';
 import { cn } from '@/lib/utils';
 import type { FC } from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
 
 const SubmitButton: FC = () => {
   const { pending } = useFormStatus();

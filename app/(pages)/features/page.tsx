@@ -1,7 +1,7 @@
-import { Link } from '@/components/link';
-import speaking from '@/data/speaking.json';
-import features from '@/data/features.json';
 import { Header } from '@/components/header';
+import { Link } from '@/components/link';
+import features from '@/data/features.json';
+import speaking from '@/data/speaking.json';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 

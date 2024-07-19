@@ -1,5 +1,5 @@
-import { get } from '@vercel/edge-config';
 import { cn } from '@/lib/utils';
+import { get } from '@vercel/edge-config';
 import type { ReactElement } from 'react';
 
 export const Location = async (): Promise<ReactElement> => {

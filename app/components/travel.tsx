@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import createGlobe from 'cobe';
-import hexRgb from 'hex-rgb';
 import tailwind from '@/lib/tailwind';
+import createGlobe from 'cobe';
 import type { COBEOptions } from 'cobe';
+import hexRgb from 'hex-rgb';
+import { useEffect, useRef } from 'react';
 import type { FC } from 'react';
 
 const tailwindToRgb = (color: string): [number, number, number] =>
@@ -27,7 +27,6 @@ export const Travel: FC<TravelProperties> = ({ width, height, markers }) => {
     let phi = 0;
 
     if (!canvasReference.current) {
-      // eslint-disable-next-line unicorn/no-useless-undefined
       return undefined;
     }
 

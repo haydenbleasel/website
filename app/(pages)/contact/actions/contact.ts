@@ -1,14 +1,12 @@
-/* eslint-disable no-console */
-
 'use server';
 
-import { revalidatePath } from 'next/cache';
-import { kv } from '@vercel/kv';
-import { Ratelimit } from '@upstash/ratelimit';
-import { headers } from 'next/headers';
+import { formSchema } from '@/lib/form';
 import { resend } from '@/lib/resend';
 import { parseError } from '@/lib/utils';
-import { formSchema } from '@/lib/form';
+import { Ratelimit } from '@upstash/ratelimit';
+import { kv } from '@vercel/kv';
+import { revalidatePath } from 'next/cache';
+import { headers } from 'next/headers';
 
 const from = process.env.RESEND_FROM;
 const to = process.env.RESEND_TO;

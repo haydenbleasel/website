@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-nodejs-modules
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -34,13 +33,11 @@ export const computeFields = <T extends string>({
   readingTime: {
     type: 'string',
     description: 'The estimated time to read the document, in minutes',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     resolve: (doc) => readingTime(doc.body.raw).text,
   },
   toc: {
     type: 'list',
     description: 'The table of contents of the document',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     resolve: async (doc) => extractTocHeadings(doc.body.raw),
   },
   image: {

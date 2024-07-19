@@ -1,5 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-
 import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 

@@ -111,7 +111,6 @@ const withContentlayer = createContentlayerPlugin({
   // Additional Contentlayer config options
 });
 
-// eslint-disable-next-line import/no-mutable-exports
 let config = nextConfig;
 
 if (process.env.ANALYZE === 'true') {

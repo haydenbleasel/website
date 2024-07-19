@@ -1,6 +1,6 @@
-import { get } from '@vercel/edge-config';
-import { updateEdgeConfig } from '@/lib/vercel';
 import { parseError } from '@/lib/utils';
+import { updateEdgeConfig } from '@/lib/vercel';
+import { get } from '@vercel/edge-config';
 
 export type SpotifyProperties = {
   lastUpdated: number;
@@ -104,7 +104,6 @@ export const GET = async (): Promise<Response> => {
   } catch (error) {
     const message = parseError(error);
 
-    // eslint-disable-next-line no-console
     console.error(message);
 
     return new Response(message, { status: 500 });

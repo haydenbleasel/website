@@ -20,15 +20,9 @@
         "description": "Build and test APIs."
       },
       {
-        "name": "VS Code",
-        "href": "https://code.visualstudio.com/",
-        "description": "The code editor for the modern web."
-      },
-      {
-        "name": "GitHub Copilot",
-        "href": "https://github.com/features/copilot/",
-        "description": "AI-powered code completion.",
-        "image": "https://github.githubassets.com/assets/copilot-2023-83117d7c0b8a.png"
+        "name": "Cursor",
+        "href": "https://www.cursor.com/",
+        "description": "The AI code editor."
       },
       {
         "name": "Warp",

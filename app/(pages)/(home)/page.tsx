@@ -34,7 +34,8 @@ const Home = async (): Promise<ReactElement> => {
         priority
       />
       <h1 className="text-3xl leading-tight tracking-tight sm:text-4xl">
-        Hello, I’m Hayden Bleasel. I’m an Australian Design Engineer currently based in {location}.
+        Hello, I’m Hayden Bleasel. I’m an Australian Design Engineer currently
+        based in {location}.
       </h1>
       <Newsletter />
       <div className="prose-img:m-0 prose-p:m-0 grid gap-3 md:grid-cols-3">

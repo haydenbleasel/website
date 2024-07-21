@@ -19,9 +19,7 @@ export const runtime = 'nodejs';
 
 export const generateMetadata = ({ params }: PageProperties): Metadata => {
   const currentPath = params.slug;
-  const page = allBlogs.find(
-    ({ slug }) => slug === currentPath
-  );
+  const page = allBlogs.find(({ slug }) => slug === currentPath);
 
   if (!page) {
     return {};
@@ -32,15 +30,15 @@ export const generateMetadata = ({ params }: PageProperties): Metadata => {
     description: page.description,
     openGraph: page.image
       ? {
-        images: [
-          {
-            url: new URL(page.image, siteUrl).href,
-            width: 1920,
-            height: 1080,
-            alt: page.title,
-          },
-        ],
-      }
+          images: [
+            {
+              url: new URL(page.image, siteUrl).href,
+              width: 1920,
+              height: 1080,
+              alt: page.title,
+            },
+          ],
+        }
       : undefined,
   };
 };
@@ -52,9 +50,7 @@ export const generateStaticParams = (): PageProperties['params'][] =>
 
 const Page: FC<PageProperties> = ({ params }) => {
   const currentPath = params.slug;
-  const page = allBlogs.find(
-    ({ slug }) => slug === currentPath
-  );
+  const page = allBlogs.find(({ slug }) => slug === currentPath);
 
   if (!page) {
     notFound();

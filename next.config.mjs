@@ -1,4 +1,4 @@
-import { withContentCollections } from "@content-collections/next";
+import { withContentCollections } from '@content-collections/next';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { createSecureHeaders } from 'next-secure-headers';
 

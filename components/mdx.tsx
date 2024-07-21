@@ -1,4 +1,4 @@
-import { useMDXComponent } from "@content-collections/mdx/react";
+import { useMDXComponent } from '@content-collections/mdx/react';
 import Image from 'next/image';
 import type { FC, HTMLProps, ReactNode } from 'react';
 import { Video } from './video';

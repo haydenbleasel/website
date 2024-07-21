@@ -25,7 +25,7 @@ const SteamCard = async (): Promise<ReactElement> => {
         </p>
         <div>
           <p className="truncate">🕦 {Math.round(game.playtime / 60)} hours</p>
-          <p className="truncate">🏆 {game.completeAchievements}</p>
+          <p className="truncate">🏆 {game.completeAchievements} achievements</p>
         </div>
       </div>
       <Image

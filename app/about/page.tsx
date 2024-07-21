@@ -9,7 +9,6 @@ import type { Metadata } from 'next';
 import type { StaticImageData } from 'next/image';
 import type { FC } from 'react';
 import { Travel } from '../components/travel';
-import Avatar from './avatar.jpg';
 import Corellium from './corellium.svg';
 import Eververse from './eververse.svg';
 import { InlineImage } from './inline-image';
@@ -17,10 +16,13 @@ import Jellypepper from './jellypepper.svg';
 import Profile from './profile.jpg';
 import Refraction from './refraction.jpg';
 
+const title = 'About';
+const description =
+  'I’m Hayden Bleasel — an Australian Design Engineer currently based in Delray Beach, Florida.';
+
 export const metadata: Metadata = {
-  title: 'About',
-  description:
-    'I’m Hayden Bleasel — an Australian Product Designer and Software Engineer currently based in Delray Beach, Florida.',
+  title,
+  description,
 };
 
 const lived: COBEOptions['markers'] = [
@@ -83,23 +85,7 @@ const About: FC = () => (
     <div className="flex-1">
       <div className="mx-auto max-w-[38rem]">
         <PageLayout>
-          <Image
-            src={Avatar}
-            alt=""
-            width={96}
-            height={96}
-            className={cn(
-              'm-0 block xl:hidden',
-              'h-12 w-12 rounded-full object-cover'
-            )}
-            quality={100}
-            loading="eager"
-            priority
-          />
-          <Header
-            title="About"
-            description="I’m Hayden Bleasel — an Australian Product Designer and Software Engineer currently based in Delray Beach, Florida."
-          />
+          <Header title={title} description={description} />
           <main>
             <p>
               I’m currently the Chief Product Officer at{' '}

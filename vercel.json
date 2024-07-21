@@ -5,10 +5,6 @@
       "schedule": "0 2 * * *"
     },
     {
-      "path": "/api/cron/github",
-      "schedule": "0 2 * * *"
-    },
-    {
       "path": "/api/cron/spotify",
       "schedule": "0/10 * * * *"
     }

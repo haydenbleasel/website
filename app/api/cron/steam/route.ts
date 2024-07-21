@@ -6,6 +6,10 @@ const steamApiKey = process.env.STEAM_API_KEY;
 const vercelToken = process.env.VERCEL_TOKEN;
 const edgeConfigId = process.env.EDGE_CONFIG_ID;
 
+export const maxDuration = 300;
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+
 if (!steamId || !steamApiKey || !vercelToken || !edgeConfigId) {
   throw new Error(
     'Missing Steam ID, Steam API Key, Vercel Token, or Edge Config ID'

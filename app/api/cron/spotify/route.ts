@@ -9,6 +9,10 @@ export type SpotifyProperties = {
   href: string;
 };
 
+export const maxDuration = 300;
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+
 const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
 const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const spotifyRefreshToken = process.env.SPOTIFY_REFRESH_TOKEN;

@@ -4,6 +4,10 @@ import { Octokit } from '@octokit/rest';
 
 const octokit = new Octokit();
 
+export const maxDuration = 300;
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+
 export const GET = async (): Promise<Response> => {
   try {
     const profile = await octokit.rest.users.getByUsername({

@@ -210,7 +210,7 @@ const getRecentlyPlayedGames = async () => {
 
 const getAppDetails = async (appId: number) => {
   const response = await fetch(
-    `https://store.steampowered.com/api/appdetails?appids=${appId}`,
+    `https://store.steampowered.com/api/appdetails?appids=${appId}&key=${steamApiKey}`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -232,7 +232,7 @@ const getAppDetails = async (appId: number) => {
       throw new Error('Invalid response format from Steam API');
     }
 
-    return data;
+    return data[appId];
   } catch {
     throw new Error('Cannot parse response from Steam API: getAppDetails');
   }
@@ -281,11 +281,11 @@ export const GET = async (): Promise<Response> => {
 
     const properties: GameProperties = {
       id: data.appid,
-      image: gameData[data.appid].data.header_image,
+      image: gameData.data.header_image,
       playtime: data.playtime_forever,
-      name: gameData[data.appid].data.name,
+      name: gameData.data.name,
       completeAchievements: complete,
-      totalAchievements: gameData[data.appid].data.achievements.total,
+      totalAchievements: gameData.data.achievements.total,
     };
 
     await updateEdgeConfig('steam', properties);

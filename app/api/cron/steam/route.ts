@@ -22,7 +22,6 @@ export type GameProperties = {
   playtime: number;
   name: string;
   completeAchievements: number;
-  totalAchievements: number;
 };
 
 type GetRecentlyPlayedGamesResponse = {
@@ -208,36 +207,6 @@ const getRecentlyPlayedGames = async () => {
   }
 };
 
-const getAppDetails = async (appId: number) => {
-  const response = await fetch(
-    `https://store.steampowered.com/api/appdetails?appids=${appId}&key=${steamApiKey}`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      next: {
-        revalidate: 0,
-      },
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error('Invalid response format from Steam API: getAppDetails');
-  }
-
-  try {
-    const data = (await response.json()) as AppDetailsResponse;
-
-    if (!data[appId].success) {
-      throw new Error('Invalid response format from Steam API');
-    }
-
-    return data[appId];
-  } catch {
-    throw new Error('Cannot parse response from Steam API: getAppDetails');
-  }
-};
-
 const getUserStatsForGame = async (appId: number) => {
   const response = await fetch(
     `https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=${steamApiKey}&steamid=${steamId}&format=json`,
@@ -270,22 +239,17 @@ export const GET = async (): Promise<Response> => {
   try {
     const data = await getRecentlyPlayedGames();
 
-    const [gameData, userStatsData] = await Promise.all([
-      getAppDetails(data.appid),
-      getUserStatsForGame(data.appid),
-    ]);
-
+    const userStatsData = await getUserStatsForGame(data.appid);
     const complete = userStatsData.playerstats.achievements.filter(
       (achievement) => achievement.achieved === 1
     ).length;
 
     const properties: GameProperties = {
       id: data.appid,
-      image: gameData.data.header_image,
+      image: `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${data.appid}/header.jpg`,
       playtime: data.playtime_forever,
-      name: gameData.data.name,
+      name: data.name,
       completeAchievements: complete,
-      totalAchievements: gameData.data.achievements.total,
     };
 
     await updateEdgeConfig('steam', properties);

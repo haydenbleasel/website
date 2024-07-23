@@ -42,7 +42,7 @@ const Tool: FC<{
       )}
     >
       <Image
-        src={`https://img.logo.dev/${hostname.replace('www.', '')}token=${logoDevToken}`}
+        src={`https://img.logo.dev/${hostname.replace('www.', '')}?token=${logoDevToken}`}
         alt={hostname}
         width={32}
         height={32}

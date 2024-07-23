@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   description,
 };
 
+const logoDevToken = process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN;
+
+if (!logoDevToken) {
+  throw new Error('NEXT_PUBLIC_LOGO_DEV_TOKEN is not set');
+}
+
 const Tool: FC<{
   readonly data: {
     readonly href: string;
@@ -36,7 +42,7 @@ const Tool: FC<{
       )}
     >
       <Image
-        src={`https://logo.clearbit.com/${hostname.replace('www.', '')}`}
+        src={`https://img.logo.dev/${hostname.replace('www.', '')}token=${logoDevToken}`}
         alt={hostname}
         width={32}
         height={32}

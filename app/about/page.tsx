@@ -154,11 +154,6 @@ const About: FC = () => (
               />
             </div>
             <p>
-              I’ve had the privilege of working with many fantastic companies
-              including Google, Palantir, Nike, Toyota, National Geographic,
-              Timberland, Canva, Westfield, Australian Ethical and many more.
-            </p>
-            <p>
               I have a Bachelor of Business (Management) and Bachelor of Science
               in Information Technology (Enterprise Systems Development) from
               the University of Technology, Sydney.

@@ -109,8 +109,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(@content-collections/core@0.6.2(typescript@5.5.3))(next@15.0.0-rc.0(@opentelemetry/api@1.8.0)(babel-plugin-react-compiler@0.0.0-experimental-938cd9a-20240601)(react-dom@19.0.0-rc-935180c7e0-20240524(react@19.0.0-rc-935180c7e0-20240524))(react@19.0.0-rc-935180c7e0-20240524))
       '@types/node':
-        specifier: ^20
-        version: 20.13.0
+        specifier: ^22
+        version: 22.0.2
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -1524,8 +1524,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@20.13.0':
-    resolution: {integrity: sha512-FM6AOb3khNkNIXPnHFDYaHerSv8uN22C91z098AnGccVu+Pcdhi+pNUFDi0iLmPIsVE0JBD0KVS7mzUYt4nRzQ==}
+  '@types/node@22.0.2':
+    resolution: {integrity: sha512-yPL6DyFwY5PiMVEwymNeqUTKsDczQBJ/5T7W/46RwLU/VH+AA8aT5TZkvBviLKLbbm0hlfftEkGrNzfRk/fofQ==}
 
   '@types/prismjs@1.26.4':
     resolution: {integrity: sha512-rlAnzkW2sZOjbqZ743IHUhFcvzaGbqijwOu8QZnZCjfQzBqFE3s4lOTJEsxikImav9uzz/42I+O7YUs1mWgMlg==}
@@ -3516,8 +3516,8 @@ packages:
   ultracite@4.0.2:
     resolution: {integrity: sha512-rxI71+gMw4ZxCyBu+aythF/phqnB/TJ/i9h4ko2y5/o0NM0ESQoWCI1A4MFpeKYF+zY21w8Xy11ZH8HiDeBHbw==}
 
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+  undici-types@6.11.1:
+    resolution: {integrity: sha512-mIDEX2ek50x0OlRgxryxsenE5XaQD4on5U2inY7RApK3SOJpofyw7uW2AyfMKkhAxXIceo2DeWGVGwyvng1GNQ==}
 
   unified@11.0.4:
     resolution: {integrity: sha512-apMPnyLjAX+ty4OrNap7yumyVAMlKx5IWU2wlzzUdYJO9A8f1p9m/gywF/GM2ZDFcjQPrx59Mc90KwmxsoklxQ==}
@@ -4954,9 +4954,9 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@20.13.0':
+  '@types/node@22.0.2':
     dependencies:
-      undici-types: 5.26.5
+      undici-types: 6.11.1
 
   '@types/prismjs@1.26.4': {}
 
@@ -6854,7 +6854,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.13.0
+      '@types/node': 22.0.2
       long: 5.2.3
 
   qs@6.12.1:
@@ -7584,7 +7584,7 @@ snapshots:
 
   ultracite@4.0.2: {}
 
-  undici-types@5.26.5: {}
+  undici-types@6.11.1: {}
 
   unified@11.0.4:
     dependencies:

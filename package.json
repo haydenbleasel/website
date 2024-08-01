@@ -36,7 +36,7 @@
     "rehype-preset-minify": "^7.0.0",
     "resend": "^3.4.0",
     "sonner": "^1.5.0",
-    "tailwind-merge": "^2.3.0",
+    "tailwind-merge": "^2.4.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

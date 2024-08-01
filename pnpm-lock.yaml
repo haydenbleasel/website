@@ -41,9 +41,6 @@ importers:
       cobe:
         specifier: ^0.6.3
         version: 0.6.3
-      contentlayer2:
-        specifier: ^0.4.6
-        version: 0.4.6(esbuild@0.19.12)
       geist:
         specifier: ^1.3.0
         version: 1.3.0(next@15.0.0-rc.0(@opentelemetry/api@1.8.0)(babel-plugin-react-compiler@0.0.0-experimental-938cd9a-20240601)(react-dom@19.0.0-rc-935180c7e0-20240524(react@19.0.0-rc-935180c7e0-20240524))(react@19.0.0-rc-935180c7e0-20240524))

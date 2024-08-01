@@ -11,7 +11,7 @@
     "bump-deps": "npx npm-check-updates -u && npm install"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^14.2.4",
+    "@next/bundle-analyzer": "^14.2.5",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.1.1",
     "@tailwindcss/typography": "^0.5.13",

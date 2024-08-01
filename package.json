@@ -16,7 +16,7 @@
     "@tailwindcss/typography": "^0.5.13",
     "@upstash/ratelimit": "^1.2.1",
     "@vercel/analytics": "^1.3.1",
-    "@vercel/edge-config": "^1.2.0",
+    "@vercel/edge-config": "^1.2.1",
     "@vercel/kv": "^2.0.0",
     "babel-plugin-react-compiler": "0.0.0-experimental-938cd9a-20240601",
     "clsx": "^2.1.1",

@@ -1,15 +1,24 @@
-'use client';
-
 import { Card } from '@/components/card';
-import { useState } from 'react';
-import type { FC } from 'react';
-import GitHubCalendar from 'react-github-calendar';
+import tailwind from '@/lib/tailwind';
+import { unstable_cache } from 'next/cache';
+import type { ReactElement } from 'react';
+import ActivityCalendar from 'rsc-activity-calendar';
+import type { Activity } from 'rsc-activity-calendar';
 
-type Activity = {
-  date: string;
-  count: number;
-  level: 0 | 1 | 2 | 3 | 4;
-};
+const getCachedContributions = unstable_cache(
+  async () => {
+    const response = await fetch('https://github-contributions-api.jogruber.de/v4/haydenbleasel');
+    const data = (await response.json()) as {
+      total: Record<number, string>,
+      contributions: Activity[];
+    };
+    const total = data.total[new Date().getFullYear()];
+
+    return { contributions: data.contributions, total };
+  },
+  ['github-contributions'],
+  { revalidate: 60 * 60 * 24 },
+);
 
 const getContributions = (
   contributions: Activity[],
@@ -44,8 +53,10 @@ const getContributions = (
   });
 };
 
-const GitHubCard: FC = () => {
-  const [total, setTotal] = useState(0);
+const GitHubCard = async (): Promise<ReactElement> => {
+  const { contributions } = await getCachedContributions();
+  const data = getContributions(contributions, 0);
+  const total = data.reduce((newTotal, { count }) => newTotal + count, 0);
 
   return (
     <Card title="GitHub Activity" className="p-4">
@@ -54,23 +65,25 @@ const GitHubCard: FC = () => {
           {total} contributions in the last year
         </p>
         <div className="flex flex-col gap-[3px]">
-          <GitHubCalendar
-            username="haydenbleasel"
-            hideMonthLabels
+          <ActivityCalendar
             hideColorLegend
             hideTotalCount
-            showWeekdayLabels={false}
-            colorScheme="light"
-            transformData={(data) => {
-              if (!total) {
-                const commits = data.reduce(
-                  (newTotal, { count }) => newTotal + count,
-                  0
-                );
-                setTotal(commits);
-              }
-
-              return getContributions(data, 0);
+            data={data}
+            theme={{
+              light: [
+                tailwind.theme.colors.neutral[200],
+                tailwind.theme.colors.orange[200],
+                tailwind.theme.colors.orange[400],
+                tailwind.theme.colors.orange[600],
+                tailwind.theme.colors.orange[800]
+              ],
+              dark: [
+                tailwind.theme.colors.neutral[700],
+                tailwind.theme.colors.orange[200],
+                tailwind.theme.colors.orange[400],
+                tailwind.theme.colors.orange[600],
+                tailwind.theme.colors.orange[800]
+              ],
             }}
           />
         </div>

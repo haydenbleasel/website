@@ -1,5 +1,6 @@
 import { Card } from '@/components/card';
 import tailwind from '@/lib/tailwind';
+import { subYears } from 'date-fns';
 import { unstable_cache } from 'next/cache';
 import type { ReactElement } from 'react';
 import ActivityCalendar from 'rsc-activity-calendar';
@@ -56,7 +57,10 @@ const getContributions = (
 const GitHubCard = async (): Promise<ReactElement> => {
   const { contributions } = await getCachedContributions();
   const data = getContributions(contributions, 0);
-  const total = data.reduce((newTotal, { count }) => newTotal + count, 0);
+  const oneYearAgo = subYears(new Date(), 1);
+  const total = contributions.
+    filter((activity) => new Date(activity.date) >= oneYearAgo)
+    .reduce((newTotal, { count }) => newTotal + count, 0);
 
   return (
     <Card title="GitHub Activity" className="p-4">

@@ -22,10 +22,6 @@ const nextConfig = {
     ],
   },
 
-  experimental: {
-    reactCompiler: true,
-  },
-
   headers() {
     return [
       {

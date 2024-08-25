@@ -1,5 +1,6 @@
 import { parseError } from '@/lib/utils';
 import { updateEdgeConfig } from '@/lib/vercel';
+import ky from 'ky';
 
 export type SpotifyProperties = {
   lastUpdated: number;
@@ -22,28 +23,27 @@ if (!spotifyClientId || !spotifyClientSecret || !spotifyRefreshToken) {
 }
 
 const getAccessToken = async (refreshToken: string): Promise<string> => {
-  const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: `Basic ${Buffer.from(
-        `${spotifyClientId}:${spotifyClientSecret}`
-      ).toString('base64')}`,
-    },
-    body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token: refreshToken,
-    }),
-    next: {
-      revalidate: 0,
-    },
-  });
+  const tokenResponse = await ky
+    .post<{
+      access_token: string;
+    }>('https://accounts.spotify.com/api/token', {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Basic ${Buffer.from(
+          `${spotifyClientId}:${spotifyClientSecret}`
+        ).toString('base64')}`,
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      }),
+      next: {
+        revalidate: 0,
+      },
+    })
+    .json();
 
-  const tokenData = (await tokenResponse.json()) as {
-    access_token: string;
-  };
-
-  return tokenData.access_token;
+  return tokenResponse.access_token;
 };
 
 export const GET = async (): Promise<Response> => {

@@ -54,7 +54,7 @@ export const contact = async (
       from,
       to,
       subject: `New ${data.type} message from ${data.name}`,
-      reply_to: data.email,
+      replyTo: data.email,
       text: data.message,
     });
 

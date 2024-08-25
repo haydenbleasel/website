@@ -1,7 +1,8 @@
+import { Skeleton } from '@/components/skeleton';
 import { get } from '@vercel/edge-config';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import type { ReactElement } from 'react';
+import { type ReactElement, Suspense } from 'react';
 import Avatar from './avatar.jpg';
 import { AnnouncementCard } from './cards/announcement';
 import GitHubCard from './cards/github';
@@ -40,12 +41,28 @@ const Home = async (): Promise<ReactElement> => {
       <Newsletter />
       <div className="prose-img:m-0 prose-p:m-0 grid gap-3 md:grid-cols-3">
         <div className="md:col-span-2">
-          <GitHubCard />
+          <Suspense
+            fallback={<Skeleton className="w-full rounded-2xl h-[222px]" />}
+          >
+            <GitHubCard />
+          </Suspense>
         </div>
-        <AnnouncementCard />
-        <SpotifyCard />
+        <Suspense
+          fallback={<Skeleton className="w-full rounded-2xl h-[222px]" />}
+        >
+          <AnnouncementCard />
+        </Suspense>
+        <Suspense
+          fallback={<Skeleton className="w-full rounded-2xl h-[218px]" />}
+        >
+          <SpotifyCard />
+        </Suspense>
         <div className="md:col-span-2">
-          <SteamCard />
+          <Suspense
+            fallback={<Skeleton className="w-full rounded-2xl h-[218px]" />}
+          >
+            <SteamCard />
+          </Suspense>
         </div>
       </div>
     </>

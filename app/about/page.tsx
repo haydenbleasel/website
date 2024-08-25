@@ -1,14 +1,13 @@
-import Image from 'next/image';
-
 import PageLayout from '@/app/(pages)/layout';
 import { Header } from '@/components/header';
 import { Link } from '@/components/link';
 import { cn } from '@/lib/utils';
 import type { COBEOptions } from 'cobe';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import type { StaticImageData } from 'next/image';
 import type { FC } from 'react';
-import { Travel } from '../components/travel';
+import { Travel } from '../../components/travel';
 import Corellium from './corellium.svg';
 import Eververse from './eververse.svg';
 import { InlineImage } from './inline-image';

@@ -34,9 +34,11 @@ const SteamCard = async (): Promise<ReactElement> => {
       <Image
         src={game.image}
         alt=""
-        width={300}
-        height={300}
-        className="m-0 shrink-0 rounded"
+        width={460}
+        height={215}
+        className="m-0 shrink-0 rounded w-full max-w-[300px] h-auto"
+        sizes="300px"
+        quality={100}
       />
     </Card>
   );

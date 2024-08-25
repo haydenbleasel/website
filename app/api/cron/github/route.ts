@@ -1,6 +1,6 @@
 import { parseError } from "@/lib/utils";
 import { updateEdgeConfig } from "@/lib/vercel";
-import { subYears } from "date-fns";
+import { endOfWeek, startOfWeek, subDays, subWeeks, subYears } from "date-fns";
 import type { Activity } from "rsc-activity-calendar";
 
 export type GitHubProperties = {
@@ -13,15 +13,8 @@ export const revalidate = 0;
 export const dynamic = 'force-dynamic';
 
 const today = new Date();
-const oneWeekInMilliseconds = 7 * 24 * 60 * 60 * 1000;
-const weeksToGoBack = 26;
-const currentWeekDay = today.getDay();
-const endOfLastWeek = new Date(
-  today.getTime() - (currentWeekDay + 1) * 24 * 60 * 60 * 1000
-);
-const startOf26WeeksAgo = new Date(
-  endOfLastWeek.getTime() - weeksToGoBack * oneWeekInMilliseconds
-);
+const endOfLastWeek = endOfWeek(subDays(today, 7));
+const startOf26WeeksAgo = startOfWeek(subWeeks(endOfLastWeek, 26));
 
 export const GET = async (): Promise<Response> => {
   try {

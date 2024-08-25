@@ -50,6 +50,9 @@ importers:
       hex-rgb:
         specifier: ^5.0.0
         version: 5.0.0
+      ky:
+        specifier: ^1.7.1
+        version: 1.7.1
       lucide-react:
         specifier: ^0.400.0
         version: 0.400.0(react@18.3.1)
@@ -2305,6 +2308,10 @@ packages:
   kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
+
+  ky@1.7.1:
+    resolution: {integrity: sha512-KJ/IXXkFhTDqxcN8wKqMXk1/UoOpc0UnOB6H7QcqlPInh/M2B5Mlj+i9exez1w4RSwJhNFmHiUDPriAYFwb5VA==}
+    engines: {node: '>=18'}
 
   leac@0.6.0:
     resolution: {integrity: sha512-y+SqErxb8h7nE/fiEX07jsbuhrpO9lL8eca7/Y1nuWV2moNlXhyd59iDGcRf6moVyDMbmTNzL40SUyrFU/yDpg==}
@@ -5725,6 +5732,8 @@ snapshots:
       - '@types/react-dom'
 
   kind-of@6.0.3: {}
+
+  ky@1.7.1: {}
 
   leac@0.6.0: {}
 

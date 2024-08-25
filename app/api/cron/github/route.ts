@@ -1,6 +1,7 @@
 import { parseError } from "@/lib/utils";
 import { updateEdgeConfig } from "@/lib/vercel";
 import { endOfWeek, startOfWeek, subDays, subWeeks, subYears } from "date-fns";
+import ky from "ky";
 import type { Activity } from "rsc-activity-calendar";
 
 export type GitHubProperties = {
@@ -19,16 +20,15 @@ const oneYearAgo = subYears(today, 1);
 
 export const GET = async (): Promise<Response> => {
   try {
-    const response = await fetch('https://github-contributions-api.jogruber.de/v4/haydenbleasel');
-    const { contributions } = await response.json() as { contributions: Activity[] };
+    const response = await ky.get<{ contributions: Activity[] }>('https://github-contributions-api.jogruber.de/v4/haydenbleasel').json();
     
     const content: GitHubProperties = {
-      data: contributions.filter(activity => {
+      data: response.contributions.filter((activity) => {
         const activityDate = new Date(activity.date);
         
         return activityDate <= endOfLastWeek && activityDate >= startOf26WeeksAgo;
       }),
-      total: contributions.reduce((total, { date, count }) => 
+      total: response.contributions.reduce((total, { date, count }) => 
         new Date(date) >= oneYearAgo ? total + count : total, 0
       )
     };

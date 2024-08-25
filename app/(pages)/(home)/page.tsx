@@ -37,7 +37,7 @@ const Home: FC = () => (
       based in{' '}
       <Suspense
         fallback={
-          <Skeleton className="w-[300px] h-8 inline-block translate-y-1" />
+          <Skeleton className="inline-block h-8 w-[300px] translate-y-1" />
         }
       >
         <Location />
@@ -48,24 +48,24 @@ const Home: FC = () => (
     <div className="prose-img:m-0 prose-p:m-0 grid gap-3 md:grid-cols-3">
       <div className="md:col-span-2">
         <Suspense
-          fallback={<Skeleton className="w-full rounded-2xl h-[222px]" />}
+          fallback={<Skeleton className="h-[222px] w-full rounded-2xl" />}
         >
           <GitHubCard />
         </Suspense>
       </div>
       <Suspense
-        fallback={<Skeleton className="w-full rounded-2xl h-[222px]" />}
+        fallback={<Skeleton className="h-[222px] w-full rounded-2xl" />}
       >
         <AnnouncementCard />
       </Suspense>
       <Suspense
-        fallback={<Skeleton className="w-full rounded-2xl h-[218px]" />}
+        fallback={<Skeleton className="h-[218px] w-full rounded-2xl" />}
       >
         <SpotifyCard />
       </Suspense>
       <div className="md:col-span-2">
         <Suspense
-          fallback={<Skeleton className="w-full rounded-2xl h-[218px]" />}
+          fallback={<Skeleton className="h-[218px] w-full rounded-2xl" />}
         >
           <SteamCard />
         </Suspense>

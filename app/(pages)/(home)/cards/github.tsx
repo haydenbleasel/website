@@ -23,6 +23,7 @@ const GitHubCard = async (): Promise<ReactElement> => {
             hideColorLegend
             hideTotalCount
             hideMonthLabels
+            weekStart={1}
             data={github.data}
             theme={{
               light: [

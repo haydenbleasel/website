@@ -36,7 +36,6 @@ const SteamCard = async (): Promise<ReactElement> => {
         alt=""
         width={300}
         height={300}
-        unoptimized
         className="m-0 shrink-0 rounded"
       />
     </Card>

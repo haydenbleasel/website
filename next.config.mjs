@@ -8,7 +8,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
-        hostname: 'steamcdn-a.akamaihd.net',
+        hostname: 'shared.akamai.steamstatic.com',
         protocol: 'https',
       },
       {

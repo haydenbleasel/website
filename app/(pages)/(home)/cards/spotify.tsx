@@ -23,7 +23,6 @@ const SpotifyCard = async (): Promise<ReactElement> => {
         width={300}
         height={300}
         className="h-12 w-12 shrink-0 rounded"
-        unoptimized
       />
       <p className="text-neutral-500 text-sm dark:text-neutral-400">
         <Link href={song.href}>{song.name}</Link> by {song.artist}

@@ -1,8 +1,8 @@
-import { parseError } from "@/lib/utils";
-import { updateEdgeConfig } from "@/lib/vercel";
-import { endOfWeek, startOfWeek, subDays, subWeeks, subYears } from "date-fns";
-import ky from "ky";
-import type { Activity } from "rsc-activity-calendar";
+import { parseError } from '@/lib/utils';
+import { updateEdgeConfig } from '@/lib/vercel';
+import { endOfWeek, startOfWeek, subDays, subWeeks, subYears } from 'date-fns';
+import ky from 'ky';
+import type { Activity } from 'rsc-activity-calendar';
 
 export type GitHubProperties = {
   total: number;
@@ -20,17 +20,25 @@ const oneYearAgo = subYears(today, 1);
 
 export const GET = async (): Promise<Response> => {
   try {
-    const response = await ky.get<{ contributions: Activity[] }>('https://github-contributions-api.jogruber.de/v4/haydenbleasel').json();
-    
+    const response = await ky
+      .get<{ contributions: Activity[] }>(
+        'https://github-contributions-api.jogruber.de/v4/haydenbleasel'
+      )
+      .json();
+
     const content: GitHubProperties = {
       data: response.contributions.filter((activity) => {
         const activityDate = new Date(activity.date);
-        
-        return activityDate <= endOfLastWeek && activityDate >= startOf26WeeksAgo;
+
+        return (
+          activityDate <= endOfLastWeek && activityDate >= startOf26WeeksAgo
+        );
       }),
-      total: response.contributions.reduce((total, { date, count }) => 
-        new Date(date) >= oneYearAgo ? total + count : total, 0
-      )
+      total: response.contributions.reduce(
+        (total, { date, count }) =>
+          new Date(date) >= oneYearAgo ? total + count : total,
+        0
+      ),
     };
 
     await updateEdgeConfig('github', content);

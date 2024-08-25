@@ -30,14 +30,14 @@ const GitHubCard = async (): Promise<ReactElement> => {
                 tailwind.theme.colors.orange[200],
                 tailwind.theme.colors.orange[400],
                 tailwind.theme.colors.orange[600],
-                tailwind.theme.colors.orange[800]
+                tailwind.theme.colors.orange[800],
               ],
               dark: [
                 tailwind.theme.colors.neutral[700],
                 tailwind.theme.colors.orange[200],
                 tailwind.theme.colors.orange[400],
                 tailwind.theme.colors.orange[600],
-                tailwind.theme.colors.orange[800]
+                tailwind.theme.colors.orange[800],
               ],
             }}
           />

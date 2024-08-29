@@ -1,6 +1,6 @@
 import { parseError } from '@/lib/utils';
 import { updateEdgeConfig } from '@/lib/vercel';
-import { endOfWeek, startOfWeek, subDays, subWeeks, subYears } from 'date-fns';
+import { endOfWeek, subDays, subYears } from 'date-fns';
 import ky from 'ky';
 import type { Activity } from 'rsc-activity-calendar';
 
@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic';
 
 const today = new Date();
 const endOfLastWeek = endOfWeek(subDays(today, 7));
-const startOf26WeeksAgo = startOfWeek(subWeeks(endOfLastWeek, 26));
+const startDate = subDays(endOfLastWeek, 182);
 const oneYearAgo = subYears(today, 1);
 
 export const GET = async (): Promise<Response> => {
@@ -30,9 +30,7 @@ export const GET = async (): Promise<Response> => {
       data: response.contributions.filter((activity) => {
         const activityDate = new Date(activity.date);
 
-        return (
-          activityDate <= endOfLastWeek && activityDate >= startOf26WeeksAgo
-        );
+        return activityDate <= endOfLastWeek && activityDate >= startDate;
       }),
       total: response.contributions.reduce(
         (total, { date, count }) =>

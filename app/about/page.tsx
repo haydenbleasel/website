@@ -135,6 +135,22 @@ const About: FC = () => (
               Twistag.
             </p>
             <p>
+              I&apos;m a huge proponent of Open Source Software. Currently I
+              maintain{' '}
+              <Link href="https://www.next-forge.com/">next-forge</Link>,{' '}
+              <Link href="https://www.ultracite.dev/">Ultracite</Link> and a
+              number of other{' '}
+              <Link href="https://github.com/haydenbleasel">projects</Link>. I
+              also designed <Link href="https://eslint.org/">eslint.org</Link>,{' '}
+              <Link href="https://nodejs.org/">nodejs.org</Link> and{' '}
+              <Link href="https://plugins.swc.rs/">swc plugins</Link>. You can
+              sponsor my work on{' '}
+              <Link href="https://github.com/sponsors/haydenbleasel">
+                GitHub
+              </Link>
+              .
+            </p>
+            <p>
               I&apos;ve lived in Sydney, Palo Alto and now Florida; but
               I&apos;ve also visited a few other places around the world.
               Eventually I&apos;ll make it everywhere.
@@ -158,10 +174,7 @@ const About: FC = () => (
               the University of Technology, Sydney.
             </p>
             <p>
-              In my spare time, I enjoy working out, building open source
-              projects like{' '}
-              <Link href="https://www.next-forge.com/">next-forge</Link> and{' '}
-              <Link href="https://www.ultracite.dev/">Ultracite</Link>, flying
+              In my spare time, I enjoy working out, building my ideas, flying
               my{' '}
               <Link href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2">
                 drone

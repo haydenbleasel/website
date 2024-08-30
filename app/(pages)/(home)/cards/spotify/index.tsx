@@ -35,7 +35,7 @@ const SpotifyCard = async (): Promise<ReactElement> => {
           alt=""
           width={640}
           height={640}
-          className="absolute rounded-full h-14 w-14 shrink-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="absolute -rotate-12 rounded-full h-14 w-14 shrink-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           sizes="56px"
           quality={100}
         />

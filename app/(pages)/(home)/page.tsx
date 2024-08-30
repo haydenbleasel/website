@@ -33,7 +33,7 @@ const Home: FC = () => (
       loading="eager"
       priority
     />
-    <h1 className="text-3xl leading-tight tracking-tight sm:text-4xl">
+    <h1 className="text-3xl leading-tight tracking-[-0.045em] sm:text-4xl">
       Hello, I’m Hayden Bleasel. I’m an Australian Design Engineer currently
       based in{' '}
       <Suspense

@@ -37,6 +37,10 @@ export type TypefullyProperties = {
   hasImages: boolean;
 };
 
+export const maxDuration = 300;
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+
 export const GET = async (): Promise<Response> => {
   try {
     const response = await ky

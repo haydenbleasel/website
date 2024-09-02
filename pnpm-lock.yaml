@@ -121,8 +121,8 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.42)
       fumadocs-core:
-        specifier: ^13.4.0
-        version: 13.4.0(@types/react@18.3.5)(next@14.2.7(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^13.4.3
+        version: 13.4.3(@types/react@18.3.5)(next@14.2.7(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       postcss:
         specifier: ^8
         version: 8.4.42
@@ -1295,14 +1295,17 @@ packages:
   '@selderee/plugin-htmlparser2@0.11.0':
     resolution: {integrity: sha512-P33hHGdldxGabLFjPPpaTxVolMrzrcegejx+0GxjrIb9Zv48D8yAIA/QTDR2dFl7Uz7urX8aX6+5bCZslr+gWQ==}
 
-  '@shikijs/core@1.14.1':
-    resolution: {integrity: sha512-KyHIIpKNaT20FtFPFjCQB5WVSTpLR/n+jQXhWHWVUMm9MaOaG9BGOG0MSyt7yA4+Lm+4c9rTc03tt3nYzeYSfw==}
+  '@shikijs/core@1.16.1':
+    resolution: {integrity: sha512-aI0hBtw+a6KsJp2jcD4YuQqKpeCbURMZbhHVozDknJpm+KJqeMRkEnfBC8BaKE/5XC+uofPgCLsa/TkTk0Ba0w==}
 
-  '@shikijs/rehype@1.14.1':
-    resolution: {integrity: sha512-52L8RZ8eJ4t7jWk5jAl5fh5whAmseL5TJezZuWogC6GH5X0JZhWxPxk2+Dg3tH/Ga3447HdzAzEVGkJmXX3o3A==}
+  '@shikijs/rehype@1.16.1':
+    resolution: {integrity: sha512-6GM4yvvs4iz9JYaKWww/02tkOK3nBkmK1j2IcRd8y4/LKnDrv2Nm/TeNohYkZG8CjX8UQfLlBQB5nCXD2OMSgg==}
 
-  '@shikijs/transformers@1.14.1':
-    resolution: {integrity: sha512-JJqL8QBVCJh3L61jqqEXgFq1cTycwjcGj7aSmqOEsbxnETM9hRlaB74QuXvY/fVJNjbNt8nvWo0VwAXKvMSLRg==}
+  '@shikijs/transformers@1.16.1':
+    resolution: {integrity: sha512-mfbe4YMov+1eyIBU3F6BtaPmLgDkRQaVse8xsBlKTVAcNF3cbZMRCyUz2N6gJOMKLJiv9T5gapBPbRxrDMuoxA==}
+
+  '@shikijs/vscode-textmate@9.2.0':
+    resolution: {integrity: sha512-5FinaOp6Vdh/dl4/yaOTh0ZeKch+rYS8DUb38V3GMKYVkdqzxw53lViRKUYkVILRiVQT7dcPC7VvAKOR73zVtQ==}
 
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
@@ -1890,8 +1893,8 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  fumadocs-core@13.4.0:
-    resolution: {integrity: sha512-44kbRHQxQVUVFLh+zRDerjVmaRTyapHSfPVlok4tY7c1hWI6qzD0PyebnNQvStvrS4onSWswmzBJ+7dmEoRgkw==}
+  fumadocs-core@13.4.3:
+    resolution: {integrity: sha512-gz1SDqoV5ndwft5Vh9zktGGXnOUbcAunkKZ3TEf6RMv7UlPgxad98phppkzrBAsJen1h3lZkzphja0wUgpjIdQ==}
     peerDependencies:
       next: '>= 14.1.0'
       react: '>= 18'
@@ -2585,8 +2588,8 @@ packages:
   not@0.1.0:
     resolution: {integrity: sha512-5PDmaAsVfnWUgTUbJ3ERwn7u79Z0dYxN9ErxCpVJJqe2RK0PJ3z+iFUxuqjwtlDDegXvtWoxD/3Fzxox7tFGWA==}
 
-  npm-to-yarn@2.2.1:
-    resolution: {integrity: sha512-O/j/ROyX0KGLG7O6Ieut/seQ0oiTpHF2tXAcFbpdTLQFiaNtkyTXXocM1fwpaa60dg1qpWj0nHlbNhx6qwuENQ==}
+  npm-to-yarn@3.0.0:
+    resolution: {integrity: sha512-76YnmsbfrYp0tMsWxM0RNX0Vs+x8JxpJGu6B/jDn4lW8+laiTcKmKi9MeMh4UikO4RkJ1oqURoDy9bXJmMXS6A==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   nth-check@2.1.1:
@@ -3028,8 +3031,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@1.14.1:
-    resolution: {integrity: sha512-FujAN40NEejeXdzPt+3sZ3F2dx1U24BY2XTY01+MG8mbxCiA2XukXdcbyMyLAHJ/1AUUnQd1tZlvIjefWWEJeA==}
+  shiki@1.16.1:
+    resolution: {integrity: sha512-tCJIMaxDVB1mEIJ5TvfZU7kCPB5eo9fli5+21Olc/bmyv+w8kye3JOp+LZRmGkAyT71hrkefQhTiY+o9mBikRQ==}
 
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -3976,7 +3979,7 @@ snapshots:
       remark-parse: 11.0.0
       remark-rehype: 11.1.0
       source-map: 0.7.4
-      unified: 11.0.4
+      unified: 11.0.5
       unist-util-position-from-estree: 2.0.0
       unist-util-stringify-position: 4.0.0
       unist-util-visit: 5.0.0
@@ -4449,22 +4452,25 @@ snapshots:
       domhandler: 5.0.3
       selderee: 0.11.0
 
-  '@shikijs/core@1.14.1':
+  '@shikijs/core@1.16.1':
     dependencies:
+      '@shikijs/vscode-textmate': 9.2.0
       '@types/hast': 3.0.4
 
-  '@shikijs/rehype@1.14.1':
+  '@shikijs/rehype@1.16.1':
     dependencies:
-      '@shikijs/transformers': 1.14.1
+      '@shikijs/transformers': 1.16.1
       '@types/hast': 3.0.4
       hast-util-to-string: 3.0.0
-      shiki: 1.14.1
+      shiki: 1.16.1
       unified: 11.0.5
       unist-util-visit: 5.0.0
 
-  '@shikijs/transformers@1.14.1':
+  '@shikijs/transformers@1.16.1':
     dependencies:
-      shiki: 1.14.1
+      shiki: 1.16.1
+
+  '@shikijs/vscode-textmate@9.2.0': {}
 
   '@swc/counter@0.1.3': {}
 
@@ -5073,17 +5079,17 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  fumadocs-core@13.4.0(@types/react@18.3.5)(next@14.2.7(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  fumadocs-core@13.4.3(@types/react@18.3.5)(next@14.2.7(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.4
-      '@shikijs/rehype': 1.14.1
-      '@shikijs/transformers': 1.14.1
+      '@shikijs/rehype': 1.16.1
+      '@shikijs/transformers': 1.16.1
       flexsearch: 0.7.21
       github-slugger: 2.0.0
       image-size: 1.1.1
       negotiator: 0.6.3
       next: 14.2.7(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      npm-to-yarn: 2.2.1
+      npm-to-yarn: 3.0.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-remove-scroll: 2.5.10(@types/react@18.3.5)(react@18.3.1)
@@ -5091,7 +5097,7 @@ snapshots:
       remark-gfm: 4.0.0
       remark-mdx: 3.0.1
       scroll-into-view-if-needed: 3.1.0
-      shiki: 1.14.1
+      shiki: 1.16.1
       swr: 2.2.5(react@18.3.1)
       unist-util-visit: 5.0.0
     transitivePeerDependencies:
@@ -6156,7 +6162,7 @@ snapshots:
 
   not@0.1.0: {}
 
-  npm-to-yarn@2.2.1: {}
+  npm-to-yarn@3.0.0: {}
 
   nth-check@2.1.1:
     dependencies:
@@ -6655,7 +6661,7 @@ snapshots:
       '@types/mdast': 4.0.4
       mdast-util-frontmatter: 2.0.1
       micromark-extension-frontmatter: 2.0.0
-      unified: 11.0.4
+      unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
 
@@ -6676,7 +6682,7 @@ snapshots:
       estree-util-is-identifier-name: 3.0.0
       estree-util-value-to-estree: 3.1.1
       toml: 3.0.0
-      unified: 11.0.4
+      unified: 11.0.5
       yaml: 2.4.5
 
   remark-mdx@3.0.1:
@@ -6691,7 +6697,7 @@ snapshots:
       '@types/mdast': 4.0.4
       mdast-util-from-markdown: 2.0.1
       micromark-util-types: 2.0.0
-      unified: 11.0.4
+      unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
 
@@ -6700,7 +6706,7 @@ snapshots:
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.4
       mdast-util-to-hast: 13.1.0
-      unified: 11.0.4
+      unified: 11.0.5
       vfile: 6.0.1
 
   remark-stringify@11.0.0:
@@ -6798,9 +6804,10 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@1.14.1:
+  shiki@1.16.1:
     dependencies:
-      '@shikijs/core': 1.14.1
+      '@shikijs/core': 1.16.1
+      '@shikijs/vscode-textmate': 9.2.0
       '@types/hast': 3.0.4
 
   side-channel@1.0.6:

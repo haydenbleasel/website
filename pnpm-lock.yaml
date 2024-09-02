@@ -110,7 +110,7 @@ importers:
         version: 0.2.0(@content-collections/core@0.6.4(typescript@5.5.4))(next@14.2.7(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@types/node':
         specifier: ^22
-        version: 22.0.2
+        version: 22.5.1
       '@types/react':
         specifier: ^18.3.5
         version: 18.3.5
@@ -1339,8 +1339,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@22.0.2':
-    resolution: {integrity: sha512-yPL6DyFwY5PiMVEwymNeqUTKsDczQBJ/5T7W/46RwLU/VH+AA8aT5TZkvBviLKLbbm0hlfftEkGrNzfRk/fofQ==}
+  '@types/node@22.5.1':
+    resolution: {integrity: sha512-KkHsxej0j9IW1KKOOAA/XBA0z08UFSrRQHErzEfA3Vgq57eXIMYboIlHJuYIfd+lwCQjtKqUu3UnmKbtUc9yRw==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -3229,8 +3229,8 @@ packages:
   ultracite@4.0.6:
     resolution: {integrity: sha512-RR3f8JBcwsCVhThWBtL8lnhqdE1ShBjoIRsQHVc59Pl9gPFRbFS1xyU/P7CfL1rtdilAN10jZbwR02xCKK6LpA==}
 
-  undici-types@6.11.1:
-    resolution: {integrity: sha512-mIDEX2ek50x0OlRgxryxsenE5XaQD4on5U2inY7RApK3SOJpofyw7uW2AyfMKkhAxXIceo2DeWGVGwyvng1GNQ==}
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
   unified@11.0.4:
     resolution: {integrity: sha512-apMPnyLjAX+ty4OrNap7yumyVAMlKx5IWU2wlzzUdYJO9A8f1p9m/gywF/GM2ZDFcjQPrx59Mc90KwmxsoklxQ==}
@@ -4507,9 +4507,9 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@22.0.2':
+  '@types/node@22.5.1':
     dependencies:
-      undici-types: 6.11.1
+      undici-types: 6.19.8
 
   '@types/prop-types@15.7.12': {}
 
@@ -6340,7 +6340,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 22.0.2
+      '@types/node': 22.5.1
       long: 5.2.3
 
   qs@6.12.1:
@@ -7010,7 +7010,7 @@ snapshots:
 
   ultracite@4.0.6: {}
 
-  undici-types@6.11.1: {}
+  undici-types@6.19.8: {}
 
   unified@11.0.4:
     dependencies:

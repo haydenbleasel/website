@@ -11,6 +11,10 @@
     {
       "path": "/api/cron/github",
       "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/typefully",
+      "schedule": "0 2 * * *"
     }
   ]
 }

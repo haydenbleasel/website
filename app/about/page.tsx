@@ -51,6 +51,18 @@ const visited: COBEOptions['markers'] = [
   // Las Vegas, Nevada
   { location: [36.1699, -115.1398], size: 0.1 },
 
+  // Cape Canaveral, Florida
+  { location: [28.3922, -80.6198], size: 0.1 },
+
+  // Homestead, Florida
+  { location: [25.4833, -80.5333], size: 0.1 },
+
+  // Key Largo, Florida
+  { location: [25.2906, -80.3997], size: 0.1 },
+
+  // Islamorada, Florida
+  { location: [24.9861, -80.6678], size: 0.1 },
+
   // New York, New York
   { location: [40.7128, -74.006], size: 0.1 },
 

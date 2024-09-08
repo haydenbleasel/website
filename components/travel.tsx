@@ -51,7 +51,7 @@ export const Travel: FC<TravelProperties> = ({ width, height, markers }) => {
     });
 
     return () => globe.destroy();
-  }, [width, height]);
+  }, [width, height, markers]);
 
   return (
     <canvas

@@ -63,6 +63,9 @@ const visited: COBEOptions['markers'] = [
   // Brisbane, Australia
   { location: [-27.4698, 153.0251], size: 0.1 },
 
+  // ACT, Australia
+  { location: [-35.2835, 149.1286], size: 0.1 },
+
   // Rotorua, New Zealand
   { location: [-38.1368, 176.2497], size: 0.1 },
 
@@ -77,6 +80,12 @@ const visited: COBEOptions['markers'] = [
 
   // Houston, Texas
   { location: [29.7604, -95.3698], size: 0.1 },
+
+  // Denpasar, Indonesia
+  { location: [-8.65, 115.2167], size: 0.1 },
+
+  // Nassau, Bahamas
+  { location: [25.0581, -77.3414], size: 0.1 },
 ];
 
 const About: FC = () => (

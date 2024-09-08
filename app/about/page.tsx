@@ -26,78 +26,78 @@ export const metadata: Metadata = {
 
 const lived: COBEOptions['markers'] = [
   // Sydney, Australia
-  { location: [-33.8688, 151.2093], size: 0.2 },
+  { location: [-33.8688, 151.2093], size: 0.1 },
 
   // Boca Raton, Florida
-  { location: [26.4615, -80.0728], size: 0.2 },
+  { location: [26.4615, -80.0728], size: 0.1 },
 
   // Palo Alto, California
-  { location: [37.4419, -122.143], size: 0.2 },
+  { location: [37.4419, -122.143], size: 0.1 },
 ];
 
 const visited: COBEOptions['markers'] = [
   // Boston, Massachusetts
-  { location: [42.3601, -71.0589], size: 0.1 },
+  { location: [42.3601, -71.0589], size: 0.05 },
 
   // Honolulu, Hawaii
-  { location: [21.3069, -157.8583], size: 0.1 },
+  { location: [21.3069, -157.8583], size: 0.05 },
 
   // San Francisco, California
-  { location: [37.7749, -122.4194], size: 0.1 },
+  { location: [37.7749, -122.4194], size: 0.05 },
 
   // Los Angeles, California
-  { location: [34.0522, -118.2437], size: 0.1 },
+  { location: [34.0522, -118.2437], size: 0.05 },
 
   // Las Vegas, Nevada
-  { location: [36.1699, -115.1398], size: 0.1 },
+  { location: [36.1699, -115.1398], size: 0.05 },
 
   // Cape Canaveral, Florida
-  { location: [28.3922, -80.6198], size: 0.1 },
+  { location: [28.3922, -80.6198], size: 0.05 },
 
   // Homestead, Florida
-  { location: [25.4833, -80.5333], size: 0.1 },
+  { location: [25.4833, -80.5333], size: 0.05 },
 
   // Key Largo, Florida
-  { location: [25.2906, -80.3997], size: 0.1 },
+  { location: [25.2906, -80.3997], size: 0.05 },
 
   // Islamorada, Florida
-  { location: [24.9861, -80.6678], size: 0.1 },
+  { location: [24.9861, -80.6678], size: 0.05 },
 
   // New York, New York
-  { location: [40.7128, -74.006], size: 0.1 },
+  { location: [40.7128, -74.006], size: 0.05 },
 
   // Nuremberg, Germany
-  { location: [49.452, 11.0768], size: 0.1 },
+  { location: [49.452, 11.0768], size: 0.05 },
 
   // Melbourne, Australia
-  { location: [-37.8136, 144.9631], size: 0.1 },
+  { location: [-37.8136, 144.9631], size: 0.05 },
 
   // Brisbane, Australia
-  { location: [-27.4698, 153.0251], size: 0.1 },
+  { location: [-27.4698, 153.0251], size: 0.05 },
 
   // ACT, Australia
-  { location: [-35.2835, 149.1286], size: 0.1 },
+  { location: [-35.2835, 149.1286], size: 0.05 },
 
   // Rotorua, New Zealand
-  { location: [-38.1368, 176.2497], size: 0.1 },
+  { location: [-38.1368, 176.2497], size: 0.05 },
 
   // Reno, Nevada
-  { location: [39.5296, -119.8138], size: 0.1 },
+  { location: [39.5296, -119.8138], size: 0.05 },
 
   // Boulder, Colorado
-  { location: [40.015, -105.2705], size: 0.1 },
+  { location: [40.015, -105.2705], size: 0.05 },
 
   // Denver, Colorado
-  { location: [39.7392, -104.9903], size: 0.1 },
+  { location: [39.7392, -104.9903], size: 0.05 },
 
   // Houston, Texas
-  { location: [29.7604, -95.3698], size: 0.1 },
+  { location: [29.7604, -95.3698], size: 0.05 },
 
   // Denpasar, Indonesia
-  { location: [-8.65, 115.2167], size: 0.1 },
+  { location: [-8.65, 115.2167], size: 0.05 },
 
   // Nassau, Bahamas
-  { location: [25.0581, -77.3414], size: 0.1 },
+  { location: [25.0581, -77.3414], size: 0.05 },
 ];
 
 const About: FC = () => (

@@ -96,6 +96,9 @@ const visited: COBEOptions['markers'] = [
   // Denpasar, Indonesia
   { location: [-8.65, 115.2167], size: 0.05 },
 
+  // Gili Trawangan, Indonesia
+  { location: [-8.1933, 116.1167], size: 0.05 },
+
   // Nassau, Bahamas
   { location: [25.0581, -77.3414], size: 0.05 },
 ];

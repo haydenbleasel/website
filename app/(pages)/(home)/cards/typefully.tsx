@@ -25,7 +25,7 @@ const TypefullyCard = async (): Promise<ReactElement> => {
           />
           {tweet.hasImages && <span className="shrink-0">🌄</span>}
           {tweet.length > 1 && (
-            <span className="text-neutral-500 dark:text-neutral-400 shrink-0">
+            <span className="shrink-0 text-neutral-500 dark:text-neutral-400">
               + {tweet.length - 1}
             </span>
           )}

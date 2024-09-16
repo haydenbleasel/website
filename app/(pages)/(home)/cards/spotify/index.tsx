@@ -19,7 +19,7 @@ const SpotifyCard = async (): Promise<ReactElement> => {
       title="Now Listening"
       className="flex flex-row gap-4 p-4 md:flex-col md:justify-between"
     >
-      <div className="relative w-fit -top-12 -left-12 -mb-12">
+      <div className="-top-12 -left-12 -mb-12 relative w-fit">
         <Image
           src={Vinyl}
           alt=""
@@ -35,7 +35,7 @@ const SpotifyCard = async (): Promise<ReactElement> => {
           alt=""
           width={640}
           height={640}
-          className="absolute -rotate-12 rounded-full h-14 w-14 shrink-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="-rotate-12 -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 h-14 w-14 shrink-0 rounded-full"
           sizes="56px"
           quality={100}
         />

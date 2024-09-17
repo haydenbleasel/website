@@ -9,6 +9,12 @@
         "featured": true
       },
       {
+        "name": "Postmark",
+        "href": "https://www.postmarkapp.com?via=8240a3",
+        "description": "Fast, reliable email delivery.",
+        "featured": true
+      },
+      {
         "name": "GitHub Desktop",
         "href": "https://desktop.github.com/",
         "description": "Simple repository management.",
@@ -190,6 +196,12 @@
         "name": "Typefully",
         "href": "https://typefully.com/?via=haydenbleasel",
         "description": "Professional tools for Twitter.",
+        "featured": true
+      },
+      {
+        "name": "Clay",
+        "href": "https://clay.earth/invite/hello115",
+        "description": "The interpersonal CRM.",
         "featured": true
       },
       {

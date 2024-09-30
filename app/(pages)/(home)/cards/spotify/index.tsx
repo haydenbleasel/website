@@ -4,10 +4,9 @@ import { Link } from '@/components/link';
 import { get } from '@vercel/edge-config';
 import Image from 'next/image';
 import type { ReactElement } from 'react';
-
 import Vinyl from './vinyl.png';
 
-const SpotifyCard = async (): Promise<ReactElement> => {
+export const SpotifyCard = async (): Promise<ReactElement> => {
   const song = await get<SpotifyProperties>('spotify');
 
   if (!song) {
@@ -46,5 +45,3 @@ const SpotifyCard = async (): Promise<ReactElement> => {
     </Card>
   );
 };
-
-export default SpotifyCard;

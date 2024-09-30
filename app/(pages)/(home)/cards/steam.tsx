@@ -5,7 +5,7 @@ import { get } from '@vercel/edge-config';
 import Image from 'next/image';
 import type { ReactElement } from 'react';
 
-const SteamCard = async (): Promise<ReactElement> => {
+export const SteamCard = async (): Promise<ReactElement> => {
   const game = await get<GameProperties>('steam');
 
   if (!game) {
@@ -43,5 +43,3 @@ const SteamCard = async (): Promise<ReactElement> => {
     </Card>
   );
 };
-
-export default SteamCard;

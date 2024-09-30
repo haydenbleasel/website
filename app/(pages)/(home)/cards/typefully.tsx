@@ -3,7 +3,7 @@ import { Card } from '@/components/card';
 import { get } from '@vercel/edge-config';
 import type { ReactElement } from 'react';
 
-const TypefullyCard = async (): Promise<ReactElement> => {
+export const TypefullyCard = async (): Promise<ReactElement> => {
   const tweets = await get<TypefullyProperties[]>('typefully');
 
   if (!tweets) {
@@ -19,6 +19,7 @@ const TypefullyCard = async (): Promise<ReactElement> => {
         <div key={tweet.id} className="flex items-center gap-2 text-sm">
           <div
             className="truncate"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
             dangerouslySetInnerHTML={{
               __html: tweet.html.replace(/<br\s*\/?>/g, ' '),
             }}
@@ -34,5 +35,3 @@ const TypefullyCard = async (): Promise<ReactElement> => {
     </Card>
   );
 };
-
-export default TypefullyCard;

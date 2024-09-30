@@ -5,11 +5,11 @@ import Image from 'next/image';
 import { type FC, Suspense } from 'react';
 import Avatar from './avatar.jpg';
 import { AnnouncementCard } from './cards/announcement';
-import GitHubCard from './cards/github';
-import SpotifyCard from './cards/spotify';
-import SteamCard from './cards/steam';
-import TypefullyCard from './cards/typefully';
-import VideoCard from './cards/video';
+import { GitHubCard } from './cards/github';
+import { SpotifyCard } from './cards/spotify';
+import { SteamCard } from './cards/steam';
+import { TypefullyCard } from './cards/typefully';
+import { VideoCard } from './cards/video';
 import { Location } from './components/location';
 import { Newsletter } from './components/newsletter';
 

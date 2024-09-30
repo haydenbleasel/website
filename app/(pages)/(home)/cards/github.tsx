@@ -5,7 +5,7 @@ import { get } from '@vercel/edge-config';
 import type { ReactElement } from 'react';
 import ActivityCalendar from 'rsc-activity-calendar';
 
-const GitHubCard = async (): Promise<ReactElement> => {
+export const GitHubCard = async (): Promise<ReactElement> => {
   const github = await get<GitHubProperties>('github');
 
   if (!github) {
@@ -46,5 +46,3 @@ const GitHubCard = async (): Promise<ReactElement> => {
     </Card>
   );
 };
-
-export default GitHubCard;

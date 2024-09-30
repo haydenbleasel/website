@@ -9,6 +9,7 @@ import GitHubCard from './cards/github';
 import SpotifyCard from './cards/spotify';
 import SteamCard from './cards/steam';
 import TypefullyCard from './cards/typefully';
+import VideoCard from './cards/video';
 import { Location } from './components/location';
 import { Newsletter } from './components/newsletter';
 
@@ -70,6 +71,9 @@ const Home: FC = () => (
         >
           <SteamCard />
         </Suspense>
+      </div>
+      <div className="md:col-span-3">
+        <VideoCard />
       </div>
       <div className="md:col-span-3">
         <TypefullyCard />

@@ -73,10 +73,18 @@ const Home: FC = () => (
         </Suspense>
       </div>
       <div className="md:col-span-3">
-        <VideoCard />
+        <Suspense
+          fallback={<Skeleton className="h-[433px] w-full rounded-2xl" />}
+        >
+          <VideoCard />
+        </Suspense>
       </div>
       <div className="md:col-span-3">
-        <TypefullyCard />
+        <Suspense
+          fallback={<Skeleton className="h-[242px] w-full rounded-2xl" />}
+        >
+          <TypefullyCard />
+        </Suspense>
       </div>
     </div>
   </>

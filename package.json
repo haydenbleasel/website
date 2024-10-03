@@ -10,9 +10,9 @@
     "bump-deps": "npx npm-check-updates -u && pnpm install"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^14.2.13",
+    "@next/bundle-analyzer": "^14.2.14",
     "@radix-ui/react-label": "^2.1.0",
-    "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-select": "^2.1.2",
     "@tailwindcss/typography": "^0.5.15",
     "@upstash/ratelimit": "^2.0.3",
     "@vercel/analytics": "^1.3.1",
@@ -24,8 +24,8 @@
     "geist": "^1.3.1",
     "hex-rgb": "^5.0.0",
     "ky": "^1.7.2",
-    "lucide-react": "^0.446.0",
-    "next": "^14.2.13",
+    "lucide-react": "^0.447.0",
+    "next": "^14.2.14",
     "next-secure-headers": "^2.2.0",
     "pliny": "^0.3.1",
     "react": "^18.3.1",
@@ -37,22 +37,22 @@
     "resend": "^4.0.0",
     "rsc-activity-calendar": "^1.0.1",
     "sonner": "^1.5.0",
-    "tailwind-merge": "^2.5.2",
+    "tailwind-merge": "^2.5.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.2",
+    "@biomejs/biome": "1.9.3",
     "@content-collections/core": "^0.7.2",
     "@content-collections/mdx": "^0.1.6",
     "@content-collections/next": "^0.2.3",
     "@types/node": "^22",
-    "@types/react": "^18.3.10",
+    "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
     "fumadocs-core": "^13.4.10",
     "postcss": "^8",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2",
-    "ultracite": "^4.1.2"
+    "ultracite": "^4.1.4"
   }
 }

@@ -233,6 +233,12 @@
     "type": "Other",
     "items": [
       {
+        "name": "Superpower",
+        "href": "https://superpower.com/join?via=hayden",
+        "description": "The next-generation digital clinic.",
+        "featured": true
+      },
+      {
         "name": "Spotify",
         "href": "https://open.spotify.com/",
         "description": "Enjoy and curate the world's music."

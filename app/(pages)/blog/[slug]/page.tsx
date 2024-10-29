@@ -10,16 +10,18 @@ import { notFound } from 'next/navigation';
 import type { FC } from 'react';
 
 type PageProperties = {
-  readonly params: {
+  readonly params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export const runtime = 'nodejs';
 
-export const generateMetadata = ({ params }: PageProperties): Metadata => {
-  const currentPath = params.slug;
-  const page = allBlogs.find(({ slug }) => slug === currentPath);
+export const generateMetadata = async ({
+  params,
+}: PageProperties): Promise<Metadata> => {
+  const { slug } = await params;
+  const page = allBlogs.find((page) => page.slug === slug);
 
   if (!page) {
     return {};
@@ -43,14 +45,14 @@ export const generateMetadata = ({ params }: PageProperties): Metadata => {
   };
 };
 
-export const generateStaticParams = (): PageProperties['params'][] =>
+export const generateStaticParams = (): { slug: string }[] =>
   allBlogs.map((page) => ({
     slug: page.slug,
   }));
 
-const Page: FC<PageProperties> = ({ params }) => {
-  const currentPath = params.slug;
-  const page = allBlogs.find(({ slug }) => slug === currentPath);
+const Page: FC<PageProperties> = async ({ params }) => {
+  const { slug } = await params;
+  const page = allBlogs.find((page) => page.slug === slug);
 
   if (!page) {
     notFound();

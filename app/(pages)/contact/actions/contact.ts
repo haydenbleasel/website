@@ -33,9 +33,10 @@ export const contact = async (
   message: string;
 }> => {
   const data = formSchema.parse(Object.fromEntries(formData));
+  const head = await headers();
 
   try {
-    const ip = headers().get('x-forwarded-for');
+    const ip = head.get('x-forwarded-for');
     const ratelimit = new Ratelimit({
       redis: kv,
       // rate limit to 1 request every day

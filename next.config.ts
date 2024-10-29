@@ -1,9 +1,9 @@
 import { withContentCollections } from '@content-collections/next';
 import withBundleAnalyzer from '@next/bundle-analyzer';
+import type { NextConfig } from 'next';
 import { createSecureHeaders } from 'next-secure-headers';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+let config: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -22,7 +22,8 @@ const nextConfig = {
     ],
   },
 
-  headers() {
+  // biome-ignore lint/suspicious/useAwait: headers is async
+  async headers() {
     return [
       {
         source: '/(.*)',
@@ -37,17 +38,17 @@ const nextConfig = {
     ];
   },
 
+  // biome-ignore lint/suspicious/useAwait: redirects is async
   async redirects() {
     return [
       {
         source: '/video',
-        destination:
-          'https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2',
+        destination: '/',
         permanent: true,
       },
       {
         source: '/work/:slug',
-        destination: 'https://www.linkedin.com/in/haydenbleasel/',
+        destination: '/work',
         permanent: true,
       },
       {
@@ -57,12 +58,12 @@ const nextConfig = {
       },
       {
         source: '/clients',
-        destination: '/',
+        destination: '/work',
         permanent: true,
       },
       {
         source: '/apps',
-        destination: '/',
+        destination: '/about',
         permanent: true,
       },
       {
@@ -92,18 +93,7 @@ const nextConfig = {
       },
     ];
   },
-
-  // Silence, contentlayer
-  webpack: (config) => {
-    config.infrastructureLogging = {
-      level: 'error',
-    };
-
-    return config;
-  },
 };
-
-let config = nextConfig;
 
 if (process.env.ANALYZE === 'true') {
   config = withBundleAnalyzer()(config);

@@ -1,5 +1,41 @@
 [
   {
+    "type": "AI",
+    "items": [
+      {
+        "name": "Eververse",
+        "href": "https://www.eververse.ai/",
+        "description": "Product Management, reimagined.",
+        "featured": true
+      },
+      {
+        "name": "Cursor",
+        "href": "https://www.cursor.com/",
+        "description": "The AI code editor."
+      },
+      {
+        "name": "Warp",
+        "href": "https://www.warp.dev/",
+        "description": "Modern, Rust-based terminal with AI."
+      },
+      {
+        "name": "ChatGPT",
+        "href": "https://openai.com/chatgpt/mac/",
+        "description": "ChatGPT on your desktop."
+      },
+      {
+        "name": "Midjourney",
+        "href": "https://www.midjourney.com/",
+        "description": "AI image generation."
+      },
+      {
+        "name": "Claude",
+        "href": "https://claude.ai/",
+        "description": "An AI chatbot great at coding."
+      }
+    ]
+  },
+  {
     "type": "Coding",
     "items": [
       {
@@ -24,21 +60,6 @@
         "name": "Postman",
         "href": "https://www.postman.com/",
         "description": "Build and test APIs."
-      },
-      {
-        "name": "Cursor",
-        "href": "https://www.cursor.com/",
-        "description": "The AI code editor."
-      },
-      {
-        "name": "Warp",
-        "href": "https://www.warp.dev/",
-        "description": "Modern, Rust-based terminal with AI."
-      },
-      {
-        "name": "ChatGPT",
-        "href": "https://openai.com/chatgpt/mac/",
-        "description": "ChatGPT on your desktop."
       }
     ]
   },
@@ -61,12 +82,6 @@
   {
     "type": "Productivity",
     "items": [
-      {
-        "name": "Eververse",
-        "href": "https://www.eververse.ai/",
-        "description": "Product Management, reimagined.",
-        "featured": true
-      },
       {
         "name": "Screen Studio",
         "href": "https://screenstudio.lemonsqueezy.com/?aff=VMdMv",
@@ -226,12 +241,6 @@
         "description": "Premium Australian luggage.",
         "featured": true,
         "image": "https://july.com/static/julyOlympicBlack-1c34f88144d235f850129808b5f25bbe.svg"
-      },
-      {
-        "name": "Beskar Store",
-        "href": "https://store.haydenbleasel.com/",
-        "description": "Some cool stuff I've made.",
-        "featured": true
       }
     ]
   },
@@ -249,7 +258,6 @@
         "href": "https://open.spotify.com/",
         "description": "Enjoy and curate the world's music."
       },
-
       {
         "name": "Klack",
         "href": "https://tryklack.com/",

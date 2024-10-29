@@ -171,6 +171,12 @@
     "type": "Finance",
     "items": [
       {
+        "name": "Wealthfront",
+        "href": "https://www.wealthfront.com/c/affiliates/invited/AFFB-VOQ0-8OAE-H0YL",
+        "description": "Grow your wealth with automated investing.",
+        "featured": true
+      },
+      {
         "name": "Wise",
         "href": "https://wise.com/invite/dic/haydenb95",
         "description": "Low FX international transfers.",

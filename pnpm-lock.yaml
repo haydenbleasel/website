@@ -112,8 +112,8 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
       fumadocs-core:
-        specifier: ^14.1.1
-        version: 14.1.1(@types/react@18.3.12)(next@15.0.2(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^14.2.0
+        version: 14.2.0(@types/react@18.3.12)(next@15.0.2(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       postcss:
         specifier: ^8
         version: 8.4.47
@@ -1430,14 +1430,17 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  fumadocs-core@14.1.1:
-    resolution: {integrity: sha512-eU7K3cxTeh45fAfphXJ8xNfX2Cw+2M7S+pqvne4+xADf3y9YSiexlO1Xyivyl6fHQQbtPuZkV47Vl0ucJFPtXg==}
+  fumadocs-core@14.2.0:
+    resolution: {integrity: sha512-cRahw/8hIox/T1drQpghn1hvN6r2hpy1Z2egU4E1xF2KaB+r16ZN6YpyGkpS1f9lziLgU8Ve2gtOiqIJwl3oCA==}
     peerDependencies:
+      '@oramacloud/client': 1.x.x
       algoliasearch: 4.24.0
       next: 14.x.x || 15.x.x
       react: '>= 18'
       react-dom: '>= 18'
     peerDependenciesMeta:
+      '@oramacloud/client':
+        optional: true
       algoliasearch:
         optional: true
       next:
@@ -1492,9 +1495,6 @@ packages:
 
   hast-util-to-html@9.0.3:
     resolution: {integrity: sha512-M17uBDzMJ9RPCqLMO92gNNUDuBSq10a25SDBI08iCCxmorf4Yy6sYHK57n9WAbRAAaU+DuR4W6GN9K4DFZesYg==}
-
-  hast-util-to-jsx-runtime@2.3.0:
-    resolution: {integrity: sha512-H/y0+IWPdsLLS738P8tDnrQ8Z+dj12zQQ6WC11TIM21C8WFVoIxcqWXf2H3hiTVZjF1AWqoimGwrTWecWrnmRQ==}
 
   hast-util-to-jsx-runtime@2.3.2:
     resolution: {integrity: sha512-1ngXYb+V9UT5h+PxNRa1O1FYguZK/XL+gkeqvp7EdHlB9oHUG0eYRo/vY5inBdcqo3RkPMC58/H94HvkbfGdyg==}
@@ -2788,7 +2788,7 @@ snapshots:
       estree-util-to-js: 2.0.0
       estree-walker: 3.0.3
       hast-util-to-estree: 3.1.0
-      hast-util-to-jsx-runtime: 2.3.0
+      hast-util-to-jsx-runtime: 2.3.2
       markdown-extensions: 2.0.0
       periscopic: 3.1.0
       remark-mdx: 3.0.1
@@ -3624,7 +3624,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  fumadocs-core@14.1.1(@types/react@18.3.12)(next@15.0.2(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  fumadocs-core@14.2.0(@types/react@18.3.12)(next@15.0.2(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.6
       '@orama/orama': 3.0.1
@@ -3723,26 +3723,6 @@ snapshots:
       space-separated-tokens: 2.0.2
       stringify-entities: 4.0.4
       zwitch: 2.0.4
-
-  hast-util-to-jsx-runtime@2.3.0:
-    dependencies:
-      '@types/estree': 1.0.5
-      '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
-      comma-separated-tokens: 2.0.3
-      devlop: 1.1.0
-      estree-util-is-identifier-name: 3.0.0
-      hast-util-whitespace: 3.0.0
-      mdast-util-mdx-expression: 2.0.0
-      mdast-util-mdx-jsx: 3.1.2
-      mdast-util-mdxjs-esm: 2.0.1
-      property-information: 6.5.0
-      space-separated-tokens: 2.0.2
-      style-to-object: 1.0.6
-      unist-util-position: 5.0.0
-      vfile-message: 4.0.2
-    transitivePeerDependencies:
-      - supports-color
 
   hast-util-to-jsx-runtime@2.3.2:
     dependencies:

@@ -101,6 +101,12 @@ const visited: COBEOptions['markers'] = [
 
   // Nassau, Bahamas
   { location: [25.0581, -77.3414], size: 0.05 },
+
+  // Seoul, South Korea
+  { location: [37.5665, 126.9979], size: 0.05 },
+
+  // Busan, South Korea
+  { location: [35.1796, 129.0759], size: 0.05 },
 ];
 
 const About: FC = () => (

@@ -3,8 +3,8 @@
 import { Card } from '@/components/card';
 import { Input, Select, Textarea } from '@/components/form';
 import { cn } from '@/lib/utils';
-import type { FC } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { type FC, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { contact } from '../actions/contact';
 
 const SubmitButton: FC = () => {
@@ -48,7 +48,7 @@ const typeOptions = [
 ];
 
 export const ContactForm: FC = () => {
-  const [state, formAction] = useFormState(contact as never, {
+  const [state, formAction] = useActionState(contact as never, {
     message: '',
   });
 

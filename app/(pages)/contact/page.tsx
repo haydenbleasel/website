@@ -7,6 +7,8 @@ const title = 'Contact';
 const description =
   "Let me know what's on your mind and I'll get back to you as soon as possible.";
 
+export const runtime = 'nodejs';
+
 export const metadata: Metadata = {
   title,
   description,

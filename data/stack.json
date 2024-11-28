@@ -52,9 +52,8 @@
       },
       {
         "name": "GitHub Desktop",
-        "href": "https://desktop.github.com/",
-        "description": "Simple repository management.",
-        "image": "https://desktop.github.com/images/screenshot-macos-dark.png"
+        "href": "https://github.com/apps/desktop",
+        "description": "Simple repository management."
       },
       {
         "name": "Postman",
@@ -157,7 +156,6 @@
         "name": "Untitled UI",
         "href": "https://store.untitledui.com?aff=VMdMv",
         "description": "The ultimate UI Kit for Figma.",
-        "image": "https://assets-global.website-files.com/636496d3f0ebfdaba9784655/646b8e798fb7b11360121f75_untitled-ui-open-graph-img.webp",
         "featured": true
       },
       {
@@ -228,7 +226,8 @@
       {
         "name": "Ray.so",
         "href": "https://ray.so/",
-        "description": "Pretty code snippet screenshots."
+        "description": "Pretty code snippet screenshots.",
+        "image": "https://www.raycast.com/"
       }
     ]
   },
@@ -240,7 +239,7 @@
         "href": "https://go.shopmy.us/p-5598980",
         "description": "Premium Australian luggage.",
         "featured": true,
-        "image": "https://july.com/static/julyOlympicBlack-1c34f88144d235f850129808b5f25bbe.svg"
+        "image": "https://july.com/"
       }
     ]
   },
@@ -258,7 +257,7 @@
         "href": "https://inst.cr/t/9aea6b7f0",
         "description": "Groceries delivered in minutes.",
         "featured": true,
-        "image": "https://d2guulkeunn7d8.cloudfront.net/assets/Icon-60@3x-73f80604373da67ef3fadbc54f4548b1.png"
+        "image": "https://www.instacart.com/"
       },
       {
         "name": "Spotify",

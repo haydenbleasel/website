@@ -30,7 +30,7 @@ const Tool: FC<{
     readonly image?: string;
   };
 }> = ({ data }) => {
-  const { hostname } = new URL(data.href);
+  const { hostname } = new URL(data.image ?? data.href);
 
   return (
     <Link
@@ -43,10 +43,7 @@ const Tool: FC<{
       )}
     >
       <Image
-        src={
-          data.image ??
-          `https://img.logo.dev/${hostname.replace('www.', '')}?token=${logoDevToken}`
-        }
+        src={`https://img.logo.dev/${hostname.replace('www.', '')}?token=${logoDevToken}`}
         alt={hostname}
         width={32}
         height={32}

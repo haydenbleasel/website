@@ -254,6 +254,12 @@
         "featured": true
       },
       {
+        "name": "Instacart",
+        "href": "https://inst.cr/t/9aea6b7f0",
+        "description": "Groceries delivered in minutes.",
+        "featured": true
+      },
+      {
         "name": "Spotify",
         "href": "https://open.spotify.com/",
         "description": "Enjoy and curate the world's music."

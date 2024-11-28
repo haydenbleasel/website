@@ -257,7 +257,8 @@
         "name": "Instacart",
         "href": "https://inst.cr/t/9aea6b7f0",
         "description": "Groceries delivered in minutes.",
-        "featured": true
+        "featured": true,
+        "image": "https://d2guulkeunn7d8.cloudfront.net/assets/Icon-60@3x-73f80604373da67ef3fadbc54f4548b1.png"
       },
       {
         "name": "Spotify",

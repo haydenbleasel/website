@@ -23,18 +23,13 @@ export const Currently = async () => {
         'use server';
 
         return (
-          <>
-            <div className="grid grid-cols-2 gap-8">
-              <div
-                className="p-8"
-                dangerouslySetInnerHTML={{ __html: data.home.currently.html }}
-              />
-              <div className="aspect-video w-full bg-muted-foreground" />
-            </div>
-            <div>
-              <p>Feed here</p>
-            </div>
-          </>
+          <div className="grid grid-cols-2 gap-8">
+            <div
+              className="p-8"
+              dangerouslySetInnerHTML={{ __html: data.home.currently.html }}
+            />
+            <div className="aspect-video w-full bg-muted-foreground" />
+          </div>
         );
       }}
     </Pump>

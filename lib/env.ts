@@ -8,6 +8,7 @@ export const env = createEnv({
     RESEND_TOKEN: z.string().min(1).startsWith('re_'),
     BETTERSTACK_API_KEY: z.string().min(1),
     BETTERSTACK_URL: z.string().min(1),
+    GITHUB_TOKEN: z.string().min(1).startsWith('github_pat_'),
   },
   client: {},
   runtimeEnv: {
@@ -16,5 +17,6 @@ export const env = createEnv({
     RESEND_TOKEN: process.env.RESEND_TOKEN,
     BETTERSTACK_API_KEY: process.env.BETTERSTACK_API_KEY,
     BETTERSTACK_URL: process.env.BETTERSTACK_URL,
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
   },
 });

@@ -1,5 +1,6 @@
 import { basehub } from 'basehub';
 import { Currently } from './components/currently';
+import { Feed } from './components/feed';
 import { Hero } from './components/hero';
 
 export const generateMetadata = async () => {
@@ -20,6 +21,7 @@ const Home = () => (
   <>
     <Hero />
     <Currently />
+    <Feed />
   </>
 );
 

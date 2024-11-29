@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "basehub dev & next dev --turbopack",
+    "build": "basehub && next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "basehub": "^7.5.28",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.462.0",

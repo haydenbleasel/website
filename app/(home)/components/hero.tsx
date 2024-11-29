@@ -1,5 +1,6 @@
 import { Pump } from 'basehub/react-pump';
 import { draftMode } from 'next/headers';
+import Balancer from 'react-wrap-balancer';
 
 export const Hero = async () => {
   const { isEnabled } = await draftMode();
@@ -22,10 +23,12 @@ export const Hero = async () => {
         'use server';
 
         return (
-          <div>
-            <p>{data.home.heroCaption}</p>
-            <h1>{data.home.heroTitle}</h1>
-          </div>
+          <section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-8">
+            <p className="text-muted-foreground">{data.home.heroCaption}</p>
+            <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
+              <Balancer>{data.home.heroTitle}</Balancer>
+            </h1>
+          </section>
         );
       }}
     </Pump>

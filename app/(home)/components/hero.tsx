@@ -32,7 +32,6 @@ export const Hero = async () => {
             <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
               <Balancer>{data.home.heroTitle}</Balancer>
             </h1>
-            <p className="text-muted-foreground">{data.home.heroDescription}</p>
             <div className="flex items-center justify-center gap-2">
               <Button asChild variant="outline">
                 <Link href="/work">View my work</Link>

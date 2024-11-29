@@ -2,6 +2,7 @@ import { social } from '@/lib/social';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Status } from './status';
+import { ThemeSwitcher } from './theme-switcher';
 
 export const Footer = () => (
   <footer className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 py-8 sm:px-8">
@@ -22,5 +23,6 @@ export const Footer = () => (
       &copy; {new Date().getFullYear()} Hayden Bleasel. All rights reserved.
     </p>
     <Status />
+    <ThemeSwitcher />
   </footer>
 );

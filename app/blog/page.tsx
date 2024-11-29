@@ -29,9 +29,9 @@ const Blog = () => (
       const [firstPost, ...restPosts] = data.blog.items;
 
       return (
-        <div className="container mx-auto px-4 py-12">
-          <article className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 bg-secondary/10 rounded-2xl overflow-hidden border">
-            <div className="p-6 flex flex-col justify-between">
+        <div className="container mx-auto px-4 py-12 transition-all sm:px-0">
+          <article className="mb-12 grid grid-cols-1 gap-8 overflow-hidden rounded-2xl border bg-secondary/10 md:grid-cols-2">
+            <div className="flex flex-col justify-between p-6">
               <div>
                 <small className="text-muted-foreground">
                   {new Date(firstPost.date ?? '').toLocaleDateString('en-US', {

@@ -8,7 +8,7 @@ export const Feed = async () => {
   });
 
   return (
-    <div className="relative flex flex-col gap-2 px-4 py-8 font-mono text-muted-foreground text-sm sm:px-8">
+    <div className="relative flex flex-col gap-2 px-4 py-8 font-mono text-muted-foreground text-sm sm:px-0">
       {activity.data.slice(0, 5).map((event) => (
         <GitHubEvent key={event.id} event={event} />
       ))}

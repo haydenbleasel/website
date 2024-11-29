@@ -5,7 +5,7 @@ import { Status } from './status';
 import { ThemeSwitcher } from './theme-switcher';
 
 export const Footer = () => (
-  <footer className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 py-8 sm:px-8">
+  <footer className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 py-8 sm:px-0">
     <div className="flex items-center justify-center gap-4">
       {Object.values(social).map((link) => (
         <Link key={link.href} href={link.href}>

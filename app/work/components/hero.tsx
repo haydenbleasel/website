@@ -26,7 +26,7 @@ export const Hero = async () => {
         'use server';
 
         return (
-          <section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-8">
+          <section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
             <p className="text-muted-foreground">{data.home.heroCaption}</p>
             <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
               <Balancer>{data.home.heroTitle}</Balancer>

@@ -12,7 +12,7 @@ const links = [
 ];
 
 export const Header = () => (
-  <header className="container mx-auto flex items-center justify-between py-4">
+  <header className="container mx-auto flex items-center justify-between px-4 py-4 transition-all sm:px-0">
     <div className="w-32">
       <Link href="/" aria-label="Hayden Bleasel">
         <Image

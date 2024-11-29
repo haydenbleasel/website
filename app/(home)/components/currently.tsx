@@ -1,4 +1,5 @@
 import { Pump } from 'basehub/react-pump';
+import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
 
 export const Currently = async () => {
@@ -11,7 +12,9 @@ export const Currently = async () => {
           __typename: true,
           home: {
             currently: {
-              html: true,
+              json: {
+                content: true,
+              },
             },
           },
         },
@@ -23,15 +26,16 @@ export const Currently = async () => {
         'use server';
 
         return (
-          <div className="grid grid-cols-2 gap-8 divide-x">
-            <div
-              className="p-8"
-              dangerouslySetInnerHTML={{ __html: data.home.currently.html }}
-            />
-            <div className="relative pl-8 pt-8">
+          <div className="grid grid-cols-3 divide-x">
+            <div className="p-8">
+              {data.home.currently?.json && (
+                <RichText content={data.home.currently.json.content} />
+              )}
+            </div>
+            <div className="relative col-span-2 pt-8 pl-8">
               <div className="absolute top-8 left-0 h-px w-full border-t border-dashed" />
-              <div className="absolute top-0 left-8 w-px h-full border-r border-dashed" />
-              <div className="aspect-video w-full bg-muted-foreground rounded-tl-2xl" />
+              <div className="absolute top-0 left-8 h-full w-px border-r border-dashed" />
+              <div className="aspect-video w-full rounded-tl-2xl bg-muted-foreground" />
             </div>
           </div>
         );

@@ -35,28 +35,28 @@ const EventDate = ({ date }: { date: string | null }) => {
 export const GitHubEvent = ({
   event,
 }: {
-  event: RestEndpointMethodTypes['activity']['listPublicEventsForUser']['response']['data'][0] & {
-    type:
-      | 'CommitCommentEvent'
-      | 'CreateEvent'
-      | 'DeleteEvent'
-      | 'ForkEvent'
-      | 'GollumEvent'
-      | 'IssueCommentEvent'
-      | 'IssuesEvent'
-      | 'MemberEvent'
-      | 'PublicEvent'
-      | 'PullRequestEvent'
-      | 'PullRequestReviewEvent'
-      | 'PullRequestReviewCommentEvent'
-      | 'PullRequestReviewThreadEvent'
-      | 'PushEvent'
-      | 'ReleaseEvent'
-      | 'SponsorshipEvent'
-      | 'WatchEvent';
-  };
+  event: RestEndpointMethodTypes['activity']['listPublicEventsForUser']['response']['data'][0];
 }) => {
-  if (event.type === 'PushEvent') {
+  const type = event.type as
+    | 'CommitCommentEvent'
+    | 'CreateEvent'
+    | 'DeleteEvent'
+    | 'ForkEvent'
+    | 'GollumEvent'
+    | 'IssueCommentEvent'
+    | 'IssuesEvent'
+    | 'MemberEvent'
+    | 'PublicEvent'
+    | 'PullRequestEvent'
+    | 'PullRequestReviewEvent'
+    | 'PullRequestReviewCommentEvent'
+    | 'PullRequestReviewThreadEvent'
+    | 'PushEvent'
+    | 'ReleaseEvent'
+    | 'SponsorshipEvent'
+    | 'WatchEvent';
+
+  if (type === 'PushEvent') {
     // https://github.com/octokit/rest.js/issues/128
     const commits = (
       event.payload as {
@@ -73,7 +73,7 @@ export const GitHubEvent = ({
     ).commits;
 
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <GitCommitIcon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">
           Pushed {commits.length} commits to {event.repo.name}:{' '}
@@ -87,7 +87,7 @@ export const GitHubEvent = ({
     );
   }
 
-  if (event.type === 'PullRequestEvent') {
+  if (type === 'PullRequestEvent') {
     const pullRequest = (
       event.payload as {
         pull_request: {
@@ -100,7 +100,7 @@ export const GitHubEvent = ({
     ).pull_request;
 
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <GitPullRequestIcon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">
           Merged {pullRequest.user.login}'s {pullRequest.title} on{' '}
@@ -111,7 +111,7 @@ export const GitHubEvent = ({
     );
   }
 
-  if (event.type === 'IssuesEvent') {
+  if (type === 'IssuesEvent') {
     const action = (
       event.payload as {
         action:
@@ -138,7 +138,7 @@ export const GitHubEvent = ({
     }
 
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <Icon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">
           {event.actor.login} {event.payload.action}{' '}
@@ -149,9 +149,9 @@ export const GitHubEvent = ({
     );
   }
 
-  if (event.type === 'PublicEvent') {
+  if (type === 'PublicEvent') {
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <FeedPublicIcon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">
           Open-sourced {event.repo.name} on GitHub
@@ -161,9 +161,9 @@ export const GitHubEvent = ({
     );
   }
 
-  if (event.type === 'IssueCommentEvent') {
+  if (type === 'IssueCommentEvent') {
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <CommentIcon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">
           Commented on {event.payload.issue?.title}
@@ -173,7 +173,7 @@ export const GitHubEvent = ({
     );
   }
 
-  if (event.type === 'CreateEvent') {
+  if (type === 'CreateEvent') {
     let Icon = GitBranchIcon;
     const refType = (
       event.payload as { ref_type: 'branch' | 'repository' | 'tag' }
@@ -186,7 +186,7 @@ export const GitHubEvent = ({
     }
 
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <Icon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">Created {event.repo.name}</div>
         <EventDate date={event.created_at} />
@@ -194,12 +194,12 @@ export const GitHubEvent = ({
     );
   }
 
-  if (event.type === 'DeleteEvent') {
+  if (type === 'DeleteEvent') {
     const refType = (event.payload as { ref_type: 'branch' | 'tag' }).ref_type;
     const Icon = refType === 'branch' ? GitBranchIcon : TagIcon;
 
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <Icon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">Deleted {event.repo.name}</div>
         <EventDate date={event.created_at} />
@@ -207,9 +207,9 @@ export const GitHubEvent = ({
     );
   }
 
-  if (event.type === 'WatchEvent') {
+  if (type === 'WatchEvent') {
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <StarIcon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">Starred {event.repo.name}</div>
         <EventDate date={event.created_at} />
@@ -217,9 +217,9 @@ export const GitHubEvent = ({
     );
   }
 
-  if (event.type === 'ForkEvent') {
+  if (type === 'ForkEvent') {
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <RepoForkedIcon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">Forked {event.repo.name}</div>
         <EventDate date={event.created_at} />

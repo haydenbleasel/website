@@ -33,8 +33,17 @@ export const Feature = async () => {
         'use server';
 
         return (
-          <div className="grid grid-cols-2 gap-8 divide-x">
-            <div className="p-8 flex flex-col gap-4 justify-between items-start">
+          <div className="grid grid-cols-3 divide-x">
+            <div className="relative aspect-video overflow-hidden bg-dashed px-8 pt-8 col-span-2">
+              <Image
+                src={data.home.featureImage?.url ?? ''}
+                alt={data.home.featureImage?.alt ?? ''}
+                width={data.home.featureImage?.width ?? 0}
+                height={data.home.featureImage?.height ?? 0}
+                className="rounded-2xl border"
+              />
+            </div>
+            <div className="flex flex-col items-start justify-between gap-4 p-8">
               <div className="flex flex-col gap-2">
                 <small className="text-muted-foreground">Latest feature</small>
                 <h2 className="font-bold text-3xl tracking-tight">
@@ -57,15 +66,6 @@ export const Feature = async () => {
                   <Link href="/features">View all features</Link>
                 </Button>
               </div>
-            </div>
-            <div className="relative aspect-video overflow-hidden px-8 pt-8 bg-dashed">
-              <Image
-                src={data.home.featureImage?.url ?? ''}
-                alt={data.home.featureImage?.alt ?? ''}
-                width={data.home.featureImage?.width ?? 0}
-                height={data.home.featureImage?.height ?? 0}
-                className="rounded-2xl border"
-              />
             </div>
           </div>
         );

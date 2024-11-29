@@ -1,11 +1,19 @@
-import type { Metadata } from 'next';
+import { basehub } from 'basehub';
 import { Currently } from './components/currently';
 import { Hero } from './components/hero';
 
-export const metadata: Metadata = {
-  title: 'Hayden Bleasel',
-  description:
-    'Australian Design Engineer currently based in Delray Beach, Florida.',
+export const generateMetadata = async () => {
+  const { home } = await basehub({ cache: 'no-store' }).query({
+    home: {
+      metaTitle: true,
+      metaDescription: true,
+    },
+  });
+
+  return {
+    title: home.metaTitle,
+    description: home.metaDescription,
+  };
 };
 
 const Home = () => (

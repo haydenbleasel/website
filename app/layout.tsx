@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import type { ReactNode } from 'react';
+import { Footer } from './components/footer';
+import { Header } from './components/header';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +15,11 @@ type RootLayoutProps = {
 
 const RootLayout = ({ children }: RootLayoutProps) => (
   <html lang="en">
-    <body className="antialiased">{children}</body>
+    <body className="antialiased">
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </body>
   </html>
 );
 

@@ -1,6 +1,7 @@
 import { env } from '@/lib/env';
 import { resend } from '@/lib/resend';
 import Image from 'next/image';
+import { TeaserTitle } from './teaser-title';
 
 const teaserIds = [
   '4670c9cc-7e0f-4d4b-a6a3-c27cee3df33d',
@@ -28,12 +29,9 @@ export const Teaser = async () => {
   });
 
   return (
-    <>
-      <p>
-        Join {contacts.data?.data.length} readers and get infrequent updates on
-        new projects.
-      </p>
-      <div className="flex items-center -space-x-2">
+    <div className="flex flex-col gap-4">
+      <TeaserTitle contacts={contacts.data?.data.length ?? 0} />
+      <div className="-space-x-2 flex items-center">
         {contacts.data?.data
           .filter((contact) => teaserIds.includes(contact.id))
           .map(async (contact) => {
@@ -45,11 +43,11 @@ export const Teaser = async () => {
                 alt=""
                 width={40}
                 height={40}
-                className="h-8 w-8 rounded-full object-cover ring-2 ring-background"
+                className="h-8 w-8 rounded-full object-cover ring-2 ring-secondary"
               />
             );
           })}
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-background ring-2 ring-secondary">
           <span className="text-[8px] text-muted-foreground">
             +
             {new Intl.NumberFormat('en-US', { notation: 'compact' }).format(
@@ -58,6 +56,6 @@ export const Teaser = async () => {
           </span>
         </div>
       </div>
-    </>
+    </div>
   );
 };

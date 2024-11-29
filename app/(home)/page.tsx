@@ -1,5 +1,6 @@
 import { basehub } from 'basehub';
 import { Currently } from './components/currently';
+import { Feature } from './components/feature';
 import { Feed } from './components/feed';
 import { Hero } from './components/hero';
 
@@ -22,6 +23,7 @@ const Home = () => (
     <Hero />
     <Currently />
     <Feed />
+    <Feature />
   </>
 );
 

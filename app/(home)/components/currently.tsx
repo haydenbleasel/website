@@ -26,9 +26,10 @@ export const Currently = async () => {
           <>
             <div className="grid grid-cols-2 gap-8">
               <div
+                className="p-8"
                 dangerouslySetInnerHTML={{ __html: data.home.currently.html }}
               />
-              <div className="aspect-square w-full bg-secondary" />
+              <div className="aspect-video w-full bg-muted-foreground" />
             </div>
             <div>
               <p>Feed here</p>

@@ -38,8 +38,8 @@ export const Header = () => (
       ))}
     </nav>
     <div className="flex w-32 justify-end">
-      <Button variant="outline" size="sm">
-        Get in touch
+      <Button variant="outline" size="sm" asChild>
+        <Link href="/contact">Get in touch</Link>
       </Button>
     </div>
   </header>

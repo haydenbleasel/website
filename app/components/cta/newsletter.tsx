@@ -2,7 +2,8 @@
 
 import { subscribe } from '@/app/actions/subscribe';
 import { cn } from '@/lib/utils';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 
 const SubmitButton = () => {
   const { pending } = useFormStatus();
@@ -22,7 +23,7 @@ const SubmitButton = () => {
 };
 
 export const Newsletter = () => {
-  const [state, formAction] = useFormState(subscribe as never, {
+  const [state, formAction] = useActionState(subscribe as never, {
     message: '',
   });
 

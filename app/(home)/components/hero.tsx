@@ -1,5 +1,7 @@
+import { Button } from '@/components/ui/button';
 import { Pump } from 'basehub/react-pump';
 import { draftMode } from 'next/headers';
+import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
 export const Hero = async () => {
@@ -28,6 +30,14 @@ export const Hero = async () => {
             <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
               <Balancer>{data.home.heroTitle}</Balancer>
             </h1>
+            <div className="flex items-center justify-center gap-2">
+              <Button asChild variant="outline">
+                <Link href="/work">View my work</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/contact">Get in touch</Link>
+              </Button>
+            </div>
           </section>
         );
       }}

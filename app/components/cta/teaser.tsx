@@ -9,24 +9,29 @@ const teaserIds = [
   '71e7c35a-f089-41e7-a395-65816b994f83',
   '6d175576-f268-4718-954c-8b05918bb1e9',
   'f1e1b1a6-919a-4342-896c-1a81c678456f',
+  '2de4bbf5-0e8a-41cb-a55c-a1bbf0bbc57a',
 ];
 
 // Client-side MD5 hashing function
-function md5(str: string): string {
+const md5 = async (str: string): Promise<string> => {
   const encoder = new TextEncoder();
   const data = encoder.encode(str.toLowerCase().trim());
 
-  return crypto.subtle.digest('SHA-256', data).then((hash) => {
-    return Array.from(new Uint8Array(hash))
-      .map((b) => b.toString(16).padStart(2, '0'))
-      .join('');
-  });
-}
+  const hash = await crypto.subtle.digest('SHA-256', data);
+
+  return Array.from(new Uint8Array(hash))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+};
 
 export const Teaser = async () => {
   const contacts = await resend.contacts.list({
     audienceId: env.RESEND_AUDIENCE_ID,
   });
+
+  if (!contacts.data?.data.length) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -51,7 +56,7 @@ export const Teaser = async () => {
           <span className="text-[8px] text-muted-foreground">
             +
             {new Intl.NumberFormat('en-US', { notation: 'compact' }).format(
-              contacts.data?.data.length - teaserIds.length
+              (contacts.data?.data.length ?? 0) - teaserIds.length
             )}
           </span>
         </div>

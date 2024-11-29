@@ -36,7 +36,26 @@ const EventDate = ({ date }: { date: string | null }) => {
 export const GitHubEvent = ({
   event,
 }: {
-  event: RestEndpointMethodTypes['activity']['listPublicEventsForUser']['response']['data'][0];
+  event: RestEndpointMethodTypes['activity']['listPublicEventsForUser']['response']['data'][0] & {
+    type:
+      | 'CommitCommentEvent'
+      | 'CreateEvent'
+      | 'DeleteEvent'
+      | 'ForkEvent'
+      | 'GollumEvent'
+      | 'IssueCommentEvent'
+      | 'IssuesEvent'
+      | 'MemberEvent'
+      | 'PublicEvent'
+      | 'PullRequestEvent'
+      | 'PullRequestReviewEvent'
+      | 'PullRequestReviewCommentEvent'
+      | 'PullRequestReviewThreadEvent'
+      | 'PushEvent'
+      | 'ReleaseEvent'
+      | 'SponsorshipEvent'
+      | 'WatchEvent';
+  };
 }) => {
   if (event.type === 'PushEvent') {
     // https://github.com/octokit/rest.js/issues/128
@@ -92,7 +111,7 @@ export const GitHubEvent = ({
               alt={pullRequest.user.login}
               width={16}
               height={16}
-              className="rounded-full w-4 h-4"
+              className="h-4 w-4 overflow-hidden rounded-full object-cover"
             />
             {pullRequest.user.login}
           </div>

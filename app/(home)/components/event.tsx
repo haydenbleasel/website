@@ -10,7 +10,9 @@ import {
   IssueReopenedIcon,
   IssueTrackedByIcon,
   IssueTracksIcon,
+  RepoForkedIcon,
   RepoIcon,
+  StarIcon,
   TagIcon,
 } from '@primer/octicons-react';
 import Image from 'next/image';
@@ -143,8 +145,9 @@ export const GitHubEvent = ({
     return (
       <div className="flex items-center gap-2">
         <FeedPublicIcon className="h-4 w-4 shrink-0" />
-        <span className="shrink-0">Open-sourced</span>
-        <div className="flex-1 truncate">{event.repo.name} on GitHub</div>
+        <div className="flex-1 truncate">
+          Open-sourced {event.repo.name} on GitHub
+        </div>
         <EventDate date={event.created_at} />
       </div>
     );
@@ -154,8 +157,9 @@ export const GitHubEvent = ({
     return (
       <div className="flex items-center gap-2">
         <CommentIcon className="h-4 w-4 shrink-0" />
-        <span className="shrink-0">Commented on</span>
-        <div className="flex-1 truncate">{event.payload.issue?.title}</div>
+        <div className="flex-1 truncate">
+          Commented on {event.payload.issue?.title}
+        </div>
         <EventDate date={event.created_at} />
       </div>
     );
@@ -176,8 +180,7 @@ export const GitHubEvent = ({
     return (
       <div className="flex items-center gap-2">
         <Icon className="h-4 w-4 shrink-0" />
-        <span className="shrink-0">Created</span>
-        <div className="flex-1 truncate">{event.repo.name}</div>
+        <div className="flex-1 truncate">Created {event.repo.name}</div>
         <EventDate date={event.created_at} />
       </div>
     );
@@ -190,8 +193,27 @@ export const GitHubEvent = ({
     return (
       <div className="flex items-center gap-2">
         <Icon className="h-4 w-4 shrink-0" />
-        <span className="shrink-0">Deleted</span>
-        <div className="flex-1 truncate">{event.repo.name}</div>
+        <div className="flex-1 truncate">Deleted {event.repo.name}</div>
+        <EventDate date={event.created_at} />
+      </div>
+    );
+  }
+
+  if (event.type === 'WatchEvent') {
+    return (
+      <div className="flex items-center gap-2">
+        <StarIcon className="h-4 w-4 shrink-0" />
+        <div className="flex-1 truncate">Starred {event.repo.name}</div>
+        <EventDate date={event.created_at} />
+      </div>
+    );
+  }
+
+  if (event.type === 'ForkEvent') {
+    return (
+      <div className="flex items-center gap-2">
+        <RepoForkedIcon className="h-4 w-4 shrink-0" />
+        <div className="flex-1 truncate">Forked {event.repo.name}</div>
         <EventDate date={event.created_at} />
       </div>
     );

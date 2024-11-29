@@ -15,7 +15,6 @@ import {
   StarIcon,
   TagIcon,
 } from '@primer/octicons-react';
-import Image from 'next/image';
 
 const EventDate = ({ date }: { date: string | null }) => {
   if (!date) {
@@ -104,18 +103,8 @@ export const GitHubEvent = ({
       <div className="flex items-center gap-2">
         <GitPullRequestIcon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">
-          Merged{' '}
-          <div className="inline-flex items-center gap-1 align-bottom">
-            <Image
-              src={`https://github.com/${pullRequest.user.login}.png`}
-              alt={pullRequest.user.login}
-              width={16}
-              height={16}
-              className="h-4 w-4 overflow-hidden rounded-full object-cover"
-            />
-            {pullRequest.user.login}
-          </div>
-          's {pullRequest.title} on {event.repo.name}
+          Merged {pullRequest.user.login}'s {pullRequest.title} on{' '}
+          {event.repo.name}
         </div>
         <EventDate date={event.created_at} />
       </div>

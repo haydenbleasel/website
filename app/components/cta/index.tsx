@@ -1,9 +1,10 @@
+import { env } from '@/lib/env';
 import { resend } from '@/lib/resend';
 import { Newsletter } from './newsletter';
 
 export const CallToAction = async () => {
   const contacts = await resend.contacts.list({
-    audienceId: process.env.RESEND_AUDIENCE_ID,
+    audienceId: env.RESEND_AUDIENCE_ID,
   });
 
   return (

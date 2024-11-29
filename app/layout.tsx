@@ -1,4 +1,5 @@
 import './globals.css';
+import { Toaster } from '@/components/ui/sonner';
 import { ThemeProvider } from '@/providers/theme';
 import type { ReactNode } from 'react';
 import { CallToAction } from './components/cta';
@@ -35,6 +36,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         </main>
         <Footer />
       </ThemeProvider>
+      <Toaster />
     </body>
   </html>
 );

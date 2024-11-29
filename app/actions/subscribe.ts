@@ -2,7 +2,6 @@
 
 import { resend } from '@/lib/resend';
 import { parseError } from '@/lib/utils';
-import { z } from 'zod';
 
 const audienceId = process.env.RESEND_AUDIENCE_ID;
 
@@ -11,20 +10,18 @@ if (!audienceId) {
 }
 
 export const subscribe = async (
-  _prevState: never,
-  formData: FormData
-): Promise<{
-  message: string;
-}> => {
-  const schema = z.object({
-    email: z.string().email(),
-  });
-
-  const data = schema.parse(Object.fromEntries(formData));
-
+  email: string
+): Promise<
+  | {
+      message: string;
+    }
+  | {
+      error: string;
+    }
+> => {
   try {
     const response = await resend.contacts.create({
-      email: data.email,
+      email,
       unsubscribed: false,
       audienceId,
     });
@@ -37,6 +34,6 @@ export const subscribe = async (
   } catch (error) {
     const message = parseError(error);
 
-    return { message };
+    return { error: message };
   }
 };

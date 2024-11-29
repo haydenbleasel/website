@@ -1,19 +1,11 @@
-import { env } from '@/lib/env';
-import { resend } from '@/lib/resend';
 import { Newsletter } from './newsletter';
+import { Teaser } from './teaser';
 
-export const CallToAction = async () => {
-  const contacts = await resend.contacts.list({
-    audienceId: env.RESEND_AUDIENCE_ID,
-  });
-
-  return (
-    <div className="bg-secondary">
-      <p>
-        Join {contacts.data?.data.length} readers and get infrequent updates on
-        new projects.
-      </p>
+export const CallToAction = () => (
+  <section>
+    <div className="container mx-auto py-8">
+      <Teaser />
       <Newsletter />
     </div>
-  );
-};
+  </section>
+);

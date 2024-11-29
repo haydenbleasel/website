@@ -1,4 +1,5 @@
 import { social } from '@/lib/social';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Status } from './status';
 
@@ -7,7 +8,13 @@ export const Footer = () => (
     <div className="flex items-center justify-center gap-4">
       {Object.values(social).map((link) => (
         <Link key={link.href} href={link.href}>
-          {link.label}
+          <Image
+            src={link.icon}
+            alt={link.label}
+            width={20}
+            height={20}
+            className="h-5 w-5"
+          />
         </Link>
       ))}
     </div>

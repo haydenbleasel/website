@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from './logo.jpg';
@@ -20,6 +21,6 @@ export const Header = () => (
       <Link href="/projects">Projects</Link>
       <Link href="/blog">Blog</Link>
     </nav>
-    <button>Get in touch</button>
+    <Button variant="outline">Get in touch</Button>
   </header>
 );

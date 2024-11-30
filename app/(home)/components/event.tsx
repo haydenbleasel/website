@@ -188,7 +188,9 @@ export const GitHubEvent = ({
     return (
       <div className="flex items-center gap-4">
         <Icon className="h-4 w-4 shrink-0" />
-        <div className="flex-1 truncate">Created {event.repo.name}</div>
+        <div className="flex-1 truncate">
+          Created a {refType} on {event.repo.name}
+        </div>
         <EventDate date={event.created_at} />
       </div>
     );
@@ -201,7 +203,9 @@ export const GitHubEvent = ({
     return (
       <div className="flex items-center gap-4">
         <Icon className="h-4 w-4 shrink-0" />
-        <div className="flex-1 truncate">Deleted {event.repo.name}</div>
+        <div className="flex-1 truncate">
+          Deleted a {refType} on {event.repo.name}
+        </div>
         <EventDate date={event.created_at} />
       </div>
     );

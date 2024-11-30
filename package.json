@@ -33,6 +33,7 @@
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-hook-form": "^7.53.2",
+    "react-tweet": "^3.2.1",
     "react-wrap-balancer": "^1.1.1",
     "resend": "^4.0.1",
     "rsc-activity-calendar": "^1.0.1",

@@ -2,10 +2,10 @@ import { Button } from '@/components/ui/button';
 import { Pump } from 'basehub/react-pump';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { draftMode } from 'next/headers';
-import Image from 'next/image';
 import Link from 'next/link';
+import { Tweet } from 'react-tweet';
 
-export const Feature = async () => {
+export const FeaturedTweet = async () => {
   const { isEnabled } = await draftMode();
 
   return (
@@ -14,14 +14,10 @@ export const Feature = async () => {
         {
           __typename: true,
           home: {
-            featureTitle: true,
-            featureText: true,
-            featureLink: true,
-            featureImage: {
-              url: true,
-              alt: true,
-              width: true,
-              height: true,
+            featuredTweet: {
+              title: true,
+              description: true,
+              tweetId: true,
             },
           },
         },
@@ -34,31 +30,24 @@ export const Feature = async () => {
 
         return (
           <section className="grid grid-cols-3 divide-x">
-            <div className="relative col-span-2 aspect-video overflow-hidden bg-dashed px-8 pt-8">
-              <Image
-                src={data.home.featureImage.url}
-                alt={data.home.featureImage.alt ?? ''}
-                width={data.home.featureImage.width}
-                height={data.home.featureImage.height}
-                className="rounded-2xl border"
-              />
-            </div>
             <div className="flex flex-col items-start justify-between gap-4 p-8">
               <div className="flex flex-col gap-2">
-                <small className="text-muted-foreground">Latest feature</small>
+                <small className="text-muted-foreground">Featured tweet</small>
                 <h2 className="font-bold text-3xl tracking-tight">
-                  {data.home.featureTitle}
+                  {data.home.featuredTweet.title}
                 </h2>
-                <p className="text-muted-foreground">{data.home.featureText}</p>
+                <p className="text-muted-foreground">
+                  {data.home.featuredTweet.description}
+                </p>
               </div>
               <div className="flex items-center gap-1">
                 <Button asChild variant="outline" className="gap-2">
                   <a
-                    href={data.home.featureLink}
+                    href={`https://x.com/haydenbleasel/status/${data.home.featuredTweet.tweetId}`}
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    Keep reading
+                    Read on X
                     <ArrowUpRightIcon size={16} />
                   </a>
                 </Button>
@@ -66,6 +55,9 @@ export const Feature = async () => {
                   <Link href="/features">View all features</Link>
                 </Button>
               </div>
+            </div>
+            <div className="relative col-span-2 flex items-center justify-center overflow-hidden bg-dashed p-8">
+              <Tweet id={data.home.featuredTweet.tweetId} />
             </div>
           </section>
         );

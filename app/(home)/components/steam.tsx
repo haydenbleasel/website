@@ -17,8 +17,8 @@ export const Steam = async (): Promise<ReactElement> => {
         alt=""
         width={460}
         height={215}
-        className="m-0 h-auto w-full max-w-[300px] shrink-0 rounded"
-        sizes="300px"
+        className="m-0 h-auto w-full max-w-[230px] shrink-0 rounded"
+        sizes="230px"
         quality={100}
       />
       <div className="flex flex-col gap-2">

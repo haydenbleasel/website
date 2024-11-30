@@ -19,7 +19,7 @@ export const Spotify = async (): Promise<ReactElement> => {
           alt=""
           width={128}
           height={128}
-          className="m-0 block h-32 w-32"
+          className="m-0 block aspect-square h-[107px] w-auto"
           quality={100}
           loading="eager"
           priority
@@ -29,7 +29,7 @@ export const Spotify = async (): Promise<ReactElement> => {
           alt=""
           width={640}
           height={640}
-          className="-rotate-12 -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 h-14 w-14 shrink-0 rounded-full"
+          className="-rotate-12 -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 aspect-square h-[50px] w-auto shrink-0 rounded-full"
           sizes="56px"
           quality={100}
         />

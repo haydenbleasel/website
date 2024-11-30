@@ -1,3 +1,4 @@
+import { Prose } from '@/components/prose';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
@@ -75,9 +76,9 @@ export const Roles = () => (
                 <p className="text-muted-foreground text-sm">
                   {role.startYear} &mdash; {role.endYear ?? 'Present'}
                 </p>
-                <div className="prose prose-sm prose-neutral">
+                <Prose>
                   <RichText content={role.description.json.content} />
-                </div>
+                </Prose>
               </div>
             </div>
           ))}

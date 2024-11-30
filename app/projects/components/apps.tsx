@@ -1,3 +1,4 @@
+import { Prose } from '@/components/prose';
 import { Button } from '@/components/ui/button';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
@@ -41,9 +42,9 @@ export const Apps = async () => {
           <div key={app._title} className="grid grid-cols-2 divide-x">
             <div className="p-8">
               <h3 className="font-semibold text-lg">{app._title}</h3>
-              <div className="prose prose-sm prose-neutral">
+              <Prose>
                 <RichText content={app.description.json.content} />
-              </div>
+              </Prose>
               <Button asChild variant="outline">
                 <a href={app.url} target="_blank" rel="noreferrer noopener">
                   View App

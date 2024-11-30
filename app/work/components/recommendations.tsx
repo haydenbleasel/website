@@ -1,3 +1,4 @@
+import { Prose } from '@/components/prose';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
 import Image from 'next/image';
@@ -71,9 +72,9 @@ export const Recommendations = () => (
                       {recommendation.role} at {recommendation.company}
                     </p>
                   </div>
-                  <div className="prose prose-sm prose-neutral max-w-none">
+                  <Prose className="max-w-none">
                     <p>{recommendation.text}</p>
-                  </div>
+                  </Prose>
                 </div>
               </div>
             ))}

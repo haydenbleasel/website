@@ -2,6 +2,7 @@ import { basehub } from 'basehub';
 import { Currently } from './components/currently';
 import { Feature } from './components/feature';
 import { Feed } from './components/feed';
+import { GitHubActivity } from './components/github-activity';
 import { Hero } from './components/hero';
 import { Spotify } from './components/spotify';
 import { Steam } from './components/steam';
@@ -26,7 +27,7 @@ const Home = () => (
     <Currently />
     <Feed />
     <Feature />
-    <div className="w-full aspect-[4/1] bg-dashed" />
+    <GitHubActivity />
     <div className="grid grid-cols-2 divide-x">
       <Spotify />
       <Steam />

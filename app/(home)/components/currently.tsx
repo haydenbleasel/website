@@ -32,9 +32,9 @@ export const Currently = async () => {
           <section className="grid grid-cols-3 divide-x">
             <div className="flex flex-col gap-2 p-8">
               <small className="text-muted-foreground">Now</small>
-              {data.home.currently?.json && (
+              {data.home.currently?.text.json && (
                 <Prose>
-                  <RichText content={data.home.currently.json.content} />
+                  <RichText content={data.home.currently.text.json.content} />
                 </Prose>
               )}
             </div>

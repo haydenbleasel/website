@@ -11,14 +11,16 @@ import { Steam } from './components/steam';
 export const generateMetadata = async () => {
   const { home } = await basehub({ cache: 'no-store' }).query({
     home: {
-      metaTitle: true,
-      metaDescription: true,
+      metadata: {
+        title: true,
+        description: true,
+      },
     },
   });
 
   return {
-    title: home.metaTitle,
-    description: home.metaDescription,
+    title: home.metadata.title,
+    description: home.metadata.description,
   };
 };
 

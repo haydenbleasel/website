@@ -6,14 +6,16 @@ import { Hero } from './components/hero';
 export const generateMetadata = async () => {
   const { stack } = await basehub({ cache: 'no-store' }).query({
     stack: {
-      metaTitle: true,
-      metaDescription: true,
+      metadata: {
+        title: true,
+        description: true,
+      },
     },
   });
 
   return {
-    title: stack.metaTitle,
-    description: stack.metaDescription,
+    title: stack.metadata.title,
+    description: stack.metadata.description,
   };
 };
 

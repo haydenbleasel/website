@@ -16,6 +16,7 @@ export const Hero = async () => {
             _title: true,
             hero: {
               text: true,
+              caption: true,
             },
           },
         },
@@ -27,7 +28,10 @@ export const Hero = async () => {
         'use server';
 
         return (
-          <HeroSection caption={data.home._title} title={data.home.hero.text}>
+          <HeroSection
+            caption={data.home.hero.caption}
+            title={data.home.hero.text}
+          >
             <div className="flex items-center justify-center gap-4">
               <Button asChild variant="outline">
                 <Link href="/work">View my work</Link>

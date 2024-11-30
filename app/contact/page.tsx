@@ -1,5 +1,22 @@
+import { basehub } from 'basehub';
 import Balancer from 'react-wrap-balancer';
 import { ContactForm } from './components/contact-form';
+
+export const generateMetadata = async () => {
+  const { contact } = await basehub({ cache: 'no-store' }).query({
+    contact: {
+      metadata: {
+        title: true,
+        description: true,
+      },
+    },
+  });
+
+  return {
+    title: contact.metadata.title,
+    description: contact.metadata.description,
+  };
+};
 
 const ContactPage = () => (
   <div className="grid grid-cols-2 gap-8 divide-x">

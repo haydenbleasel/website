@@ -4,14 +4,16 @@ import { Pump } from 'basehub/react-pump';
 export const generateMetadata = async () => {
   const { blog } = await basehub({ cache: 'no-store' }).query({
     blog: {
-      metaTitle: true,
-      metaDescription: true,
+      metadata: {
+        title: true,
+        description: true,
+      },
     },
   });
 
   return {
-    title: blog.metaTitle,
-    description: blog.metaDescription,
+    title: blog.metadata.title,
+    description: blog.metadata.description,
   };
 };
 

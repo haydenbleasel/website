@@ -6,14 +6,16 @@ import { Roles } from './components/roles';
 export const generateMetadata = async () => {
   const { work } = await basehub({ cache: 'no-store' }).query({
     work: {
-      metaTitle: true,
-      metaDescription: true,
+      metadata: {
+        title: true,
+        description: true,
+      },
     },
   });
 
   return {
-    title: work.metaTitle,
-    description: work.metaDescription,
+    title: work.metadata.title,
+    description: work.metadata.description,
   };
 };
 

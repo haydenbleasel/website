@@ -11,8 +11,10 @@ export const Hero = async () => {
         {
           __typename: true,
           stack: {
-            heroCaption: true,
-            heroTitle: true,
+            _title: true,
+            hero: {
+              text: true,
+            },
           },
         },
       ]}
@@ -24,8 +26,8 @@ export const Hero = async () => {
 
         return (
           <HeroSection
-            caption={data.stack.heroCaption}
-            title={data.stack.heroTitle}
+            caption={data.stack._title}
+            title={data.stack.hero.text}
           />
         );
       }}

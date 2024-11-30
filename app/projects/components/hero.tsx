@@ -14,8 +14,10 @@ export const Hero = async () => {
         {
           __typename: true,
           projects: {
-            heroCaption: true,
-            heroTitle: true,
+            _title: true,
+            hero: {
+              text: true,
+            },
           },
         },
       ]}
@@ -27,8 +29,8 @@ export const Hero = async () => {
 
         return (
           <HeroSection
-            caption={data.projects.heroCaption}
-            title={data.projects.heroTitle}
+            caption={data.projects._title}
+            title={data.projects.hero.text}
           >
             <Button asChild variant="outline">
               <a href={social.x.href} target="_blank" rel="noreferrer noopener">

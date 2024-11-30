@@ -14,8 +14,10 @@ export const Hero = async () => {
         {
           __typename: true,
           work: {
-            heroCaption: true,
-            heroTitle: true,
+            _title: true,
+            hero: {
+              text: true,
+            },
           },
         },
       ]}
@@ -26,10 +28,7 @@ export const Hero = async () => {
         'use server';
 
         return (
-          <HeroSection
-            caption={data.work.heroCaption}
-            title={data.work.heroTitle}
-          >
+          <HeroSection caption={data.work._title} title={data.work.hero.text}>
             <Button asChild variant="outline">
               <a
                 href={social.linkedin.href}

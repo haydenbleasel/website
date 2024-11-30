@@ -13,8 +13,10 @@ export const Currently = async () => {
           __typename: true,
           home: {
             currently: {
-              json: {
-                content: true,
+              text: {
+                json: {
+                  content: true,
+                },
               },
             },
           },

@@ -19,6 +19,8 @@ export const env = createEnv({
     SPOTIFY_CLIENT_ID: z.string().min(1),
     SPOTIFY_CLIENT_SECRET: z.string().min(1),
     SPOTIFY_REFRESH_TOKEN: z.string().min(1),
+    STEAM_ID: z.string().min(1),
+    STEAM_API_KEY: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_LOGO_DEV_TOKEN: z.string().min(1).startsWith('pk_'),
@@ -40,6 +42,8 @@ export const env = createEnv({
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
     SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
     SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
+    STEAM_ID: process.env.STEAM_ID,
+    STEAM_API_KEY: process.env.STEAM_API_KEY,
     NEXT_PUBLIC_LOGO_DEV_TOKEN: process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN,
   },
 });

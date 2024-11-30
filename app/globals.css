@@ -90,3 +90,7 @@ body {
     opacity: 0.75;
   }
 }
+
+#work .col-span-1 + .col-span-1 {
+  @apply border-l;
+}

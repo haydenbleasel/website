@@ -1,5 +1,8 @@
+import { Button } from '@/components/ui/button';
+import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';
 import { draftMode } from 'next/headers';
+import Image from 'next/image';
 import Balancer from 'react-wrap-balancer';
 
 export const Hero = async () => {
@@ -10,7 +13,7 @@ export const Hero = async () => {
       queries={[
         {
           __typename: true,
-          home: {
+          work: {
             heroCaption: true,
             heroTitle: true,
           },
@@ -24,10 +27,28 @@ export const Hero = async () => {
 
         return (
           <section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
-            <p className="text-muted-foreground">{data.home.heroCaption}</p>
+            <small className="text-base text-muted-foreground">
+              {data.work.heroCaption}
+            </small>
             <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
-              <Balancer>{data.home.heroTitle}</Balancer>
+              <Balancer>{data.work.heroTitle}</Balancer>
             </h1>
+            <Button asChild variant="outline">
+              <a
+                href={social.linkedin.href}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Image
+                  src={social.linkedin.icon}
+                  alt={social.linkedin.label}
+                  width={16}
+                  height={16}
+                  className="h-4 w-4"
+                />
+                Follow me on LinkedIn
+              </a>
+            </Button>
           </section>
         );
       }}

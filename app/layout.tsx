@@ -1,10 +1,10 @@
 import './globals.css';
+import { CallToAction } from '@/components/cta';
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 import { Toaster } from '@/components/ui/sonner';
 import { ThemeProvider } from '@/providers/theme';
 import type { ReactNode } from 'react';
-import { CallToAction } from './components/cta';
-import { Footer } from './components/footer';
-import { Header } from './components/header';
 
 type RootLayoutProps = {
   children: ReactNode;

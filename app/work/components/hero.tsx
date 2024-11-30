@@ -1,9 +1,9 @@
+import { HeroSection } from '@/components/hero-section';
 import { Button } from '@/components/ui/button';
 import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';
 import { draftMode } from 'next/headers';
 import Image from 'next/image';
-import Balancer from 'react-wrap-balancer';
 
 export const Hero = async () => {
   const { isEnabled } = await draftMode();
@@ -26,13 +26,10 @@ export const Hero = async () => {
         'use server';
 
         return (
-          <section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
-            <small className="text-base text-muted-foreground">
-              {data.work.heroCaption}
-            </small>
-            <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
-              <Balancer>{data.work.heroTitle}</Balancer>
-            </h1>
+          <HeroSection
+            caption={data.work.heroCaption}
+            title={data.work.heroTitle}
+          >
             <Button asChild variant="outline">
               <a
                 href={social.linkedin.href}
@@ -49,7 +46,7 @@ export const Hero = async () => {
                 Follow me on LinkedIn
               </a>
             </Button>
-          </section>
+          </HeroSection>
         );
       }}
     </Pump>

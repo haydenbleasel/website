@@ -1,8 +1,9 @@
 import { HeroSection } from '@/components/hero-section';
 import { Button } from '@/components/ui/button';
+import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';
 import { draftMode } from 'next/headers';
-import Link from 'next/link';
+import Image from 'next/image';
 
 export const Hero = async () => {
   const { isEnabled } = await draftMode();
@@ -12,7 +13,7 @@ export const Hero = async () => {
       queries={[
         {
           __typename: true,
-          home: {
+          projects: {
             heroCaption: true,
             heroTitle: true,
           },
@@ -26,17 +27,21 @@ export const Hero = async () => {
 
         return (
           <HeroSection
-            caption={data.home.heroCaption}
-            title={data.home.heroTitle}
+            caption={data.projects.heroCaption}
+            title={data.projects.heroTitle}
           >
-            <div className="flex items-center justify-center gap-2">
-              <Button asChild variant="outline">
-                <Link href="/work">View my work</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/contact">Get in touch</Link>
-              </Button>
-            </div>
+            <Button asChild variant="outline">
+              <a href={social.x.href} target="_blank" rel="noreferrer noopener">
+                <Image
+                  src={social.x.icon}
+                  alt={social.x.label}
+                  width={16}
+                  height={16}
+                  className="h-4 w-4"
+                />
+                Follow me on X
+              </a>
+            </Button>
           </HeroSection>
         );
       }}

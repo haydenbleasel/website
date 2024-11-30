@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { hostname: 'www.gravatar.com', protocol: 'https' },
       { hostname: 'assets.basehub.com', protocol: 'https' },
+      { hostname: 'img.logo.dev', protocol: 'https' },
     ],
   },
 };

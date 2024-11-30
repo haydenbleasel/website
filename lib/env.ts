@@ -14,7 +14,9 @@ export const env = createEnv({
     RESEND_FROM: z.string().min(1).email(),
     RESEND_TO: z.string().min(1).email(),
   },
-  client: {},
+  client: {
+    NEXT_PUBLIC_LOGO_DEV_TOKEN: z.string().min(1).startsWith('pk_'),
+  },
   runtimeEnv: {
     BASEHUB_TOKEN: process.env.BASEHUB_TOKEN,
     RESEND_AUDIENCE_ID: process.env.RESEND_AUDIENCE_ID,
@@ -26,5 +28,6 @@ export const env = createEnv({
     KV_REST_API_TOKEN: process.env.KV_REST_API_TOKEN,
     RESEND_FROM: process.env.RESEND_FROM,
     RESEND_TO: process.env.RESEND_TO,
+    NEXT_PUBLIC_LOGO_DEV_TOKEN: process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN,
   },
 });

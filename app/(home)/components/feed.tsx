@@ -12,7 +12,7 @@ export const Feed = async () => {
       {activity.data.slice(0, 10).map((event) => (
         <GitHubEvent key={event.id} event={event} />
       ))}
-      <div className="absolute right-0 bottom-6 left-0 z-10 h-40 bg-gradient-to-b from-transparent to-background" />
+      <div className="absolute right-0 bottom-6 left-0 z-10 h-40 bg-gradient-to-b from-transparent to-backdrop" />
     </section>
   );
 };

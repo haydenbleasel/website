@@ -34,12 +34,12 @@ export const Feature = async () => {
 
         return (
           <div className="grid grid-cols-3 divide-x">
-            <div className="relative aspect-video overflow-hidden bg-dashed px-8 pt-8 col-span-2">
+            <div className="relative col-span-2 aspect-video overflow-hidden bg-dashed px-8 pt-8">
               <Image
-                src={data.home.featureImage?.url ?? ''}
-                alt={data.home.featureImage?.alt ?? ''}
-                width={data.home.featureImage?.width ?? 0}
-                height={data.home.featureImage?.height ?? 0}
+                src={data.home.featureImage.url}
+                alt={data.home.featureImage.alt ?? ''}
+                width={data.home.featureImage.width}
+                height={data.home.featureImage.height}
                 className="rounded-2xl border"
               />
             </div>

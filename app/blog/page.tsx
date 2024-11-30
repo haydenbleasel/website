@@ -34,7 +34,7 @@ const Blog = () => (
             <div className="flex flex-col justify-between p-6">
               <div>
                 <small className="text-muted-foreground">
-                  {new Date(firstPost.date ?? '').toLocaleDateString('en-US', {
+                  {new Date(firstPost.date).toLocaleDateString('en-US', {
                     month: 'long',
                     day: 'numeric',
                     year: 'numeric',

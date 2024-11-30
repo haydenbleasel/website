@@ -1,28 +1,20 @@
-import { social } from '@/lib/social';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Links } from './links';
 import { Status } from './status';
 import { ThemeSwitcher } from './theme-switcher';
 
 export const Footer = () => (
-  <footer className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 py-8 sm:px-0">
-    <div className="flex items-center justify-center gap-4">
-      {Object.values(social).map((link) => (
-        <Link key={link.href} href={link.href}>
-          <Image
-            src={link.icon}
-            alt={link.label}
-            width={20}
-            height={20}
-            className="h-5 w-5"
-          />
-        </Link>
-      ))}
+  <footer className="container mx-auto flex flex-col gap-16 px-4 py-16 sm:px-0">
+    <Links />
+    <div className="grid grid-cols-3">
+      <Status />
+      <div className="flex items-center justify-center">
+        <p className="text-muted-foreground text-sm">
+          &copy; {new Date().getFullYear()} Hayden Bleasel. All rights reserved.
+        </p>
+      </div>
+      <div className="flex items-center justify-end">
+        <ThemeSwitcher />
+      </div>
     </div>
-    <p className="text-muted-foreground text-sm">
-      &copy; {new Date().getFullYear()} Hayden Bleasel. All rights reserved.
-    </p>
-    <Status />
-    <ThemeSwitcher />
   </footer>
 );

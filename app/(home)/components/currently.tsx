@@ -1,3 +1,4 @@
+import { Prose } from '@/components/prose';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
@@ -27,9 +28,12 @@ export const Currently = async () => {
 
         return (
           <section className="grid grid-cols-3 divide-x">
-            <div className="p-8">
+            <div className="flex flex-col gap-2 p-8">
+              <small className="text-muted-foreground">Now</small>
               {data.home.currently?.json && (
-                <RichText content={data.home.currently.json.content} />
+                <Prose>
+                  <RichText content={data.home.currently.json.content} />
+                </Prose>
               )}
             </div>
             <div className="relative col-span-2 pt-8 pl-8">

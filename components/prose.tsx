@@ -5,7 +5,7 @@ type ProseProps = ComponentProps<'div'>;
 
 export const Prose = ({ className, ...props }: ProseProps) => (
   <div
-    className={cn('prose prose-neutral prose-sm dark:prose-invert', className)}
+    className={cn('prose prose-neutral dark:prose-invert', className)}
     {...props}
   />
 );

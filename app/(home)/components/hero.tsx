@@ -29,7 +29,7 @@ export const Hero = async () => {
             caption={data.home.heroCaption}
             title={data.home.heroTitle}
           >
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-4">
               <Button asChild variant="outline">
                 <Link href="/work">View my work</Link>
               </Button>

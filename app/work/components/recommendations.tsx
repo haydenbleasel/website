@@ -72,7 +72,7 @@ export const Recommendations = () => (
                       {recommendation.role} at {recommendation.company}
                     </p>
                   </div>
-                  <Prose className="max-w-none">
+                  <Prose className="prose-sm max-w-none">
                     <p>{recommendation.text}</p>
                   </Prose>
                 </div>

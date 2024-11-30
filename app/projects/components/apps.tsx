@@ -42,7 +42,7 @@ export const Apps = async () => {
           <div key={app._title} className="grid grid-cols-2 divide-x">
             <div className="p-8">
               <h3 className="font-semibold text-lg">{app._title}</h3>
-              <Prose>
+              <Prose className="prose-sm">
                 <RichText content={app.description.json.content} />
               </Prose>
               <Button asChild variant="outline">

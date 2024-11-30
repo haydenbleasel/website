@@ -1,17 +1,8 @@
 import { Button } from '@/components/ui/button';
+import { navigation } from '@/lib/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from './logo.jpg';
-
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/work', label: 'Work' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/travel', label: 'Travel' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/stack', label: 'Stack' },
-  { href: '/features', label: 'Features' },
-];
 
 export const Header = () => (
   <header className="container sticky top-0 z-50 mx-auto flex items-center justify-between border-b bg-backdrop/90 px-4 py-4 backdrop-blur-md transition-all sm:px-0">
@@ -29,7 +20,7 @@ export const Header = () => (
       </Link>
     </div>
     <nav className="flex gap-6">
-      {links.map((link) => (
+      {navigation.map((link) => (
         <Link
           key={link.href}
           href={link.href}

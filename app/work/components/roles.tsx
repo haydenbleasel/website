@@ -76,7 +76,7 @@ export const Roles = () => (
                 <p className="text-muted-foreground text-sm">
                   {role.startYear} &mdash; {role.endYear ?? 'Present'}
                 </p>
-                <Prose>
+                <Prose className="prose-sm">
                   <RichText content={role.description.json.content} />
                 </Prose>
               </div>

@@ -14,7 +14,7 @@ const links = [
 ];
 
 export const Header = () => (
-  <header className="container sticky top-0 z-50 mx-auto flex items-center justify-between border-b bg-secondary/90 px-4 py-4 backdrop-blur-md transition-all sm:px-0">
+  <header className="container sticky top-0 z-50 mx-auto flex items-center justify-between border-b bg-background/90 px-4 py-4 backdrop-blur-md transition-all sm:px-0">
     <div className="w-32">
       <Link href="/" aria-label="Hayden Bleasel">
         <Image

@@ -22,7 +22,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         href="https://api.fontshare.com/css?f%5B%5D=jet-brains-mono@400&amp;display=swap"
       />
     </head>
-    <body className="bg-secondary font-sans antialiased dark:bg-background">
+    <body className="font-sans antialiased">
       <ThemeProvider
         attribute="class"
         defaultTheme="system"

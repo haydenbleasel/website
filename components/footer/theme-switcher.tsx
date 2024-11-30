@@ -36,7 +36,7 @@ export function ThemeSwitcher() {
   ];
 
   return (
-    <div className="relative flex h-8 rounded-full bg-background p-1 ring-1 ring-border">
+    <div className="relative flex h-8 rounded-full bg-backdrop p-1 ring-1 ring-border">
       {themes.map(({ key, icon: Icon, label }) => {
         const isActive = theme === key;
 

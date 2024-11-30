@@ -47,7 +47,7 @@ const Blog = () => (
 
       return (
         <div className="container mx-auto px-4 py-12 transition-all sm:px-0">
-          <article className="mb-12 grid grid-cols-1 gap-8 overflow-hidden rounded-2xl border bg-background/10 md:grid-cols-2">
+          <article className="mb-12 grid grid-cols-1 gap-8 overflow-hidden rounded-2xl border bg-backdrop/10 md:grid-cols-2">
             <div className="flex flex-col justify-between p-6">
               <div>
                 <small className="text-muted-foreground">
@@ -70,7 +70,7 @@ const Blog = () => (
                 </span>
               </div>
             </div>
-            <div className="hidden aspect-video bg-background/10 md:block" />
+            <div className="hidden aspect-video bg-backdrop/10 md:block" />
           </article>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,4 +1,19 @@
+import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
+
+export const generateMetadata = async () => {
+  const { blog } = await basehub({ cache: 'no-store' }).query({
+    blog: {
+      metaTitle: true,
+      metaDescription: true,
+    },
+  });
+
+  return {
+    title: blog.metaTitle,
+    description: blog.metaDescription,
+  };
+};
 
 const Blog = () => (
   <Pump
@@ -6,13 +21,15 @@ const Blog = () => (
       {
         __typename: true,
         blog: {
-          items: {
-            _title: true,
-            content: {
-              plainText: true,
-              readingTime: true,
+          posts: {
+            items: {
+              _title: true,
+              content: {
+                plainText: true,
+                readingTime: true,
+              },
+              date: true,
             },
-            date: true,
           },
         },
       },
@@ -22,11 +39,11 @@ const Blog = () => (
     {async ([data]) => {
       'use server';
 
-      if (!data.blog.items.length) {
+      if (!data.blog.posts.items.length) {
         return <div>No posts found</div>;
       }
 
-      const [firstPost, ...restPosts] = data.blog.items;
+      const [firstPost, ...restPosts] = data.blog.posts.items;
 
       return (
         <div className="container mx-auto px-4 py-12 transition-all sm:px-0">

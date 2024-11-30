@@ -12,8 +12,7 @@ export const Spotify = async (): Promise<ReactElement> => {
   }
 
   return (
-    <div>
-      <p>Now Listening</p>
+    <section className="flex flex-col justify-between gap-16 p-8">
       <div className="relative w-fit">
         <Image
           src={Vinyl}
@@ -35,9 +34,13 @@ export const Spotify = async (): Promise<ReactElement> => {
           quality={100}
         />
       </div>
-      <p className="text-neutral-500 text-sm dark:text-neutral-400">
-        <a href={song.href}>{song.name}</a> by {song.artist}
-      </p>
-    </div>
+      <div className="flex flex-col gap-2">
+        <small className="text-muted-foreground">Recently listened</small>
+        <a href={song.href} target="_blank" rel="noreferrer noopener">
+          <h2 className="font-bold text-3xl tracking-tight">{song.name}</h2>
+        </a>
+        <p className="text-muted-foreground">by {song.artist}</p>
+      </div>
+    </section>
   );
 };

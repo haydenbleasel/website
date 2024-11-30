@@ -26,7 +26,7 @@ export const Currently = async () => {
         'use server';
 
         return (
-          <div className="grid grid-cols-3 divide-x">
+          <section className="grid grid-cols-3 divide-x">
             <div className="p-8">
               {data.home.currently?.json && (
                 <RichText content={data.home.currently.json.content} />
@@ -37,7 +37,7 @@ export const Currently = async () => {
               <div className="absolute top-0 left-8 h-full w-px border-r border-dashed" />
               <div className="aspect-video w-full rounded-tl-2xl bg-muted-foreground" />
             </div>
-          </div>
+          </section>
         );
       }}
     </Pump>

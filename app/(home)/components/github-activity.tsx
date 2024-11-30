@@ -12,7 +12,7 @@ export const GitHubActivity = async (): Promise<ReactElement> => {
   }
 
   return (
-    <div>
+    <section>
       <p>GitHub Activity</p>
       <div className="flex flex-col gap-4">
         <p className="text-neutral-500 text-sm dark:text-neutral-400">
@@ -43,6 +43,6 @@ export const GitHubActivity = async (): Promise<ReactElement> => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };

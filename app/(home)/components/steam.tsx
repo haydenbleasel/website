@@ -11,22 +11,7 @@ export const Steam = async (): Promise<ReactElement> => {
   }
 
   return (
-    <div>
-      <p>Recently Played</p>
-      <div className="flex flex-col justify-between gap-4 text-sm">
-        <a
-          href={`https://store.steampowered.com/app/${game.id}`}
-          className="line-clamp-4"
-        >
-          {game.name}
-        </a>
-        <div>
-          <p className="truncate">🕦 {Math.round(game.playtime / 60)} hours</p>
-          <p className="truncate">
-            🏆 {game.completeAchievements} achievements
-          </p>
-        </div>
-      </div>
+    <section className="flex flex-col justify-between gap-16 p-8">
       <Image
         src={game.image}
         alt=""
@@ -36,6 +21,20 @@ export const Steam = async (): Promise<ReactElement> => {
         sizes="300px"
         quality={100}
       />
-    </div>
+      <div className="flex flex-col gap-2">
+        <small className="text-muted-foreground">Recently played</small>
+        <a
+          href={`https://store.steampowered.com/app/${game.id}`}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <h2 className="font-bold text-3xl tracking-tight">{game.name}</h2>
+        </a>
+        <p className="text-muted-foreground">
+          🕦 {Math.round(game.playtime / 60)} hours, 🏆{' '}
+          {game.completeAchievements} achievements
+        </p>
+      </div>
+    </section>
   );
 };

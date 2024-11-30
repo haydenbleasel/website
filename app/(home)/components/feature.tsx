@@ -33,7 +33,7 @@ export const Feature = async () => {
         'use server';
 
         return (
-          <div className="grid grid-cols-3 divide-x">
+          <section className="grid grid-cols-3 divide-x">
             <div className="relative col-span-2 aspect-video overflow-hidden bg-dashed px-8 pt-8">
               <Image
                 src={data.home.featureImage.url}
@@ -67,7 +67,7 @@ export const Feature = async () => {
                 </Button>
               </div>
             </div>
-          </div>
+          </section>
         );
       }}
     </Pump>

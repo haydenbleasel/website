@@ -3,6 +3,7 @@ import { Currently } from './components/currently';
 import { Feature } from './components/feature';
 import { Feed } from './components/feed';
 import { Hero } from './components/hero';
+import { Spotify } from './components/spotify';
 
 export const generateMetadata = async () => {
   const { home } = await basehub({ cache: 'no-store' }).query({
@@ -24,6 +25,11 @@ const Home = () => (
     <Currently />
     <Feed />
     <Feature />
+    <div className="w-full aspect-[4/1] bg-dashed" />
+    <div className="grid grid-cols-2 divide-x">
+      <Spotify />
+      <div />
+    </div>
   </>
 );
 

@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { hostname: 'www.gravatar.com', protocol: 'https' },
       { hostname: 'assets.basehub.com', protocol: 'https' },
       { hostname: 'img.logo.dev', protocol: 'https' },
+      { hostname: 'i.scdn.co', protocol: 'https' },
     ],
   },
 };

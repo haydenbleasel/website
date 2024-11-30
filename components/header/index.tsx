@@ -3,6 +3,7 @@ import { navigation } from '@/lib/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from './logo.jpg';
+import { MobileMenu } from './mobile-menu';
 
 export const Header = () => (
   <header className="container sticky top-0 z-50 mx-auto flex items-center justify-between border-b bg-backdrop/90 px-4 py-4 backdrop-blur-md transition-all sm:px-0">
@@ -19,7 +20,7 @@ export const Header = () => (
         />
       </Link>
     </div>
-    <nav className="flex gap-6">
+    <nav className="hidden gap-6 md:flex">
       {navigation.map((link) => (
         <Link
           key={link.href}
@@ -30,10 +31,13 @@ export const Header = () => (
         </Link>
       ))}
     </nav>
-    <div className="flex w-32 justify-end">
+    <div className="hidden w-32 justify-end md:flex">
       <Button variant="outline" size="sm" asChild>
         <Link href="/contact">Get in touch</Link>
       </Button>
+    </div>
+    <div className="flex w-32 justify-end md:hidden">
+      <MobileMenu />
     </div>
   </header>
 );

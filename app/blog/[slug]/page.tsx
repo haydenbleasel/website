@@ -29,6 +29,9 @@ export const generateMetadata = async ({ params }: BlogPostProps) => {
         items: {
           _title: true,
           description: true,
+          ogImage: {
+            url: true,
+          },
         },
       },
     },
@@ -43,6 +46,9 @@ export const generateMetadata = async ({ params }: BlogPostProps) => {
   return {
     title: post._title,
     description: post.description,
+    openGraph: {
+      images: [post.ogImage.url],
+    },
   };
 };
 

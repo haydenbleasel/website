@@ -67,7 +67,7 @@ export const FeaturedNews = async () => {
                   </a>
                 </Button>
                 <Button variant="link" className="text-muted-foreground">
-                  <Link href="/features">View all features</Link>
+                  <Link href="/live">View all features</Link>
                 </Button>
               </div>
             </div>

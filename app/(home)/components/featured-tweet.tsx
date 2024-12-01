@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { draftMode } from 'next/headers';
@@ -52,7 +53,7 @@ export const FeaturedTweet = async () => {
                   </a>
                 </Button>
                 <Button variant="link" className="text-muted-foreground">
-                  <Link href="/features">View all features</Link>
+                  <Link href={social.x.href}>View all tweets</Link>
                 </Button>
               </div>
             </div>

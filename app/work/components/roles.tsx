@@ -19,6 +19,8 @@ export const Roles = () => (
               startYear: true,
               role: true,
               url: true,
+              location: true,
+              type: true,
               logo: {
                 width: true,
                 height: true,
@@ -67,12 +69,13 @@ export const Roles = () => (
                     {role._title}
                   </span>
                 </h2>
-                <p className="text-muted-foreground text-sm">
-                  {role.startYear} &mdash; {role.endYear ?? 'Present'}
-                </p>
                 <Prose className="prose-sm">
                   <p>{role.description}</p>
                 </Prose>
+                <p className="text-muted-foreground text-sm">
+                  {role.type} &bull; {role.startYear} &mdash;{' '}
+                  {role.endYear ?? 'Present'} &bull; {role.location}
+                </p>
               </div>
             </Link>
           ))}

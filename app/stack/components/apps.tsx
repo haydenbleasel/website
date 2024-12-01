@@ -19,6 +19,7 @@ export const Apps = async () => {
                 url: true,
                 category: true,
                 featured: true,
+                imageUrl: true,
               },
             },
           },
@@ -34,19 +35,19 @@ export const Apps = async () => {
         return Object.entries(groups).map(([category, apps]) => (
           <div className="grid grid-cols-3 divide-x" key={category}>
             <div className="p-8">
-              <h2 className="text-2xl font-semibold">{category}</h2>
+              <h2 className="font-semibold text-2xl">{category}</h2>
             </div>
-            <div className="grid grid-cols-2 col-span-2 gap-6 p-8">
+            <div className="col-span-2 grid grid-cols-2">
               {apps.map((app) => (
                 <a
                   key={app._title}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-4 p-8 transition-colors hover:bg-background"
                   href={app.url}
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   <Image
-                    src={`https://img.logo.dev/${new URL(app.url).hostname}?token=${process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN}`}
+                    src={`https://img.logo.dev/${new URL(app.imageUrl ?? app.url).hostname}?token=${process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN}`}
                     alt={app.url}
                     width={32}
                     height={32}
@@ -58,7 +59,7 @@ export const Apps = async () => {
                       {app._title}
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      {app.description}{' '}
+                      {app.description}
                     </p>
                   </div>
                 </a>

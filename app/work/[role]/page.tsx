@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import Image from 'next/image';
@@ -8,6 +9,37 @@ import Balancer from 'react-wrap-balancer';
 type RoleProps = {
   params: {
     role: string;
+  };
+};
+
+export const generateMetadata = async ({ params }: RoleProps) => {
+  const { work } = await basehub({ cache: 'no-store' }).query({
+    work: {
+      roles: {
+        __args: {
+          filter: {
+            _sys_slug: {
+              eq: params.role,
+            },
+          },
+        },
+        items: {
+          _title: true,
+          description: true,
+        },
+      },
+    },
+  });
+
+  if (!work.roles.items.length) {
+    return {};
+  }
+
+  const [role] = work.roles.items;
+
+  return {
+    title: role._title,
+    description: role.description,
   };
 };
 
@@ -79,7 +111,7 @@ const Role = ({ params }: RoleProps) => (
             <p className="mx-auto max-w-4xl text-center">
               <Balancer>{role.description}</Balancer>
             </p>
-            <div className="flex items-center gap-4 text-base text-muted-foreground">
+            <div className="flex items-center gap-4 text-muted-foreground text-sm">
               <p>{role.type}</p>
               <p>&bull;</p>
               <p>
@@ -97,9 +129,11 @@ const Role = ({ params }: RoleProps) => (
               )}
             </div>
           </section>
-          <Prose className="mx-auto py-16">
-            <RichText content={role.content?.json.content} />
-          </Prose>
+          <section className="py-16">
+            <Prose className="mx-auto">
+              <RichText content={role.content?.json.content} />
+            </Prose>
+          </section>
         </>
       );
     }}

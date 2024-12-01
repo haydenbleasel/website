@@ -36,14 +36,16 @@ export const Recommendations = () => (
 
       return (
         <div className="grid grid-cols-3 divide-x">
-          <div className="flex flex-col gap-2 p-8">
-            <h2 className="font-bold text-3xl tracking-tight">
-              What people say
-            </h2>
-            <p className="text-muted-foreground text-sm">
-              I&apos;ve been fortunate to work with some amazing people over the
-              years. Here&apos;s what they have to say about me.
-            </p>
+          <div className="sticky top-16 self-start">
+            <div className="flex flex-col gap-2 p-8">
+              <h2 className="font-bold text-3xl tracking-tight">
+                What people say
+              </h2>
+              <p className="text-muted-foreground text-sm">
+                I&apos;ve been fortunate to work with some amazing people over
+                the years. Here&apos;s what they have to say about me.
+              </p>
+            </div>
           </div>
           <div className="col-span-2 grid grid-cols-2 divide-y" id="work">
             {data.work.recommendations.items.map((recommendation) => (

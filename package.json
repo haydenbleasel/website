@@ -23,6 +23,7 @@
     "basehub": "^7.5.28",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cobe": "^0.6.3",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.12.0",
     "ky": "^1.7.2",

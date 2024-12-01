@@ -43,7 +43,7 @@ export const Globe: FC = () => {
     <canvas
       aria-label="Globe"
       ref={canvasReference}
-      className="w-full h-full"
+      className="h-full w-full"
     />
   );
 };

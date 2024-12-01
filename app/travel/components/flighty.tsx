@@ -16,6 +16,7 @@ export const Flighty = async () => {
           __typename: true,
           travel: {
             flighty: {
+              caption: true,
               title: true,
               text: {
                 json: {
@@ -41,19 +42,26 @@ export const Flighty = async () => {
 
         return (
           <section className="grid grid-cols-3 divide-x">
-            <div className="flex flex-col gap-2 p-8">
-              <small className="text-muted-foreground">Overview</small>
-              <h2 className="font-bold text-3xl tracking-tight">
-                {data.travel.flighty.title}
-              </h2>
-              {data.travel.flighty.text && (
-                <Prose>
-                  <RichText
-                    content={data.travel.flighty.text.json.content}
-                    components={richTextComponents}
-                  />
-                </Prose>
-              )}
+            <div className="relative col-span-2 overflow-hidden p-8">
+              <div className="-left-1/4 -bottom-1/3 absolute h-full w-full">
+                <Globe />
+              </div>
+              <div className="relative z-10 flex flex-col gap-2">
+                <small className="text-muted-foreground">
+                  {data.travel.flighty.caption}
+                </small>
+                <h2 className="font-bold text-3xl tracking-tight">
+                  {data.travel.flighty.title}
+                </h2>
+                {data.travel.flighty.text && (
+                  <Prose>
+                    <RichText
+                      content={data.travel.flighty.text.json.content}
+                      components={richTextComponents}
+                    />
+                  </Prose>
+                )}
+              </div>
             </div>
             <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden bg-dashed p-8">
               <Image
@@ -81,9 +89,6 @@ export const Flighty = async () => {
                 })}
                 .
               </small>
-            </div>
-            <div className="overflow-hidden p-8 pr-0">
-              <Globe />
             </div>
           </section>
         );

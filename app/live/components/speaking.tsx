@@ -1,6 +1,5 @@
-import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
-import { Link } from 'lucide-react';
+import { LiveItem } from './live-item';
 
 export const Speaking = () => (
   <Pump
@@ -24,33 +23,38 @@ export const Speaking = () => (
       'use server';
 
       if (!data.live.speaking.items.length) {
-        return <div>No speaking found</div>;
+        return <div>No events found</div>;
       }
 
       return (
-        <div className="grid grid-cols-3">
-          {data.live.speaking.items
-            .sort(
-              (a, b) => new Date(b.year).getTime() - new Date(a.year).getTime()
-            )
-            .map((post, index) => (
-              <Link
-                key={post._title}
-                href={post.url ?? ''}
-                className={cn(
-                  'flex flex-col gap-2 p-8 transition-colors hover:bg-background',
-                  index % 3 !== 2 && 'border-r',
-                  index > 2 && 'border-t'
-                )}
-              >
-                <h2 className="font-bold text-lg leading-normal tracking-tight">
-                  {post._title}
-                </h2>
-                <p>
-                  {post.location} &bull; {post.year}
-                </p>
-              </Link>
-            ))}
+        <div className="grid grid-cols-3 divide-x">
+          <div className="p-8">
+            <h2 className="font-semibold text-2xl">Speaking</h2>
+          </div>
+          <div className="col-span-2 grid grid-cols-2">
+            {data.live.speaking.items
+              .sort((a, b) => b.year - a.year)
+              .map((item) =>
+                item.url ? (
+                  <a
+                    key={item._title}
+                    className="flex flex-col items-start gap-1 p-8 transition-colors hover:bg-background"
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <LiveItem data={item} />
+                  </a>
+                ) : (
+                  <div
+                    key={item._title}
+                    className="flex flex-col items-start gap-1 p-8 transition-colors hover:bg-background"
+                  >
+                    <LiveItem data={item} />
+                  </div>
+                )
+              )}
+          </div>
         </div>
       );
     }}

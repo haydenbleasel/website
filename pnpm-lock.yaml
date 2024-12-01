@@ -92,13 +92,13 @@ importers:
         version: 1.9.4
       '@content-collections/core':
         specifier: ^0.7.3
-        version: 0.7.3(typescript@5.6.3)
+        version: 0.7.3(typescript@5.7.2)
       '@content-collections/mdx':
         specifier: ^0.2.0
-        version: 0.2.0(@content-collections/core@0.7.3(typescript@5.6.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.2.0(@content-collections/core@0.7.3(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@content-collections/next':
         specifier: ^0.2.3
-        version: 0.2.3(@content-collections/core@0.7.3(typescript@5.6.3))(next@15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        version: 0.2.3(@content-collections/core@0.7.3(typescript@5.7.2))(next@15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@types/node':
         specifier: ^22
         version: 22.8.6
@@ -121,8 +121,8 @@ importers:
         specifier: ^3.4.14
         version: 3.4.14
       typescript:
-        specifier: ^5.6.3
-        version: 5.6.3
+        specifier: ^5.7.2
+        version: 5.7.2
       ultracite:
         specifier: ^4.1.6
         version: 4.1.6
@@ -2357,8 +2357,8 @@ packages:
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  typescript@5.6.3:
-    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
+  typescript@5.7.2:
+    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2519,7 +2519,7 @@ snapshots:
   '@biomejs/cli-win32-x64@1.9.4':
     optional: true
 
-  '@content-collections/core@0.7.3(typescript@5.6.3)':
+  '@content-collections/core@0.7.3(typescript@5.7.2)':
     dependencies:
       '@parcel/watcher': 2.4.1
       camelcase: 8.0.0
@@ -2530,17 +2530,17 @@ snapshots:
       pluralize: 8.0.0
       serialize-javascript: 6.0.2
       tinyglobby: 0.2.5
-      typescript: 5.6.3
+      typescript: 5.7.2
       yaml: 2.4.5
       zod: 3.23.8
 
-  '@content-collections/integrations@0.2.1(@content-collections/core@0.7.3(typescript@5.6.3))':
+  '@content-collections/integrations@0.2.1(@content-collections/core@0.7.3(typescript@5.7.2))':
     dependencies:
-      '@content-collections/core': 0.7.3(typescript@5.6.3)
+      '@content-collections/core': 0.7.3(typescript@5.7.2)
 
-  '@content-collections/mdx@0.2.0(@content-collections/core@0.7.3(typescript@5.6.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@content-collections/mdx@0.2.0(@content-collections/core@0.7.3(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@content-collections/core': 0.7.3(typescript@5.6.3)
+      '@content-collections/core': 0.7.3(typescript@5.7.2)
       esbuild: 0.21.5
       mdx-bundler: 10.0.3(esbuild@0.21.5)
       react: 18.3.1
@@ -2549,10 +2549,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@content-collections/next@0.2.3(@content-collections/core@0.7.3(typescript@5.6.3))(next@15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+  '@content-collections/next@0.2.3(@content-collections/core@0.7.3(typescript@5.7.2))(next@15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
-      '@content-collections/core': 0.7.3(typescript@5.6.3)
-      '@content-collections/integrations': 0.2.1(@content-collections/core@0.7.3(typescript@5.6.3))
+      '@content-collections/core': 0.7.3(typescript@5.7.2)
+      '@content-collections/integrations': 0.2.1(@content-collections/core@0.7.3(typescript@5.7.2))
       next: 15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   '@discoveryjs/json-ext@0.5.7': {}
@@ -4931,7 +4931,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  typescript@5.6.3: {}
+  typescript@5.7.2: {}
 
   ultracite@4.1.6: {}
 

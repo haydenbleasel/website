@@ -1,7 +1,9 @@
 import { Prose } from '@/components/prose';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const generateMetadata = async () => {
@@ -35,6 +37,13 @@ const Blog = () => (
                 readingTime: true,
               },
               date: true,
+              featured: true,
+              image: {
+                url: true,
+                width: true,
+                height: true,
+                alt: true,
+              },
             },
           },
         },
@@ -48,9 +57,43 @@ const Blog = () => (
         return <div>No posts found</div>;
       }
 
+      const featuredPost = data.blog.posts.items.find((post) => post.featured);
+      const remainingPosts = data.blog.posts.items.filter(
+        (post) => post !== featuredPost
+      );
+
       return (
         <div className="grid grid-cols-3">
-          {data.blog.posts.items
+          {featuredPost && (
+            <>
+              <div className="col-span-2 border-b bg-background">
+                {featuredPost.image && (
+                  <Image
+                    className="col-span-2"
+                    src={featuredPost.image.url}
+                    width={featuredPost.image.width}
+                    height={featuredPost.image.height}
+                    alt={featuredPost.image.alt ?? ''}
+                  />
+                )}
+              </div>
+              <div className="flex flex-col items-start justify-between gap-4 border-b p-8">
+                <div className="flex flex-col gap-2">
+                  <small className="text-muted-foreground">Featured post</small>
+                  <h2 className="font-bold text-2xl leading-normal tracking-tight">
+                    {featuredPost._title}
+                  </h2>
+                  <Prose className="prose line-clamp-5">
+                    {featuredPost.content?.plainText.slice(0, 250)}
+                  </Prose>
+                </div>
+                <Button asChild variant="outline">
+                  <Link href={`/blog/${featuredPost._slug}`}>Read more</Link>
+                </Button>
+              </div>
+            </>
+          )}
+          {remainingPosts
             .sort(
               (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
             )

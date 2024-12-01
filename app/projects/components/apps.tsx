@@ -1,8 +1,6 @@
 import { Prose } from '@/components/prose';
 import { Button } from '@/components/ui/button';
-import { richTextComponents } from '@/lib/rich-text';
 import { Pump } from 'basehub/react-pump';
-import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
 
 export const Apps = async () => {
@@ -17,11 +15,7 @@ export const Apps = async () => {
             apps: {
               items: {
                 _title: true,
-                description: {
-                  json: {
-                    content: true,
-                  },
-                },
+                description: true,
                 image: {
                   width: true,
                   height: true,
@@ -44,10 +38,7 @@ export const Apps = async () => {
             <div className="p-8">
               <h3 className="font-semibold text-lg">{app._title}</h3>
               <Prose className="prose-sm">
-                <RichText
-                  content={app.description.json.content}
-                  components={richTextComponents}
-                />
+                <p>{app.description}</p>
               </Prose>
               <Button asChild variant="outline">
                 <a href={app.url} target="_blank" rel="noreferrer noopener">
@@ -56,7 +47,7 @@ export const Apps = async () => {
               </Button>
             </div>
             <div>
-              <div className="w-full aspect-video bg-muted-foreground" />
+              <div className="aspect-video w-full bg-muted-foreground" />
             </div>
           </div>
         ));

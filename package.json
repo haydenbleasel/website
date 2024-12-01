@@ -41,7 +41,7 @@
     "@biomejs/biome": "1.9.4",
     "@content-collections/core": "^0.7.3",
     "@content-collections/mdx": "^0.2.0",
-    "@content-collections/next": "^0.2.3",
+    "@content-collections/next": "^0.2.4",
     "@types/node": "^22",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",

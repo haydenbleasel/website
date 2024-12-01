@@ -97,8 +97,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(@content-collections/core@0.7.3(typescript@5.6.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@content-collections/next':
-        specifier: ^0.2.3
-        version: 0.2.3(@content-collections/core@0.7.3(typescript@5.6.3))(next@15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        specifier: ^0.2.4
+        version: 0.2.4(@content-collections/core@0.7.3(typescript@5.6.3))(next@15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@types/node':
         specifier: ^22
         version: 22.8.6
@@ -207,8 +207,8 @@ packages:
       react: '>= 18'
       react-dom: '>= 18'
 
-  '@content-collections/next@0.2.3':
-    resolution: {integrity: sha512-8rteKhfu8sJOtQAzVt4iMkgbCso2yzfTzq6kXFYNW6HwDJzaFjLeHiIO4Pa6oFOCh3w9CApFdloTAKWzQJKpHQ==}
+  '@content-collections/next@0.2.4':
+    resolution: {integrity: sha512-MAmnKX/Lj4rDIWkcnzQIASboi8vmv5w+/uxM6gHPPQFXcp1yiiZndxbzR9TV7ul1J6i7HB1h9Qpj6gvCz/HwvA==}
     peerDependencies:
       '@content-collections/core': 0.x
       next: ^12 || ^13 || ^14 || ^15
@@ -2549,7 +2549,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@content-collections/next@0.2.3(@content-collections/core@0.7.3(typescript@5.6.3))(next@15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+  '@content-collections/next@0.2.4(@content-collections/core@0.7.3(typescript@5.6.3))(next@15.0.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
       '@content-collections/core': 0.7.3(typescript@5.6.3)
       '@content-collections/integrations': 0.2.1(@content-collections/core@0.7.3(typescript@5.6.3))

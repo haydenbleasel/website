@@ -2,6 +2,7 @@ import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import { typographyConfig } from './lib/typography';
 
 export default {
   darkMode: ['class'],
@@ -73,6 +74,7 @@ export default {
         sans: ['Switzer', ...fontFamily.sans],
         mono: ['JetBrains Mono', ...fontFamily.mono],
       },
+      typography: typographyConfig,
     },
   },
   plugins: [animate, typography],

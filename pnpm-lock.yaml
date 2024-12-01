@@ -98,6 +98,9 @@ importers:
       rsc-activity-calendar:
         specifier: ^1.0.1
         version: 1.0.1(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      shiki:
+        specifier: ^1.24.0
+        version: 1.24.0
       sonner:
         specifier: ^1.7.0
         version: 1.7.0(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)

@@ -1,9 +1,9 @@
-import Image from 'next/image';
-
 import { Prose } from '@/components/prose';
+import { richTextComponents } from '@/lib/rich-text';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
+import Image from 'next/image';
 import { Globe } from './globe';
 
 export const Flighty = async () => {
@@ -48,7 +48,10 @@ export const Flighty = async () => {
               </h2>
               {data.travel.flighty.text && (
                 <Prose>
-                  <RichText content={data.travel.flighty.text.json.content} />
+                  <RichText
+                    content={data.travel.flighty.text.json.content}
+                    components={richTextComponents}
+                  />
                 </Prose>
               )}
             </div>

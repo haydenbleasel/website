@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { richTextComponents } from '@/lib/rich-text';
 import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
@@ -110,7 +111,10 @@ const BlogPost = ({ params }: BlogPostProps) => (
           </section>
           <section className="py-16">
             <Prose className="mx-auto">
-              <RichText content={post.content?.json.content} />
+              <RichText
+                content={post.content?.json.content}
+                components={richTextComponents}
+              />
             </Prose>
           </section>
         </>

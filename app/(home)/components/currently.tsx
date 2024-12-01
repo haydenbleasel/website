@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { richTextComponents } from '@/lib/rich-text';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
@@ -34,7 +35,10 @@ export const Currently = async () => {
               <small className="text-muted-foreground">Now</small>
               {data.home.currently?.text.json && (
                 <Prose>
-                  <RichText content={data.home.currently.text.json.content} />
+                  <RichText
+                    content={data.home.currently.text.json.content}
+                    components={richTextComponents}
+                  />
                 </Prose>
               )}
             </div>

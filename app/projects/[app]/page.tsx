@@ -114,7 +114,7 @@ const App = ({ params }: AppProps) => (
             )}
           </section>
           <section className="py-16">
-            <Prose className="mx-auto">
+            <Prose className="mx-auto max-w-3xl">
               <RichText
                 content={app.description?.json.content}
                 components={richTextComponents}

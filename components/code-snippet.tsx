@@ -1,5 +1,5 @@
 import type { HandlerProps } from 'basehub/react-rich-text';
-import { type Highlighter, getSingletonHighlighter } from 'shiki';
+import { codeToHtml } from 'shiki';
 
 type CodeSnippetProps = HandlerProps<'pre'>;
 
@@ -8,12 +8,8 @@ export const CodeSnippet = async ({
   language,
   code,
 }: CodeSnippetProps) => {
-  const highlighter: Highlighter = await getSingletonHighlighter({
-    themes: ['dark-plus'],
-    langs: [language],
-  });
-  const html = highlighter.codeToHtml(code, {
-    theme: 'dark-plus',
+  const html = await codeToHtml(code, {
+    theme: 'vitesse-light',
     lang: language,
   });
   return <div dangerouslySetInnerHTML={{ __html: html }} />;

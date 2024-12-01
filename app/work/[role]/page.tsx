@@ -131,7 +131,7 @@ const Role = ({ params }: RoleProps) => (
             </div>
           </section>
           <section className="py-16">
-            <Prose className="mx-auto">
+            <Prose className="mx-auto max-w-3xl">
               <RichText
                 content={role.content?.json.content}
                 components={richTextComponents}

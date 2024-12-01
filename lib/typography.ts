@@ -9,6 +9,7 @@ export const typographyConfig = (theme: (path: string) => string) => ({
         padding: theme('spacing.4'),
         margin: 0,
         fontSize: theme('fontSize.sm'),
+        border: `1px solid ${theme('colors.border')}`,
       },
     },
   },

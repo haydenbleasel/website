@@ -110,7 +110,7 @@ const BlogPost = ({ params }: BlogPostProps) => (
             </div>
           </section>
           <section className="py-16">
-            <Prose className="mx-auto">
+            <Prose className="mx-auto max-w-3xl">
               <RichText
                 content={post.content?.json.content}
                 components={richTextComponents}

@@ -14,6 +14,7 @@ export const Links = () => (
             items: {
               _title: true,
               _slug: true,
+              startYear: true,
             },
           },
         },
@@ -22,6 +23,7 @@ export const Links = () => (
             items: {
               _title: true,
               _slug: true,
+              date: true,
             },
           },
         },
@@ -50,18 +52,23 @@ export const Links = () => (
         {
           title: 'Work',
           href: '/work',
-          items: data.work.roles.items.map((role) => ({
-            href: `/work/${role._slug}`,
-            children: role._title,
-          })),
+          items: data.work.roles.items
+            .sort((a, b) => b.startYear - a.startYear)
+            .map((role) => ({
+              href: `/work/${role._slug}`,
+              children: role._title,
+            })),
         },
         {
           title: 'Posts',
           href: '/blog',
-          items: data.blog.posts.items.slice(0, 7).map((post) => ({
-            href: `/blog/${post._slug}`,
-            children: post._title,
-          })),
+          items: data.blog.posts.items
+            .sort((a, b) => b.date.localeCompare(a.date))
+            .slice(0, 5)
+            .map((post) => ({
+              href: `/blog/${post._slug}`,
+              children: post._title,
+            })),
         },
         {
           title: 'Projects',

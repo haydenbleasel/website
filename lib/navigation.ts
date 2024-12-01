@@ -5,5 +5,5 @@ export const navigation = [
   { href: '/travel', label: 'Travel' },
   { href: '/blog', label: 'Blog' },
   { href: '/stack', label: 'Stack' },
-  { href: '/features', label: 'Features' },
+  { href: '/live', label: 'Live' },
 ];

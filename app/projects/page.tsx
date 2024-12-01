@@ -18,13 +18,11 @@ export const generateMetadata = async () => {
   };
 };
 
-const Projects = () => {
-  return (
-    <>
-      <Hero />
-      <Apps />
-    </>
-  );
-};
+const Projects = () => (
+  <>
+    <Hero />
+    <Apps />
+  </>
+);
 
 export default Projects;

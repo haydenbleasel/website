@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { navigation } from '@/lib/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ActiveLink } from '../active-link';
 import Logo from './logo.jpg';
 import { MobileMenu } from './mobile-menu';
 
@@ -22,13 +23,9 @@ export const Header = () => (
     </div>
     <nav className="hidden gap-6 md:flex">
       {navigation.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className="text-muted-foreground text-sm"
-        >
+        <ActiveLink key={link.href} href={link.href}>
           {link.label}
-        </Link>
+        </ActiveLink>
       ))}
     </nav>
     <div className="hidden w-32 justify-end md:flex">

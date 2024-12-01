@@ -3,6 +3,7 @@ import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ActiveLink } from '../active-link';
 
 export const Links = () => (
   <Pump
@@ -32,6 +33,22 @@ export const Links = () => (
             items: {
               _title: true,
               _slug: true,
+            },
+          },
+        },
+        live: {
+          features: {
+            items: {
+              _title: true,
+              year: true,
+              url: true,
+            },
+          },
+          speaking: {
+            items: {
+              _title: true,
+              year: true,
+              url: true,
             },
           },
         },
@@ -79,6 +96,18 @@ export const Links = () => (
           })),
         },
         {
+          title: 'Live',
+          href: '/live',
+          items: [...data.live.features.items, ...data.live.speaking.items]
+            .filter((item) => item.url)
+            .sort((a, b) => b.year - a.year)
+            .slice(0, 5)
+            .map((item) => ({
+              href: item.url,
+              children: item._title,
+            })),
+        },
+        {
           title: 'Social',
           items: Object.values(social).map((link) => ({
             href: link.href,
@@ -112,7 +141,7 @@ export const Links = () => (
               <ul className="flex flex-col gap-3">
                 {list.items.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href}>{item.children}</Link>
+                    <ActiveLink href={item.href}>{item.children}</ActiveLink>
                   </li>
                 ))}
               </ul>

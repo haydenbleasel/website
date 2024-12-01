@@ -21,6 +21,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowRightIcon } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import type { z } from 'zod';
@@ -33,13 +34,13 @@ const typeOptions = [
     subtitle: 'I have a job offer / question / feedback.',
   },
   {
-    value: 'contract',
-    label: 'Contract work',
-    subtitle: 'I want to hire you for a project.',
+    value: 'work',
+    label: 'Work (contract or employment)',
+    subtitle: 'I want to hire you!',
   },
   {
     value: 'advisory',
-    label: 'Advisory work',
+    label: 'Advisory role',
     subtitle: 'Can you join my board or be an advisor?',
   },
   {
@@ -47,16 +48,24 @@ const typeOptions = [
     label: 'Agency introduction',
     subtitle: "I'm looking for an good design / dev agency.",
   },
+  {
+    value: 'event',
+    label: 'Event',
+    subtitle: 'I want to invite you to speak at my event.',
+  },
 ];
 
 export const ContactForm = () => {
+  const searchParams = useSearchParams();
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       name: '',
       email: '',
       message: '',
-      type: 'general',
+      type:
+        (searchParams.get('type') as z.infer<typeof contactSchema>['type']) ??
+        'general',
     },
   });
 

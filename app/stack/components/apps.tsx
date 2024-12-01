@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
 import groupBy from 'lodash.groupby';
 import { VerifiedIcon } from 'lucide-react';
@@ -35,16 +36,20 @@ export const Apps = async () => {
 
         return Object.entries(groups).map(([category, apps]) => (
           <div className="grid grid-cols-3 divide-x" key={category}>
-            <div className="p-8">
+            <div className="bg-dashed p-8">
               <h2 className="font-semibold text-2xl">{category}</h2>
             </div>
             <div className="col-span-2 grid grid-cols-2">
               {apps
                 .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
-                .map((app) => (
+                .map((app, index) => (
                   <a
                     key={app._title}
-                    className="flex items-start gap-4 p-8 transition-colors hover:bg-background"
+                    className={cn(
+                      'flex items-start gap-4 p-8 transition-colors hover:bg-background',
+                      index > 1 && 'border-t',
+                      index % 2 === 0 && 'border-r'
+                    )}
                     href={app.url}
                     target="_blank"
                     rel="noreferrer noopener"
@@ -66,12 +71,15 @@ export const Apps = async () => {
                           <VerifiedIcon className="text-success" size={16} />
                         )}
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         {app.description}
                       </p>
                     </div>
                   </a>
                 ))}
+              {apps.length % 2 === 1 && (
+                <div className="h-full w-full border-t bg-dashed" />
+              )}
             </div>
           </div>
         ));

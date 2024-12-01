@@ -1,8 +1,8 @@
 import { Prose } from '@/components/prose';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
-import { RichText } from 'basehub/react-rich-text';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const Roles = () => (
   <Pump
@@ -13,11 +13,8 @@ export const Roles = () => (
           roles: {
             items: {
               _title: true,
-              description: {
-                json: {
-                  content: true,
-                },
-              },
+              _slug: true,
+              description: true,
               endYear: true,
               startYear: true,
               role: true,
@@ -44,12 +41,14 @@ export const Roles = () => (
       return (
         <div className="grid grid-cols-2">
           {data.work.roles.items.map((role, index) => (
-            <div
+            <Link
               key={role._title}
+              href={`/work/${role._slug}`}
               className={cn(
-                'flex items-start gap-6 p-8',
+                'flex items-start gap-6 p-8 transition-colors',
                 index % 2 === 0 ? 'border-r' : '',
-                index < data.work.roles.items.length - 2 ? 'border-b' : ''
+                index < data.work.roles.items.length - 2 ? 'border-b' : '',
+                'hover:bg-background'
               )}
             >
               <div className="flex h-12 w-12 shrink-0 items-center justify-center">
@@ -64,23 +63,18 @@ export const Roles = () => (
               <div className="flex flex-col gap-2">
                 <h2 className="font-semibold text-xl tracking-tight">
                   <span className="block leading-tight">{role.role}</span>
-                  <a
-                    className="block text-muted-foreground leading-tight"
-                    href={role.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <span className="block text-muted-foreground">
                     {role._title}
-                  </a>
+                  </span>
                 </h2>
                 <p className="text-muted-foreground text-sm">
                   {role.startYear} &mdash; {role.endYear ?? 'Present'}
                 </p>
                 <Prose className="prose-sm">
-                  <RichText content={role.description.json.content} />
+                  <p>{role.description}</p>
                 </Prose>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       );

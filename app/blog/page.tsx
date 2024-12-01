@@ -29,6 +29,7 @@ const Blog = () => (
           posts: {
             items: {
               _title: true,
+              _slug: true,
               content: {
                 plainText: true,
                 readingTime: true,
@@ -56,7 +57,7 @@ const Blog = () => (
             .map((post, index) => (
               <Link
                 key={post._title}
-                href={`/blog/${post._title}`}
+                href={`/blog/${post._slug}`}
                 className={cn(
                   'flex flex-col gap-2 p-8 transition-colors hover:bg-background',
                   index % 3 !== 2 && 'border-r',
@@ -72,7 +73,8 @@ const Blog = () => (
                 <small className="text-muted-foreground text-xs">
                   {new Intl.DateTimeFormat('en-US', {
                     dateStyle: 'medium',
-                  }).format(new Date(post.date))}
+                  }).format(new Date(post.date))}{' '}
+                  &bull; {post.content?.readingTime} min read
                 </small>
               </Link>
             ))}

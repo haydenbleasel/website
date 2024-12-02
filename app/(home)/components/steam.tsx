@@ -1,7 +1,6 @@
 import type { GameProperties } from '@/app/api/cron/steam/route';
 import { get } from '@vercel/edge-config';
 import Image from 'next/image';
-import Link from 'next/link';
 import type { ReactElement } from 'react';
 
 export const Steam = async (): Promise<ReactElement> => {
@@ -13,7 +12,7 @@ export const Steam = async (): Promise<ReactElement> => {
 
   return (
     <section>
-      <Link
+      <a
         className="flex flex-col justify-between gap-16 p-8 transition-colors hover:bg-background"
         href={`https://store.steampowered.com/app/${game.id}`}
         target="_blank"
@@ -30,19 +29,13 @@ export const Steam = async (): Promise<ReactElement> => {
         />
         <div className="flex flex-col gap-2">
           <small className="text-muted-foreground">Recently played</small>
-          <a
-            href={`https://store.steampowered.com/app/${game.id}`}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <h2 className="font-bold text-3xl tracking-tight">{game.name}</h2>
-          </a>
+          <h2 className="font-bold text-3xl tracking-tight">{game.name}</h2>
           <p className="text-muted-foreground">
             🕦 {Math.round(game.playtime / 60)} hours, 🏆{' '}
             {game.completeAchievements} achievements
           </p>
         </div>
-      </Link>
+      </a>
     </section>
   );
 };

@@ -1,7 +1,6 @@
 import type { SpotifyProperties } from '@/app/api/cron/spotify/route';
 import { get } from '@vercel/edge-config';
 import Image from 'next/image';
-import Link from 'next/link';
 import type { ReactElement } from 'react';
 import Vinyl from './vinyl.png';
 
@@ -14,7 +13,7 @@ export const Spotify = async (): Promise<ReactElement> => {
 
   return (
     <section>
-      <Link
+      <a
         className="flex flex-col justify-between gap-16 p-8 transition-colors hover:bg-background"
         href={song.href}
         target="_blank"
@@ -43,12 +42,10 @@ export const Spotify = async (): Promise<ReactElement> => {
         </div>
         <div className="flex flex-col gap-2">
           <small className="text-muted-foreground">Recently listened</small>
-          <a href={song.href} target="_blank" rel="noreferrer noopener">
-            <h2 className="font-bold text-3xl tracking-tight">{song.name}</h2>
-          </a>
+          <h2 className="font-bold text-3xl tracking-tight">{song.name}</h2>
           <p className="text-muted-foreground">by {song.artist}</p>
         </div>
-      </Link>
+      </a>
     </section>
   );
 };

@@ -13,14 +13,14 @@ export const Recommendations = () => (
             items: {
               _title: true,
               text: true,
-              company: true,
-              role: true,
+              linkedIn: true,
               photo: {
                 width: true,
                 height: true,
                 url: true,
                 alt: true,
               },
+              size: true,
             },
           },
         },
@@ -36,8 +36,8 @@ export const Recommendations = () => (
 
       return (
         <div className="grid grid-cols-3 divide-x">
-          <div className="sticky top-16 self-start">
-            <div className="flex flex-col gap-2 p-8">
+          <div className="bg-dashed">
+            <div className="sticky top-16 flex flex-col gap-2 self-start p-8">
               <h2 className="font-bold text-3xl tracking-tight">
                 What people say
               </h2>
@@ -53,7 +53,9 @@ export const Recommendations = () => (
                 key={recommendation._title}
                 className={cn(
                   'mx-auto flex max-w-4xl items-start gap-6 p-8',
-                  recommendation.text.length > 280 ? 'col-span-2' : 'col-span-1'
+                  recommendation.size === 'Large'
+                    ? 'sm:col-span-2'
+                    : 'sm:col-span-1'
                 )}
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full">
@@ -67,12 +69,17 @@ export const Recommendations = () => (
                 </div>
                 <div className="flex flex-col gap-4">
                   <div>
-                    <h3 className="font-semibold text-lg tracking-tight">
+                    <h3 className="font-semibold text-lg leading-normal tracking-tight">
                       {recommendation._title}
                     </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {recommendation.role} at {recommendation.company}
-                    </p>
+                    <a
+                      href={recommendation.linkedIn}
+                      className="text-muted-foreground text-sm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      @{new URL(recommendation.linkedIn).pathname.split('/')[2]}
+                    </a>
                   </div>
                   <Prose className="prose-sm max-w-none">
                     <p>{recommendation.text}</p>

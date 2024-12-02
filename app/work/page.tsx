@@ -23,7 +23,6 @@ const Work = () => (
   <>
     <Hero />
     <Roles />
-    <div className="h-4 bg-dashed" />
     <Recommendations />
   </>
 );

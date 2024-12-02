@@ -1,6 +1,7 @@
 import { basehub } from 'basehub';
 import { Apps } from './components/apps';
 import { Hero } from './components/hero';
+import { Logos } from './components/logos';
 
 export const generateMetadata = async () => {
   const { projects } = await basehub({ cache: 'no-store' }).query({
@@ -21,6 +22,7 @@ export const generateMetadata = async () => {
 const Projects = () => (
   <>
     <Hero />
+    <Logos />
     <Apps />
   </>
 );

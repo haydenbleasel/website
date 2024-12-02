@@ -48,14 +48,18 @@ export const Recommendations = () => (
             </div>
           </div>
           <div className="col-span-2 grid grid-cols-2 divide-y" id="work">
-            {data.work.recommendations.items.map((recommendation) => (
+            {data.work.recommendations.items.map((recommendation, index) => (
               <div
                 key={recommendation._title}
                 className={cn(
                   'mx-auto flex max-w-4xl items-start gap-6 p-8',
                   recommendation.size === 'Large'
                     ? 'sm:col-span-2'
-                    : 'sm:col-span-1'
+                    : 'sm:col-span-1',
+                  recommendation.size === 'Small' &&
+                    data.work.recommendations.items.at(index - 1)?.size ===
+                      'Small' &&
+                    'border-l'
                 )}
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full">

@@ -64,9 +64,9 @@ const logos = [
 ];
 
 export const Logos = () => (
-  <section className="flex flex-col gap-8 bg-dashed py-16">
-    <p className="text-center text-muted-foreground">
-      My software has been used by the world&apos;s most innovative companies
+  <section className="flex flex-col gap-8 py-16">
+    <p className="text-center text-muted-foreground text-sm">
+      My projects have been used by the world&apos;s most innovative companies
     </p>
     <Marquee autoFill>
       {logos.map((logo) => (

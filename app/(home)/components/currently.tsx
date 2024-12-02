@@ -43,8 +43,8 @@ export const Currently = async () => {
               )}
             </div>
             <div className="relative col-span-2 pt-8 pl-8">
-              <div className="absolute top-8 left-0 h-px w-full border-t border-dashed" />
-              <div className="absolute top-0 left-8 h-full w-px border-r border-dashed" />
+              <div className="dashed-line-top" />
+              <div className="dashed-line-left" />
               <div className="aspect-video w-full rounded-tl-2xl bg-muted-foreground" />
             </div>
           </section>

@@ -44,6 +44,9 @@ export const FeaturedNews = async () => {
                 height={data.home.featuredNews.image.height}
                 className="rounded-2xl border"
               />
+              <div className="dashed-line-top" />
+              <div className="dashed-line-left" />
+              <div className="dashed-line-right" />
             </div>
             <div className="flex flex-col items-start justify-between gap-4 p-8">
               <div className="flex flex-col gap-2">

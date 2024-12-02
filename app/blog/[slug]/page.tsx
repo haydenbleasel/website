@@ -3,7 +3,6 @@ import { richTextComponents } from '@/lib/rich-text';
 import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
-import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 
@@ -12,8 +11,6 @@ type BlogPostProps = {
     slug: string;
   };
 };
-
-const BackgroundVideo = dynamic(() => import('next-video/background-video'));
 
 export const generateMetadata = async ({ params }: BlogPostProps) => {
   const { blog } = await basehub({ cache: 'no-store' }).query({
@@ -83,10 +80,6 @@ const BlogPost = ({ params }: BlogPostProps) => (
                 width: true,
                 height: true,
               },
-              video: {
-                url: true,
-                aspectRatio: true,
-              },
             },
           },
         },
@@ -121,15 +114,6 @@ const BlogPost = ({ params }: BlogPostProps) => (
               <p>&bull;</p>
               <p>{post.content?.readingTime} min read</p>
             </div>
-            {post.video && (
-              <div className="w-full max-w-3xl overflow-hidden border">
-                <BackgroundVideo
-                  src={post.video.url}
-                  className="w-full"
-                  style={{ aspectRatio: post.video.aspectRatio }}
-                />
-              </div>
-            )}
           </section>
           <section className="py-16">
             <Prose className="mx-auto max-w-3xl">

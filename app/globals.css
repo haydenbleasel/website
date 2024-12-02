@@ -113,3 +113,19 @@ body {
   text-align: right;
   color: rgba(115,138,148,.4)
 }
+
+.dashed-line-top {
+  @apply absolute top-8 left-0 h-px w-full border-t border-dashed;
+}
+
+.dashed-line-left {
+  @apply absolute top-0 left-8 h-full w-px border-r border-dashed;
+}
+
+.dashed-line-right {
+  @apply absolute top-0 right-8 h-full w-px border-r border-dashed;
+}
+
+.dashed-line-bottom {
+  @apply absolute bottom-8 left-0 h-px w-full border-t border-dashed;
+}

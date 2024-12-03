@@ -44,49 +44,46 @@ export const Roles = () => (
       return (
         <div className="grid grid-cols-2">
           {data.work.roles.items.map((role, index) => (
-            <div
+            <ViewAnimation
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              delay={index % 2 ? 0.2 : 0}
               className={cn(
                 index % 2 === 0 ? 'border-r' : '',
                 index < data.work.roles.items.length - 2 ? 'border-b' : ''
               )}
               key={role._title}
             >
-              <ViewAnimation
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                delay={index % 2 ? 0.2 : 0}
+              <Link
+                href={`/work/${role._slug}`}
+                className="flex items-start gap-6 p-8 transition-colors hover:bg-background"
               >
-                <Link
-                  href={`/work/${role._slug}`}
-                  className="flex items-start gap-6 p-8 transition-colors hover:bg-background"
-                >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center">
-                    <Image
-                      src={role.logo.url}
-                      width={role.logo.width}
-                      height={role.logo.height}
-                      alt={role.logo.alt ?? ''}
-                      className="block h-full w-full object-contain"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <h2 className="font-semibold text-xl tracking-tight">
-                      <span className="block leading-tight">{role.role}</span>
-                      <span className="block text-muted-foreground">
-                        {role._title}
-                      </span>
-                    </h2>
-                    <Prose className="prose-sm">
-                      <p>{role.description}</p>
-                    </Prose>
-                    <p className="text-muted-foreground text-sm">
-                      {role.type} &bull; {role.startYear} &mdash;{' '}
-                      {role.endYear ?? 'Present'} &bull; {role.location}
-                    </p>
-                  </div>
-                </Link>
-              </ViewAnimation>
-            </div>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center">
+                  <Image
+                    src={role.logo.url}
+                    width={role.logo.width}
+                    height={role.logo.height}
+                    alt={role.logo.alt ?? ''}
+                    className="block h-full w-full object-contain"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h2 className="font-semibold text-xl tracking-tight">
+                    <span className="block leading-tight">{role.role}</span>
+                    <span className="block text-muted-foreground">
+                      {role._title}
+                    </span>
+                  </h2>
+                  <Prose className="prose-sm">
+                    <p>{role.description}</p>
+                  </Prose>
+                  <p className="text-muted-foreground text-sm">
+                    {role.type} &bull; {role.startYear} &mdash;{' '}
+                    {role.endYear ?? 'Present'} &bull; {role.location}
+                  </p>
+                </div>
+              </Link>
+            </ViewAnimation>
           ))}
         </div>
       );

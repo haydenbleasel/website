@@ -143,23 +143,22 @@ export const Links = () => (
               whileInView={{ opacity: 1, translateY: 0 }}
               delay={index * 0.1}
               key={list.title}
+              className="flex flex-col gap-6"
             >
-              <div className="flex flex-col gap-6">
-                <div className="font-medium text-foreground">
-                  {list.href ? (
-                    <Link href={list.href}>{list.title}</Link>
-                  ) : (
-                    <p>{list.title}</p>
-                  )}
-                </div>
-                <ul className="flex flex-col gap-3">
-                  {list.items.map((item) => (
-                    <li key={item.href}>
-                      <ActiveLink href={item.href}>{item.children}</ActiveLink>
-                    </li>
-                  ))}
-                </ul>
+              <div className="font-medium text-foreground">
+                {list.href ? (
+                  <Link href={list.href}>{list.title}</Link>
+                ) : (
+                  <p>{list.title}</p>
+                )}
               </div>
+              <ul className="flex flex-col gap-3">
+                {list.items.map((item) => (
+                  <li key={item.href}>
+                    <ActiveLink href={item.href}>{item.children}</ActiveLink>
+                  </li>
+                ))}
+              </ul>
             </ViewAnimation>
           ))}
         </div>

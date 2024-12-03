@@ -24,17 +24,16 @@ export const Videos = async () => {
 
   return (
     <section className="grid grid-cols-3">
-      <div className="col-span-2 border-b p-8">
-        <ViewAnimation
-          initial={{ opacity: 0, translateY: -8 }}
-          whileInView={{ opacity: 1, translateY: 0 }}
-        >
-          <YoutubePlayer
-            url={`https://www.youtube.com/watch?v=${latest.id}`}
-            controls
-          />
-        </ViewAnimation>
-      </div>
+      <ViewAnimation
+        initial={{ opacity: 0, translateY: -8 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        className="col-span-2 border-b p-8"
+      >
+        <YoutubePlayer
+          url={`https://www.youtube.com/watch?v=${latest.id}`}
+          controls
+        />
+      </ViewAnimation>
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
         whileInView={{ opacity: 1, translateY: 0 }}
@@ -70,32 +69,26 @@ export const Videos = async () => {
         </div>
       </ViewAnimation>
       {rest.map((item, index) => (
-        <div
+        <ViewAnimation
           key={item.id}
+          initial={{ opacity: 0, translateY: -8 }}
+          whileInView={{ opacity: 1, translateY: 0 }}
+          delay={(index % 3) * 0.4}
           className={cn(index > 2 && 'border-t', index % 3 !== 0 && 'border-l')}
         >
-          <ViewAnimation
-            key={item.id}
-            initial={{ opacity: 0, translateY: -8 }}
-            whileInView={{ opacity: 1, translateY: 0 }}
-            delay={(index % 3) * 0.4}
-          >
-            <div className="flex flex-col gap-4 p-8">
-              <YoutubePlayer
-                url={`https://www.youtube.com/watch?v=${item.id}`}
-                controls
-              />
-              <div className="flex flex-col gap-2">
-                <h2 className="font-bold text-xl tracking-tight">
-                  {item.title}
-                </h2>
-                <Prose className="prose-sm line-clamp-3">
-                  <p>{item.description}</p>
-                </Prose>
-              </div>
+          <div className="flex flex-col gap-4 p-8">
+            <YoutubePlayer
+              url={`https://www.youtube.com/watch?v=${item.id}`}
+              controls
+            />
+            <div className="flex flex-col gap-2">
+              <h2 className="font-bold text-xl tracking-tight">{item.title}</h2>
+              <Prose className="prose-sm line-clamp-3">
+                <p>{item.description}</p>
+              </Prose>
             </div>
-          </ViewAnimation>
-        </div>
+          </div>
+        </ViewAnimation>
       ))}
       {new Array(3 - (rest.length % 3)).fill(null).map((_, index) => (
         <div key={index} className="border-t border-l bg-dashed" />

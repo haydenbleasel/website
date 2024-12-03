@@ -10,7 +10,7 @@ type HeroProps = {
     width: number;
     height: number;
   };
-  caption?: string;
+  caption?: string | null;
   title: string;
   children?: ReactNode;
 };

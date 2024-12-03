@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import type { ComponentProps, ReactNode } from 'react';
 
 type ViewAnimationProps = {
@@ -15,13 +15,21 @@ export const ViewAnimation = ({
   whileInView,
   delay,
   children,
-}: ViewAnimationProps) => (
-  <motion.div
-    initial={initial}
-    whileInView={whileInView}
-    viewport={{ once: true, amount: 0.5 }}
-    transition={{ delay, duration: 0.8 }}
-  >
-    {children}
-  </motion.div>
-);
+}: ViewAnimationProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return children;
+  }
+
+  return (
+    <motion.div
+      initial={initial}
+      whileInView={whileInView}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ delay, duration: 0.8 }}
+    >
+      {children}
+    </motion.div>
+  );
+};

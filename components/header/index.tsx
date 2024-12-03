@@ -17,7 +17,6 @@ export const Header = () => (
           height={32}
           className="h-8 w-8 overflow-hidden rounded-full object-cover"
           priority
-          placeholder="blur"
         />
       </Link>
     </div>

@@ -111,14 +111,16 @@ export const Apps = async () => {
                   </div>
                   <div
                     className={cn(
-                      'col-span-2 border-l p-8',
+                      'col-span-2 flex flex-col gap-4 justify-between items-start border-l p-8',
                       index > 0 && 'border-t'
                     )}
                   >
-                    <h3 className="font-semibold text-lg">{app._title}</h3>
-                    <Prose className="prose-sm">
-                      <p>{app.description}</p>
-                    </Prose>
+                    <div className="flex flex-col gap-2">
+                      <h2 className="font-bold text-2xl">{app._title}</h2>
+                      <Prose>
+                        <p>{app.description}</p>
+                      </Prose>
+                    </div>
                     <Button asChild variant="outline">
                       <a
                         href={app.url}
@@ -134,7 +136,7 @@ export const Apps = async () => {
                 <div
                   key={app._title}
                   className={cn(
-                    'col-span-3 p-8',
+                    'col-span-3 flex flex-col items-start justify-between gap-4 p-8',
                     app.size === 'Small' &&
                       data.projects.apps.items.at(index - 1)?.size ===
                         'Small' &&
@@ -142,10 +144,12 @@ export const Apps = async () => {
                     index > 0 && 'border-t'
                   )}
                 >
-                  <h3 className="font-semibold text-lg">{app._title}</h3>
-                  <Prose className="prose-sm">
-                    <p>{app.description}</p>
-                  </Prose>
+                  <div className="flex flex-col gap-2">
+                    <h2 className="font-bold text-xl">{app._title}</h2>
+                    <Prose className="prose-sm">
+                      <p>{app.description}</p>
+                    </Prose>
+                  </div>
                   <Button asChild variant="outline">
                     <a href={app.url} target="_blank" rel="noreferrer noopener">
                       {app.cta}

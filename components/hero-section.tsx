@@ -1,21 +1,43 @@
-import type { ReactNode } from 'react';
+import Image from 'next/image';
+import { Children, type ReactNode } from 'react';
 import { Balancer } from 'react-wrap-balancer';
 import { ViewAnimation } from '../providers/view-animation';
 
 type HeroProps = {
-  caption: string;
+  image?: {
+    url: string;
+    alt?: string;
+    width: number;
+    height: number;
+  };
+  caption?: string;
   title: string;
   children?: ReactNode;
 };
 
-export const HeroSection = ({ caption, title, children }: HeroProps) => (
+export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
   <section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
-    <ViewAnimation
-      initial={{ opacity: 0, translateY: -8 }}
-      whileInView={{ opacity: 1, translateY: 0 }}
-    >
-      <small className="text-base text-muted-foreground">{caption}</small>
-    </ViewAnimation>
+    {image && (
+      <ViewAnimation
+        initial={{ opacity: 0, translateY: -8 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+      >
+        <Image
+          src={image.url}
+          alt={image.alt ?? ''}
+          width={image.width}
+          height={image.height}
+        />
+      </ViewAnimation>
+    )}
+    {caption && (
+      <ViewAnimation
+        initial={{ opacity: 0, translateY: -8 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+      >
+        <small className="text-base text-muted-foreground">{caption}</small>
+      </ViewAnimation>
+    )}
     <ViewAnimation
       initial={{ opacity: 0, translateY: -8 }}
       whileInView={{ opacity: 1, translateY: 0 }}
@@ -25,12 +47,14 @@ export const HeroSection = ({ caption, title, children }: HeroProps) => (
         <Balancer>{title}</Balancer>
       </h1>
     </ViewAnimation>
-    <ViewAnimation
-      initial={{ opacity: 0, translateY: -8 }}
-      whileInView={{ opacity: 1, translateY: 0 }}
-      delay={0.8}
-    >
-      {children}
-    </ViewAnimation>
+    {Children.map(children, (child, index) => (
+      <ViewAnimation
+        initial={{ opacity: 0, translateY: -8 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        delay={0.8 + index * 0.4}
+      >
+        {child}
+      </ViewAnimation>
+    ))}
   </section>
 );

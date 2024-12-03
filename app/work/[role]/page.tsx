@@ -1,9 +1,9 @@
+import { HeroSection } from '@/components/hero-section';
 import { Prose } from '@/components/prose';
 import { richTextComponents } from '@/lib/rich-text';
 import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 
@@ -97,22 +97,19 @@ const Role = ({ params }: RoleProps) => (
 
       return (
         <>
-          <section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
-            <Image
-              src={role.logo.url}
-              alt={role.logo.alt ?? ''}
-              width={32}
-              height={32}
-            />
-            <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
-              <Balancer>
-                {role.role} at {role._title}
-              </Balancer>
-            </h1>
+          <HeroSection
+            image={{
+              url: role.logo.url,
+              alt: role.logo.alt ?? '',
+              width: 32,
+              height: 32,
+            }}
+            title={role.role}
+          >
             <p className="mx-auto max-w-4xl text-center">
               <Balancer>{role.description}</Balancer>
             </p>
-            <div className="flex items-center gap-4 text-muted-foreground text-sm">
+            <div className="flex items-center justify-center gap-4 text-muted-foreground text-sm">
               <p>{role.type}</p>
               <p>&bull;</p>
               <p>
@@ -129,7 +126,7 @@ const Role = ({ params }: RoleProps) => (
                 </>
               )}
             </div>
-          </section>
+          </HeroSection>
           <section className="py-16">
             <Prose className="mx-auto max-w-3xl">
               <RichText

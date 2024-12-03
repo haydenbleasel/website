@@ -4,6 +4,7 @@ import { Pump } from 'basehub/react-pump';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ActiveLink } from '../active-link';
+import { ViewAnimation } from '../view-animation';
 
 export const Links = () => (
   <Pump
@@ -58,7 +59,14 @@ export const Links = () => (
     {async ([data]) => {
       'use server';
 
-      const lists = [
+      const lists: {
+        title: string;
+        href?: string;
+        items: {
+          href: string;
+          children: string;
+        }[];
+      }[] = [
         {
           title: 'Pages',
           items: navigation.map((link) => ({
@@ -129,23 +137,30 @@ export const Links = () => (
 
       return (
         <div className="grid grid-cols-6 gap-8 text-muted-foreground text-sm">
-          {lists.map((list) => (
-            <div className="flex flex-col gap-6" key={list.title}>
-              <div className="font-medium text-foreground">
-                {list.href ? (
-                  <Link href={list.href}>{list.title}</Link>
-                ) : (
-                  <p>{list.title}</p>
-                )}
+          {lists.map((list, index) => (
+            <ViewAnimation
+              initial={{ opacity: 0, translateY: -8 }}
+              whileInView={{ opacity: 1, translateY: 0 }}
+              delay={index * 0.1}
+              key={list.title}
+            >
+              <div className="flex flex-col gap-6">
+                <div className="font-medium text-foreground">
+                  {list.href ? (
+                    <Link href={list.href}>{list.title}</Link>
+                  ) : (
+                    <p>{list.title}</p>
+                  )}
+                </div>
+                <ul className="flex flex-col gap-3">
+                  {list.items.map((item) => (
+                    <li key={item.href}>
+                      <ActiveLink href={item.href}>{item.children}</ActiveLink>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="flex flex-col gap-3">
-                {list.items.map((item) => (
-                  <li key={item.href}>
-                    <ActiveLink href={item.href}>{item.children}</ActiveLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </ViewAnimation>
           ))}
         </div>
       );

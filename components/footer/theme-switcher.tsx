@@ -1,8 +1,8 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
 import { Monitor, Moon, Sun } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
@@ -15,7 +15,9 @@ export function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return null;
+  }
 
   const themes = [
     {

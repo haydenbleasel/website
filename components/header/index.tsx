@@ -3,37 +3,60 @@ import { navigation } from '@/lib/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ActiveLink } from '../active-link';
+import { ViewAnimation } from '../view-animation';
 import Logo from './logo.jpg';
 import { MobileMenu } from './mobile-menu';
 
 export const Header = () => (
   <header className="container sticky top-0 z-50 mx-auto flex items-center justify-between border-b bg-backdrop/90 px-4 py-4 backdrop-blur-md transition-all sm:px-0">
     <div className="w-32">
-      <Link href="/" aria-label="Hayden Bleasel">
-        <Image
-          src={Logo}
-          alt=""
-          width={32}
-          height={32}
-          className="h-8 w-8 overflow-hidden rounded-full object-cover"
-          priority
-        />
-      </Link>
+      <ViewAnimation
+        initial={{ opacity: 0, translateY: -8 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+      >
+        <Link href="/" aria-label="Hayden Bleasel">
+          <Image
+            src={Logo}
+            alt=""
+            width={32}
+            height={32}
+            className="h-8 w-8 overflow-hidden rounded-full object-cover"
+            priority
+          />
+        </Link>
+      </ViewAnimation>
     </div>
     <nav className="hidden gap-6 md:flex">
-      {navigation.map((link) => (
-        <ActiveLink key={link.href} href={link.href}>
-          {link.label}
-        </ActiveLink>
+      {navigation.map((link, index) => (
+        <ViewAnimation
+          key={link.href}
+          initial={{ opacity: 0, translateY: -8 }}
+          whileInView={{ opacity: 1, translateY: 0 }}
+          delay={0.4 + index * 0.1}
+        >
+          <ActiveLink href={link.href}>{link.label}</ActiveLink>
+        </ViewAnimation>
       ))}
     </nav>
     <div className="hidden w-32 justify-end md:flex">
-      <Button variant="outline" size="sm" asChild>
-        <Link href="/contact">Get in touch</Link>
-      </Button>
+      <ViewAnimation
+        initial={{ opacity: 0, translateY: -8 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        delay={0.8}
+      >
+        <Button variant="outline" size="sm" asChild>
+          <Link href="/contact">Get in touch</Link>
+        </Button>
+      </ViewAnimation>
     </div>
     <div className="flex w-32 justify-end md:hidden">
-      <MobileMenu />
+      <ViewAnimation
+        initial={{ opacity: 0, translateY: -8 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        delay={0.8}
+      >
+        <MobileMenu />
+      </ViewAnimation>
     </div>
   </header>
 );

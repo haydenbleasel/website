@@ -129,3 +129,19 @@ body {
 .dashed-line-bottom {
   @apply absolute bottom-8 left-0 h-px w-full border-t border-dashed;
 }
+
+.object-bottom .next-video-bg-video {
+  object-position: bottom;
+}
+
+.object-top .next-video-bg-video {
+  object-position: top;
+}
+
+.object-left .next-video-bg-video {
+  object-position: left;
+}
+
+.object-right .next-video-bg-video {
+  object-position: right;
+}

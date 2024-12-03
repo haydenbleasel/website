@@ -28,6 +28,8 @@ export const Apps = async () => {
                   url: true,
                   aspectRatio: true,
                 },
+                offset: true,
+                position: true,
               },
             },
           },
@@ -45,20 +47,65 @@ export const Apps = async () => {
                 <Fragment key={app._title}>
                   <div
                     className={cn(
-                      'relative col-span-4 aspect-video bg-dashed p-8',
-                      index > 0 && 'border-t'
+                      'relative col-span-4 aspect-video bg-dashed',
+                      index > 0 && 'border-t',
+                      app.offset === 'Center' && 'p-8',
+                      app.offset === 'Top-Left' && 'pt-8 pl-8',
+                      app.offset === 'Top-Right' && 'pt-8 pr-8',
+                      app.offset === 'Bottom-Left' && 'pb-8 pl-8',
+                      app.offset === 'Bottom-Right' && 'pr-8 pb-8'
                     )}
                   >
                     {app.video && (
                       <>
                         <BackgroundVideo
                           src={app.video.url}
-                          className="h-full w-full overflow-hidden rounded-2xl object-cover"
+                          className={cn(
+                            'h-full w-full overflow-hidden object-cover',
+                            app.position === 'Center' && 'object-center',
+                            app.position === 'Left' && 'object-left',
+                            app.position === 'Right' && 'object-right',
+                            app.position === 'Top' && 'object-top',
+                            app.position === 'Bottom' && 'object-bottom',
+                            app.offset === 'Center' && 'rounded-2xl',
+                            app.offset === 'Top-Left' && 'rounded-tl-2xl',
+                            app.offset === 'Top-Right' && 'rounded-tr-2xl',
+                            app.offset === 'Bottom-Left' && 'rounded-bl-2xl',
+                            app.offset === 'Bottom-Right' && 'rounded-br-2xl'
+                          )}
                         />
-                        <div className="dashed-line-top" />
-                        <div className="dashed-line-left" />
-                        <div className="dashed-line-right" />
-                        <div className="dashed-line-bottom" />
+                        {app.offset === 'Center' && (
+                          <>
+                            <div className="dashed-line-top" />
+                            <div className="dashed-line-left" />
+                            <div className="dashed-line-right" />
+                            <div className="dashed-line-bottom" />
+                          </>
+                        )}
+                        {app.offset === 'Top-Left' && (
+                          <>
+                            <div className="dashed-line-top" />
+                            <div className="dashed-line-left" />
+                          </>
+                        )}
+                        {app.offset === 'Top-Right' && (
+                          <>
+                            <div className="dashed-line-top" />
+                            <div className="dashed-line-right" />
+                          </>
+                        )}
+                        {app.offset === 'Bottom-Left' && (
+                          <>
+                            <div className="dashed-line-bottom" />
+                            <div className="dashed-line-left" />
+                          </>
+                        )}
+                        {app.offset === 'Bottom-Right' && (
+                          <>
+                            <div className="dashed-line-bottom" />
+                            <div className="dashed-line-right" />
+                          </>
+                        )}
                       </>
                     )}
                   </div>

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Balancer } from 'react-wrap-balancer';
-import { ViewAnimation } from './view-animation';
+import { ViewAnimation } from '../providers/view-animation';
 
 type HeroProps = {
   caption: string;

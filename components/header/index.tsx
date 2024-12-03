@@ -2,8 +2,8 @@ import { Button } from '@/components/ui/button';
 import { navigation } from '@/lib/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ViewAnimation } from '../../providers/view-animation';
 import { ActiveLink } from '../active-link';
-import { ViewAnimation } from '../view-animation';
 import Logo from './logo.jpg';
 import { MobileMenu } from './mobile-menu';
 

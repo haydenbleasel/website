@@ -1,4 +1,4 @@
-import { ViewAnimation } from '../view-animation';
+import { ViewAnimation } from '../../providers/view-animation';
 import { Links } from './links';
 import { Status } from './status';
 import { ThemeSwitcher } from './theme-switcher';

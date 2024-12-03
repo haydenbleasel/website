@@ -3,8 +3,8 @@ import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ViewAnimation } from '../../providers/view-animation';
 import { ActiveLink } from '../active-link';
-import { ViewAnimation } from '../view-animation';
 
 export const Links = () => (
   <Pump

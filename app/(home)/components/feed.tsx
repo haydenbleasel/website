@@ -1,5 +1,5 @@
-import { ViewAnimation } from '@/components/view-animation';
 import { octokit } from '@/lib/github';
+import { ViewAnimation } from '@/providers/view-animation';
 import { GitHubEvent } from './event';
 
 export const Feed = async () => {

@@ -1,5 +1,6 @@
 import { Prose } from '@/components/prose';
 import { cn } from '@/lib/utils';
+import { ViewAnimation } from '@/providers/view-animation';
 import { Pump } from 'basehub/react-pump';
 import Image from 'next/image';
 
@@ -62,33 +63,44 @@ export const Recommendations = () => (
                     'border-l'
                 )}
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full">
-                  <Image
-                    src={recommendation.photo.url}
-                    width={recommendation.photo.width}
-                    height={recommendation.photo.height}
-                    alt={recommendation.photo.alt ?? ''}
-                    className="block h-full w-full object-contain"
-                  />
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <h3 className="font-semibold text-lg leading-normal tracking-tight">
-                      {recommendation._title}
-                    </h3>
-                    <a
-                      href={recommendation.linkedIn}
-                      className="text-muted-foreground text-sm"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      @{new URL(recommendation.linkedIn).pathname.split('/')[2]}
-                    </a>
+                <ViewAnimation
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  delay={index % 2 ? 0.2 : 0}
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full">
+                    <Image
+                      src={recommendation.photo.url}
+                      width={recommendation.photo.width}
+                      height={recommendation.photo.height}
+                      alt={recommendation.photo.alt ?? ''}
+                      className="block h-full w-full object-contain"
+                    />
                   </div>
-                  <Prose className="prose-sm max-w-none">
-                    <p>{recommendation.text}</p>
-                  </Prose>
-                </div>
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <h3 className="font-semibold text-lg leading-normal tracking-tight">
+                        {recommendation._title}
+                      </h3>
+                      <a
+                        href={recommendation.linkedIn}
+                        className="text-muted-foreground text-sm"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        @
+                        {
+                          new URL(recommendation.linkedIn).pathname.split(
+                            '/'
+                          )[2]
+                        }
+                      </a>
+                    </div>
+                    <Prose className="prose-sm max-w-none">
+                      <p>{recommendation.text}</p>
+                    </Prose>
+                  </div>
+                </ViewAnimation>
               </div>
             ))}
           </div>

@@ -111,7 +111,7 @@ export const Apps = async () => {
                   </div>
                   <div
                     className={cn(
-                      'col-span-2 flex flex-col gap-4 justify-between items-start border-l p-8',
+                      'col-span-2 flex flex-col items-start justify-between gap-4 border-l p-8',
                       index > 0 && 'border-t'
                     )}
                   >

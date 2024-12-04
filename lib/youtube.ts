@@ -33,8 +33,7 @@ export const getTravelVideos = async () => {
       description: item.snippet?.description,
       date: item.snippet?.publishedAt,
     }));
-  } catch (error) {
-    console.error('Error fetching YouTube videos:', error);
+  } catch (_error) {
     return [];
   }
 };

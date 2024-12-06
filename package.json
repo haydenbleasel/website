@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "bump-deps": "npx npm-check-updates -u && pnpm install",
-    "bump-ui": "npx shadcn@latest update --all --overwrite"
+    "bump-ui": "npx shadcn@latest add button form input label select sonner textarea --overwrite"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

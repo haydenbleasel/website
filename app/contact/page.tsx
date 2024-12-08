@@ -1,5 +1,6 @@
 import { Section } from '@/components/section';
 import { basehub } from 'basehub';
+import { Suspense } from 'react';
 import Balancer from 'react-wrap-balancer';
 import { ContactForm } from './components/contact-form';
 
@@ -27,7 +28,9 @@ const ContactPage = () => (
       </h1>
     </div>
     <div className="p-8">
-      <ContactForm />
+      <Suspense fallback={null}>
+        <ContactForm />
+      </Suspense>
     </div>
   </Section>
 );

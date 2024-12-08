@@ -154,7 +154,7 @@ export const ContactForm = () => {
                 <SelectContent>
                   {typeOptions.map((option) => (
                     <SelectItem key={option.value} value={option.value}>
-                      <div>
+                      <div className="text-left">
                         <div>{option.label}</div>
                         <div className="text-muted-foreground text-xs">
                           {option.subtitle}

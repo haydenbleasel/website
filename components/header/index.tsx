@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { navigation } from '@/lib/navigation';
 import { HeaderProvider } from '@/providers/header';
-import { BaseHubImage as Image } from 'basehub/next-image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ViewAnimation } from '../../providers/view-animation';
 import { ActiveLink } from '../active-link';

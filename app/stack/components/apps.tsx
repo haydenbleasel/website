@@ -1,10 +1,10 @@
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
-import { BaseHubImage as Image } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import groupBy from 'lodash.groupby';
 import { VerifiedIcon } from 'lucide-react';
 import { draftMode } from 'next/headers';
+import Image from 'next/image';
 
 export const Apps = async () => {
   const { isEnabled } = await draftMode();

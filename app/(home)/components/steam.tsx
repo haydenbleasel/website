@@ -1,7 +1,7 @@
 import type { GameProperties } from '@/app/api/cron/steam/route';
 import { cn } from '@/lib/utils';
 import { get } from '@vercel/edge-config';
-import { BaseHubImage as Image } from 'basehub/next-image';
+import Image from 'next/image';
 import type { ReactElement } from 'react';
 
 export const Steam = async (): Promise<ReactElement> => {

@@ -3,7 +3,7 @@ import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { basehub } from 'basehub';
-import { BaseHubImage as Image } from 'basehub/next-image';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import Link from 'next/link';
 
@@ -69,7 +69,7 @@ const Blog = () => (
             <>
               <div className="col-span-2 border-b bg-background">
                 {featuredPost.image && (
-                  <Image
+                  <BaseHubImage
                     className="col-span-2"
                     src={featuredPost.image.url}
                     width={featuredPost.image.width}

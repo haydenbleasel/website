@@ -1,7 +1,7 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
-import { BaseHubImage as Image } from 'basehub/next-image';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
@@ -65,7 +65,7 @@ export const Flighty = async () => {
               </div>
             </div>
             <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden bg-dashed p-8">
-              <Image
+              <BaseHubImage
                 src={data.travel.flighty.image.url}
                 alt={data.travel.flighty.image.alt ?? ''}
                 width={data.travel.flighty.image.width}

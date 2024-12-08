@@ -1,6 +1,6 @@
 import { env } from '@/lib/env';
 import { resend } from '@/lib/resend';
-import { BaseHubImage as Image } from 'basehub/next-image';
+import Image from 'next/image';
 import { TeaserTitle } from './teaser-title';
 
 const teaserIds = [

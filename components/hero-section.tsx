@@ -1,4 +1,4 @@
-import { BaseHubImage as Image } from 'basehub/next-image';
+import { BaseHubImage } from 'basehub/next-image';
 import { Children, type ReactNode } from 'react';
 import { Balancer } from 'react-wrap-balancer';
 import { ViewAnimation } from '../providers/view-animation';
@@ -24,7 +24,7 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
         >
-          <Image
+          <BaseHubImage
             src={image.url}
             alt={image.alt ?? ''}
             width={image.width}

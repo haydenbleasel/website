@@ -1,9 +1,9 @@
 import { HeroSection } from '@/components/hero-section';
 import { Button } from '@/components/ui/button';
 import { social } from '@/lib/social';
-import { BaseHubImage as Image } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { draftMode } from 'next/headers';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const Hero = async () => {

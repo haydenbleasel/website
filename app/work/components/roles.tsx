@@ -2,7 +2,7 @@ import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
-import { BaseHubImage as Image } from 'basehub/next-image';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import Link from 'next/link';
 
@@ -60,7 +60,7 @@ export const Roles = () => (
                 className="flex items-start gap-6 p-8 transition-colors hover:bg-background"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center">
-                  <Image
+                  <BaseHubImage
                     src={role.logo.url}
                     width={role.logo.width}
                     height={role.logo.height}

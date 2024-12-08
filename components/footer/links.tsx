@@ -1,7 +1,7 @@
 import { navigation } from '@/lib/navigation';
 import { social } from '@/lib/social';
-import { BaseHubImage as Image } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { ViewAnimation } from '../../providers/view-animation';

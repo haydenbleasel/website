@@ -1,7 +1,7 @@
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { ViewAnimation } from '@/providers/view-animation';
-import { BaseHubImage as Image } from 'basehub/next-image';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { draftMode } from 'next/headers';
@@ -44,7 +44,7 @@ export const FeaturedNews = async () => {
                 whileInView={{ opacity: 1 }}
               >
                 <div className="relative aspect-video overflow-hidden bg-dashed px-8 pt-8">
-                  <Image
+                  <BaseHubImage
                     src={data.home.featuredNews.image.url}
                     alt={data.home.featuredNews.image.alt ?? ''}
                     width={data.home.featuredNews.image.width}

@@ -2,7 +2,7 @@ import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
-import { BaseHubImage as Image } from 'basehub/next-image';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 
 export const Recommendations = () => (
@@ -68,7 +68,7 @@ export const Recommendations = () => (
                 )}
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full">
-                  <Image
+                  <BaseHubImage
                     src={recommendation.photo.url}
                     width={recommendation.photo.width}
                     height={recommendation.photo.height}

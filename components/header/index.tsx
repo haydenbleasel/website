@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { navigation } from '@/lib/navigation';
+import { HeaderProvider } from '@/providers/header';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ViewAnimation } from '../../providers/view-animation';
@@ -8,7 +9,7 @@ import Logo from './logo.jpg';
 import { MobileMenu } from './mobile-menu';
 
 export const Header = () => (
-  <header className="container sticky top-0 z-50 mx-auto flex items-center justify-between border-b bg-backdrop/90 px-4 py-4 backdrop-blur-md transition-all sm:px-0">
+  <HeaderProvider className="container fixed top-0 right-0 left-0 z-50 mx-auto flex items-center justify-between border-transparent border-x border-b px-4 py-4 transition-all">
     <div className="w-32">
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
@@ -58,5 +59,5 @@ export const Header = () => (
         <MobileMenu />
       </ViewAnimation>
     </div>
-  </header>
+  </HeaderProvider>
 );

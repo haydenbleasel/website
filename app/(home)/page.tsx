@@ -34,8 +34,12 @@ const Home = () => (
     <FeaturedTweet />
     <GitHubActivity />
     <Section className="grid grid-cols-2 divide-x">
-      <Spotify />
-      <Steam />
+      <div className="p-4">
+        <Spotify />
+      </div>
+      <div className="p-4">
+        <Steam />
+      </div>
     </Section>
   </>
 );

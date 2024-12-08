@@ -7,7 +7,8 @@ type ViewAnimationProps = {
   initial?: ComponentProps<typeof motion.div>['initial'];
   whileInView?: ComponentProps<typeof motion.div>['whileInView'];
   delay?: number;
-  className?: ComponentProps<typeof motion.div>['className'];
+  // className?: ComponentProps<typeof motion.div>['className'];
+  className?: string;
   children: ReactNode;
 };
 
@@ -28,6 +29,7 @@ export const ViewAnimation = ({
     <motion.div
       initial={initial}
       whileInView={whileInView}
+      // @ts-expect-error React 19 issue
       className={className}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ delay, duration: 0.8 }}

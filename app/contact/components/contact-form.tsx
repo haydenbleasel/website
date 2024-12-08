@@ -58,7 +58,7 @@ const typeOptions = [
 export const ContactForm = () => {
   const searchParams = useSearchParams();
   const form = useForm<z.infer<typeof contactSchema>>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(contactSchema as never),
     defaultValues: {
       name: '',
       email: '',

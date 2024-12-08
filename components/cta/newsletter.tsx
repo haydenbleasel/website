@@ -24,7 +24,7 @@ const newsletterSchema = z.object({
 
 export const Newsletter = () => {
   const form = useForm<z.infer<typeof newsletterSchema>>({
-    resolver: zodResolver(newsletterSchema),
+    resolver: zodResolver(newsletterSchema as never),
     defaultValues: {
       email: '',
     },

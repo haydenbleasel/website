@@ -3,6 +3,7 @@ import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { ViewAnimation } from '../../providers/view-animation';
 import { ActiveLink } from '../active-link';
 
@@ -64,7 +65,7 @@ export const Links = () => (
         href?: string;
         items: {
           href: string;
-          children: string;
+          children: ReactNode;
         }[];
       }[] = [
         {
@@ -111,7 +112,7 @@ export const Links = () => (
             .sort((a, b) => b.year - a.year)
             .slice(0, 5)
             .map((item) => ({
-              href: item.url,
+              href: item.url as string,
               children: item._title,
             })),
         },

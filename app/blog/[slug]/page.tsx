@@ -8,9 +8,9 @@ import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 
 type BlogPostProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export const generateMetadata = async ({ params }: BlogPostProps) => {
@@ -20,7 +20,7 @@ export const generateMetadata = async ({ params }: BlogPostProps) => {
         __args: {
           filter: {
             _sys_slug: {
-              eq: params.slug,
+              eq: (await params).slug,
             },
           },
         },
@@ -50,7 +50,7 @@ export const generateMetadata = async ({ params }: BlogPostProps) => {
   };
 };
 
-const BlogPost = ({ params }: BlogPostProps) => (
+const BlogPost = async ({ params }: BlogPostProps) => (
   <Pump
     queries={[
       {
@@ -60,7 +60,7 @@ const BlogPost = ({ params }: BlogPostProps) => (
             __args: {
               filter: {
                 _sys_slug: {
-                  eq: params.slug,
+                  eq: (await params).slug,
                 },
               },
             },

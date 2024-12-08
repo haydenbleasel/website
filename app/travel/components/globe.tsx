@@ -1,10 +1,12 @@
 'use client';
 
 import createGlobe from 'cobe';
+import { useTheme } from 'next-themes';
 import { useEffect, useRef } from 'react';
 import type { FC } from 'react';
 
 export const Globe: FC = () => {
+  const { resolvedTheme } = useTheme();
   const canvasReference = useRef<HTMLCanvasElement>(null);
   const width = 580;
   const height = 580;
@@ -26,9 +28,9 @@ export const Globe: FC = () => {
       diffuse: 1.2,
       mapSamples: 16_000,
       mapBrightness: 6,
-      baseColor: [0.9, 0.9, 0.9],
-      markerColor: [0.9, 0.9, 0.9],
-      glowColor: [0.9, 0.9, 0.9],
+      baseColor: resolvedTheme === 'dark' ? [0.1, 0.1, 0.1] : [0.9, 0.9, 0.9],
+      markerColor: resolvedTheme === 'dark' ? [0.1, 0.1, 0.1] : [0.9, 0.9, 0.9],
+      glowColor: resolvedTheme === 'dark' ? [0.1, 0.1, 0.1] : [0.9, 0.9, 0.9],
       markers: [],
       onRender: (state) => {
         state.phi = phi;
@@ -37,7 +39,7 @@ export const Globe: FC = () => {
     });
 
     return () => globe.destroy();
-  }, []);
+  }, [resolvedTheme]);
 
   return (
     <canvas

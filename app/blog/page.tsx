@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { basehub } from 'basehub';
@@ -63,7 +64,7 @@ const Blog = () => (
       );
 
       return (
-        <div className="grid grid-cols-3">
+        <Section className="grid grid-cols-3">
           {featuredPost && (
             <>
               <div className="col-span-2 border-b bg-background">
@@ -121,7 +122,7 @@ const Blog = () => (
                 </small>
               </Link>
             ))}
-        </div>
+        </Section>
       );
     }}
   </Pump>

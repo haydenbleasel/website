@@ -1,3 +1,4 @@
+import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
 import groupBy from 'lodash.groupby';
@@ -35,7 +36,7 @@ export const Apps = async () => {
         const groups = groupBy(data.stack.apps.items, 'category');
 
         return Object.entries(groups).map(([category, apps]) => (
-          <div className="grid grid-cols-3 divide-x" key={category}>
+          <Section className="grid grid-cols-3 divide-x" key={category}>
             <div className="bg-dashed p-8">
               <h2 className="font-semibold text-2xl">{category}</h2>
             </div>
@@ -81,7 +82,7 @@ export const Apps = async () => {
                 <div className="h-full w-full border-t bg-dashed" />
               )}
             </div>
-          </div>
+          </Section>
         ));
       }}
     </Pump>

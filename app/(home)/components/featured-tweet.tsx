@@ -1,3 +1,4 @@
+import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';
@@ -30,7 +31,7 @@ export const FeaturedTweet = async () => {
         'use server';
 
         return (
-          <section className="grid grid-cols-3 divide-x">
+          <Section className="grid grid-cols-3 divide-x">
             <div className="flex flex-col items-start justify-between gap-4 p-8">
               <div className="flex flex-col gap-2">
                 <small className="text-muted-foreground">Featured tweet</small>
@@ -60,7 +61,7 @@ export const FeaturedTweet = async () => {
             <div className="relative col-span-2 flex items-center justify-center overflow-hidden bg-dashed p-8">
               <Tweet id={data.home.featuredTweet.tweetId} />
             </div>
-          </section>
+          </Section>
         );
       }}
     </Pump>

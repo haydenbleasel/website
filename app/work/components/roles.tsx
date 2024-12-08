@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import { Pump } from 'basehub/react-pump';
@@ -42,7 +43,7 @@ export const Roles = () => (
       }
 
       return (
-        <div className="grid grid-cols-2">
+        <Section className="grid grid-cols-2">
           {data.work.roles.items.map((role, index) => (
             <ViewAnimation
               initial={{ opacity: 0 }}
@@ -85,7 +86,7 @@ export const Roles = () => (
               </Link>
             </ViewAnimation>
           ))}
-        </div>
+        </Section>
       );
     }}
   </Pump>

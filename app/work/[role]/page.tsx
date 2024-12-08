@@ -1,5 +1,6 @@
 import { HeroSection } from '@/components/hero-section';
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
 import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
@@ -127,14 +128,14 @@ const Role = ({ params }: RoleProps) => (
               )}
             </div>
           </HeroSection>
-          <section className="py-16">
+          <Section className="py-16">
             <Prose className="mx-auto max-w-3xl">
               <RichText
                 content={role.content?.json.content}
                 components={richTextComponents}
               />
             </Prose>
-          </section>
+          </Section>
         </>
       );
     }}

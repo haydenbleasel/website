@@ -1,3 +1,4 @@
+import { Section } from '@/components/section';
 import { octokit } from '@/lib/github';
 import { ViewAnimation } from '@/providers/view-animation';
 import { GitHubEvent } from './event';
@@ -9,7 +10,7 @@ export const Feed = async () => {
   });
 
   return (
-    <section className="relative flex flex-col gap-2 p-8 font-mono text-muted-foreground text-sm">
+    <Section className="relative flex flex-col gap-2 p-8 font-mono text-muted-foreground text-sm">
       {activity.data.slice(0, 10).map((event, index) => (
         <ViewAnimation
           key={event.id}
@@ -21,6 +22,6 @@ export const Feed = async () => {
         </ViewAnimation>
       ))}
       <div className="absolute right-0 bottom-6 left-0 z-10 h-40 bg-gradient-to-b from-transparent to-backdrop" />
-    </section>
+    </Section>
   );
 };

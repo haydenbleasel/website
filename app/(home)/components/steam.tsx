@@ -11,7 +11,7 @@ export const Steam = async (): Promise<ReactElement> => {
   }
 
   return (
-    <section>
+    <div>
       <a
         className="flex flex-col justify-between gap-16 p-8 transition-colors hover:bg-background"
         href={`https://store.steampowered.com/app/${game.id}`}
@@ -66,6 +66,6 @@ export const Steam = async (): Promise<ReactElement> => {
           </p>
         </div>
       </a>
-    </section>
+    </div>
   );
 };

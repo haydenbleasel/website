@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 
+import { Section } from '@/components/section';
 import Accenture from './files/accenture.svg';
 import Akqa from './files/akqa.svg';
 import Amazon from './files/amazon.svg';
@@ -64,7 +65,7 @@ const logos = [
 ];
 
 export const Logos = () => (
-  <section className="flex flex-col gap-8 py-16">
+  <Section className="flex flex-col gap-8 py-16">
     <p className="text-center text-muted-foreground text-sm">
       My projects have been used by the world&apos;s most innovative companies
     </p>
@@ -80,5 +81,5 @@ export const Logos = () => (
         />
       ))}
     </Marquee>
-  </section>
+  </Section>
 );

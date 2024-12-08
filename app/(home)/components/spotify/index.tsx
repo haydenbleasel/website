@@ -12,7 +12,7 @@ export const Spotify = async (): Promise<ReactElement> => {
   }
 
   return (
-    <section>
+    <div>
       <a
         className="flex flex-col justify-between gap-16 p-8 transition-colors hover:bg-background"
         href={song.href}
@@ -46,6 +46,6 @@ export const Spotify = async (): Promise<ReactElement> => {
           <p className="text-muted-foreground">by {song.artist}</p>
         </div>
       </a>
-    </section>
+    </div>
   );
 };

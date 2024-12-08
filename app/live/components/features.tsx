@@ -1,3 +1,4 @@
+import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
 import { LiveItem } from './live-item';
@@ -31,7 +32,7 @@ export const Features = () => (
       }
 
       return (
-        <div className="grid grid-cols-3 divide-x">
+        <Section className="grid grid-cols-3 divide-x">
           <div className="bg-dashed p-8">
             <h2 className="font-semibold text-2xl">Features</h2>
           </div>
@@ -70,7 +71,7 @@ export const Features = () => (
               <div className="h-full w-full border-t bg-dashed" />
             )}
           </div>
-        </div>
+        </Section>
       );
     }}
   </Pump>

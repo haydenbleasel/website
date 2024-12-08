@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
@@ -41,7 +42,7 @@ export const Apps = async () => {
         'use server';
 
         return (
-          <div className="grid grid-cols-6">
+          <Section className="grid grid-cols-6">
             {data.projects.apps.items.map((app, index) =>
               app.size === 'Large' ? (
                 <Fragment key={app._title}>
@@ -158,7 +159,7 @@ export const Apps = async () => {
                 </div>
               )
             )}
-          </div>
+          </Section>
         );
       }}
     </Pump>

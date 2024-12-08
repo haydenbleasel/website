@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
 import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
@@ -98,7 +99,7 @@ const BlogPost = ({ params }: BlogPostProps) => (
 
       return (
         <>
-          <section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
+          <Section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
             <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
               <Balancer>{post._title}</Balancer>
             </h1>
@@ -114,15 +115,15 @@ const BlogPost = ({ params }: BlogPostProps) => (
               <p>&bull;</p>
               <p>{post.content?.readingTime} min read</p>
             </div>
-          </section>
-          <section className="py-16">
+          </Section>
+          <Section className="py-16">
             <Prose className="mx-auto max-w-3xl">
               <RichText
                 content={post.content?.json.content}
                 components={richTextComponents}
               />
             </Prose>
-          </section>
+          </Section>
         </>
       );
     }}

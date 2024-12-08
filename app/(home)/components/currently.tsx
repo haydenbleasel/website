@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
@@ -30,7 +31,7 @@ export const Currently = async () => {
         'use server';
 
         return (
-          <section className="grid grid-cols-3 divide-x">
+          <Section className="grid grid-cols-3 divide-x">
             <div className="flex flex-col gap-2 p-8">
               <small className="text-muted-foreground">Now</small>
               {data.home.currently?.text.json && (
@@ -47,7 +48,7 @@ export const Currently = async () => {
               <div className="dashed-line-left" />
               <div className="aspect-video w-full rounded-tl-2xl bg-muted-foreground" />
             </div>
-          </section>
+          </Section>
         );
       }}
     </Pump>

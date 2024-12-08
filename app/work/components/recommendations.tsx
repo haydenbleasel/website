@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import { Pump } from 'basehub/react-pump';
@@ -36,7 +37,7 @@ export const Recommendations = () => (
       }
 
       return (
-        <div className="grid grid-cols-3 divide-x">
+        <Section className="grid grid-cols-3 divide-x">
           <div className="bg-dashed">
             <div className="sticky top-16 flex flex-col gap-2 self-start p-8">
               <h2 className="font-bold text-3xl tracking-tight">
@@ -96,7 +97,7 @@ export const Recommendations = () => (
               </ViewAnimation>
             ))}
           </div>
-        </div>
+        </Section>
       );
     }}
   </Pump>

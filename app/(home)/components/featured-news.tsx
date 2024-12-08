@@ -1,3 +1,4 @@
+import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { Pump } from 'basehub/react-pump';
 import { ArrowUpRightIcon } from 'lucide-react';
@@ -35,7 +36,7 @@ export const FeaturedNews = async () => {
         'use server';
 
         return (
-          <section className="grid grid-cols-3 divide-x">
+          <Section className="grid grid-cols-3 divide-x">
             <div className="relative col-span-2 aspect-video overflow-hidden bg-dashed px-8 pt-8">
               <Image
                 src={data.home.featuredNews.image.url}
@@ -74,7 +75,7 @@ export const FeaturedNews = async () => {
                 </Button>
               </div>
             </div>
-          </section>
+          </Section>
         );
       }}
     </Pump>

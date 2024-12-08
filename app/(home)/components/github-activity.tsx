@@ -1,4 +1,5 @@
 import { getActivity } from '@/app/actions/github';
+import { Section } from '@/components/section';
 import { social } from '@/lib/social';
 import tailwind from '@/lib/tailwind';
 import type { ReactElement } from 'react';
@@ -16,7 +17,7 @@ export const GitHubActivity = async (): Promise<ReactElement> => {
   const secondHalfData = github.data.slice(halfLength);
 
   return (
-    <section className="relative flex flex-col gap-[3px] p-8">
+    <Section className="relative flex flex-col gap-[3px] p-8">
       <ActivityCalendar
         hideColorLegend
         hideTotalCount
@@ -78,6 +79,6 @@ export const GitHubActivity = async (): Promise<ReactElement> => {
       >
         {github.total} contributions in the last year
       </a>
-    </section>
+    </Section>
   );
 };

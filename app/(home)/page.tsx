@@ -1,3 +1,4 @@
+import { Section } from '@/components/section';
 import { basehub } from 'basehub';
 import { Currently } from './components/currently';
 import { FeaturedNews } from './components/featured-news';
@@ -32,10 +33,10 @@ const Home = () => (
     <FeaturedNews />
     <FeaturedTweet />
     <GitHubActivity />
-    <div className="grid grid-cols-2 divide-x">
+    <Section className="grid grid-cols-2 divide-x">
       <Spotify />
       <Steam />
-    </div>
+    </Section>
   </>
 );
 

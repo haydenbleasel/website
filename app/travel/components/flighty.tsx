@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
@@ -41,7 +42,7 @@ export const Flighty = async () => {
         'use server';
 
         return (
-          <section className="grid grid-cols-3 divide-x">
+          <Section className="grid grid-cols-3 divide-x">
             <div className="relative col-span-2 overflow-hidden p-8">
               <div className="-left-1/4 -bottom-1/3 absolute h-full w-full">
                 <Globe />
@@ -90,7 +91,7 @@ export const Flighty = async () => {
                 .
               </small>
             </div>
-          </section>
+          </Section>
         );
       }}
     </Pump>

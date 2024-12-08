@@ -1,4 +1,5 @@
 import { Prose } from '@/components/prose';
+import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { social } from '@/lib/social';
 import { cn } from '@/lib/utils';
@@ -23,7 +24,7 @@ export const Videos = async () => {
   });
 
   return (
-    <section className="grid grid-cols-3">
+    <Section className="grid grid-cols-3">
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
         whileInView={{ opacity: 1, translateY: 0 }}
@@ -93,6 +94,6 @@ export const Videos = async () => {
       {new Array(3 - (rest.length % 3)).fill(null).map((_, index) => (
         <div key={index} className="border-t border-l bg-dashed" />
       ))}
-    </section>
+    </Section>
   );
 };

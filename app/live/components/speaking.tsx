@@ -1,5 +1,6 @@
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
+import { ViewAnimation } from '@/providers/view-animation';
 import { Pump } from 'basehub/react-pump';
 import { LiveItem } from './live-item';
 
@@ -44,24 +45,30 @@ export const Speaking = () => (
                     index % 2 === 0 && 'border-r'
                   )}
                 >
-                  {item.url ? (
-                    <a
-                      key={item._title}
-                      className="flex h-full flex-col items-start gap-1 p-8 transition-colors hover:bg-background"
-                      href={item.url}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
-                      <LiveItem data={item} />
-                    </a>
-                  ) : (
-                    <div
-                      key={item._title}
-                      className="flex h-full flex-col items-start gap-1 p-8"
-                    >
-                      <LiveItem data={item} />
-                    </div>
-                  )}
+                  <ViewAnimation
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    delay={index % 2 ? 0.2 : 0}
+                  >
+                    {item.url ? (
+                      <a
+                        key={item._title}
+                        className="flex h-full flex-col items-start gap-1 p-8 transition-colors hover:bg-background"
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        <LiveItem data={item} />
+                      </a>
+                    ) : (
+                      <div
+                        key={item._title}
+                        className="flex h-full flex-col items-start gap-1 p-8"
+                      >
+                        <LiveItem data={item} />
+                      </div>
+                    )}
+                  </ViewAnimation>
                 </div>
               ))}
             {data.live.speaking.items.length % 2 === 1 && (

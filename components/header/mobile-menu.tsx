@@ -9,7 +9,7 @@ import { Button } from '../ui/button';
 
 export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <>
       <Button variant="outline" size="icon" onClick={() => setIsOpen(!isOpen)}>
@@ -37,3 +37,4 @@ export const MobileMenu = () => {
       </div>
     </>
   );
+};

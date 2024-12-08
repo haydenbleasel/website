@@ -6,6 +6,7 @@ import type { ComponentProps, ReactNode } from 'react';
 type ViewAnimationProps = {
   initial?: ComponentProps<typeof motion.div>['initial'];
   whileInView?: ComponentProps<typeof motion.div>['whileInView'];
+  animate?: ComponentProps<typeof motion.div>['animate'];
   delay?: number;
   // className?: ComponentProps<typeof motion.div>['className'];
   className?: string;
@@ -15,6 +16,7 @@ type ViewAnimationProps = {
 export const ViewAnimation = ({
   initial,
   whileInView,
+  animate,
   delay,
   className,
   children,
@@ -29,6 +31,7 @@ export const ViewAnimation = ({
     <motion.div
       initial={initial}
       whileInView={whileInView}
+      animate={animate}
       // @ts-expect-error React 19 issue
       className={className}
       viewport={{ once: true, amount: 0.5 }}

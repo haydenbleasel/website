@@ -9,9 +9,9 @@ import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 
 type RoleProps = {
-  params: {
+  params: Promise<{
     role: string;
-  };
+  }>;
 };
 
 export const generateMetadata = async ({ params }: RoleProps) => {
@@ -21,7 +21,7 @@ export const generateMetadata = async ({ params }: RoleProps) => {
         __args: {
           filter: {
             _sys_slug: {
-              eq: params.role,
+              eq: (await params).role,
             },
           },
         },
@@ -45,7 +45,7 @@ export const generateMetadata = async ({ params }: RoleProps) => {
   };
 };
 
-const Role = ({ params }: RoleProps) => (
+const Role = async ({ params }: RoleProps) => (
   <Pump
     queries={[
       {
@@ -55,7 +55,7 @@ const Role = ({ params }: RoleProps) => (
             __args: {
               filter: {
                 _sys_slug: {
-                  eq: params.role,
+                  eq: (await params).role,
                 },
               },
             },

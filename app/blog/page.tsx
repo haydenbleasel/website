@@ -64,7 +64,7 @@ const Blog = () => (
       );
 
       return (
-        <Section className="grid grid-cols-3">
+        <Section className="grid grid-cols-3 border-t">
           {featuredPost && (
             <>
               <div className="col-span-2 border-b bg-background">

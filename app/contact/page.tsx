@@ -20,7 +20,7 @@ export const generateMetadata = async () => {
 };
 
 const ContactPage = () => (
-  <Section className="grid grid-cols-2 gap-8 divide-x">
+  <Section className="grid grid-cols-2 gap-8 divide-x border-t">
     <div className="p-8">
       <h1 className="font-bold text-5xl leading-tight tracking-tight">
         <Balancer>Let&apos;s talk about your next project.</Balancer>

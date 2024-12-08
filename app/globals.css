@@ -41,6 +41,8 @@ body {
     --warning-foreground: 0 0% 98%;
 
     --backdrop: 0 0% 96.1%;
+
+    --connection: 0 0% 79.6%;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -75,6 +77,8 @@ body {
     --warning-foreground: 0 0% 98%;
 
     --backdrop: 0 0% 3.9%;
+
+    --connection: 0 0% 29.8%;
   }
 }
 

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { BaseHubImage as Image } from 'basehub/next-image';
 import { Children, type ReactNode } from 'react';
 import { Balancer } from 'react-wrap-balancer';
 import { ViewAnimation } from '../providers/view-animation';

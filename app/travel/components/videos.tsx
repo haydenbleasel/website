@@ -5,7 +5,7 @@ import { social } from '@/lib/social';
 import { cn } from '@/lib/utils';
 import { getTravelVideos } from '@/lib/youtube';
 import { ViewAnimation } from '@/providers/view-animation';
-import Image from 'next/image';
+import { BaseHubImage as Image } from 'basehub/next-image';
 import { YoutubePlayer } from './youtube-player';
 
 export const Videos = async () => {

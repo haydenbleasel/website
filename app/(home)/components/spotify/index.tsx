@@ -1,7 +1,7 @@
 import type { SpotifyProperties } from '@/app/api/cron/spotify/route';
 import { cn } from '@/lib/utils';
 import { get } from '@vercel/edge-config';
-import Image from 'next/image';
+import { BaseHubImage as Image } from 'basehub/next-image';
 import type { ReactElement } from 'react';
 import Vinyl from './vinyl.png';
 

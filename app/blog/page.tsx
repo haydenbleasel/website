@@ -3,8 +3,8 @@ import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { basehub } from 'basehub';
+import { BaseHubImage as Image } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const generateMetadata = async () => {

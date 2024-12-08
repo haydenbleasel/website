@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { BaseHubImage as Image } from 'basehub/next-image';
 import Marquee from 'react-fast-marquee';
 
 import { Section } from '@/components/section';

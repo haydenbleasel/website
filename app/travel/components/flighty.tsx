@@ -1,10 +1,10 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
+import { BaseHubImage as Image } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
-import Image from 'next/image';
 import { Globe } from './globe';
 
 export const Flighty = async () => {

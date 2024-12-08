@@ -1,10 +1,10 @@
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { ViewAnimation } from '@/providers/view-animation';
+import { BaseHubImage as Image } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { draftMode } from 'next/headers';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const FeaturedNews = async () => {

@@ -2,8 +2,8 @@ import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
+import { BaseHubImage as Image } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const Roles = () => (

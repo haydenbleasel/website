@@ -144,6 +144,9 @@ importers:
       concurrently:
         specifier: ^9.1.0
         version: 9.1.0
+      next-secure-headers:
+        specifier: ^2.2.0
+        version: 2.2.0
       postcss:
         specifier: ^8
         version: 8.4.49
@@ -2570,6 +2573,10 @@ packages:
     resolution: {integrity: sha512-4QcVlKFtv2EYVS5MBgsGX5+NWKtbDbIECdUXDBGDMAZXq3Jkv9zf+y8iS7Ub8fEdga3GpYeazp9gauNqXHJOCg==}
     peerDependencies:
       undici: '*'
+
+  next-secure-headers@2.2.0:
+    resolution: {integrity: sha512-C7OfZ9JdSJyYMz2ZBMI/WwNbt0qNjlFWX9afUp8nEUzbz6ez3JbeopdyxSZJZJAzVLIAfyk6n73rFpd4e22jRg==}
+    engines: {node: '>=10.0.0'}
 
   next-themes@0.4.4:
     resolution: {integrity: sha512-LDQ2qIOJF0VnuVrrMSMLrWGjRMkq+0mpgl6e0juCLqdJ+oo8Q84JRWT6Wh11VDQKkMMe+dVzDKLWs5n87T+PkQ==}
@@ -6362,6 +6369,8 @@ snapshots:
   native-fetch@4.0.2(undici@5.28.4):
     dependencies:
       undici: 5.28.4
+
+  next-secure-headers@2.2.0: {}
 
   next-themes@0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:

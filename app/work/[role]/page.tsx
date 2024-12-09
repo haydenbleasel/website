@@ -107,7 +107,7 @@ const Role = async ({ params }: RoleProps) => (
                   alt={role.logo.alt ?? ''}
                   width={role.logo.width}
                   height={role.logo.height}
-                  className="aspect-square h-16 w-auto object-contain"
+                  className="aspect-square h-12 w-auto object-contain"
                 />
               ) : null
             }

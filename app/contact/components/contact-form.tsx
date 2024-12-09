@@ -31,7 +31,7 @@ const typeOptions = [
   {
     value: 'general',
     label: 'General inquiry',
-    subtitle: 'I have a job offer / question / feedback.',
+    subtitle: 'I have a question / feedback or just want to say hi.',
   },
   {
     value: 'work',

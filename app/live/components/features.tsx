@@ -33,7 +33,7 @@ export const Features = () => (
       }
 
       return (
-        <Section className="grid divide-y sm:grid-cols-3 sm:divide-x-0 sm:divide-y-0">
+        <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           <div className="bg-dashed p-8">
             <h2 className="font-semibold text-2xl">Features</h2>
           </div>

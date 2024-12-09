@@ -37,7 +37,7 @@ export const Apps = async () => {
 
         return Object.entries(groups).map(([category, apps]) => (
           <Section
-            className="grid divide-y sm:grid-cols-3 sm:divide-x-0 sm:divide-y-0"
+            className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0"
             key={category}
           >
             <div className="bg-dashed p-8">

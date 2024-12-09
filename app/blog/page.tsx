@@ -1,6 +1,7 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
+import { ViewAnimation } from '@/providers/view-animation';
 import { basehub } from 'basehub';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
@@ -72,28 +73,42 @@ const Blog = () => (
             <div className="grid sm:grid-cols-3">
               <div className="bg-background sm:col-span-2">
                 {featuredPost.image && (
-                  <BaseHubImage
-                    className="sm:col-span-2"
-                    src={featuredPost.image.url}
-                    width={featuredPost.image.width}
-                    height={featuredPost.image.height}
-                    alt={featuredPost.image.alt ?? ''}
-                  />
+                  <ViewAnimation
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                  >
+                    <BaseHubImage
+                      className="sm:col-span-2"
+                      src={featuredPost.image.url}
+                      width={featuredPost.image.width}
+                      height={featuredPost.image.height}
+                      alt={featuredPost.image.alt ?? ''}
+                    />
+                  </ViewAnimation>
                 )}
               </div>
-              <div className="flex flex-col items-start justify-between gap-4 p-8">
-                <div className="flex flex-col gap-2">
-                  <small className="text-muted-foreground">Featured post</small>
-                  <h2 className="font-bold text-2xl leading-normal tracking-tight">
-                    {featuredPost._title}
-                  </h2>
-                  <Prose className="prose line-clamp-5">
-                    {featuredPost.content?.plainText.slice(0, 250)}
-                  </Prose>
-                </div>
-                <Button asChild variant="outline">
-                  <Link href={`/blog/${featuredPost._slug}`}>Read more</Link>
-                </Button>
+              <div className="h-full">
+                <ViewAnimation
+                  initial={{ opacity: 0, translateY: -8 }}
+                  whileInView={{ opacity: 1, translateY: 0 }}
+                  delay={0.4}
+                  className="flex h-full flex-col items-start justify-between gap-4 p-8"
+                >
+                  <div className="flex flex-col gap-2">
+                    <small className="text-muted-foreground">
+                      Featured post
+                    </small>
+                    <h2 className="font-bold text-2xl leading-normal tracking-tight">
+                      {featuredPost._title}
+                    </h2>
+                    <Prose className="prose line-clamp-5">
+                      {featuredPost.content?.plainText.slice(0, 250)}
+                    </Prose>
+                  </div>
+                  <Button asChild variant="outline">
+                    <Link href={`/blog/${featuredPost._slug}`}>Read more</Link>
+                  </Button>
+                </ViewAnimation>
               </div>
             </div>
           )}
@@ -121,20 +136,26 @@ const Blog = () => (
                       <Link
                         key={post._title}
                         href={`/blog/${post._slug}`}
-                        className="flex flex-col gap-2 p-8 transition-colors hover:bg-background"
+                        className="block transition-colors hover:bg-background"
                       >
-                        <h2 className="font-bold text-lg leading-normal tracking-tight">
-                          {post._title}
-                        </h2>
-                        <Prose className="prose-sm line-clamp-3">
-                          {post.content?.plainText.slice(0, 250)}
-                        </Prose>
-                        <small className="text-muted-foreground text-xs">
-                          {new Intl.DateTimeFormat('en-US', {
-                            dateStyle: 'medium',
-                          }).format(new Date(post.date))}{' '}
-                          &bull; {post.content?.readingTime} min read
-                        </small>
+                        <ViewAnimation
+                          initial={{ opacity: 0, translateY: -8 }}
+                          whileInView={{ opacity: 1, translateY: 0 }}
+                          className="flex flex-col gap-2 p-8"
+                        >
+                          <h2 className="font-bold text-lg leading-normal tracking-tight">
+                            {post._title}
+                          </h2>
+                          <Prose className="prose-sm line-clamp-3">
+                            {post.content?.plainText.slice(0, 250)}
+                          </Prose>
+                          <small className="text-muted-foreground text-xs">
+                            {new Intl.DateTimeFormat('en-US', {
+                              dateStyle: 'medium',
+                            }).format(new Date(post.date))}{' '}
+                            &bull; {post.content?.readingTime} min read
+                          </small>
+                        </ViewAnimation>
                       </Link>
                     ))}
                 </div>

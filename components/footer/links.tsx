@@ -35,6 +35,7 @@ export const Links = () => (
             items: {
               _title: true,
               _slug: true,
+              url: true,
             },
           },
         },
@@ -99,10 +100,13 @@ export const Links = () => (
         {
           title: 'Projects',
           href: '/projects',
-          items: data.projects.apps.items.slice(0, 7).map((app) => ({
-            href: `/projects/${app._slug}`,
-            children: app._title,
-          })),
+          items: data.projects.apps.items
+            .filter((app) => app.url)
+            .slice(0, 7)
+            .map((app) => ({
+              href: app.url as string,
+              children: app._title,
+            })),
         },
         {
           title: 'Live',

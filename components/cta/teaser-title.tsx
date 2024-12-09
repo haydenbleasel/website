@@ -35,7 +35,7 @@ export const TeaserTitle = ({ contacts }: TeaserTitleProps) => {
   }, [contacts]);
 
   return (
-    <h2 ref={h2Ref} className="font-bold text-3xl tracking-tight">
+    <h2 ref={h2Ref} className="font-bold text-2xl sm:text-3xl tracking-tight">
       Join <NumberFlow value={count} /> readers and get infrequent updates on
       new projects.
     </h2>

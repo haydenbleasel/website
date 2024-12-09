@@ -37,8 +37,8 @@ export const FeaturedNews = async () => {
         'use server';
 
         return (
-          <Section className="grid grid-cols-3 divide-x">
-            <div className="col-span-2">
+          <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            <div className="sm:col-span-2">
               <ViewAnimation
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

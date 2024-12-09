@@ -2,6 +2,7 @@ import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
 import { ViewAnimation } from '@/providers/view-animation';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
@@ -21,6 +22,12 @@ export const Currently = async () => {
                   content: true,
                 },
               },
+              image: {
+                url: true,
+                alt: true,
+                width: true,
+                height: true,
+              },
             },
           },
         },
@@ -32,7 +39,7 @@ export const Currently = async () => {
         'use server';
 
         return (
-          <Section className="grid grid-cols-3 divide-x">
+          <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             <div>
               <ViewAnimation
                 className="flex flex-col gap-2 p-8"
@@ -50,7 +57,7 @@ export const Currently = async () => {
                 )}
               </ViewAnimation>
             </div>
-            <div className="col-span-2 bg-dashed">
+            <div className="bg-dashed sm:col-span-2">
               <ViewAnimation
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -59,7 +66,13 @@ export const Currently = async () => {
               >
                 <div className="dashed-line-top" />
                 <div className="dashed-line-left" />
-                <div className="aspect-video w-full rounded-tl-2xl bg-muted-foreground" />
+                <BaseHubImage
+                  src={data.home.currently.image.url}
+                  alt={data.home.currently.image.alt ?? ''}
+                  width={data.home.currently.image.width}
+                  height={data.home.currently.image.height}
+                  className="w-full rounded-tl-2xl border-t border-l"
+                />
               </ViewAnimation>
             </div>
           </Section>

@@ -18,7 +18,7 @@ type HeroProps = {
 
 export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
   <Section className="p-4">
-    <div className="flex flex-col items-center justify-center gap-4 rounded-lg border bg-background py-20 shadow-sm sm:px-0">
+    <div className="flex flex-col items-center justify-center gap-4 rounded-lg border bg-background px-4 py-20 shadow-sm">
       {image && (
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
@@ -29,6 +29,11 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
             alt={image.alt ?? ''}
             width={image.width}
             height={image.height}
+            className="object-cover"
+            style={{
+              width: image.width,
+              height: image.height,
+            }}
           />
         </ViewAnimation>
       )}
@@ -37,7 +42,9 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
         >
-          <small className="text-base text-muted-foreground">{caption}</small>
+          <small className="text-muted-foreground text-sm sm:text-base">
+            {caption}
+          </small>
         </ViewAnimation>
       )}
       <ViewAnimation
@@ -45,7 +52,7 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
         whileInView={{ opacity: 1, translateY: 0 }}
         delay={0.4}
       >
-        <h1 className="max-w-4xl text-center font-bold text-5xl leading-tight tracking-tight">
+        <h1 className="max-w-4xl text-center font-bold text-3xl leading-tight tracking-tight sm:text-5xl md:text-4xl">
           <Balancer>{title}</Balancer>
         </h1>
       </ViewAnimation>

@@ -17,7 +17,8 @@ export const MobileMenu = () => {
       </Button>
       <div
         className={cn(
-          'fixed top-[69px] right-0 left-0 flex h-[calc(100vh-69px)] w-full flex-col gap-4 bg-backdrop p-4 md:p-8',
+          'fixed top-[53px] right-0 left-0 flex h-[calc(100vh-53px)] w-full flex-col gap-4 bg-backdrop p-4 md:p-8',
+          'sm:top-[69px] sm:h-[calc(100vh-69px)]',
           isOpen ? 'flex' : 'hidden'
         )}
       >
@@ -25,7 +26,7 @@ export const MobileMenu = () => {
           <Link
             key={link.href}
             href={link.href}
-            className="text-lg"
+            className="sm:text-lg"
             onClick={() => setIsOpen(false)}
           >
             {link.label}

@@ -6,7 +6,7 @@ import { ThemeSwitcher } from './theme-switcher';
 export const Footer = () => (
   <footer className="container mx-auto flex flex-col gap-16 px-4 py-16 sm:px-0">
     <Links />
-    <div className="grid grid-cols-3">
+    <div className="grid sm:grid-cols-3">
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
         whileInView={{ opacity: 1, translateY: 0 }}
@@ -14,7 +14,7 @@ export const Footer = () => (
       >
         <Status />
       </ViewAnimation>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center sm:justify-center">
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
@@ -26,7 +26,7 @@ export const Footer = () => (
           </p>
         </ViewAnimation>
       </div>
-      <div className="flex items-center justify-end">
+      <div className="flex items-center sm:justify-end">
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}

@@ -9,7 +9,7 @@ import Logo from './logo.jpg';
 import { MobileMenu } from './mobile-menu';
 
 export const Header = () => (
-  <HeaderProvider className="container fixed top-0 right-0 left-0 z-50 mx-auto flex items-center justify-between border-transparent border-x border-b px-4 py-4 transition-all">
+  <HeaderProvider className="container fixed top-0 right-0 left-0 z-50 mx-auto flex items-center justify-between border-transparent border-x border-b px-4 py-2 transition-all sm:py-4">
     <div className="w-32">
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}

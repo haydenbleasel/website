@@ -4,7 +4,7 @@ import { Newsletter } from './newsletter';
 import { Teaser } from './teaser';
 
 export const CallToAction = () => (
-  <Section className="grid grid-cols-2 gap-8 bg-dashed p-8">
+  <Section className="grid gap-8 bg-dashed p-8 sm:grid-cols-2">
     <ViewAnimation
       initial={{ opacity: 0, translateY: -8 }}
       whileInView={{ opacity: 1, translateY: 0 }}

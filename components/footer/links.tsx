@@ -137,7 +137,7 @@ export const Links = () => (
       ];
 
       return (
-        <div className="grid grid-cols-6 gap-8 text-muted-foreground text-sm">
+        <div className="grid gap-8 text-muted-foreground text-sm sm:grid-cols-6">
           {lists.map((list, index) => (
             <ViewAnimation
               initial={{ opacity: 0, translateY: -8 }}

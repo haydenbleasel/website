@@ -32,7 +32,7 @@ export const FeaturedTweet = async () => {
         'use server';
 
         return (
-          <Section className="grid grid-cols-3 divide-x">
+          <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             <div>
               <ViewAnimation
                 initial={{ opacity: 0, translateY: -8 }}
@@ -69,7 +69,7 @@ export const FeaturedTweet = async () => {
                 </div>
               </ViewAnimation>
             </div>
-            <div className="col-span-2">
+            <div className="sm:col-span-2">
               <ViewAnimation
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

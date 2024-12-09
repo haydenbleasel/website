@@ -33,7 +33,7 @@ const Home = () => (
     <FeaturedNews />
     <FeaturedTweet />
     <GitHubActivity />
-    <Section className="grid grid-cols-2 divide-x">
+    <Section className="grid divide-y sm:grid-cols-2 sm:divide-x sm:divide-y-0">
       <div className="p-4">
         <Spotify />
       </div>

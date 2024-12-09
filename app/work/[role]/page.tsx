@@ -3,6 +3,7 @@ import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
 import { basehub } from 'basehub';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { notFound } from 'next/navigation';
@@ -99,12 +100,16 @@ const Role = async ({ params }: RoleProps) => (
       return (
         <>
           <HeroSection
-            image={{
-              url: role.logo.url,
-              alt: role.logo.alt ?? '',
-              width: 32,
-              height: 32,
-            }}
+            image={
+              role.logo ? (
+                <BaseHubImage
+                  src={role.logo.url}
+                  alt={role.logo.alt ?? ''}
+                  width={role.logo.width}
+                  height={role.logo.height}
+                />
+              ) : null
+            }
             title={role.role}
           >
             <p className="mx-auto max-w-4xl text-center">

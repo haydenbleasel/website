@@ -51,13 +51,9 @@ export const Recommendations = () => (
           </div>
           <div className="grid divide-y sm:col-span-2 sm:grid-cols-2" id="work">
             {data.work.recommendations.items.map((recommendation, index) => (
-              <ViewAnimation
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                delay={index % 2 ? 0.2 : 0}
+              <div
                 key={recommendation._title}
                 className={cn(
-                  'mx-auto flex max-w-4xl flex-col items-start gap-6 p-8 sm:flex-row',
                   recommendation.size === 'Large'
                     ? 'sm:col-span-2'
                     : 'sm:col-span-1',
@@ -67,34 +63,47 @@ export const Recommendations = () => (
                     'border-l'
                 )}
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full">
-                  <BaseHubImage
-                    src={recommendation.photo.url}
-                    width={recommendation.photo.width}
-                    height={recommendation.photo.height}
-                    alt={recommendation.photo.alt ?? ''}
-                    className="block h-full w-full object-contain"
-                  />
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <h3 className="font-semibold text-lg leading-normal tracking-tight">
-                      {recommendation._title}
-                    </h3>
-                    <a
-                      href={recommendation.linkedIn}
-                      className="text-muted-foreground text-sm"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      @{new URL(recommendation.linkedIn).pathname.split('/')[2]}
-                    </a>
+                <ViewAnimation
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  delay={index % 2 ? 0.2 : 0}
+                  key={recommendation._title}
+                  className="mx-auto flex max-w-4xl flex-col items-start gap-6 p-8 sm:flex-row"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full">
+                    <BaseHubImage
+                      src={recommendation.photo.url}
+                      width={recommendation.photo.width}
+                      height={recommendation.photo.height}
+                      alt={recommendation.photo.alt ?? ''}
+                      className="block h-full w-full object-contain"
+                    />
                   </div>
-                  <Prose className="prose-sm max-w-none">
-                    <p>{recommendation.text}</p>
-                  </Prose>
-                </div>
-              </ViewAnimation>
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <h3 className="font-semibold text-lg leading-normal tracking-tight">
+                        {recommendation._title}
+                      </h3>
+                      <a
+                        href={recommendation.linkedIn}
+                        className="text-muted-foreground text-sm"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        @
+                        {
+                          new URL(recommendation.linkedIn).pathname.split(
+                            '/'
+                          )[2]
+                        }
+                      </a>
+                    </div>
+                    <Prose className="prose-sm max-w-none">
+                      <p>{recommendation.text}</p>
+                    </Prose>
+                  </div>
+                </ViewAnimation>
+              </div>
             ))}
           </div>
         </Section>

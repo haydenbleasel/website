@@ -44,7 +44,7 @@ export const Hero = async () => {
                     height={16}
                     className="h-4 w-4"
                   />
-                  Follow me on LinkedIn
+                  Follow me on {social.linkedin.label}
                 </a>
               </Button>
               <Button asChild>

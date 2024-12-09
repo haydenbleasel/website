@@ -46,7 +46,7 @@ export const Hero = async () => {
                     height={16}
                     className="h-4 w-4"
                   />
-                  Follow me on YouTube
+                  Follow me on {social.youtube.label}
                 </a>
               </Button>
               <Button asChild variant="outline">
@@ -62,7 +62,7 @@ export const Hero = async () => {
                     height={16}
                     className="h-4 w-4"
                   />
-                  Follow me on Instagram
+                  Follow me on {social.instagram.label}
                 </a>
               </Button>
             </div>

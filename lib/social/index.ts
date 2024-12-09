@@ -3,6 +3,7 @@ import Figma from './figma.svg';
 import GitHub from './github.svg';
 import Instagram from './instagram.svg';
 import LinkedIn from './linkedin.svg';
+import ProductHunt from './producthunt.svg';
 import X from './x.svg';
 import YouTube from './youtube.svg';
 
@@ -41,5 +42,10 @@ export const social = {
     label: 'Figma',
     href: 'https://www.figma.com/@haydenbleasel',
     icon: Figma,
+  },
+  producthunt: {
+    label: 'Product Hunt',
+    href: 'https://www.producthunt.com/@haydenbleasel',
+    icon: ProductHunt,
   },
 };

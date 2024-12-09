@@ -32,18 +32,40 @@ export const Hero = async () => {
             caption={data.projects._title}
             title={data.projects.hero.text}
           >
-            <Button asChild variant="outline">
-              <a href={social.x.href} target="_blank" rel="noreferrer noopener">
-                <Image
-                  src={social.x.icon}
-                  alt={social.x.label}
-                  width={16}
-                  height={16}
-                  className="h-4 w-4"
-                />
-                Follow me on X
-              </a>
-            </Button>
+            <div className="flex items-center gap-4">
+              <Button asChild variant="outline">
+                <a
+                  href={social.x.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Image
+                    src={social.x.icon}
+                    alt={social.x.label}
+                    width={16}
+                    height={16}
+                    className="h-4 w-4"
+                  />
+                  Follow me on {social.x.label}
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a
+                  href={social.producthunt.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Image
+                    src={social.producthunt.icon}
+                    alt={social.producthunt.label}
+                    width={16}
+                    height={16}
+                    className="h-4 w-4"
+                  />
+                  Follow me on {social.producthunt.label}
+                </a>
+              </Button>
+            </div>
           </HeroSection>
         );
       }}

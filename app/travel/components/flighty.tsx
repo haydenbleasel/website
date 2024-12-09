@@ -42,7 +42,7 @@ export const Flighty = async () => {
         'use server';
 
         return (
-          <Section className="grid grid-cols-3 divide-x">
+          <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             <div className="relative col-span-2 overflow-hidden p-8">
               <div className="-left-1/4 -bottom-1/3 absolute h-full w-full">
                 <Globe />

@@ -24,11 +24,11 @@ export const Videos = async () => {
   });
 
   return (
-    <Section className="grid grid-cols-3">
+    <Section className="grid sm:grid-cols-3">
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
         whileInView={{ opacity: 1, translateY: 0 }}
-        className="col-span-2 border-b p-8"
+        className="p-8 sm:col-span-2 sm:border-b"
       >
         <YoutubePlayer
           url={`https://www.youtube.com/watch?v=${latest.id}`}
@@ -92,7 +92,10 @@ export const Videos = async () => {
         </ViewAnimation>
       ))}
       {new Array(3 - (rest.length % 3)).fill(null).map((_, index) => (
-        <div key={index} className="border-t border-l bg-dashed" />
+        <div
+          key={index}
+          className="hidden border-t border-l bg-dashed sm:block"
+        />
       ))}
     </Section>
   );

@@ -70,6 +70,7 @@ export const Logos = () => (
     <ViewAnimation
       initial={{ opacity: 0, translateY: -8 }}
       whileInView={{ opacity: 1, translateY: 0 }}
+      className="px-4"
     >
       <p className="text-center text-muted-foreground text-sm">
         My projects have been used by the world&apos;s most innovative companies

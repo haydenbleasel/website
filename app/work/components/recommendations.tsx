@@ -37,7 +37,7 @@ export const Recommendations = () => (
       }
 
       return (
-        <Section className="grid grid-cols-3 divide-x">
+        <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           <div className="bg-dashed">
             <div className="sticky top-16 flex flex-col gap-2 self-start p-8">
               <h2 className="font-bold text-3xl tracking-tight">
@@ -49,7 +49,7 @@ export const Recommendations = () => (
               </p>
             </div>
           </div>
-          <div className="col-span-2 grid grid-cols-2 divide-y" id="work">
+          <div className="grid divide-y sm:col-span-2 sm:grid-cols-2" id="work">
             {data.work.recommendations.items.map((recommendation, index) => (
               <ViewAnimation
                 initial={{ opacity: 0 }}
@@ -57,7 +57,7 @@ export const Recommendations = () => (
                 delay={index % 2 ? 0.2 : 0}
                 key={recommendation._title}
                 className={cn(
-                  'mx-auto flex max-w-4xl items-start gap-6 p-8',
+                  'mx-auto flex max-w-4xl flex-col items-start gap-6 p-8 sm:flex-row',
                   recommendation.size === 'Large'
                     ? 'sm:col-span-2'
                     : 'sm:col-span-1',

@@ -38,8 +38,10 @@ export const Steam = async (): Promise<ReactElement> => {
       </div>
       <div className="flex flex-col gap-2">
         <small className="text-muted-foreground">Recently played</small>
-        <h2 className="font-bold text-3xl tracking-tight">{game.name}</h2>
-        <p className="text-muted-foreground">
+        <h2 className="font-bold text-2xl tracking-tight sm:text-3xl">
+          {game.name}
+        </h2>
+        <p className="text-muted-foreground text-sm sm:text-base">
           🕦 {Math.round(game.playtime / 60)} hours, 🏆{' '}
           {game.completeAchievements} achievements
         </p>

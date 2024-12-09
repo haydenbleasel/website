@@ -23,10 +23,10 @@ export const Section = ({ children, className, ...props }: SectionProps) => (
   <section {...props}>
     <div className="container relative mx-auto">
       <div className={cn('sm:border-x', className)}>{children}</div>
-      <div className="-bottom-3 -left-3 absolute z-10 h-6">
+      <div className="-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block">
         <Cross />
       </div>
-      <div className="-bottom-3 -right-3 -translate-x-px absolute z-10 h-6">
+      <div className="-bottom-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block">
         <Cross />
       </div>
     </div>

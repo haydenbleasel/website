@@ -32,7 +32,7 @@ export const MobileMenu = () => {
             {link.label}
           </Link>
         ))}
-        <Button variant="outline" asChild>
+        <Button variant="outline" asChild onClick={() => setIsOpen(false)}>
           <Link href="/contact">Get in touch</Link>
         </Button>
       </div>

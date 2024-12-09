@@ -30,11 +30,11 @@ export const Speaking = () => (
       }
 
       return (
-        <Section className="grid grid-cols-3 divide-x">
+        <Section className="grid divide-y sm:grid-cols-3 sm:divide-x-0 sm:divide-y-0">
           <div className="bg-dashed p-8">
             <h2 className="font-semibold text-2xl">Speaking</h2>
           </div>
-          <div className="col-span-2 grid grid-cols-2">
+          <div className="grid sm:col-span-2 sm:grid-cols-2">
             {data.live.speaking.items
               .sort((a, b) => b.year - a.year)
               .map((item, index) => (

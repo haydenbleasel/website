@@ -32,7 +32,7 @@ export const Hero = async () => {
             caption={data.travel._title}
             title={data.travel.hero.text}
           >
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button asChild variant="outline">
                 <a
                   href={social.youtube.href}

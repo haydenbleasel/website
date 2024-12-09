@@ -42,13 +42,14 @@ export const Apps = async () => {
         'use server';
 
         return (
-          <Section className="grid grid-cols-6">
+          <Section className="grid sm:grid-cols-6">
             {data.projects.apps.items.map((app, index) =>
               app.size === 'Large' ? (
                 <Fragment key={app._title}>
                   <div
                     className={cn(
-                      'relative col-span-4 aspect-video bg-dashed',
+                      'relative aspect-video bg-dashed',
+                      'sm:col-span-4',
                       index > 0 && 'border-t',
                       app.offset === 'Center' && 'p-8',
                       app.offset === 'Top-Left' && 'pt-8 pl-8',
@@ -112,7 +113,8 @@ export const Apps = async () => {
                   </div>
                   <div
                     className={cn(
-                      'col-span-2 flex flex-col items-start justify-between gap-4 border-l p-8',
+                      'flex flex-col items-start justify-between gap-4 border-l p-8',
+                      'sm:col-span-2',
                       index > 0 && 'border-t'
                     )}
                   >
@@ -137,7 +139,8 @@ export const Apps = async () => {
                 <div
                   key={app._title}
                   className={cn(
-                    'col-span-3 flex flex-col items-start justify-between gap-4 p-8',
+                    'flex flex-col items-start justify-between gap-4 p-8',
+                    'sm:col-span-3',
                     app.size === 'Small' &&
                       data.projects.apps.items.at(index - 1)?.size ===
                         'Small' &&

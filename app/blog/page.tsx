@@ -64,13 +64,13 @@ const Blog = () => (
       );
 
       return (
-        <Section className="grid grid-cols-3 border-t">
+        <Section className="grid border-t sm:grid-cols-3">
           {featuredPost && (
             <>
-              <div className="col-span-2 border-b bg-background">
+              <div className="bg-background sm:col-span-2 sm:border-b">
                 {featuredPost.image && (
                   <BaseHubImage
-                    className="col-span-2"
+                    className="sm:col-span-2"
                     src={featuredPost.image.url}
                     width={featuredPost.image.width}
                     height={featuredPost.image.height}

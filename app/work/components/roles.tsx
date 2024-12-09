@@ -43,14 +43,14 @@ export const Roles = () => (
       }
 
       return (
-        <Section className="grid grid-cols-2">
+        <Section className="grid sm:grid-cols-2">
           {data.work.roles.items.map((role, index) => (
             <ViewAnimation
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               delay={index % 2 ? 0.2 : 0}
               className={cn(
-                index % 2 === 0 ? 'border-r' : '',
+                index % 2 === 0 ? 'sm:border-r' : '',
                 index < data.work.roles.items.length - 2 ? 'border-b' : ''
               )}
               key={role._title}

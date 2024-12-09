@@ -30,7 +30,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         disableTransitionOnChange
       >
         <Header />
-        <div className="container mx-auto h-16 sm:border-x" />
+        <div className="container mx-auto h-[52px] sm:h-16 sm:border-x" />
         <main className="divide-y sm:border-b">
           {children}
           <CallToAction />

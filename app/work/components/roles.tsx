@@ -70,7 +70,7 @@ export const Roles = async () => {
                       width={role.logo.width}
                       height={role.logo.height}
                       alt={role.logo.alt ?? ''}
-                      className="block h-full w-full object-contain"
+                      className="block h-full w-full object-contain dark:brightness-0 dark:invert"
                     />
                   </div>
                   <div className="flex flex-col gap-2">

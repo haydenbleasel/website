@@ -61,7 +61,7 @@ export const Logos = async () => {
                       alt=""
                       width={80}
                       height={40}
-                      className="mx-12 h-10 w-20 object-contain opacity-50 invert"
+                      className="mx-12 h-10 w-20 object-contain opacity-50 invert dark:invert-0"
                     />
                   </ViewAnimation>
                 ))}

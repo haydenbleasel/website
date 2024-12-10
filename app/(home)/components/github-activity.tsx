@@ -41,7 +41,7 @@ export const GitHubActivity = async (): Promise<ReactElement> => {
             hideTotalCount
             hideMonthLabels
             data={data}
-            weekStart={1}
+            // weekStart={1}
             theme={{
               light: [
                 tailwind.theme.colors.neutral[200],

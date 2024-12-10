@@ -7,7 +7,7 @@ import { Section } from './section';
 type HeroProps = {
   image?: ReactNode;
   caption?: string | null;
-  title: string;
+  title: ReactNode;
   children?: ReactNode;
 };
 

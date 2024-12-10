@@ -1,4 +1,5 @@
 import { Section } from '@/components/section';
+import { env } from '@/lib/env';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
 import groupBy from 'lodash.groupby';
@@ -59,7 +60,7 @@ export const Apps = async () => {
                     rel="noreferrer noopener"
                   >
                     <Image
-                      src={`https://img.logo.dev/${new URL(app.imageUrl ?? app.url).hostname}?token=${process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN}`}
+                      src={`https://img.logo.dev/${new URL(app.imageUrl ?? app.url).hostname}?token=${env.NEXT_PUBLIC_LOGO_DEV_TOKEN}`}
                       alt={app.url}
                       width={32}
                       height={32}

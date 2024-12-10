@@ -1,9 +1,10 @@
 'use server';
 
+import { env } from '@/lib/env';
 import { resend } from '@/lib/resend';
 import { parseError } from '@/lib/utils';
 
-const audienceId = process.env.RESEND_AUDIENCE_ID;
+const audienceId = env.RESEND_AUDIENCE_ID;
 
 if (!audienceId) {
   throw new Error('Missing RESEND_AUDIENCE_ID');

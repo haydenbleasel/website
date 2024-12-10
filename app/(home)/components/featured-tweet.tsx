@@ -67,13 +67,13 @@ export const FeaturedTweet = async () => {
                 </div>
               </ViewAnimation>
             </div>
-            <div className="sm:col-span-2">
+            <div className="overflow-hidden sm:col-span-2">
               <ViewAnimation
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 delay={0.4}
               >
-                <div className="relative flex items-center justify-center overflow-hidden bg-dashed p-8">
+                <div className="relative flex items-center justify-center bg-dashed p-8">
                   <Tweet id={data.home.featuredTweet.tweetId} />
                 </div>
               </ViewAnimation>

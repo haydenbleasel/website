@@ -107,7 +107,7 @@ const BlogPost = async ({ params }: BlogPostProps) => {
         return (
           <>
             <Section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
-              <h1 className="text-center font-bold text-5xl leading-tight tracking-tight">
+              <h1 className="text-center font-bold text-3xl leading-tight tracking-tight sm:text-4xl md:text-5xl">
                 <Balancer>{post._title}</Balancer>
               </h1>
               <p className="mx-auto max-w-4xl text-center">
@@ -123,7 +123,7 @@ const BlogPost = async ({ params }: BlogPostProps) => {
                 <p>{post.content?.readingTime} min read</p>
               </div>
             </Section>
-            <Section className="py-16">
+            <Section className="px-8 py-16">
               <Prose className="mx-auto max-w-3xl">
                 <RichText
                   content={post.content?.json.content}

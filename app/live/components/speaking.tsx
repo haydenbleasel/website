@@ -47,7 +47,7 @@ export const Speaking = async () => {
                     key={item._title}
                     className={cn(
                       index > 1 && 'border-t',
-                      index % 2 === 0 && 'border-r'
+                      index % 2 === 0 && 'sm:border-r'
                     )}
                   >
                     <ViewAnimation

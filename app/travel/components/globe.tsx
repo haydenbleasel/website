@@ -1,15 +1,30 @@
 'use client';
 
+import { useWindowSize } from '@uidotdev/usehooks';
 import createGlobe from 'cobe';
 import { useTheme } from 'next-themes';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import type { FC } from 'react';
 
 export const Globe: FC = () => {
   const { resolvedTheme } = useTheme();
   const canvasReference = useRef<HTMLCanvasElement>(null);
-  const width = 580;
-  const height = 580;
+  const windowSize = useWindowSize();
+  const globeSize = useMemo(() => {
+    if (windowSize.width && windowSize.width >= 1280) {
+      return 580;
+    }
+
+    if (windowSize.width && windowSize.width >= 1024) {
+      return 440;
+    }
+
+    if (windowSize.width && windowSize.width >= 768) {
+      return 320;
+    }
+
+    return 240;
+  }, [windowSize.width]);
 
   useEffect(() => {
     let phi = 0;
@@ -20,8 +35,8 @@ export const Globe: FC = () => {
 
     const globe = createGlobe(canvasReference.current, {
       devicePixelRatio: 2,
-      width: width * 2,
-      height: height * 2,
+      width: globeSize * 2,
+      height: globeSize * 2,
       phi: 0,
       theta: 0,
       dark: 0,
@@ -40,7 +55,7 @@ export const Globe: FC = () => {
     });
 
     return () => globe.destroy();
-  }, [resolvedTheme]);
+  }, [globeSize, resolvedTheme]);
 
   return (
     <canvas

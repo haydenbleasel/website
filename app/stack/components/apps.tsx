@@ -52,7 +52,7 @@ export const Apps = async () => {
                     className={cn(
                       'flex items-start gap-4 p-8 transition-colors hover:bg-background',
                       index > 1 && 'border-t',
-                      index % 2 === 0 && 'border-r'
+                      index % 2 === 0 && 'sm:border-r'
                     )}
                     href={app.url}
                     target="_blank"

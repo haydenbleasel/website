@@ -12,22 +12,29 @@ export const GitHubActivity = async (): Promise<ReactElement> => {
     return <div />;
   }
 
-  const halfLength = Math.floor(github.data.length / 2);
-  const firstHalfData = github.data.slice(0, halfLength);
-  const secondHalfData = github.data.slice(halfLength);
+  const quarterLength = Math.floor(github.data.length / 4);
+  const firstQuarterData = github.data.slice(0, quarterLength);
+  const secondQuarterData = github.data.slice(quarterLength, quarterLength * 2);
+  const thirdQuarterData = github.data.slice(
+    quarterLength * 2,
+    quarterLength * 3
+  );
+  const fourthQuarterData = github.data.slice(quarterLength * 3);
 
   return (
     <Section>
       <ViewAnimation
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        className="relative flex flex-col gap-[3px] p-8 lg:gap-1"
+        className="relative grid gap-0.5 sm:grid-cols-2 sm:gap-[3px] sm:p-8 lg:gap-1"
       >
-        <GitHubActivityClient data={secondHalfData} />
-        <GitHubActivityClient data={firstHalfData} />
-        <div className="absolute right-0 bottom-8 left-0 z-10 h-40 bg-gradient-to-b from-transparent to-backdrop" />
+        <GitHubActivityClient data={thirdQuarterData} />
+        <GitHubActivityClient data={fourthQuarterData} />
+        <GitHubActivityClient data={firstQuarterData} />
+        <GitHubActivityClient data={secondQuarterData} />
+        <div className="absolute right-0 bottom-0 left-0 z-10 h-full bg-gradient-to-b from-transparent to-backdrop sm:bottom-8 sm:h-40" />
         <a
-          className="-translate-x-1/2 absolute bottom-4 left-1/2 z-10 font-mono text-muted-foreground text-xs"
+          className="-translate-x-1/2 absolute bottom-4 left-1/2 z-10 whitespace-nowrap font-mono text-muted-foreground text-xs"
           href={social.github.href}
           target="_blank"
           rel="noopener noreferrer"

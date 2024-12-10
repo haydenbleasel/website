@@ -40,9 +40,6 @@ export const GitHubActivityClient = ({ data }: GitHubActivityClientProps) => {
           tailwind.theme.colors.green[800],
         ],
       }}
-      style={{
-        width: 'auto',
-      }}
     />
   );
 };

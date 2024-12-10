@@ -4,7 +4,7 @@ import { Status } from './status';
 import { ThemeSwitcher } from './theme-switcher';
 
 export const Footer = () => (
-  <footer className="container mx-auto flex flex-col gap-16 px-4 py-16 sm:px-0">
+  <footer className="container mx-auto flex flex-col gap-16 px-8 py-16 sm:px-0">
     <Links />
     <div className="grid gap-4 sm:grid-cols-3">
       <ViewAnimation

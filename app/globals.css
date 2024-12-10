@@ -178,3 +178,7 @@ body {
 .object-right .next-video-bg-video {
   object-position: right;
 }
+
+.react-activity-calendar {
+  width: auto !important;
+}

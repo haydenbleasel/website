@@ -62,7 +62,7 @@ export const Roles = async () => {
               >
                 <Link
                   href={`/work/${role._slug}`}
-                  className="flex items-start gap-6 p-8 transition-colors hover:bg-background"
+                  className="flex flex-col items-start gap-6 p-8 transition-colors hover:bg-background sm:flex-row"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center">
                     <BaseHubImage

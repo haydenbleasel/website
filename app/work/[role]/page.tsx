@@ -121,17 +121,17 @@ const Role = async ({ params }: RoleProps) => {
               <p className="mx-auto max-w-4xl text-center">
                 <Balancer>{role.description}</Balancer>
               </p>
-              <div className="flex items-center justify-center gap-4 text-muted-foreground text-sm">
+              <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground text-sm sm:flex-row sm:gap-4">
                 <p>{role.type}</p>
-                <p>&bull;</p>
+                <p className="hidden sm:block">&bull;</p>
                 <p>
                   {role.startYear} &mdash; {role.endYear ?? 'Present'}
                 </p>
-                <p>&bull;</p>
+                <p className="hidden sm:block">&bull;</p>
                 <p>{role.location}</p>
                 {role.url && (
                   <>
-                    <p>&bull;</p>
+                    <p className="hidden sm:block">&bull;</p>
                     <a
                       href={role.url}
                       target="_blank"
@@ -143,7 +143,7 @@ const Role = async ({ params }: RoleProps) => {
                 )}
               </div>
             </HeroSection>
-            <Section className="py-16">
+            <Section className="px-8 py-16">
               <Prose className="mx-auto max-w-3xl">
                 <RichText
                   content={role.content?.json.content}

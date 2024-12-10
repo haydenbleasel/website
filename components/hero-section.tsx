@@ -13,7 +13,7 @@ type HeroProps = {
 
 export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
   <Section className="p-4">
-    <div className="flex flex-col items-center justify-center gap-8 rounded-lg border bg-background px-4 py-20 shadow-sm">
+    <div className="flex flex-col items-center justify-center gap-8 rounded-lg border bg-background px-8 py-20 shadow-sm">
       {image && (
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}

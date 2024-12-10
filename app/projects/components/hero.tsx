@@ -31,7 +31,7 @@ export const Hero = async () => {
             caption={data.projects._title}
             title={data.projects.hero.text}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col items-center gap-4 sm:flex-row">
               <SocialButton data={social.x} />
               <SocialButton data={social.producthunt} />
             </div>

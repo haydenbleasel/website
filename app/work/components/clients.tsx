@@ -31,7 +31,7 @@ export const Clients = async () => {
         }
 
         return (
-          <Section className="flex flex-col gap-8 px-4 py-16 sm:px-8">
+          <Section className="flex flex-col gap-8 px-8 py-16">
             <ViewAnimation
               initial={{ opacity: 0, translateY: -8 }}
               whileInView={{ opacity: 1, translateY: 0 }}

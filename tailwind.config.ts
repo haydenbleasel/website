@@ -73,7 +73,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['Switzer', ...fontFamily.sans],
+        sans: ['Twemoji Country Flags', 'Switzer', ...fontFamily.sans],
         mono: ['JetBrains Mono', ...fontFamily.mono],
       },
       typography: typographyConfig,

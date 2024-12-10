@@ -4,7 +4,6 @@ import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
-import { HomepageTitle } from './homepage-title';
 
 export const Hero = async () => {
   const { isEnabled } = await draftMode();
@@ -38,7 +37,7 @@ export const Hero = async () => {
         return (
           <HeroSection
             caption={data.home.hero.caption}
-            title={<HomepageTitle text={data.home.hero.text} />}
+            title={data.home.hero.text}
             image={
               data.home.hero.image ? (
                 <div className="relative">

@@ -12,6 +12,7 @@ export const CodeSnippetClient = ({ dark, light }: CodeSnippetClientProps) => {
 
   return (
     <div
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: "injecting code"
       dangerouslySetInnerHTML={{ __html: theme === 'dark' ? dark : light }}
     />
   );

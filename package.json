@@ -28,6 +28,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
+    "country-flag-emoji-polyfill": "^0.1.8",
     "date-fns": "^4.1.0",
     "googleapis": "^144.0.0",
     "ky": "^1.7.2",

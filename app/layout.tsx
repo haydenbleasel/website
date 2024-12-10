@@ -3,6 +3,7 @@ import { CallToAction } from '@/components/cta';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Toaster } from '@/components/ui/sonner';
+import { WindowsEmojiPolyfill } from '@/components/windows-emoji-polyfill';
 import { env } from '@/lib/env';
 import { ThemeProvider } from '@/providers/theme';
 import { Analytics } from '@vercel/analytics/react';
@@ -77,6 +78,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
       </ThemeProvider>
       <Toaster />
       <Analytics />
+      <WindowsEmojiPolyfill />
     </body>
   </html>
 );

@@ -1,4 +1,5 @@
 'use client';
+
 import { subscribe } from '@/app/actions/subscribe';
 import { Button } from '@/components/ui/button';
 import {

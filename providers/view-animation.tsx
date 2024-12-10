@@ -32,7 +32,6 @@ export const ViewAnimation = ({
       initial={initial}
       whileInView={whileInView}
       animate={animate}
-      // @ts-expect-error React 19 issue
       className={className}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ delay, duration: 0.8 }}

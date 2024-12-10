@@ -53,7 +53,6 @@ export function ThemeSwitcher() {
             {isActive && (
               <motion.div
                 layoutId="activeTheme"
-                // @ts-expect-error React 19 issue
                 className="absolute inset-0 rounded-full bg-background"
                 transition={{ type: 'spring', duration: 0.5 }}
               />

@@ -8,6 +8,8 @@ import type { ReactNode } from 'react';
 type ActiveLinkProps = LinkProps & {
   children: ReactNode;
   href: string;
+  target?: string;
+  rel?: string;
 };
 
 export const ActiveLink = ({ href, children }: ActiveLinkProps) => {

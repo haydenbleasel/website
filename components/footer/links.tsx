@@ -160,13 +160,7 @@ export const Links = async () => {
               >
                 <div className="font-medium text-foreground">
                   {list.href ? (
-                    <Link
-                      href={list.href}
-                      target={list.external ? '_blank' : undefined}
-                      rel={list.external ? 'noopener noreferrer' : undefined}
-                    >
-                      {list.title}
-                    </Link>
+                    <Link href={list.href}>{list.title}</Link>
                   ) : (
                     <p>{list.title}</p>
                   )}
@@ -174,7 +168,13 @@ export const Links = async () => {
                 <ul className="flex flex-col gap-3">
                   {list.items.map((item) => (
                     <li key={item.href}>
-                      <ActiveLink href={item.href}>{item.children}</ActiveLink>
+                      <ActiveLink
+                        href={item.href}
+                        target={list.external ? '_blank' : undefined}
+                        rel={list.external ? 'noopener noreferrer' : undefined}
+                      >
+                        {item.children}
+                      </ActiveLink>
                     </li>
                   ))}
                 </ul>

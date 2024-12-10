@@ -12,6 +12,7 @@ export const Flighty = async () => {
 
   return (
     <Pump
+      draft={isEnabled}
       queries={[
         {
           __typename: true,
@@ -35,7 +36,6 @@ export const Flighty = async () => {
           },
         },
       ]}
-      draft={isEnabled}
     >
       {/* biome-ignore lint/suspicious/useAwait: Server Actions must be async */}
       {async ([data]) => {

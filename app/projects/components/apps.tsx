@@ -14,6 +14,7 @@ export const Apps = async () => {
 
   return (
     <Pump
+      draft={isEnabled}
       queries={[
         {
           __typename: true,
@@ -36,7 +37,6 @@ export const Apps = async () => {
           },
         },
       ]}
-      draft={isEnabled}
     >
       {async ([data]) => {
         'use server';

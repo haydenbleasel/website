@@ -14,6 +14,7 @@ export const Currently = async () => {
 
   return (
     <Pump
+      draft={isEnabled}
       queries={[
         {
           __typename: true,
@@ -36,7 +37,6 @@ export const Currently = async () => {
           },
         },
       ]}
-      draft={isEnabled}
     >
       {/* biome-ignore lint/suspicious/useAwait: Server Actions must be async */}
       {async ([data]) => {

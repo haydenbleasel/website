@@ -11,6 +11,7 @@ export const Hero = async () => {
 
   return (
     <Pump
+      draft={isEnabled}
       queries={[
         {
           __typename: true,
@@ -22,7 +23,6 @@ export const Hero = async () => {
           },
         },
       ]}
-      draft={isEnabled}
     >
       {/* biome-ignore lint/suspicious/useAwait: Server Actions must be async */}
       {async ([data]) => {

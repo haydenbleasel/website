@@ -30,7 +30,8 @@ export const Globe: FC = () => {
       mapBrightness: 6,
       baseColor: resolvedTheme === 'dark' ? [0.1, 0.1, 0.1] : [0.9, 0.9, 0.9],
       markerColor: resolvedTheme === 'dark' ? [0.1, 0.1, 0.1] : [0.9, 0.9, 0.9],
-      glowColor: resolvedTheme === 'dark' ? [0.1, 0.1, 0.1] : [0.9, 0.9, 0.9],
+      glowColor:
+        resolvedTheme === 'dark' ? [0.05, 0.05, 0.05] : [0.9, 0.9, 0.9],
       markers: [],
       onRender: (state) => {
         state.phi = phi;

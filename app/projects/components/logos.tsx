@@ -1,8 +1,8 @@
 import { Section } from '@/components/section';
 import { ViewAnimation } from '@/providers/view-animation';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { draftMode } from 'next/headers';
-import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 
 export const Logos = async () => {
@@ -56,7 +56,7 @@ export const Logos = async () => {
                     key={logo.image.url}
                     delay={0.4 + index * 0.1}
                   >
-                    <Image
+                    <BaseHubImage
                       src={logo.image.url}
                       alt=""
                       width={80}

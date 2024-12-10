@@ -1,7 +1,7 @@
 import { parseError } from '@/lib/utils';
 import { endOfWeek, subDays, subWeeks } from 'date-fns';
 import ky from 'ky';
-import type { Activity } from 'rsc-activity-calendar';
+import type { Activity } from 'react-activity-calendar';
 
 export type GitHubProperties = {
   total: number;

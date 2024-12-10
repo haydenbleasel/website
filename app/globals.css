@@ -127,6 +127,11 @@ body {
   color: rgba(115, 138, 148, 0.4);
 }
 
+::selection {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
 .dashed-line-top {
   @apply absolute top-8 left-0 h-px w-full border-t border-dashed;
 }

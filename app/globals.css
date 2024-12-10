@@ -168,22 +168,6 @@ body {
   mask-image: linear-gradient(to bottom, transparent, hsl(var(--foreground)) 2rem, hsl(var(--foreground)) calc(100% - 2rem), transparent);
 }
 
-.object-bottom .next-video-bg-video {
-  object-position: bottom;
-}
-
-.object-top .next-video-bg-video {
-  object-position: top;
-}
-
-.object-left .next-video-bg-video {
-  object-position: left;
-}
-
-.object-right .next-video-bg-video {
-  object-position: right;
-}
-
 .react-activity-calendar {
   width: auto !important;
 }

@@ -51,6 +51,9 @@ export const ProjectVideo = ({ url, offset, position }: ProjectVideoProps) => {
         playing={entry?.isIntersecting}
         width="100%"
         height="100%"
+        loop
+        muted
+        playsinline
       />
     </div>
   );

@@ -69,11 +69,15 @@ export const Apps = async () => {
                             app.position === 'Right' && 'object-right',
                             app.position === 'Top' && 'object-top',
                             app.position === 'Bottom' && 'object-bottom',
-                            app.offset === 'Center' && 'rounded-2xl',
-                            app.offset === 'Top-Left' && 'rounded-tl-2xl',
-                            app.offset === 'Top-Right' && 'rounded-tr-2xl',
-                            app.offset === 'Bottom-Left' && 'rounded-bl-2xl',
-                            app.offset === 'Bottom-Right' && 'rounded-br-2xl'
+                            app.offset === 'Center' && 'rounded-2xl border',
+                            app.offset === 'Top-Left' &&
+                              'rounded-tl-2xl border-t border-l',
+                            app.offset === 'Top-Right' &&
+                              'rounded-tr-2xl border-t border-r',
+                            app.offset === 'Bottom-Left' &&
+                              'rounded-bl-2xl border-b border-l',
+                            app.offset === 'Bottom-Right' &&
+                              'rounded-br-2xl border-r border-b'
                           )}
                         />
                         {app.offset === 'Center' && (

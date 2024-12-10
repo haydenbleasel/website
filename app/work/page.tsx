@@ -1,4 +1,5 @@
 import { basehub } from 'basehub';
+import { Clients } from './components/clients';
 import { Hero } from './components/hero';
 import { Recommendations } from './components/recommendations';
 import { Roles } from './components/roles';
@@ -23,6 +24,7 @@ const Work = () => (
   <>
     <Hero />
     <Roles />
+    <Clients />
     <Recommendations />
   </>
 );

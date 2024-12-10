@@ -86,6 +86,9 @@ export const Roles = () => (
               </Link>
             </ViewAnimation>
           ))}
+          {data.work.roles.items.length % 2 && (
+            <div className="hidden border-t bg-dashed sm:block" />
+          )}
         </Section>
       );
     }}

@@ -142,31 +142,51 @@ export const ContactForm = () => {
         <FormField
           control={form.control}
           name="type"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Type</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="bg-background">
-                    <SelectValue placeholder="Select type of inquiry" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {typeOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      <div className="text-left">
-                        <div>{option.label}</div>
-                        <div className="text-muted-foreground text-xs">
-                          {option.subtitle}
+          render={({ field }) => {
+            const selectedType = typeOptions.find(
+              (option) => option.value === field.value
+            );
+
+            return (
+              <FormItem>
+                <FormLabel>Type</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="bg-background">
+                      <SelectValue asChild>
+                        {selectedType ? (
+                          <div className="flex items-center gap-1 truncate">
+                            <p>{selectedType.label}</p>
+                            <p className="truncate text-muted-foreground text-xs">
+                              {selectedType.subtitle}
+                            </p>
+                          </div>
+                        ) : (
+                          <p>What do you want to talk about?</p>
+                        )}
+                      </SelectValue>
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {typeOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        <div className="text-left">
+                          <div>{option.label}</div>
+                          <div className="text-muted-foreground text-xs">
+                            {option.subtitle}
+                          </div>
                         </div>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
         />
         <Button
           type="submit"

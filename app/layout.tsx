@@ -5,6 +5,7 @@ import { Header } from '@/components/header';
 import { Toaster } from '@/components/ui/sonner';
 import { env } from '@/lib/env';
 import { ThemeProvider } from '@/providers/theme';
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
@@ -72,6 +73,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         <Footer />
       </ThemeProvider>
       <Toaster />
+      <Analytics />
     </body>
   </html>
 );

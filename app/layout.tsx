@@ -14,7 +14,10 @@ type RootLayoutProps = {
 };
 
 const name = 'Hayden Bleasel';
-const siteUrl = new URL(env.VERCEL_PROJECT_PRODUCTION_URL);
+const protocol = env.VERCEL_PROJECT_PRODUCTION_URL.includes('localhost')
+  ? 'http'
+  : 'https';
+const siteUrl = new URL(`${protocol}://${env.VERCEL_PROJECT_PRODUCTION_URL}`);
 
 export const metadata: Metadata = {
   applicationName: name,

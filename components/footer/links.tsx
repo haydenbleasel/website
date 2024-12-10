@@ -69,6 +69,7 @@ export const Links = async () => {
         const lists: {
           title: string;
           href?: string;
+          external?: boolean;
           items: {
             href: string;
             children: ReactNode;
@@ -111,6 +112,7 @@ export const Links = async () => {
               .map((app) => ({
                 href: app.url as string,
                 children: app._title,
+                external: true,
               })),
           },
           {
@@ -123,6 +125,7 @@ export const Links = async () => {
               .map((item) => ({
                 href: item.url as string,
                 children: item._title,
+                external: true,
               })),
           },
           {
@@ -157,7 +160,13 @@ export const Links = async () => {
               >
                 <div className="font-medium text-foreground">
                   {list.href ? (
-                    <Link href={list.href}>{list.title}</Link>
+                    <Link
+                      href={list.href}
+                      target={list.external ? '_blank' : undefined}
+                      rel={list.external ? 'noopener noreferrer' : undefined}
+                    >
+                      {list.title}
+                    </Link>
                   ) : (
                     <p>{list.title}</p>
                   )}

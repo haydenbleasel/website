@@ -18,8 +18,12 @@ export const GitHubActivity = async (): Promise<ReactElement> => {
   const secondHalfData = github.data.slice(halfLength);
 
   return (
-    <Section className="relative flex flex-col gap-[3px] p-8">
-      <ViewAnimation initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
+    <Section>
+      <ViewAnimation
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        className="relative flex flex-col gap-[3px] p-8"
+      >
         <ActivityCalendar
           hideColorLegend
           hideTotalCount

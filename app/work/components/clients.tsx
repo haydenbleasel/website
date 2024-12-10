@@ -42,17 +42,19 @@ export const Clients = async () => {
               </p>
             </ViewAnimation>
             <div className="flex flex-wrap items-center justify-center gap-2">
-              {data.work.clients.items.map((client) => (
-                <div
-                  className={cn(
-                    'inline-flex rounded-full border bg-background px-3 py-1.5 text-xs shadow-sm',
-                    'sm:text-sm'
-                  )}
-                  key={client._title}
-                >
-                  {client._title}
-                </div>
-              ))}
+              {data.work.clients.items
+                .sort((a, b) => a._title.localeCompare(b._title))
+                .map((client) => (
+                  <div
+                    className={cn(
+                      'inline-flex rounded-full border bg-background px-3 py-1.5 text-xs shadow-sm',
+                      'sm:text-sm'
+                    )}
+                    key={client._title}
+                  >
+                    {client._title}
+                  </div>
+                ))}
             </div>
           </Section>
         );

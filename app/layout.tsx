@@ -3,11 +3,45 @@ import { CallToAction } from '@/components/cta';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Toaster } from '@/components/ui/sonner';
+import { env } from '@/lib/env';
 import { ThemeProvider } from '@/providers/theme';
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 type RootLayoutProps = {
   children: ReactNode;
+};
+
+const name = 'Hayden Bleasel';
+const siteUrl = new URL(env.VERCEL_PROJECT_PRODUCTION_URL);
+
+export const metadata: Metadata = {
+  applicationName: name,
+  authors: [
+    {
+      name,
+      url: siteUrl.toString(),
+    },
+  ],
+  creator: name,
+  metadataBase: siteUrl,
+  formatDetection: {
+    telephone: false,
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: name,
+    locale: 'en_US',
+  },
+  publisher: name,
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@haydenbleasel',
+  },
 };
 
 const RootLayout = ({ children }: RootLayoutProps) => (

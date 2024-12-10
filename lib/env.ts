@@ -22,6 +22,9 @@ export const env = createEnv({
     STEAM_ID: z.string().min(1),
     STEAM_API_KEY: z.string().min(1),
     YOUTUBE_API_KEY: z.string().min(1),
+
+    // Added by Vercel
+    VERCEL_PROJECT_PRODUCTION_URL: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_LOGO_DEV_TOKEN: z.string().min(1).startsWith('pk_'),
@@ -47,5 +50,6 @@ export const env = createEnv({
     STEAM_API_KEY: process.env.STEAM_API_KEY,
     YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
     NEXT_PUBLIC_LOGO_DEV_TOKEN: process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN,
+    VERCEL_PROJECT_PRODUCTION_URL: process.env.VERCEL_PROJECT_PRODUCTION_URL,
   },
 });

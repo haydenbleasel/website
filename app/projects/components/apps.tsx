@@ -3,11 +3,9 @@ import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
-import dynamic from 'next/dynamic';
 import { draftMode } from 'next/headers';
 import { Fragment } from 'react';
-
-const BackgroundVideo = dynamic(() => import('next-video/background-video'));
+import { ProjectVideo } from './video';
 
 export const Apps = async () => {
   const { isEnabled } = await draftMode();
@@ -60,25 +58,10 @@ export const Apps = async () => {
                   >
                     {app.video && (
                       <>
-                        <BackgroundVideo
-                          src={app.video.url}
-                          className={cn(
-                            'h-full w-full overflow-hidden object-cover',
-                            app.position === 'Center' && 'object-center',
-                            app.position === 'Left' && 'object-left',
-                            app.position === 'Right' && 'object-right',
-                            app.position === 'Top' && 'object-top',
-                            app.position === 'Bottom' && 'object-bottom',
-                            app.offset === 'Center' && 'rounded-2xl border',
-                            app.offset === 'Top-Left' &&
-                              'rounded-tl-2xl border-t border-l',
-                            app.offset === 'Top-Right' &&
-                              'rounded-tr-2xl border-t border-r',
-                            app.offset === 'Bottom-Left' &&
-                              'rounded-bl-2xl border-b border-l',
-                            app.offset === 'Bottom-Right' &&
-                              'rounded-br-2xl border-r border-b'
-                          )}
+                        <ProjectVideo
+                          url={app.video.url}
+                          offset={app.offset}
+                          position={app.position}
                         />
                         {app.offset === 'Center' && (
                           <>

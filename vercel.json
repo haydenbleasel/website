@@ -7,6 +7,10 @@
     {
       "path": "/api/cron/spotify",
       "schedule": "0/10 * * * *"
+    },
+    {
+      "path": "/api/cron/newsletter",
+      "schedule": "0 2 * * *"
     }
   ]
 }

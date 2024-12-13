@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "concurrently \"basehub dev\" \"next dev --turbopack\"",
     "build": "basehub && next build",
-    "start": "next start",
-    "lint": "next lint",
+    "lint": "ultracite lint",
+    "format": "ultracite format",
     "bump-deps": "npx npm-check-updates -u && pnpm install",
     "bump-ui": "npx shadcn@latest add button form input label select sonner textarea --overwrite"
   },

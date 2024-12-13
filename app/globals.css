@@ -149,22 +149,46 @@ body {
 
 .faded-line-bottom {
   @apply -left-6 -right-6 -bottom-1 absolute h-px border-connection border-b border-dashed;
-  mask-image: linear-gradient(to right, transparent, hsl(var(--foreground)) 2rem, hsl(var(--foreground)) calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    hsl(var(--foreground)) 2rem,
+    hsl(var(--foreground)) calc(100% - 2rem),
+    transparent
+  );
 }
 
 .faded-line-top {
   @apply -left-6 -right-6 -top-1 absolute h-px border-connection border-t border-dashed;
-  mask-image: linear-gradient(to right, transparent, hsl(var(--foreground)) 2rem, hsl(var(--foreground)) calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    hsl(var(--foreground)) 2rem,
+    hsl(var(--foreground)) calc(100% - 2rem),
+    transparent
+  );
 }
 
 .faded-line-left {
   @apply -top-6 -bottom-6 -left-1 absolute w-px border-connection border-l border-dashed;
-  mask-image: linear-gradient(to bottom, transparent, hsl(var(--foreground)) 2rem, hsl(var(--foreground)) calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    hsl(var(--foreground)) 2rem,
+    hsl(var(--foreground)) calc(100% - 2rem),
+    transparent
+  );
 }
 
 .faded-line-right {
   @apply -top-6 -bottom-6 -right-1 absolute w-px border-r border-dashed;
-  mask-image: linear-gradient(to bottom, transparent, hsl(var(--foreground)) 2rem, hsl(var(--foreground)) calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    hsl(var(--foreground)) 2rem,
+    hsl(var(--foreground)) calc(100% - 2rem),
+    transparent
+  );
 }
 
 .react-activity-calendar {

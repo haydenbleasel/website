@@ -32,29 +32,31 @@ const EventDate = ({ date }: { date: string | null }) => {
   );
 };
 
+type EventType =
+  | 'CommitCommentEvent'
+  | 'CreateEvent'
+  | 'DeleteEvent'
+  | 'ForkEvent'
+  | 'GollumEvent'
+  | 'IssueCommentEvent'
+  | 'IssuesEvent'
+  | 'MemberEvent'
+  | 'PublicEvent'
+  | 'PullRequestEvent'
+  | 'PullRequestReviewEvent'
+  | 'PullRequestReviewCommentEvent'
+  | 'PullRequestReviewThreadEvent'
+  | 'PushEvent'
+  | 'ReleaseEvent'
+  | 'SponsorshipEvent'
+  | 'WatchEvent';
+
 export const GitHubEvent = ({
   event,
 }: {
   event: RestEndpointMethodTypes['activity']['listPublicEventsForUser']['response']['data'][0];
 }) => {
-  const type = event.type as
-    | 'CommitCommentEvent'
-    | 'CreateEvent'
-    | 'DeleteEvent'
-    | 'ForkEvent'
-    | 'GollumEvent'
-    | 'IssueCommentEvent'
-    | 'IssuesEvent'
-    | 'MemberEvent'
-    | 'PublicEvent'
-    | 'PullRequestEvent'
-    | 'PullRequestReviewEvent'
-    | 'PullRequestReviewCommentEvent'
-    | 'PullRequestReviewThreadEvent'
-    | 'PushEvent'
-    | 'ReleaseEvent'
-    | 'SponsorshipEvent'
-    | 'WatchEvent';
+  const type = event.type as EventType;
 
   if (type === 'PushEvent') {
     // https://github.com/octokit/rest.js/issues/128
@@ -166,7 +168,8 @@ export const GitHubEvent = ({
       <div className="flex items-center gap-4">
         <CommentIcon className="h-4 w-4 shrink-0" />
         <div className="flex-1 truncate">
-          Commented on {event.payload.issue?.title}
+          Commented on {event.payload.issue?.title} (#
+          {event.payload.issue?.number})
         </div>
         <EventDate date={event.created_at} />
       </div>
@@ -230,4 +233,63 @@ export const GitHubEvent = ({
       </div>
     );
   }
+
+  console.log(event);
+
+  if (type === 'PullRequestReviewEvent') {
+    const pullRequest = (
+      event.payload as {
+        pull_request: {
+          title: string;
+          number: number;
+        };
+      }
+    ).pull_request;
+
+    return (
+      <div className="flex items-center gap-4">
+        <GitPullRequestIcon className="h-4 w-4 shrink-0" />
+        <div className="flex-1 truncate">
+          Reviewed pull request {pullRequest.title} (#{pullRequest.number})
+        </div>
+        <EventDate date={event.created_at} />
+      </div>
+    );
+  }
+
+  if (type === 'PullRequestReviewCommentEvent') {
+    const pullRequest = (
+      event.payload as {
+        pull_request: {
+          title: string;
+          number: number;
+        };
+      }
+    ).pull_request;
+
+    return (
+      <div className="flex items-center gap-4">
+        <GitPullRequestIcon className="h-4 w-4 shrink-0" />
+        <div className="flex-1 truncate">
+          Commented on pull request {pullRequest.title} (#{pullRequest.number})
+        </div>
+        <EventDate date={event.created_at} />
+      </div>
+    );
+  }
+
+  if (type === 'PullRequestReviewThreadEvent') {
+    return (
+      <div className="flex items-center gap-4">
+        <GitPullRequestIcon className="h-4 w-4 shrink-0" />
+        <div className="flex-1 truncate">
+          Marked a pull request thread as {event.payload.action} on{' '}
+          {event.repo.name}
+        </div>
+        <EventDate date={event.created_at} />
+      </div>
+    );
+  }
+
+  return null;
 };

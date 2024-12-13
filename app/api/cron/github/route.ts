@@ -1,4 +1,5 @@
 import { parseError } from '@/lib/utils';
+import { updateEdgeConfig } from '@/lib/vercel';
 import { endOfWeek, subDays, subWeeks } from 'date-fns';
 import ky from 'ky';
 import type { Activity } from 'rsc-activity-calendar';
@@ -12,19 +13,21 @@ export const maxDuration = 300;
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
 
-const today = endOfWeek(subWeeks(new Date(), 1));
-const oneYearAgo = subDays(today, 365);
-const twoYearsAgo = subDays(today, 1092);
-
-export const getActivity = async (): Promise<
-  GitHubProperties | { error: string }
-> => {
+export const GET = async (): Promise<Response> => {
   try {
+    const today = endOfWeek(subWeeks(new Date(), 1));
+    const oneYearAgo = subDays(today, 365);
+    const twoYearsAgo = subDays(today, 1092);
+
     const response = await ky
       .get<{ contributions: Activity[] }>(
         'https://github-contributions-api.jogruber.de/v4/haydenbleasel'
       )
       .json();
+
+    if (!response.contributions.length) {
+      throw new Error('No contributions found');
+    }
 
     const content: GitHubProperties = {
       data: response.contributions
@@ -44,8 +47,12 @@ export const getActivity = async (): Promise<
       ),
     };
 
-    return content;
+    await updateEdgeConfig('github', content);
+
+    return new Response(undefined, { status: 204 });
   } catch (error) {
-    return { error: parseError(error) };
+    const message = parseError(error);
+
+    return new Response(message, { status: 500 });
   }
 };

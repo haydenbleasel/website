@@ -15,6 +15,10 @@
     {
       "path": "/api/cron/youtube",
       "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/github",
+      "schedule": "0 2 * * *"
     }
   ]
 }

@@ -1,16 +1,16 @@
-import { getActivity } from '@/app/actions/github';
+import type { GitHubProperties } from '@/app/api/cron/github/route';
 import { Section } from '@/components/section';
 import { social } from '@/lib/social';
 import tailwind from '@/lib/tailwind';
 import { ViewAnimation } from '@/providers/view-animation';
-import type { ReactElement } from 'react';
+import { get } from '@vercel/edge-config';
 import ActivityCalendar from 'rsc-activity-calendar';
 
-export const GitHubActivity = async (): Promise<ReactElement> => {
-  const github = await getActivity();
+export const GitHubActivity = async () => {
+  const github = await get<GitHubProperties>('github');
 
-  if ('error' in github) {
-    return <div />;
+  if (!github) {
+    return null;
   }
 
   const quarterLength = Math.floor(github.data.length / 4);

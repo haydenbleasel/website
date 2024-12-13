@@ -1,17 +1,18 @@
+import type { YoutubeProperties } from '@/app/api/cron/youtube/route';
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { social } from '@/lib/social';
 import { cn } from '@/lib/utils';
-import { getTravelVideos } from '@/lib/youtube';
 import { ViewAnimation } from '@/providers/view-animation';
+import { get } from '@vercel/edge-config';
 import Image from 'next/image';
 import { YoutubePlayer } from './youtube-player';
 
 export const Videos = async () => {
-  const videos = await getTravelVideos();
+  const videos = await get<YoutubeProperties>('youtube');
 
-  if (!videos.length) {
+  if (!videos?.length) {
     return null;
   }
 

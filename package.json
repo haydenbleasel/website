@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
-    "@number-flow/react": "^0.4.2",
+    "@number-flow/react": "^0.4.3",
     "@octokit/rest": "^21.0.2",
     "@primer/octicons-react": "^19.14.0",
     "@radix-ui/react-label": "^2.1.1",
@@ -24,7 +24,7 @@
     "@vercel/analytics": "^1.4.1",
     "@vercel/edge-config": "^1.4.0",
     "@vercel/kv": "^3.0.0",
-    "basehub": "^7.5.30",
+    "basehub": "^7.5.31",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
@@ -34,7 +34,7 @@
     "ky": "^1.7.3",
     "lodash.groupby": "^4.6.0",
     "lucide-react": "^0.468.0",
-    "motion": "^11.14.1",
+    "motion": "^11.14.4",
     "next": "15.1.0",
     "next-themes": "^0.4.4",
     "react": "19.0.0",
@@ -64,6 +64,6 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.16",
     "typescript": "^5",
-    "ultracite": "4.1.11"
+    "ultracite": "4.1.13"
   }
 }

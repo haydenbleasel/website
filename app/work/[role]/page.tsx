@@ -1,8 +1,8 @@
 import { HeroSection } from '@/components/hero-section';
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
+import { basehub } from '@/lib/basehub';
 import { richTextComponents } from '@/lib/rich-text';
-import { basehub } from 'basehub';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
@@ -17,7 +17,7 @@ type RoleProps = {
 };
 
 export const generateMetadata = async ({ params }: RoleProps) => {
-  const { work } = await basehub().query({
+  const { work } = await basehub.query({
     work: {
       roles: {
         __args: {

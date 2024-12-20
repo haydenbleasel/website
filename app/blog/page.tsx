@@ -1,8 +1,8 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
+import { basehub } from '@/lib/basehub';
 import { ViewAnimation } from '@/providers/view-animation';
-import { basehub } from 'basehub';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import groupBy from 'lodash.groupby';
@@ -10,7 +10,7 @@ import { draftMode } from 'next/headers';
 import Link from 'next/link';
 
 export const generateMetadata = async () => {
-  const { blog } = await basehub().query({
+  const { blog } = await basehub.query({
     blog: {
       metadata: {
         title: true,

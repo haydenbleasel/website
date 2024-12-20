@@ -1,7 +1,7 @@
+import { basehub } from '@/lib/basehub';
 import { parseError } from '@/lib/utils';
 import { updateEdgeConfig } from '@/lib/vercel';
 import { youtube } from '@/lib/youtube';
-import { basehub } from 'basehub';
 
 export const maxDuration = 300;
 export const revalidate = 0;
@@ -16,7 +16,7 @@ export type YoutubeProperties = {
 
 export const GET = async (): Promise<Response> => {
   try {
-    const { travel } = await basehub().query({
+    const { travel } = await basehub.query({
       travel: {
         videos: {
           playlistId: true,

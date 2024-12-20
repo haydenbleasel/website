@@ -1,11 +1,11 @@
 import { Section } from '@/components/section';
-import { basehub } from 'basehub';
+import { basehub } from '@/lib/basehub';
 import { Suspense } from 'react';
 import { ContactForm } from './components/contact-form';
 import { Hero } from './components/hero';
 
 export const generateMetadata = async () => {
-  const { contact } = await basehub().query({
+  const { contact } = await basehub.query({
     contact: {
       metadata: {
         title: true,

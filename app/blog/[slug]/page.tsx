@@ -1,7 +1,7 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
+import { basehub } from '@/lib/basehub';
 import { richTextComponents } from '@/lib/rich-text';
-import { basehub } from 'basehub';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { draftMode } from 'next/headers';
@@ -16,7 +16,7 @@ type BlogPostProps = {
 
 export const generateMetadata = async ({ params }: BlogPostProps) => {
   const { slug } = await params;
-  const { blog } = await basehub().query({
+  const { blog } = await basehub.query({
     blog: {
       posts: {
         __args: {

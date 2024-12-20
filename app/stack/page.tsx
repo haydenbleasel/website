@@ -1,10 +1,10 @@
-import { basehub } from 'basehub';
+import { basehub } from '@/lib/basehub';
 import { Apps } from './components/apps';
 import { Attribution } from './components/attribution';
 import { Hero } from './components/hero';
 
 export const generateMetadata = async () => {
-  const { stack } = await basehub().query({
+  const { stack } = await basehub.query({
     stack: {
       metadata: {
         title: true,

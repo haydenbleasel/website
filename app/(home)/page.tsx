@@ -1,5 +1,5 @@
 import { Section } from '@/components/section';
-import { basehub } from 'basehub';
+import { basehub } from '@/lib/basehub';
 import { Currently } from './components/currently';
 import { FeaturedNews } from './components/featured-news';
 import { FeaturedTweet } from './components/featured-tweet';
@@ -10,7 +10,7 @@ import { Spotify } from './components/spotify';
 import { Steam } from './components/steam';
 
 export const generateMetadata = async () => {
-  const { home } = await basehub().query({
+  const { home } = await basehub.query({
     home: {
       metadata: {
         title: true,

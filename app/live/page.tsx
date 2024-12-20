@@ -1,10 +1,10 @@
-import { basehub } from 'basehub';
+import { basehub } from '@/lib/basehub';
 import { Features } from './components/features';
 import { Hero } from './components/hero';
 import { Speaking } from './components/speaking';
 
 export const generateMetadata = async () => {
-  const { live } = await basehub().query({
+  const { live } = await basehub.query({
     live: {
       metadata: {
         title: true,

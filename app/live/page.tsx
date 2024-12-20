@@ -4,7 +4,7 @@ import { Hero } from './components/hero';
 import { Speaking } from './components/speaking';
 
 export const generateMetadata = async () => {
-  const { live } = await basehub({ cache: 'no-store' }).query({
+  const { live } = await basehub().query({
     live: {
       metadata: {
         title: true,

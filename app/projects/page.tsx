@@ -5,7 +5,7 @@ import { Logos } from './components/logos';
 import { OpenSource } from './components/open-source';
 
 export const generateMetadata = async () => {
-  const { projects } = await basehub({ cache: 'no-store' }).query({
+  const { projects } = await basehub().query({
     projects: {
       metadata: {
         title: true,

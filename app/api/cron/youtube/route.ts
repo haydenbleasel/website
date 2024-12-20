@@ -16,7 +16,7 @@ export type YoutubeProperties = {
 
 export const GET = async (): Promise<Response> => {
   try {
-    const { travel } = await basehub({ cache: 'no-store' }).query({
+    const { travel } = await basehub().query({
       travel: {
         videos: {
           playlistId: true,

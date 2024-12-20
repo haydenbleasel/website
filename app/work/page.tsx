@@ -5,7 +5,7 @@ import { Recommendations } from './components/recommendations';
 import { Roles } from './components/roles';
 
 export const generateMetadata = async () => {
-  const { work } = await basehub({ cache: 'no-store' }).query({
+  const { work } = await basehub().query({
     work: {
       metadata: {
         title: true,

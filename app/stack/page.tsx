@@ -4,7 +4,7 @@ import { Attribution } from './components/attribution';
 import { Hero } from './components/hero';
 
 export const generateMetadata = async () => {
-  const { stack } = await basehub({ cache: 'no-store' }).query({
+  const { stack } = await basehub().query({
     stack: {
       metadata: {
         title: true,

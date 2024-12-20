@@ -16,7 +16,7 @@ type BlogPostProps = {
 
 export const generateMetadata = async ({ params }: BlogPostProps) => {
   const { slug } = await params;
-  const { blog } = await basehub({ cache: 'no-store' }).query({
+  const { blog } = await basehub().query({
     blog: {
       posts: {
         __args: {

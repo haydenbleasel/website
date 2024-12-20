@@ -4,7 +4,7 @@ import { Hero } from './components/hero';
 import { Videos } from './components/videos';
 
 export const generateMetadata = async () => {
-  const { travel } = await basehub({ cache: 'no-store' }).query({
+  const { travel } = await basehub().query({
     travel: {
       metadata: {
         title: true,

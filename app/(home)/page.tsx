@@ -10,7 +10,7 @@ import { Spotify } from './components/spotify';
 import { Steam } from './components/steam';
 
 export const generateMetadata = async () => {
-  const { home } = await basehub({ cache: 'no-store' }).query({
+  const { home } = await basehub().query({
     home: {
       metadata: {
         title: true,

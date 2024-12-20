@@ -10,7 +10,7 @@ import { draftMode } from 'next/headers';
 import Link from 'next/link';
 
 export const generateMetadata = async () => {
-  const { blog } = await basehub({ cache: 'no-store' }).query({
+  const { blog } = await basehub().query({
     blog: {
       metadata: {
         title: true,

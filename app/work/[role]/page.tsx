@@ -17,7 +17,7 @@ type RoleProps = {
 };
 
 export const generateMetadata = async ({ params }: RoleProps) => {
-  const { work } = await basehub({ cache: 'no-store' }).query({
+  const { work } = await basehub().query({
     work: {
       roles: {
         __args: {

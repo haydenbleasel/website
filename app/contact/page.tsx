@@ -5,7 +5,7 @@ import { ContactForm } from './components/contact-form';
 import { Hero } from './components/hero';
 
 export const generateMetadata = async () => {
-  const { contact } = await basehub({ cache: 'no-store' }).query({
+  const { contact } = await basehub().query({
     contact: {
       metadata: {
         title: true,

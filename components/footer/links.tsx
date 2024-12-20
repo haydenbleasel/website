@@ -144,6 +144,7 @@ export const Links = async () => {
                   {link.label}
                 </div>
               ),
+              external: true,
             })),
           },
         ];

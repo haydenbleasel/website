@@ -4,7 +4,6 @@ import { basehub } from '@/lib/basehub';
 import { richTextComponents } from '@/lib/rich-text';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
-import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 
@@ -53,12 +52,10 @@ export const generateMetadata = async ({ params }: BlogPostProps) => {
 };
 
 const BlogPost = async ({ params }: BlogPostProps) => {
-  const { isEnabled } = await draftMode();
   const { slug } = await params;
 
   return (
     <Pump
-      draft={isEnabled}
       queries={[
         {
           __typename: true,

@@ -1,36 +1,27 @@
 import { HeroSection } from '@/components/hero-section';
 import { Pump } from 'basehub/react-pump';
-import { draftMode } from 'next/headers';
 
-export const Hero = async () => {
-  const { isEnabled } = await draftMode();
-
-  return (
-    <Pump
-      draft={isEnabled}
-      queries={[
-        {
-          __typename: true,
-          stack: {
-            _title: true,
-            hero: {
-              text: true,
-            },
+export const Hero = () => (
+  <Pump
+    queries={[
+      {
+        __typename: true,
+        stack: {
+          _title: true,
+          hero: {
+            text: true,
           },
         },
-      ]}
-    >
-      {/* biome-ignore lint/suspicious/useAwait: Server Actions must be async */}
-      {async ([data]) => {
-        'use server';
+      },
+    ]}
+  >
+    {/* biome-ignore lint/suspicious/useAwait: Server Actions must be async */}
+    {async ([data]) => {
+      'use server';
 
-        return (
-          <HeroSection
-            caption={data.stack._title}
-            title={data.stack.hero.text}
-          />
-        );
-      }}
-    </Pump>
-  );
-};
+      return (
+        <HeroSection caption={data.stack._title} title={data.stack.hero.text} />
+      );
+    }}
+  </Pump>
+);

@@ -6,7 +6,6 @@ import { richTextComponents } from '@/lib/rich-text';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
-import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 
@@ -48,11 +47,10 @@ export const generateMetadata = async ({ params }: RoleProps) => {
 };
 
 const Role = async ({ params }: RoleProps) => {
-  const { isEnabled } = await draftMode();
+  const { role } = await params;
 
   return (
     <Pump
-      draft={isEnabled}
       queries={[
         {
           __typename: true,
@@ -61,7 +59,7 @@ const Role = async ({ params }: RoleProps) => {
               __args: {
                 filter: {
                   _sys_slug: {
-                    eq: (await params).role,
+                    eq: role,
                   },
                 },
               },

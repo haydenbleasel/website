@@ -1,6 +1,7 @@
 import { env } from '@/lib/env';
 import { parseError } from '@/lib/utils';
 import { updateEdgeConfig } from '@/lib/vercel';
+import ky from 'ky';
 
 export const maxDuration = 300;
 export const revalidate = 0;
@@ -42,71 +43,43 @@ type GetUserStatsForGameResponse = {
 };
 
 const getRecentlyPlayedGames = async () => {
-  const response = await fetch(
-    `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${env.STEAM_API_KEY}&steamid=${env.STEAM_ID}&format=json`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      next: {
-        revalidate: 0,
-      },
-    }
+  const url = new URL(
+    'https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/'
   );
 
-  if (!response.ok) {
-    throw new Error(
-      'Invalid response format from Steam API: getRecentlyPlayedGames'
-    );
+  url.searchParams.set('key', env.STEAM_API_KEY);
+  url.searchParams.set('steamid', env.STEAM_ID);
+  url.searchParams.set('format', 'json');
+
+  const data = await ky.get<GetRecentlyPlayedGamesResponse>(url).json();
+
+  if (!data.response?.games) {
+    throw new Error('Invalid response format from Steam API');
   }
 
-  try {
-    const data = (await response.json()) as GetRecentlyPlayedGamesResponse;
-
-    if (!data.response?.games) {
-      throw new Error('Invalid response format from Steam API');
-    }
-
-    return data.response.games[0];
-  } catch {
-    throw new Error(
-      'Cannot parse response from Steam API: getRecentlyPlayedGames'
-    );
+  if (!data.response.games.length) {
+    throw new Error('No games found');
   }
+
+  return data.response.games[0];
 };
 
 const getUserStatsForGame = async (appId: number) => {
-  const response = await fetch(
-    `https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=${env.STEAM_API_KEY}&steamid=${env.STEAM_ID}&format=json`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      next: {
-        revalidate: 0,
-      },
-    }
+  const url = new URL(
+    'https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/'
   );
 
-  if (!response.ok) {
-    throw new Error(
-      'Invalid response format from Steam API: getUserStatsForGame'
-    );
-  }
+  url.searchParams.set('appid', appId.toString());
+  url.searchParams.set('key', env.STEAM_API_KEY);
+  url.searchParams.set('steamid', env.STEAM_ID);
+  url.searchParams.set('format', 'json');
 
-  try {
-    return (await response.json()) as GetUserStatsForGameResponse;
-  } catch {
-    throw new Error(
-      'Cannot parse response from Steam API: getUserStatsForGame'
-    );
-  }
+  return await ky.get<GetUserStatsForGameResponse>(url).json();
 };
 
 export const GET = async (): Promise<Response> => {
   try {
     const data = await getRecentlyPlayedGames();
-
     const userStatsData = await getUserStatsForGame(data.appid);
     const complete = userStatsData.playerstats.achievements.filter(
       (achievement) => achievement.achieved === 1

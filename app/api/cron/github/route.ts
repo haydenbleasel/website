@@ -9,6 +9,10 @@ export type GitHubProperties = {
   data: Activity[];
 };
 
+type GitHubContributionsApiResponse = {
+  contributions: Activity[];
+};
+
 export const maxDuration = 300;
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
@@ -20,7 +24,7 @@ export const GET = async (): Promise<Response> => {
     const twoYearsAgo = subDays(today, 1092);
 
     const response = await ky
-      .get<{ contributions: Activity[] }>(
+      .get<GitHubContributionsApiResponse>(
         'https://github-contributions-api.jogruber.de/v4/haydenbleasel'
       )
       .json();

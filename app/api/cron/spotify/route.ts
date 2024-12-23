@@ -11,15 +11,34 @@ export type SpotifyProperties = {
   href: string;
 };
 
+type SpotifyPlayingResponse = {
+  item: {
+    name: string;
+    external_urls: {
+      spotify: string;
+    };
+    album: {
+      images: {
+        url: string;
+      }[];
+    };
+    artists: {
+      name: string;
+    }[];
+  } | null;
+};
+
+type SpotifyTokenResponse = {
+  access_token: string;
+};
+
 export const maxDuration = 300;
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
 
 const getAccessToken = async (refreshToken: string): Promise<string> => {
   const tokenResponse = await ky
-    .post<{
-      access_token: string;
-    }>('https://accounts.spotify.com/api/token', {
+    .post<SpotifyTokenResponse>('https://accounts.spotify.com/api/token', {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Basic ${Buffer.from(
@@ -30,9 +49,6 @@ const getAccessToken = async (refreshToken: string): Promise<string> => {
         grant_type: 'refresh_token',
         refresh_token: refreshToken,
       }),
-      next: {
-        revalidate: 0,
-      },
     })
     .json();
 
@@ -42,45 +58,19 @@ const getAccessToken = async (refreshToken: string): Promise<string> => {
 export const GET = async (): Promise<Response> => {
   try {
     const token = await getAccessToken(env.SPOTIFY_REFRESH_TOKEN);
-    const response = await fetch(
-      'https://api.spotify.com/v1/me/player/currently-playing',
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        next: {
-          revalidate: 0,
-        },
-      }
-    );
-
-    if (response.status === 204) {
-      return new Response(undefined, { status: 204 });
-    }
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const data = (await response.json()) as {
-      item: {
-        name: string;
-        external_urls: {
-          spotify: string;
-        };
-        album: {
-          images: {
-            url: string;
-          }[];
-        };
-        artists: {
-          name: string;
-        }[];
-      } | null;
-    };
+    const data = await ky
+      .get<SpotifyPlayingResponse>(
+        'https://api.spotify.com/v1/me/player/currently-playing',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .json();
 
     if (!data.item) {
+      // No song playing
       return new Response(undefined, { status: 204 });
     }
 

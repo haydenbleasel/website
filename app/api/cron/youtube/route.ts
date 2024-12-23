@@ -14,30 +14,39 @@ export type YoutubeProperties = {
   date: string;
 }[];
 
+const getPlaylistId = async () => {
+  const { travel } = await basehub.query({
+    travel: {
+      videos: {
+        playlistId: true,
+      },
+    },
+  });
+
+  return travel.videos.playlistId;
+};
+
+const getPlaylistItems = async (playlistId: string) => {
+  const response = await youtube.playlistItems.list({
+    part: ['snippet'],
+    playlistId,
+  });
+
+  if (!response.data.items) {
+    throw new Error('No items found');
+  }
+
+  return response.data.items;
+};
+
 export const GET = async (): Promise<Response> => {
   try {
-    const { travel } = await basehub.query({
-      travel: {
-        videos: {
-          playlistId: true,
-        },
-      },
-    });
-
-    const response = await youtube.playlistItems.list({
-      part: ['snippet'],
-      playlistId: travel.videos.playlistId,
-      maxResults: 100,
-    });
-
-    if (!response.data.items) {
-      throw new Error('No items found');
-    }
-
+    const playlistId = await getPlaylistId();
+    const videos = await getPlaylistItems(playlistId);
     const props: YoutubeProperties = [];
 
-    for (const item of response.data.items) {
-      const snippet = item.snippet;
+    for (const video of videos) {
+      const snippet = video.snippet;
 
       if (
         !snippet ||

@@ -30,6 +30,7 @@ const getPlaylistItems = async (playlistId: string) => {
   const response = await youtube.playlistItems.list({
     part: ['snippet'],
     playlistId,
+    maxResults: 50,
   });
 
   if (!response.data.items) {

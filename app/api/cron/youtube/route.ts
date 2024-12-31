@@ -37,7 +37,15 @@ const getPlaylistItems = async (playlistId: string) => {
     throw new Error('No items found');
   }
 
-  return response.data.items;
+  const sorted = response.data.items.sort((a, b) => {
+    if (!a.snippet?.publishedAt || !b.snippet?.publishedAt) {
+      return 0;
+    }
+
+    return b.snippet.publishedAt.localeCompare(a.snippet.publishedAt);
+  });
+
+  return sorted;
 };
 
 export const GET = async (): Promise<Response> => {

@@ -3,6 +3,7 @@ import { basehub } from '@/lib/basehub';
 import { Currently } from './components/currently';
 import { FeaturedNews } from './components/featured-news';
 import { FeaturedTweet } from './components/featured-tweet';
+import { FeaturedVideo } from './components/featured-video';
 import { Feed } from './components/feed';
 import { GitHubActivity } from './components/github-activity';
 import { Hero } from './components/hero';
@@ -32,6 +33,7 @@ const Home = () => (
     <Feed />
     <FeaturedNews />
     <FeaturedTweet />
+    <FeaturedVideo />
     <GitHubActivity />
     <Section className="grid divide-y sm:grid-cols-2 sm:divide-x sm:divide-y-0">
       <div className="p-4">

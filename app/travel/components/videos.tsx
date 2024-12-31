@@ -16,13 +16,7 @@ export const Videos = async () => {
     return null;
   }
 
-  const [latest, ...rest] = videos.sort((a, b) => {
-    if (!a.date || !b.date) {
-      return 0;
-    }
-
-    return b.date.localeCompare(a.date);
-  });
+  const [latest, ...rest] = videos;
 
   return (
     <Section className="grid sm:grid-cols-3">

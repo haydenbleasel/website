@@ -1,6 +1,7 @@
 import { basehub } from '@/lib/basehub';
 import { Books } from './components/books';
 import { Content } from './components/content';
+import { Gaming } from './components/gaming';
 import { Hero } from './components/hero';
 
 export const generateMetadata = async () => {
@@ -23,6 +24,7 @@ const About = () => (
   <>
     <Hero />
     <Content />
+    <Gaming />
     <Books />
   </>
 );

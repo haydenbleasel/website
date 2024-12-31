@@ -1,7 +1,7 @@
 import { env } from '@/lib/env';
 import ky from 'ky';
 
-type RecentlyPlayedGame = {
+export type RecentlyPlayedGame = {
   appid: number;
   name: string;
   playtime_2weeks: number;
@@ -12,20 +12,42 @@ type RecentlyPlayedGame = {
   playtime_linux_forever: number;
 };
 
-type GetRecentlyPlayedGamesResponse = {
+export type GetRecentlyPlayedGamesResponse = {
   response?: {
     total_count: number;
     games?: RecentlyPlayedGame[];
   };
 };
 
-type GetUserStatsForGameResponse = {
+export type GetUserStatsForGameResponse = {
   playerstats: {
     steamID: string;
     gameName: string;
     achievements: {
       name: string;
       achieved: number;
+    }[];
+  };
+};
+
+export type GetOwnedGamesResponse = {
+  response: {
+    game_count: number;
+    games: {
+      appid: number;
+      name: string;
+      playtime_forever: number;
+      img_icon_url: string;
+      playtime_windows_forever: number;
+      playtime_mac_forever: number;
+      playtime_linux_forever: number;
+      playtime_deck_forever: number;
+      rtime_last_played: number;
+      content_descriptorids?: number[];
+      playtime_disconnected: number;
+      has_community_visible_stats?: boolean;
+      has_leaderboards?: boolean;
+      playtime_2weeks?: number;
     }[];
   };
 };
@@ -63,4 +85,19 @@ export const getUserStatsForGame = async (appId: number) => {
   url.searchParams.set('format', 'json');
 
   return await ky.get<GetUserStatsForGameResponse>(url).json();
+};
+
+export const getOwnedGames = async () => {
+  const url = new URL(
+    'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001'
+  );
+
+  url.searchParams.set('key', env.STEAM_API_KEY);
+  url.searchParams.set('steamid', env.STEAM_ID);
+  url.searchParams.set('format', 'json');
+  url.searchParams.set('include_appinfo', '1');
+
+  const data = await ky.get<GetOwnedGamesResponse>(url).json();
+
+  return data.response.games;
 };

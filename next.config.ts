@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       { hostname: 'img.logo.dev', protocol: 'https' },
       { hostname: 'i.scdn.co', protocol: 'https' },
       { hostname: 'shared.akamai.steamstatic.com', protocol: 'https' },
+      { hostname: 'oku.ams3.cdn.digitaloceanspaces.com', protocol: 'https' },
     ],
   },
 

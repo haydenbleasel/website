@@ -50,7 +50,7 @@
     "rss-parser": "^3.13.0",
     "shiki": "^1.24.4",
     "sonner": "^1.7.1",
-    "tailwind-merge": "^2.5.5",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.1"
   },

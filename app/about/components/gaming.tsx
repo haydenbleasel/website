@@ -1,13 +1,72 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
-import { getOwnedGames } from '@/lib/steam';
+import { type GetOwnedGamesResponse, getOwnedGames } from '@/lib/steam';
 import { cn } from '@/lib/utils';
 import { RevealProvider } from '@/providers/reveal';
 import { ViewAnimation } from '@/providers/view-animation';
 import Image from 'next/image';
 
+const mergeGames = (games: GetOwnedGamesResponse['response']['games']) => {
+  const newGames = [...games];
+  const oldSkyrimGame = games.find((game) => game.appid === 72850);
+  const newSkyrimGame = games.find((game) => game.appid === 489830);
+
+  if (oldSkyrimGame && newSkyrimGame) {
+    newSkyrimGame.playtime_forever += oldSkyrimGame.playtime_forever;
+    newSkyrimGame.name = 'The Elder Scrolls V: Skyrim (all editions)';
+
+    newGames.splice(newGames.indexOf(oldSkyrimGame), 1);
+  }
+
+  const oldAoe2 = games.find((game) => game.appid === 221380);
+  const newAoe2 = games.find((game) => game.appid === 813780);
+
+  if (oldAoe2 && newAoe2) {
+    newAoe2.playtime_forever += oldAoe2.playtime_forever;
+    newAoe2.name = 'Age of Empires II (all editions)';
+
+    newGames.splice(newGames.indexOf(oldAoe2), 1);
+  }
+
+  const oldMafia2 = games.find((game) => game.appid === 50130);
+  const newMafia2 = games.find((game) => game.appid === 1030830);
+
+  if (oldMafia2 && newMafia2) {
+    newMafia2.playtime_forever += oldMafia2.playtime_forever;
+    newMafia2.name = 'Mafia II (all editions)';
+
+    newGames.splice(newGames.indexOf(oldMafia2), 1);
+  }
+
+  const blackOps2Zombies = games.find((game) => game.appid === 212910);
+  const blackOps2Multi = games.find((game) => game.appid === 202990);
+  const blackOps2 = games.find((game) => game.appid === 202970);
+
+  if (blackOps2Zombies && blackOps2Multi && blackOps2) {
+    blackOps2.playtime_forever += blackOps2Zombies.playtime_forever;
+    blackOps2.playtime_forever += blackOps2Multi.playtime_forever;
+    blackOps2.name = 'Call of Duty: Black Ops II';
+
+    newGames.splice(newGames.indexOf(blackOps2Zombies), 1);
+    newGames.splice(newGames.indexOf(blackOps2Multi), 1);
+  }
+
+  const oldDmc4 = games.find((game) => game.appid === 45700);
+  const newDmc4 = games.find((game) => game.appid === 329050);
+
+  if (oldDmc4 && newDmc4) {
+    newDmc4.playtime_forever += oldDmc4.playtime_forever;
+    newDmc4.name = 'Devil May Cry 4 (all editions)';
+
+    newGames.splice(newGames.indexOf(oldDmc4), 1);
+  }
+
+  return newGames;
+};
+
 export const Gaming = async () => {
   const games = await getOwnedGames();
+  const mergedGames = mergeGames(games);
 
   return (
     <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -19,7 +78,7 @@ export const Gaming = async () => {
       </div>
       <RevealProvider className="sm:col-span-2">
         <div className="grid sm:grid-cols-2">
-          {games
+          {mergedGames
             .filter((game) => game.playtime_forever > 60)
             .sort((a, b) => b.playtime_forever - a.playtime_forever)
             .map((game, index) => (

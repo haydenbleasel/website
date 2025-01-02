@@ -6,6 +6,7 @@ import { ViewAnimation } from '@/providers/view-animation';
 import { StarIcon } from 'lucide-react';
 
 const username = 'haydenbleasel';
+const projects = ['next-forge'];
 
 export const OpenSource = async () => {
   const { data } = await octokit.rest.repos.listForUser({
@@ -16,7 +17,10 @@ export const OpenSource = async () => {
 
   const repos = data
     .filter((item) => !item.fork)
+    .filter((item) => !item.archived)
     .filter((item) => item.name !== username)
+    .filter((item) => item.name !== 'website')
+    .filter((item) => !projects.includes(item.name))
     .sort((a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0));
 
   return (

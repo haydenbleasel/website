@@ -104,7 +104,7 @@ const BlogPost = async ({ params }: BlogPostProps) => {
         return (
           <>
             <Section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
-              <h1 className="text-center font-bold text-3xl leading-tight tracking-tight sm:text-4xl md:text-5xl">
+              <h1 className="max-w-4xl text-center font-bold text-3xl leading-tight tracking-tight sm:text-4xl md:text-5xl">
                 <Balancer>{post._title}</Balancer>
               </h1>
               <p className="mx-auto max-w-4xl text-center">

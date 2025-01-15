@@ -1,4 +1,4 @@
-import { HeroSection } from '@/components/hero-section';
+import { HeroSection } from '@/components/sections/hero';
 import { SocialButton } from '@/components/social-button';
 import { social } from '@/lib/social';
 import { Pump } from 'basehub/react-pump';

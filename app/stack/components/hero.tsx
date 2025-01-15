@@ -1,4 +1,4 @@
-import { HeroSection } from '@/components/hero-section';
+import { HeroSection } from '@/components/sections/hero';
 import { Pump } from 'basehub/react-pump';
 
 export const Hero = () => (

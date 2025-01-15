@@ -1,4 +1,4 @@
-import { HeroSection } from '@/components/hero-section';
+import { HeroSection } from '@/components/sections/hero';
 import { Button } from '@/components/ui/button';
 import { Pump } from 'basehub/react-pump';
 import Link from 'next/link';

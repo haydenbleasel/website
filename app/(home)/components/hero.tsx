@@ -1,4 +1,4 @@
-import { HeroSection } from '@/components/hero-section';
+import { HeroSection } from '@/components/sections/hero';
 import { Button } from '@/components/ui/button';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
@@ -35,7 +35,7 @@ export const Hero = () => (
           title={data.home.hero.text}
           image={
             data.home.hero.image ? (
-              <div className="relative">
+              <div className="relative hidden sm:block">
                 <BaseHubImage
                   src={data.home.hero.image.url}
                   alt={data.home.hero.image.alt ?? ''}

@@ -1,6 +1,6 @@
-import { HeroSection } from '@/components/hero-section';
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
+import { HeroSection } from '@/components/sections/hero';
 import { basehub } from '@/lib/basehub';
 import { richTextComponents } from '@/lib/rich-text';
 import { BaseHubImage } from 'basehub/next-image';

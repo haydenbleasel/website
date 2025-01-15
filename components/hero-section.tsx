@@ -13,7 +13,12 @@ type HeroProps = {
 
 export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
   <Section className="p-4">
-    <div className="flex flex-col items-center justify-center gap-8 rounded-lg border bg-background px-8 py-20 shadow-sm">
+    <div
+      className={cn(
+        'flex flex-col items-start justify-center gap-8 py-8',
+        'sm:items-center sm:rounded-lg sm:border sm:bg-background sm:px-8 sm:py-20 sm:shadow-sm'
+      )}
+    >
       {image && (
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
@@ -22,7 +27,7 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
           {image}
         </ViewAnimation>
       )}
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col gap-4 sm:items-center">
         {caption && (
           <ViewAnimation
             initial={{ opacity: 0, translateY: -8 }}
@@ -40,8 +45,8 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
         >
           <h1
             className={cn(
-              'max-w-4xl text-center font-bold text-3xl leading-tight tracking-tight',
-              'sm:text-4xl sm:leading-tight',
+              'max-w-4xl font-bold text-3xl leading-tight tracking-tight',
+              'sm:text-center sm:text-4xl sm:leading-tight',
               'md:text-5xl md:leading-tight'
             )}
           >

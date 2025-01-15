@@ -1,8 +1,8 @@
 import { cn } from '@/lib/utils';
 import { Children, type ReactNode } from 'react';
 import { Balancer } from 'react-wrap-balancer';
-import { ViewAnimation } from '../providers/view-animation';
-import { Section } from './section';
+import { ViewAnimation } from '../../providers/view-animation';
+import { Section } from '../section';
 
 type HeroProps = {
   image?: ReactNode;

@@ -51,7 +51,7 @@ const SmallSlot = ({
         {buttons.map((button, index) => (
           <Button
             asChild
-            variant={index ? 'outline' : 'default'}
+            variant={index ? 'link' : 'outline'}
             className="gap-2"
             key={button.label}
           >

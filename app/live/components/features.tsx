@@ -1,4 +1,4 @@
-import { Section } from '@/components/section';
+import { StickyList } from '@/components/sections/sticky-list';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import { Pump } from 'basehub/react-pump';
@@ -33,10 +33,7 @@ export const Features = () => (
       }
 
       return (
-        <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          <div className="bg-dashed p-8">
-            <h2 className="font-semibold text-2xl">Features</h2>
-          </div>
+        <StickyList title="Features">
           <div className="grid sm:col-span-2 sm:grid-cols-2">
             {data.live.features.items
               .sort((a, b) => b.year - a.year)
@@ -78,7 +75,7 @@ export const Features = () => (
               <div className="h-full w-full border-t bg-dashed" />
             )}
           </div>
-        </Section>
+        </StickyList>
       );
     }}
   </Pump>

@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 
 type StickyListProps = {
   title: string;
-  description: string;
+  description?: string;
   children: ReactNode;
 };
 
@@ -18,7 +18,7 @@ export const StickyList = ({
       <div className="sticky top-16 flex flex-col gap-1.5 p-8">
         <Prose>
           <h2 className="mb-2 text-3xl">{title}</h2>
-          <p>{description}</p>
+          {description && <p>{description}</p>}
         </Prose>
       </div>
     </div>

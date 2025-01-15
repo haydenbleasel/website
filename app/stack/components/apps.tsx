@@ -1,4 +1,4 @@
-import { Section } from '@/components/section';
+import { StickyList } from '@/components/sections/sticky-list';
 import { env } from '@/lib/env';
 import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
@@ -32,13 +32,7 @@ export const Apps = () => (
       const groups = groupBy(data.stack.apps.items, 'category');
 
       return Object.entries(groups).map(([category, apps]) => (
-        <Section
-          className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0"
-          key={category}
-        >
-          <div className="bg-dashed p-8">
-            <h2 className="font-semibold text-2xl">{category}</h2>
-          </div>
+        <StickyList title={category} key={category}>
           <div className="grid sm:col-span-2 sm:grid-cols-2">
             {apps
               .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
@@ -81,7 +75,7 @@ export const Apps = () => (
               <div className="h-full w-full border-t bg-dashed" />
             )}
           </div>
-        </Section>
+        </StickyList>
       ));
     }}
   </Pump>

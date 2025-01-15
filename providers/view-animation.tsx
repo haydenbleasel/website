@@ -1,12 +1,12 @@
 'use client';
 
 import { motion, useReducedMotion } from 'motion/react';
-import type { ComponentProps, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type ViewAnimationProps = {
-  initial?: ComponentProps<typeof motion.div>['initial'];
-  whileInView?: ComponentProps<typeof motion.div>['whileInView'];
-  animate?: ComponentProps<typeof motion.div>['animate'];
+  initial?: Record<string, string>;
+  whileInView?: Record<string, string>;
+  animate?: Record<string, string>;
   delay?: number;
   // className?: ComponentProps<typeof motion.div>['className'];
   className?: string;
@@ -29,8 +29,8 @@ export const ViewAnimation = ({
 
   return (
     <motion.div
-      initial={initial}
-      whileInView={whileInView}
+      initial={{ ...initial, filter: 'blur(4px)' }}
+      whileInView={{ ...whileInView, filter: 'blur(0px)' }}
       animate={animate}
       className={className}
       viewport={{ once: true, amount: 0.5 }}

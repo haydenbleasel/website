@@ -44,11 +44,11 @@ export const Apps = () => (
                     'relative aspect-video bg-dashed',
                     'sm:col-span-4',
                     index > 0 && 'border-t',
-                    app.offset === 'Center' && 'p-8',
-                    app.offset === 'Top-Left' && 'pt-8 pl-8',
-                    app.offset === 'Top-Right' && 'pt-8 pr-8',
-                    app.offset === 'Bottom-Left' && 'pb-8 pl-8',
-                    app.offset === 'Bottom-Right' && 'pr-8 pb-8'
+                    app.offset === 'Center' && 'p-4 sm:p-8',
+                    app.offset === 'Top-Left' && 'pt-4 pl-4 sm:pt-8 sm:pl-8',
+                    app.offset === 'Top-Right' && 'pt-4 pr-4 sm:pt-8 sm:pr-8',
+                    app.offset === 'Bottom-Left' && 'pb-4 pl-4 sm:pb-8 sm:pl-8',
+                    app.offset === 'Bottom-Right' && 'pr-4 pb-4 sm:pr-8 sm:pb-8'
                   )}
                 >
                   {app.video && (
@@ -95,8 +95,8 @@ export const Apps = () => (
                 </div>
                 <div
                   className={cn(
-                    'flex flex-col items-start justify-between gap-4 border-l p-8',
-                    'sm:col-span-2',
+                    'flex flex-col items-start justify-between gap-4 border-l px-4 py-8',
+                    'sm:col-span-2 sm:px-8',
                     index > 0 && 'border-t'
                   )}
                 >
@@ -117,8 +117,8 @@ export const Apps = () => (
               <div
                 key={app._title}
                 className={cn(
-                  'flex flex-col items-start justify-between gap-4 p-8',
-                  'sm:col-span-3',
+                  'flex flex-col items-start justify-between gap-4 px-4 py-8',
+                  'sm:col-span-3 sm:px-8',
                   app.size === 'Small' &&
                     data.projects.apps.items.at(index - 1)?.size === 'Small' &&
                     'border-l',

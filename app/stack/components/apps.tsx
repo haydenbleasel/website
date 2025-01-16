@@ -40,7 +40,8 @@ export const Apps = () => (
                 <a
                   key={app._title}
                   className={cn(
-                    'flex items-start gap-4 p-8 transition-colors hover:bg-background',
+                    'flex items-start gap-4 px-4 py-8 transition-colors hover:bg-background',
+                    'sm:px-8',
                     index > 1 && 'border-t',
                     index % 2 === 0 && 'sm:border-r'
                   )}

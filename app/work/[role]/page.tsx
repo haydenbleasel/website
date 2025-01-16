@@ -3,6 +3,7 @@ import { Section } from '@/components/section';
 import { HeroSection } from '@/components/sections/hero';
 import { basehub } from '@/lib/basehub';
 import { richTextComponents } from '@/lib/rich-text';
+import { cn } from '@/lib/utils';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
@@ -110,26 +111,31 @@ const Role = async ({ params }: RoleProps) => {
                     alt={role.logo.alt ?? ''}
                     width={role.logo.width}
                     height={role.logo.height}
-                    className="aspect-square h-12 w-auto object-contain"
+                    className="aspect-square h-8 w-auto object-contain sm:h-12"
                   />
                 ) : null
               }
               title={role.role}
             >
-              <p className="mx-auto max-w-4xl text-center">
+              <p className="mx-auto max-w-4xl sm:text-center">
                 <Balancer>{role.description}</Balancer>
               </p>
-              <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground text-sm sm:flex-row sm:gap-4">
+              <div
+                className={cn(
+                  'flex flex-wrap gap-2 text-muted-foreground text-sm',
+                  'sm:items-center sm:justify-center sm:gap-4'
+                )}
+              >
                 <p>{role.type}</p>
-                <p className="hidden sm:block">&bull;</p>
+                <p>&bull;</p>
                 <p>
                   {role.startYear} &mdash; {role.endYear ?? 'Present'}
                 </p>
-                <p className="hidden sm:block">&bull;</p>
+                <p>&bull;</p>
                 <p>{role.location}</p>
                 {role.url && (
                   <>
-                    <p className="hidden sm:block">&bull;</p>
+                    <p>&bull;</p>
                     <a
                       href={role.url}
                       target="_blank"
@@ -141,7 +147,7 @@ const Role = async ({ params }: RoleProps) => {
                 )}
               </div>
             </HeroSection>
-            <Section className="px-8 py-16">
+            <Section className={cn('px-4 py-8', 'sm:px-8 sm:py-16')}>
               <Prose className="mx-auto max-w-3xl">
                 <RichText
                   content={role.content?.json.content}

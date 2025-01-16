@@ -13,7 +13,7 @@ type ProjectVideoProps = {
 const VideoPlayer = dynamic(() => import('react-player/file'), {
   ssr: false,
   loading: () => (
-    <div className="h-full w-full rounded-2xl border bg-secondary" />
+    <div className="h-full w-full rounded-lg border bg-secondary sm:rounded-2xl" />
   ),
 });
 
@@ -35,15 +35,16 @@ export const ProjectVideo = ({ url, offset, position }: ProjectVideoProps) => {
         position === 'Right' && '[&_video]:object-right',
         position === 'Top' && '[&_video]:object-top',
         position === 'Bottom' && '[&_video]:object-bottom',
-        offset === 'Center' && '[&_video]:rounded-2xl [&_video]:border',
+        offset === 'Center' &&
+          '[&_video]:rounded-lg [&_video]:border sm:[&_video]:rounded-2xl',
         offset === 'Top-Left' &&
-          '[&_video]:rounded-tl-2xl [&_video]:border-t [&_video]:border-l',
+          '[&_video]:rounded-tl-lg [&_video]:border-t [&_video]:border-l sm:[&_video]:rounded-tl-2xl',
         offset === 'Top-Right' &&
-          '[&_video]:rounded-tr-2xl [&_video]:border-t [&_video]:border-r',
+          '[&_video]:rounded-tr-lg [&_video]:border-t [&_video]:border-r sm:[&_video]:rounded-tr-2xl',
         offset === 'Bottom-Left' &&
-          '[&_video]:rounded-bl-2xl [&_video]:border-b [&_video]:border-l',
+          '[&_video]:rounded-bl-lg [&_video]:border-b [&_video]:border-l sm:[&_video]:rounded-bl-2xl',
         offset === 'Bottom-Right' &&
-          '[&_video]:rounded-br-2xl [&_video]:border-r [&_video]:border-b'
+          '[&_video]:rounded-br-lg [&_video]:border-r [&_video]:border-b sm:[&_video]:rounded-br-2xl'
       )}
     >
       <VideoPlayer

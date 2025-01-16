@@ -34,7 +34,7 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
             whileInView={{ opacity: 1, translateY: 0 }}
           >
             <small className="block text-muted-foreground text-sm sm:text-base">
-              {caption}
+              <Balancer>{caption}</Balancer>
             </small>
           </ViewAnimation>
         )}

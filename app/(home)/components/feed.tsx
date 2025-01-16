@@ -1,5 +1,6 @@
 import { Section } from '@/components/section';
 import { octokit } from '@/lib/github';
+import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import { GitHubEvent } from './event';
 
@@ -10,7 +11,12 @@ export const Feed = async () => {
   });
 
   return (
-    <Section className="relative flex flex-col gap-2 p-8 font-mono text-muted-foreground text-sm">
+    <Section
+      className={cn(
+        'relative flex flex-col gap-2 px-4 py-8 font-mono text-muted-foreground text-xs',
+        'sm:px-8 sm:text-sm'
+      )}
+    >
       {activity.data.slice(0, 10).map((event, index) => (
         <ViewAnimation
           key={event.id}

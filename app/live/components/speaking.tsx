@@ -50,7 +50,10 @@ export const Speaking = () => (
                     {item.url ? (
                       <a
                         key={item._title}
-                        className="flex h-full flex-col items-start gap-1 p-8 transition-colors hover:bg-background"
+                        className={cn(
+                          'flex h-full flex-col items-start gap-1 px-4 py-8 transition-colors hover:bg-background',
+                          'sm:px-8'
+                        )}
                         href={item.url}
                         target="_blank"
                         rel="noreferrer noopener"
@@ -60,7 +63,10 @@ export const Speaking = () => (
                     ) : (
                       <div
                         key={item._title}
-                        className="flex h-full flex-col items-start gap-1 p-8"
+                        className={cn(
+                          'flex h-full flex-col items-start gap-1 px-4 py-8',
+                          'sm:px-8'
+                        )}
                       >
                         <LiveItem data={item} />
                       </div>

@@ -1,5 +1,6 @@
 import { ThirdsSection } from '@/components/sections/thirds';
 import { social } from '@/lib/social';
+import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
 import { Tweet } from 'react-tweet';
 
@@ -38,7 +39,12 @@ export const FeaturedTweet = () => (
             },
           ]}
         >
-          <div className="relative flex items-center justify-center bg-dashed p-8">
+          <div
+            className={cn(
+              'relative flex items-center justify-center bg-dashed p-4',
+              'sm:p-8'
+            )}
+          >
             <Tweet id={data.home.featuredTweet.tweetId} />
           </div>
         </ThirdsSection>

@@ -1,4 +1,5 @@
 import { Section } from '@/components/section';
+import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
@@ -30,7 +31,7 @@ export const Logos = () => (
       }
 
       return (
-        <Section className="flex flex-col gap-8 py-16">
+        <Section className={cn('flex flex-col gap-8 py-8', 'sm:py-16')}>
           <ViewAnimation
             initial={{ opacity: 0, translateY: -8 }}
             whileInView={{ opacity: 1, translateY: 0 }}
@@ -46,7 +47,7 @@ export const Logos = () => (
             <Marquee autoFill>
               {data.projects.logos.items.map((logo, index) => (
                 <ViewAnimation
-                  initial={{ opacity: 0 }}
+                  initial={{ opacity: 0, filter: 'blur(0px)' }}
                   animate={{ opacity: 1 }}
                   key={logo.image.url}
                   delay={0.4 + index * 0.1}

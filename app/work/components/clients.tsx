@@ -26,7 +26,7 @@ export const Clients = () => (
       }
 
       return (
-        <Section className="flex flex-col gap-8 px-8 py-16">
+        <Section className={cn('flex flex-col gap-8 px-4 py-8', 'sm:px-8')}>
           <ViewAnimation
             initial={{ opacity: 0, translateY: -8 }}
             whileInView={{ opacity: 1, translateY: 0 }}
@@ -36,7 +36,7 @@ export const Clients = () => (
               I've also worked with the following clients
             </p>
           </ViewAnimation>
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
             {data.work.clients.items
               .sort((a, b) => a._title.localeCompare(b._title))
               .map((client) => (

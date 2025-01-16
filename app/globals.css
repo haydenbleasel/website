@@ -132,19 +132,19 @@ body {
 }
 
 .dashed-line-top {
-  @apply absolute top-8 left-0 h-px w-full border-t border-dashed;
+  @apply absolute top-4 left-0 h-px w-full border-t border-dashed sm:top-8;
 }
 
 .dashed-line-left {
-  @apply absolute top-0 left-8 h-full w-px border-r border-dashed;
+  @apply absolute top-0 left-4 h-full w-px border-r border-dashed sm:left-8;
 }
 
 .dashed-line-right {
-  @apply absolute top-0 right-8 h-full w-px border-r border-dashed;
+  @apply absolute top-0 right-4 h-full w-px border-r border-dashed sm:right-8;
 }
 
 .dashed-line-bottom {
-  @apply absolute bottom-8 left-0 h-px w-full border-t border-dashed;
+  @apply absolute bottom-4 left-0 h-px w-full border-t border-dashed sm:bottom-8;
 }
 
 .faded-line-bottom {

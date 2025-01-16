@@ -57,7 +57,10 @@ export const Roles = () => (
             >
               <Link
                 href={`/work/${role._slug}`}
-                className="flex flex-col items-start gap-6 p-8 transition-colors hover:bg-background sm:flex-row"
+                className={cn(
+                  'flex flex-col items-start gap-6 px-4 py-8 transition-colors hover:bg-background',
+                  'sm:flex-row sm:px-8'
+                )}
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center">
                   <BaseHubImage

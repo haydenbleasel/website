@@ -23,7 +23,7 @@ export const Videos = async () => {
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
         whileInView={{ opacity: 1, translateY: 0 }}
-        className="p-8 sm:col-span-2 sm:border-b"
+        className={cn('px-4 py-8 sm:col-span-2 sm:border-b', 'sm:px-8')}
       >
         <YoutubePlayer
           url={`https://www.youtube.com/watch?v=${latest.id}`}
@@ -33,7 +33,7 @@ export const Videos = async () => {
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
         whileInView={{ opacity: 1, translateY: 0 }}
-        className="h-full border-b border-l p-8"
+        className={cn('h-full border-b border-l px-4 py-8', 'sm:px-8')}
         delay={0.4}
       >
         <div className="flex h-full flex-col items-start justify-between gap-4">
@@ -72,7 +72,7 @@ export const Videos = async () => {
           delay={(index % 3) * 0.4}
           className={cn(index > 2 && 'border-t', index % 3 !== 0 && 'border-l')}
         >
-          <div className="flex flex-col gap-4 p-8">
+          <div className={cn('flex flex-col gap-4 px-4 py-8', 'sm:px-8')}>
             <YoutubePlayer
               url={`https://www.youtube.com/watch?v=${item.id}`}
               controls

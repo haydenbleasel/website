@@ -32,7 +32,7 @@ export const Books = async () => {
   ];
 
   return (
-    <Section className="p-8">
+    <Section className="px-4 py-8 sm:px-8">
       <Tabs defaultValue="backlog" className="grid gap-4">
         <div
           className={cn(
@@ -59,7 +59,7 @@ export const Books = async () => {
         </div>
         {tabs.map((tab) => (
           <TabsContent key={tab.id} value={tab.id}>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {tab.items.map((book, index) => (
                 <ViewAnimation
                   key={book.id}

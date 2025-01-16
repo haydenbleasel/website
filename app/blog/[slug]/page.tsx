@@ -1,7 +1,9 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
+import { HeroSection } from '@/components/sections/hero';
 import { basehub } from '@/lib/basehub';
 import { richTextComponents } from '@/lib/rich-text';
+import { cn } from '@/lib/utils';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
 import { notFound } from 'next/navigation';
@@ -103,11 +105,8 @@ const BlogPost = async ({ params }: BlogPostProps) => {
 
         return (
           <>
-            <Section className="flex flex-col items-center justify-center gap-4 px-4 py-20 sm:px-0">
-              <h1 className="max-w-4xl text-center font-bold text-3xl leading-tight tracking-tight sm:text-4xl md:text-5xl">
-                <Balancer>{post._title}</Balancer>
-              </h1>
-              <p className="mx-auto max-w-4xl text-center">
+            <HeroSection title={post._title}>
+              <p className="mx-auto max-w-4xl sm:text-center">
                 <Balancer>{post.description}</Balancer>
               </p>
               <div className="flex items-center gap-4 text-muted-foreground text-sm">
@@ -119,8 +118,8 @@ const BlogPost = async ({ params }: BlogPostProps) => {
                 <p>&bull;</p>
                 <p>{post.content?.readingTime} min read</p>
               </div>
-            </Section>
-            <Section className="px-8 py-16">
+            </HeroSection>
+            <Section className={cn('px-4 py-8', 'sm:px-8 sm:py-16')}>
               <Prose className="mx-auto max-w-3xl">
                 <RichText
                   content={post.content?.json.content}

@@ -29,8 +29,8 @@ export const ViewAnimation = ({
 
   return (
     <motion.div
-      initial={{ ...initial, filter: 'blur(4px)' }}
-      whileInView={{ ...whileInView, filter: 'blur(0px)' }}
+      initial={{ filter: 'blur(4px)', ...initial }}
+      whileInView={{ filter: 'blur(0px)', ...whileInView }}
       animate={animate}
       className={className}
       viewport={{ once: true, amount: 0.5 }}

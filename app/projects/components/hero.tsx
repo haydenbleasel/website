@@ -26,7 +26,7 @@ export const Hero = () => (
           caption={data.projects._title}
           title={data.projects.hero.text}
         >
-          <div className="flex flex-col items-center gap-4 sm:flex-row">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <SocialButton data={social.x} />
             <SocialButton data={social.producthunt} />
           </div>

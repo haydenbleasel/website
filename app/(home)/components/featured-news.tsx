@@ -1,4 +1,5 @@
 import { ThirdsSection } from '@/components/sections/thirds';
+import { cn } from '@/lib/utils';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 
@@ -44,13 +45,18 @@ export const FeaturedNews = () => (
             },
           ]}
         >
-          <div className="relative aspect-video overflow-hidden bg-dashed px-8 pt-8">
+          <div
+            className={cn(
+              'relative aspect-video overflow-hidden bg-dashed px-4 pt-4',
+              'sm:px-8 sm:pt-8'
+            )}
+          >
             <BaseHubImage
               src={data.home.featuredNews.image.url}
               alt={data.home.featuredNews.image.alt ?? ''}
               width={data.home.featuredNews.image.width}
               height={data.home.featuredNews.image.height}
-              className="rounded-2xl border"
+              className="rounded-lg border sm:rounded-2xl"
             />
             <div className="dashed-line-top" />
             <div className="dashed-line-left" />

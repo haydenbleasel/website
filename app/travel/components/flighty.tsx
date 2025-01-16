@@ -1,6 +1,7 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { richTextComponents } from '@/lib/rich-text';
+import { cn } from '@/lib/utils';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
 import { RichText } from 'basehub/react-rich-text';
@@ -38,7 +39,12 @@ export const Flighty = () => (
 
       return (
         <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          <div className="relative col-span-2 overflow-hidden p-8">
+          <div
+            className={cn(
+              'relative col-span-2 overflow-hidden px-4 py-8',
+              'sm:px-8'
+            )}
+          >
             <div className="-left-1/4 -bottom-1/3 absolute h-full w-full">
               <Globe />
             </div>
@@ -59,7 +65,7 @@ export const Flighty = () => (
               )}
             </div>
           </div>
-          <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden bg-dashed p-8">
+          <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden bg-dashed px-4 py-8 sm:px-8">
             <BaseHubImage
               src={data.travel.flighty.image.url}
               alt={data.travel.flighty.image.alt ?? ''}

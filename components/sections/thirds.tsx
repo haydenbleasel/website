@@ -38,7 +38,7 @@ const SmallSlot = ({
 }: ThirdsSectionProps) => (
   <div>
     <ViewAnimation
-      className="flex h-full flex-col items-start justify-between gap-4 p-8"
+      className="flex h-full flex-col items-start justify-between gap-4 px-4 py-8 sm:px-8"
       initial={{ opacity: 0, translateY: -8 }}
       whileInView={{ opacity: 1, translateY: 0 }}
     >

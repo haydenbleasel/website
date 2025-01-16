@@ -38,7 +38,7 @@ export const Currently = () => (
             },
           ]}
         >
-          <div className="pt-8 pl-8">
+          <div className="pt-4 pl-4 sm:pt-8 sm:pl-8">
             <div className="dashed-line-top" />
             <div className="dashed-line-left" />
             <BaseHubImage
@@ -46,7 +46,7 @@ export const Currently = () => (
               alt={data.home.currently.image.alt ?? ''}
               width={data.home.currently.image.width}
               height={data.home.currently.image.height}
-              className="w-full rounded-tl-2xl border-t border-l"
+              className="w-full rounded-tl-lg border-t border-l sm:rounded-tl-2xl"
             />
           </div>
         </ThirdsSection>

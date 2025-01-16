@@ -25,7 +25,7 @@ export const Hero = () => (
 
       return (
         <HeroSection caption={data.work._title} title={data.work.hero.text}>
-          <div className="flex flex-col items-center gap-4 sm:flex-row">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <SocialButton data={social.linkedin} />
             <Button asChild>
               <Link href="/contact?type=work">Let's talk about work</Link>

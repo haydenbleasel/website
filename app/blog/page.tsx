@@ -2,6 +2,7 @@ import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { basehub } from '@/lib/basehub';
+import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
@@ -92,7 +93,10 @@ const Blog = () => (
                   initial={{ opacity: 0, translateY: -8 }}
                   whileInView={{ opacity: 1, translateY: 0 }}
                   delay={0.4}
-                  className="flex h-full flex-col items-start justify-between gap-4 p-8"
+                  className={cn(
+                    'flex h-full flex-col items-start justify-between gap-4 px-4 py-8',
+                    'sm:px-8'
+                  )}
                 >
                   <div className="flex flex-col gap-2">
                     <small className="text-muted-foreground">
@@ -120,7 +124,7 @@ const Blog = () => (
                 key={year}
               >
                 <div className="bg-dashed">
-                  <div className="sticky top-16 p-8">
+                  <div className={cn('sticky top-16 px-4 py-8', 'sm:px-8')}>
                     <h2 className="font-bold text-2xl leading-normal tracking-tight">
                       {year}
                     </h2>
@@ -141,7 +145,10 @@ const Blog = () => (
                         <ViewAnimation
                           initial={{ opacity: 0, translateY: -8 }}
                           whileInView={{ opacity: 1, translateY: 0 }}
-                          className="flex flex-col gap-2 p-8"
+                          className={cn(
+                            'flex flex-col gap-2 px-4 py-8',
+                            'sm:px-8'
+                          )}
                         >
                           <h2 className="font-bold text-lg leading-normal tracking-tight">
                             {post._title}

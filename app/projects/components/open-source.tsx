@@ -61,7 +61,10 @@ export const OpenSource = () => (
                 >
                   <a
                     key={item.name}
-                    className="flex h-full flex-col items-start justify-between gap-4 p-8 transition-colors hover:bg-background"
+                    className={cn(
+                      'flex h-full flex-col items-start justify-between gap-4 px-4 py-8 transition-colors hover:bg-background',
+                      'sm:px-8'
+                    )}
                     href={`https://github.com/${item.owner.login}/${item.name}`}
                     target="_blank"
                     rel="noreferrer noopener"

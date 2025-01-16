@@ -23,7 +23,7 @@ export const Hero = () => (
 
       return (
         <HeroSection caption={data.travel._title} title={data.travel.hero.text}>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row sm:items-center">
             <SocialButton data={social.youtube} />
             <SocialButton data={social.instagram} />
           </div>

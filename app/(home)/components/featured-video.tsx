@@ -1,6 +1,7 @@
 import type { YoutubeProperties } from '@/app/api/cron/youtube/route';
 import { YoutubePlayer } from '@/app/travel/components/youtube-player';
 import { ThirdsSection } from '@/components/sections/thirds';
+import { cn } from '@/lib/utils';
 import { get } from '@vercel/edge-config';
 
 export const FeaturedVideo = async () => {
@@ -29,11 +30,11 @@ export const FeaturedVideo = async () => {
         },
       ]}
     >
-      <div className="relative overflow-hidden bg-dashed p-8">
+      <div className={cn('relative overflow-hidden bg-dashed p-4', 'sm:p-8')}>
         <YoutubePlayer
           url={`https://www.youtube.com/watch?v=${latest.id}`}
           controls
-          className="overflow-hidden rounded-2xl border"
+          className="overflow-hidden rounded-lg border sm:rounded-2xl"
         />
         <div className="dashed-line-top" />
         <div className="dashed-line-left" />

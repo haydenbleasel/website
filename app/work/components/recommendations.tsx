@@ -65,7 +65,10 @@ export const Recommendations = () => (
                     whileInView={{ opacity: 1 }}
                     delay={index % 2 ? 0.2 : 0}
                     key={recommendation._title}
-                    className="mx-auto flex max-w-4xl flex-col items-start gap-6 p-8 sm:flex-row"
+                    className={cn(
+                      'mx-auto flex max-w-4xl flex-col items-start gap-6 px-4 py-8',
+                      'sm:flex-row sm:px-8'
+                    )}
                   >
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full">
                       <BaseHubImage

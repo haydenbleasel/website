@@ -32,7 +32,7 @@ export const Content = () => (
       'use server';
 
       return (
-        <Section className="grid divide-y sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+        <Section className="grid items-start divide-y sm:grid-cols-2 sm:divide-x sm:divide-y-0">
           <div>
             <ViewAnimation
               initial={{ opacity: 0, translateY: -8 }}
@@ -51,17 +51,20 @@ export const Content = () => (
               </div>
             </ViewAnimation>
           </div>
-          <div>
+          <div className="h-full w-full">
             <ViewAnimation
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
+              className="h-full w-full"
             >
-              <BaseHubImage
-                src={data.about.image.url}
-                alt={data.about.image.alt ?? ''}
-                width={data.about.image.width}
-                height={data.about.image.height}
-              />
+              <div className="sticky top-[53px] sm:top-[65px]">
+                <BaseHubImage
+                  src={data.about.image.url}
+                  alt={data.about.image.alt ?? ''}
+                  width={data.about.image.width}
+                  height={data.about.image.height}
+                />
+              </div>
             </ViewAnimation>
           </div>
         </Section>

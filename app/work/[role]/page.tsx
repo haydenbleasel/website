@@ -115,7 +115,7 @@ const Role = async ({ params }: RoleProps) => {
                   />
                 ) : null
               }
-              title={role.role}
+              title={`${role.role} at ${role._title}`}
             >
               <p className="mx-auto max-w-4xl sm:text-center">
                 <Balancer>{role.description}</Balancer>

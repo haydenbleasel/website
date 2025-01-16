@@ -42,7 +42,8 @@ export const Apps = () => (
                   className={cn(
                     'flex items-start gap-4 px-4 py-8 transition-colors hover:bg-background',
                     'sm:px-8',
-                    index > 1 && 'border-t',
+                    index && 'border-t',
+                    index < 2 && 'sm:border-t-0',
                     index % 2 === 0 && 'sm:border-r'
                   )}
                   href={app.url}

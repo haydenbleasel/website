@@ -38,7 +38,8 @@ export const Speaking = () => (
                 <div
                   key={item._title}
                   className={cn(
-                    index > 1 && 'border-t',
+                    index && 'border-t',
+                    index < 2 && 'sm:border-t-0',
                     index % 2 === 0 && 'sm:border-r'
                   )}
                 >

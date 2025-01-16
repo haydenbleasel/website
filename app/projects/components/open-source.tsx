@@ -49,7 +49,8 @@ export const OpenSource = () => (
               <div
                 key={item.name}
                 className={cn(
-                  index > 1 && 'border-t',
+                  index && 'border-t',
+                  index < 2 && 'sm:border-t-0',
                   index % 2 === 0 && 'sm:border-r'
                 )}
               >

@@ -101,7 +101,8 @@ export const Gaming = () => (
                     target="_blank"
                     rel="noreferrer noopener"
                     className={cn(
-                      index > 1 && 'border-t',
+                      index && 'border-t',
+                      index < 2 && 'sm:border-t-0',
                       index % 2 === 0 && 'sm:border-r',
                       'p-4 transition-all',
                       'hover:bg-background hover:shadow-sm'

@@ -1,6 +1,7 @@
 import type { OkuProperties } from '@/app/api/cron/oku/route';
 import { Section } from '@/components/section';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import { get } from '@vercel/edge-config';
 import { Book } from './book';
@@ -33,7 +34,12 @@ export const Books = async () => {
   return (
     <Section className="p-8">
       <Tabs defaultValue="backlog" className="grid gap-4">
-        <div className="flex items-center justify-between">
+        <div
+          className={cn(
+            'flex flex-col gap-4',
+            'sm:flex-row sm:items-center sm:justify-between'
+          )}
+        >
           <ViewAnimation initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
             <h2 className="font-bold text-3xl tracking-tight">Reading List</h2>
           </ViewAnimation>

@@ -53,9 +53,9 @@ export const Apps = () => (
                   <Image
                     src={`https://img.logo.dev/${new URL(app.imageUrl ?? app.url).hostname}?token=${env.NEXT_PUBLIC_LOGO_DEV_TOKEN}`}
                     alt={app.url}
-                    width={32}
-                    height={32}
-                    className="rounded-md"
+                    width={40}
+                    height={40}
+                    className="rounded-md ring-1 ring-foreground/5"
                     quality={100}
                   />
                   <div>

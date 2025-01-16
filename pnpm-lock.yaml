@@ -71,6 +71,9 @@ importers:
       googleapis:
         specifier: ^144.0.0
         version: 144.0.0
+      jotai:
+        specifier: ^2.11.0
+        version: 2.11.0(@types/react@19.0.1)(react@19.0.0)
       ky:
         specifier: ^1.7.4
         version: 1.7.4
@@ -1811,6 +1814,18 @@ packages:
   jiti@1.21.6:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
+
+  jotai@2.11.0:
+    resolution: {integrity: sha512-zKfoBBD1uDw3rljwHkt0fWuja1B76R7CjznuBO+mSX6jpsO1EBeWNRKpeaQho9yPI/pvCv4recGfgOXGxwPZvQ==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
 
   js-beautify@1.15.1:
     resolution: {integrity: sha512-ESjNzSlt/sWE8sciZH8kBF8BPlwXPwhR6pWKAw8bw4Bwj+iZcnKW6ONWUutJ7eObuBZQpiIb8S7OYspWrKt7rA==}
@@ -4416,6 +4431,11 @@ snapshots:
       '@pkgjs/parseargs': 0.11.0
 
   jiti@1.21.6: {}
+
+  jotai@2.11.0(@types/react@19.0.1)(react@19.0.0):
+    optionalDependencies:
+      '@types/react': 19.0.1
+      react: 19.0.0
 
   js-beautify@1.15.1:
     dependencies:

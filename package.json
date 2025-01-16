@@ -32,6 +32,7 @@
     "country-flag-emoji-polyfill": "^0.1.8",
     "date-fns": "^4.1.0",
     "googleapis": "^144.0.0",
+    "jotai": "^2.11.0",
     "ky": "^1.7.4",
     "lodash.groupby": "^4.6.0",
     "lucide-react": "^0.471.1",

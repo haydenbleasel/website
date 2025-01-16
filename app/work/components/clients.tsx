@@ -39,8 +39,11 @@ export const Clients = () => (
           <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
             {data.work.clients.items
               .sort((a, b) => a._title.localeCompare(b._title))
-              .map((client) => (
-                <div
+              .map((client, index) => (
+                <ViewAnimation
+                  initial={{ opacity: 0, translateY: -8 }}
+                  whileInView={{ opacity: 1, translateY: 0 }}
+                  delay={index * 0.1}
                   className={cn(
                     'inline-flex rounded-full border bg-background px-3 py-1.5 text-xs shadow-sm',
                     'sm:text-sm'
@@ -48,7 +51,7 @@ export const Clients = () => (
                   key={client._title}
                 >
                   {client._title}
-                </div>
+                </ViewAnimation>
               ))}
           </div>
         </Section>

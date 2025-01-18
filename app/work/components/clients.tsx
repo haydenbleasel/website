@@ -1,7 +1,9 @@
 import { Section } from '@/components/section';
+import { env } from '@/lib/env';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import { Pump } from 'basehub/react-pump';
+import Image from 'next/image';
 
 export const Clients = () => (
   <Pump
@@ -12,6 +14,7 @@ export const Clients = () => (
           clients: {
             items: {
               _title: true,
+              url: true,
             },
           },
         },
@@ -50,7 +53,21 @@ export const Clients = () => (
                   )}
                   key={client._title}
                 >
-                  {client._title}
+                  {client.url ? (
+                    <div className="flex items-center gap-1.5">
+                      {client.url && (
+                        <Image
+                          src={`https://img.logo.dev/${new URL(client.url).hostname}?token=${env.NEXT_PUBLIC_LOGO_DEV_TOKEN}`}
+                          alt=""
+                          width={16}
+                          height={16}
+                        />
+                      )}
+                      {client._title}
+                    </div>
+                  ) : (
+                    client._title
+                  )}
                 </ViewAnimation>
               ))}
           </div>

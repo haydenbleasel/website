@@ -6,8 +6,6 @@ import dynamic from 'next/dynamic';
 
 type ProjectVideoProps = {
   url: string;
-  offset: string;
-  position: string;
 };
 
 const VideoPlayer = dynamic(() => import('react-player/file'), {
@@ -17,7 +15,7 @@ const VideoPlayer = dynamic(() => import('react-player/file'), {
   ),
 });
 
-export const ProjectVideo = ({ url, offset, position }: ProjectVideoProps) => {
+export const ProjectVideo = ({ url }: ProjectVideoProps) => {
   const [ref, entry] = useIntersectionObserver({
     threshold: 0.2,
     root: null,
@@ -29,22 +27,7 @@ export const ProjectVideo = ({ url, offset, position }: ProjectVideoProps) => {
       ref={ref}
       className={cn(
         'h-full w-full',
-        '[&_video]:overflow-hidden [&_video]:object-cover',
-        position === 'Center' && '[&_video]:object-center',
-        position === 'Left' && '[&_video]:object-left',
-        position === 'Right' && '[&_video]:object-right',
-        position === 'Top' && '[&_video]:object-top',
-        position === 'Bottom' && '[&_video]:object-bottom',
-        offset === 'Center' &&
-          '[&_video]:rounded-lg [&_video]:border sm:[&_video]:rounded-2xl',
-        offset === 'Top-Left' &&
-          '[&_video]:rounded-tl-lg [&_video]:border-t [&_video]:border-l sm:[&_video]:rounded-tl-2xl',
-        offset === 'Top-Right' &&
-          '[&_video]:rounded-tr-lg [&_video]:border-t [&_video]:border-r sm:[&_video]:rounded-tr-2xl',
-        offset === 'Bottom-Left' &&
-          '[&_video]:rounded-bl-lg [&_video]:border-b [&_video]:border-l sm:[&_video]:rounded-bl-2xl',
-        offset === 'Bottom-Right' &&
-          '[&_video]:rounded-br-lg [&_video]:border-r [&_video]:border-b sm:[&_video]:rounded-br-2xl'
+        '[&_video]:overflow-hidden [&_video]:object-cover'
       )}
     >
       <VideoPlayer

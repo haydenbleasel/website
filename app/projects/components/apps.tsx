@@ -1,9 +1,10 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
-import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
-import { Fragment } from 'react';
+import Balancer from 'react-wrap-balancer';
 import { ProjectVideo } from './video';
 
 export const Apps = () => (
@@ -17,14 +18,17 @@ export const Apps = () => (
               _title: true,
               description: true,
               url: true,
-              size: true,
               cta: true,
+              status: true,
               video: {
                 url: true,
-                aspectRatio: true,
               },
-              offset: true,
-              position: true,
+              image: {
+                url: true,
+                alt: true,
+                width: true,
+                height: true,
+              },
             },
           },
         },
@@ -35,109 +39,61 @@ export const Apps = () => (
       'use server';
 
       return (
-        <Section className="grid sm:grid-cols-6">
-          {data.projects.apps.items.map((app, index) =>
-            app.size === 'Large' ? (
-              <Fragment key={app._title}>
-                <div
-                  className={cn(
-                    'relative aspect-video bg-dashed',
-                    'sm:col-span-4',
-                    index > 0 && 'border-t',
-                    app.offset === 'Center' && 'p-4 sm:p-8',
-                    app.offset === 'Top-Left' && 'pt-4 pl-4 sm:pt-8 sm:pl-8',
-                    app.offset === 'Top-Right' && 'pt-4 pr-4 sm:pt-8 sm:pr-8',
-                    app.offset === 'Bottom-Left' && 'pb-4 pl-4 sm:pb-8 sm:pl-8',
-                    app.offset === 'Bottom-Right' && 'pr-4 pb-4 sm:pr-8 sm:pb-8'
-                  )}
-                >
-                  {app.video && (
-                    <>
-                      <ProjectVideo
-                        url={app.video.url}
-                        offset={app.offset}
-                        position={app.position}
-                      />
-                      {app.offset === 'Center' && (
-                        <>
-                          <div className="dashed-line-top" />
-                          <div className="dashed-line-left" />
-                          <div className="dashed-line-right" />
-                          <div className="dashed-line-bottom" />
-                        </>
-                      )}
-                      {app.offset === 'Top-Left' && (
-                        <>
-                          <div className="dashed-line-top" />
-                          <div className="dashed-line-left" />
-                        </>
-                      )}
-                      {app.offset === 'Top-Right' && (
-                        <>
-                          <div className="dashed-line-top" />
-                          <div className="dashed-line-right" />
-                        </>
-                      )}
-                      {app.offset === 'Bottom-Left' && (
-                        <>
-                          <div className="dashed-line-bottom" />
-                          <div className="dashed-line-left" />
-                        </>
-                      )}
-                      {app.offset === 'Bottom-Right' && (
-                        <>
-                          <div className="dashed-line-bottom" />
-                          <div className="dashed-line-right" />
-                        </>
-                      )}
-                    </>
-                  )}
+        <Section className="grid md:grid-cols-2">
+          {data.projects.apps.items.map((app, index) => (
+            <a
+              href={app.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              key={app._title}
+              className={cn(
+                'flex flex-col gap-8 px-4 pt-4 transition-all',
+                'sm:px-8 sm:pt-8',
+                'hover:bg-background hover:shadow-sm',
+                index && 'border-t',
+                index < 2 && 'sm:border-t-0',
+                index % 2 === 0 && 'sm:border-r'
+              )}
+            >
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between gap-2">
+                  <h2 className="font-bold text-2xl">{app._title}</h2>
+                  <Badge
+                    variant="outline"
+                    className={cn(
+                      'rounded-full',
+                      app.status === 'Active' && 'border-success text-success',
+                      app.status === 'Acquired' &&
+                        'border-warning text-warning',
+                      app.status === 'Shut Down' &&
+                        'border-muted-foreground text-muted-foreground'
+                    )}
+                  >
+                    {app.status}
+                  </Badge>
                 </div>
-                <div
-                  className={cn(
-                    'flex flex-col items-start justify-between gap-4 border-l px-4 py-8',
-                    'sm:col-span-2 sm:px-8',
-                    index > 0 && 'border-t'
-                  )}
-                >
-                  <div className="flex flex-col gap-2">
-                    <h2 className="font-bold text-2xl">{app._title}</h2>
-                    <Prose>
-                      <p>{app.description}</p>
-                    </Prose>
-                  </div>
-                  <Button asChild variant="outline">
-                    <a href={app.url} target="_blank" rel="noreferrer noopener">
-                      {app.cta}
-                    </a>
-                  </Button>
-                </div>
-              </Fragment>
-            ) : (
-              <div
-                key={app._title}
-                className={cn(
-                  'flex flex-col items-start justify-between gap-4 px-4 py-8',
-                  'sm:col-span-3 sm:px-8',
-                  app.size === 'Small' &&
-                    data.projects.apps.items.at(index - 1)?.size === 'Small' &&
-                    'border-l',
-                  index > 0 && 'border-t'
-                )}
-              >
-                <div className="flex flex-col gap-2">
-                  <h2 className="font-bold text-xl">{app._title}</h2>
-                  <Prose className="prose-sm">
-                    <p>{app.description}</p>
-                  </Prose>
-                </div>
-                <Button asChild variant="outline">
-                  <a href={app.url} target="_blank" rel="noreferrer noopener">
-                    {app.cta}
-                  </a>
-                </Button>
+                <Prose>
+                  <p className="leading-normal">
+                    <Balancer>{app.description}</Balancer>
+                  </p>
+                </Prose>
               </div>
-            )
+              <div className="relative aspect-video overflow-hidden rounded-t-lg border-x border-t">
+                {app.video && <ProjectVideo url={app.video.url} />}
+                {app.image && (
+                  <BaseHubImage
+                    src={app.image.url}
+                    alt={app.image.alt ?? ''}
+                    width={app.image.width}
+                    height={app.image.height}
+                    className="object-cover"
+                  />
+                )}
+              </div>
+            </a>
+          ))}
+          {data.projects.apps.items.length % 2 === 1 && (
+            <div className="h-full w-full border-t bg-dashed" />
           )}
         </Section>
       );

@@ -6,7 +6,7 @@ import { Pump } from 'basehub/react-pump';
 import { StarIcon } from 'lucide-react';
 
 const username = 'haydenbleasel';
-const projects = ['next-forge'];
+const projects = ['next-forge', 'kibo', 'ultracite', 'eververse'];
 
 export const OpenSource = () => (
   <Pump

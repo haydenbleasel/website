@@ -3,8 +3,8 @@ export const Attribution = () => (
     <a
       href="https://logo.dev"
       aria-label="Logo API"
+      // biome-ignore lint/a11y/noBlankTarget: "required for logo.dev attribution"
       target="_blank"
-      rel="noreferrer noopener"
     >
       Logos provided by Logo.dev
     </a>

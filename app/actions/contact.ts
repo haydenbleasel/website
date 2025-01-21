@@ -4,7 +4,7 @@ import { env } from '@/lib/env';
 import { resend } from '@/lib/resend';
 import { parseError } from '@/lib/utils';
 import { Ratelimit } from '@upstash/ratelimit';
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 import { revalidatePath } from 'next/cache';
 import { headers } from 'next/headers';
 import type { z } from 'zod';
@@ -24,8 +24,9 @@ export const contact = async (
 
   try {
     const ip = head.get('x-forwarded-for');
+    const redis = Redis.fromEnv();
     const ratelimit = new Ratelimit({
-      redis: kv,
+      redis,
       // rate limit to 1 request every day
       limiter: Ratelimit.slidingWindow(1, '1d'),
     });

@@ -55,11 +55,11 @@ export const Content = () => (
               </div>
             </ViewAnimation>
           </div>
-          <div className="h-full w-full">
+          <div className="size-full">
             <ViewAnimation
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              className="h-full w-full"
+              className="size-full"
             >
               <div className="sticky top-[53px] sm:top-[65px]">
                 <BaseHubImage

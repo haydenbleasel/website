@@ -79,7 +79,7 @@ export const Features = () => (
                 </div>
               ))}
             {data.live.features.items.length % 2 === 1 && (
-              <div className="h-full w-full border-t bg-dashed" />
+              <div className="size-full border-t bg-dashed" />
             )}
           </div>
         </StickyList>

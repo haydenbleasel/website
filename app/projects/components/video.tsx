@@ -11,7 +11,7 @@ type ProjectVideoProps = {
 const VideoPlayer = dynamic(() => import('react-player/file'), {
   ssr: false,
   loading: () => (
-    <div className="h-full w-full rounded-lg border bg-secondary sm:rounded-2xl" />
+    <div className="size-full rounded-lg border bg-secondary sm:rounded-2xl" />
   ),
 });
 
@@ -26,7 +26,7 @@ export const ProjectVideo = ({ url }: ProjectVideoProps) => {
     <div
       ref={ref}
       className={cn(
-        'h-full w-full',
+        'size-full',
         '[&_video]:overflow-hidden [&_video]:object-cover'
       )}
     >

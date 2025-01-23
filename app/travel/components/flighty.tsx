@@ -45,7 +45,7 @@ export const Flighty = () => (
               'sm:px-8'
             )}
           >
-            <div className="-left-1/4 -bottom-1/3 absolute h-full w-full">
+            <div className="-left-1/4 -bottom-1/3 absolute size-full">
               <Globe />
             </div>
             <div className="relative z-10 flex flex-col gap-2">

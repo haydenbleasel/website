@@ -87,7 +87,7 @@ export const Apps = () => (
                 </div>
               ))}
             {apps.length % 2 === 1 && (
-              <div className="h-full w-full border-t bg-dashed" />
+              <div className="size-full border-t bg-dashed" />
             )}
           </div>
         </StickyList>

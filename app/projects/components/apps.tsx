@@ -93,7 +93,7 @@ export const Apps = () => (
             </a>
           ))}
           {data.projects.apps.items.length % 2 === 1 && (
-            <div className="h-full w-full border-t bg-dashed" />
+            <div className="size-full border-t bg-dashed" />
           )}
         </Section>
       );

@@ -76,7 +76,7 @@ export const Recommendations = () => (
                         width={recommendation.photo.width}
                         height={recommendation.photo.height}
                         alt={recommendation.photo.alt ?? ''}
-                        className="block h-full w-full object-contain"
+                        className="block size-full object-contain"
                       />
                     </div>
                     <div className="flex flex-col gap-4">

@@ -58,10 +58,6 @@ export const Globe: FC = () => {
   }, [globeSize, resolvedTheme]);
 
   return (
-    <canvas
-      aria-label="Globe"
-      ref={canvasReference}
-      className="h-full w-full"
-    />
+    <canvas aria-label="Globe" ref={canvasReference} className="size-full" />
   );
 };

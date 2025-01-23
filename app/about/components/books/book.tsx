@@ -9,7 +9,7 @@ export const Book = (book: OkuProperties['backlog'][number]) => (
     target="_blank"
     rel="noreferrer noopener"
     className={cn(
-      'relative flex flex-row items-center justify-center gap-4 overflow-hidden rounded-xl border p-4 transition-all',
+      'relative flex h-full flex-row items-center justify-center gap-4 overflow-hidden rounded-xl border p-4 transition-all',
       'hover:-translate-y-1 hover:bg-background hover:shadow-sm sm:flex-col sm:p-8 sm:text-center'
     )}
   >
@@ -26,7 +26,7 @@ export const Book = (book: OkuProperties['backlog'][number]) => (
           alt={book.title}
           width={100}
           height={100}
-          className="h-full w-full object-cover"
+          className="size-full object-cover"
         />
       ) : (
         <div className="flex aspect-[128/193] w-full items-center justify-center bg-muted p-4">

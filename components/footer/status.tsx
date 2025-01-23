@@ -112,7 +112,7 @@ export const Status = async () => {
     >
       <span className="relative flex h-2 w-2">
         <span
-          className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${statusColor}`}
+          className={`absolute inline-flex size-full animate-ping rounded-full opacity-75 ${statusColor}`}
         />
         <span
           className={`relative inline-flex h-2 w-2 rounded-full ${statusColor}`}

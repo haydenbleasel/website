@@ -1,9 +1,11 @@
 import { Prose } from '@/components/prose';
 import { Section } from '@/components/section';
 import { Badge } from '@/components/ui/badge';
+import { env } from '@/lib/env';
 import { cn } from '@/lib/utils';
 import { BaseHubImage } from 'basehub/next-image';
 import { Pump } from 'basehub/react-pump';
+import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 import { ProjectVideo } from './video';
 
@@ -41,10 +43,18 @@ export const Apps = () => (
       return (
         <Section className="grid md:grid-cols-2">
           {data.projects.apps.items.map((app, index) => (
-            <a
+            <Link
               href={app.url}
-              target="_blank"
-              rel="noreferrer noopener"
+              target={
+                app.url.includes(env.VERCEL_PROJECT_PRODUCTION_URL)
+                  ? undefined
+                  : '_blank'
+              }
+              rel={
+                app.url.includes(env.VERCEL_PROJECT_PRODUCTION_URL)
+                  ? undefined
+                  : 'noreferrer noopener'
+              }
               key={app._title}
               className={cn(
                 'flex flex-col gap-8 px-4 pt-4 transition-all',
@@ -90,7 +100,7 @@ export const Apps = () => (
                   />
                 )}
               </div>
-            </a>
+            </Link>
           ))}
           {data.projects.apps.items.length % 2 === 1 && (
             <div className="size-full border-t bg-dashed" />

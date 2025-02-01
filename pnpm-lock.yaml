@@ -72,8 +72,8 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       jotai:
-        specifier: ^2.11.1
-        version: 2.11.1(@types/react@19.0.1)(react@19.0.0)
+        specifier: ^2.11.3
+        version: 2.11.3(@types/react@19.0.1)(react@19.0.0)
       ky:
         specifier: ^1.7.4
         version: 1.7.4
@@ -1811,8 +1811,8 @@ packages:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
 
-  jotai@2.11.1:
-    resolution: {integrity: sha512-41Su098mpHIX29hF/XOpDb0SqF6EES7+HXfrhuBqVSzRkxX48hD5i8nGsEewWZNAsBWJCTTmuz8M946Ih2PfcQ==}
+  jotai@2.11.3:
+    resolution: {integrity: sha512-B/PsewAQ0UOS5e2+TTWegUPQ3SCLPCjPY24LYUjfn2EorGlluTA2dFjVLgF1+xHLjK9Jit3y5mKHyMG3Xq/GZg==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': '>=17.0.0'
@@ -1889,6 +1889,7 @@ packages:
 
   lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    deprecated: This package is deprecated. Use the optional chaining (?.) operator instead.
 
   lodash.groupby@4.6.0:
     resolution: {integrity: sha512-5dcWxm23+VAoz+awKmBaiBvzox8+RqMgFhi7UvX9DHZr2HdxHXM/Wrf8cfKpsW37RNrvtPn6hSwNqurSILbmJw==}
@@ -4424,7 +4425,7 @@ snapshots:
 
   jiti@1.21.6: {}
 
-  jotai@2.11.1(@types/react@19.0.1)(react@19.0.0):
+  jotai@2.11.3(@types/react@19.0.1)(react@19.0.0):
     optionalDependencies:
       '@types/react': 19.0.1
       react: 19.0.0

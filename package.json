@@ -50,7 +50,7 @@
     "rsc-activity-calendar": "^1.0.1",
     "rss-parser": "^3.13.0",
     "shiki": "^2.0.3",
-    "sonner": "^1.7.2",
+    "sonner": "^1.7.4",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.1"

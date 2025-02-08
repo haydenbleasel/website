@@ -7,7 +7,7 @@
     "build": "basehub && next build",
     "lint": "ultracite lint",
     "format": "ultracite format",
-    "bump-deps": "npx npm-check-updates -u && pnpm install",
+    "bump-deps": "npx npm-check-updates -u -x tailwindcss && pnpm install",
     "bump-ui": "npx shadcn@latest add button form input label select sonner textarea --overwrite"
   },
   "dependencies": {

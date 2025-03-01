@@ -49,7 +49,7 @@
     "resend": "^4.1.2",
     "rsc-activity-calendar": "^1.0.1",
     "rss-parser": "^3.13.0",
-    "shiki": "^2.3.2",
+    "shiki": "^3.1.0",
     "sonner": "^1.7.4",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",

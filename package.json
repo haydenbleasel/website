@@ -13,7 +13,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@number-flow/react": "^0.5.5",
-    "@octokit/rest": "^21.1.0",
+    "@octokit/rest": "^21.1.1",
     "@primer/octicons-react": "^19.15.0",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-select": "^2.1.6",

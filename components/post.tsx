@@ -10,11 +10,11 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 
 export const Post = ({ _meta, title, date }: PostProps) => (
   <Link
-    className="group flex items-center gap-2 text-sm"
+    className="group flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-2"
     href={`/blog/${_meta.path}`}
   >
     <p className="text-foreground">{title}</p>
-    <span className="h-px grow bg-border transition-colors group-hover:bg-border-dark" />
+    <span className="hidden h-px grow bg-border transition-colors group-hover:bg-border-dark sm:block" />
     <p className="text-foreground-lighter transition-colors group-hover:text-foreground-light">
       {dateFormatter.format(date)}
     </p>

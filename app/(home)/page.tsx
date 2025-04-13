@@ -1,3 +1,4 @@
+import { Avatar } from '@/components/avatar';
 import { Features } from '@/components/features';
 import { FootnoteContent, FootnoteMarker } from '@/components/footnote';
 import { Link } from '@/components/link';
@@ -16,8 +17,6 @@ import { social } from '@/lib/social';
 import { stack } from '@/lib/stack';
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
-import Image from 'next/image';
-import Avatar from './avatar.jpg';
 
 const getSubscribers = unstable_cache(
   async () => {
@@ -47,15 +46,7 @@ const Home = async () => {
   return (
     <>
       <Section>
-        <Image
-          src={Avatar}
-          alt=""
-          width={48}
-          height={48}
-          className="h-12 w-12 rounded-full"
-          placeholder="blur"
-          priority
-        />
+        <Avatar className="h-12 w-12" />
         <h1>Hayden Bleasel</h1>
         <p>
           I&apos;m an Australian Design Engineer living in{' '}

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build"
+    "build": "next build --turbopack"
   },
   "dependencies": {
     "@nosecone/next": "1.0.0-beta.5",

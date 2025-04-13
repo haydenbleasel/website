@@ -11,6 +11,7 @@
     "@t3-oss/env-nextjs": "^0.12.0",
     "@upstash/ratelimit": "^2.0.5",
     "@upstash/redis": "^1.34.6",
+    "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "country-flag-emoji-polyfill": "^0.1.8",
     "deepmerge": "^4.3.1",

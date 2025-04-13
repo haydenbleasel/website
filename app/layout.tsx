@@ -5,6 +5,7 @@ import { Navigation } from '@/components/navigation';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { WindowsEmojiPolyfill } from '@/components/windows-emoji-polyfill';
 import { cn } from '@/lib/utils';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from 'next-themes';
 import type { ReactNode } from 'react';
 import { Toaster } from 'sonner';
@@ -36,6 +37,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         <ThemeSwitcher />
         <WindowsEmojiPolyfill />
         <JsonLd />
+        <Analytics />
       </ThemeProvider>
     </body>
   </html>

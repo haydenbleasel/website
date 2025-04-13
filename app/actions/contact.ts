@@ -33,10 +33,9 @@ export const contact = async (
     };
   }
 
-  const { name, email, message, type } = Object.fromEntries(formData);
+  const { name, email, message } = Object.fromEntries(formData);
 
   if (
-    typeof type !== 'string' ||
     typeof name !== 'string' ||
     typeof email !== 'string' ||
     typeof message !== 'string'
@@ -50,7 +49,7 @@ export const contact = async (
   const response = await resend.emails.send({
     from: env.RESEND_TO,
     to: env.RESEND_TO,
-    subject: `New ${type} message from ${name}`,
+    subject: `New message from ${name}`,
     replyTo: email,
     text: message,
   });

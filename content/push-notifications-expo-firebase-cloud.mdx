@@ -1,0 +1,284 @@
+---
+title: Implementing Push Notifications with Expo and Firebase Cloud Functions
+description: Despite how complex Expo's diagrams appear, it's actually remarkably simple to add Push Notifications to your app!
+date: 01-29-2022
+---
+
+Today we're going to implement Push Notifications in an Expo app using Firebase Cloud Functions - how exciting! Despite how complex Expo's diagrams appear, it's actually remarkably simple to add Push Notifications to your app!
+
+Let's get started.
+
+## Dependencies
+
+First we're going to need a few things:
+
+- [expo-server-sdk](https://www.npmjs.com/package/expo-server-sdk) - we'll use this in our cloud functions to actually send the Push Notification
+- [expo-notifications](https://docs.expo.dev/versions/latest/sdk/notifications/) to register our users and app for push notifications
+- [expo-device](https://docs.expo.dev/versions/latest/sdk/device/) to make sure we're running this code on a physical device
+- [expo-linking](https://docs.expo.dev/versions/latest/sdk/linking/) to open Settings in case the user rejects our Push Notification requests
+
+Okay, that should be it. Now for the code!
+
+## Overview
+
+To get Push Notifications up and running, we need to get 4 small pieces working:
+
+### `generatePushNotificationsToken` function
+
+First up, we need to allow our users to generate Push Notification tokens. For the remainder of this post, we'll refer to it as the `expoPushToken`. As Expo phrased it:
+
+> If push notifications are mail, then the ExpoPushToken is the user's address.
+
+Generating this token is simple enough, but we just need to make sure we're handling permissions and rejections correctly.
+
+```ts
+import { isDevice } from 'expo-device';
+import { openSettings } from 'expo-linking';
+import {
+  getPermissionsAsync,
+  requestPermissionsAsync,
+  getExpoPushTokenAsync,
+} from 'expo-notifications';
+import { Alert } from 'react-native';
+
+const generatePushNotificationsToken = async (): Promise<
+  string | undefined
+> => {
+  if (!isDevice) {
+    throw new Error(
+      'Sorry, Push Notifications are only supported on physical devices.'
+    );
+  }
+
+  const { status: existingStatus } = await getPermissionsAsync();
+
+  let finalStatus = existingStatus;
+
+  if (existingStatus !== 'granted') {
+    const { status } = await requestPermissionsAsync();
+    finalStatus = status;
+  }
+
+  if (finalStatus !== 'granted') {
+    Alert.alert(
+      'Error',
+      'Sorry, we need your permission to enable Push Notifications. Please enable it in your privacy settings.',
+      [
+        {
+          text: 'OK',
+        },
+        {
+          text: 'Open Settings',
+          onPress: async () => openSettings(),
+        },
+      ]
+    );
+    return undefined;
+  }
+
+  const { data } = await getExpoPushTokenAsync();
+
+  return data;
+};
+
+export default generatePushNotificationsToken;
+```
+
+Now we can import this file into our Settings page (or wherever) and call it. You're going to want to store the `expoPushToken` on your user's profile. I'm using the [useUser and useProfile](/blog/user-profile-hooks-firebase-9) hooks I talked about previously.
+
+```ts
+import generatePushNotificationsToken from '../../utils/expo/generatePushNotificationsToken';
+
+// ...
+
+const { user } = useUser();
+const { profile, updateProfile } = useProfile(user);
+const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(
+  typeof profile?.expoPushToken === 'string'
+);
+
+const toggleNotifications = async (newEnabled: boolean) => {
+  setNotificationsEnabled(newEnabled);
+  try {
+    if (newEnabled && !profile?.expoPushToken) {
+      const token = await generatePushNotificationsToken();
+      if (!token) {
+        setNotificationsEnabled(!newEnabled);
+        return;
+      }
+
+      await updateProfile({ expoPushToken: token });
+    } else if (!newEnabled && profile?.expoPushToken) {
+      await updateProfile({ expoPushToken: null });
+    }
+  } catch (error) {
+    setNotificationsEnabled(!newEnabled);
+    catchError(error);
+  }
+};
+```
+
+### `usePushNotifications` hook
+
+Now we need to register our app to receive Push Notifications. I've redesigned this piece as a hook so its self-contained, but it can probably just be another function if you wanted.
+
+This hook takes a prop called `onTapNotification` which sends a standard `NotificationResponse` which lets you run custom functionality when a user taps a push notification. It also returns the current `notification` if you need.
+
+```ts
+import useAsync from 'react-use/lib/useAsync';
+import { useRef, useState } from 'react';
+import {
+  addNotificationReceivedListener,
+  addNotificationResponseReceivedListener,
+  AndroidImportance,
+  removeNotificationSubscription,
+  setNotificationChannelAsync,
+  setNotificationHandler,
+} from 'expo-notifications';
+import type { Subscription } from 'expo-modules-core';
+import type { Notification, NotificationResponse } from 'expo-notifications';
+import { Platform } from 'react-native';
+
+setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
+const usePushNotifications = (
+  onTapNotification?: (response: NotificationResponse) => void
+): {
+  notification: Notification | null;
+} => {
+  const [notification, setNotification] = useState<Notification | null>(null);
+  const notificationListener = useRef<Subscription>();
+  const responseListener = useRef<Subscription>();
+
+  useAsync(async () => {
+    notificationListener.current =
+      addNotificationReceivedListener(setNotification);
+
+    responseListener.current = addNotificationResponseReceivedListener(
+      (response) => onTapNotification?.(response)
+    );
+
+    if (Platform.OS === 'android') {
+      await setNotificationChannelAsync('default', {
+        name: 'default',
+        importance: AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#FF231F7C',
+      });
+    }
+
+    return () => {
+      if (notificationListener.current) {
+        removeNotificationSubscription(notificationListener.current);
+      }
+      if (responseListener.current) {
+        removeNotificationSubscription(responseListener.current);
+      }
+    };
+  });
+
+  return { notification };
+};
+
+export default usePushNotifications;
+```
+
+You can use it somewhere higher up, such as `App.tsx`, simply by adding `usePushNotifications()` to your component, or if you want to use all the features:
+
+```ts
+const { notification } = usePushNotifications((response) =>
+  console.log(response)
+);
+
+console.log({ notification });
+```
+
+If you're keen to hit pause and give this a try, you can use Expo's [Push Notification Tool] with that `expoPushToken` you generated and see if your app receives it!
+
+### `sendPushNotification` cloud function
+
+Next up, we'll want to write a handy utility function for actually sending push notifications from our Firebase Cloud Functions. This example is designed for a single Push Notification to a single user, but if you're wanting to send a buttload of them at once, Expo have written an interesting [usage example](https://github.com/expo/expo-server-sdk-node#usage) with chunking.
+
+Also, this has enhanced security for push notifications enabled (i.e. the Expo access token) so make sure you generate one in your dashboard.
+
+```ts
+import type { ExpoPushMessage } from 'expo-server-sdk';
+import { Expo } from 'expo-server-sdk';
+
+const expo = new Expo({ accessToken: process.env.EXPO_ACCESS_TOKEN });
+
+type SendPushNotificationProps = {
+  pushToken: string;
+  message: string;
+};
+
+const sendPushNotification = async ({
+  pushToken,
+  message,
+}: SendPushNotificationProps): Promise<void> => {
+  const messages: ExpoPushMessage[] = [];
+
+  if (!Expo.isExpoPushToken(pushToken)) {
+    console.error(`Push token ${pushToken} is not a valid Expo push token`);
+    return;
+  }
+
+  messages.push({
+    to: pushToken,
+    sound: 'default',
+    body: message,
+  });
+
+  try {
+    await expo.sendPushNotificationsAsync(messages);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export default sendPushNotification;
+```
+
+Nice one! Now we have a way of actually sending notifications to users. Now we just need to implement it.
+
+### Sending the push notification
+
+And now for the main event. Our Firebase user has their `expoPushToken` on their profile, so we just need to retrieve their profile, check their `expoPushToken` and send a Push Notification if it exists!
+
+```ts
+const webhook = functions.https.onRequest(async (req, res) => {
+  const { uid } = req.body;
+  const doc = await admin.firestore().collection('users').doc(uid).get();
+
+  if (!doc.exists) {
+    console.log(`No profile found for ${uid}.`);
+    return;
+  }
+
+  console.log(`Found user profile for ${uid}...`);
+
+  const data = doc.data();
+
+  if (typeof data?.expoPushToken !== 'string') {
+    console.log(`No push token found for ${uid}.`);
+    return;
+  }
+
+  console.log(`Sending push notification to ${uid}...`);
+
+  await sendPushNotification({
+    pushToken: data.expoPushToken,
+    message: 'Hello... is this thing working?',
+  });
+});
+```
+
+That's it! You've got a push notifications system up and running. Let me know in the comments if you had any problems or can think of some improvements!
+
+Happy notifying 🔔

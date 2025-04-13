@@ -1,0 +1,285 @@
+---
+title: Secure Linear OAuth2 flow with Next.js and React Server Components
+description: React Server Components make it easy to build a custom OAuth2 flow with Next.js and the Linear API.
+date: 03-10-2024
+---
+
+Normally I don't take time out to write about something as well documented as OAuth2, but I was so impressed with how easy it was to build a custom OAuth2 flow with Next.js and React Server Components that I had to share it.
+
+I'm going to run you through how I set up a [Linear](https://linear.app/) integration with [Eververse](https://www.eververse.ai/) in ten minutes flat.
+
+## The database schema
+
+First, I needed to set up two tables: one to store the installation state and one to store the Linear installation itself (i.e. the access token). I'm using Prisma as an ORM for my database, so I simply needed to add two models to my schema file.
+
+```prisma title="prisma/schema.prisma"
+model LinearInstallation {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String
+
+  creatorId      String
+
+  accessToken        String
+  tokenType          String
+  expiresIn          Int
+
+  @@index([organizationId])
+  @@map(name: "linear_installation")
+}
+
+model LinearInstallationState {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String
+
+  creatorId String
+
+  @@index([organizationId])
+  @@map(name: "linear_installation_state")
+}
+```
+
+## The "Connect to Linear" button
+
+First, I added a "Connect to Linear" button to my Integrations page. This button is a simple anchor tag that links to an API route where I assemble the Linear OAuth2 URL. While this could be done in an RSC, I wanted to fully isolate the authentication keys from the frontend, as well as ensure there's no unused installation states hanging around.
+
+```jsx title="/app/integrations/page.tsx"
+<Button asChild>
+  <a href="/api/linear/start">Connect to Linear</a>
+</Button>
+```
+
+## The "Start" API route
+
+The "Start" API route is where I assemble the Linear OAuth2 URL and redirect the user to it. This is a simple route handler that fetches the current user and organization, creates an installation state in the database and then redirects the user to the Linear OAuth2 URL.
+
+The installation state is a nonce that I'll use to verify the user when they return from Linear. I store it in the database so that I can verify it upon callback. From the [Auth0 Blog](https://auth0.com/docs/secure/attack-protection/state-parameters):
+
+> Authorization protocols provide a state parameter that allows you to restore the previous state of your application. The state parameter preserves some state objects set by the client in the Authorization request and makes it available to the client in the response. The primary reason for using the state parameter is to mitigate CSRF attacks by using a unique and non-guessable value associated with each authentication request about to be initiated. That value allows you to prevent the attack by confirming that the value coming from the response matches the one you sent.
+
+```tsx title="/api/linear/start.ts"
+import { currentUser } from '@clerk/nextjs';
+import { NextResponse } from 'next/server';
+import { currentOrganization } from '@/lib/clerk';
+import { database } from '@/lib/database';
+
+const linearClientId = process.env.LINEAR_CLIENT_ID;
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
+if (!linearClientId || !siteUrl) {
+  throw new Error('Linear Client ID or site URL not found');
+}
+
+export const GET = async (): Promise<Response> => {
+  const [user, organization] = await Promise.all([
+    currentUser(),
+    currentOrganization(),
+  ]);
+
+  if (!user || !organization) {
+    throw new Error('Unauthorized');
+  }
+
+  const state = await database.linearInstallationState.create({
+    data: {
+      organizationId: organization.id,
+      creatorId: user.id,
+    },
+    select: { id: true },
+  });
+
+  const linearUrl = new URL('https://linear.app/oauth/authorize');
+
+  linearUrl.searchParams.set('client_id', linearClientId);
+  linearUrl.searchParams.set(
+    'redirect_uri',
+    new URL('/callbacks/linear', siteUrl).toString()
+  );
+  linearUrl.searchParams.set('response_type', 'code');
+  linearUrl.searchParams.set(
+    'scope',
+    ['read', 'write', 'issues:create', 'comments:create'].join(',')
+  );
+  linearUrl.searchParams.set('state', state.id);
+  linearUrl.searchParams.set('prompt', 'consent');
+  linearUrl.searchParams.set('actor', 'application');
+
+  return NextResponse.redirect(linearUrl.toString());
+};
+```
+
+This sends the user to the Linear OAuth2 URL, where they can authorize the integration. When they've authorized the integration, Linear will redirect them back to my app with a code and the state I sent them.
+
+## The "Callback" page
+
+The "Callback" page is where I handle the redirect from Linear. Originally I had this as an API endpoint but callbacks only seem to function in Next.js when they're a page. I'm sure there's a reason for this, but it's not documented anywhere I could find.
+
+However, it doesn't particularly matter because the page is a React Server Component, meaning I can access both the `stateParams` and the database in the same file. This is a huge win for me because I can verify the state and then use the code to get an access token in the same file, without needing any client-server interaction.
+
+I can start by getting the state and code from the query parameters, then verifying the state in the database. If the state is valid, I can use the code to get an access token from Linear and store it in the database.
+
+```tsx title="/app/callbacks/linear/page.tsx"
+import { currentUser } from '@clerk/nextjs';
+import { notFound, redirect } from 'next/navigation';
+import { log } from '@logtail/next';
+import { currentOrganization } from '@/lib/clerk';
+import { database } from '@/lib/database';
+import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from 'next';
+import type { ReactElement } from 'react';
+
+export const metadata: Metadata = createMetadata({
+  title: 'Processing',
+  description: 'Please wait while we process your request.',
+});
+
+type LinearCallbackPageProps = {
+  readonly searchParams: Record<string, string>;
+};
+
+const linearClientId = process.env.LINEAR_CLIENT_ID;
+const linearClientSecret = process.env.LINEAR_CLIENT_SECRET;
+const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
+if (!linearClientId || !linearClientSecret) {
+  throw new Error('Linear client ID or secret is missing');
+}
+
+if (!baseUrl) {
+  throw new Error('Base URL is missing');
+}
+
+const LinearCallbackPage = async ({
+  searchParams,
+}: LinearCallbackPageProps): Promise<ReactElement> => {
+  const { code, state } = searchParams;
+
+  const [user, organization] = await Promise.all([
+    currentUser(),
+    currentOrganization(),
+  ]);
+
+  if (!user || !organization || !code || !state) {
+    notFound();
+  }
+
+  const linearInstallationState = await database.linearInstallationState.count({
+    where: {
+      id: state,
+      organizationId: organization.id,
+      creatorId: user.id,
+    },
+  });
+
+  if (!linearInstallationState) {
+    throw new Error('State parameter is invalid');
+  }
+
+  await database.linearInstallationState.delete({
+    where: { id: state },
+    select: { id: true },
+  });
+
+  const body = new URLSearchParams();
+
+  body.append('code', code);
+  body.append('redirect_uri', new URL('/callbacks/linear', baseUrl).toString());
+  body.append('client_id', linearClientId);
+  body.append('client_secret', linearClientSecret);
+  body.append('grant_type', 'authorization_code');
+
+  const response = await fetch('https://api.linear.app/oauth/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: body.toString(),
+  });
+
+  if (!response.ok) {
+    log.error(`Failed to fetch Linear access token: ${response.statusText}`);
+    throw new Error(response.statusText);
+  }
+
+  const data = (await response.json()) as {
+    access_token: string;
+    token_type: string;
+    expires_in: number;
+    scope: string;
+  };
+
+  await database.linearInstallation.create({
+    data: {
+      organizationId: organization.id,
+      accessToken: data.access_token,
+      tokenType: data.token_type,
+      expiresIn: data.expires_in,
+      creatorId: user.id,
+    },
+    select: { id: true },
+  });
+
+  return redirect('/integrations');
+};
+
+export default LinearCallbackPage;
+```
+
+BTW, the reason I add `select: { id: true }` to the `delete` call is because by default, Prisma returns the entire record when you perform any transaction on it. I don't actually need the record, so I just select the ID to save on bandwidth.
+
+That's it! I now have a fully functioning OAuth2 flow with Linear. I can now use the access token to make requests to the Linear API on behalf of the user, like so:
+
+```ts title="/actions/linear/get-teams.ts"
+'use server';
+
+import { LinearClient } from '@linear/sdk';
+import { parseError } from '@/lib/error';
+import { currentOrganization } from '@/lib/clerk';
+import { database } from '@/lib/database';
+import { staticify } from '@/lib/staticify';
+import type { Team } from '@linear/sdk';
+
+export const getLinearTeams = async (): Promise<{
+  error?: string;
+  teams?: Team[];
+}> => {
+  try {
+    const organization = await currentOrganization();
+
+    if (!organization) {
+      throw new Error('Not logged in');
+    }
+
+    const linearInstallation = await database.linearInstallation.findFirst({
+      where: { organizationId: organization.id },
+      select: { accessToken: true },
+    });
+
+    if (!linearInstallation) {
+      throw new Error('Linear installation not found');
+    }
+
+    const linear = new LinearClient({
+      accessToken: linearInstallation.accessToken,
+      next: { revalidate: 0 },
+    });
+
+    const teams = await linear.teams();
+
+    return { teams: staticify(teams.nodes) };
+  } catch (error) {
+    const message = parseError(error);
+
+    return { error: message };
+  }
+};
+```
+
+I hope this has been helpful. I was really impressed with how easy it was to build a custom OAuth2 flow with Next.js and React Server Components. I'm looking forward to building more integrations with this setup in the future. If you have any questions, feel free to reach out to me on [Twitter](https://twitter.com/haydenbleasel).

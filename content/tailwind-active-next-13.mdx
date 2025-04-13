@@ -1,0 +1,146 @@
+---
+title: Creating active link class modifiers with Tailwind and Next.js 13
+description: React 18 allows you to build client and server components, which can be tricky for adding client-based styles to elements.
+date: 11-25-2022
+---
+
+An active class wrapper is a way to add a special class to an HTML element when the link matches the current page, which is useful for highlighting a menu item in a navbar. While this is common practice, it becomes slightly more interesting to execute in [Next.js 13](https://nextjs.org/blog/next-13) if we want to do it properly, as it introduces [React 18](https://reactjs.org/blog/2022/03/29/react-v18.html) server components and client components.
+
+Let's say we have a `Navbar` component that renders a list of links. We want to add an active class to the link that matches the current page. This is easy enough to do with a client component, but what if we want to use a server component? We can't use the `usePathname` hook, which is a client-side hook, in a server component. We don't want to turn the `Navbar` into a client component either as we want to maintain the benefits of server components, such as SEO and performance.
+
+Let's explore how we can solve this.
+
+## The Navbar Component
+
+To start, we'll create a server-side navbar component that renders a list of `Link`s, a built-in component from Next.js.
+
+```tsx title="navbar/index.tsx"
+import type { FC } from 'react';
+import Link from 'next/link';
+import pages from '@/lib/navigation';
+
+export const Navbar: FC = () => (
+  <div>
+    {pages.map((link) => (
+      <Link key={link.name} href={link.href}>
+        {link.label}
+      </Link>
+    ))}
+  </div>
+);
+```
+
+This is good, but now we want to add an active class, which should be applied to the link if the href matches the current path. We can do this with the `usePathname` hook from `next/navigation`, which returns the current pathname. However as I mentioned, this is a client-side hook, so we can't use it in a server component.
+
+Instead, we can create a client component that determines whether the page is active, then applies a class we can use.
+
+```tsx title="navbar/currentPageProvider.tsx"
+'use client';
+import { usePathname } from 'next/navigation';
+import type { FC, ReactNode } from 'react';
+
+type CurrentPageProviderProps = {
+  href: string;
+  children: ReactNode;
+};
+
+export const CurrentPageProvider: FC<CurrentPageProviderProps> = ({
+  href,
+  children,
+}) => {
+  const pathname = usePathname();
+
+  // I use `startsWith` here to handle nested routes
+  const active = href === '/' ? pathname === href : pathname.startsWith(href);
+
+  return <div className={{ 'bg-gray-200': active }}>{children}</div>;
+};
+```
+
+So far, so good! Now let's go back and use this component in our `Navbar` component.
+
+```tsx title="navbar/index.tsx" {4,9,13}
+import type { FC } from 'react';
+import Link from 'next/link';
+import pages from '@/lib/navigation';
+import { CurrentPageProvider } from './currentPageProvider';
+
+export const Navbar: FC = () => (
+  <div>
+    {pages.map((link) => (
+      <CurrentPageProvider href={link.href}>
+        <Link key={link.name} href={link.href}>
+          {link.label}
+        </Link>
+      </CurrentPageProvider>
+    ))}
+  </div>
+);
+```
+
+This works, but it's not ideal. We're applying a class to the parent element instead of the link itself, which means that using [Tailwind](https://tailwindcss.com/) to style the link is more difficult. We can remedy this by using [groups](https://tailwindcss.com/docs/hover-focus-and-other-states):
+
+```tsx title="navbar/currentPageProvider.tsx" {4,22-24}
+'use client';
+import { usePathname } from 'next/navigation';
+import type { FC, ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
+
+type CurrentPageProviderProps = {
+  href: string;
+  children: ReactNode;
+};
+
+export const CurrentPageProvider: FC<CurrentPageProviderProps> = ({
+  href,
+  children,
+}) => {
+  const pathname = usePathname();
+
+  // I use `startsWith` here to handle nested routes
+  const active = href === '/' ? pathname === href : pathname.startsWith(href);
+
+  return (
+    <div
+      className={twMerge('group', {
+        'active-page': active,
+      })}
+    >
+      {children}
+    </div>
+  );
+};
+```
+
+This will apply the generic Tailwind `group` class, which we can use to style the children, as well as our custom `active-page` class which, combined with group modifiers, we can use to style the link:
+
+```tsx title="navbar/index.tsx" {4,14-17}
+import type { FC } from 'react';
+import Link from 'next/link';
+import pages from '@/lib/navigation';
+import { twMerge } from 'tailwind-merge';
+import { CurrentPageProvider } from './currentPageProvider';
+
+export const Navbar: FC = () => (
+  <div>
+    {pages.map((link) => (
+      <CurrentPageProvider href={link.href}>
+        <Link
+          key={link.name}
+          href={link.href}
+          className={twMerge(
+            'text-zinc-600',
+            'group-[.active-page]:text-teal-600'
+          )}
+        >
+          {link.label}
+        </Link>
+      </CurrentPageProvider>
+    ))}
+  </div>
+);
+```
+
+Done! Now we have a navbar that can be styled with Tailwind and has an active class applied to the "active" link, without needing to turn the navbar into a client component.
+
+This is a simple example of how we can use server components to our advantage, while still using client components when we need to. I hope this helps you in your own projects! If you have any questions, feel free to reach out to me on [Twitter](https://twitter.com/haydenbleasel).

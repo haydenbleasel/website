@@ -1,0 +1,93 @@
+---
+title: Using clsx with Tailwind CSS for element style composition
+description: Tailwind's class names can get a bit unwieldy. clsx can help.
+date: 12-03-2022
+---
+
+[Tailwind](https://tailwindcss.com/) is a utility-first CSS framework that makes it easy to quickly create well-designed pages without having to work with CSS files or write rules from scratch. One of the key features of Tailwind is that it uses utility classes, which are short, descriptive class names that apply a single, specific style to an element. For example, the `.text-red` class will make the text color of an element red, and the `.font-bold` class will make the font weight of an element bold.
+
+Tailwind's utility classes are great for quickly creating simple designs, but they can get a bit unwieldy when you need to combine multiple classes to create more complex styles, or account for all the different states of an element. For example, let's look at a standard `button` element styled with Tailwind:
+
+```tsx title="button.tsx"
+<button
+  type="button"
+  className="relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700"
+>
+  Hello, world.
+</button>
+```
+
+Pretty good so far. However, that's just the base style for the button. Let's try adding some hover styles, so that the button changes color when the mouse is hovering over it:
+
+```tsx title="button.tsx"
+<button
+  type="button"
+  className="relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50"
+>
+  Hello, world.
+</button>
+```
+
+Not too bad. Now let's try adding some focus styles, so that the button changes color when it's focused:
+
+```tsx title="button.tsx"
+<button
+  type="button"
+  className="relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 focus:z-10 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+>
+  Hello, world.
+</button>
+```
+
+Getting a bit intense now. How about dark mode support?
+
+```tsx title="button.tsx"
+<button
+  type="button"
+  className="relative inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 focus:z-10 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:focus:border-teal-400 dark:focus:ring-teal-400"
+>
+  Hello, world.
+</button>
+```
+
+Now it's getting a bit ridiculous. This is just a simple button, and it's already got a ton of classes. What if we want to add a disabled state? Or a loading state? Or a state where the button is both disabled and loading? How many classes do we need to add to the button to account for all these different states?
+
+This is where the [`clsx`](https://www.npmjs.com/package/clsx) library comes in. It serves as a drop-in replacement for the [`classnames`](https://www.npmjs.com/package/classnames) library, which is commonly used to combine CSS classes in React. It is a tiny, zero-dependency package that lets you combine CSS classes in a way that's more readable and maintainable than using string concatenation. It also has a few extra features that make it a great fit for Tailwind.
+
+Taking the code above, we can use `clsx` to make it a bit more readable and maintainable:
+
+```tsx title="button.tsx"
+<button
+  type="button"
+  className={twMerge(
+
+    // Base styles
+    'relative inline-flex items-center border px-4 py-2 text-sm font-semibold transition-colors focus:z-10 focus:outline-none focus:ring-1',
+
+    // Light-mode focus state
+    'focus:border-teal-500 focus:ring-teal-500',
+
+    // Dark-mode focus state
+    'dark:focus:border-teal-400 dark:focus:ring-teal-400'
+
+    value === item.value
+
+      // Selected / hover states
+      ? 'border-teal-500 bg-teal-500 text-white hover:bg-teal-600'
+
+      // Unselected / hover state
+      : 'border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50',
+
+    value !== item.value &&
+
+      // Dark-mode unselected state (selected is the same)
+      'dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800',
+  )}
+>
+  Hello, world.
+</button>
+```
+
+Still pretty insane but hey, that's modern web development. You can always compose these into classes but who wants the overhead of a CSS file? 😂
+
+Anyway, hopefully this pattern helps you out a bit. Happy coding!

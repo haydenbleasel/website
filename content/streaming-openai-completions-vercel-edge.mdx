@@ -1,0 +1,310 @@
+---
+title: Streaming OpenAI completions with the Vercel Edge Runtime
+description: I recently built my first AI-powered app on Vercel. Here's how I did it.
+date: 01-14-2023
+---
+
+I recently built an AI-powered development tool ([Refraction](/blog/refraction)) using the OpenAI API. I was really impressed with the results of OpenAI and Vercel, so I wanted to share how I built both tools in less than 2 days.
+
+One of the key components of this build was the [Vercel Edge Runtime](https://vercel.com/docs/concepts/functions/edge-functions/edge-functions-api) and more specifically, [Edge Functions](https://vercel.com/docs/concepts/functions/edge-functions). The Edge Runtime is a new way to build serverless functions that run on the edge, and it's a great fit for AI-powered applications as opposed to traditional [serverless functions](https://vercel.com/docs/concepts/functions/serverless-functions).
+
+The key reason we need the Edge Runtime for this example is the differences in [limits](https://vercel.com/docs/concepts/limits/overview). While serverless functions have a max execution time of 10 seconds, Edge Functions have a max execution time of 30 seconds. This is important because the OpenAI API can take a long time to respond, and we need to be able to stream the response back to the client. More importantly, while you need to end a response within 30 seconds, you may continue streaming a response beyond that time.
+
+Additionally, the Edge Runtime actually supports streaming responses, which AFAIK is not supported by serverless functions. This is important because the OpenAI API supports streaming responses, and we want to take advantage of that.
+
+Anyway, enough preamble. Let's get into it.
+
+## Connecting to the OpenAI REST API
+
+The first thing we need to do is connect to the OpenAI API. While you can use the [OpenAI JS SDK](https://github.com/openai/openai-node/), there is a bit of a question around [streaming responses](https://github.com/openai/openai-node/issues/18), so I found it easier to hit the API directly with `fetch`. Let's create an Edge Function that will connect to the OpenAI API and send the response back to the client.
+
+```ts title="pages/api/generate.ts"
+import type { NextRequest } from 'next/server';
+
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error('Missing Environment Variable OPENAI_API_KEY');
+}
+
+export const config = {
+  runtime: 'edge',
+};
+
+const handler = async (req: NextRequest): Promise<Response> => {
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+
+  const { prompt } = (await req.json()) as {
+    prompt?: string;
+  };
+
+  if (!prompt) {
+    return new Response('Bad Request', { status: 400 });
+  }
+
+  const payload = {
+    model: 'text-davinci-003',
+    prompt,
+    temperature: 0.7,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+    max_tokens: 2048,
+    n: 1,
+  };
+
+  const res = await fetch('https://api.openai.com/v1/completions', {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ''}`,
+    },
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+
+  const data = await res.json();
+
+  return new Response(data, {
+    status: 200,
+  });
+};
+
+export default handler;
+```
+
+Too easy! This will connect to the OpenAI API and return the response to the client. The only thing we need to do now is modify the response to be a stream.
+
+```ts title="pages/api/generate.ts" {32,45,47-49}
+import type { NextRequest } from 'next/server';
+
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error('Missing Environment Variable OPENAI_API_KEY');
+}
+
+export const config = {
+  runtime: 'edge',
+};
+
+const handler = async (req: NextRequest): Promise<Response> => {
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+
+  const { prompt } = (await req.json()) as {
+    prompt?: string;
+  };
+
+  if (!prompt) {
+    return new Response('Bad Request', { status: 400 });
+  }
+
+  const payload = {
+    model: 'text-davinci-003',
+    prompt,
+    temperature: 0.7,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+    max_tokens: 2048,
+    stream: true,
+    n: 1,
+  };
+
+  const res = await fetch('https://api.openai.com/v1/completions', {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ''}`,
+    },
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+
+  const data = res.body;
+
+  return new Response(data, {
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+  });
+};
+
+export default handler;
+```
+
+Perfect. Now we just need to hit up our Edge Function from the client.
+
+## Connecting to the Edge Function from the client
+
+Now that we have our Edge Function, we need to connect to it from the client. I build all my projects on Next.js, so I'll assume you're familiar with the architecture. If not, I recommend checking out the [Next.js docs](https://beta.nextjs.org/docs/getting-started) to get started.
+
+Let's create a new page that will connect to our Edge Function and handle the response stream. You'll need to implement `useEffect`s and such to handle the state, but I'll leave that up to you.
+
+The one thing I want to call out here is my handling of the response stream. I'm using the `TextDecoder` API to decode the response stream into a string. This is important because the response stream is a `ReadableStream` and we need to convert it to a string to display it in the UI.
+
+The part that's not so straightforward is the response payload. Because we receive Server Sent Events, they arrive in the format:
+
+```ts
+data: { id: 'test', object: 'test', created: 123, choices: [/* ...*/], model: 'test' }
+```
+
+Like, as a string with the `data: ` prefix and everything. Sometimes, we even receive multiple events at once, so we need to split them up and parse them individually. The payload in that state look like this:
+
+```ts
+data: { id: 'test', object: 'test', created: 123, choices: [/* ...*/], model: 'test' }
+
+data: { id: 'test', object: 'test', created: 123, choices: [/* ...*/], model: 'test' }
+```
+
+Anyway, that's where my slightly insane parsing logic below comes from. I'm sure there's a better way to do this, but this works for now. If you have any suggestions, please let me know!
+
+```tsx title="pages/generate.tsx"
+const [text, setText] = useState('');
+
+/* ... */
+
+const response = await fetch('/api/generate', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    prompt,
+  }),
+});
+
+if (!response.ok) {
+  throw new Error(response.statusText);
+}
+
+const data = response.body;
+
+if (!data) {
+  return;
+}
+
+const reader = data.getReader();
+const decoder = new TextDecoder();
+
+let done = false;
+
+while (!done) {
+  const { value, done: doneReading } = await reader.read();
+  done = doneReading;
+  const newValue = decoder.decode(value).split('\n\n').filter(Boolean);
+
+  newValue.forEach((newVal) => {
+    const json = JSON.parse(newVal.replace('data: ', '')) as {
+      id: string;
+      object: string;
+      created: number;
+      choices?: {
+        text: string;
+        index: number;
+        logprobs: null;
+        finish_reason: null | string;
+      }[];
+      model: string;
+    };
+
+    if (!json.choices?.length) {
+      throw new Error('Something went wrong.');
+    }
+
+    const choice = json.choices[0];
+
+    setText((prev) => prev + choice.text);
+  });
+}
+```
+
+This works almost perfectly, but I hit one little snag I didn't expect at all.
+
+## Handling fragmented responses from Vercel
+
+The response stream behaves as expected when run locally, but when deployed to Vercel, the response stream can return fragmented. Basically we get a response like this:
+
+```ts
+data: { id: 'test', object: 'test', created: 123, choices: [{ text: "He
+```
+
+Then a moment later, we get the rest of the fragment:
+
+```ts
+llo"}], model: 'test' }
+```
+
+While I originally thought this might be a bug, Malte Ubl (CTO of Vercel) [noted that](https://twitter.com/cramforce/status/1614304691164438529?s=20&t=8s9FC9XAYQ8A9Ydc85Sjhw):
+
+> This is definitely expected behavior on a busy production system. The fact that local dev happens to flush the buffer whenever the origin flushed the buffer is essentially luck. There might be an npm module that can transform a generic stream into a line based reader
+
+Regardless, this is a problem because we can't parse the JSON until we have the full response. My solution was simply to wrap the `JSON.parse` in a try/catch statement which, if it fails, will shove the response into a temporary state and wait for the next response to come in. When the next response arrives, it prepends the temporary state to the response and tries to parse it again. If it fails again, it just keeps doing that until it succeeds.
+
+```tsx title="pages/generate.tsx"
+const [text, setText] = useState('');
+
+/* ... */
+
+const response = await fetch('/api/generate', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    prompt,
+  }),
+});
+
+if (!response.ok) {
+  throw new Error(response.statusText);
+}
+
+const data = response.body;
+
+if (!data) {
+  return;
+}
+
+const reader = data.getReader();
+const decoder = new TextDecoder();
+
+let done = false;
+let tempState = '';
+
+while (!done) {
+  const { value, done: doneReading } = await reader.read();
+  done = doneReading;
+  const newValue = decoder.decode(value).split('\n\n').filter(Boolean);
+
+  if (tempState) {
+    newValue[0] = tempState + newValue[0];
+    tempState = '';
+  }
+
+  newValue.forEach((newVal) => {
+    try {
+      const json = JSON.parse(newVal.replace('data: ', '')) as {
+        id: string;
+        object: string;
+        created: number;
+        choices?: {
+          text: string;
+          index: number;
+          logprobs: null;
+          finish_reason: null | string;
+        }[];
+        model: string;
+      };
+
+      if (!json.choices?.length) {
+        throw new Error('Something went wrong.');
+      }
+
+      const choice = json.choices[0];
+
+      setText((prev) => prev + choice.text);
+    } catch (error) {
+      tempState = newVal;
+    }
+  });
+}
+```
+
+That's it! Using this approach, we can now generate text in real-time and display it to the user as it's being generated. I'd love to know if I can improve this in any way, so please let me know on [Twitter](https://twitter.com/haydenbleasel).

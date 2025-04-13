@@ -29,7 +29,7 @@ export const GET = async (request: NextRequest) => {
         alt="avatar"
         width={72}
         height={72}
-        tw="overflow-hidden rounded-full object-cover"
+        tw="overflow-hidden rounded-full"
       />
       <h1 tw="max-w-[48rem] text-[64px] font-bold leading-[69px] tracking-tighter m-0">
         {title}

@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
+  experimental: {
+    viewTransition: true,
+  },
 };
 
 export default withContentCollections(nextConfig);

@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from 'next-themes';
 import type { ReactNode } from 'react';
+import { unstable_ViewTransition as ViewTransition } from 'react';
 import { Toaster } from 'sonner';
 
 type RootLayoutProps = {
@@ -36,7 +37,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
             'sm:border-x sm:px-8 sm:pt-32'
           )}
         >
-          {children}
+          <ViewTransition>{children}</ViewTransition>
         </div>
         <Toaster />
         <ThemeSwitcher />

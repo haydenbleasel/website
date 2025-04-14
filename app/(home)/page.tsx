@@ -50,10 +50,12 @@ const Home = async () => {
         <h1>Hayden Bleasel</h1>
         <p>
           I&apos;m an Australian Design Engineer living in{' '}
-          <LocationCard>🇺🇸 Delray Beach, Florida</LocationCard>. I love creating
-          beautiful software that delights users and reimagines the way we
-          interact with technology. I&apos;m also an avid drone pilot, gamer and
-          open source maintainer.
+          <LocationCard timezone="America/New_York">
+            🇺🇸 Delray Beach, Florida
+          </LocationCard>
+          . I love creating beautiful software that delights users and
+          reimagines the way we interact with technology. I&apos;m also an avid
+          drone pilot, gamer and open source maintainer.
         </p>
         <p>
           I&apos;m currently exploring new ideas (particularly AI-native apps)

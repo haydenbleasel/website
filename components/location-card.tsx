@@ -4,11 +4,11 @@ import { HoverCard } from 'radix-ui';
 import { type ReactNode, useEffect, useState } from 'react';
 
 type LocationCardProps = {
+  timezone: string;
   children: ReactNode;
 };
 
-export const LocationCard = ({ children }: LocationCardProps) => {
-  const setTimeZone = 'America/New_York';
+export const LocationCard = ({ children, timezone }: LocationCardProps) => {
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const [time, setTime] = useState(new Date());
 
@@ -26,7 +26,7 @@ export const LocationCard = ({ children }: LocationCardProps) => {
     },
     {
       label: 'PST',
-      timeZone: setTimeZone,
+      timeZone: timezone,
     },
   ];
 

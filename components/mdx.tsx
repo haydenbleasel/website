@@ -31,7 +31,7 @@ const img: FC<HTMLProps<HTMLImageElement>> = (properties) => {
       width={1240}
       height={698}
       unoptimized={properties.src.startsWith('http')}
-      className="my-8 overflow-hidden rounded-lg border border-border/50"
+      className="my-4 overflow-hidden rounded-lg border border-border/50"
       quality={100}
     />
   );

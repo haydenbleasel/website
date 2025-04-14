@@ -53,7 +53,7 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-border, currentColor);
-    min-width: 0;
+    @apply min-w-0;
   }
 
   body {
@@ -111,29 +111,17 @@
   }
 
   .shiki {
-    @apply bg-secondary p-4 overflow-auto rounded-lg;
-    color: var(--shiki-light);
+    @apply bg-secondary/50 border border-border/50 rounded-lg my-4;
+    @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
   }
 
   .shiki span {
-    color: var(--shiki-light);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .shiki {
-      background-color: var(--shiki-dark-bg);
-      color: var(--shiki-dark);
-      @apply border-neutral-700;
-    }
-
-    .shiki span {
-      color: var(--shiki-dark);
-    }
+    @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
   }
 
   .shiki code {
-    display: grid;
-    font-size: 13px;
+    @apply overflow-x-auto p-3 text-[13px];
+    display: inherit;
     counter-reset: line;
   }
 
@@ -146,6 +134,6 @@
 
   .shiki[title]:before {
     content: attr(title);
-    @apply text-xs text-foreground-lighter mb-3 block;
+    @apply text-xs text-foreground-lighter mb-0 block border-b p-3;
   }
 }

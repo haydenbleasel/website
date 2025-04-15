@@ -6,7 +6,7 @@ import type { NextRequest } from 'next/server';
 export const GET = async (request: NextRequest) => {
   const title = request.nextUrl.searchParams.get('title');
   const avatarData = await readFile(
-    join(process.cwd(), 'app/(home)/avatar.jpg')
+    join(process.cwd(), 'components/avatar/avatar.jpg')
   );
   const avatarSrc = Uint8Array.from(avatarData).buffer;
   const geistBold = await readFile(

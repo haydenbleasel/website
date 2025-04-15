@@ -90,8 +90,12 @@
     @apply grid gap-2;
   }
 
-  article code:not(pre code) {
+  article code:not(pre code), article kbd {
     @apply bg-secondary px-1 py-0.5 rounded-md text-sm -translate-y-px;
+  }
+
+  article kbd {
+    @apply border;
   }
 
   article ul {

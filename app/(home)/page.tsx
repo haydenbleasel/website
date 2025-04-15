@@ -161,8 +161,8 @@ const Home = async () => {
           <Link href="/blog/refraction">acquired</Link> by Twistag in 2023.
           Refraction was used by the world's most innovative companies,
           including Amazon, Accenture, Bentley, Cisco, IKEA, Repl.it, Roblox,
-          Softbank, Sega, TikTok, Uber, Yahoo and more.
-          <FootnoteMarker index={2} />
+          Softbank, Sega, TikTok, Uber, Yahoo and more{' '}
+          <FootnoteMarker index={2} />.
         </p>
         <p>Many of my projects are still active or in progress, including:</p>
         <ul className="list-disc pl-5">

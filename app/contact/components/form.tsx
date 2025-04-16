@@ -5,29 +5,60 @@ import { Input } from '@/components/input';
 import { Textarea } from '@/components/textarea';
 import { cn } from '@/lib/utils';
 import { ArrowRightIcon, Loader2Icon } from 'lucide-react';
+import { useReCaptcha } from 'next-recaptcha-v3';
 import { Form } from 'radix-ui';
-import { useActionState } from 'react';
+import { type FormEventHandler, useState } from 'react';
 import { toast } from 'sonner';
-
-const initialState = {
-  message: '',
-  error: '',
-};
 
 export const emailRegex = /.+@.+/u;
 
 export const ContactForm = () => {
-  const [state, formAction, isPending] = useActionState(contact, initialState);
+  const { executeRecaptcha } = useReCaptcha();
+  const [loading, setLoading] = useState(false);
 
-  if (state.error) {
-    toast.error(state.error);
-  }
-  if (state.message) {
-    toast.success(state.message);
-  }
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault();
+
+    if (loading) {
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const token = await executeRecaptcha('form_submit');
+      const form = event.target;
+
+      if (!(form instanceof HTMLFormElement)) {
+        toast.error('Form is not an HTMLFormElement');
+        return;
+      }
+
+      const formData = new FormData(form);
+
+      formData.append('token', token);
+
+      const response = await contact(formData);
+
+      if (response.error) {
+        throw new Error(response.error);
+      }
+
+      toast.success(response.message);
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : 'An error occurred while sending the message';
+
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <Form.Root action={formAction} className="grid w-full gap-6">
+    <Form.Root onSubmit={handleSubmit} className="grid w-full gap-6">
       <Input
         label="Name"
         name="name"
@@ -61,13 +92,13 @@ export const ContactForm = () => {
       <Form.Submit asChild>
         <button
           type="submit"
-          disabled={isPending}
+          disabled={loading}
           className={cn(
             'flex w-fit cursor-pointer select-none items-center justify-center gap-2 rounded-md bg-foreground px-3 py-2 text-background text-sm',
             'disabled:cursor-not-allowed disabled:opacity-50'
           )}
         >
-          {isPending ? (
+          {loading ? (
             <div className="flex h-5 w-5 items-center justify-center">
               <Loader2Icon className="h-4 w-4 animate-spin" />
             </div>

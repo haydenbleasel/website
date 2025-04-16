@@ -1,6 +1,8 @@
 import { Section } from '@/components/section';
+import { env } from '@/lib/env';
 import { createMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
+import { ReCaptchaProvider } from 'next-recaptcha-v3';
 import { Suspense } from 'react';
 import { ContactForm } from './components/form';
 
@@ -14,7 +16,7 @@ export const metadata: Metadata = createMetadata({
 });
 
 const Contact = () => (
-  <>
+  <ReCaptchaProvider reCaptchaKey={env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
     <Section className="gap-0">
       <h1>{title}</h1>
       <p className="text-foreground-lighter">{description}</p>
@@ -24,7 +26,7 @@ const Contact = () => (
         <ContactForm />
       </Suspense>
     </Section>
-  </>
+  </ReCaptchaProvider>
 );
 
 export default Contact;

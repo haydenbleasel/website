@@ -33,7 +33,16 @@ export const contact = async (
     };
   }
 
-  const { name, email, message } = Object.fromEntries(formData);
+  const { name, email, message, subject } = Object.fromEntries(formData);
+
+  // This is a honeypot field - if it's filled, it's likely a bot.
+  // Fuck you, bots.
+  if (typeof subject === 'string' && subject.length) {
+    return {
+      message: 'Thanks! Your message has been sent.',
+      error: '',
+    };
+  }
 
   if (
     typeof name !== 'string' ||

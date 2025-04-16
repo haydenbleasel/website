@@ -50,7 +50,14 @@ export const ContactForm = () => {
         required
         maxLength={1000}
       />
-
+      <div className="hidden">
+        <Input
+          label="Subject"
+          name="subject"
+          placeholder="I want to know more about your services"
+          maxLength={256}
+        />
+      </div>
       <Form.Submit asChild>
         <button
           type="submit"

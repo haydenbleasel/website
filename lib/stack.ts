@@ -26,14 +26,14 @@ export const stack = [
     description: '.local development, simplified.',
     affiliate: true,
     href: 'https://www.localcan.com?aff=VMdMv',
-    featured: true,
+    featured: false,
   },
   {
     name: 'Postmark',
     description: 'Fast, reliable email delivery.',
     affiliate: true,
     href: 'https://www.postmarkapp.com?via=8240a3',
-    featured: true,
+    featured: false,
   },
   {
     name: 'GitHub Desktop',
@@ -214,6 +214,13 @@ export const stack = [
     description: 'File your U.S. taxes with ease.',
     affiliate: true,
     href: 'https://refer.intuit.com/f2a4w',
+    featured: false,
+  },
+  {
+    name: 'Mercury',
+    description: 'Simple banking for U.S. startups.',
+    affiliate: true,
+    href: 'https://mercury.com/r/haste',
     featured: false,
   },
 ];

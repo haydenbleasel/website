@@ -221,6 +221,13 @@ export const stack = [
     description: 'Simple banking for U.S. startups.',
     affiliate: true,
     href: 'https://mercury.com/r/haste',
-    featured: false,
+    featured: true,
+  },
+  {
+    name: 'ElevenLabs',
+    description: 'AI speech synthesis and voice cloning.',
+    affiliate: true,
+    href: 'https://try.elevenlabs.io/5fxrqtrzwdfu',
+    featured: true,
   },
 ];

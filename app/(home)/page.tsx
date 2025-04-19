@@ -168,10 +168,8 @@ const Home = async () => {
         <ul className="list-disc pl-5">
           {projects.map((project) => (
             <li key={project.name}>
-              <Link href={project.link} className="underline">
-                {project.name}
-              </Link>{' '}
-              - {project.description}
+              <Link href={project.link}>{project.name}</Link> -{' '}
+              {project.description}
             </li>
           ))}
         </ul>

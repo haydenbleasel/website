@@ -78,7 +78,7 @@
     @apply mt-6;
   }
 
-  p a {
+  p a, ul a {
     @apply border-b inline-block leading-[1.3] transition-colors hover:border-border-dark;
   }
 

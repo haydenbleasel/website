@@ -230,4 +230,11 @@ export const stack = [
     href: 'https://try.elevenlabs.io/5fxrqtrzwdfu',
     featured: true,
   },
+  {
+    name: 'Cal.com',
+    description: 'The better way to schedule your meetings.',
+    affiliate: true,
+    href: 'https://refer.cal.com/haydenbleasel',
+    featured: true,
+  },
 ];

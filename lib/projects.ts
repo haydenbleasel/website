@@ -10,6 +10,11 @@ export const projects = [
     link: 'https://orate.dev/',
   },
   {
+    name: 'Tersa',
+    description: 'An open source canvas for building AI workflows.',
+    link: 'https://www.tersa.ai/',
+  },
+  {
     name: 'Ultracite',
     description: 'Robust linting config for TypeScript apps, built on Biome.',
     link: 'https://www.ultracite.dev/',

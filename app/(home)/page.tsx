@@ -28,7 +28,7 @@ const getSubscribers = unstable_cache(
   },
   ['subscribers'],
   {
-    revalidate: 60, // Cache for 1 minute
+    revalidate: 86400, // Cache for 24 hours
     tags: ['subscribers'],
   }
 );

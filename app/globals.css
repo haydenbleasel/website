@@ -106,6 +106,10 @@
     @apply list-decimal pl-4 space-y-2;
   }
 
+  article hr {
+    @apply my-4;
+  }
+
   strong {
     @apply font-medium;
   }

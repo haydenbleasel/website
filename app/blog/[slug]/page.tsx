@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { allPosts } from 'content-collections';
 import { ArrowLeftToLineIcon } from 'lucide-react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { FC } from 'react';
 
@@ -69,6 +70,19 @@ const Page: FC<PageProperties> = async ({ params }) => {
         <h1>{page.title}</h1>
         <p className="text-foreground-lighter">{page.description}</p>
       </Section>
+      {page.image ? (
+        <Section>
+          <Image
+            src={page.image}
+            alt={page.title}
+            width={1200}
+            height={630}
+            className="overflow-hidden rounded-lg border border-border/50"
+            quality={100}
+            priority
+          />
+        </Section>
+      ) : null}
       <article className="grid gap-3">
         <Section delay={0.2}>
           <Mdx code={page.body} />

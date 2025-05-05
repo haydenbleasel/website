@@ -1,0 +1,62 @@
+---
+title: Why shadcn/ui is taking over the internet
+description: What makes a component library more than just styled primitives.
+date: 05-05-2025
+image: /blog/shadcn.png
+---
+
+Unless you've been living under a rock for the past year like my boy Patrick Star, you've probably heard about [shadcn/ui](https://ui.shadcn.com/). Its very quickly becoming the most popular component library on GitHub, far surpassing [Radix UI](https://www.radix-ui.com/) on which it's ironically based.
+
+From the outside, it can be hard to understand why it's so popular. It's not like it's the first component library to offer pre-styled or reusable components. [Bootstrap](https://getbootstrap.com/) gave us buttons and navbars back when jQuery lorded over the web; and for the next decade we've seen [Material UI](https://mui.com/material-ui/), [Ant Design](https://ant.design/), [Chakra](https://chakra-ui.com/) and [Headless UI](https://headlessui.com/) give us a ton of pre-built components. So what makes shadcn/ui so special?
+
+Is it the visual aesthetic? The monochrome, stripped-back and functional vibe that comes from being part of the Vercel club. But that's not why developers love it. You can make anything look pretty with enough [Tailwind](https://tailwindcss.com/) and caffeine.
+
+Is it the fact you can copy and paste components straight into your codebase? Definitely helps but it's not being regarded as the next StackOverflow or CodePen.
+
+IMO it comes down to three things: composability, semantic colors and [v0](https://v0.dev/).
+
+## Composable components
+
+When Bootstrap dropped, every site on the internet suddenly looked the same. That was the dawn the plug-and-play era of UI development. Then came a wave of more “customizable” libraries that gave you config options and style props. But in the end, most of them had the same flaw: you didn’t really own the component.
+
+You got a box. You could color the box, maybe resize the box. But if you wanted to split it open and rearrange the internals? Good luck. Metaphors aside, you typically got a single, monolithic component that had a fixed layout and could only be styled with overrides, specific style attributes, etc.
+
+shadcn/ui flips that entirely. You don’t get a black box — you get the actual source code. You copy the component straight into your repo. Want to delete the header entirely? Go ahead. Want to replace the video slot with some insane ThreeJS fluid sim? Go for it. You’re not “using” a component — you’re effectivley forking it.
+
+Initially this felt weird. Copy-pasting code sounds a bit counter-intuitive, but the more you use it, the more it clicks. Copying isn’t the problem. Copying without context is, like CodePen snippets or StackOverflow answers. With shadcn/ui, you get working, accessible, well-structured components that you’re meant to make your own.
+
+And because it’s all built with Radix primitives under the hood, you still get the brilliant accessibility and interaction patterns for free. This is the fundamental shift in the mental model of component architecture. Most component libraries optimize for ease-of-use. Shadcn/ui optimizes for control. And if you’ve ever tried to build and scale a design system using third-party components — that control is everything.
+
+## The rise of the semantic colors
+
+shadcn/ui relies on CSS variables (Design Tokens if you're a product designer) to manage the theme of the components. While this in itself is cool, it's the way it's implemented that makes it so powerful.
+
+Rather than specifying a color for the primary button, you specify a color for the `--primary` variable. This variable is then used throughout the component library to ensure consistency. Not only that, you can also override this variable for dark mode, high contrast mode, etc. meaning you get an entire component library that works for any color scheme, instantly.
+
+The variables are also semantically named and component-agnostic. Variables like `foreground`, `background`, `card` and `primary` all represent different things in different components, but they're named in a way where you can use them in new components without having to worry about naming collisions or having to remember what you called your primary color.
+
+But the best part of this system isn't in the shadcn/ui source code. It's in everyone else's. The concept of using a standard set of variables across every project that uses shadcn/ui means that every shadcn/ui component will not only work out of the box, but will also match your theme. So if you see a component you like, you can copy the raw JSX, paste it into your own code and it will look "on brand" as they say.
+
+And even further — if we're all using the same tokens and the components are all copy-pasteable, we can start publishing our own registries of components that works everywhere. This concept is what I'm working on with [Kibo UI](https://www.kibo-ui.com/) and powers entire component marketplaces like [21st.dev](https://21st.dev).
+
+## Remixing and vibecoding
+
+One of the most exciting things happening in the shadcn/ui ecosystem right now is the bidirectional integration with [v0](https://v0.dev/). If you haven't tried it yet, it's Vercel's AI that lets you describe your ideas in natural language and generates both the code and UI for your project. I've been using it to experiment with new ideas — it's a lot of fun.
+
+shadcn/ui has an "Edit in v0" button on all the components. Click it and it will open up the v0 editor with the component functional and ready to go, source code and all. Additionally, v0 now generates a lot of its new code with shadcn/ui primitives.
+
+This integration has basically created an entirely new way to remix components. Before, even if you found a cool React component online, there was no guarantee it would match your architecture, naming conventions, or design tokens. If you wanted to change it, you'd more often than not have to pull it apart and rebuild it.
+
+With shadcn/ui + V0, you’re generating components that already speak the same language — same structure, same tokens, same Tailwind-y DNA. A button turns into a card. A card becomes a signup form. A modal gets converted into a floating command palette. All with shared conventions and drop-in theming.
+
+It's nice for shadcn himself as this creates a flywheel: the more components get generated and customized, the more likely they are to be reused and extended again. The more projects need to run on shadcn/ui to be able to use the components; and conversely the more likely they are to be used.
+
+The rise of vibecoding has only accelerated this. Suddenly, shipping beautiful, consistent UI isn’t a weekend project. It’s a prompt and a paste away.
+
+---
+
+TL;DR: shadcn/ui isn’t winning because it’s trendy. It’s winning because it actually solves a lot of problems we’ve all silently put up with for years; and some we didn't even know we had. It's pushing a new mental model of how we should be building UI; one that's more aligned with how we build software.
+
+It’s not perfect. You have to maintain your own copies. If you edit the source code, it can be hard to pull updates. You have to be comfortable editing component code. But the tradeoffs are worth it.
+
+Until next time, happy coding.

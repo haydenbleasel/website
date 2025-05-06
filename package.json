@@ -24,6 +24,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-player": "^2.16.0",
+    "react-tweet": "^3.2.2",
     "reading-time": "^1.5.0",
     "resend": "^4.2.0",
     "schema-dts": "^1.1.5",

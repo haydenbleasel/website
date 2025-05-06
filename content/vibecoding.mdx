@@ -1,0 +1,81 @@
+---
+title: The rise of vibe coding
+description: Shipping without coding is addictive and it feels like the future, but it isn't quite production-ready... yet.
+date: 04-27-2025
+---
+
+AI-assisted “vibe coding” is taking the dev world by storm — allowing you to code at the speed of thought without actually writing any code. It’s the latest buzzword in developer circles, a workflow where you let AI do the heavy lifting while you ride your creative high. You just describe what you want in natural language, then watch as a UI or API materializes in real-time. The best tools let you tweak and iterate on the fly as if you’re jamming with the computer. It’s ridiculously fun.
+
+## True flow state 
+
+One of the greatest things about vibe coding is not the code that's being generated, but the way in which it allows you to get into a genuine [flow state](https://www.headspace.com/articles/flow-state). We talk about this concept a lot as engineers — the rare, precious zone where creativity and productivity collide and you lose all track of time because the work is as fun as it is challenging.
+
+While we've inherently accepted it as part of the flow state, traditional coding often yanks you out of a build flow by forcing constant context switching—jumping between Stack Overflow tabs, documentation sites, and [shadcn/ui](/blob/shadcn) component documentation.
+
+Vibe coding removes those distractions. Instead of searching for the right React hook to use, you simply describe what you want by the outcome. The implementation details are abstracted, allowing you to focus on the "what" instead of the "how".
+
+<Tweet id="1608805146204553216" />
+
+There's been a lot of similar tweets, but this one in particular resonated with me. We have a concept of higher and lower level programming languages, where higher level languages are closer to human language and lower level languages are closer to machine language.
+
+Typically, newer generations of developers tend to pick higher level languages rather than stick with their predecessors. Generational shifts took us from building in Assembly, to C, to Python, to JavaScript (on the web at least). The concept of natural language being the new highest level of abstraction is super interesting.
+
+## The allure of the vibe
+
+Right now there's a slew of new AI-native platforms like [Lovable](https://www.lovable.dev), [Bolt](https://bolt.new) and [v0](https://v0.dev) leading the vibe coding charge, acting as a pair programmer that turns your prompts into working code. You don't even have to write lengthy requirements docs or appease it into helping you out like a senior developer. Truly we are living in a time of marvels.
+
+I find this super interesting as it's led to a new breed of developer who's able to build products and ship demos in a matter of hours or days. Because they're unburdened by the constraints of traditional development (or, "what has been" if you will), they're able to focus more on building community and getting feedback.
+
+Now, while I think abolutely think they're the future and I think it's stupid to bet against the accelerated growth of models and the exponential improvement in their contextual capabilities, I also think it's important to remember that, in the grand scheme of time, large language models are still in their infancy.
+
+Until we have true artificial general intelligence (or whatever definition you want to use to describe it), I think it's important to learn to code so you can understand the code that's being generated. Code generation as isolated experiments are totally find, but building production-ready apps is another story.
+
+## When the vibe goes cringe
+
+Right now, language models don't fully understand the context of the code it's generating, or how it works in the wider ecosystem of your project (though it's getting exponentially better with each passing month). It's an incredibly complex system designed to pick the next probabilistic token in a sequence.
+
+When building software, there are a lot of things that are important to consider that may not get automatically generated: seceurity, authentication, error handling, performance, and so on. If you're terminally on [X](https://x.com/haydenbleasel) like I am, you've probably seen a few examples of this lately that serve as cautionary tales.
+
+### Leaking API keys
+
+In one instance, an enthusiastic team built a Lovable app that turned LinkedIn profiles into websites, powered by Lovable's API. What they didn't realize is that their Supabase API key was getting exposed in every request. The project went live with the key visible to anyone poking around the network tab, which is the equivalent of handing the world the keys to your database.
+
+<Tweet id="1902819250395549811" />
+
+### Pushing `.env` files to public repos
+
+Here, a vibecoder literally pushed their environment variables file – complete with working API credentials – to a public GitHub repo, including server-side Supabase keys and Google Cloud keys. What's interesting here is that the developer may not have been aware of the implications of their actions without a prior understanding of what environment variables are and how they work.
+
+<Tweet id="1907473352090071491" />
+
+### Banned by Your Own App
+
+There was one developer working on a crowdsourced scam detection app. He managed to get themselves flagged as a scammer in their own product an hour after launching it, due to an unsecured, un-rate-limited API endpoint.
+
+<Tweet id="1902759207503605845" />
+
+While I find these examples hilarious in a schadenfreude kind of way, they do serve as a reminder that vibe coding is not yet ready for production-grade apps. As brilliant as it is to see your ideas come to life in seconds, it's easy to miss the boring (but critical) stuff like API keys, access control, validations, and error handling.
+
+That being said, I have seen these platforms get a lot better at handling these situations and even performing code reviews, tests and linting fixes on the code generated. It won't be long before we see these tools mature to the point where we can use them to build **secure** production-ready apps.
+
+## Managing the infrastructure is key
+
+The good news is that none of these growing pains are deal-breakers. They’re more like to-do list items for the vibe coding movement to figure out – and figure it out they will. Remember, we’re still in the early innings here. The fact that we’re seeing these flaws out in the open is a sign that the tech is maturing (painfully, at times) and developers are learning what needs to be hardened. I’d argue that with each spectacular screw-up, vibe coding is getting closer to its “come to Jesus” moment on security and reliability. Solutions are already emerging.
+
+How do we get vibe coding to a place where it’s safe for serious apps? IMO, it's integration with managed infrastructure and platform providers. If the AI tooling can seamlessly plug into services that handle the heavy lifting of security, a lot of these issues could vanish. For example, imagine if your vibe coding assistant auto-stored secrets in a secure vault or environment variables by default, instead of hardcoding them into the code. Or if it scaffolded your project on a platform like [Vercel](https://vercel.com), [Firebase](https://firebase.google.com), or [Convex](https://www.convex.dev), where things like auth, database access rules, and API endpoints come pre-secured out-of-the-box.
+
+In fact, we’re already seeing hints of this. Vercel’s [v0](https://v0.dev) is uniquely positioned here – it’s built by a company known for its managed hosting and deployment. It’s not hard to picture a near-future where v0 generates your app and also configures all the Vercel settings for you: environment variables properly set, serverless functions handling sensitive logic, and role-based access control pre-baked into the templates.
+
+Likewise, other platforms are stepping up. Convex recently launched [Chef](https://chef.convex.dev/) and Firebase is pushing [Firebase Studio](https://firebase.studio/). The point is, the next wave of vibe coding tools will likely collaborate closely with infrastructure providers to make sure that “move fast” doesn’t mean “break everything.”
+
+## Don’t bet against the vibe
+
+It’s easy to look at the current hiccups and dismiss vibe coding as a toy for hackathons or a disaster waiting to happen in production. But that would be incredibly short-sighted. Every new technology goes through a messy adolescence before it matures, and the term "vibe coding" was only coined a couple of months ago.
+
+The pace of improvement in this space is nothing short of meteoric. The AI models underpinning these tools are getting better literally every month – more reliable, more aware of context, better at adhering to instructions. The workflows around vibe coding are maturing too. Developers are learning to blend intuition with a healthy dose of verification. Tool makers are adding safety features, documentation, and community forums full of best practices. The whole vibe coding ecosystem is leveling up extremely fast.
+
+At the current pace, viral posts like “I let GPT-4 build my app overnight!” might be considered mainstream development practices in a year or two.
+
+Anyway, while vibe coding isn’t quite ready for your mission-critical, production banking app just yet, you should definitely get your team onboard with it. I find it's a great way to get junior developers to level up quicker and product designers to get their ideas out of their head and into the hands of engineers.
+
+Until then, keep vibing (but check code first please). 

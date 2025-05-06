@@ -110,6 +110,14 @@
     @apply my-4;
   }
 
+  article .react-tweet-theme {
+    @apply !m-0 !max-w-none !border-border/50;
+  }
+
+  article [class*="quoted-tweet-container"] {
+    @apply !hidden;
+  }
+
   strong {
     @apply font-medium;
   }

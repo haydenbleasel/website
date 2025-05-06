@@ -33,11 +33,13 @@ const getSubscribers = unstable_cache(
   }
 );
 
+const location = '🇺🇸 Delray Beach, Florida';
+const timezone = 'America/New_York';
+
 export const metadata: Metadata = createMetadata({
   title: 'Home',
-  description:
-    'I&apos;m an Australian Design Engineer living in 🇺🇸 Delray Beach, Florida. I love creating beautiful software that delights users and reimagines the way we interact with technology.',
-  ogText: 'Australian Design Engineer currently based in 🇺🇸 Delray Beach, FL.',
+  description: `I'm an Australian Design Engineer living in ${location}. I love creating beautiful software that delights users and reimagines the way we interact with technology.`,
+  ogText: `Australian Design Engineer currently based in ${location}.`,
 });
 
 const Home = async () => {
@@ -50,12 +52,10 @@ const Home = async () => {
         <h1>Hayden Bleasel</h1>
         <p>
           I&apos;m an Australian Design Engineer living in{' '}
-          <LocationCard timezone="America/New_York">
-            🇺🇸 Delray Beach, Florida
-          </LocationCard>
-          . I love creating beautiful software that delights users and
-          reimagines the way we interact with technology. I&apos;m also an avid
-          drone pilot, gamer and open source maintainer.
+          <LocationCard timezone={timezone}>{location}</LocationCard>. I love
+          creating beautiful software that delights users and reimagines the way
+          we interact with technology. I&apos;m also an avid drone pilot, gamer
+          and open source maintainer.
         </p>
         <p>
           I&apos;m currently exploring new ideas (particularly AI-native apps)

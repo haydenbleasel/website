@@ -31,8 +31,7 @@ export const generateMetadata = async ({
   return createMetadata({
     title: page.title,
     description: page.description,
-    ogText: page.title,
-    image: page.image,
+    image: `/og?title=${page.title}&description=${page.description}`,
   });
 };
 

@@ -5,12 +5,17 @@ import type { NextRequest } from 'next/server';
 
 export const GET = async (request: NextRequest) => {
   const title = request.nextUrl.searchParams.get('title');
+  const description = request.nextUrl.searchParams.get('description');
+
   const avatarData = await readFile(
     join(process.cwd(), 'components/avatar/avatar.jpg')
   );
   const avatarSrc = Uint8Array.from(avatarData).buffer;
   const geistBold = await readFile(
     join(process.cwd(), 'app/og/Geist-Bold.ttf')
+  );
+  const geistRegular = await readFile(
+    join(process.cwd(), 'app/og/Geist-Regular.ttf')
   );
 
   return new ImageResponse(
@@ -31,9 +36,16 @@ export const GET = async (request: NextRequest) => {
         height={72}
         tw="overflow-hidden rounded-full"
       />
-      <h1 tw="max-w-[48rem] text-[64px] font-bold leading-[69px] tracking-tighter m-0">
-        {title}
-      </h1>
+      <div tw="flex flex-col">
+        <h1 tw="max-w-[48rem] text-[64px] font-bold leading-[69px] tracking-tighter m-0">
+          {title}
+        </h1>
+        {description && (
+          <p tw="max-w-[30rem] text-[24px] font-normal leading-[32px] tracking-tight text-[#666666] mt-4 mb-0">
+            {description}
+          </p>
+        )}
+      </div>
     </div>,
     {
       width: 1200,
@@ -44,6 +56,12 @@ export const GET = async (request: NextRequest) => {
           data: geistBold,
           style: 'normal',
           weight: 700,
+        },
+        {
+          name: 'Geist',
+          data: geistRegular,
+          style: 'normal',
+          weight: 400,
         },
       ],
     }

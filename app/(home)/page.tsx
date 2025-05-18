@@ -39,7 +39,7 @@ const timezone = 'America/New_York';
 export const metadata: Metadata = createMetadata({
   title: 'Home',
   description: `I'm an Australian Design Engineer living in ${location}. I love creating beautiful software that delights users and reimagines the way we interact with technology.`,
-  ogText: `Australian Design Engineer currently based in ${location}.`,
+  ogText: `Australian Design Engineer living in ${location}.`,
 });
 
 const Home = async () => {

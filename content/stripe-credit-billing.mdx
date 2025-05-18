@@ -1,0 +1,105 @@
+---
+title: Implementing a credit-based billing system with Stripe
+description: Some constructive criticism for the Stripe team on how to improve their billing system for credit-based billing.
+date: 05-17-2025
+---
+
+I recently built a credit-based billing system for [Tersa](https://www.tersa.ai), an open-source canvas for building AI workflows. The idea is straightforward: users purchase credits up front and spend them as they use the service. Easy, right? I assumed [Stripe](https://stripe.com/), being the best in class payments provider for the internet, would have my back here.
+
+After implementing Stripe’s billing system for our credit-based model, I encountered several challenges that made the experience more difficult than expected, and I'd like to share what I learned.
+
+Before I get into this, I want to say that I still love Stripe, they have a brilliant product and the team behind it are amazing. I've been using Stripe for years and they're the most reliable payments provider I've ever used. This post is just guidance to prevent others from falling into the same traps I did.
+
+Also also before you mention it, I tried Polar first before Stripe but I had [some bugs](https://github.com/polarsource/polar/issues?q=author%3Ahaydenbleasel) and the flow was a clunky. Their product is cool and their team was responsive, but I'm not dropping 4% on every transaction for a product that isn't quite ready yet.
+
+Alright let's get into it.
+
+## Setting up the products
+
+Let's start with the products. I wanted to create two products — "Tersa Hobby" which has 200 credits a month for free with no overage, and "Tersa Pro" that charges a flat monthly fee for which you would get a certain amount of credits. Then, if you use up all those credits, you can go into overage where you pay by the credit.
+
+To Stripe's credit (pun intended), they do have a concept of "metered billing" for which you can add a flat monthly fee and usage-based fee, broken down into tiers. It looks perfect in the UI, until you try to use it where Stripe charges the user $0.00 upfront.
+
+This is because anything metered or usage based charges customers after the billing period ends, even if there's a flat fee. In other words, the customer accumulates usage (or overages) during the month, and Stripe bills them at the end for what they used.
+
+This makes sense for pure usage-based pricing, but it becomes problematic for a prepaid credits model. In a system where you need to pay AI providers for each credit you use, you can't charge the user nothing upfront without taking on some serious overhead (unless you're funded, but Tersa is [open source](https://github.com/haydenbleasel/tersa)).
+
+To work around this, I ended up with a two-plan tango: one plan for the flat base fee, and another for the usage-based credits. Essentially, every customer gets two Stripe “subscriptions” (or two subscription items) – one static, one metered. This is the only way I could charge upfront for the base and still track usage for credits.
+
+![Stripe products](/blog/stripe-credit-billing/products.png)
+
+While this approach works, it felt unnecessarily complicated. We now have three products — "Tersa Hobby", "Tersa Pro", and "Tersa Usage". A flat fee + usage-based fee both get attached to the customer. It feels like a hack (because it is), but there was no better way I found.
+
+It's also not great in the checkout flow as the hobby plan is free and has no overage, but I use the Usage plan to track usage. So, it shows the Pro-based usage rate in the checkout flow, even though they'll never hit it.
+
+![Stripe checkout](/blog/stripe-credit-billing/checkout.png)
+
+## Tracking usage
+
+To run a credit-based billing system, you need to track the credits your customers use (obviously). Again, Stripe have a concept of this called Meter Events and they're relatively easy to use:
+
+```ts title="track.ts"
+import stripe from 'stripe';
+
+const stripe = new stripe('{{YOUR_API_KEY}}');
+
+const meterEvent = await stripe.v2.billing.meterEvents.create({
+  event_name: 'credit_usage',
+  payload: {
+    stripe_customer_id: '{{STRIPE_CUSTOMER_ID}}',
+    value: '{{CREDITS_USED}}',
+  },
+});
+```
+
+Perfection. Now we just need to call this function whenever a user uses a credit. Now to show the user their remaining balance!
+
+![Stripe meter](/blog/stripe-credit-billing/meter.png)
+
+Unfortunately, there's no easy way to do this. Stripe have an endpoint called a [Meter Event Summary](https://docs.stripe.com/api/billing/meter-event-summary) that is supposed to return an aggeregated balance of all the credits used in a billing period, however in practice it doesn't seem to return anything.
+
+My [workaround](https://raw.githubusercontent.com/haydenbleasel/tersa/refs/heads/main/app/actions/credits/get.ts) to this is to, on request:
+
+1. Create a new preview invoice for the customer
+2. Get the usage product line item from the invoice
+3. Figure out which one is the usage-based one 
+4. Retrieve the price details of that product line item
+5. Iterate over the tiers in that product line item to find their credit limit
+6. Calculate remaining credits by subtracting usage from the tier limit
+7. Return the remaining credits
+
+At least we have a way to get the remaining credits. It's a bit lengthy but it shouldn't take more than a second or so to run. That should give us a realtime balance, right?
+
+Not quite. Stripe’s metered billing isn’t actually real-time. When a user spends some credits, I wanted their remaining balance to update immediately in our app. But Stripe’s usage metering system operates on a delay – in our experience, up to ~70 seconds for usage to register.
+
+In Stripe's defense, they have [documented](https://docs.stripe.com/api/v2/billing-meter) that usage events are processed asynchronously and won’t show up right away in an upcoming invoice.
+
+But in a responsive credits system, a one-minute delay is an eternity. Imagine a user burning through actions expecting their credit count to drop instantly, and instead it’s stuck, then suddenly updates a minute later. It’s janky and confusing.
+
+Real-time feedback is crucial for a credit system, and Stripe’s current setup isn't ideal for that use case.
+
+## Changing plans
+
+One of the things I love about Stripe is their hosted Checkout and Customer Portal experiences. It makes getting an app into production so much faster and the UX is brilliant. Unless of course, you're building a usage-based billing system.
+
+Because of our two-plan setup (and the fact that one of those is usage-based), Stripe’s customer portal disables customers managing their own plan changes. By default, Stripe’s hosted portal lets users switch plans or change quantities for normal subscriptions – but it has no idea how to handle a subscription that’s part flat fee and part metered usage. That meant our users couldn’t self-serve upgrade to a higher credit tier or downgrade to a lower one through Stripe’s UI.
+
+Since Stripe’s portal was a dead end, I had to implement plan changes manually on our side. And when I say manually, I mean writing code to juggle multiple subscriptions [via webhooks](https://github.com/haydenbleasel/tersa/blob/main/app/api/webhooks/stripe/route.ts). Essentially, to simulate an upgrade/downgrade, we cancel the user’s current usage subscription item and replace it with a new one corresponding to the target plan’s usage allowance. This all has to happen in the background when a user clicks “Change Plan” in our app.
+
+It’s a fragile ballet. One wrong move and a customer could be left with two concurrent usage subscriptions (charging double), or none at all (free credits!). I definitely had a few “WTF” moments testing this, watching Stripe fire off events as we tried to sync everything. All this complexity just to let users upgrade their plan on their own – something Stripe’s own tooling should handle but doesn’t in this scenario.
+
+## Credit burndowns
+
+After all our hacks, I stumbled on Stripe’s own concept called billing credits or a ["credit burndown"](https://docs.stripe.com/billing/subscriptions/usage-based/pricing-models#credit-burndown) model. Stripe basically acknowledges the need for prepaid credits: you charge the customer upfront and grant them credit that decrements with usage. That’s exactly what I wanted! I got momentarily excited – maybe Stripe had finally solved this.
+
+Unfortunately not. As of right now, billing credits are applied manually to a customer's account in the Stripe Dashboard. I’m sure Stripe will improve this, they have a concept of Rate Cards in private preview but that doesn’t help us today.
+
+## Final thoughts
+
+Implementing a credit-based billing system on Stripe felt like swimming upstream. I ended up fighting Stripe’s normal usage-based paradigm at every turn. Delayed usage records, end-of-period billing, no native credit balance support, broken self-serve flows – it’s been one workaround after another.
+
+I’ve built many integrations on Stripe and generally love their products, which is maybe why this experience was so frustrating. Stripe’s system seems primarily optimized for billing in arrears or simpler subscription models, leaving prepaid credits systems less straightforward to implement.
+
+For now, we’ve got our credit system working with a mix of duct tape and code. It does the job, but I can’t shake the feeling that it shouldn’t have been this hard. Stripe is pushing usage-based billing heavily (especially for AI companies), so hopefully they iron out these kinks sooner rather than later.
+
+Until then, if you’re a founder considering a credits model and thinking “Surely Stripe can handle this elegantly” – learn from my pain and budget a lot of extra dev time Credit-based billing in Stripe is certainly possible, but it’s currently more complex and challenging than it needs to be.

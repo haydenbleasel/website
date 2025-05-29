@@ -100,7 +100,7 @@ export const parseError = (error: unknown) => {
 };
 ```
 
-In the code above, `parseError()` takes an `unknown` error and returns a string. I typically type the error as `unknown` since it can be anything and `any` effectively disables type checking. From here, it does the least amount of effort to determine an error message. If it's a string, return that. If it's a `Error` instance, return the message prop. If it's an object that just happens to have a message property (but isn't an Error), it grabs that. Otherwise, it just returns a generic error message.
+In the code above, `parseError()` takes an `unknown` error and returns a string. I typically type the error as `unknown` since it can be anything and `any` effectively disables type checking. From here, it does the least amount of effort to determine an error message. If it's a string, return that. If it's a `Error` instance, return the message prop. Otherwise, it just returns a generic error message.
 
 In other words, no matter what crazy thing was thrown, `parseError` will give you something useful – a human-readable message. This saves you from writing that logic in every single catch block.
 
@@ -119,7 +119,7 @@ export const handleError = (title: string, error: unknown) => {
 };
 ```
 
-This companion function is even simpler: it calls `parseError` to get a message, then passes that message to a UI notification. In a Node.js project, your `handleError` might instead log to the console or send the error to a remote monitoring service. The idea is the same – one centralized place to decide how to respond when an error happens.
+This companion function is even simpler: it calls `parseError` to get a message, then passes that message to a UI notification. In a Node.js project, your `handleError` might instead log to the console or send the error to a remote monitoring service.
 
 It works for try / catch blocks:
 
@@ -144,7 +144,7 @@ fetch('https://api.example.com/data')
   .catch(handleError);
 ```
 
-I think this resonates with many developers because it’s a dead-simple pattern that works with ~10 lines of code. No forgetting to log, no messy `JSON.stringify` on objects, no accidentally showing `[Object object]` to the user. It’s a little quality-of-life improvement that adds up.
+I think this resonates with many developers because it’s a dead-simple pattern that works with ~10 lines of code. No forgetting to log, no messy `JSON.stringify` on objects, no accidentally showing `[Object object]` to the user.
 
 ## Sparking a debate
 

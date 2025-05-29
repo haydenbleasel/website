@@ -20,7 +20,7 @@ The fundamental tools JavaScript gives us for this are the [`try...catch`](https
 
 The overall result of this error depends on your JavaScript runtime environment. In the browser, an uncaught exception often just stops the function and logs an error to the console, however if you're running a single page application, it may crash the entire application. In Node.js, failing to catch a thrown error can terminate your process.
 
-For asynchronous code (like fetch calls or any Promise-based API), you can handle errors by catching rejections. With Promises you might append `.catch(error => { ... })`, or if using async/await syntax like you should be, you wrap the await calls in a `try...catch`. The goal is the same: handle errors in a controlled way. For example:
+For asynchronous code (like fetch calls or any Promise-based API), you can handle errors by catching rejections. With Promises you might append `.catch(error => { ... })`, or if using async/await syntax like you should be, you wrap the await calls in a `try...catch`. For example:
 
 ```js
 try {

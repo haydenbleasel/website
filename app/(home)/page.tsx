@@ -108,11 +108,11 @@ const Home = async () => {
         </p>
         <p>
           Before that, I was Director of{' '}
-          <Link href="/blog/jellypepper">Jellypepper</Link>, an award-winning
-          digital agency for disruptive startups. We worked with early stage
-          tech companies in niche areas such as self-driving car tech, AI,
-          biotech, crypto, drone delivery, cybersecurity and even orbital (outer
-          space) logistics. Jellypepper was{' '}
+          <Link href="https://jellypepper.com/">Jellypepper</Link>, an
+          award-winning digital agency for disruptive startups. We worked with
+          early stage tech companies in niche areas such as self-driving car
+          tech, AI, biotech, crypto, drone delivery, cybersecurity and even
+          orbital (outer space) logistics. Jellypepper was{' '}
           <Link href="https://raw.studio/blog/raw-studio-acquires-jellypepper-to-expand-its-reach-to-the-startup-ecosystem/">
             acquired
           </Link>{' '}

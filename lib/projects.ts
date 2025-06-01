@@ -29,9 +29,4 @@ export const projects = [
     description: 'The open source product management platform.',
     link: 'https://www.eververse.ai/',
   },
-  {
-    name: 'Ultrabeam',
-    description: 'Create and manage your own dedicated game servers.',
-    link: 'https://www.ultrabeam.app/',
-  },
 ];

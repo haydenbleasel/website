@@ -1,10 +1,5 @@
 export const projects = [
   {
-    name: 'next-forge',
-    description: 'A production-grade Turborepo template for Next.js apps.',
-    link: 'https://github.com/haydenbleasel/next-forge',
-  },
-  {
     name: 'Orate',
     description: 'The AI toolkit for speech.',
     link: 'https://orate.dev/',

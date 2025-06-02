@@ -179,6 +179,25 @@ const Home = async () => {
           Roblox, Softbank, Sega, TikTok, Uber, Yahoo and more
           <FootnoteMarker index={2} />.
         </p>
+        <p>
+          I later built{' '}
+          <Link href="https://www.next-forge.com/">next-forge</Link> — a
+          production-grade Turborepo template for Next.js apps. I released it
+          for free in a market full of paid boilerplates and grew it to nearly{' '}
+          {new Intl.NumberFormat().format(6000)} stars on GitHub, fostering a
+          community of contributors and partners around it. It got some great
+          coverge after Guillermo Rauch{' '}
+          <Link href="https://x.com/rauchg/status/1853171412766466119">
+            posted it
+          </Link>
+          , including a{' '}
+          <Link href="https://youtu.be/aHZz_6NhQkQ">YouTube review</Link> by
+          Josh tried coding. Vercel{' '}
+          <Link href="https://x.com/haydenbleasel/status/1929625673586598148">
+            acquired
+          </Link>{' '}
+          next-forge in 2025 as part of my hiring.
+        </p>
         <p>Many of my projects are still active or in progress, including:</p>
         <ul className="list-disc pl-5">
           {projects.map((project) => (

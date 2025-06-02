@@ -117,12 +117,6 @@ export const speaking = [
 
 export const interviews = [
   {
-    name: 'What Large-Scale Software Looks Like',
-    location: 'Josh tried coding • YouTube',
-    url: 'https://youtu.be/aHZz_6NhQkQ',
-    year: 2024,
-  },
-  {
     name: 'Design Interview with Hayden Bleasel',
     location: 'Lovers Magazine',
     url: 'https://spaces.is/loversmagazine/interviews/hayden-bleasel',

@@ -17,6 +17,7 @@ import { social } from '@/lib/social';
 import { stack } from '@/lib/stack';
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
+import type { ComponentProps } from 'react';
 
 const getSubscribers = unstable_cache(
   async () => {
@@ -33,8 +34,15 @@ const getSubscribers = unstable_cache(
   }
 );
 
-const location = '🇺🇸 Delray Beach, Florida';
-const timezone = 'America/New_York';
+const location = '🇺🇸 San Francisco, California';
+const timezone = 'America/Los_Angeles';
+
+const Vercel = (props: ComponentProps<'svg'>) => (
+  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <title>Vercel</title>
+    <path d="m256 48 240 416h-480z" fillRule="evenodd" fill="currentColor" />
+  </svg>
+);
 
 export const metadata: Metadata = createMetadata({
   title: 'Home',
@@ -58,8 +66,13 @@ const Home = async () => {
           and open source maintainer.
         </p>
         <p>
-          I&apos;m currently exploring new ideas (particularly AI-native apps)
-          and building open source software. If you like my OSS work, you can{' '}
+          I&apos;m currently on the Developer Experience team at{' '}
+          <Vercel className="-translate-y-0.5 mr-px ml-px inline-block size-3.5" />
+          <Link href="https://vercel.com">Vercel</Link> where I focus on
+          building our community, sharing knowledge and helping developers build
+          better products. After hours, I&apos;m exploring new ideas
+          (particularly AI-native apps) and building open source software. If
+          you like my OSS work, you can{' '}
           <Link href="https://github.com/sponsors/haydenbleasel">
             sponsor me
           </Link>

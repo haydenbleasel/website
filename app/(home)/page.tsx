@@ -108,16 +108,11 @@ const Home = async () => {
           <Link href="https://www.corellium.com/">Corellium</Link>, pioneers of
           an incredible Arm virtualisation platform. I moved to Delray Beach,
           Florida in 2021 to lead the Product, Design and Support teams in
-          blurring the line between real and virtual. Their platform is designed
-          to assist with security research (typically for government agencies
-          and defense contractors looking for OS-level vulnerabilities),
-          pentesting, DevSecOps and training. In my last year as CPO, we
-          achieved a{' '}
-          <Link href="https://www.corellium.com/blog/record-growth-innovation-2024">
-            50%+ increase in ARR
+          blurring the line between real and virtual. Corellium was{' '}
+          <Link href="https://techcrunch.com/2025/06/05/phone-unlocking-firm-cellebrite-to-acquire-mobile-testing-startup-corellium-for-170m/">
+            acquired
           </Link>{' '}
-          and a 97% renewal rate; and rolled out new solutions in the Enterprise
-          and Automotive space.
+          by Cellebrite in 2025.
         </p>
         <p>
           Before that, I was Director of{' '}

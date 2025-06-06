@@ -108,7 +108,8 @@ const Home = async () => {
           <Link href="https://www.corellium.com/">Corellium</Link>, pioneers of
           an incredible Arm virtualisation platform. I moved to Delray Beach,
           Florida in 2021 to lead the Product, Design and Support teams in
-          blurring the line between real and virtual. Corellium was{' '}
+          blurring the line between real and virtual for government agencies and
+          enterprises. Corellium was{' '}
           <Link href="https://techcrunch.com/2025/06/05/phone-unlocking-firm-cellebrite-to-acquire-mobile-testing-startup-corellium-for-170m/">
             acquired
           </Link>{' '}

@@ -1,10 +1,5 @@
 export const projects = [
   {
-    name: 'Orate',
-    description: 'The AI toolkit for speech.',
-    link: 'https://orate.dev/',
-  },
-  {
     name: 'Tersa',
     description: 'An open source canvas for building AI workflows.',
     link: 'https://www.tersa.ai/',

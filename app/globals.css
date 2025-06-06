@@ -82,6 +82,14 @@
     @apply border-b inline-block leading-[1.3] transition-colors hover:border-border-dark;
   }
 
+  a code {
+    @apply transition-colors hover:bg-border;
+  }
+
+  a:has(code) {
+    @apply border-none!;
+  }
+
   p code {
     @apply bg-secondary px-1 py-0.5 rounded-md text-sm -translate-y-px;
   }

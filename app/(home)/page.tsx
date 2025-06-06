@@ -194,6 +194,21 @@ const Home = async () => {
           </Link>{' '}
           next-forge in 2025 as part of my hiring.
         </p>
+        <p>
+          My most recent successful project is Orate &mdash; the AI toolkit for
+          speech. It's a library for synthesizing speech, transcribing audio,
+          converting voices and isolating audio. After growing it to around{' '}
+          {new Intl.NumberFormat().format(400)} stars on GitHub, Orate was
+          merged into the Vercel AI SDK in 2025 as{' '}
+          <Link href="https://x.com/aisdk/status/1909603418639155460">
+            <code>transcribe()</code>
+          </Link>{' '}
+          and{' '}
+          <Link href="https://x.com/aisdk/status/1911763995272626504">
+            <code>generateSpeech()</code>
+          </Link>{' '}
+          functions.
+        </p>
         <p>Many of my projects are still active or in progress, including:</p>
         <ul className="list-disc pl-5">
           {projects.map((project) => (

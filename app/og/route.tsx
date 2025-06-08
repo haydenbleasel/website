@@ -3,6 +3,23 @@ import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 import type { NextRequest } from 'next/server';
 
+const loadGoogleFont = async (font: string, text: string, weights: string) => {
+  const url = `https://fonts.googleapis.com/css2?family=${font}:wght@${weights}&text=${encodeURIComponent(text)}`;
+  const css = await (await fetch(url)).text();
+  const resource = css.match(
+    /src: url\((.+)\) format\('(opentype|truetype)'\)/
+  );
+
+  if (resource) {
+    const response = await fetch(resource[1]);
+    if (response.status === 200) {
+      return await response.arrayBuffer();
+    }
+  }
+
+  throw new Error('failed to load font data');
+};
+
 export const GET = async (request: NextRequest) => {
   const title = request.nextUrl.searchParams.get('title');
   const description = request.nextUrl.searchParams.get('description');
@@ -11,12 +28,6 @@ export const GET = async (request: NextRequest) => {
     join(process.cwd(), 'components/avatar/avatar.jpg')
   );
   const avatarSrc = Uint8Array.from(avatarData).buffer;
-  const geistBold = await readFile(
-    join(process.cwd(), 'app/og/Geist-Bold.ttf')
-  );
-  const geistRegular = await readFile(
-    join(process.cwd(), 'app/og/Geist-Regular.ttf')
-  );
 
   return new ImageResponse(
     <div
@@ -53,13 +64,13 @@ export const GET = async (request: NextRequest) => {
       fonts: [
         {
           name: 'Geist',
-          data: geistBold,
+          data: await loadGoogleFont('Geist', title ?? '', '700'),
           style: 'normal',
           weight: 700,
         },
         {
           name: 'Geist',
-          data: geistRegular,
+          data: await loadGoogleFont('Geist', description ?? '', '400'),
           style: 'normal',
           weight: 400,
         },

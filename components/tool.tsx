@@ -27,7 +27,14 @@ export const Tool = ({
       href={href}
     >
       <span className="flex items-center gap-2">
-        <Image src={src} alt="" width={12} height={12} className="rounded-sm" />
+        <Image
+          src={src}
+          alt=""
+          width={12}
+          height={12}
+          className="rounded-sm"
+          unoptimized
+        />
         <p className="text-foreground">{name}</p>
         {affiliate && <VerifiedIcon className="text-success" size={12} />}
       </span>

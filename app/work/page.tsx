@@ -21,9 +21,11 @@ const WorkPage = () => (
     <Section className="gap-0">
       <h1>{page.title}</h1>
     </Section>
-    <Section>
-      <Mdx code={page.body} />
-    </Section>
+    <article>
+      <Section>
+        <Mdx code={page.body} />
+      </Section>
+    </article>
   </>
 );
 

@@ -1,7 +1,7 @@
 import { mono, sans } from '@/lib/fonts';
 import './globals.css';
+import { Navigation } from '@/components';
 import { JsonLd } from '@/components/json-ld';
-import { Navigation } from '@/components/navigation';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { WindowsEmojiPolyfill } from '@/components/windows-emoji-polyfill';
 import { cn } from '@/lib/utils';

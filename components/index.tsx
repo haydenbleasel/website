@@ -2,9 +2,8 @@
 
 import { Link } from '@/components/link';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import avatar from './avatar.jpg';
+import { LocalTime } from './local-time';
 
 const links = [
   {
@@ -39,17 +38,7 @@ export const Navigation = () => {
 
   return (
     <nav className="flex items-center justify-between p-8">
-      <Link href="/">
-        <Image
-          src={avatar}
-          alt=""
-          width={48}
-          height={48}
-          className="size-8 rounded-full"
-          placeholder="blur"
-          priority
-        />
-      </Link>
+      <LocalTime />
       <ul className="flex gap-4 text-sm">
         {links.map(({ href, label, active }) => (
           <li key={href}>

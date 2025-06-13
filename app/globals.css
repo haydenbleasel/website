@@ -109,11 +109,11 @@
   }
 
   article ul {
-    @apply list-disc pl-4 space-y-2;
+    @apply list-disc pl-4;
   }
 
   article ol {
-    @apply list-decimal pl-4 space-y-2;
+    @apply list-decimal pl-4;
   }
 
   article hr {
@@ -130,6 +130,10 @@
 
   article [class*="quoted-tweet-container"] {
     @apply !hidden;
+  }
+
+  article sup a {
+    @apply text-foreground-lighter text-xs border-none;
   }
 
   strong {
@@ -171,7 +175,7 @@
   }
 
   .footnotes {
-    @apply text-foreground-lighter text-sm;
+    @apply text-foreground-lighter text-sm mt-12;
   }
 
   .footnotes h2 {

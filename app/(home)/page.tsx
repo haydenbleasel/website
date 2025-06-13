@@ -3,6 +3,8 @@ import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { allPages } from 'content-collections';
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import avatar from './avatar.jpg';
 
 const page = allPages.find((page) => page._meta.fileName === 'home.mdx');
 
@@ -18,12 +20,31 @@ export const metadata: Metadata = createMetadata({
 
 const HomePage = () => (
   <>
-    <Section className="gap-0">
-      <h1>{page.title}</h1>
-    </Section>
-    <Section>
-      <Mdx code={page.body} />
-    </Section>
+    <div className="mb-12 flex items-center gap-4">
+      <Image
+        src={avatar}
+        alt=""
+        width={40}
+        height={40}
+        className="size-10 rounded-full"
+        placeholder="blur"
+        priority
+      />
+      <div>
+        <p className="font-medium text-foreground leading-normal">
+          Hayden Bleasel
+        </p>
+        <p className="text-foreground-lighter text-sm leading-normal">
+          Designer and Engineer, currently at{' '}
+          <a href="https://vercel.com">Vercel</a>.
+        </p>
+      </div>
+    </div>
+    <article>
+      <Section>
+        <Mdx code={page.body} />
+      </Section>
+    </article>
   </>
 );
 

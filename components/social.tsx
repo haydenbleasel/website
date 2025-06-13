@@ -32,7 +32,7 @@ export const SocialItem = ({ id }: SocialItemProps) => {
 };
 
 export const Social = () => (
-  <ul className="flex flex-wrap gap-1">
+  <ul className="flex list-none flex-wrap gap-1 p-0">
     {Object.entries(social)
       .map(([id, { follow }]) => ({ id, follow }))
       .filter(({ follow }) => follow)

@@ -1,4 +1,5 @@
 import { Mdx } from '@/components/mdx';
+import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { allPages } from 'content-collections';
 import type { Metadata } from 'next';
@@ -15,6 +16,15 @@ export const metadata: Metadata = createMetadata({
   image: `/og?title=${page.title}&description=${page.description}`,
 });
 
-const ProjectsPage = () => <Mdx code={page.body} />;
+const ProjectsPage = () => (
+  <>
+    <Section className="gap-0">
+      <h1>{page.title}</h1>
+    </Section>
+    <Section>
+      <Mdx code={page.body} />
+    </Section>
+  </>
+);
 
 export default ProjectsPage;

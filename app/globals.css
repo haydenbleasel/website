@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -24,7 +24,7 @@
 
   --background: var(--color-zinc-950);
   --secondary: var(--color-zinc-800);
-  
+
   --border: var(--color-zinc-700);
   --border-dark: var(--color-zinc-500);
 
@@ -78,7 +78,8 @@
     @apply mt-6;
   }
 
-  p a, ul a {
+  p a,
+  ul a {
     @apply border-b inline-block leading-[1.3] transition-colors hover:border-border-dark;
   }
 
@@ -98,7 +99,8 @@
     @apply grid gap-2;
   }
 
-  article code:not(pre code), article kbd {
+  article code:not(pre code),
+  article kbd {
     @apply bg-secondary px-1 py-0.5 rounded-md text-sm -translate-y-px;
   }
 
@@ -134,7 +136,10 @@
     @apply font-medium;
   }
 
-  code, kbd, samp, pre {
+  code,
+  kbd,
+  samp,
+  pre {
     @apply font-mono;
   }
 
@@ -163,5 +168,13 @@
   .shiki[title]:before {
     content: attr(title);
     @apply text-xs text-foreground-lighter mb-0 block border-b p-3;
+  }
+
+  .footnotes {
+    @apply text-foreground-lighter text-sm;
+  }
+
+  .footnotes h2 {
+    @apply sr-only;
   }
 }

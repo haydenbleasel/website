@@ -29,7 +29,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         enableSystem
         disableTransitionOnChange
       >
-        <div className="mx-auto grid max-w-2xl gap-12 px-4 py-8 sm:px-8">
+        <div className="mx-auto grid max-w-2xl gap-12 px-4 py-8 pb-12 sm:px-8">
           <Navigation />
           {children}
         </div>

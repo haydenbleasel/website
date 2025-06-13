@@ -42,14 +42,14 @@ export const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center justify-between">
+    <nav className="flex items-center justify-between text-xs">
       <LocalTime />
-      <ul className="flex gap-4 text-sm">
+      <ul className="flex gap-4">
         {links.map(({ href, label, active }) => (
           <li key={href}>
             <Link
               href={href}
-              className={cn(active(pathname) && 'text-primary')}
+              className={cn(active(pathname) ? 'text-primary' : 'border-none')}
             >
               {label}
             </Link>

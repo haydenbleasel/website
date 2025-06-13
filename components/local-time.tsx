@@ -18,7 +18,7 @@ export const LocalTime = () => {
   }).format(time);
 
   return (
-    <p className="hidden text-foreground-lighter text-sm tabular-nums sm:block">
+    <p className="hidden text-foreground-lighter tabular-nums sm:block">
       {render}
     </p>
   );

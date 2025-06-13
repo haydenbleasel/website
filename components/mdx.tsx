@@ -2,7 +2,10 @@ import { MDXContent } from '@content-collections/mdx/react';
 import Image from 'next/image';
 import type { HTMLProps, ReactNode } from 'react';
 import { Tweet } from 'react-tweet';
+import { Features } from './features';
 import { Link } from './link';
+import { MailingList } from './mailing-list';
+import { Stack } from './stack';
 import { Video } from './video';
 
 type MdxProperties = {
@@ -104,6 +107,9 @@ export const Mdx = ({ code }: MdxProperties) => (
       Instagram,
       Callout,
       Tweet,
+      Stack,
+      MailingList,
+      Features,
     }}
   />
 );

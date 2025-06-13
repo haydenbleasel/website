@@ -1,5 +1,6 @@
 import { mono, sans } from '@/lib/fonts';
 import './globals.css';
+import { Footer } from '@/components/footer';
 import { JsonLd } from '@/components/json-ld';
 import { Navigation } from '@/components/navigation';
 import { ThemeSwitcher } from '@/components/theme-switcher';
@@ -8,7 +9,6 @@ import { cn } from '@/lib/utils';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from 'next-themes';
 import type { ReactNode } from 'react';
-import { unstable_ViewTransition as ViewTransition } from 'react';
 import { Toaster } from 'sonner';
 
 type RootLayoutProps = {
@@ -21,7 +21,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
       className={cn(
         sans.variable,
         mono.variable,
-        'bg-background px-4 font-sans text-foreground-light leading-relaxed antialiased'
+        'bg-background font-sans text-foreground-light leading-relaxed antialiased'
       )}
     >
       <ThemeProvider
@@ -30,14 +30,10 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         enableSystem
         disableTransitionOnChange
       >
-        <Navigation />
-        <div
-          className={cn(
-            'mx-auto grid max-w-2xl gap-12 border-dotted pt-24 pb-16',
-            'sm:border-x sm:px-8 sm:pt-32'
-          )}
-        >
-          <ViewTransition>{children}</ViewTransition>
+        <div className="mx-auto grid max-w-2xl gap-12 px-4 py-8 pb-12 sm:px-8">
+          <Navigation />
+          {children}
+          <Footer />
         </div>
         <Toaster />
         <ThemeSwitcher />

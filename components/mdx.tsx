@@ -5,7 +5,6 @@ import { Tweet } from 'react-tweet';
 import { Features } from './features';
 import { Link } from './link';
 import { MailingList } from './mailing-list';
-import { Social } from './social';
 import { Stack } from './stack';
 import { Video } from './video';
 
@@ -108,7 +107,6 @@ export const Mdx = ({ code }: MdxProperties) => (
       Instagram,
       Callout,
       Tweet,
-      Social,
       Stack,
       MailingList,
       Features,

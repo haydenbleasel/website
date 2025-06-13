@@ -1,4 +1,3 @@
-import { Avatar } from '@/components/avatar';
 import { Features } from '@/components/features';
 import { FootnoteContent, FootnoteMarker } from '@/components/footnote';
 import { Link } from '@/components/link';
@@ -56,7 +55,6 @@ const Home = async () => {
   return (
     <>
       <Section>
-        <Avatar className="h-12 w-12" />
         <h1>Hayden Bleasel</h1>
         <p>
           I&apos;m an Australian Design Engineer living in{' '}

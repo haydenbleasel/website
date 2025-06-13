@@ -20,7 +20,7 @@ export const metadata: Metadata = createMetadata({
 
 const HomePage = () => (
   <>
-    <div className="mb-12 flex items-center gap-4">
+    <div className="flex items-center gap-4">
       <Image
         src={avatar}
         alt=""

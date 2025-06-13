@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from 'next-themes';
 import type { ReactNode } from 'react';
-import { unstable_ViewTransition as ViewTransition } from 'react';
 import { Toaster } from 'sonner';
 
 type RootLayoutProps = {
@@ -21,7 +20,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
       className={cn(
         sans.variable,
         mono.variable,
-        'bg-background px-4 font-sans text-foreground-light leading-relaxed antialiased'
+        'bg-background font-sans text-foreground-light leading-relaxed antialiased'
       )}
     >
       <ThemeProvider
@@ -30,9 +29,9 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         enableSystem
         disableTransitionOnChange
       >
-        <div className="mx-auto grid max-w-2xl gap-12 py-8 sm:px-8">
+        <div className="mx-auto grid max-w-2xl gap-12 px-4 py-8 sm:px-8">
           <Navigation />
-          <ViewTransition>{children}</ViewTransition>
+          {children}
         </div>
         <Toaster />
         <ThemeSwitcher />

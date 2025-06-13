@@ -17,5 +17,9 @@ export const LocalTime = () => {
     timeZone: 'America/Los_Angeles',
   }).format(time);
 
-  return <p className="text-foreground-lighter text-sm">{render}</p>;
+  return (
+    <p className="hidden text-foreground-lighter text-sm tabular-nums sm:block">
+      {render}
+    </p>
+  );
 };

@@ -1,14 +1,12 @@
 'use client';
 
-import { type ComponentProps, useState } from 'react';
+import { interviews, speaking } from '@/lib/live';
+import { useState } from 'react';
 import { Feature } from './feature';
 
-type FeaturesProps = {
-  data: ComponentProps<typeof Feature>[];
-};
-
-export const Features = ({ data }: FeaturesProps) => {
+export const Features = () => {
   const [open, setOpen] = useState(false);
+  const data = [...speaking, ...interviews];
 
   return (
     <>

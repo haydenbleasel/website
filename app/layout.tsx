@@ -1,7 +1,8 @@
 import { mono, sans } from '@/lib/fonts';
 import './globals.css';
-import { Navigation } from '@/components';
+import { Footer } from '@/components/footer';
 import { JsonLd } from '@/components/json-ld';
+import { Navigation } from '@/components/navigation';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { WindowsEmojiPolyfill } from '@/components/windows-emoji-polyfill';
 import { cn } from '@/lib/utils';
@@ -32,6 +33,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         <div className="mx-auto grid max-w-2xl gap-12 px-4 py-8 pb-12 sm:px-8">
           <Navigation />
           {children}
+          <Footer />
         </div>
         <Toaster />
         <ThemeSwitcher />

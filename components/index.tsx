@@ -37,7 +37,7 @@ export const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center justify-between p-8">
+    <nav className="flex items-center justify-between">
       <LocalTime />
       <ul className="flex gap-4 text-sm">
         {links.map(({ href, label, active }) => (

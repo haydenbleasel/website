@@ -33,24 +33,22 @@ const Posts = () => (
       <h1>{title}</h1>
       <p className="text-foreground-lighter">{description}</p>
     </Section>
-    <div className="mt-12 grid gap-12">
-      {Object.entries(postsByYear)
-        .sort(([a], [b]) => Number(b) - Number(a))
-        .map(([year, posts], index) => (
-          <Section key={year} delay={(index + 1) * 0.2}>
-            <h2 className="font-normal text-foreground-lighter text-sm">
-              {year}
-            </h2>
-            <ul className="grid gap-6">
-              {posts.map((post) => (
-                <li key={post._meta.path}>
-                  <Post {...post} />
-                </li>
-              ))}
-            </ul>
-          </Section>
-        ))}
-    </div>
+    {Object.entries(postsByYear)
+      .sort(([a], [b]) => Number(b) - Number(a))
+      .map(([year, posts], index) => (
+        <Section key={year} delay={(index + 1) * 0.2}>
+          <h2 className="font-normal text-foreground-lighter text-sm">
+            {year}
+          </h2>
+          <ul className="grid gap-6">
+            {posts.map((post) => (
+              <li key={post._meta.path}>
+                <Post {...post} />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      ))}
   </>
 );
 

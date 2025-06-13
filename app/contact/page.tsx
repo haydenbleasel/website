@@ -21,7 +21,7 @@ const Contact = () => (
       <h1>{title}</h1>
       <p className="text-foreground-lighter">{description}</p>
     </Section>
-    <Section delay={0.2} className="mt-12">
+    <Section delay={0.2}>
       <Suspense fallback={null}>
         <ContactForm />
       </Suspense>

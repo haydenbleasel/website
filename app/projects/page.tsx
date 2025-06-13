@@ -3,10 +3,10 @@ import { createMetadata } from '@/lib/metadata';
 import { allPages } from 'content-collections';
 import type { Metadata } from 'next';
 
-const page = allPages.find((page) => page._meta.fileName === 'home.mdx');
+const page = allPages.find((page) => page._meta.fileName === 'projects.mdx');
 
 if (!page) {
-  throw new Error('Home page not found');
+  throw new Error('Projects page not found');
 }
 
 export const metadata: Metadata = createMetadata({
@@ -15,6 +15,6 @@ export const metadata: Metadata = createMetadata({
   image: `/og?title=${page.title}&description=${page.description}`,
 });
 
-const HomePage = () => <Mdx code={page.body} />;
+const ProjectsPage = () => <Mdx code={page.body} />;
 
-export default HomePage;
+export default ProjectsPage;

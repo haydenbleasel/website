@@ -18,10 +18,31 @@ const rehypeCodeOptions: RehypeCodeOptions = {
 // for more information on configuration, visit:
 // https://www.content-collections.dev/docs/configuration
 
+const pages = defineCollection({
+  name: 'pages',
+  directory: 'content',
+  include: 'pages/*.mdx',
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+  }),
+  transform: async (page, context) => {
+    const body = await compileMDX(context, page, {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [[rehypeCode, rehypeCodeOptions], remarkHeading],
+    });
+
+    return {
+      ...page,
+      body,
+    };
+  },
+});
+
 const posts = defineCollection({
   name: 'posts',
   directory: 'content',
-  include: '**/*.mdx',
+  include: 'blog/*.mdx',
   schema: (z) => ({
     title: z.string(),
     description: z.string(),
@@ -45,5 +66,5 @@ const posts = defineCollection({
 });
 
 export default defineConfig({
-  collections: [posts],
+  collections: [pages, posts],
 });

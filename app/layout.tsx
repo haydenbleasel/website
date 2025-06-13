@@ -32,7 +32,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
       >
         <div className="mx-auto grid max-w-2xl gap-12 border-dotted sm:border-x">
           <Navigation />
-          <div className="grid gap-12 pb-16 sm:px-8">
+          <div className="grid gap-4 pb-16 sm:px-8">
             <ViewTransition>{children}</ViewTransition>
           </div>
         </div>

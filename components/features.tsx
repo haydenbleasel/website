@@ -6,7 +6,7 @@ import { Link } from './link';
 
 export const Features = () => {
   const [open, setOpen] = useState(false);
-  const data = [...speaking, ...interviews];
+  const data = [...speaking, ...interviews].sort((a, b) => b.year - a.year);
 
   return (
     <>

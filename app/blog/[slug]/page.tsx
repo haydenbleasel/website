@@ -22,7 +22,7 @@ export const generateMetadata = async ({
   params,
 }: PageProperties): Promise<Metadata> => {
   const { slug } = await params;
-  const page = allPosts.find((page) => page._meta.path === slug);
+  const page = allPosts.find((page) => page._meta.path === `blog/${slug}`);
 
   if (!page) {
     return {};
@@ -42,7 +42,7 @@ export const generateStaticParams = (): { slug: string }[] =>
 
 const Page: FC<PageProperties> = async ({ params }) => {
   const { slug } = await params;
-  const page = allPosts.find((page) => page._meta.path === slug);
+  const page = allPosts.find((page) => page._meta.path === `blog/${slug}`);
 
   if (!page) {
     notFound();

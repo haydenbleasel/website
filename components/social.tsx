@@ -3,11 +3,11 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Link } from './link';
 
-type SocialProps = {
+type SocialItemProps = {
   id: keyof typeof social;
 };
 
-export const Social = ({ id }: SocialProps) => {
+export const SocialItem = ({ id }: SocialItemProps) => {
   const { href, icon, label, invert } = social[id];
 
   return (
@@ -30,3 +30,16 @@ export const Social = ({ id }: SocialProps) => {
     </Link>
   );
 };
+
+export const Social = () => (
+  <ul className="flex flex-wrap gap-1">
+    {Object.entries(social)
+      .map(([id, { follow }]) => ({ id, follow }))
+      .filter(({ follow }) => follow)
+      .map(({ id }) => (
+        <li key={id}>
+          <SocialItem id={id as keyof typeof social} />
+        </li>
+      ))}
+  </ul>
+);

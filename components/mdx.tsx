@@ -3,6 +3,10 @@ import Image from 'next/image';
 import type { HTMLProps, ReactNode } from 'react';
 import { Tweet } from 'react-tweet';
 import { Link } from './link';
+import { LocationCard } from './location-card';
+import { MailingList } from './mailing-list';
+import { Social } from './social';
+import { Stack } from './stack';
 import { Video } from './video';
 
 type MdxProperties = {
@@ -104,6 +108,10 @@ export const Mdx = ({ code }: MdxProperties) => (
       Instagram,
       Callout,
       Tweet,
+      Social,
+      Stack,
+      MailingList,
+      LocationCard,
     }}
   />
 );

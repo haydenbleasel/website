@@ -39,15 +39,17 @@ export const Navigation = () => {
 
   return (
     <nav className="flex items-center justify-between p-8">
-      <Image
-        src={avatar}
-        alt=""
-        width={48}
-        height={48}
-        className="size-8 rounded-full"
-        placeholder="blur"
-        priority
-      />
+      <Link href="/">
+        <Image
+          src={avatar}
+          alt=""
+          width={48}
+          height={48}
+          className="size-8 rounded-full"
+          placeholder="blur"
+          priority
+        />
+      </Link>
       <ul className="flex gap-4 text-sm">
         {links.map(({ href, label, active }) => (
           <li key={href}>

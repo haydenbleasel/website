@@ -20,7 +20,7 @@ export const metadata: Metadata = createMetadata({
 
 const HomePage = () => (
   <>
-    <div className="flex items-center gap-4">
+    <Section className="flex items-center gap-4">
       <Image
         src={avatar}
         alt=""
@@ -39,12 +39,12 @@ const HomePage = () => (
           <a href="https://vercel.com">Vercel</a>.
         </p>
       </div>
-    </div>
-    <article>
-      <Section>
+    </Section>
+    <Section delay={0.2}>
+      <article>
         <Mdx code={page.body} />
-      </Section>
-    </article>
+      </article>
+    </Section>
   </>
 );
 

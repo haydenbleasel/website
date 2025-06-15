@@ -40,11 +40,11 @@ const HomePage = () => (
         </p>
       </div>
     </Section>
-    <Section delay={0.2}>
-      <article>
+    <article>
+      <Section delay={0.2}>
         <Mdx code={page.body} />
-      </article>
-    </Section>
+      </Section>
+    </article>
   </>
 );
 

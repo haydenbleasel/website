@@ -1,6 +1,7 @@
 import { mono, sans } from '@/lib/fonts';
 import './globals.css';
 import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 import { JsonLd } from '@/components/json-ld';
 import { Navigation } from '@/components/navigation';
 import { ThemeSwitcher } from '@/components/theme-switcher';
@@ -30,10 +31,15 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         enableSystem
         disableTransitionOnChange
       >
-        <div className="mx-auto grid max-w-2xl gap-12 px-4 py-8 pb-12 sm:px-8">
+        <Header />
+        <div className="grid grid-cols-[200px_1fr]">
           <Navigation />
-          {children}
-          <Footer />
+          <div className="py-16">
+            <div className="prose mx-auto">
+              {children}
+              <Footer />
+            </div>
+          </div>
         </div>
         <Toaster />
         <ThemeSwitcher />

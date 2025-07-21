@@ -11,6 +11,7 @@
     "@upstash/ratelimit": "^2.0.5",
     "@upstash/redis": "^1.34.7",
     "@vercel/analytics": "^1.5.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "country-flag-emoji-polyfill": "^0.1.8",
     "deepmerge": "^4.3.1",
@@ -43,6 +44,7 @@
     "@types/react-dom": "^19",
     "postcss": "^8",
     "tailwindcss": "^4.1.3",
+    "tw-animate-css": "^1.3.5",
     "typescript": "^5",
     "ultracite": "4.2.1"
   }

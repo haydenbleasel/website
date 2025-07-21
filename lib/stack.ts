@@ -237,4 +237,10 @@ export const stack = [
     href: 'https://refer.cal.com/haydenbleasel',
     featured: true,
   },
+  {
+    name: 'Granola',
+    description: 'The AI notepad for people in back-to-back meetings.',
+    affiliate: true,
+    href: 'https://granola.ai/invite/?referee=Hayden_Bleasel',
+  },
 ];

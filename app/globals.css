@@ -121,6 +121,12 @@
 }
 
 @layer base {
+  .prose a {
+    @apply font-normal!;
+  }
+}
+
+@layer base {
   .shiki {
     @apply bg-secondary/50 border border-border/50 rounded-lg my-4;
     @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];

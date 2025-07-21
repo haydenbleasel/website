@@ -35,7 +35,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         <div className="grid grid-cols-[200px_1fr]">
           <Navigation />
           <div className="py-16">
-            <div className="prose mx-auto">
+            <div className="prose mx-auto w-full">
               {children}
               <Footer />
             </div>

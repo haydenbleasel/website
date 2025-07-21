@@ -118,3 +118,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  .shiki {
+    @apply bg-secondary/50 border border-border/50 rounded-lg my-4;
+    @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
+  }
+
+  .shiki span {
+    @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
+  }
+
+  .shiki code {
+    @apply overflow-x-auto p-3 text-[13px];
+    display: inherit;
+    counter-reset: line;
+  }
+
+  .shiki .line:before {
+    content: counter(line);
+    counter-increment: line;
+
+    @apply inline-block w-3 mr-8 text-xs text-right text-foreground-lighter;
+  }
+
+  .shiki[title]:before {
+    content: attr(title);
+    @apply text-xs text-foreground-lighter mb-0 block border-b p-3;
+  }
+
+  .footnotes {
+    @apply text-foreground-lighter text-sm mt-12;
+  }
+
+  .footnotes h2 {
+    @apply sr-only;
+  }
+}

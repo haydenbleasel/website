@@ -15,7 +15,7 @@ export const Textarea = ({
 }: TextareaProps) => (
   <Form.Field className="grid gap-1" name={name}>
     <div className="flex items-baseline justify-between">
-      <Form.Label className="inline-block select-none text-foreground-lighter text-sm">
+      <Form.Label className="inline-block select-none text-muted-foreground text-sm">
         {label}
       </Form.Label>
       <Form.Message className="text-error text-sm" match="badInput">
@@ -42,11 +42,11 @@ export const Textarea = ({
       <Form.Message className="text-error text-sm" match="tooShort">
         The {name} must be at least {props.minLength} characters.
       </Form.Message>
-      <Form.Message className="text-foreground-lighter text-sm" match="valid">
+      <Form.Message className="text-muted-foreground text-sm" match="valid">
         Looks good!
       </Form.Message>
       <Form.Message
-        className="text-foreground-lighter text-sm"
+        className="text-muted-foreground text-sm"
         match="valueMissing"
       >
         Please enter your {name}.
@@ -56,7 +56,7 @@ export const Textarea = ({
       <textarea
         className={cn(
           'max-h-[200px] min-h-[100px] w-full rounded-md bg-secondary px-3 py-2 text-foreground outline-none',
-          'placeholder:text-foreground-lighter',
+          'placeholder:text-muted-foreground',
           'sm:text-sm',
           className
         )}

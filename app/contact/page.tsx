@@ -19,7 +19,7 @@ const Contact = () => (
   <ReCaptchaProvider reCaptchaKey={env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
     <Section className="gap-0">
       <h1>{title}</h1>
-      <p className="text-foreground-lighter">{description}</p>
+      <p className="text-muted-foreground">{description}</p>
     </Section>
     <Section delay={0.2}>
       <Suspense fallback={null}>

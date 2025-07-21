@@ -20,7 +20,7 @@ const WorkPage = () => (
   <>
     <Section className="gap-0">
       <h1>{page.title}</h1>
-      <p className="text-foreground-lighter">{page.description}</p>
+      <p className="text-muted-foreground">{page.description}</p>
     </Section>
     <article>
       <Section>

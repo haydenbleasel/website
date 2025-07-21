@@ -57,7 +57,7 @@ const Page: FC<PageProperties> = async ({ params }) => {
         <Link
           href="/blog"
           className={cn(
-            'flex items-center gap-2 text-nowrap text-foreground-lighter text-xs transition-colors',
+            'flex items-center gap-2 text-nowrap text-muted-foreground text-xs transition-colors',
             'hover:text-foreground'
           )}
         >
@@ -67,7 +67,7 @@ const Page: FC<PageProperties> = async ({ params }) => {
       </Section>
       <Section className="gap-0">
         <h1>{page.title}</h1>
-        <p className="text-foreground-lighter">{page.description}</p>
+        <p className="text-muted-foreground">{page.description}</p>
       </Section>
       {page.image ? (
         <Section>
@@ -87,10 +87,7 @@ const Page: FC<PageProperties> = async ({ params }) => {
           <Mdx code={page.body} />
         </Section>
       </article>
-      <Section
-        className="grid gap-1 text-foreground-lighter text-sm"
-        delay={0.4}
-      >
+      <Section className="grid gap-1 text-muted-foreground text-sm" delay={0.4}>
         <p>
           Published on{' '}
           {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(

@@ -1,7 +1,7 @@
 import { Link } from './link';
 
 export const Footer = () => (
-  <footer className="text-foreground-lighter text-sm leading-relaxed">
+  <footer className="text-muted-foreground text-sm leading-relaxed">
     <p>
       &copy; {new Date().getFullYear()} Hayden Bleasel. All rights reserved.
     </p>

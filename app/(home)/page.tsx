@@ -34,7 +34,7 @@ const HomePage = () => (
         <p className="font-medium text-foreground leading-normal">
           Hayden Bleasel
         </p>
-        <p className="text-foreground-lighter text-sm leading-normal">
+        <p className="text-muted-foreground text-sm leading-normal">
           Designer and Engineer, currently at{' '}
           <a href="https://vercel.com">Vercel</a>.
         </p>

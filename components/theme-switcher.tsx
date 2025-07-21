@@ -68,7 +68,7 @@ export function ThemeSwitcher() {
             <Icon
               className={cn(
                 'relative m-auto h-4 w-4',
-                isActive ? 'text-foreground' : 'text-foreground-lighter'
+                isActive ? 'text-foreground' : 'text-muted-foreground'
               )}
             />
           </button>

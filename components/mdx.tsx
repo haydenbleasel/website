@@ -57,51 +57,11 @@ const Callout = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
-const h2 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h2 {...props}>
-    <span className="mr-2 select-none text-border">##</span>
-    {children}
-  </h2>
-);
-
-const h3 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h3 {...props}>
-    <span className="mr-2 select-none text-border">###</span>
-    {children}
-  </h3>
-);
-
-const h4 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h4 {...props}>
-    <span className="mr-2 select-none text-border">####</span>
-    {children}
-  </h4>
-);
-
-const h5 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h5 {...props}>
-    <span className="mr-2 select-none text-border">#####</span>
-    {children}
-  </h5>
-);
-
-const h6 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h6 {...props}>
-    <span className="mr-2 select-none text-border">######</span>
-    {children}
-  </h6>
-);
-
 export const Mdx = ({ code }: MdxProperties) => (
   <MDXContent
     code={code}
     components={{
       a,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
       img,
       Video,
       Instagram,

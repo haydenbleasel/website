@@ -36,7 +36,12 @@ export const Tool = ({
           unoptimized
         />
         <p className="text-foreground">{name}</p>
-        {affiliate && <VerifiedIcon className="text-success" size={12} />}
+        {affiliate && (
+          <VerifiedIcon
+            className="text-blue-600 dark:text-blue-400"
+            size={12}
+          />
+        )}
       </span>
       <span className="hidden h-px grow bg-border transition-colors group-hover:bg-border-dark sm:block" />
       <p className="text-muted-foreground transition-colors group-hover:text-foreground-light">

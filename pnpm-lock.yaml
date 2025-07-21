@@ -74,6 +74,9 @@ importers:
       schema-dts:
         specifier: ^1.1.5
         version: 1.1.5
+      shadcn-prose:
+        specifier: ^1.0.12
+        version: 1.0.12
       sonner:
         specifier: ^2.0.3
         version: 2.0.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -2460,6 +2463,9 @@ packages:
 
   serialize-javascript@6.0.2:
     resolution: {integrity: sha512-Saa1xPByTTq2gdeFZYLLo+RFE35NHZkAbqZeWNd3BpzppeVisAqpDjcp8dyf6uIvEqJRd46jemmyA4iFIeVk8g==}
+
+  shadcn-prose@1.0.12:
+    resolution: {integrity: sha512-zS29QsagSnF4cRTgvxx9mjcNbC4awsEfQ7dgv7Vmc5TWy7g2m3rcfoIDmzjS7jiSZ0m5uVxa1I5Xp3gDx1VFGw==}
 
   sharp@0.34.1:
     resolution: {integrity: sha512-1j0w61+eVxu7DawFJtnfYcvSv6qPFvfTaqzTQ2BLknVhHTwGS8sc63ZBF4rzkWMBVKybo4S5OBtDdZahh2A1xg==}
@@ -5336,6 +5342,8 @@ snapshots:
   serialize-javascript@6.0.2:
     dependencies:
       randombytes: 2.1.0
+
+  shadcn-prose@1.0.12: {}
 
   sharp@0.34.1:
     dependencies:

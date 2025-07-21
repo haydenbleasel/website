@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "shadcn-prose";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));

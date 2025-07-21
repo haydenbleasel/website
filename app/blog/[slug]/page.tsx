@@ -1,6 +1,5 @@
 import { Link } from '@/components/link';
 import { Mdx } from '@/components/mdx';
-import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { cn } from '@/lib/utils';
 import { allPosts } from 'content-collections';
@@ -50,10 +49,7 @@ const Page: FC<PageProperties> = async ({ params }) => {
 
   return (
     <>
-      <Section
-        className="-ml-28 absolute mt-1 hidden select-none lg:block"
-        delay={0.6}
-      >
+      <div className="-ml-28 absolute mt-1 hidden select-none lg:block">
         <Link
           href="/blog"
           className={cn(
@@ -64,13 +60,13 @@ const Page: FC<PageProperties> = async ({ params }) => {
           <ArrowLeftToLineIcon size={12} />
           Blog
         </Link>
-      </Section>
-      <Section className="gap-0">
+      </div>
+      <div className="gap-0">
         <h1>{page.title}</h1>
         <p className="text-muted-foreground">{page.description}</p>
-      </Section>
+      </div>
       {page.image ? (
-        <Section>
+        <div>
           <Image
             src={page.image}
             alt={page.title}
@@ -80,14 +76,12 @@ const Page: FC<PageProperties> = async ({ params }) => {
             quality={100}
             priority
           />
-        </Section>
+        </div>
       ) : null}
       <article className="grid gap-3">
-        <Section delay={0.2}>
-          <Mdx code={page.body} />
-        </Section>
+        <Mdx code={page.body} />
       </article>
-      <Section className="grid gap-1 text-muted-foreground text-sm" delay={0.4}>
+      <div className="grid gap-1 text-muted-foreground text-sm">
         <p>
           Published on{' '}
           {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(
@@ -95,7 +89,7 @@ const Page: FC<PageProperties> = async ({ params }) => {
           )}
         </p>
         <p>{page.readingTime}</p>
-      </Section>
+      </div>
     </>
   );
 };

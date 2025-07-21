@@ -1,5 +1,4 @@
 import { Mdx } from '@/components/mdx';
-import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { allPages } from 'content-collections';
 import type { Metadata } from 'next';
@@ -45,14 +44,16 @@ const Page = async ({ params }: PageProps) => {
 
   return (
     <>
-      <Section className="gap-0">
-        <h1>{page.title}</h1>
-        <p className="text-muted-foreground">{page.description}</p>
-      </Section>
+      {slug && (
+        <div className="not-prose not-prose mb-12 gap-0">
+          <h1 className="font-semibold text-4xl">{page.title}</h1>
+          <p className="mt-2 text-lg text-muted-foreground">
+            {page.description}
+          </p>
+        </div>
+      )}
       <article>
-        <Section delay={0.2}>
-          <Mdx code={page.body} />
-        </Section>
+        <Mdx code={page.body} />
       </article>
     </>
   );

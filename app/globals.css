@@ -122,7 +122,10 @@
 
 @layer base {
   .prose a {
-    @apply font-normal!;
+    @apply font-normal! transition-colors;
+  }
+  .prose a:hover {
+    @apply text-muted-foreground!;
   }
 }
 

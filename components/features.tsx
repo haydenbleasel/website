@@ -10,7 +10,7 @@ export const Features = () => {
 
   return (
     <>
-      <div className="grid gap-3">
+      <div className="not-prose grid gap-3">
         {data.slice(0, open ? data.length : 5).map((feature) => (
           <Link
             key={feature.name}
@@ -34,7 +34,7 @@ export const Features = () => {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="cursor-pointer text-left text-muted-foreground text-sm hover:text-foreground"
+          className="not-prose cursor-pointer text-left text-muted-foreground text-sm hover:text-foreground"
         >
           and more...
         </button>

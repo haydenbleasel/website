@@ -127,6 +127,18 @@
   .prose a:hover {
     @apply text-muted-foreground!;
   }
+  .prose h2 {
+    @apply border-none;
+  }
+  .prose h2 a {
+    @apply font-semibold!;
+  }
+}
+
+@layer base {
+  article .aspect-video {
+    @apply mt-8;
+  }
 }
 
 @layer base {

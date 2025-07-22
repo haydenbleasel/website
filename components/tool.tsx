@@ -23,30 +23,33 @@ export const Tool = ({
 
   return (
     <Link
-      className="group flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2"
+      className='group flex flex-col divide-x rounded-md border transition-colors hover:bg-secondary sm:flex-row sm:items-center'
       href={href}
     >
-      <span className="flex items-center gap-2">
+      <div className="flex size-16 shrink-0 items-center justify-center">
         <Image
           alt=""
           className="rounded-sm"
-          height={12}
+          height={28}
           src={src}
           unoptimized
-          width={12}
+          width={28}
         />
-        <p className="text-foreground">{name}</p>
-        {affiliate && (
-          <VerifiedIcon
-            className="text-blue-600 dark:text-blue-400"
-            size={12}
-          />
-        )}
+      </div>
+      <span className="flex-1 px-4">
+        <span className="flex items-center gap-2">
+          <p className="text-foreground">{name}</p>
+          {affiliate && (
+            <VerifiedIcon
+              className="text-blue-600 dark:text-blue-400"
+              size={12}
+            />
+          )}
+        </span>
+        <p className="text-muted-foreground text-sm transition-colors group-hover:text-muted-foreground">
+          {description}
+        </p>
       </span>
-      <span className="hidden h-px grow bg-border transition-colors group-hover:bg-border-dark sm:block" />
-      <p className="text-muted-foreground transition-colors group-hover:text-muted-foreground">
-        {description}
-      </p>
     </Link>
   );
 };

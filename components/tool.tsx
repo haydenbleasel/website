@@ -23,17 +23,17 @@ export const Tool = ({
 
   return (
     <Link
-      className="group flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-2"
+      className="group flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2"
       href={href}
     >
       <span className="flex items-center gap-2">
         <Image
-          src={src}
           alt=""
-          width={12}
-          height={12}
           className="rounded-sm"
+          height={12}
+          src={src}
           unoptimized
+          width={12}
         />
         <p className="text-foreground">{name}</p>
         {affiliate && (

@@ -1,13 +1,13 @@
-import { Link } from '@/components/link';
-import { Mdx } from '@/components/mdx';
-import { createMetadata } from '@/lib/metadata';
-import { cn } from '@/lib/utils';
 import { allPosts } from 'content-collections';
 import { ArrowLeftToLineIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { FC } from 'react';
+import { Link } from '@/components/link';
+import { Mdx } from '@/components/mdx';
+import { createMetadata } from '@/lib/metadata';
+import { cn } from '@/lib/utils';
 
 type PageProperties = {
   readonly params: Promise<{
@@ -51,32 +51,30 @@ const Page: FC<PageProperties> = async ({ params }) => {
     <>
       <div className="-ml-28 absolute mt-1 hidden select-none lg:block">
         <Link
-          href="/blog"
           className={cn(
             'flex items-center gap-2 text-nowrap text-muted-foreground text-xs transition-colors',
             'hover:text-foreground'
           )}
+          href="/blog"
         >
           <ArrowLeftToLineIcon size={12} />
           Blog
         </Link>
       </div>
       <div className="not-prose not-prose mb-12 gap-0">
-        <h1 className="font-semibold text-4xl">{page.title}</h1>
-        <p className="mt-2 text-lg text-muted-foreground">
-          {page.description}
-        </p>
+        <h1 className="font-medium text-4xl">{page.title}</h1>
+        <p className="mt-2 text-lg text-muted-foreground">{page.description}</p>
       </div>
       {page.image ? (
         <div>
           <Image
-            src={page.image}
             alt={page.title}
-            width={1200}
-            height={630}
             className="overflow-hidden rounded-lg border border-border/50"
-            quality={100}
+            height={630}
             priority
+            quality={100}
+            src={page.image}
+            width={1200}
           />
         </div>
       ) : null}

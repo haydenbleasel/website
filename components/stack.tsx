@@ -3,13 +3,46 @@
 import { stack } from '@/lib/stack';
 import { Tool } from './tool';
 
-export const Stack = () => (
-  <div className="not-prose grid gap-3">
-    {stack
-      .sort((a, b) => (b.affiliate ? 1 : -1))
-      .filter((tool) => tool.featured || open)
-      .map((tool) => (
-        <Tool key={tool.name} {...tool} />
-      ))}
-  </div>
-);
+const getCategories = () => {
+  const categories = new Set<string>();
+  for (const item of stack) {
+    categories.add(item.category);
+  }
+  // Sort categories alphabetically before returning
+  return Array.from(categories).sort((a, b) => a.localeCompare(b));
+};
+
+export const Stack = () => {
+  const categories = getCategories();
+
+  // Sort stack by affiliate first, then by name for consistency
+  const sortedStack = [...stack].sort((a, b) => {
+    if (a.affiliate === b.affiliate) {
+      return a.name.localeCompare(b.name);
+    }
+    return b.affiliate ? 1 : -1;
+  });
+
+  // Group tools by category, include all tools (not just featured)
+  const toolsByCategory = categories.map((category) => ({
+    category,
+    tools: sortedStack.filter((tool) => tool.category === category),
+  }));
+
+  return (
+    <div className="not-prose grid gap-8">
+      {toolsByCategory.map(({ category, tools }) =>
+        tools.length > 0 ? (
+          <section key={category}>
+            <h2 className="mb-3 font-medium text-xl">{category}</h2>
+            <div className="grid gap-3">
+              {tools.map((tool) => (
+                <Tool key={tool.name} {...tool} />
+              ))}
+            </div>
+          </section>
+        ) : null
+      )}
+    </div>
+  );
+};

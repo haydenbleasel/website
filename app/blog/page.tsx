@@ -1,7 +1,7 @@
-import { Post } from '@/components/post';
-import { createMetadata } from '@/lib/metadata';
 import { allPosts } from 'content-collections';
 import type { Metadata } from 'next';
+import { Post } from '@/components/post';
+import { createMetadata } from '@/lib/metadata';
 
 const postsByYear = allPosts
   .sort((a, b) => b.date.getTime() - a.date.getTime())
@@ -29,7 +29,7 @@ export const metadata: Metadata = createMetadata({
 const Posts = () => (
   <>
     <div className="not-prose not-prose mb-12 gap-0">
-      <h1 className="font-semibold text-4xl">{title}</h1>
+      <h1 className="font-medium text-4xl">{title}</h1>
       <p className="mt-2 text-lg text-muted-foreground">{description}</p>
     </div>
     <div className="not-prose grid gap-12">

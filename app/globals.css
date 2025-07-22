@@ -131,7 +131,7 @@
     @apply border-none;
   }
   .prose h2 a {
-    @apply font-semibold!;
+    @apply font-medium!;
   }
   .prose article .aspect-video {
     @apply mt-8;
@@ -141,6 +141,9 @@
   }
   .prose h2 + p {
     @apply mt-0!;
+  }
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply font-medium!;
   }
 }
 

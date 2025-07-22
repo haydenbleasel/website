@@ -1,7 +1,17 @@
-export const stack = [
+type StackItem = {
+  name: string;
+  description: string;
+  category: 'AI' | 'Productivity' | 'Design' | 'Development' | 'Marketing' | 'Finance' | 'Other';
+  href: string;
+  affiliate?: boolean;
+  featured?: boolean;
+};
+
+export const stack: StackItem[] = [
   {
     name: 'Warp',
     description: 'Modern, Rust-based terminal with AI.',
+    category: 'Development',
     affiliate: true,
     href: 'https://app.warp.dev/referral/24YEQY',
     featured: true,
@@ -9,21 +19,25 @@ export const stack = [
   {
     name: 'Cursor',
     description: 'The AI code editor.',
+    category: 'Development',
     href: 'https://www.cursor.com/',
   },
   {
     name: 'ChatGPT',
     description: 'ChatGPT on your desktop.',
+    category: 'AI',
     href: 'https://openai.com/chatgpt/mac/',
   },
   {
     name: 'Midjourney',
     description: 'AI image generation.',
+    category: 'AI',
     href: 'https://www.midjourney.com/',
   },
   {
     name: 'LocalCan',
     description: '.local development, simplified.',
+    category: 'Development',
     affiliate: true,
     href: 'https://www.localcan.com?aff=VMdMv',
     featured: false,
@@ -31,6 +45,7 @@ export const stack = [
   {
     name: 'Postmark',
     description: 'Fast, reliable email delivery.',
+    category: 'Productivity',
     affiliate: true,
     href: 'https://www.postmarkapp.com?via=8240a3',
     featured: false,
@@ -38,16 +53,19 @@ export const stack = [
   {
     name: 'GitHub Desktop',
     description: 'Simple repository management.',
+    category: 'Development',
     href: 'https://github.com/apps/desktop',
   },
   {
     name: 'Postman',
     description: 'Build and test APIs.',
+    category: 'Development',
     href: 'https://www.postman.com/',
   },
   {
     name: 'Untitled UI',
     description: 'The ultimate UI Kit for Figma.',
+    category: 'Design',
     affiliate: true,
     href: 'https://store.untitledui.com?aff=VMdMv',
     featured: true,
@@ -55,31 +73,37 @@ export const stack = [
   {
     name: 'Dovetail',
     description: 'Where customer knowledge lives.',
+    category: 'Productivity',
     href: 'https://dovetailapp.com/',
   },
   {
     name: 'Figma',
     description: 'Collaborative interface design tool.',
+    category: 'Design',
     href: 'https://www.figma.com/',
   },
   {
     name: 'ImageOptim',
     description: 'Losslessly compress images.',
+    category: 'Design',
     href: 'https://imageoptim.com/mac',
   },
   {
     name: 'Unsplash',
     description: 'Free, high-quality photos.',
+    category: 'Design',
     href: 'https://unsplash.com/',
   },
   {
     name: 'LS Graphics',
     description: 'Premium mockups.',
+    category: 'Design',
     href: 'https://www.ls.graphics/',
   },
   {
     name: 'Typefully',
     description: 'Professional tools for Twitter.',
+    category: 'Marketing',
     affiliate: true,
     href: 'https://typefully.com/?via=haydenbleasel',
     featured: true,
@@ -87,6 +111,7 @@ export const stack = [
   {
     name: 'Clay',
     description: 'The interpersonal CRM.',
+    category: 'Productivity',
     affiliate: true,
     href: 'https://clay.earth/invite/hello115',
     featured: true,
@@ -94,18 +119,21 @@ export const stack = [
   {
     name: 'Buffer',
     description: 'Simple scheduling for Instagram.',
+    category: 'Marketing',
     affiliate: true,
     href: 'https://buffer.com/join/821e9d12d4f4c3bda42d6ee6d328e9a937032f6a760f16aa5dae6b37ee60ef6b',
   },
   {
     name: 'Ray.so',
     description: 'Pretty code snippet screenshots.',
+    category: 'Design',
     href: 'https://ray.so/',
     imageHref: 'https://raycast.com/',
   },
   {
     name: 'Wealthfront',
     description: 'Grow your wealth with automated investing.',
+    category: 'Finance',
     affiliate: true,
     href: 'https://www.wealthfront.com/c/affiliates/invited/AFFB-VOQ0-8OAE-H0YL',
     featured: true,
@@ -113,12 +141,14 @@ export const stack = [
   {
     name: 'Wise',
     description: 'Low FX international transfers.',
+    category: 'Finance',
     affiliate: true,
     href: 'https://wise.com/invite/dic/haydenb95',
   },
   {
     name: 'Robinhood',
     description: 'Commission-free stock trading.',
+    category: 'Finance',
     affiliate: true,
     href: 'https://join.robinhood.com/haydenb-e0f142',
     featured: true,
@@ -126,17 +156,20 @@ export const stack = [
   {
     name: 'Amazon Prime Visa',
     description: 'Redeem daily rewards on Amazon.',
+    category: 'Finance',
     affiliate: true,
     href: 'https://www.amazon.com/dp/BT00LN946S?externalReferenceId=2b2e7144-1a4e-4475-afb1-03214dac74c1',
   },
   {
     name: 'Stake',
     description: 'Trade U.S. stocks from Australia.',
+    category: 'Finance',
     href: 'https://hellostake.com/',
   },
   {
     name: 'Superpower',
     description: 'The next-generation digital clinic.',
+    category: 'Other',
     affiliate: true,
     href: 'https://superpower.com/join?via=hayden',
     featured: true,
@@ -144,39 +177,46 @@ export const stack = [
   {
     name: 'Spotify',
     description: "Enjoy and curate the world's music.",
+    category: 'Other',
     href: 'https://open.spotify.com/',
   },
   {
     name: 'Klack',
     description: 'Mechanical keystroke sounds.',
+    category: 'Other',
     href: 'https://tryklack.com/',
   },
   {
     name: 'Hand Mirror',
     description: 'A camera in your menu bar.',
+    category: 'Productivity',
     href: 'https://handmirror.app/',
   },
   {
     name: 'Instacart',
     description: 'Groceries delivered in minutes.',
+    category: 'Other',
     affiliate: true,
     href: 'https://inst.cr/t/9aea6b7f0',
   },
   {
     name: 'Doordash',
     description: 'Food delivery and takeout.',
+    category: 'Other',
     affiliate: true,
     href: 'https://drd.sh/3tlNYpAjiQU9hq96',
   },
   {
     name: 'Uber EATS',
     description: 'Food and grocery delivery, powered by Uber.',
+    category: 'Other',
     affiliate: true,
     href: 'https://ubereats.com/feed?promoCode=eats-haydenb85',
   },
   {
     name: 'July',
     description: 'Premium Australian luggage.',
+    category: 'Other',
     affiliate: true,
     href: 'https://go.shopmy.us/p-5598980',
     imageHref: 'https://july.com/',
@@ -185,11 +225,13 @@ export const stack = [
   {
     name: 'Flighty',
     description: 'Your ticket to stress-free flying.',
+    category: 'Productivity',
     href: 'https://flighty.com/',
   },
   {
     name: 'Waymo One',
     description: 'Summon a self-driving car.',
+    category: 'Other',
     href: 'https://waymo.smart.link/4pcoqniy5?code=HAYDEN5S6L',
     imageHref: 'https://waymo.com/',
     affiliate: true,
@@ -198,6 +240,7 @@ export const stack = [
   {
     name: 'Visual Electric',
     description: 'AI-powered, photo-realistic image generation.',
+    category: 'AI',
     href: 'https://visualelectric.com/referral/590ee5a7-700f-4c53-8047-8893f7c9e176',
     affiliate: true,
     featured: true,
@@ -205,6 +248,7 @@ export const stack = [
   {
     name: 'DigitalOcean',
     description: 'Simple compute, storage, and networking.',
+    category: 'Development',
     affiliate: true,
     href: 'https://m.do.co/c/be5c7246ae8b',
     featured: false,
@@ -212,6 +256,7 @@ export const stack = [
   {
     name: 'Intuit TurboTax',
     description: 'File your U.S. taxes with ease.',
+    category: 'Finance',
     affiliate: true,
     href: 'https://refer.intuit.com/f2a4w',
     featured: false,
@@ -219,6 +264,7 @@ export const stack = [
   {
     name: 'Mercury',
     description: 'Simple banking for U.S. startups.',
+    category: 'Finance',
     affiliate: true,
     href: 'https://mercury.com/r/haste',
     featured: true,
@@ -226,6 +272,7 @@ export const stack = [
   {
     name: 'ElevenLabs',
     description: 'AI speech synthesis and voice cloning.',
+    category: 'AI',
     affiliate: true,
     href: 'https://try.elevenlabs.io/5fxrqtrzwdfu',
     featured: true,
@@ -233,6 +280,7 @@ export const stack = [
   {
     name: 'Cal.com',
     description: 'The better way to schedule your meetings.',
+    category: 'Productivity',
     affiliate: true,
     href: 'https://refer.cal.com/haydenbleasel',
     featured: true,
@@ -240,6 +288,7 @@ export const stack = [
   {
     name: 'Granola',
     description: 'The AI notepad for people in back-to-back meetings.',
+    category: 'AI',
     affiliate: true,
     href: 'https://granola.ai/invite/?referee=Hayden_Bleasel',
   },

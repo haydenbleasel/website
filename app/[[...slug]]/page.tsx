@@ -1,8 +1,8 @@
-import { Mdx } from '@/components/mdx';
-import { createMetadata } from '@/lib/metadata';
 import { allPages } from 'content-collections';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Mdx } from '@/components/mdx';
+import { createMetadata } from '@/lib/metadata';
 
 type PageProps = {
   params: Promise<{ slug?: string[] }>;
@@ -46,7 +46,7 @@ const Page = async ({ params }: PageProps) => {
     <>
       {slug && (
         <div className="not-prose not-prose mb-12 gap-0">
-          <h1 className="font-semibold text-4xl">{page.title}</h1>
+          <h1 className="font-medium text-4xl">{page.title}</h1>
           <p className="mt-2 text-lg text-muted-foreground">
             {page.description}
           </p>

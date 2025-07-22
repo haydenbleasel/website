@@ -8,7 +8,6 @@ import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { JsonLd } from '@/components/json-ld';
 import { Navigation } from '@/components/navigation';
-import { Theme } from '@/components/theme';
 import { WindowsEmojiPolyfill } from '@/components/windows-emoji-polyfill';
 import { cn } from '@/lib/utils';
 

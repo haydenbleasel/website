@@ -40,7 +40,7 @@ const Posts = () => (
             <h2 className="font-normal text-muted-foreground text-sm">
               {year}
             </h2>
-            <ul className="grid gap-6">
+            <ul className="mt-6 grid gap-6">
               {posts.map((post) => (
                 <li key={post._meta.path}>
                   <Post {...post} />

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import type { HTMLProps, ReactNode } from 'react';
 import { Tweet } from 'react-tweet';
 import { Features } from './features';
+import { ContactForm } from './form';
 import { Link } from './link';
 import { MailingList } from './mailing-list';
 import { Stack } from './stack';
@@ -70,6 +71,7 @@ export const Mdx = ({ code }: MdxProperties) => (
       Stack,
       MailingList,
       Features,
+      ContactForm,
     }}
   />
 );

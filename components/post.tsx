@@ -15,7 +15,7 @@ export const Post = ({ _meta, title, date }: PostProps) => (
   >
     <p className="text-foreground">{title}</p>
     <span className="hidden h-px grow bg-border transition-colors group-hover:bg-border-dark sm:block" />
-    <p className="text-muted-foreground transition-colors group-hover:text-foreground-light">
+    <p className="text-muted-foreground transition-colors group-hover:text-muted-foreground">
       {dateFormatter.format(date)}
     </p>
   </Link>

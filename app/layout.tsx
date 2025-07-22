@@ -22,7 +22,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
       className={cn(
         sans.variable,
         mono.variable,
-        'bg-background font-sans text-foreground-light leading-relaxed antialiased'
+        'font-sans leading-relaxed antialiased'
       )}
     >
       <ThemeProvider

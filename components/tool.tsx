@@ -44,7 +44,7 @@ export const Tool = ({
         )}
       </span>
       <span className="hidden h-px grow bg-border transition-colors group-hover:bg-border-dark sm:block" />
-      <p className="text-muted-foreground transition-colors group-hover:text-foreground-light">
+      <p className="text-muted-foreground transition-colors group-hover:text-muted-foreground">
         {description}
       </p>
     </Link>

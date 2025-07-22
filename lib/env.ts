@@ -3,17 +3,17 @@ import { z } from 'zod';
 
 export const env = createEnv({
   server: {
-    RESEND_AUDIENCE_ID: z.string().min(1),
-    RESEND_TOKEN: z.string().min(1).startsWith('re_'),
-    RESEND_TO: z.string().email().min(1),
-    RECAPTCHA_SECRET_KEY: z.string().min(1),
+    RESEND_AUDIENCE_ID: z.string(),
+    RESEND_TOKEN: z.string().startsWith('re_'),
+    RESEND_TO: z.email(),
+    RECAPTCHA_SECRET_KEY: z.string(),
 
     // Added by Vercel
-    VERCEL_PROJECT_PRODUCTION_URL: z.string().min(1),
+    VERCEL_PROJECT_PRODUCTION_URL: z.string(),
   },
   client: {
-    NEXT_PUBLIC_LOGO_DEV_TOKEN: z.string().min(1).startsWith('pk_'),
-    NEXT_PUBLIC_RECAPTCHA_SITE_KEY: z.string().min(1),
+    NEXT_PUBLIC_LOGO_DEV_TOKEN: z.string().startsWith('pk_'),
+    NEXT_PUBLIC_RECAPTCHA_SITE_KEY: z.string(),
   },
   runtimeEnv: {
     RESEND_AUDIENCE_ID: process.env.RESEND_AUDIENCE_ID,

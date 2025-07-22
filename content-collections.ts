@@ -7,6 +7,7 @@ import {
   remarkHeading,
 } from 'fumadocs-core/mdx-plugins';
 import readingTime from 'reading-time';
+import { z } from 'zod';
 
 const rehypeCodeOptions: RehypeCodeOptions = {
   themes: {
@@ -15,14 +16,11 @@ const rehypeCodeOptions: RehypeCodeOptions = {
   },
 };
 
-// for more information on configuration, visit:
-// https://www.content-collections.dev/docs/configuration
-
 const pages = defineCollection({
   name: 'pages',
   directory: 'content',
   include: 'pages/*.mdx',
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     description: z.string(),
   }),
@@ -43,7 +41,7 @@ const posts = defineCollection({
   name: 'posts',
   directory: 'content',
   include: 'blog/*.mdx',
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     description: z.string(),
     date: z.coerce.date(),

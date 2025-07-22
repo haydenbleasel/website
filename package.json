@@ -8,8 +8,6 @@
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.12.0",
-    "@upstash/ratelimit": "^2.0.5",
-    "@upstash/redis": "^1.34.7",
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

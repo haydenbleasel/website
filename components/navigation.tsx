@@ -36,11 +36,6 @@ const links = [
     label: 'Stack',
     active: (pathname: string) => pathname.startsWith('/stack'),
   },
-  {
-    href: '/contact',
-    label: 'Contact',
-    active: (pathname: string) => pathname.startsWith('/contact'),
-  },
 ];
 
 export const Navigation = () => {

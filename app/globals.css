@@ -133,26 +133,24 @@
   .prose h2 a {
     @apply font-semibold!;
   }
-}
-
-@layer base {
-  article .aspect-video {
+  .prose article .aspect-video {
     @apply mt-8;
   }
+  .prose article pre {
+    @apply mt-0 p-0!;
+  }
+  .prose h2 + p {
+    @apply mt-0!;
+  }
 }
 
 @layer base {
-  .shiki {
-    @apply bg-secondary/50 border border-border/50 rounded-lg my-4;
-    @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
-  }
-
-  .shiki span {
+  .shiki, .shiki span {
     @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
   }
 
   .shiki code {
-    @apply overflow-x-auto p-3 text-[13px];
+    @apply overflow-x-auto p-4! text-sm leading-relaxed;
     display: inherit;
     counter-reset: line;
   }
@@ -161,12 +159,12 @@
     content: counter(line);
     counter-increment: line;
 
-    @apply inline-block w-3 mr-8 text-xs text-right text-muted-foreground;
+    @apply inline-block w-3 text-sm leading-relaxed mr-8 text-right text-muted-foreground;
   }
 
   .shiki[title]:before {
     content: attr(title);
-    @apply text-xs text-muted-foreground mb-0 block border-b p-3;
+    @apply text-xs text-muted-foreground mb-0 block px-4 pt-4 pb-2;
   }
 
   .footnotes {

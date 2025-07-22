@@ -61,9 +61,11 @@ const Page: FC<PageProperties> = async ({ params }) => {
           Blog
         </Link>
       </div>
-      <div className="gap-0">
-        <h1>{page.title}</h1>
-        <p className="text-muted-foreground">{page.description}</p>
+      <div className="not-prose not-prose mb-12 gap-0">
+        <h1 className="font-semibold text-4xl">{page.title}</h1>
+        <p className="mt-2 text-lg text-muted-foreground">
+          {page.description}
+        </p>
       </div>
       {page.image ? (
         <div>
@@ -81,7 +83,7 @@ const Page: FC<PageProperties> = async ({ params }) => {
       <article className="grid gap-3">
         <Mdx code={page.body} />
       </article>
-      <div className="grid gap-1 text-muted-foreground text-sm">
+      <div className="not-prose mt-12 grid gap-1 text-muted-foreground text-sm">
         <p>
           Published on{' '}
           {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(

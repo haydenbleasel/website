@@ -127,6 +127,9 @@
   .prose a:hover {
     @apply text-muted-foreground!;
   }
+  .prose h1:not(.not-prose h1) {
+    @apply text-4xl!;
+  }
   .prose h2 {
     @apply border-none;
   }

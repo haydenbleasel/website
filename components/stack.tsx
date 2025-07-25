@@ -30,12 +30,12 @@ export const Stack = () => {
   }));
 
   return (
-    <div className="not-prose grid gap-8">
+    <div className="not-prose grid gap-16">
       {toolsByCategory.map(({ category, tools }) =>
         tools.length > 0 ? (
-          <section key={category}>
-            <h2 className="mb-3 font-medium text-xl">{category}</h2>
-            <div className="grid gap-3">
+          <section className="flex flex-col gap-8" key={category}>
+            <h2 className="font-medium text-3xl">{category}</h2>
+            <div className="grid gap-4">
               {tools.map((tool) => (
                 <Tool key={tool.name} {...tool} />
               ))}

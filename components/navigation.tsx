@@ -8,13 +8,8 @@ import { Theme } from './theme';
 const links = [
   {
     href: '/',
-    label: 'Home',
-    active: (pathname: string) => pathname === '/',
-  },
-  {
-    href: '/about',
     label: 'About',
-    active: (pathname: string) => pathname.startsWith('/about'),
+    active: (pathname: string) => pathname === '/',
   },
   {
     href: '/work',
@@ -36,13 +31,18 @@ const links = [
     label: 'Stack',
     active: (pathname: string) => pathname.startsWith('/stack'),
   },
+  {
+    href: '/live',
+    label: 'Live',
+    active: (pathname: string) => pathname.startsWith('/live'),
+  },
 ];
 
 export const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <div className='sticky top-16 flex h-[calc(100vh-4rem)] flex-col justify-center p-4'>
+    <div className="sticky top-16 flex h-[calc(100vh-4rem)] flex-col justify-center p-4">
       <ul>
         {links.map(({ href, label, active }) => (
           <li key={href}>

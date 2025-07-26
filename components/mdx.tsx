@@ -1,12 +1,12 @@
 import { MDXContent } from '@content-collections/mdx/react';
 import Image from 'next/image';
 import type { HTMLProps, ReactNode } from 'react';
-import { Tweet } from 'react-tweet';
 import { Features } from './features';
 import { ContactForm } from './form';
 import { Link } from './link';
 import { MailingList } from './mailing-list';
 import { Stack } from './stack';
+import { Tweet } from './tweet';
 import { Video } from './video';
 
 type MdxProperties = {
@@ -31,13 +31,13 @@ const img = (properties: HTMLProps<HTMLImageElement>) => {
 
   return (
     <Image
-      src={properties.src}
       alt={properties.alt}
-      width={1240}
+      className="my-0! overflow-hidden rounded-sm border border-border/50"
       height={698}
-      unoptimized={properties.src.startsWith('http')}
-      className="overflow-hidden rounded-sm my-0! border border-border/50"
       quality={100}
+      src={properties.src}
+      unoptimized={properties.src.startsWith('http')}
+      width={1240}
     />
   );
 };

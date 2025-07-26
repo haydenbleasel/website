@@ -1,6 +1,10 @@
+'use client';
+
+import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
-import type { SVGProps } from 'react';
+import { type SVGProps, useState } from 'react';
 import { Link } from '../link';
+import { Navigation } from '../navigation';
 import avatar from './avatar.jpg';
 
 const X = (props: SVGProps<SVGSVGElement>) => (
@@ -36,45 +40,65 @@ const GitHub = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const Header = () => (
-  <div className="sticky top-0 z-50 flex h-16 items-center justify-between bg-background p-4">
-    <Link className="flex items-center gap-4" href="/">
-      <Image
-        alt=""
-        className="size-8 rounded-full"
-        height={32}
-        placeholder="blur"
-        priority
-        src={avatar}
-        width={32}
-      />
-      <p className="font-medium text-foreground leading-normal">
-        Hayden Bleasel
-      </p>
-    </Link>
-    <div className="flex items-center gap-2">
-      <Link
-        className="rounded-full p-2.5 text-sm transition-colors hover:bg-muted"
-        href="https://x.com/haydenbleasel"
-        rel="noopener"
-        target="_blank"
-      >
-        <X className="size-4" />
-      </Link>
-      <Link
-        className="rounded-full p-2.5 text-sm transition-colors hover:bg-muted"
-        href="https://github.com/haydenbleasel"
-        rel="noopener"
-        target="_blank"
-      >
-        <GitHub className="size-4" />
-      </Link>
-      <Link
-        className="rounded-full bg-muted px-4 py-2.5 font-medium text-sm transition-colors hover:bg-muted/50"
-        href="/contact"
-      >
-        Get in touch
-      </Link>
-    </div>
-  </div>
-);
+export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <div className="sticky top-0 z-50 flex h-16 items-center justify-between bg-background p-4">
+        <Link className="flex items-center gap-4" href="/">
+          <Image
+            alt=""
+            className="size-8 rounded-full"
+            height={32}
+            placeholder="blur"
+            priority
+            src={avatar}
+            width={32}
+          />
+          <p className="hidden font-medium text-foreground leading-normal sm:block">
+            Hayden Bleasel
+          </p>
+        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            className="rounded-full p-2.5 text-sm transition-colors hover:bg-muted"
+            href="https://x.com/haydenbleasel"
+            rel="noopener"
+            target="_blank"
+          >
+            <X className="size-4" />
+          </Link>
+          <Link
+            className="rounded-full p-2.5 text-sm transition-colors hover:bg-muted"
+            href="https://github.com/haydenbleasel"
+            rel="noopener"
+            target="_blank"
+          >
+            <GitHub className="size-4" />
+          </Link>
+          <Link
+            className="rounded-full bg-muted px-4 py-2.5 font-medium text-sm transition-colors hover:bg-muted/50"
+            href="/contact"
+          >
+            Get in touch
+          </Link>
+          <div className="md:hidden">
+            <button
+              className="cursor-pointer rounded-full p-2.5 text-sm transition-colors hover:bg-muted"
+              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+            >
+              <MenuIcon className="size-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+      {isOpen && (
+        <div className="fixed top-16 right-0 left-0 z-50 border-b bg-background pb-4 md:hidden">
+          <Navigation />
+        </div>
+      )}
+    </>
+  );
+};

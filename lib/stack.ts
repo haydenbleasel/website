@@ -1,7 +1,14 @@
 type StackItem = {
   name: string;
   description: string;
-  category: 'AI' | 'Productivity' | 'Design' | 'Development' | 'Marketing' | 'Finance' | 'Other';
+  category:
+    | 'AI'
+    | 'Productivity'
+    | 'Design'
+    | 'Development'
+    | 'Marketing'
+    | 'Finance'
+    | 'Other';
   href: string;
   affiliate?: boolean;
   featured?: boolean;
@@ -291,5 +298,13 @@ export const stack: StackItem[] = [
     category: 'AI',
     affiliate: true,
     href: 'https://granola.ai/invite/?referee=Hayden_Bleasel',
+  },
+  {
+    name: 'Railway',
+    description: 'Deploy and manage your apps with ease.',
+    category: 'Development',
+    affiliate: true,
+    href: 'https://railway.com?referralCode=JiaL7B',
+    featured: true,
   },
 ];

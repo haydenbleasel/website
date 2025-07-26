@@ -37,9 +37,7 @@ const Posts = () => (
         .sort(([a], [b]) => Number(b) - Number(a))
         .map(([year, posts]) => (
           <div key={year}>
-            <h2 className="font-normal text-muted-foreground text-sm">
-              {year}
-            </h2>
+            <h2 className="font-medium text-3xl">{year}</h2>
             <ul className="mt-6 grid gap-6">
               {posts.map((post) => (
                 <li key={post._meta.path}>

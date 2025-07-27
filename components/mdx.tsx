@@ -7,6 +7,7 @@ import { Link } from './link';
 import { MailingList } from './mailing-list';
 import { Stack } from './stack';
 import { Tweet } from './tweet';
+import { ImageZoom } from './ui/kibo-ui/image-zoom';
 import { Video } from './video';
 
 type MdxProperties = {
@@ -30,15 +31,17 @@ const img = (properties: HTMLProps<HTMLImageElement>) => {
   }
 
   return (
-    <Image
-      alt={properties.alt}
-      className="my-0! overflow-hidden rounded-sm border border-border/50"
-      height={698}
-      quality={100}
-      src={properties.src}
-      unoptimized={properties.src.startsWith('http')}
-      width={1240}
-    />
+    <ImageZoom zoomMargin={16}>
+      <Image
+        alt={properties.alt}
+        className="my-0! overflow-hidden rounded-sm border border-border/50"
+        height={698}
+        quality={100}
+        src={properties.src}
+        unoptimized={properties.src.startsWith('http')}
+        width={1240}
+      />
+    </ImageZoom>
   );
 };
 

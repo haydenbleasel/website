@@ -15,14 +15,14 @@ const groups = [
 ];
 
 const FeatureItem = ({ name, url, location, year }: Feature) => (
-  <span key={name}>
-    <Link className="block truncate" href={url} key={name}>
+  <div>
+    <Link className="block break-words" href={url} key={name}>
       {name}
     </Link>
-    <span className="block text-muted-foreground text-sm">
+    <p className="block text-muted-foreground text-sm">
       {location} &bull; {year}
-    </span>
-  </span>
+    </p>
+  </div>
 );
 
 export const Features = () => (

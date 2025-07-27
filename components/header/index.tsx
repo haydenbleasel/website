@@ -2,7 +2,8 @@
 
 import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
-import { type SVGProps, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { type SVGProps, useEffect, useState } from 'react';
 import { Link } from '../link';
 import { Navigation } from '../navigation';
 import avatar from './avatar.jpg';
@@ -42,6 +43,12 @@ const GitHub = (props: SVGProps<SVGSVGElement>) => (
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: "We want to close the menu when the pathname changes"
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <>

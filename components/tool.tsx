@@ -27,14 +27,7 @@ export const Tool = ({
       href={href}
     >
       <div className="flex size-16 shrink-0 items-center justify-center">
-        <Image
-          alt=""
-          className="rounded-sm"
-          height={28}
-          src={src}
-          unoptimized
-          width={28}
-        />
+        <Image alt="" className="rounded-sm" height={28} src={src} width={28} />
       </div>
       <span className="flex-1 px-4">
         <span className="flex items-center gap-2">

@@ -12,6 +12,7 @@ type StackItem = {
   href: string;
   affiliate?: boolean;
   featured?: boolean;
+  imageHref?: string;
 };
 
 export const stack: StackItem[] = [

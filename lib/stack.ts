@@ -12,7 +12,6 @@ type StackItem = {
   href: string;
   affiliate?: boolean;
   featured?: boolean;
-  imageHref?: string;
 };
 
 export const stack: StackItem[] = [
@@ -136,7 +135,6 @@ export const stack: StackItem[] = [
     description: 'Pretty code snippet screenshots.',
     category: 'Design',
     href: 'https://ray.so/',
-    imageHref: 'https://raycast.com/',
   },
   {
     name: 'Wealthfront',

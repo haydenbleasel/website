@@ -1,14 +1,13 @@
-import { Link } from '@/components/link';
-import { Mdx } from '@/components/mdx';
-import { Section } from '@/components/section';
-import { createMetadata } from '@/lib/metadata';
-import { cn } from '@/lib/utils';
 import { allPosts } from 'content-collections';
 import { ArrowLeftToLineIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { FC } from 'react';
+import { Link } from '@/components/link';
+import { Mdx } from '@/components/mdx';
+import { createMetadata } from '@/lib/metadata';
+import { cn } from '@/lib/utils';
 
 type PageProperties = {
   readonly params: Promise<{
@@ -50,47 +49,39 @@ const Page: FC<PageProperties> = async ({ params }) => {
 
   return (
     <>
-      <Section
-        className="-ml-28 absolute mt-1 hidden select-none lg:block"
-        delay={0.6}
-      >
+      <div className="-ml-28 absolute mt-1 hidden select-none lg:block">
         <Link
-          href="/blog"
           className={cn(
-            'flex items-center gap-2 text-nowrap text-foreground-lighter text-xs transition-colors',
+            'flex items-center gap-2 text-nowrap text-muted-foreground text-xs transition-colors',
             'hover:text-foreground'
           )}
+          href="/blog"
         >
           <ArrowLeftToLineIcon size={12} />
           Blog
         </Link>
-      </Section>
-      <Section className="gap-0">
-        <h1>{page.title}</h1>
-        <p className="text-foreground-lighter">{page.description}</p>
-      </Section>
+      </div>
+      <div className="not-prose not-prose mb-12 gap-0">
+        <h1 className="font-medium text-4xl">{page.title}</h1>
+        <p className="mt-2 text-lg text-muted-foreground">{page.description}</p>
+      </div>
       {page.image ? (
-        <Section>
+        <div>
           <Image
-            src={page.image}
             alt={page.title}
-            width={1200}
-            height={630}
             className="overflow-hidden rounded-lg border border-border/50"
-            quality={100}
+            height={630}
             priority
+            quality={100}
+            src={page.image}
+            width={1200}
           />
-        </Section>
+        </div>
       ) : null}
       <article className="grid gap-3">
-        <Section delay={0.2}>
-          <Mdx code={page.body} />
-        </Section>
+        <Mdx code={page.body} />
       </article>
-      <Section
-        className="grid gap-1 text-foreground-lighter text-sm"
-        delay={0.4}
-      >
+      <div className="not-prose mt-12 grid gap-1 text-muted-foreground text-sm">
         <p>
           Published on{' '}
           {new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(
@@ -98,7 +89,7 @@ const Page: FC<PageProperties> = async ({ params }) => {
           )}
         </p>
         <p>{page.readingTime}</p>
-      </Section>
+      </div>
     </>
   );
 };

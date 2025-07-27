@@ -1,42 +1,48 @@
 'use client';
 
 import { stack } from '@/lib/stack';
-import { useState } from 'react';
-import { Link } from './link';
 import { Tool } from './tool';
 
+const getCategories = () => {
+  const categories = new Set<string>();
+  for (const item of stack) {
+    categories.add(item.category);
+  }
+  // Sort categories alphabetically before returning
+  return Array.from(categories).sort((a, b) => a.localeCompare(b));
+};
+
 export const Stack = () => {
-  const [open, setOpen] = useState(false);
+  const categories = getCategories();
+
+  // Sort stack by affiliate first, then by name for consistency
+  const sortedStack = [...stack].sort((a, b) => {
+    if (a.affiliate === b.affiliate) {
+      return a.name.localeCompare(b.name);
+    }
+    return b.affiliate ? 1 : -1;
+  });
+
+  // Group tools by category, include all tools (not just featured)
+  const toolsByCategory = categories.map((category) => ({
+    category,
+    tools: sortedStack.filter((tool) => tool.category === category),
+  }));
 
   return (
-    <>
-      <div className="grid gap-3">
-        {stack
-          .sort((a, b) => (b.affiliate ? 1 : -1))
-          .filter((tool) => tool.featured || open)
-          .map((tool) => (
-            <Tool key={tool.name} {...tool} />
-          ))}
-      </div>
-      {!open && stack.some((tool) => !tool.affiliate) && (
-        <div className="flex w-full items-center justify-between gap-4">
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="cursor-pointer text-left text-foreground-lighter text-sm hover:text-foreground"
-          >
-            Show more tools...
-          </button>
-          <Link
-            href="https://logo.dev"
-            aria-label="Logo API"
-            target="_blank"
-            className="text-foreground-lighter text-xs hover:text-foreground"
-          >
-            Logos provided by Logo.dev
-          </Link>
-        </div>
+    <div className="not-prose grid gap-16">
+      {toolsByCategory.map(({ category, tools }) =>
+        tools.length > 0 ? (
+          <section className="flex flex-col gap-8" key={category}>
+            <h2 className="font-medium text-3xl">{category}</h2>
+            <div className="grid gap-4">
+              {tools.map((tool) => (
+                <Tool key={tool.name} {...tool} />
+              ))}
+            </div>
+          </section>
+        ) : null
       )}
-    </>
+    </div>
   );
 };

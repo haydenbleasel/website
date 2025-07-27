@@ -33,7 +33,7 @@ export const MailingList = () => {
   }, [state.error]);
 
   return (
-    <Form.Root action={formAction} className="relative my-3">
+    <Form.Root action={formAction} className="relative mt-6">
       <Input
         id="email"
         label="Email address"

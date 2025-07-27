@@ -10,7 +10,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 export const Input = ({ label, name, className, ...props }: InputProps) => (
   <Form.Field className="grid gap-1" name={name}>
     <div className="flex items-baseline justify-between">
-      <Form.Label className="inline-block select-none text-foreground-lighter text-sm">
+      <Form.Label className="inline-block select-none text-muted-foreground text-sm">
         {label}
       </Form.Label>
       <Form.Message className="text-error text-sm" match="badInput">
@@ -43,11 +43,11 @@ export const Input = ({ label, name, className, ...props }: InputProps) => (
       <Form.Message className="text-error text-sm" match="typeMismatch">
         {name} is not a valid {props.type}.
       </Form.Message>
-      <Form.Message className="text-foreground-lighter text-sm" match="valid">
+      <Form.Message className="text-muted-foreground text-sm" match="valid">
         Looks good!
       </Form.Message>
       <Form.Message
-        className="text-foreground-lighter text-sm"
+        className="text-muted-foreground text-sm"
         match="valueMissing"
       >
         Please enter your {name}.
@@ -57,7 +57,7 @@ export const Input = ({ label, name, className, ...props }: InputProps) => (
       <input
         className={cn(
           'w-full rounded-md bg-secondary px-3 py-2 text-foreground outline-none',
-          'placeholder:text-foreground-lighter',
+          'placeholder:text-muted-foreground',
           'sm:text-sm',
           className
         )}

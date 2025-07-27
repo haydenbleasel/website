@@ -117,6 +117,12 @@ export const speaking = [
 
 export const interviews = [
   {
+    name: 'Hayden Bleasel - NextDev #24',
+    location: 'NextDev',
+    url: 'https://www.youtube.com/watch?v=kHny7Y-HZcc',
+    year: 2025,
+  },
+  {
     name: 'Design Interview with Hayden Bleasel',
     location: 'Lovers Magazine',
     url: 'https://spaces.is/loversmagazine/interviews/hayden-bleasel',

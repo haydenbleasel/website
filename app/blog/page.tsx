@@ -1,8 +1,7 @@
-import { Post } from '@/components/post';
-import { Section } from '@/components/section';
-import { createMetadata } from '@/lib/metadata';
 import { allPosts } from 'content-collections';
 import type { Metadata } from 'next';
+import { Post } from '@/components/post';
+import { createMetadata } from '@/lib/metadata';
 
 const postsByYear = allPosts
   .sort((a, b) => b.date.getTime() - a.date.getTime())
@@ -29,26 +28,26 @@ export const metadata: Metadata = createMetadata({
 
 const Posts = () => (
   <>
-    <Section className="gap-0">
-      <h1>{title}</h1>
-      <p className="text-foreground-lighter">{description}</p>
-    </Section>
-    {Object.entries(postsByYear)
-      .sort(([a], [b]) => Number(b) - Number(a))
-      .map(([year, posts], index) => (
-        <Section key={year} delay={(index + 1) * 0.2}>
-          <h2 className="font-normal text-foreground-lighter text-sm">
-            {year}
-          </h2>
-          <ul className="grid gap-6">
-            {posts.map((post) => (
-              <li key={post._meta.path}>
-                <Post {...post} />
-              </li>
-            ))}
-          </ul>
-        </Section>
-      ))}
+    <div className="not-prose not-prose mb-12 gap-0">
+      <h1 className="font-medium text-4xl">{title}</h1>
+      <p className="mt-2 text-lg text-muted-foreground">{description}</p>
+    </div>
+    <div className="not-prose grid gap-12">
+      {Object.entries(postsByYear)
+        .sort(([a], [b]) => Number(b) - Number(a))
+        .map(([year, posts]) => (
+          <div key={year}>
+            <h2 className="font-medium text-3xl">{year}</h2>
+            <ul className="mt-6 grid gap-6">
+              {posts.map((post) => (
+                <li key={post._meta.path}>
+                  <Post {...post} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+    </div>
   </>
 );
 

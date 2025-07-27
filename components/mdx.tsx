@@ -1,11 +1,13 @@
 import { MDXContent } from '@content-collections/mdx/react';
 import Image from 'next/image';
 import type { HTMLProps, ReactNode } from 'react';
-import { Tweet } from 'react-tweet';
 import { Features } from './features';
+import { ContactForm } from './form';
 import { Link } from './link';
 import { MailingList } from './mailing-list';
 import { Stack } from './stack';
+import { Tweet } from './tweet';
+import { ImageZoom } from './ui/kibo-ui/image-zoom';
 import { Video } from './video';
 
 type MdxProperties = {
@@ -29,15 +31,17 @@ const img = (properties: HTMLProps<HTMLImageElement>) => {
   }
 
   return (
-    <Image
-      src={properties.src}
-      alt={properties.alt}
-      width={1240}
-      height={698}
-      unoptimized={properties.src.startsWith('http')}
-      className="my-4 overflow-hidden rounded-lg border border-border/50"
-      quality={100}
-    />
+    <ImageZoom zoomMargin={16}>
+      <Image
+        alt={properties.alt}
+        className="my-0! overflow-hidden rounded-sm border border-border/50"
+        height={698}
+        quality={100}
+        src={properties.src}
+        unoptimized={properties.src.startsWith('http')}
+        width={1240}
+      />
+    </ImageZoom>
   );
 };
 
@@ -57,51 +61,11 @@ const Callout = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
-const h2 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h2 {...props}>
-    <span className="mr-2 select-none text-border">##</span>
-    {children}
-  </h2>
-);
-
-const h3 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h3 {...props}>
-    <span className="mr-2 select-none text-border">###</span>
-    {children}
-  </h3>
-);
-
-const h4 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h4 {...props}>
-    <span className="mr-2 select-none text-border">####</span>
-    {children}
-  </h4>
-);
-
-const h5 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h5 {...props}>
-    <span className="mr-2 select-none text-border">#####</span>
-    {children}
-  </h5>
-);
-
-const h6 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
-  <h6 {...props}>
-    <span className="mr-2 select-none text-border">######</span>
-    {children}
-  </h6>
-);
-
 export const Mdx = ({ code }: MdxProperties) => (
   <MDXContent
     code={code}
     components={{
       a,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
       img,
       Video,
       Instagram,
@@ -110,6 +74,7 @@ export const Mdx = ({ code }: MdxProperties) => (
       Stack,
       MailingList,
       Features,
+      ContactForm,
     }}
   />
 );

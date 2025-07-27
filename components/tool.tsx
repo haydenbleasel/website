@@ -23,7 +23,7 @@ export const Tool = ({
 
   return (
     <Link
-      className='group flex flex-col divide-x rounded-md border transition-colors hover:bg-secondary sm:flex-row sm:items-center'
+      className="group flex items-center divide-x rounded-md border transition-colors hover:bg-secondary"
       href={href}
     >
       <div className="flex size-16 shrink-0 items-center justify-center">

@@ -1,27 +1,18 @@
-import { allPages } from 'content-collections';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Mdx } from '@/components/mdx';
+import { getPage } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 
 type PageProps = {
   params: Promise<{ slug?: string[] }>;
 };
 
-const getPage = (slug: string[] | undefined) => {
-  const parsedSlug = slug === undefined ? 'home' : slug.join('/');
-  const page = allPages.find(
-    (page) => page._meta.fileName === `${parsedSlug}.mdx`
-  );
-
-  return page;
-};
-
 export const generateMetadata = async ({
   params,
 }: PageProps): Promise<Metadata> => {
   const { slug } = await params;
-  const page = getPage(slug);
+  const page = getPage(slug?.join('/') ?? 'home');
 
   if (!page) {
     return {};
@@ -30,13 +21,13 @@ export const generateMetadata = async ({
   return createMetadata({
     title: page.title,
     description: page.description,
-    image: `/og?title=${page.title}&description=${page.description}`,
+    image: `/og?slug=${slug?.join('/')}`,
   });
 };
 
 const Page = async ({ params }: PageProps) => {
   const { slug } = await params;
-  const page = getPage(slug);
+  const page = getPage(slug?.join('/') ?? 'home');
 
   if (!page) {
     notFound();

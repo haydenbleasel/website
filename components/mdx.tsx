@@ -5,6 +5,7 @@ import { Features } from './features';
 import { ContactForm } from './form';
 import { Link } from './link';
 import { MailingList } from './mailing-list';
+import Posts from './posts';
 import { Stack } from './stack';
 import { Tweet } from './tweet';
 import { ImageZoom } from './ui/kibo-ui/image-zoom';
@@ -75,6 +76,7 @@ export const Mdx = ({ code }: MdxProperties) => (
       MailingList,
       Features,
       ContactForm,
+      Posts,
     }}
   />
 );

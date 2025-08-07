@@ -4,5 +4,5 @@ export function formatDate(dateString: string) {
     month: 'long',
     year: 'numeric',
     timeZone: 'UTC',
-  })
+  });
 }

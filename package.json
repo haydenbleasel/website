@@ -1,6 +1,6 @@
 {
-  "name": "tailwind-plus-template",
-  "version": "0.1.0",
+  "name": "haydenbleasel",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

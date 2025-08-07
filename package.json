@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "npx ultracite lint",
+    "format": "npx ultracite format"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {

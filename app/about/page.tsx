@@ -1,8 +1,8 @@
+import { MailboxIcon, PaperPlaneIcon } from '@phosphor-icons/react/dist/ssr';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { Container } from '@/components/Container';
 import {
   GitHubIcon,
@@ -33,17 +33,6 @@ function SocialLink({
         <span className="ml-4">{children}</span>
       </Link>
     </li>
-  );
-}
-
-function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" {...props}>
-      <path
-        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
-        fillRule="evenodd"
-      />
-    </svg>
   );
 }
 
@@ -118,7 +107,7 @@ export default function About() {
             <SocialLink
               className="mt-8 border-zinc-100 border-t pt-8 dark:border-zinc-700/40"
               href="mailto:spencer@planetaria.tech"
-              icon={MailIcon}
+              icon={PaperPlaneIcon}
             >
               spencer@planetaria.tech
             </SocialLink>

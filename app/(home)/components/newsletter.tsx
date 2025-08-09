@@ -50,6 +50,7 @@ export const Newsletter = () => {
             className="w-full appearance-none rounded-full bg-zinc-50 px-4 py-[calc(--spacing(2)-1px)] pr-12 shadow-md shadow-zinc-800/5 outline outline-zinc-900/10 placeholder:text-zinc-400 focus:outline-teal-500 focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:bg-zinc-800 dark:text-zinc-200 dark:outline-zinc-700 dark:focus:outline-teal-400 dark:focus:ring-teal-400/10 dark:placeholder:text-zinc-500"
             id="email"
             name="email"
+            pattern={emailRegex.source}
             placeholder="jane@acme.com"
             required
             type="email"

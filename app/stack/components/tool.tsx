@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Card } from '@/components/card';
 import { env } from '@/lib/env';
 
-export type ToolProps = {
+type ToolProps = {
   name: string;
   description: string;
   href: string;

@@ -6,6 +6,7 @@ import { Container } from '@/components/container';
 import { Mdx } from '@/components/mdx';
 import { Prose } from '@/components/prose';
 import { formatDate } from '@/lib/format-date';
+import { createMetadata } from '@/lib/metadata';
 
 const getPage = (slug: string) => allPosts.find((post) => post.slug === slug);
 
@@ -23,17 +24,10 @@ export const generateMetadata = async ({
     return {};
   }
 
-  const metadata: Metadata = {
+  const metadata: Metadata = createMetadata({
     title: page.title,
     description: page.description,
-    openGraph: {
-      images: [
-        {
-          url: `/og?slug=${slug}`,
-        },
-      ],
-    },
-  };
+  });
 
   return metadata;
 };

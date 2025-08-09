@@ -9,14 +9,15 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/social-icons';
+import { createMetadata } from '@/lib/metadata';
 import { SocialLink } from './components/social-link';
 import portraitImage from './images/portrait.jpg';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: 'About',
   description:
     'I’m Hayden Bleasel. I live in San Francisco, where work for Vercel.',
-};
+});
 
 const About = () => (
   <Container className="mt-16 sm:mt-32">

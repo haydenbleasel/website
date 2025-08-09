@@ -1,13 +1,14 @@
 import { allPosts } from 'content-collections';
 import type { Metadata } from 'next';
 import { SimpleLayout } from '@/components/simple-layout';
+import { createMetadata } from '@/lib/metadata';
 import { Article } from './components/article';
 
-export const metadata: Metadata = {
-  title: 'Articles',
+export const metadata: Metadata = createMetadata({
+  title: 'Blog',
   description:
     'All of my long-form thoughts on software design and product updates.',
-};
+});
 
 const sortedPosts = allPosts.sort(
   (a, b) => b.date.getTime() - a.date.getTime()

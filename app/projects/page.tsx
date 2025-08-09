@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import { Container } from '@/components/container';
 import { Prose } from '@/components/prose';
 import { Video } from '@/components/video';
+import { createMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: 'Projects',
   description: 'Things I’ve made trying to put my dent in the universe.',
-};
+});
 
 const Projects = () => (
   <Container className="mt-16 space-y-16 sm:mt-32">

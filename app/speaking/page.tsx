@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { SimpleLayout } from '@/components/simple-layout';
+import { createMetadata } from '@/lib/metadata';
 import { interviews, speaking, writing } from '@/lib/speaking';
 import { Appearance } from './components/appearance';
 import { SpeakingSection } from './components/speaking-section';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: 'Speaking',
   description: 'I’ve spoken at events and been interviewed for some podcasts.',
-};
+});
 
 const Speaking = () => (
   <SimpleLayout

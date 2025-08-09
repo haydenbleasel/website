@@ -1,15 +1,13 @@
 import clsx from 'clsx';
 import { useId } from 'react';
 
-export function Section({
-  title,
-  children,
-  className,
-}: {
+type SectionProps = {
   title: string;
   children: React.ReactNode;
   className?: string;
-}) {
+};
+
+export const Section = ({ title, children, className }: SectionProps) => {
   const id = useId();
 
   return (
@@ -33,4 +31,4 @@ export function Section({
       </div>
     </section>
   );
-}
+};

@@ -15,7 +15,7 @@ export const Hero = () => (
         libraries and resources to help developers build better products.
       </p>
       <Button
-        className="mt-6 flex w-auto gap-1 whitespace-nowrap bg-gradient-to-b from-zinc-800 to-zinc-900 text-white"
+        className="mt-6 flex w-auto gap-1! whitespace-nowrap bg-gradient-to-b from-zinc-800 to-zinc-900 text-white"
         href="https://x.com/haydenbleasel"
         rel="noopener noreferrer"
         target="_blank"

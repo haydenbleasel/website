@@ -2,6 +2,7 @@ import { PaperPlaneIcon } from '@phosphor-icons/react/dist/ssr';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Container } from '@/components/container';
+import { Prose } from '@/components/prose';
 import {
   GitHubIcon,
   InstagramIcon,
@@ -34,12 +35,11 @@ const About = () => (
         <h1 className="font-bold text-4xl text-zinc-800 tracking-tight sm:text-5xl dark:text-zinc-100">
           I’m Hayden Bleasel, an Australian designer, engineer and founder.
         </h1>
-        <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+        <Prose className="mt-6">
           <p>
             I'm currently based in San Francisco and work on the Developer
             Experience team at{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://vercel.com"
               rel="noopener noreferrer"
               target="_blank"
@@ -52,7 +52,6 @@ const About = () => (
           <p>
             My previous role was Chief Product Officer at{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://www.corellium.com/"
               rel="noopener noreferrer"
               target="_blank"
@@ -64,7 +63,6 @@ const About = () => (
             Support teams in blurring the line between real and virtual for
             government agencies and enterprises. Corellium was{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://techcrunch.com/2025/06/05/phone-unlocking-firm-cellebrite-to-acquire-mobile-testing-startup-corellium-for-170m/"
               rel="noopener noreferrer"
               target="_blank"
@@ -76,7 +74,6 @@ const About = () => (
           <p>
             Before that, I was Director of{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://jellypepper.com/"
               rel="noopener noreferrer"
               target="_blank"
@@ -88,7 +85,6 @@ const About = () => (
             car tech, AI, biotech, crypto, drone delivery, cybersecurity and
             even orbital (outer space) logistics. Jellypepper was{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://raw.studio/blog/raw-studio-acquires-jellypepper-to-expand-its-reach-to-the-startup-ecosystem/"
               rel="noopener noreferrer"
               target="_blank"
@@ -100,7 +96,6 @@ const About = () => (
           <p>
             Earlier in my career, I was the Head of Product and Design at{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://www.spaceship.com.au/"
               rel="noopener noreferrer"
               target="_blank"
@@ -109,7 +104,6 @@ const About = () => (
             </a>{' '}
             (a leading Australian investing platform later{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://www.spaceship.com.au/news/etoro-completes-acquisition-spaceship/"
               rel="noopener noreferrer"
               target="_blank"
@@ -118,7 +112,6 @@ const About = () => (
             </a>{' '}
             by eToro); contracted for{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://www.rga.com/"
               rel="noopener noreferrer"
               target="_blank"
@@ -127,7 +120,6 @@ const About = () => (
             </a>{' '}
             and did a product design internship at{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://www.palantir.com/"
               rel="noopener noreferrer"
               target="_blank"
@@ -140,7 +132,6 @@ const About = () => (
             I've had the pleasure of working with open source organizations. You
             may have seen some of my work out there — I rebranded{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://eslint.org/blog/2022/08/redesigning-eslint/"
               rel="noopener noreferrer"
               target="_blank"
@@ -149,7 +140,6 @@ const About = () => (
             </a>{' '}
             and redesigned the{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://nodejs.org/en/blog/announcements/diving-into-the-nodejs-website-redesign"
               rel="noopener noreferrer"
               target="_blank"
@@ -175,7 +165,6 @@ const About = () => (
             After hours, I'm exploring new ideas (particularly AI-native apps)
             and building open source software. If you like my OSS work, you can{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://github.com/sponsors/haydenbleasel"
               rel="noopener noreferrer"
               target="_blank"
@@ -185,7 +174,6 @@ const About = () => (
             . When I'm not coding, I love to travel and capture the beauty of
             nature and urban landscapes. I publish my individual clips on{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://www.instagram.com/hayden.bleasel/"
               rel="noopener noreferrer"
               target="_blank"
@@ -194,7 +182,6 @@ const About = () => (
             </a>{' '}
             and my full-length videos on{' '}
             <a
-              className="font-medium text-teal-500 dark:text-teal-400"
               href="https://www.youtube.com/playlist?list=PLw95VUVc_2gh5oGx-jj9PnatiMKtQBiV2"
               rel="noopener noreferrer"
               target="_blank"
@@ -214,7 +201,7 @@ const About = () => (
               UTS, Zibbet and Zookal.
             </p>
           </small>
-        </div>
+        </Prose>
       </div>
       <div className="lg:pl-20">
         <ul>

@@ -1,15 +1,8 @@
 import { allPosts } from 'content-collections';
 import { Feed } from 'feed';
+import { baseUrl } from '@/lib/utils';
 
 export function GET() {
-  const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
-  if (!siteUrl) {
-    throw new Error(
-      'Missing VERCEL_PROJECT_PRODUCTION_URL environment variable'
-    );
-  }
-
   const author = {
     name: 'Hayden Bleasel',
     email: 'hello@haydenbleasel.com',
@@ -20,13 +13,13 @@ export function GET() {
     description:
       'All of my long-form thoughts on software design and product updates.',
     author,
-    id: siteUrl,
-    link: siteUrl,
-    image: `${siteUrl}/icon.png`,
-    favicon: `${siteUrl}/icon.png`,
+    id: baseUrl,
+    link: baseUrl,
+    image: `${baseUrl}/icon.png`,
+    favicon: `${baseUrl}/icon.png`,
     copyright: `All rights reserved ${new Date().getFullYear()}`,
     feedLinks: {
-      rss2: `${siteUrl}/blog.xml`,
+      rss2: `${baseUrl}/blog.xml`,
     },
   });
 
@@ -36,7 +29,7 @@ export function GET() {
   );
 
   for (const article of sortedPosts) {
-    const publicUrl = `${siteUrl}/blog/${article.slug}`;
+    const publicUrl = `${baseUrl}/blog/${article.slug}`;
 
     feed.addItem({
       title: article.title,

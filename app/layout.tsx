@@ -3,8 +3,7 @@ import { Providers } from '@/app/providers';
 import { Layout } from '@/components/layout';
 import '@/styles/tailwind.css';
 import type { ReactNode } from 'react';
-
-const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+import { baseUrl } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: {
@@ -15,10 +14,7 @@ export const metadata: Metadata = {
     "I'm Hayden — a software engineer, product designer and founder from 🇦🇺 Sydney, Australia. I currently live in 🇺🇸 San Francisco, California and work on the DX team at Vercel.",
   alternates: {
     types: {
-      'application/rss+xml': new URL(
-        '/blog.xml',
-        `${protocol}://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      ).toString(),
+      'application/rss+xml': new URL('/blog.xml', baseUrl).toString(),
     },
   },
 };

@@ -1,39 +1,42 @@
 import type { Metadata } from 'next';
-
 import { Providers } from '@/app/providers';
 import { Layout } from '@/components/Layout';
-
 import '@/styles/tailwind.css';
+import type { ReactNode } from 'react';
+
+const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Spencer Sharp',
-    default:
-      'Spencer Sharp - Software designer, founder, and amateur astronaut',
+    template: '%s - Hayden Bleasel',
+    default: 'Hayden Bleasel - Software designer, engineer and founder',
   },
   description:
-    'I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.',
+    "I'm Hayden &mdash; a software designer, engineer and founder from 🇦🇺 Sydney, Australia. I currently live in 🇺🇸 San Francisco, California and work on the DX team at Vercel.",
   alternates: {
     types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
+      'application/rss+xml': new URL(
+        '/feed.xml',
+        `${protocol}://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      ).toString(),
     },
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html className="h-full antialiased" lang="en" suppressHydrationWarning>
-      <body className="flex h-full bg-zinc-50 dark:bg-black">
-        <Providers>
-          <div className="flex w-full">
-            <Layout>{children}</Layout>
-          </div>
-        </Providers>
-      </body>
-    </html>
-  );
-}
+type RootLayoutProps = {
+  children: ReactNode;
+};
+
+const RootLayout = ({ children }: RootLayoutProps) => (
+  <html className="h-full antialiased" lang="en" suppressHydrationWarning>
+    <body className="flex h-full bg-zinc-50 dark:bg-black">
+      <Providers>
+        <div className="flex w-full">
+          <Layout>{children}</Layout>
+        </div>
+      </Providers>
+    </body>
+  </html>
+);
+
+export default RootLayout;

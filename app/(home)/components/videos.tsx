@@ -3,27 +3,27 @@ import { Video } from './video';
 
 const videos = [
   {
-    src: '/videos/alaska.mov',
+    src: 'https://wztid1lvoae2pjmk.public.blob.vercel-storage.com/alaska.mov',
     rotation: 'rotate-2',
     location: 'Seward, Alaska',
   },
   {
-    src: '/videos/bali.mov',
+    src: 'https://wztid1lvoae2pjmk.public.blob.vercel-storage.com/bali.mov',
     rotation: '-rotate-2',
     location: 'Bali, Indonesia',
   },
   {
-    src: '/videos/california.mov',
+    src: 'https://wztid1lvoae2pjmk.public.blob.vercel-storage.com/california.mov',
     rotation: 'rotate-2',
     location: 'Monterey, California',
   },
   {
-    src: '/videos/south-dakota.mov',
+    src: 'https://wztid1lvoae2pjmk.public.blob.vercel-storage.com/south-dakota.mov',
     rotation: 'rotate-2',
     location: 'Jackson, South Dakota',
   },
   {
-    src: '/videos/sydney.mov',
+    src: 'https://wztid1lvoae2pjmk.public.blob.vercel-storage.com/sydney.mov',
     rotation: '-rotate-2',
     location: 'Sydney, Australia',
   },

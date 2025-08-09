@@ -9,10 +9,10 @@ const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 export const metadata: Metadata = {
   title: {
     template: '%s - Hayden Bleasel',
-    default: 'Hayden Bleasel - Software designer, engineer and founder',
+    default: 'Hayden Bleasel - Software engineer, product designer and founder',
   },
   description:
-    "I'm Hayden &mdash; a software designer, engineer and founder from 🇦🇺 Sydney, Australia. I currently live in 🇺🇸 San Francisco, California and work on the DX team at Vercel.",
+    "I'm Hayden — a software engineer, product designer and founder from 🇦🇺 Sydney, Australia. I currently live in 🇺🇸 San Francisco, California and work on the DX team at Vercel.",
   alternates: {
     types: {
       'application/rss+xml': new URL(

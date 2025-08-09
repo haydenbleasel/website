@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "./prism.css" layer(components);
 
 @plugin '@tailwindcss/typography';
 @config '../typography.ts';
@@ -33,4 +32,23 @@
   --text-8xl--line-height: 1;
   --text-9xl: 8rem;
   --text-9xl--line-height: 1;
+}
+
+@layer base {
+
+  .shiki, .shiki span {
+    @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
+  }
+
+  .shiki .line:before {
+    content: counter(line);
+    counter-increment: line;
+
+    @apply inline-block w-3 text-sm leading-relaxed mr-8 text-right text-zinc-500 dark:text-zinc-400;
+  }
+
+  .shiki[title]:before {
+    content: attr(title);
+    @apply text-xs text-zinc-500 dark:text-zinc-400 mb-0 block py-2 px-4;
+  }
 }

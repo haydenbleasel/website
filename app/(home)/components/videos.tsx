@@ -2,19 +2,31 @@ import clsx from 'clsx';
 import { Video } from './video';
 
 const videos = [
-  { src: '/alaska.mov', rotation: 'rotate-2', location: 'Seward, Alaska' },
-  { src: '/bali.mov', rotation: '-rotate-2', location: 'Bali, Indonesia' },
   {
-    src: '/california.mov',
+    src: '/videos/alaska.mov',
+    rotation: 'rotate-2',
+    location: 'Seward, Alaska',
+  },
+  {
+    src: '/videos/bali.mov',
+    rotation: '-rotate-2',
+    location: 'Bali, Indonesia',
+  },
+  {
+    src: '/videos/california.mov',
     rotation: 'rotate-2',
     location: 'Monterey, California',
   },
   {
-    src: '/south-dakota.mov',
+    src: '/videos/south-dakota.mov',
     rotation: 'rotate-2',
     location: 'Jackson, South Dakota',
   },
-  { src: '/sydney.mov', rotation: '-rotate-2', location: 'Sydney, Australia' },
+  {
+    src: '/videos/sydney.mov',
+    rotation: '-rotate-2',
+    location: 'Sydney, Australia',
+  },
 ];
 
 export const Videos = () => (

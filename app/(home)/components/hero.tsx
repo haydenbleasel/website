@@ -1,11 +1,6 @@
+import { XLogoIcon } from '@phosphor-icons/react/ssr';
+import { Button } from '@/components/Button';
 import { Container } from '@/components/Container';
-import {
-  GitHubIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  XIcon,
-} from '@/components/SocialIcons';
-import { SocialLink } from './social-link';
 
 export const Hero = () => (
   <Container className="mt-9">
@@ -19,28 +14,14 @@ export const Hero = () => (
         work on the DX team at Vercel, where I focus on creating tools,
         libraries and resources to help developers build better products.
       </p>
-      <div className="mt-6 flex gap-6">
-        <SocialLink
-          aria-label="Follow on X"
-          href="https://x.com/haydenbleasel"
-          icon={XIcon}
-        />
-        <SocialLink
-          aria-label="Follow on Instagram"
-          href="https://www.instagram.com/hayden.bleasel/"
-          icon={InstagramIcon}
-        />
-        <SocialLink
-          aria-label="Follow on GitHub"
-          href="https://github.com/haydenbleasel"
-          icon={GitHubIcon}
-        />
-        <SocialLink
-          aria-label="Follow on LinkedIn"
-          href="https://www.linkedin.com/in/haydenbleasel/"
-          icon={LinkedInIcon}
-        />
-      </div>
+      <Button
+        className="mt-6 flex w-auto gap-1 whitespace-nowrap bg-gradient-to-b from-zinc-800 to-zinc-900 text-white"
+        href="https://x.com/haydenbleasel"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Follow me on <XLogoIcon className="size-4 shrink-0 fill-white" />
+      </Button>
     </div>
   </Container>
 );

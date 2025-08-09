@@ -3,6 +3,7 @@ import { Providers } from '@/app/providers';
 import { Layout } from '@/components/layout';
 import '@/styles/tailwind.css';
 import type { ReactNode } from 'react';
+import { Toaster } from 'sonner';
 import { baseUrl } from '@/lib/url';
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
           <Layout>{children}</Layout>
         </div>
       </Providers>
+      <Toaster />
     </body>
   </html>
 );

@@ -36,6 +36,8 @@
     "react-tweet": "^3.2.2",
     "reading-time": "^1.5.0",
     "remark-gfm": "^4.0.1",
+    "resend": "^6.0.1",
+    "sonner": "^2.0.7",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
     "zod": "^4.0.17"

@@ -10,7 +10,7 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
-    "@headlessui/react": "^2.2.6",
+    "@headlessui/react": "^2.2.7",
     "@phosphor-icons/react": "^2.1.10",
     "@t3-oss/env-core": "^0.13.8",
     "@t3-oss/env-nextjs": "^0.13.8",
@@ -30,7 +30,7 @@
     "resend": "^6.0.1",
     "sonner": "^2.0.7",
     "tailwindcss": "^4.1.11",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.2",
     "zod": "^4.0.17"
   },
   "devDependencies": {
@@ -38,7 +38,8 @@
     "@content-collections/core": "^0.10.0",
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.6",
-    "@types/node": "^24.1.0",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^24.2.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "sharp": "0.34.3",

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: {
     types: {
       'application/rss+xml': new URL(
-        '/feed.xml',
+        '/blog.xml',
         `${protocol}://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       ).toString(),
     },

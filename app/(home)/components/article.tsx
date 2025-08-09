@@ -8,7 +8,7 @@ type ArticleProps = {
 
 export const Article = ({ article }: ArticleProps) => (
   <Card as="article">
-    <Card.Title href={`/articles/${article.slug}`}>{article.title}</Card.Title>
+    <Card.Title href={`/blog/${article.slug}`}>{article.title}</Card.Title>
     <Card.Eyebrow as="time" dateTime={article.date.toISOString()} decorate>
       {formatDate(article.date)}
     </Card.Eyebrow>

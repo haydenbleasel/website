@@ -7,9 +7,7 @@ import { Mdx } from '@/components/mdx';
 import { Prose } from '@/components/prose';
 import { formatDate } from '@/lib/format-date';
 
-const getPage = (slug: string) => {
-  return allPosts.find((post) => post.slug === slug);
-};
+const getPage = (slug: string) => allPosts.find((post) => post.slug === slug);
 
 type PageProps = {
   params: Promise<{ slug: string }>;

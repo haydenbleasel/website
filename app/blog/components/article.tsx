@@ -9,9 +9,7 @@ type ArticleProps = {
 export const Article = ({ article }: ArticleProps) => (
   <article className="md:grid md:grid-cols-4 md:items-baseline">
     <Card className="md:col-span-3">
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
-      </Card.Title>
+      <Card.Title href={`/blog/${article.slug}`}>{article.title}</Card.Title>
       <Card.Eyebrow
         as="time"
         className="md:hidden"

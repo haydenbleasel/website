@@ -3,6 +3,7 @@ import { Button } from '@/components/button';
 import Corellium from '@/images/logos/corellium.svg';
 import Jellypepper from '@/images/logos/jellypepper.svg';
 import Palantir from '@/images/logos/palantir.svg';
+import Spaceship from '@/images/logos/spaceship.svg';
 import Vercel from '@/images/logos/vercel.svg';
 import { Role } from './role';
 
@@ -36,6 +37,14 @@ export const Resume = () => {
       end: '2023',
     },
     {
+      company: 'Spaceship',
+      title: 'Head of Product and Design',
+      className: 'bg-black text-white',
+      logo: Spaceship,
+      start: '2016',
+      end: '2017',
+    },
+    {
       company: 'Palantir',
       title: 'Product Design Intern',
       className: 'bg-black text-white',
@@ -51,7 +60,7 @@ export const Resume = () => {
         <BriefcaseIcon className="h-6 w-6 flex-none" weight="duotone" />
         <span className="ml-3">Work</span>
       </h2>
-      <ol className="mt-6 space-y-4">
+      <ol className="mt-6 space-y-6">
         {resume.map((role) => (
           <Role key={role.company} role={role} />
         ))}

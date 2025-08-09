@@ -4,6 +4,7 @@ import '@/styles/tailwind.css';
 import { Analytics } from '@vercel/analytics/next';
 import type { ReactNode } from 'react';
 import { Toaster } from 'sonner';
+import 'react-medium-image-zoom/dist/styles.css';
 
 type RootLayoutProps = {
   children: ReactNode;

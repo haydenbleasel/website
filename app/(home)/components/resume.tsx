@@ -1,43 +1,47 @@
 import { ArrowUpRightIcon, BriefcaseIcon } from '@phosphor-icons/react/ssr';
 import { Button } from '@/components/Button';
-import logoAirbnb from '@/images/logos/airbnb.svg';
-import logoFacebook from '@/images/logos/facebook.svg';
-import logoPlanetaria from '@/images/logos/planetaria.svg';
-import logoStarbucks from '@/images/logos/starbucks.svg';
+import Corellium from '@/images/logos/corellium.svg';
+import Jellypepper from '@/images/logos/jellypepper.svg';
+import Palantir from '@/images/logos/palantir.svg';
+import Vercel from '@/images/logos/vercel.svg';
 import { Role } from './role';
 
 export const Resume = () => {
   const resume: Role[] = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
+      company: 'Vercel',
+      title: 'DX Engineer',
+      className: 'bg-black text-white',
+      logo: Vercel,
+      start: '2025',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
+      company: 'Corellium',
+      title: 'Chief Product Officer',
+      className: 'bg-black text-white',
+      logo: Corellium,
+      start: '2021',
+      end: '2024',
     },
     {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
+      company: 'Jellypepper',
+      title: 'Director',
+      className: 'bg-black text-white',
+      logo: Jellypepper,
+      start: '2017',
+      end: '2023',
     },
     {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'Palantir',
+      title: 'Product Design Intern',
+      className: 'bg-black text-white',
+      logo: Palantir,
+      start: '2015',
+      end: '2015',
     },
   ];
 

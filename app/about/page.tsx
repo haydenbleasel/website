@@ -244,7 +244,7 @@ const About = () => (
           </SocialLink>
           <SocialLink
             className="mt-8 border-zinc-100 border-t pt-8 dark:border-zinc-700/40"
-            href="mailto:spencer@planetaria.tech"
+            href="mailto:hello@haydenbleasel.com"
             icon={PaperPlaneIcon}
           >
             hello@haydenbleasel.com

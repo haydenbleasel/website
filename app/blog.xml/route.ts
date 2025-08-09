@@ -1,6 +1,6 @@
 import { allPosts } from 'content-collections';
 import { Feed } from 'feed';
-import { baseUrl } from '@/lib/utils';
+import { baseUrl } from '@/lib/url';
 
 export function GET() {
   const author = {

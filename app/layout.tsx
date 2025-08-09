@@ -3,7 +3,7 @@ import { Providers } from '@/app/providers';
 import { Layout } from '@/components/layout';
 import '@/styles/tailwind.css';
 import type { ReactNode } from 'react';
-import { baseUrl } from '@/lib/utils';
+import { baseUrl } from '@/lib/url';
 
 export const metadata: Metadata = {
   title: {

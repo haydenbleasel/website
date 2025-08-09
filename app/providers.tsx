@@ -2,17 +2,8 @@
 
 import { usePathname } from 'next/navigation';
 import { ThemeProvider, useTheme } from 'next-themes';
-import { createContext, useEffect, useRef } from 'react';
-
-function usePrevious<T>(value: T) {
-  const ref = useRef<T | undefined>(undefined);
-
-  useEffect(() => {
-    ref.current = value;
-  }, [value]);
-
-  return ref.current;
-}
+import { createContext, useEffect } from 'react';
+import { usePrevious } from '@/hooks/use-previous';
 
 function ThemeWatcher() {
   const { resolvedTheme, setTheme } = useTheme();

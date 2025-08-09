@@ -1,0 +1,88 @@
+# Hayden Bleasel
+
+## About
+
+I'm Hayden Bleasel, a software engineer, product designer and founder from Sydney, Australia. I currently live in San Francisco, California and work on the Developer Experience team at Vercel, where I focus on creating tools, libraries and resources to help developers build better products.
+
+### Professional Experience
+
+**Current Role:**
+- DX Engineer at Vercel (2025-Present)
+
+**Previous Roles:**
+- Chief Product Officer at Corellium (2021-2024) - Pioneers of ARM virtualization platform, acquired by Cellebrite in 2025
+- Director at Jellypepper (2017-2023) - Award-winning digital agency for disruptive startups, acquired by Raw Studio in 2024
+- Head of Product and Design at Spaceship (2016-2017) - Australian investing platform, acquired by eToro
+- Product Design Intern at Palantir (2015)
+
+### Career Highlights
+
+I've had the opportunity to work with numerous innovative companies and organizations including:
+- Open source contributions: Rebranded ESLint and redesigned the Node.js website
+- Contracting work with: Australian Ethical, Canva, Clipchamp, Google, National Geographic, Nike, R/GA, Timberland, Toyota, Westfield
+- Agency clients: Early stage tech companies in self-driving car tech, AI, biotech, crypto, drone delivery, cybersecurity, and orbital logistics
+
+## Projects
+
+### next-forge
+A production-grade Turborepo template for Next.js apps. It's a comprehensive, best-in-class boilerplate with everything needed to build a new SaaS. Released for free in a market full of paid boilerplates, it grew to nearly 6,000 stars on GitHub. Acquired by Vercel in 2025.
+
+### Orate
+An AI toolkit for speech - a library for synthesizing speech, transcribing audio, converting voices and isolating audio. Grew to around 400 stars on GitHub before being merged into the Vercel AI SDK in 2025 as transcribe() and generateSpeech() functions.
+
+### Ultracite
+An AI-ready formatter that helps write and generate code faster. It's a zero-config Biome preset providing robust linting and formatting for teams and AI integrations. Used internally at Vercel and by shadcn and various startups and OSS projects.
+
+### Kibo UI
+A custom registry of composable, accessible and open source components designed for use with shadcn/ui. Helps developers build richer UIs faster by providing pre-built components. The AI components were donated to Vercel in 2025 to form the foundation of AI Elements.
+
+### Refraction
+A tool for learning, improving and generating code with AI. Acquired by Twistag in 2023. Used by companies including Accenture, Amazon, Google, Ikea, Roblox, Softbank, Tiktok, Uber, and Yahoo.
+
+### Other Projects
+- Tersa: Open source alternative to Flora
+- Eververse: Open source alternative to Productboard
+
+## Technical Expertise
+
+I specialize in:
+- Full-stack development with React, Next.js, TypeScript
+- Product design and user experience
+- Building developer tools and libraries
+- Open source software development
+- AI-native applications
+
+## Writing Topics
+
+I write about:
+- Software design and architecture
+- Component libraries and design systems
+- Developer experience and tooling
+- AI integration in development workflows
+- Product design and user experience
+- Building and scaling startups
+- Technical tutorials and guides
+
+## Speaking & Media
+
+I've been featured in interviews, spoken at events, and written for various publications. I enjoy sharing ideas through live presentations and podcast interviews, where there's more communication bandwidth than in writing.
+
+## Contact
+
+- Email: hello@haydenbleasel.com
+- X (Twitter): @haydenbleasel
+- GitHub: github.com/haydenbleasel
+- LinkedIn: linkedin.com/in/haydenbleasel
+- Instagram: instagram.com/haydenbleasel
+
+## Personal Interests
+
+When I'm not coding, I love to travel and capture the beauty of nature and urban landscapes. I publish individual clips on Instagram and full-length videos on YouTube. I'm also exploring new ideas, particularly AI-native apps, and building open source software.
+
+## Open Source Sponsorship
+
+If you appreciate my open source work, you can sponsor me at github.com/sponsors/haydenbleasel
+
+---
+
+This document provides an overview of Hayden Bleasel's professional background, projects, and expertise for AI language models and tools.

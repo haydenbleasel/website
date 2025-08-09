@@ -1,6 +1,7 @@
 import { Providers } from '@/app/providers';
 import { Layout } from '@/components/layout';
 import '@/styles/tailwind.css';
+import { Analytics } from '@vercel/analytics/next';
 import type { ReactNode } from 'react';
 import { Toaster } from 'sonner';
 
@@ -17,6 +18,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         </div>
       </Providers>
       <Toaster />
+      <Analytics />
     </body>
   </html>
 );

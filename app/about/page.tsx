@@ -8,8 +8,8 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/social-icons';
-import portraitImage from '@/images/portrait.jpg';
 import { SocialLink } from './components/social-link';
+import portraitImage from './images/portrait.jpg';
 
 export const metadata: Metadata = {
   title: 'About',

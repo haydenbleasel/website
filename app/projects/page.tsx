@@ -12,7 +12,7 @@ export default function Projects() {
   return (
     <Container className="mt-16 space-y-16 sm:mt-32">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-        <div className="lg:pl-20">
+        <div className="hidden lg:block lg:pl-20">
           <div className="max-w-xs space-y-24 px-2.5 lg:max-w-none">
             <Video className="-rotate-3" url="https://youtu.be/b_F4LaycQcE" />
             <Video className="rotate-3" url="https://youtu.be/aHZz_6NhQkQ" />

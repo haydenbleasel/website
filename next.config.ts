@@ -1,9 +1,9 @@
 import rehypePrism from '@mapbox/rehype-prism';
 import nextMDX from '@next/mdx';
+import type { NextConfig } from 'next';
 import remarkGfm from 'remark-gfm';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   outputFileTracingIncludes: {
     '/articles/*': ['./app/articles/**/*.mdx'],

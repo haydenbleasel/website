@@ -1,0 +1,45 @@
+---
+title: Setting up Unreal Engine on a MacBook Pro
+description: Some tips from a beginner using Unreal Engine for the first time on a Mac.
+date: 04-14-2025
+---
+
+So I'm learning Unreal Engine for the first time and it's a bit of a journey. It's very different from the tools I'm used to using like Figma — it's powerful but it's not always intuitive.
+
+Anyway, here are some tweaks I found handy getting it running well on a MacBook Pro and making the experience more pleasant.
+
+## Improving performance
+
+Unreal is inherently resource-intensive, so getting it running smoothly on a MacBook Pro requires some adjustments. There's a [great video](https://www.youtube.com/watch?v=JonaJqlHjvM) that goes through some tips on improving FPS that I'll summarize here.
+
+First, under Project Settings, I'd recommend disabling TSR (Temporal Super Resolution) and enabling FXAA (Fast Approximate Anti-Aliasing) as your default anti-aliasing method. This alone gave me a solid 50% FPS boost, from around 18 to 35.
+
+Next up, I'd recommend changing the engine scalability settings from "epic" to "high" (or even down to "low" if you're running on an Apple Studio Display like I am). This is a bit of a trade-off, but it's a good compromise between quality and performance and what got me to around 60 FPS.
+
+You can also consider changing the material quality settings to low, but I didn't notice much of a difference in performance.
+
+There is a recommendation in this video to disable high DPI support. I highly recommend against this if you're using any monitor with a Retina display. I didn't end up seeing any performance gains and it made the editor unreadable.
+
+## Magic Mouse bugs
+
+If you're using a Magic Mouse, you may notice that using the right mouse button to look around sometimes doesn't work and instead pans the camera. This is a [weird known bug](https://forums.unrealengine.com/t/magic-mouse-configuration/93148) that you can work around by turning Bluetooth off and back on again.
+
+As a side note, there's no way to change the camera speed dynamically with a Magic Mouse (i.e., right click + scroll).
+
+## Magic Keyboard improvements
+
+If you're using an Apple Magic Keyboard, certain keyboard shortcuts like duplicate (<kbd>CTRL+D</kbd>) utilize the <kbd>CTRL</kbd> key which is awkward if you're used to more "native" apps on macOS that use the Command key.
+
+To improve this, you can add an additional shortcut of <kbd>CMD+D</kbd> to the Duplicate action in keyboard shortcuts. This makes it feel more intuitive and matches the behavior of similar shortcuts in Unreal like copy, paste, etc. that already utilize the Command key.
+
+There's also a useful shortcut for quickly snapping objects to the floor. On Windows, this is the <kbd>END</kbd> key. On a Magic Keyboard, this key doesn't exist, so you can remap it to something else. I found <kbd>CMD+↓</kbd> to work well.
+
+## Revision history
+
+Revision history feels a bit unbaked right now in Unreal, but it's also early days for me. I'm used to Git / GitHub, so obviously I want to use that. On first thought, LFS is definitely necessary for large files.
+
+There is a Git integration in beta right now in the editor, but I haven't gotten it to work yet.
+
+---
+
+That's all for now, I'll update this post as I learn more.

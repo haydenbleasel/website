@@ -1,0 +1,138 @@
+---
+title: Implementing a simple OTA update function with Typescript and Expo 44+
+description: Handy scripts for handling OTA updates in an Expo app.
+date: 01-28-2022
+---
+
+I'm currently migrating away from Expo's OTA updates to purely store-managed EAS updates to simplify my development workflow and noticed I'd written a handy script I could share for handling OTA updates.
+
+## Overview
+
+To preface - Expo have a handy [expo-updates](https://docs.expo.dev/versions/latest/sdk/updates/) module that allows your app to receive over-the-air (OTA) updates - meaning you can simply run `expo publish` locally (or in a CI) and Expo will push a new bundle to your users. Your users can then install this new update, either automatically or on-demand, without needing to go to the App Store or Play Store.
+
+It's fantastic for two reasons:
+
+1. If you have small fixes, new features or emergency repairs, you can push them to your users in a few seconds, instead of waiting for a 30-minute build cycle.
+2. OTA updates circumvent the App Store / Play Store review process, so you don't need to wait days for your updates to be reviewed and then go live.
+
+## Checking for updates
+
+The utility function I wrote allows for checking for OTA updates with a few choice improvements:
+
+Firstly, it takes an optional `showSuccess` boolean that shows the user a native alert dialog when there is no update available. This is particularly handy for user-requested updates to give them some feedback on their action.
+
+Next, when the update has completed, it automatically shows a native alert dialog with an "OK" button that restarts the app so we don't restart their app automatically, avoiding a jarring experience.
+
+It also takes into account development environments where OTA updates don't exist. The logic for this exists in the utility function so you don't have to do any special checks when you use it.
+
+Lastly, it's Typescript'ed and handles its own errors, so it's super easy to use in your other files.
+
+Anyway, here we go:
+
+## The code
+
+```ts
+import { Alert } from 'react-native';
+import {
+  checkForUpdateAsync,
+  reloadAsync,
+  fetchUpdateAsync,
+} from 'expo-updates';
+
+const checkForUpdates = async (showSuccess = false): Promise<void> => {
+  console.log('Checking for updates...');
+
+  if (__DEV__) {
+    if (showSuccess) {
+      Alert.alert('Development', "Can't check for updates in development.");
+    }
+    return;
+  }
+
+  try {
+    const update = await checkForUpdateAsync();
+    if (update.isAvailable) {
+      await fetchUpdateAsync();
+      Alert.alert(
+        'App successfully updated',
+        'The app has been updated to the latest version. The app will now restart.',
+        [{ text: 'OK', onPress: async () => reloadAsync() }],
+        { cancelable: false }
+      );
+    } else if (showSuccess) {
+      Alert.alert(
+        'Up to date',
+        'You already have the latest version of the app.'
+      );
+    }
+  } catch (error) {
+    console.log(error);
+    Alert.alert('Error', 'An error occurred while checking for updates.');
+  }
+};
+
+export default checkForUpdates;
+```
+
+## Usage
+
+Using `checkForUpdates` is super easy. I tend to use it in 2 places:
+
+### useCachedResources
+
+This is a good function to use when the app is booting up, so we automatically check for updates. Assuming you've just scaffolded a simple Expo app with Typescript, we can add it to the handy `useCachedResources` hook like so:
+
+```tsx
+import { Ionicons } from '@expo/vector-icons';
+import { useEffect, useState } from 'react';
+import * as Font from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { checkForUpdates } from '../api/expo';
+
+export default function useCachedResources() {
+  const [isLoadingComplete, setLoadingComplete] = useState(false);
+
+  useEffect(() => {
+    async function loadResourcesAndDataAsync() {
+      try {
+        SplashScreen.preventAutoHideAsync();
+
+        // Here we go! Notice there's no showSuccess bool passed in.
+        await checkForUpdates();
+
+        await Font.loadAsync({
+          ...Ionicons.font,
+        });
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setLoadingComplete(true);
+        SplashScreen.hideAsync();
+      }
+    }
+
+    loadResourcesAndDataAsync();
+  }, []);
+
+  return isLoadingComplete;
+}
+```
+
+### In Settings
+
+If your app has a Settings page, it can be nice to have a button that checks for OTA updates programatically. To do that, just hook up a standard `Button` (or other touchable component) like so:
+
+```tsx
+import { checkForUpdates } from '../api/expo';
+import { Button } from 'react-native';
+
+const Settings = () => {
+  // ...
+
+  return (
+    <Button onPress={() => checkForUpdates(true)}>Check for updates</Button>
+  );
+};
+```
+
+That's it! Enjoy your fast and handy updates.

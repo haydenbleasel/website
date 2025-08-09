@@ -1,0 +1,224 @@
+---
+title: On JavaScript Errors
+description: Exploring why error handling in JavaScript is such a challenge, and how a simple question on X triggered a flurry of opinions.
+date: 05-29-2025
+---
+
+Unless you’ve somehow written software without ever hitting a runtime error (i.e. @gaearon), you know that error handling is a big deal. In any app, things inevitably go wrong – maybe a network request fails, or some data isn’t where you expect it to be.
+
+Good error handling ensures your software doesn’t just crash or silently misbehave. Instead, it fails gracefully: logging useful info for developers, and perhaps showing a friendly message to users instead of a blank screen.
+
+The other day, I posted a seemingly innocuous xeet about error handling in JavaScript that got a weird amount of attention.
+
+<Tweet id="1927033002464251904" />
+
+I'm not sure why it garnered so much discussion, but I'm glad it did — gives me a chance to reflect on the topic and share my thoughts.
+
+## A brief history of dealing with failure
+
+The fundamental tools JavaScript gives us for this are the [`try...catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement, the [`throw`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) keyword and the [`Error`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) object. You “try” to run some code that might throw an error, and you “catch” the error if it happens. For example, if you call `JSON.parse()` on invalid JSON, it will throw an exception and skip to the catch block. This prevents the whole script from blowing up.
+
+The overall result of this error depends on your JavaScript runtime environment. In the browser, an uncaught exception often just stops the function and logs an error to the console, however if you're running a single page application, it may crash the entire application. In Node.js, failing to catch a thrown error can terminate your process.
+
+For asynchronous code (like fetch calls or any Promise-based API), you can handle errors by catching rejections. With Promises you might append `.catch(error => { ... })`, or if using async/await syntax like you should be, you wrap the await calls in a `try...catch`. For example:
+
+```js
+try {
+  const data = await fetchData(); // might throw if fetch fails
+  renderData(data);
+} catch (err) {
+  console.error("Something went wrong:", err);
+  showErrorToUser("Oops, couldn't load data!");
+}
+```
+
+The idea is simple: log the technical details (for debugging), and show the user a generic friendly error. Without the catch, an uncaught error here would likely result in an unhandled promise rejection or a console error – the user might see a broken UI and no explanation.
+
+## Bubbles
+
+In JavaScript, errors propagate through the call stack until they’re either caught by a try/catch block or reach the global scope, potentially causing the program or script to crash. This is called "bubbling". Think of it like bubbles in a glass of soda. When you throw an error, it bubbles up through the code until it reaches the top (global scope).
+
+We can see this in action with a simple example:
+
+```js
+function C() {
+  throw new Error("Something went wrong");
+}
+
+function B() {
+  C();
+}
+
+function A() {
+  B();
+}
+
+A();
+```
+
+Here, we have function `A` calling function `B`, and function `B` calling function `C`. If function `C` throws an error and there’s no immediate try/catch around it, the error “bubbles up” to function `B`, and if it’s not handled there, it moves up again to function `A`, and so on. This continues until the error hits the global execution context, at which point JavaScript throws an unhandled exception, which typically halts further execution or logs a warning in the console.
+
+This bubbling mechanism can be both useful and risky. On one hand, it allows you to catch errors centrally, keeping your inner functions clean and focused on their tasks, and letting outer layers handle error management—such as displaying user-friendly messages or logging detailed stack traces.
+
+On the other hand, forgetting to handle an error somewhere along the chain means it can propagate further than you intend, potentially reaching users or crashing critical systems.
+
+## It's a Try-Catch-22
+
+Error handling in JavaScript isn’t as straightforward as it looks. One quirk is that JavaScript lets you throw anything. Not just Error objects – you can throw a string, a number, an object, you name it. The [language doesn’t mind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_types):
+
+> “just about any object can be thrown in JavaScript”
+
+This flexibility is powerful, but it’s also a curse. If code throws a plain string like "Out of stock", the catch block receives that string, not a proper Error instance. That means no stack trace, no consistent message property, nothing. It’s [generally considered](https://stackoverflow.com/questions/11502052/throwing-strings-instead-of-errors) bad practice to throw non-Error values, but the language won’t stop you (or your dependencies) from doing it. As a result, a `catch (err)` in JS has to be prepared for anything – an Error, a string, even undefined.
+
+TypeScript doesn’t improve this situation much. By design, TypeScript does not force you to declare what your function might throw. There’s no static type checking for exceptions like in Java or C#. In fact, TypeScript requires that a caught error be typed as any or unknown because it can’t know the type of thrown errors ahead of time.
+
+This means as soon as you enter a catch (error), you often have to do some detective work to figure out what exactly you caught. Is it an Error with a message? A string someone threw? An object with a custom shape? We don’t know yet, so we guard our handling code accordingly.
+
+Additionally, not all libraries follow this pattern. Some libraries like the Supabase SDK catch the errors for you and return an object containing an `error` property. This is arguably a good thing, because it allows you to handle errors in a controlled way and it gives the library a chance to type the errors.
+
+Even if you do commit to throwing an `Error` object, you still have to handle the error in a way that is consistent with your application's error handling strategy. Which function should handle the error? How do you know if the error was thrown by your code or by a dependency?
+
+## The little utilities that could
+
+Coming back to my original X post, turns out I'm not the only thinking about this and folks had opinions. The code for these files is simple and straightforward with a certain naive charm.
+
+## parseError
+
+One file parses the error into a readable message (works on client and server).
+
+```tsx title="error/parse.ts"
+export const parseError = (error: unknown) => {
+  if (typeof error === 'string') {
+    return error;
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return 'An error occurred';
+};
+```
+
+In the code above, `parseError()` takes an `unknown` error and returns a string. I typically type the error as `unknown` since it can be anything and `any` effectively disables type checking. From here, it does the least amount of effort to determine an error message. If it's a string, return that. If it's a `Error` instance, return the message prop. Otherwise, it just returns a generic error message.
+
+In other words, no matter what crazy thing was thrown, `parseError` will give you something useful – a human-readable message. This saves you from writing that logic in every single catch block.
+
+## handleError
+
+The other passes it to [Sonner](https://sonner.emilkowal.ski/) to display a toast notification:
+
+```tsx title="error/handle.ts"
+import { toast } from 'sonner';
+import { parseError } from './parse';
+
+export const handleError = (title: string, error: unknown) => {
+  const description = parseError(error);
+
+  toast.error(title, { description });
+};
+```
+
+This companion function is even simpler: it calls `parseError` to get a message, then passes that message to a UI notification. In a Node.js project, your `handleError` might instead log to the console or send the error to a remote monitoring service.
+
+It works for try / catch blocks:
+
+```tsx title="test.ts"
+import { handleError } from '@/lib/error/handle';
+
+try {
+  throw new Error('Something went wrong');
+} catch (err) {
+  handleError('Something went wrong', err);
+}
+```
+
+... and looks really nice when passed as a function reference to promise chains:
+
+```tsx title="test.ts"
+import { handleError } from '@/lib/error/handle';
+
+fetch('https://api.example.com/data')
+  .then((response) => response.json())
+  .then(console.log)
+  .catch(handleError);
+```
+
+I think this resonates with many developers because it’s a dead-simple pattern that works with ~10 lines of code. No forgetting to log, no messy `JSON.stringify` on objects, no accidentally showing `[Object object]` to the user.
+
+## Sparking a debate
+
+The post also received a lot of interesting responses (along with a deluge of hot takes). Some developers took the utility code straight into their projects. Others chimed in with alternative approaches. Judging by the replies, error handling in JS/TS is a bit like tabs vs spaces. Let’s look at the main camps that emerged:
+
+### “Just Use Try/Catch”
+
+A number of folks responded that the code above works in a shadcn/ui copy-and-paste type of way, negating the need for a more complex abstraction. In their view, the built-in try/catch is sufficient and `parseError` is a good enough abstraction.
+
+![use-try-catch](/blog/on-javascript-errors/try-catch.png)
+
+Many of the suggestions here extended to process proxied Error types like `AxiosError` or `SupabaseError`, where you can check specific status codes or error properties that these extended error types provide. This pattern of extending the base `Error` class is common in JavaScript libraries, and having a consistent way to handle these specialized error types can make error handling more robust and informative. Additionally, it's very easy to wire up an error capture service like [Sentry](https://sentry.io/) or a logging service like [BetterStack](https://betterstack.com/) to capture errors and send them to a central location.
+
+The benefit of sticking to raw try/catch is obvious: zero extra dependencies, zero magic. It’s the devil you know. Every JavaScript developer understands try/catch, so there’s no new concept to learn.
+
+You can still follow good practices by, for example, only catching exceptions at high-level boundaries (letting lower-level functions throw freely) and centralizing response handling near the UI or API response. In fact, some developers prefer to not catch errors in most functions, and instead have an upper-level error boundary (like a React Error Boundary for components, or an Express error-handling middleware for a server) that catches anything unhandled. That approach uses the raw language features but structures your app in a way that errors bubble up to one place.
+
+The downside of raw try/catch is that it puts the onus on each developer to do the right thing every time. Without guidelines or helpers, one dev might forget to catch an error from an awaited promise, or might catch and then ignore an error.
+
+### Never say neverthrow
+
+One popular suggestion was to use a library called [neverthrow](https://github.com/supermacro/neverthrow), which provides a Rust-inspired Result type for TypeScript. Instead of throwing errors, your functions return an object that is either Ok (with a success value) or Err (with an error value).
+
+This is sometimes called [railway oriented programming](https://blog.eneascaccabarozzi.xyz/neverthrow-and-railway-oriented-programming-in-typescript/) or the Either/Result pattern. It forces callers to handle the result in some way, because you can’t accidentally ignore a returned Err – you have to check it or map over it, etc.
+
+For example, using neverthrow, a function that might fail would return `Result<T, E>` instead of just `T`. Calling it gives you a result which you can ask `result.isOk()` or `result.isErr()`. You might do:
+
+```js
+const result = getUserById(id);
+if (result.isErr()) {
+  // handle result.error
+} else {
+  // use result.value
+}
+```
+
+This is very similar to how you’d handle errors in Rust, and it makes the possibility of failure an explicit part of the function’s API. Proponents of this approach like that it’s explicit and type-safe – you always consider the error case, because it’s a concrete value you’re dealing with. It also plays nicely with functional patterns like chaining: neverthrow lets you chain operations using methods like `map` and `mapErr`, so you can transform results without a ton of nested ifs.
+
+Importantly, using neverthrow means you avoid the whole issue of “what exactly is in my error?”. You won’t be throwing random things; instead you’re likely returning a well-defined error object or enum as the Err variant. This can make error handling logic more predictable.
+
+That said, adopting neverthrow (or similar libraries like [oxide.ts](https://www.npmjs.com/package/oxide.ts) or [true-myth](https://www.npmjs.com/package/true-myth)) is a bit of a paradigm shift for those used to exceptions and might be overkill for smaller projects. You have to wrap and unwrap results, which can feel verbose compared to the implicit flow of try/catch. Plus it introduces an external dependency, which not everyone is eager to do for something as core as error handling.
+
+### Feeling the Effects
+
+If neverthrow is a relatively focused solution, [Effect](https://effect.website/) is the whole kitchen sink. Effect is a full-fledged functional effect system for TypeScript, inspired by technologies in languages like [Haskell and Scala](https://www.reddit.com/r/haskell/comments/1gq6xj2/what_haskell_effect_library_is_most_similar_to/). It provides not just typed error management, but also features like concurrency control, resource management, dependency injection, and more.
+
+When it comes to errors, the key idea with Effect is that your computations become descriptions of what to do, including how to handle errors, and the library’s runtime ensures that errors are tracked and handled in a principled way. An Effect function doesn’t throw; it returns an `Effect<E, A>` – which you can think of as “an operation that might fail with error type `E` or succeed with value type `A`”.
+
+Because the error type is in the signature, the TypeScript compiler knows exactly which errors can happen and will make you handle them. In fact, Effect leverages the type system to track errors at compile time. This is a big deal – it means if you forgot to handle a possible error, you’d get a type error (something vanilla TypeScript doesn’t do for us). It’s akin to having checked exceptions, but in a more flexible, functional way.
+
+To illustrate, the Effect docs show how you can compose an operation that fetches a URL with automatic retry and timeout, all with types that ensure you handled the “timeout” and “http error” cases. It’s powerful stuff, though it's closer to adopting a “new programming language” inside TypeScript than just `npm install`ing a library – it introduces new idioms and ways of structuring code.
+
+This is both praise and a warning. On the one hand, you get a very robust system where nothing is truly “unexpected” because the types tell all. On the other hand, it’s a heavy dependency and requires buy-in from the whole team. It’s not something you drop into an existing codebase for “just a bit better error handling” – it’s more of an all-encompassing framework.
+
+Developers in the thread who were pro-Effect argued that if you invest the time, it pays off by making your codebase more maintainable and safe. Those against it felt it was overkill for most projects, likening it to using a chainsaw to cut butter. As always, the truth is probably somewhere in between.
+
+## Divisive by nature
+
+Why do these debates keep coming up? Part of it is JavaScript’s nature. JavaScript is a highly flexible, dynamic language – and its approach to errors reflects that. You can throw anything, anytime, and you don’t have to declare what might happen. This dynamic flexibility is JavaScript’s superpower and its curse when it comes to error management.
+
+It's not feasible for the TypeScript team to add error typing (there’s long-standing discussion about a throws keyword or checked exceptions in TS), but they ultimately decided against it. The consensus was that it’s not feasible or ergonomic to bolt that onto TS, and that it might not even be a win for most JS developers.
+
+At the end of the day, “is there a better way?” doesn’t have a single correct answer – but it’s a great question to keep asking.
+
+If you’re a beginner or intermediate developer who actually managed to read to the bottom of this incessant rant, you might be wondering what to actually do in your projects. Here are some takeaways and balanced advice:
+
+- Start with the basics: Make sure you are using `try/catch` (or `.catch`) in the right places. Don’t let errors fail silently. Even just logging an error is better than nothing. Also understand the flow of exceptions in synchronous vs asynchronous code.
+- Establish a convention for your team or project. It could be as simple as “we always use `handleError` in catch blocks” or “we never throw plain strings, only Error objects” or “we use this Result type in our service layer”. Consistency will save you from great pain.
+- Consider utility functions like the ones I posted, or check out more comprehensive libraries like [neverthrow](https://github.com/supermacro/neverthrow) or [Effect](https://effect.website/).
+
+Finally, remember that error handling is about trade-offs. JavaScript gives us flexibility, which means we as developers must impose discipline. Whether that discipline is purely via conventions or aided by tools, what matters is that you have a strategy and you apply it consistently.
+
+The worst error handling is no handling – everything else at least shows you care.
+
+```js
+throw new Error('Thanks for reading!');
+```

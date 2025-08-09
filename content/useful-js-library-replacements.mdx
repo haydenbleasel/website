@@ -1,0 +1,167 @@
+---
+title: Replacing JS Libraries with Intl
+description: Strip down your bundle size by replacing some of the most popular JS libraries with native browser APIs.
+date: 12-07-2022
+---
+
+JavaScript is a versatile language that is used in many web applications to add interactivity and dynamic features. To help developers work with dates and times, there are several popular libraries such as Moment.js and date-fns. These libraries provide a convenient way to format dates and perform other operations, but they can also add significant overhead to your codebase.
+
+Fortunately, there is a built-in JavaScript object called `Intl` that provides many of the same features as these libraries, but without the need to include an external dependency. In this article, we'll take a closer look at the `Intl` object and how it can be used to replace popular date libraries in your code.
+
+The `Intl` object is part of the ECMAScript Internationalization API, which was introduced in the ECMAScript 6 (ES6) specification. It provides language-sensitive string comparison, number formatting, and date and time formatting. The `Intl` object itself is not a constructor, so you cannot create new instances of it. Instead, you access its methods directly, such as `Intl.NumberFormat()` or `Intl.DateTimeFormat()`.
+
+One of the key features of the `Intl` object is its ability to format dates and times according to the conventions of a specific locale. This means that your code can automatically adapt to the user's language and regional settings, without the need for additional configuration. For example...
+
+## Relative Time
+
+Instead of [Moment.js](https://momentjs.com/)'s `fromNow` or [date-fns](https://date-fns.org/)'s `formatDistanceToNow`, you can use [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RelativeTimeFormat) to format relative time. It even has support for pluralization, internationalization, and localization.
+
+For example, you could replace:
+
+```tsx
+const moment = require('moment');
+
+console.log(moment().subtract(1, 'days').fromNow());
+// "a day ago"
+```
+
+```tsx
+const rtf1 = new Intl.RelativeTimeFormat('en', { style: 'narrow' });
+
+console.log(rtf1.format(-1, 'day'));
+// "1 day ago"
+```
+
+Pass in a different first parameter to `RelativeTimeFormat` for localization!
+
+```tsx
+const rtf2 = new Intl.RelativeTimeFormat('es', { numeric: 'auto' });
+
+console.log(rtf2.format(2, 'day'));
+//"pasado mañana"
+```
+
+## Number Formatting
+
+Instead of [numeral.js](http://numeraljs.com/), you can use [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) to format numbers:
+
+```tsx
+const number = 123456.789;
+
+console.log(
+  new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+    number
+  )
+);
+// "123.456,79 €"
+
+// the Japanese yen doesn't use a minor unit
+console.log(
+  new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(
+    number
+  )
+);
+// "￥123,457"
+
+// limit to three significant digits
+console.log(
+  new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(number)
+);
+// "1,23,000"
+```
+
+## Date Formatting
+
+Instead of [Moment](https://momentjs.com/)'s `format` or [date-fns](https://date-fns.org/)'s `format`, you can use [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) to format dates. For example, instead of:
+
+```tsx
+const moment = require('moment');
+
+console.log(moment().format('...'));
+```
+
+You can use one of these:
+
+```tsx
+const date = new Date(Date.UTC(2020, 11, 20, 3, 23, 16, 738));
+// Results below assume UTC timezone - your results may vary
+
+// Specify default date formatting for language (locale)
+console.log(new Intl.DateTimeFormat('en-US').format(date));
+// "12/20/2020"
+
+// Specify default date formatting for language with a fallback language (in this case Indonesian)
+console.log(new Intl.DateTimeFormat(['ban', 'id']).format(date));
+// "20/12/2020"
+
+// Specify date and time format using "style" options (i.e. full, long, medium, short)
+console.log(
+  new Intl.DateTimeFormat('en-GB', {
+    dateStyle: 'full',
+    timeStyle: 'long',
+    timeZone: 'Australia/Sydney',
+  }).format(date)
+);
+// Expected output "Sunday, 20 December 2020 at 14:23:16 GMT+11"
+```
+
+## String Sorting
+
+Instead of using a complex custom `.sort()` sorting algorithm, you can use [Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator) to sort strings. It takes into account the language's rules for sorting (e.g. the accents and other glyphs) and even has support for pluralization, internationalization, and localization.
+
+```tsx
+console.log(['Z', 'a', 'z', 'ä'].sort(new Intl.Collator('de').compare));
+// ["a", "ä", "z", "Z"]
+
+console.log(['Z', 'a', 'z', 'ä'].sort(new Intl.Collator('sv').compare));
+// ["a", "z", "Z", "ä"]
+
+console.log(
+  ['Z', 'a', 'z', 'ä'].sort(
+    new Intl.Collator('de', { caseFirst: 'upper' }).compare
+  )
+);
+// ["a", "ä", "Z", "z"]
+```
+
+## Pluralization
+
+Instead of using a complex `if` statement, you can use [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/PluralRules) to pluralize strings. It takes into account the language's rules for pluralization (e.g. the accents and other glyphs):
+
+```tsx
+// Arabic has different plural rules
+
+new Intl.PluralRules('ar-EG').select(0);
+// → 'zero'
+new Intl.PluralRules('ar-EG').select(1);
+// → 'one'
+new Intl.PluralRules('ar-EG').select(2);
+// → 'two'
+new Intl.PluralRules('ar-EG').select(6);
+// → 'few'
+new Intl.PluralRules('ar-EG').select(18);
+// → 'many'
+```
+
+## Segmenters
+
+Instead of using a complex `join()` argument, you can use [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) to segment strings. It takes into account the language's rules for segmentation (e.g. the accents and other glyphs), and even has support for pluralization, internationalization, and localization:
+
+```tsx
+const segmenterFr = new Intl.Segmenter('fr', { granularity: 'word' });
+const string1 = 'Que ma joie demeure';
+
+const iterator1 = segmenterFr.segment(string1)[Symbol.iterator]();
+
+console.log(iterator1.next().value.segment);
+// 'Que'
+
+console.log(iterator1.next().value.segment);
+// ' '
+```
+
+The Intl object is widely supported by modern browsers. According to [Can I Use](https://caniuse.com/?search=Intl), the Intl object has over 95% global support, with the only notable exceptions being Internet Explorer 11 and Opera Mini (pretty standard). This means that you can use it in your code without worrying about compatibility issues, unlike some third-party libraries that may have limited support.
+
+The Intl object is a powerful and convenient way to work with dates and times in JavaScript. It provides many of the same features as popular libraries such as Moment.js and date-fns, but without the need to include an external dependency. Plus, it is widely supported and easy to use. If you are currently using one of these libraries in your code, consider switching to the Intl object to simplify your codebase and improve its performance.
+
+Give it a try and let me know what you think!

@@ -1,0 +1,58 @@
+---
+title: Enabling HSTS Preload in Next.js
+description: Learn how to enable HSTS preload in Next.js to improve your website's security.
+date: 12-08-2022
+---
+
+HSTS stands for HTTP Strict Transport Security, and it is a security measure that helps protect against man-in-the-middle attacks by ensuring that a web browser can only connect to a website using a secure HTTPS connection. When a website has HSTS enabled, the browser will automatically convert any insecure HTTP connections to HTTPS, if possible, before sending any data to the server.
+
+The HSTS preload is a list of websites that have declared themselves as HTTPS-only, which is compiled by Chrome and other browsers. When a browser is using this list, it will automatically convert any attempts to connect to a website on the list using insecure HTTP to HTTPS, without first checking with the server to see if it supports HTTPS.
+
+One way to think of HSTS preload is like a list of trusted websites that your browser knows are safe to visit. By using this list, your browser can protect you from accidentally connecting to a malicious website that is trying to impersonate a trusted website, without having to check with the server first. It's a way of ensuring that your browser only connects to websites using secure, encrypted connections, which helps protect your privacy and security online.
+
+In a Next.js app, we can enable HSTS preload by adding the `Strict-Transport-Security` header in our `next.config.mjs` (or similar) file:
+
+```js title="next.config.mjs"
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  {
+    source: '/(.*)',
+    headers: [
+      {
+        key: 'Strict-Transport-Security',
+        value: 'max-age=63072000; includeSubDomains; preload',
+      },
+    ],
+  },
+};
+```
+
+Alternatively if you're using [next-secure-headers](https://www.npmjs.com/package/next-secure-headers), you can modify the `forceHTTPSRedirect` option to include `preload` and `includeSubDomains`:
+
+```js title="next.config.mjs"
+import { createSecureHeaders } from 'next-secure-headers';
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          ...createSecureHeaders({
+            // HSTS Preload: https://hstspreload.org/
+            forceHTTPSRedirect: [
+              true,
+              { maxAge: 63072000, includeSubDomains: true, preload: true },
+            ],
+          }),
+        ],
+      },
+    ];
+  },
+};
+```
+
+Once you've added this, you can submit your website to the HSTS preload list by following the instructions on the [HSTS preload website](https://hstspreload.org/). Once your website has been added to the list, your browser will automatically convert any attempts to connect to your website using HTTP to HTTPS, without first checking with the server to see if it supports HTTPS. This helps to protect your users from accidentally connecting to a malicious website that is trying to impersonate your website.
+
+Happy coding!

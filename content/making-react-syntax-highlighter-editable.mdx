@@ -1,0 +1,118 @@
+---
+title: Making react-syntax-highlighter "editable"
+description: react-syntax-highlighter is a great tool for highlighting code snippets, but it is not editable. Let's hack an editable state together!
+date: 01-13-2023
+---
+
+The React library [react-syntax-highlighter](https://www.npmjs.com/package/react-syntax-highlighter) package is a handy little utility for highlighting code snippets. It supports a wide variety of languages and has a bunch of different themes. While it's very easy to use, it has one major drawback: it's not editable (fair enough since it's a syntax highlighter and not an editor).
+
+I ran into this problem while building a [Refraction](/blog/refraction). While I switched to the obvious solution later (using [React-Ace](https://www.npmjs.com/package/react-ace)), I thought my hack solution was interesting enough to share.
+
+First up, let's render `react-syntax-highlighter` with some static JS code:
+
+```tsx
+const [code] = useState(`
+ const fib = (n) => {
+   if (n <= 1) {
+     return n;
+   }
+   return fib(n - 1) + fib(n - 2);
+ };
+`);
+
+return (
+  <SyntaxHighlighter
+    language="javascript"
+    style={atomOneDark}
+    customStyle={{
+      flex: '1',
+      background: 'transparent',
+    }}
+  >
+    {code}
+  </SyntaxHighlighter>
+);
+```
+
+Now, let's add a `textarea` that is hidden behind the `react-syntax-highlighter` component. We'll use the `textarea` to capture the user's input.
+
+```tsx
+const [code, setCode] = useState(`
+ const fib = (n) => {
+   if (n <= 1) {
+     return n;
+   }
+   return fib(n - 1) + fib(n - 2);
+ };
+`);
+
+return (
+  <div className="relative flex bg-[#282a36]">
+    <textarea
+      className="absolute inset-0 resize-none bg-transparent p-2 font-mono text-transparent caret-white outline-none"
+      value={code}
+      onChange={(e) => setCode(e.target.value)}
+    />
+    <SyntaxHighlighter
+      language="javascript"
+      style={atomOneDark}
+      customStyle={{
+        flex: '1',
+        background: 'transparent',
+      }}
+    >
+      {code}
+    </SyntaxHighlighter>
+  </div>
+);
+```
+
+Last, we want to focus the `textarea` when the user clicks or presses a key on (what looks like) the `react-syntax-highlighter` component. We can do this by using a `ref` on the `textarea` and calling `focus()` on it.
+
+Most importantly, we need to make sure the styles of the `textarea` are roughly the same as the `react-syntax-highlighter` component. Otherwise, the text selection on the `textarea` won't look right.
+
+```tsx
+const textareaRef = useRef<HTMLTextAreaElement>(null);
+const [code, setCode] = useState(`
+ const fib = (n) => {
+   if (n <= 1) {
+     return n;
+   }
+   return fib(n - 1) + fib(n - 2);
+ };
+`);
+
+return (
+  <div
+    role="button"
+    tabIndex={0}
+    onKeyDown={() => textareaRef.current?.focus()}
+    onClick={() => textareaRef.current?.focus()}
+    className="relative flex bg-[#282a36]"
+  >
+    <textarea
+      className="absolute inset-0 resize-none bg-transparent p-2 font-mono text-transparent caret-white outline-none"
+      ref={textareaRef}
+      value={code}
+      onChange={(e) => setCode(e.target.value)}
+    />
+    <SyntaxHighlighter
+      language="javascript"
+      style={atomOneDark}
+      customStyle={{
+        flex: '1',
+        background: 'transparent',
+      }}
+    >
+      {code}
+    </SyntaxHighlighter>
+  </div>
+);
+```
+
+Two interesting things to note:
+
+1. `text-transparent` is a TailwindCSS class that makes the text transparent. This is important because we want the `textarea` to be invisible, but we still want the characters to be selectable.
+2. `caret-white` is a TailwindCSS class that makes the caret white. This is important because the `textarea` is transparent, so the caret would be invisible. We want the caret to be visible so the user knows where they are typing.
+
+And that's it! Now you can "edit" the code snippet in the `react-syntax-highlighter` component.

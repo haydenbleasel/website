@@ -1,0 +1,112 @@
+---
+title: Simulating Row-Level Security in MySQL with Clerk and Prisma
+description: MySQL doesn’t natively support RLS, so if you’re using PlanetScale like I do, you’re out of luck. However, there is a way of working around this by extending your Prisma client with a custom extension.
+date: 2024-10-09
+---
+
+Row-level security (RLS) is a popular PostgreSQL concept where tables can have row security policies that restrict, on a per-user basis, which rows can be returned by normal queries or inserted, updated, or deleted by data modification commands.
+
+Unfortunately, MySQL doesn’t natively support this and PlanetScale [have said](https://github.com/planetscale/discussion/discussions/157) they may look into it later. You can work around this by implementing views, which expose a specific set of rows on a table for a user. However, if you’re looking for a way that doesn’t involve messing around with the database or infrastructure, I may have something for you.
+
+# Configuring the Schema
+
+First, let’s assume that we’re working with a simple Prisma schema with a `Page` model. We store pages with a `userId` (identifying the owner) and an `organizationId` (identifying the organization it belongs to).
+
+```prisma title="schema.prisma"
+model Page {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  name            String
+  
+  // We'll use these fields to authenticate
+  userId          String
+  organizationId  String
+
+  @@map(name: "page")
+}
+```
+
+Easy peasy.
+
+# Extending the Prisma Client
+
+Next, we need to intercept operations made on this `Page` model. We can do this with a Prisma [custom extension](https://www.prisma.io/docs/orm/prisma-client/client-extensions/query#modify-all-prisma-client-operations) that uses the `$allOperations` method to modify all query methods present on the model.
+
+For example, say we have a Prisma client like this:
+
+```ts title="database.ts"
+import 'server-only';
+
+import { Client, connect } from '@planetscale/database';
+import { PrismaPlanetScale } from '@prisma/adapter-planetscale';
+import { PrismaClient } from '@prisma/client';
+
+const client = new Client({ url: process.env.databaseUrl });
+const adapter = new PrismaPlanetScale(client);
+const prisma = new PrismaClient({ adapter });;
+
+export const database = prisma;
+```
+
+We can extend the exported database object with the `$extends` function:
+
+```ts title="database.ts"
+export const database = prisma.$extends({
+  query: {
+    page: {
+      async $allOperations({ operation, model, args, query }) {
+        // Do intercept-y stuff here.
+
+        return query(args);
+      },
+    },
+  },
+});
+```
+
+# Securing operations
+
+Now that we have a way of intercepting transactions, let’s bring in Clerk and use the current user and organization to authenticate requests.
+
+After checking that the user is indeed logged in, we can intercept all non-`create` operations and inject a `where` clause. I say non-`create` as the `create` method doesn’t take `where` as it’s not a query, as opposed to `select`, `update`, `delete`, etc.
+
+```ts title="database.ts"
+import 'server-only';
+
+import { auth, currentUser } from '@clerk/nextjs/server';
+import { Client, connect } from '@planetscale/database';
+import { PrismaPlanetScale } from '@prisma/adapter-planetscale';
+import { PrismaClient } from '@prisma/client';
+
+const client = new Client({ url: process.env.databaseUrl });
+const adapter = new PrismaPlanetScale(client);
+const prisma = new PrismaClient({ adapter });;
+
+export const database = prisma.$extends({
+  query: {
+    page: {
+      async $allOperations({ operation, model, args, query }) {
+        const { orgId } = await auth();
+        const user = await currentUser();
+
+        if (!user || !orgId) {
+          throw new Error('Unauthorized');
+        }
+
+        if (!operation.includes('create')) {
+          args.where = {
+            ...(args.where ?? {}),
+            organizationId: orgId,
+            userId: user.id,
+          };
+        }
+
+        return query(args);
+      },
+    },
+  },
+});
+```
+
+That’s it! We now have some rudimentary row-level security in our MySQL application. While it’s not at the database layer, at least we can rest easy knowing that our transactions are somewhat safer.

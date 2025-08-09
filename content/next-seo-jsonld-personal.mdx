@@ -1,0 +1,191 @@
+---
+title: Optimizing your Next.js personal website's SEO with next-seo
+description: Using JSON-LD utility components provided by next-seo, we can make our personal website more friendly to structured data parsers.
+date: 11-27-2022
+---
+
+The [next-seo](https://github.com/garmeeh/next-seo) library is a powerful tool for optimizing the technical SEO of a [Next.js](https://nextjs.org/) website. The library offers a range of components that can be used to improve the search engine visibility and parsing of a website. In this post, we'll explore five of them.
+
+## `ArticleJsonLd`
+
+The `ArticleJsonLd` component is designed to help optimize the search engine visibility of articles on your personal website. This component can be added to the `<head>` of an article page, and it allows you to provide structured data about the article to search engines. This structured data can help search engines understand the content of your article and display it more prominently in search results, making it useful for blog indexes and blog posts.
+
+To use the `ArticleJsonLd` component, you will need to add it to the `<head>` of your article page and provide the required data about the article. This data includes the article's title, author, date published, and a brief description of the content. You can also include optional data such as the article's main image and the publisher's logo. For a full list of the data that can be provided, see the [ArticleJsonLd docs](https://github.com/garmeeh/next-seo#article-1).
+
+Here is an example of how to use the ArticleJsonLd component on an article page:
+
+```tsx
+import { ArticleJsonLd } from 'next-seo';
+
+const MyArticle = () => (
+  <>
+    <ArticleJsonLd
+      url="https://www.example.com/article"
+      title="My Article"
+      images={['https://www.example.com/article/image.jpg']}
+      datePublished="2021-01-01"
+      authorName="John Doe"
+      publisherName="My Website"
+      publisherLogo="https://www.example.com/logo.png"
+      description="This is a brief description of my article."
+    />
+    <h1>My Article</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </>
+);
+```
+
+The `ArticleJsonLd` component will generate the following structured data in the `<head>` of your article page:
+
+```tsx
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.example.com/article"
+  },
+  "headline": "My Article",
+  "image": [
+    "https://www.example.com/article/image.jpg"
+  ],
+  "datePublished": "2021-01-01",
+  "author": {
+    "@type": "Person",
+    "name": "John Doe"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.example.com/logo.png"
+    }
+  },
+  "description": "This is a brief description of my article."
+}
+</script>
+```
+
+By providing this structured data, search engines will be able to understand the content of your article and display it more prominently in search results.
+
+## `LogoJsonLd`
+
+The `LogoJsonLd` component makes it easy to add structured data for your website's logo. This not only helps search engines understand your brand, but it also allows for your logo to potentially be displayed in rich search results.
+
+Adding a logo to your website's JSON-LD data can be beneficial for a personal website, as it can help search engines understand your brand and potentially display your "logo" (face, probably) in search results.
+
+Here's an example of using the `LogoJsonLd` component:
+
+```tsx
+import { LogoJsonLd } from 'next-seo';
+
+const MyPersonalWebsite = () => (
+  <>
+    <LogoJsonLd
+      url="https://www.mypersonalwebsite.com"
+      logo="https://www.mypersonalwebsite.com/logo.png"
+      alt="My Personal Website"
+    />
+  </>
+);
+```
+
+This will generate the following JSON-LD data on your website:
+
+```tsx
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.mypersonalwebsite.com",
+  "logo": "https://www.mypersonalwebsite.com/logo.png",
+  "alternateName": "My Personal Website"
+}
+</script>
+```
+
+By adding this structured data to your personal website, you can help search engines better understand your personal brand and potentially improve your search engine rankings.
+
+## `SocialProfileJsonLd`
+
+The `next-seo` library's `SocialProfileJsonLd` component is great for helping search engines understand that your website belongs to you, and that it is associated with the specified social media profiles. This can improve your website's ranking and make it more visible to potential visitors.
+
+Let's say you have a personal website and want to add your social media profiles for Facebook, Twitter and LinkedIn to it. With the `SocialProfileJsonLd` component, you can simply add the following code to your codebase:
+
+```tsx
+<SocialProfileJsonLd
+  type="Person"
+  name="Jane Doe"
+  url="https://www.janedoe.com"
+  sameAs={[
+    'https://www.facebook.com/janedoe',
+    'https://www.twitter.com/janedoe',
+    'https://www.linkedin.com/in/janedoe',
+  ]}
+/>
+```
+
+This will add structured data to your website that looks something like this:
+
+```tsx
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": "Jane Doe",
+  "url": "https://www.janedoe.com",
+  "sameAs": [
+    "https://www.facebook.com/janedoe",
+    "https://www.twitter.com/janedoe",
+    "https://www.linkedin.com/in/janedoe"
+  ]
+}
+```
+
+## `VideoJsonLd`
+
+If you're a motion designer, cinematographer, or any other type of video creator, you can use the `VideoJsonLd` component to help search engines understand the content of your showreel and content. This can help improve your website's search engine rankings and make it more visible to potential clients.
+
+To use the `VideoJsonLd` component, you can simply import it into your React component and pass in the relevant information, such as the video title, description, thumbnail, and URL. Here is some example source code:
+
+```tsx
+import { VideoJsonLd } from 'next-seo';
+
+const MyVideo = () => {
+  return (
+    <VideoJsonLd
+      url="https://www.example.com/my-video"
+      title="My Cool Video"
+      description="This is a description of my cool video"
+      thumbnailUrl="https://www.example.com/thumbnail.png"
+    />
+  );
+};
+```
+
+This will output the following HTML code on your website:
+
+```tsx
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "My Cool Video",
+  "description": "This is a description of my cool video",
+  "thumbnailUrl": "https://www.example.com/thumbnail.png",
+  "contentUrl": "https://www.example.com/my-video"
+}
+</script>
+```
+
+If you're a motion designer, adding this type of structured data to your personal website can help improve the visibility of your videos in search engine results. This can lead to more traffic and potential clients finding their website and viewing their work.
+
+---
+
+That's it for this article! I hope you found it useful and learned something new about SEO and structured data. Also, [next-seo](https://github.com/garmeeh/next-seo) has a lot of other useful components that you can use to improve your website's SEO, so make sure to give their documentation a read.
+
+If you have any questions or comments, let me know on [Twitter](https://twitter.com/haydenbleasel).

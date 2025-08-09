@@ -1,0 +1,73 @@
+---
+title: Optimizing Next.js images for speed and quality
+description: Next.js' Image component is highly reliable and configurable. Here's how to get the most out of it.
+date: 11-22-2022
+---
+
+[Next.js](https://nextjs.org/)'s built-in image component (`next/image`) provides a simple and efficient way to handle responsive images in your Next.js app. It's a wrapper around the standard HTML `<img>` element with added features and functionality specifically tailored for Next.js applications, such as the `IntersectionObserver` API to lazy-load images or serving external images locally.
+
+One of the key benefits of using the `next/image` component is that it allows you to optimize the size and quality of your images for different devices and screen sizes. This is especially important in the context of mobile devices, where network bandwidth can be limited and users are often on low-power devices. This way, you can ensure that your images are always displayed at the optimal size and quality for the user's device, without sacrificing performance.
+
+While the `next/image` component is brilliant out of the box, it's also highly configurable. At the risk of sounding clickbait-y, here's 3 handy configurations that I use on every Next.js project I work on.
+
+## Enabling the AVIF format
+
+By default, Next.js converts images to the WebP format. This is a great choice, as WebP is a modern image format that provides a good balance between file size and quality. However, there's a new kid on the block: [AVIF](https://jakearchibald.com/2020/avif-has-landed/).
+
+The AVIF image format is a new image format that uses the AV1 video codec to compress images. This allows for significantly smaller file sizes compared to other popular image formats, such as JPEG and PNG, while maintaining high visual quality. The smaller file sizes make AVIF ideal for use on the web, where it can reduce page load times and save bandwidth. Additionally, AVIF supports a wide range of colors and high dynamic range (HDR), which means that it can reproduce more accurate and vibrant colors than other formats. Overall, the AVIF image format offers a great combination of high image quality and small file size, making it an excellent choice for use on the web.
+
+According to [the Next.js team](https://nextjs.org/docs/api-reference/next/image):
+
+> AVIF generally takes 20% longer to encode but it compresses 20% smaller compared to WebP. This means that the first time an image is requested, it will typically be slower and then subsequent requests that are cached will be faster.
+
+This is a great trade-off, and I think it's worth it. To enable this in your Next.js app, you can add the following to your `next.config.js` file:
+
+```js
+module.exports = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+};
+```
+
+## Overwriting the default quality
+
+By default, Next.js will use a quality of 75 for images. This is a good default and most of the time you won't notice any difference. As a designer though, I like to have a bit more control over the quality of my images and how they're presented on my website.
+
+Under the hood, I believe\* Next.js uses [Sharp](https://sharp.pixelplumbing.com/) to resize and optimize images. Sharp allows you to specify the quality of the output image, which is a number between 1 and 100 and is passed through from the attributes on your Image component.
+
+Unfortunately, it's only possible to overwrite the quality of an image on a per-image basis. This means that you can't set a default quality for all images in your Next.js app. However, you can still set a default quality for all images in your Next.js app by using a custom `Image` component.
+
+```tsx
+import type { FC } from 'react';
+import NextImage from 'next/image';
+import type { ImageProps } from 'next/image';
+
+const Image: FC<ImageProps> = ({ quality, ...props }) => (
+  <NextImage {...props} quality={quality ?? 100} />
+);
+
+export default Image;
+```
+
+## Prioritizing above the fold
+
+By default, Next.js will lazy-load images all images, using your browser's native lazy loading technique. While this is brilliant for performance, there is a manual improvement we can make on a per-page basis.
+
+The Next.js team themselves have noted:
+
+> You should use the `priority` property on any image detected as the Largest Contentful Paint (LCP) element. It may be appropriate to have multiple priority images, as different images may be the LCP element for different viewport sizes.
+
+This is a great tip, and one that I use on every Next.js project I work on. To do this, you can use the `priority` attribute on your `Image` component. This will tell Next.js to prioritize the image above the fold, and will load it immediately.
+
+This in turn will improve your [Largest Contentful Paint](https://web.dev/lcp/) (LCP) score, which is a key metric for improving your website's performance. You can check your LCP score using [Google's Lighthouse tool](https://developers.google.com/web/tools/lighthouse) in your browser's developer tools... assuming you're using Chrome.
+
+Anyway, prioritizing an image is as simple as adding the `priority` attribute to your `Image` component:
+
+```tsx
+<Image src="/my-image.jpg" priority />
+```
+
+That's all for now! Also remember that Next.js' `Image` component has a ton of other features and functionality, so be sure to check out the [official documentation](https://nextjs.org/docs/api-reference/next/image) for more information.
+
+I hope you found this post useful. If you have any questions or comments, feel free to reach out to me on [Twitter](https://twitter.com/haydenbleasel).

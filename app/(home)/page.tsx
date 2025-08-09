@@ -3,8 +3,8 @@ import { getAllArticles } from '@/lib/articles';
 import { Article } from './components/article';
 import { Hero } from './components/hero';
 import { Newsletter } from './components/newsletter';
-import { Photos } from './components/photos';
 import { Resume } from './components/resume';
+import { Videos } from './components/videos';
 
 const Home = async () => {
   const articles = await getAllArticles();
@@ -13,7 +13,7 @@ const Home = async () => {
   return (
     <>
       <Hero />
-      <Photos />
+      <Videos />
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">

@@ -1,4 +1,4 @@
-import { ArrowDownIcon, BriefcaseIcon } from '@phosphor-icons/react/ssr';
+import { ArrowUpRightIcon, BriefcaseIcon } from '@phosphor-icons/react/ssr';
 import { Button } from '@/components/Button';
 import logoAirbnb from '@/images/logos/airbnb.svg';
 import logoFacebook from '@/images/logos/facebook.svg';
@@ -52,9 +52,15 @@ export const Resume = () => {
           <Role key={role.company} role={role} />
         ))}
       </ol>
-      <Button className="group mt-6 w-full" href="#" variant="secondary">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-active:stroke-zinc-50 dark:group-hover:stroke-zinc-50" />
+      <Button
+        className="group mt-6 w-full"
+        href="https://www.linkedin.com/in/haydenbleasel/"
+        rel="noopener noreferrer"
+        target="_blank"
+        variant="secondary"
+      >
+        View full resume
+        <ArrowUpRightIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-active:stroke-zinc-50 dark:group-hover:stroke-zinc-50" />
       </Button>
     </div>
   );

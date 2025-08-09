@@ -1,28 +1,15 @@
 import type { Metadata } from 'next';
-import { Section } from '@/components/Section';
 import { SimpleLayout } from '@/components/SimpleLayout';
 import { stack } from '@/lib/stack';
 import { Tool } from './components/tool';
-
-function ToolsSection({
-  children,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Section>) {
-  return (
-    <Section {...props} className="max-w-none">
-      <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2">
-        {children}
-      </ul>
-    </Section>
-  );
-}
+import { ToolsSection } from './components/tools-section';
 
 export const metadata: Metadata = {
-  title: 'Uses',
-  description: 'Software I use, gadgets I love, and other things I recommend.',
+  title: 'Stack',
+  description: 'Software I use, apps I love, and other things I recommend.',
 };
 
-export default function Uses() {
+export default function StackPage() {
   const categoryOrder = [
     'AI',
     'Productivity',
@@ -39,18 +26,21 @@ export default function Uses() {
 
   return (
     <SimpleLayout
-      intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."
-      title="Software I use, gadgets I love, and other things I recommend."
+      intro="I get asked a lot about the tools and technologies I use to build products, stay productive, and more. Here’s a big list of all of my favorite software."
+      title="Software I use, apps I love, and other things I recommend."
     >
       <div className="space-y-20">
         {categoriesToRender.map((category) => {
           const itemsForCategory = stack.filter(
             (item) => item.category === category
           );
+          const itemsForCategorySorted = itemsForCategory
+            .slice()
+            .sort((a, b) => (b.affiliate ? 1 : 0) - (a.affiliate ? 1 : 0));
 
           return (
             <ToolsSection key={category} title={category}>
-              {itemsForCategory.map((item) => (
+              {itemsForCategorySorted.map((item) => (
                 <Tool
                   affiliate={item.affiliate}
                   description={item.description}

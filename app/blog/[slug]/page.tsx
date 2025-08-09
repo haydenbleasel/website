@@ -5,8 +5,8 @@ import { BackButton } from '@/components/back-button';
 import { Container } from '@/components/container';
 import { Mdx } from '@/components/mdx';
 import { Prose } from '@/components/prose';
-import { formatDate } from '@/lib/format-date';
 import { createMetadata } from '@/lib/metadata';
+import { formatDate } from '@/lib/utils';
 
 const getPage = (slug: string) => allPosts.find((post) => post.slug === slug);
 

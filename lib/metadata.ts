@@ -1,4 +1,3 @@
-import merge from 'deepmerge';
 import type { Metadata } from 'next';
 import { baseUrl } from './url';
 
@@ -58,7 +57,10 @@ export const createMetadata = ({
     },
   };
 
-  const metadata: Metadata = merge(defaultMetadata, properties);
+  const metadata: Metadata = {
+    ...defaultMetadata,
+    ...properties,
+  };
 
   return metadata;
 };

@@ -178,7 +178,7 @@ export const stack: StackItem[] = [
     description: 'The next-generation digital clinic.',
     category: 'Other',
     affiliate: true,
-    href: 'https://superpower.com/join?via=hayden',
+    href: 'https://superpower.com/welcome?via=hayden',
     featured: true,
   },
   {

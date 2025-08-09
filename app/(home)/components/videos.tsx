@@ -2,11 +2,19 @@ import clsx from 'clsx';
 import { Video } from './video';
 
 const videos = [
-  { src: '/alaska.mov', rotation: 'rotate-2' },
-  { src: '/bali.mov', rotation: '-rotate-2' },
-  { src: '/california.mov', rotation: 'rotate-2' },
-  { src: '/south-dakota.mov', rotation: 'rotate-2' },
-  { src: '/sydney.mov', rotation: '-rotate-2' },
+  { src: '/alaska.mov', rotation: 'rotate-2', location: 'Seward, Alaska' },
+  { src: '/bali.mov', rotation: '-rotate-2', location: 'Bali, Indonesia' },
+  {
+    src: '/california.mov',
+    rotation: 'rotate-2',
+    location: 'Monterey, California',
+  },
+  {
+    src: '/south-dakota.mov',
+    rotation: 'rotate-2',
+    location: 'Jackson, South Dakota',
+  },
+  { src: '/sydney.mov', rotation: '-rotate-2', location: 'Sydney, Australia' },
 ];
 
 export const Videos = () => (
@@ -20,7 +28,7 @@ export const Videos = () => (
           )}
           key={video.src}
         >
-          <Video src={video.src} />
+          <Video location={video.location} src={video.src} />
         </div>
       ))}
     </div>

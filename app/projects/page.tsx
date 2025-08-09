@@ -25,7 +25,7 @@ const Projects = () => (
         </div>
       </div>
       <div className="lg:order-first lg:row-span-2">
-        <h1 className="font-bold text-4xl text-zinc-800 tracking-tight sm:text-5xl dark:text-zinc-100">
+        <h1 className="font-bold text-4xl text-zinc-800 tracking-tighter sm:text-5xl dark:text-zinc-100">
           Things I’ve made trying to put my dent in the universe.
         </h1>
         <Prose>

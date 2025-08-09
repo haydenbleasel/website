@@ -33,7 +33,7 @@ const About = () => (
         </div>
       </div>
       <div className="lg:order-first lg:row-span-2">
-        <h1 className="font-bold text-4xl text-zinc-800 tracking-tight sm:text-5xl dark:text-zinc-100">
+        <h1 className="font-bold text-4xl text-zinc-800 tracking-tighter sm:text-5xl dark:text-zinc-100">
           I’m Hayden Bleasel, an Australian designer, engineer and founder.
         </h1>
         <Prose className="mt-6">

@@ -47,7 +47,7 @@ const Page = async ({ params }: PageProps) => {
           <BackButton />
           <article>
             <header className="flex flex-col">
-              <h1 className="mt-6 font-bold text-4xl text-zinc-800 tracking-tight sm:text-5xl dark:text-zinc-100">
+              <h1 className="mt-6 font-bold text-4xl text-zinc-800 tracking-tighter sm:text-5xl dark:text-zinc-100">
                 {article.title}
               </h1>
               <time

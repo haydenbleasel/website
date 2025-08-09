@@ -211,7 +211,7 @@ const About = () => (
           </SocialLink>
           <SocialLink
             className="mt-4"
-            href="https://www.instagram.com/haydenbleasel/"
+            href="https://www.instagram.com/hayden.bleasel/"
             icon={InstagramIcon}
           >
             Follow on Instagram

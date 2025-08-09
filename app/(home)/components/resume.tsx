@@ -1,5 +1,5 @@
 import { ArrowUpRightIcon, BriefcaseIcon } from '@phosphor-icons/react/ssr';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/button';
 import Corellium from '@/images/logos/corellium.svg';
 import Jellypepper from '@/images/logos/jellypepper.svg';
 import Palantir from '@/images/logos/palantir.svg';

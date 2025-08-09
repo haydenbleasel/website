@@ -1,4 +1,4 @@
-import { Card } from '@/components/Card';
+import { Card } from '@/components/card';
 
 type AppearanceProps = {
   title: string;

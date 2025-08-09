@@ -1,7 +1,7 @@
 import { SealCheckIcon } from '@phosphor-icons/react/dist/ssr';
 import Image from 'next/image';
 
-import { Card } from '@/components/Card';
+import { Card } from '@/components/card';
 
 export type ToolProps = {
   name: string;

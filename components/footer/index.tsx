@@ -1,4 +1,4 @@
-import { ContainerInner, ContainerOuter } from '@/components/Container';
+import { ContainerInner, ContainerOuter } from '@/components/container';
 import { NavLink } from './nav-link';
 
 export const Footer = () => (

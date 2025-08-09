@@ -1,5 +1,5 @@
 import { MailboxIcon } from '@phosphor-icons/react/dist/ssr';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/button';
 
 export const Newsletter = () => (
   <form

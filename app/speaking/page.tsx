@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SimpleLayout } from '@/components/SimpleLayout';
+import { SimpleLayout } from '@/components/simple-layout';
 import { interviews, speaking, writing } from '@/lib/speaking';
 import { Appearance } from './components/appearance';
 import { SpeakingSection } from './components/speaking-section';

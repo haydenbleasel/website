@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SimpleLayout } from '@/components/SimpleLayout';
+import { SimpleLayout } from '@/components/simple-layout';
 import { stack } from '@/lib/stack';
 import { Tool } from './components/tool';
 import { ToolsSection } from './components/tools-section';

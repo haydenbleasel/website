@@ -4,10 +4,10 @@ import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 
 import { AppContext } from '@/app/providers';
-import { Container } from '@/components/Container';
-import { Prose } from '@/components/Prose';
+import { Container } from '@/components/container';
+import { Prose } from '@/components/prose';
 import type { ArticleWithSlug } from '@/lib/articles';
-import { formatDate } from '@/lib/formatDate';
+import { formatDate } from '@/lib/format-date';
 
 function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (

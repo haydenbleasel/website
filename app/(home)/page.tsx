@@ -1,4 +1,4 @@
-import { Container } from '@/components/Container';
+import { Container } from '@/components/container';
 import { getAllArticles } from '@/lib/articles';
 import { Article } from './components/article';
 import { Hero } from './components/hero';

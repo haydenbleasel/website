@@ -1,8 +1,8 @@
 import { LinkIcon } from '@phosphor-icons/react/dist/ssr';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Card } from '@/components/Card';
-import { SimpleLayout } from '@/components/SimpleLayout';
+import { Card } from '@/components/card';
+import { SimpleLayout } from '@/components/simple-layout';
 import logoAnimaginary from '@/images/logos/animaginary.svg';
 import logoCosmos from '@/images/logos/cosmos.svg';
 import logoHelioStream from '@/images/logos/helio-stream.svg';

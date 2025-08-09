@@ -1,13 +1,13 @@
 import { PaperPlaneIcon } from '@phosphor-icons/react/dist/ssr';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Container } from '@/components/Container';
+import { Container } from '@/components/container';
 import {
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
   XIcon,
-} from '@/components/SocialIcons';
+} from '@/components/social-icons';
 import portraitImage from '@/images/portrait.jpg';
 import { SocialLink } from './components/social-link';
 

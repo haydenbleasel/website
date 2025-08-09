@@ -1,6 +1,6 @@
-import { Card } from '@/components/Card';
+import { Card } from '@/components/card';
 import type { ArticleWithSlug } from '@/lib/articles';
-import { formatDate } from '@/lib/formatDate';
+import { formatDate } from '@/lib/format-date';
 
 export const Article = ({ article }: { article: ArticleWithSlug }) => (
   <Card as="article">

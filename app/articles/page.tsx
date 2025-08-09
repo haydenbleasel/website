@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
-import { Card } from '@/components/Card';
-import { SimpleLayout } from '@/components/SimpleLayout';
+import { Card } from '@/components/card';
+import { SimpleLayout } from '@/components/simple-layout';
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles';
-import { formatDate } from '@/lib/formatDate';
+import { formatDate } from '@/lib/format-date';
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (

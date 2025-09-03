@@ -1,11 +1,11 @@
 import { ArrowUpRightIcon, BriefcaseIcon } from "@phosphor-icons/react/ssr";
 import { Button } from "@/components/button";
-import Corellium from "@/images/logos/corellium.svg";
-import Jellypepper from "@/images/logos/jellypepper.svg";
-import Palantir from "@/images/logos/palantir.svg";
-import Spaceship from "@/images/logos/spaceship.svg";
-import Vercel from "@/images/logos/vercel.svg";
-import { Role } from "./role";
+import { Role } from "../role";
+import Corellium from "./logos/corellium.svg";
+import Jellypepper from "./logos/jellypepper.svg";
+import Palantir from "./logos/palantir.svg";
+import Spaceship from "./logos/spaceship.svg";
+import Vercel from "./logos/vercel.svg";
 
 export const Resume = () => {
   const resume: Role[] = [

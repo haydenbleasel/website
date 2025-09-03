@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
-import avatarImage from "@/images/avatar.jpg";
+import avatarImage from "./avatar.jpg";
 
 type AvatarProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
   large?: boolean;

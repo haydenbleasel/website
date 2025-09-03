@@ -1,22 +1,26 @@
-import { allPosts } from 'content-collections';
-import type { Metadata } from 'next';
-import { Container } from '@/components/container';
-import { createMetadata } from '@/lib/metadata';
-import { Article } from './components/article';
-import { Hero } from './components/hero';
-import { Newsletter } from './components/newsletter';
-import { Resume } from './components/resume';
-import { Videos } from './components/videos';
+import { allPosts } from "content-collections";
+import type { Metadata } from "next";
+import { Container } from "@/components/container";
+import { createMetadata } from "@/lib/metadata";
+import { Article } from "./components/article";
+import { Hero } from "./components/hero";
+import { Newsletter } from "./components/newsletter";
+import { Resume } from "./components/resume";
+import { Videos } from "./components/videos";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Hayden Bleasel - Software engineer, product designer and founder',
+  title: "Hayden Bleasel - Software engineer, product designer and founder",
   description:
     "I'm Hayden — a software engineer, product designer and founder from 🇦🇺 Sydney, Australia. I currently live in 🇺🇸 San Francisco, California and work on the DX team at Vercel.",
 });
 
+const MAX_ARTICLES = 4;
+
 const latestArticles = allPosts
-  .sort((a, b) => b.date.getTime() - a.date.getTime())
-  .slice(0, 4);
+  .sort(
+    (articleA, articleB) => articleB.date.getTime() - articleA.date.getTime()
+  )
+  .slice(0, MAX_ARTICLES);
 
 const Home = () => (
   <>

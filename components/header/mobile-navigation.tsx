@@ -3,10 +3,10 @@ import {
   PopoverBackdrop,
   PopoverButton,
   PopoverPanel,
-} from '@headlessui/react';
-import { CaretDownIcon, XIcon } from '@phosphor-icons/react/dist/ssr';
-import type { ComponentPropsWithoutRef } from 'react';
-import { MobileNavItem } from './mobile-nav-item';
+} from "@headlessui/react";
+import { CaretDownIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
+import type { ComponentPropsWithoutRef } from "react";
+import { MobileNavItem } from "./mobile-nav-item";
 
 type MobileNavigationProps = ComponentPropsWithoutRef<typeof Popover>;
 

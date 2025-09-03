@@ -1,6 +1,6 @@
-import { XLogoIcon } from '@phosphor-icons/react/ssr';
-import { Button } from '@/components/button';
-import { Container } from '@/components/container';
+import { XLogoIcon } from "@phosphor-icons/react/ssr";
+import { Button } from "@/components/button";
+import { Container } from "@/components/container";
 
 export const Hero = () => (
   <Container className="mt-9">

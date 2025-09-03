@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { ArrowRightIcon, MailboxIcon } from '@phosphor-icons/react/dist/ssr';
-import { useActionState, useEffect } from 'react';
-import { toast } from 'sonner';
-import { subscribe } from '@/app/actions/subscribe';
-import { Button } from '@/components/button';
+import { ArrowRightIcon, MailboxIcon } from "@phosphor-icons/react/dist/ssr";
+import { useActionState, useEffect } from "react";
+import { toast } from "sonner";
+import { subscribe } from "@/app/actions/subscribe";
+import { Button } from "@/components/button";
 
 const initialState = {
-  message: '',
-  error: '',
+  message: "",
+  error: "",
 };
 
 export const emailRegex = /.+@.+/u;

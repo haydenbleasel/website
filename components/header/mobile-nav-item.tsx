@@ -1,6 +1,6 @@
-import { PopoverButton } from '@headlessui/react';
-import Link from 'next/link';
-import type { ReactNode } from 'react';
+import { PopoverButton } from "@headlessui/react";
+import Link from "next/link";
+import type { ReactNode } from "react";
 
 type MobileNavItemProps = {
   href: string;

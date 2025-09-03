@@ -1,23 +1,23 @@
-import type { Metadata } from 'next';
-import { SimpleLayout } from '@/components/simple-layout';
-import { createMetadata } from '@/lib/metadata';
-import { stack } from '@/lib/stack';
-import { Tool } from './components/tool';
-import { ToolsSection } from './components/tools-section';
+import type { Metadata } from "next";
+import { SimpleLayout } from "@/components/simple-layout";
+import { createMetadata } from "@/lib/metadata";
+import { stack } from "@/lib/stack";
+import { Tool } from "./components/tool";
+import { ToolsSection } from "./components/tools-section";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Stack',
-  description: 'Software I use, apps I love, and other things I recommend.',
+  title: "Stack",
+  description: "Software I use, apps I love, and other things I recommend.",
 });
 
 const categoryOrder = [
-  'AI',
-  'Productivity',
-  'Design',
-  'Development',
-  'Marketing',
-  'Finance',
-  'Other',
+  "AI",
+  "Productivity",
+  "Design",
+  "Development",
+  "Marketing",
+  "Finance",
+  "Other",
 ] as const;
 
 const categoriesToRender = categoryOrder.filter((category) =>

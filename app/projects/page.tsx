@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import { Container } from '@/components/container';
-import { Prose } from '@/components/prose';
-import { Video } from '@/components/video';
-import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from "next";
+import { Container } from "@/components/container";
+import { Prose } from "@/components/prose";
+import { Video } from "@/components/video";
+import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: 'Projects',
-  description: 'Things I’ve made trying to put my dent in the universe.',
+  title: "Projects",
+  description: "Things I’ve made trying to put my dent in the universe.",
 });
 
 const Projects = () => (
@@ -38,7 +38,7 @@ const Projects = () => (
           <h2>next-forge</h2>
           <p>
             I built a production-grade Turborepo template for Next.js apps
-            called{' '}
+            called{" "}
             <a
               href="https://www.next-forge.com/"
               rel="noopener noreferrer"
@@ -53,7 +53,7 @@ const Projects = () => (
             I released it for free in a market full of paid boilerplates and
             grew it to nearly 6,000 stars on GitHub, fostering a community of
             contributors and partners around it. It got some great coverage
-            after Guillermo Rauch{' '}
+            after Guillermo Rauch{" "}
             <a
               href="https://x.com/rauchg/status/1853171412766466119"
               rel="noopener noreferrer"
@@ -64,14 +64,14 @@ const Projects = () => (
             .
           </p>
           <p>
-            Vercel{' '}
+            Vercel{" "}
             <a
               href="https://x.com/haydenbleasel/status/1929625673586598148"
               rel="noopener noreferrer"
               target="_blank"
             >
               acquired
-            </a>{' '}
+            </a>{" "}
             next-forge in 2025 as part of my hiring.
           </p>
 
@@ -83,36 +83,36 @@ const Projects = () => (
           </p>
           <p>
             After growing it to around 400 stars on GitHub, Orate was merged
-            into the Vercel{' '}
+            into the Vercel{" "}
             <a
               href="https://ai-sdk.dev/"
               rel="noopener noreferrer"
               target="_blank"
             >
               AI SDK
-            </a>{' '}
-            in 2025 as{' '}
+            </a>{" "}
+            in 2025 as{" "}
             <a
               href="https://x.com/aisdk/status/1909603418639155460"
               rel="noopener noreferrer"
               target="_blank"
             >
               <code>transcribe()</code>
-            </a>{' '}
-            and{' '}
+            </a>{" "}
+            and{" "}
             <a
               href="https://x.com/aisdk/status/1911763995272626504"
               rel="noopener noreferrer"
               target="_blank"
             >
               <code>generateSpeech()</code>
-            </a>{' '}
+            </a>{" "}
             functions.
           </p>
 
           <h2>Ultracite</h2>
           <p>
-            I'm currently working on{' '}
+            I'm currently working on{" "}
             <a
               href="https://www.ultracite.ai/"
               rel="noopener noreferrer"
@@ -127,25 +127,25 @@ const Projects = () => (
           </p>
           <p>
             Ultracite is used internally at Vercel for a handful of our
-            projects, as well as by{' '}
+            projects, as well as by{" "}
             <a
               href="https://x.com/shadcn/status/1937342910519038142"
               rel="noopener noreferrer"
               target="_blank"
             >
               shadcn
-            </a>{' '}
+            </a>{" "}
             and a bunch of great startups and OSS projects.
           </p>
 
           <h2>Kibo UI</h2>
           <p>
-            I'm also working on{' '}
+            I'm also working on{" "}
             <a href="https://www.kibo-ui.com/" rel="noopener" target="_blank">
               Kibo UI
             </a>
             , a custom registry of composable, accessible and open source
-            components designed for use with{' '}
+            components designed for use with{" "}
             <a href="https://ui.shadcn.com/" rel="noopener" target="_blank">
               shadcn/ui
             </a>
@@ -154,7 +154,7 @@ const Projects = () => (
           </p>
           <p>
             I donated the AI components to Vercel in 2025 to form the foundation
-            of our new project &mdash;{' '}
+            of our new project &mdash;{" "}
             <a
               href="https://x.com/haydenbleasel/status/1953486882501001227"
               rel="noopener"
@@ -168,14 +168,14 @@ const Projects = () => (
           <h2>Refraction</h2>
           <p>
             One of my earlier successes was a tool for learning, improving and
-            generating code with AI called Refraction, which was{' '}
+            generating code with AI called Refraction, which was{" "}
             <a
               href="https://x.com/haydenbleasel/status/1678770475647012864"
               rel="noopener noreferrer"
               target="_blank"
             >
               acquired
-            </a>{' '}
+            </a>{" "}
             by Twistag in 2023.
           </p>
           <p>
@@ -190,11 +190,11 @@ const Projects = () => (
           <h2>Other stuff</h2>
           <p>
             I maintain some open source alternatives to existing tools,
-            including{' '}
+            including{" "}
             <a href="https://www.tersa.ai/" rel="noopener" target="_blank">
               Tersa
             </a>
-            , an open source alternative to Flora, and{' '}
+            , an open source alternative to Flora, and{" "}
             <a
               href="https://www.eververse.ai/"
               rel="noopener noreferrer"
@@ -203,7 +203,7 @@ const Projects = () => (
               Eververse
             </a>
             , an open source alternative to Productboard. You can find the
-            source code for these on my{' '}
+            source code for these on my{" "}
             <a
               href="https://github.com/haydenbleasel"
               rel="noopener noreferrer"

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { ArrowLeftIcon } from '@phosphor-icons/react/dist/ssr';
-import { useRouter } from 'next/navigation';
-import { useContext } from 'react';
-import { AppContext } from '@/app/providers';
+import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { AppContext } from "@/app/providers";
 
 export const BackButton = () => {
   const router = useRouter();

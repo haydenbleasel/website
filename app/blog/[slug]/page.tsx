@@ -1,12 +1,12 @@
-import { allPosts } from 'content-collections';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { BackButton } from '@/components/back-button';
-import { Container } from '@/components/container';
-import { Mdx } from '@/components/mdx';
-import { Prose } from '@/components/prose';
-import { createMetadata } from '@/lib/metadata';
-import { formatDate } from '@/lib/utils';
+import { allPosts } from "content-collections";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { BackButton } from "@/components/back-button";
+import { Container } from "@/components/container";
+import { Mdx } from "@/components/mdx";
+import { Prose } from "@/components/prose";
+import { createMetadata } from "@/lib/metadata";
+import { formatDate } from "@/lib/utils";
 
 const getPage = (slug: string) => allPosts.find((post) => post.slug === slug);
 

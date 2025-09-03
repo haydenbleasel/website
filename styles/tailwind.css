@@ -37,7 +37,8 @@
 }
 
 @layer base {
-  .shiki, .shiki span {
+  .shiki,
+  .shiki span {
     @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
   }
 

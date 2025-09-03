@@ -1,5 +1,5 @@
-import { ContainerInner, ContainerOuter } from '@/components/container';
-import { NavLink } from './nav-link';
+import { ContainerInner, ContainerOuter } from "@/components/container";
+import { NavLink } from "./nav-link";
 
 export const Footer = () => (
   <footer className="mt-32 flex-none">

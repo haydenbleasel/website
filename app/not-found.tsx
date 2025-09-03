@@ -1,5 +1,5 @@
-import { Button } from '@/components/button';
-import { Container } from '@/components/container';
+import { Button } from "@/components/button";
+import { Container } from "@/components/container";
 
 const NotFound = () => (
   <Container className="flex h-full items-center pt-16 sm:pt-32">

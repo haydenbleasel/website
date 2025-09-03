@@ -1,5 +1,5 @@
-import type { ComponentPropsWithoutRef } from 'react';
-import { Section } from '@/components/section';
+import type { ComponentPropsWithoutRef } from "react";
+import { Section } from "@/components/section";
 
 type SpeakingSectionProps = ComponentPropsWithoutRef<typeof Section> & {
   title: string;

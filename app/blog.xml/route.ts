@@ -1,17 +1,17 @@
-import { allPosts } from 'content-collections';
-import { Feed } from 'feed';
-import { baseUrl } from '@/lib/url';
+import { allPosts } from "content-collections";
+import { Feed } from "feed";
+import { baseUrl } from "@/lib/url";
 
 export function GET() {
   const author = {
-    name: 'Hayden Bleasel',
-    email: 'hello@haydenbleasel.com',
+    name: "Hayden Bleasel",
+    email: "hello@haydenbleasel.com",
   };
 
   const feed = new Feed({
     title: author.name,
     description:
-      'All of my long-form thoughts on software design and product updates.',
+      "All of my long-form thoughts on software design and product updates.",
     author,
     id: baseUrl,
     link: baseUrl,
@@ -46,8 +46,8 @@ export function GET() {
   return new Response(feed.rss2(), {
     status: 200,
     headers: {
-      'content-type': 'application/xml',
-      'cache-control': 's-maxage=31556952',
+      "content-type": "application/xml",
+      "cache-control": "s-maxage=31556952",
     },
   });
 }

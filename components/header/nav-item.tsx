@@ -1,7 +1,7 @@
-import clsx from 'clsx';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type { ReactNode } from 'react';
+import clsx from "clsx";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type { ReactNode } from "react";
 
 type NavItemProps = {
   href: string;
@@ -15,10 +15,10 @@ export const NavItem = ({ href, children }: NavItemProps) => {
     <li>
       <Link
         className={clsx(
-          'relative block px-3 py-2 transition',
+          "relative block px-3 py-2 transition",
           isActive
-            ? 'text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400'
+            ? "text-teal-500 dark:text-teal-400"
+            : "hover:text-teal-500 dark:hover:text-teal-400"
         )}
         href={href}
       >

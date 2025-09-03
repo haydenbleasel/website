@@ -1,13 +1,15 @@
-import type { ComponentPropsWithoutRef, ComponentType } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from "react";
 
 export const SocialLink = ({
   icon: Icon,
+  href,
   ...props
-}: ComponentPropsWithoutRef<'a'> & {
+}: ComponentPropsWithoutRef<"a"> & {
   icon: ComponentType<{ className?: string }>;
 }) => (
   <a
     className="group -m-1 p-1"
+    href={href}
     {...props}
     rel="noopener noreferrer"
     target="_blank"

@@ -1,7 +1,7 @@
-import type { ComponentPropsWithoutRef } from 'react';
-import { NavItem } from './nav-item';
+import type { ComponentPropsWithoutRef } from "react";
+import { NavItem } from "./nav-item";
 
-type DesktopNavigationProps = ComponentPropsWithoutRef<'nav'>;
+type DesktopNavigationProps = ComponentPropsWithoutRef<"nav">;
 
 export const DesktopNavigation = (props: DesktopNavigationProps) => (
   <nav {...props}>

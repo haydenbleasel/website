@@ -1,18 +1,18 @@
-import { MDXContent } from '@content-collections/mdx/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import type { HTMLProps, ReactNode } from 'react';
-import Zoom from 'react-medium-image-zoom';
-import { Tweet } from './tweet';
-import { Video } from './video';
+import { MDXContent } from "@content-collections/mdx/react";
+import Image from "next/image";
+import Link from "next/link";
+import type { HTMLProps, ReactNode } from "react";
+import Zoom from "react-medium-image-zoom";
+import { Tweet } from "./tweet";
+import { Video } from "./video";
 
 type MdxProperties = {
   readonly code: string;
 };
 
 const a = (props: HTMLProps<HTMLAnchorElement>) => {
-  if (typeof props.href !== 'string') {
-    throw new TypeError('href is required');
+  if (typeof props.href !== "string") {
+    throw new TypeError("href is required");
   }
 
   return <Link {...props} href={props.href as string} />;
@@ -20,10 +20,10 @@ const a = (props: HTMLProps<HTMLAnchorElement>) => {
 
 const img = (properties: HTMLProps<HTMLImageElement>) => {
   if (
-    typeof properties.src !== 'string' ||
-    typeof properties.alt !== 'string'
+    typeof properties.src !== "string" ||
+    typeof properties.alt !== "string"
   ) {
-    throw new TypeError('Image src and alt are required');
+    throw new TypeError("Image src and alt are required");
   }
 
   return (
@@ -34,7 +34,7 @@ const img = (properties: HTMLProps<HTMLImageElement>) => {
         height={698}
         quality={100}
         src={properties.src}
-        unoptimized={properties.src.startsWith('http')}
+        unoptimized={properties.src.startsWith("http")}
         width={1240}
       />
     </Zoom>

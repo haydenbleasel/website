@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from "clsx";
 
 type SocialLinkProps = {
   className?: string;
@@ -13,7 +13,7 @@ export const SocialLink = ({
   children,
   icon: Icon,
 }: SocialLinkProps) => (
-  <li className={clsx(className, 'flex')}>
+  <li className={clsx(className, "flex")}>
     <a
       className="group flex font-medium text-sm text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
       href={href}

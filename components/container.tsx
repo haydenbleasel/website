@@ -1,39 +1,33 @@
-import clsx from 'clsx';
-import { forwardRef } from 'react';
+import clsx from "clsx";
 
-export const ContainerOuter = forwardRef<
-  React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'>
->(function OuterContainer({ className, children, ...props }, ref) {
-  return (
-    <div className={clsx('sm:px-8', className)} ref={ref} {...props}>
-      <div className="mx-auto w-full max-w-7xl lg:px-8">{children}</div>
-    </div>
-  );
-});
+type ContainerOuterProps = React.ComponentPropsWithoutRef<"div">;
 
-export const ContainerInner = forwardRef<
-  React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'>
->(function InnerContainer({ className, children, ...props }, ref) {
-  return (
-    <div
-      className={clsx('relative px-4 sm:px-8 lg:px-12', className)}
-      ref={ref}
-      {...props}
-    >
-      <div className="mx-auto max-w-2xl lg:max-w-5xl">{children}</div>
-    </div>
-  );
-});
+export const ContainerOuter = ({
+  className,
+  children,
+  ...props
+}: ContainerOuterProps) => (
+  <div className={clsx("sm:px-8", className)} {...props}>
+    <div className="mx-auto w-full max-w-7xl lg:px-8">{children}</div>
+  </div>
+);
 
-export const Container = forwardRef<
-  React.ElementRef<typeof ContainerOuter>,
-  React.ComponentPropsWithoutRef<typeof ContainerOuter>
->(function Container({ children, ...props }, ref) {
-  return (
-    <ContainerOuter ref={ref} {...props}>
-      <ContainerInner>{children}</ContainerInner>
-    </ContainerOuter>
-  );
-});
+type ContainerInnerProps = React.ComponentPropsWithoutRef<"div">;
+
+export const ContainerInner = ({
+  className,
+  children,
+  ...props
+}: ContainerInnerProps) => (
+  <div className={clsx("relative px-4 sm:px-8 lg:px-12", className)} {...props}>
+    <div className="mx-auto max-w-2xl lg:max-w-5xl">{children}</div>
+  </div>
+);
+
+type ContainerProps = React.ComponentPropsWithoutRef<typeof ContainerOuter>;
+
+export const Container = ({ children, ...props }: ContainerProps) => (
+  <ContainerOuter {...props}>
+    <ContainerInner>{children}</ContainerInner>
+  </ContainerOuter>
+);

@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
-import { Container } from '@/components/container';
-import { clamp } from '@/lib/utils';
-import { Avatar } from './avatar';
-import { AvatarContainer } from './avatar-container';
-import { DesktopNavigation } from './desktop-navigation';
-import { MobileNavigation } from './mobile-navigation';
-import { ThemeToggle } from './theme-toggle';
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
+import { Container } from "@/components/container";
+import { clamp } from "@/lib/utils";
+import { Avatar } from "./avatar";
+import { AvatarContainer } from "./avatar-container";
+import { DesktopNavigation } from "./desktop-navigation";
+import { MobileNavigation } from "./mobile-navigation";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
-  const isHomePage = usePathname() === '/';
+  const isHomePage = usePathname() === "/";
 
-  const headerRef = useRef<React.ElementRef<'div'>>(null);
-  const avatarRef = useRef<React.ElementRef<'div'>>(null);
+  const headerRef = useRef<React.ElementRef<"div">>(null);
+  const avatarRef = useRef<React.ElementRef<"div">>(null);
   const isInitial = useRef(true);
 
   useEffect(() => {
@@ -42,31 +42,31 @@ export function Header() {
       );
 
       if (isInitial.current) {
-        setProperty('--header-position', 'sticky');
+        setProperty("--header-position", "sticky");
       }
 
-      setProperty('--content-offset', `${downDelay}px`);
+      setProperty("--content-offset", `${downDelay}px`);
 
       if (isInitial.current || scrollY < downDelay) {
-        setProperty('--header-height', `${downDelay + height}px`);
-        setProperty('--header-mb', `${-downDelay}px`);
+        setProperty("--header-height", `${downDelay + height}px`);
+        setProperty("--header-mb", `${-downDelay}px`);
       } else if (top + height < -upDelay) {
         const offset = Math.max(height, scrollY - upDelay);
-        setProperty('--header-height', `${offset}px`);
-        setProperty('--header-mb', `${height - offset}px`);
+        setProperty("--header-height", `${offset}px`);
+        setProperty("--header-mb", `${height - offset}px`);
       } else if (top === 0) {
-        setProperty('--header-height', `${scrollY + height}px`);
-        setProperty('--header-mb', `${-scrollY}px`);
+        setProperty("--header-height", `${scrollY + height}px`);
+        setProperty("--header-mb", `${-scrollY}px`);
       }
 
       if (top === 0 && scrollY > 0 && scrollY >= downDelay) {
-        setProperty('--header-inner-position', 'fixed');
-        removeProperty('--header-top');
-        removeProperty('--avatar-top');
+        setProperty("--header-inner-position", "fixed");
+        removeProperty("--header-top");
+        removeProperty("--avatar-top");
       } else {
-        removeProperty('--header-inner-position');
-        setProperty('--header-top', '0px');
-        setProperty('--avatar-top', '0px');
+        removeProperty("--header-inner-position");
+        setProperty("--header-top", "0px");
+        setProperty("--avatar-top", "0px");
       }
     }
 
@@ -89,7 +89,7 @@ export function Header() {
       x = clamp(x, fromX, toX);
 
       setProperty(
-        '--avatar-image-transform',
+        "--avatar-image-transform",
         `translate3d(${x}rem, 0, 0) scale(${scale})`
       );
 
@@ -97,8 +97,8 @@ export function Header() {
       const borderX = (-toX + x) * borderScale;
       const borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
 
-      setProperty('--avatar-border-transform', borderTransform);
-      setProperty('--avatar-border-opacity', scale === toScale ? '1' : '0');
+      setProperty("--avatar-border-transform", borderTransform);
+      setProperty("--avatar-border-opacity", scale === toScale ? "1" : "0");
     }
 
     function updateStyles() {
@@ -108,12 +108,12 @@ export function Header() {
     }
 
     updateStyles();
-    window.addEventListener('scroll', updateStyles, { passive: true });
-    window.addEventListener('resize', updateStyles);
+    window.addEventListener("scroll", updateStyles, { passive: true });
+    window.addEventListener("resize", updateStyles);
 
     return () => {
-      window.removeEventListener('scroll', updateStyles);
-      window.removeEventListener('resize', updateStyles);
+      window.removeEventListener("scroll", updateStyles);
+      window.removeEventListener("resize", updateStyles);
     };
   }, [isHomePage]);
 
@@ -122,8 +122,8 @@ export function Header() {
       <header
         className="pointer-events-none relative z-50 flex flex-none flex-col"
         style={{
-          height: 'var(--header-height)',
-          marginBottom: 'var(--header-mb)',
+          height: "var(--header-height)",
+          marginBottom: "var(--header-mb)",
         }}
       >
         {isHomePage && (
@@ -136,28 +136,28 @@ export function Header() {
               className="-mb-3 top-0 order-last pt-3"
               style={{
                 position:
-                  'var(--header-position)' as React.CSSProperties['position'],
+                  "var(--header-position)" as React.CSSProperties["position"],
               }}
             >
               <div
                 className="top-(--avatar-top,--spacing(3)) w-full"
                 style={{
                   position:
-                    'var(--header-inner-position)' as React.CSSProperties['position'],
+                    "var(--header-inner-position)" as React.CSSProperties["position"],
                 }}
               >
                 <div className="relative">
                   <AvatarContainer
                     className="absolute top-3 left-0 origin-left transition-opacity"
                     style={{
-                      opacity: 'var(--avatar-border-opacity, 0)',
-                      transform: 'var(--avatar-border-transform)',
+                      opacity: "var(--avatar-border-opacity, 0)",
+                      transform: "var(--avatar-border-transform)",
                     }}
                   />
                   <Avatar
                     className="block h-16 w-16 origin-left"
                     large
-                    style={{ transform: 'var(--avatar-image-transform)' }}
+                    style={{ transform: "var(--avatar-image-transform)" }}
                   />
                 </div>
               </div>
@@ -169,14 +169,14 @@ export function Header() {
           ref={headerRef}
           style={{
             position:
-              'var(--header-position)' as React.CSSProperties['position'],
+              "var(--header-position)" as React.CSSProperties["position"],
           }}
         >
           <Container
             className="top-(--header-top,--spacing(6)) w-full"
             style={{
               position:
-                'var(--header-inner-position)' as React.CSSProperties['position'],
+                "var(--header-inner-position)" as React.CSSProperties["position"],
             }}
           >
             <div className="relative flex gap-4">
@@ -203,7 +203,7 @@ export function Header() {
       {isHomePage && (
         <div
           className="flex-none"
-          style={{ height: 'var(--content-offset)' }}
+          style={{ height: "var(--content-offset)" }}
         />
       )}
     </>

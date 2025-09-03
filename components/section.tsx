@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import { useId } from 'react';
+import clsx from "clsx";
+import { useId } from "react";
 
 type SectionProps = {
   title: string;
@@ -17,7 +17,7 @@ export const Section = ({ title, children, className }: SectionProps) => {
     >
       <div
         className={clsx(
-          'grid max-w-3xl grid-cols-1 items-baseline gap-y-8 md:grid-cols-4',
+          "grid max-w-3xl grid-cols-1 items-baseline gap-y-8 md:grid-cols-4",
           className
         )}
       >

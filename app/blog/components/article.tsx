@@ -1,6 +1,6 @@
-import type { allPosts } from 'content-collections';
-import { Card } from '@/components/card';
-import { formatDate } from '@/lib/utils';
+import type { allPosts } from "content-collections";
+import { Card } from "@/components/card";
+import { formatDate } from "@/lib/utils";
 
 type ArticleProps = {
   article: (typeof allPosts)[number];

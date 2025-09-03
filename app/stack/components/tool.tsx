@@ -1,8 +1,8 @@
-import { SealCheckIcon } from '@phosphor-icons/react/dist/ssr';
-import Image from 'next/image';
+import { SealCheckIcon } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 
-import { Card } from '@/components/card';
-import { env } from '@/lib/env';
+import { Card } from "@/components/card";
+import { env } from "@/lib/env";
 
 export type ToolProps = {
   name: string;
@@ -26,7 +26,7 @@ export const Tool = ({
       const baseHref = imageHref ?? href;
       const hostname = new URL(baseHref).hostname;
       const token = env.NEXT_PUBLIC_LOGO_DEV_TOKEN;
-      logoSrc = `https://img.logo.dev/${hostname}${token ? `?token=${token}` : ''}`;
+      logoSrc = `https://img.logo.dev/${hostname}${token ? `?token=${token}` : ""}`;
     } catch {
       logoSrc = null;
     }

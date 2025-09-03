@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
+import { useRef } from "react";
 
 type VideoProps = {
   location: string;

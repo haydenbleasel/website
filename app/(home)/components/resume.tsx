@@ -1,56 +1,56 @@
-import { ArrowUpRightIcon, BriefcaseIcon } from '@phosphor-icons/react/ssr';
-import { Button } from '@/components/button';
-import Corellium from '@/images/logos/corellium.svg';
-import Jellypepper from '@/images/logos/jellypepper.svg';
-import Palantir from '@/images/logos/palantir.svg';
-import Spaceship from '@/images/logos/spaceship.svg';
-import Vercel from '@/images/logos/vercel.svg';
-import { Role } from './role';
+import { ArrowUpRightIcon, BriefcaseIcon } from "@phosphor-icons/react/ssr";
+import { Button } from "@/components/button";
+import Corellium from "@/images/logos/corellium.svg";
+import Jellypepper from "@/images/logos/jellypepper.svg";
+import Palantir from "@/images/logos/palantir.svg";
+import Spaceship from "@/images/logos/spaceship.svg";
+import Vercel from "@/images/logos/vercel.svg";
+import { Role } from "./role";
 
 export const Resume = () => {
   const resume: Role[] = [
     {
-      company: 'Vercel',
-      title: 'DX Engineer',
-      className: 'bg-black text-white',
+      company: "Vercel",
+      title: "DX Engineer",
+      className: "bg-black text-white",
       logo: Vercel,
-      start: '2025',
+      start: "2025",
       end: {
-        label: 'Present',
+        label: "Present",
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: 'Corellium',
-      title: 'Chief Product Officer',
-      className: 'bg-black text-white',
+      company: "Corellium",
+      title: "Chief Product Officer",
+      className: "bg-black text-white",
       logo: Corellium,
-      start: '2021',
-      end: '2024',
+      start: "2021",
+      end: "2024",
     },
     {
-      company: 'Jellypepper',
-      title: 'Director',
-      className: 'bg-black text-white',
+      company: "Jellypepper",
+      title: "Director",
+      className: "bg-black text-white",
       logo: Jellypepper,
-      start: '2017',
-      end: '2023',
+      start: "2017",
+      end: "2023",
     },
     {
-      company: 'Spaceship',
-      title: 'Head of Product and Design',
-      className: 'bg-black text-white',
+      company: "Spaceship",
+      title: "Head of Product and Design",
+      className: "bg-black text-white",
       logo: Spaceship,
-      start: '2016',
-      end: '2017',
+      start: "2016",
+      end: "2017",
     },
     {
-      company: 'Palantir',
-      title: 'Product Design Intern',
-      className: 'bg-black text-white',
+      company: "Palantir",
+      title: "Product Design Intern",
+      className: "bg-black text-white",
       logo: Palantir,
-      start: '2015',
-      end: '2015',
+      start: "2015",
+      end: "2015",
     },
   ];
 

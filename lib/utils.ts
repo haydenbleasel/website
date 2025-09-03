@@ -5,9 +5,9 @@ export const clamp = (number: number, a: number, b: number) => {
 };
 
 export const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat('en-US', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
+  new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
   }).format(date);

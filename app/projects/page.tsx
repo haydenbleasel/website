@@ -35,6 +35,26 @@ const Projects = () => (
             you see something that piques your interest, check out the code and
             contribute if you have ideas for how it can be improved.
           </p>
+          <h2>Vercel OSS</h2>
+          <p>
+            I've created a few cool open source projects at Vercel, including{" "}
+            <a
+              href="https://ai-sdk.dev/elements/overview"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              AI Elements
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://streamdown.ai/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Streamdown
+            </a>{" "}
+            (more dropping soon).
+          </p>
           <h2>next-forge</h2>
           <p>
             I built a production-grade Turborepo template for Next.js apps

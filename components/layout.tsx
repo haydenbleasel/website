@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { AskChatGPT } from "./footer/ask-chatgpt";
 
 type LayoutProps = {
   children: ReactNode;
@@ -17,6 +18,7 @@ export const Layout = ({ children }: LayoutProps) => (
       <Header />
       <main className="flex-auto">{children}</main>
       <Footer />
+      <AskChatGPT />
     </div>
   </>
 );

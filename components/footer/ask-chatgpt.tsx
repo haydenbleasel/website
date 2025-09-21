@@ -2,7 +2,7 @@ export const AskChatGPT = () => {
   const url = new URL("https://chatgpt.com/");
   url.searchParams.set("hints", "search");
   url.searchParams.set(
-    "q",
+    "prompt",
     `Read these 3 pages:
 
 - https://www.haydenbleasel.com/

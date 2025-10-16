@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "lint": "npx ultracite lint",
-    "format": "npx ultracite format"
+    "lint": "npx ultracite@latest lint",
+    "format": "npx ultracite@latest format",
+    "bump-deps": "npx npm-check-updates -u && pnpm install"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {

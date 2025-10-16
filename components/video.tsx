@@ -2,19 +2,18 @@
 
 import { clsx } from "clsx";
 import dynamic from "next/dynamic";
-import type { FC } from "react";
-import type { YouTubePlayerProps } from "react-player/youtube";
+import type { ComponentProps, FC } from "react";
 
 const ReactPlayer = dynamic(
   async () =>
     import(
       /* webpackChunkName: "react-player" */
-      "react-player/youtube"
+      "react-player"
     ),
   { ssr: false }
 );
 
-type VideoProperties = YouTubePlayerProps & {
+type VideoProperties = ComponentProps<typeof ReactPlayer> & {
   readonly className?: string;
 };
 

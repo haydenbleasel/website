@@ -14,14 +14,14 @@ const Projects = () => (
     <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
       <div className="hidden lg:block lg:pl-20">
         <div className="max-w-xs space-y-24 px-2.5 lg:max-w-none">
-          <Video className="-rotate-3" url="https://youtu.be/b_F4LaycQcE" />
-          <Video className="rotate-3" url="https://youtu.be/aHZz_6NhQkQ" />
-          <Video className="-rotate-3" url="https://youtu.be/lEkXbneUnWg" />
-          <Video className="rotate-3" url="https://youtu.be/o7RyfMOfS04" />
-          <Video className="-rotate-3" url="https://youtu.be/5h1dssH35fU" />
+          <Video className="-rotate-3" src="https://youtu.be/b_F4LaycQcE" />
+          <Video className="rotate-3" src="https://youtu.be/aHZz_6NhQkQ" />
+          <Video className="-rotate-3" src="https://youtu.be/lEkXbneUnWg" />
+          <Video className="rotate-3" src="https://youtu.be/o7RyfMOfS04" />
+          <Video className="-rotate-3" src="https://youtu.be/5h1dssH35fU" />
           <Video
             className="aspect-[324/576]! rotate-3"
-            url="https://www.youtube.com/shorts/1yoW9OH9YAk"
+            src="https://www.youtube.com/shorts/1yoW9OH9YAk"
           />
         </div>
       </div>

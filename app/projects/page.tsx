@@ -18,8 +18,9 @@ const Projects = () => (
           <Video className="rotate-3" url="https://youtu.be/aHZz_6NhQkQ" />
           <Video className="-rotate-3" url="https://youtu.be/lEkXbneUnWg" />
           <Video className="rotate-3" url="https://youtu.be/o7RyfMOfS04" />
+          <Video className="-rotate-3" url="https://youtu.be/5h1dssH35fU" />
           <Video
-            className="-rotate-3 aspect-[324/576]!"
+            className="aspect-[324/576]! rotate-3"
             url="https://www.youtube.com/shorts/1yoW9OH9YAk"
           />
         </div>
@@ -52,8 +53,17 @@ const Projects = () => (
               target="_blank"
             >
               Streamdown
-            </a>{" "}
-            (more dropping soon).
+            </a>
+            . I also co-authored{" "}
+            <a
+              href="https://www.components.build/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              components.build
+            </a>
+            , the open-source standard for building modern, composable and
+            accessible UI components.
           </p>
           <h2>next-forge</h2>
           <p>

@@ -1,7 +1,7 @@
-import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
+import { cn } from "@/lib/utils";
 import avatarImage from "./avatar.jpg";
 
 type AvatarProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
@@ -11,13 +11,13 @@ type AvatarProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
 export const Avatar = ({ large = false, className, ...props }: AvatarProps) => (
   <Link
     aria-label="Home"
-    className={clsx(className, "pointer-events-auto")}
+    className={cn(className, "pointer-events-auto")}
     href="/"
     {...props}
   >
     <Image
       alt=""
-      className={clsx(
+      className={cn(
         "rounded-full bg-zinc-100 object-cover dark:bg-zinc-800",
         large ? "h-16 w-16" : "h-9 w-9"
       )}

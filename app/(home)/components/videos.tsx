@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { Video } from "./video";
 
 const videos = [
@@ -34,7 +34,7 @@ export const Videos = () => (
     <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
       {videos.map((video) => (
         <div
-          className={clsx(
+          className={cn(
             "relative aspect-9/10 w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800",
             video.rotation
           )}

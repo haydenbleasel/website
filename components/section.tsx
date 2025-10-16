@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import { useId } from "react";
+import { cn } from "@/lib/utils";
 
 type SectionProps = {
   title: string;
@@ -16,7 +16,7 @@ export const Section = ({ title, children, className }: SectionProps) => {
       className="md:border-zinc-100 md:border-l md:pl-6 md:dark:border-zinc-700/40"
     >
       <div
-        className={clsx(
+        className={cn(
           "grid max-w-3xl grid-cols-1 items-baseline gap-y-8 md:grid-cols-4",
           className
         )}

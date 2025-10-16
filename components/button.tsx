@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const variantStyles = {
   primary:
@@ -20,7 +20,7 @@ export function Button({
   className,
   ...props
 }: ButtonProps) {
-  className = clsx(
+  className = cn(
     "inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm outline-offset-2 transition active:transition-none",
     variantStyles[variant],
     className

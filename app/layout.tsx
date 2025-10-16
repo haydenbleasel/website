@@ -5,11 +5,11 @@ import { Analytics } from "@vercel/analytics/next";
 import type { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "react-medium-image-zoom/dist/styles.css";
-import clsx from "clsx";
 import {
   Geist_Mono as createMono,
   Geist as createSans,
 } from "next/font/google";
+import { cn } from "@/lib/utils";
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -32,7 +32,7 @@ const mono = createMono({
 const RootLayout = ({ children }: RootLayoutProps) => (
   <html className="h-full antialiased" lang="en" suppressHydrationWarning>
     <body
-      className={clsx(
+      className={cn(
         "flex h-full bg-zinc-50 font-sans antialiased dark:bg-black",
         sans.variable,
         mono.variable

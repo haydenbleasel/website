@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 function ChevronRightIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -26,7 +26,7 @@ export function Card<T extends React.ElementType = "div">({
 
   return (
     <Component
-      className={clsx(className, "group relative flex flex-col items-start")}
+      className={cn(className, "group relative flex flex-col items-start")}
     >
       {children}
     </Component>
@@ -103,7 +103,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = "p">({
 
   return (
     <Component
-      className={clsx(
+      className={cn(
         className,
         "relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500",
         decorate && "pl-3.5"

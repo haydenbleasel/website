@@ -1,6 +1,6 @@
-import clsx from "clsx";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 export type Role = {
   company: string;
@@ -25,7 +25,7 @@ export const Role = ({ role }: { role: Role }) => {
       <div className="relative flex size-10 flex-none items-center justify-center overflow-hidden rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
         <Image
           alt={role.company}
-          className={clsx("size-7 rounded-full", role.className)}
+          className={cn("size-7 rounded-full", role.className)}
           src={role.logo}
         />
       </div>

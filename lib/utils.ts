@@ -1,3 +1,6 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export const clamp = (number: number, a: number, b: number) => {
   const min = Math.min(a, b);
   const max = Math.max(a, b);
@@ -11,3 +14,5 @@ export const formatDate = (date: Date) =>
     year: "numeric",
     timeZone: "UTC",
   }).format(date);
+
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));

@@ -1,8 +1,8 @@
 "use client";
 
-import { clsx } from "clsx";
 import dynamic from "next/dynamic";
 import type { ComponentProps, FC } from "react";
+import { cn } from "@/lib/utils";
 
 const ReactPlayer = dynamic(
   async () =>
@@ -19,7 +19,7 @@ type VideoProperties = ComponentProps<typeof ReactPlayer> & {
 
 export const Video: FC<VideoProperties> = ({ className, ...properties }) => (
   <div
-    className={clsx(
+    className={cn(
       "relative aspect-video overflow-hidden rounded-md",
       className
     )}

@@ -1,7 +1,7 @@
-import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 type NavItemProps = {
   href: string;
@@ -14,7 +14,7 @@ export const NavItem = ({ href, children }: NavItemProps) => {
   return (
     <li>
       <Link
-        className={clsx(
+        className={cn(
           "relative block px-3 py-2 transition",
           isActive
             ? "text-teal-500 dark:text-teal-400"

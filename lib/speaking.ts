@@ -174,6 +174,12 @@ export const interviews = [
 
 export const writing = [
   {
+    name: "React UI with shadcn/ui + Radix + Tailwind",
+    location: "Vercel Academy",
+    url: "https://vercel.com/academy/shadcn-ui",
+    year: 2025,
+  },
+  {
     name: "A brief look at the new Corellium",
     location: "Corellium",
     url: "https://www.corellium.com/blog/a-brief-look-at-the-new-corellium",

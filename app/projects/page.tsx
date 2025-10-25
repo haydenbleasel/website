@@ -45,14 +45,22 @@ const Projects = () => (
               target="_blank"
             >
               AI Elements
-            </a>{" "}
-            and{" "}
+            </a>
+            ,{" "}
             <a
               href="https://streamdown.ai/"
               rel="noopener noreferrer"
               target="_blank"
             >
               Streamdown
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://www.vectr.store/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Vectr
             </a>
             . I also co-authored{" "}
             <a

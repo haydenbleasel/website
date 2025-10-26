@@ -19,7 +19,7 @@
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "feed": "^5.1.0",
-    "fumadocs-core": "^16.0.0",
+    "fumadocs-core": "^16.0.3",
     "next": "^16.0.0",
     "next-themes": "^0.4.6",
     "react": "^19",
@@ -31,21 +31,21 @@
     "resend": "^6.2.2",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.15",
+    "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3",
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.6",
+    "@biomejs/biome": "2.3.1",
     "@content-collections/core": "^0.11.1",
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.8",
-    "@tailwindcss/postcss": "^4.1.15",
+    "@tailwindcss/postcss": "^4.1.16",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^24.9.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "sharp": "0.34.4",
-    "ultracite": "5.6.4"
+    "ultracite": "6.0.2"
   }
 }

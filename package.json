@@ -46,6 +46,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "sharp": "0.34.4",
-    "ultracite": "6.0.2"
+    "ultracite": "6.0.3"
   }
 }

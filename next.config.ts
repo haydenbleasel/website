@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
 };
 
 export default withContentCollections(nextConfig);

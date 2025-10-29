@@ -3,6 +3,7 @@ import { Container } from "@/components/container";
 import { Prose } from "@/components/prose";
 import { Video } from "@/components/video";
 import { createMetadata } from "@/lib/metadata";
+import { Badge } from "./badge";
 
 export const metadata: Metadata = createMetadata({
   title: "Projects",
@@ -73,7 +74,30 @@ const Projects = () => (
             , the open-source standard for building modern, composable and
             accessible UI components.
           </p>
-          <h2>next-forge</h2>
+
+          <h2>Ultracite</h2>
+          <p>
+            I'm currently working on{" "}
+            <a
+              href="https://www.ultracite.ai/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Ultracite
+            </a>
+            , the AI-ready formatter that helps you write and generate code
+            faster. It's effectively a zero-config Biome preset that provides a
+            robust linting and formatting experience for your team and your AI
+            integrations.
+          </p>
+          <p>
+            Ultracite is used by Vercel, Adobe, Tencent, Profound, Axiom and at
+            least three government institutions that I know of.
+          </p>
+
+          <h2>
+            next-forge <Badge variant="success">Acquired</Badge>
+          </h2>
           <p>
             I built a production-grade Turborepo template for Next.js apps
             called{" "}
@@ -113,7 +137,9 @@ const Projects = () => (
             next-forge in 2025 as part of my hiring.
           </p>
 
-          <h2>Orate</h2>
+          <h2>
+            Orate <Badge variant="success">Acquired</Badge>
+          </h2>
           <p>
             I also made Orate — the AI toolkit for speech. It was a library for
             synthesizing speech, transcribing audio, converting voices and
@@ -148,51 +174,23 @@ const Projects = () => (
             functions.
           </p>
 
-          <h2>Ultracite</h2>
+          <h2>
+            Kibo UI <Badge variant="success">Acquired</Badge>
+          </h2>
           <p>
-            I'm currently working on{" "}
-            <a
-              href="https://www.ultracite.ai/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Ultracite
-            </a>
-            , the AI-ready formatter that helps you write and generate code
-            faster. It's effectively a zero-config Biome preset that provides a
-            robust linting and formatting experience for your team and your AI
-            integrations.
-          </p>
-          <p>
-            Ultracite is used internally at Vercel for a handful of our
-            projects, as well as by{" "}
-            <a
-              href="https://x.com/shadcn/status/1937342910519038142"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              shadcn
-            </a>{" "}
-            and a bunch of great startups and OSS projects.
-          </p>
-
-          <h2>Kibo UI</h2>
-          <p>
-            I'm also working on{" "}
+            I made{" "}
             <a href="https://www.kibo-ui.com/" rel="noopener" target="_blank">
               Kibo UI
             </a>
             , a custom registry of composable, accessible and open source
-            components designed for use with{" "}
-            <a href="https://ui.shadcn.com/" rel="noopener" target="_blank">
-              shadcn/ui
-            </a>
-            . The goal is to help developers build richer UIs faster by
-            providing pre-built components like tables, file dropzones, etc.
+            components designed for use with shadcn/ui. The goal was to help
+            developers build richer UIs faster by providing pre-built components
+            like tables, file dropzones, etc.
           </p>
           <p>
-            I donated the AI components to Vercel in 2025 to form the foundation
-            of our new project &mdash;{" "}
+            Kibo UI quickly became a best-in-class shadcn/ui registry with over
+            3K stars on GitHub. I donated the AI components to Vercel to form
+            the foundation of my first project &mdash;{" "}
             <a
               href="https://x.com/haydenbleasel/status/1953486882501001227"
               rel="noopener"
@@ -200,10 +198,20 @@ const Projects = () => (
             >
               AI Elements
             </a>
-            .
+            . The remaining site was{" "}
+            <a
+              href="https://x.com/haydenbleasel/status/1983580107127320643"
+              rel="noopener"
+              target="_blank"
+            >
+              acquired
+            </a>{" "}
+            by shadcnblocks in 2025.
           </p>
 
-          <h2>Refraction</h2>
+          <h2>
+            Refraction <Badge variant="success">Acquired</Badge>
+          </h2>
           <p>
             One of my earlier successes was a tool for learning, improving and
             generating code with AI called Refraction, which was{" "}

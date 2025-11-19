@@ -29,6 +29,7 @@ export function Header() {
       document.documentElement.style.removeProperty(property);
     }
 
+    // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: "Written by Tailwind team"
     function updateHeaderStyles() {
       if (!headerRef.current) {
         return;

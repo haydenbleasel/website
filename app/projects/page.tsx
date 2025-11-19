@@ -37,43 +37,6 @@ const Projects = () => (
             you see something that piques your interest, check out the code and
             contribute if you have ideas for how it can be improved.
           </p>
-          <h2>Vercel OSS</h2>
-          <p>
-            I've created a few cool open source projects at Vercel, including{" "}
-            <a
-              href="https://ai-sdk.dev/elements/overview"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              AI Elements
-            </a>
-            ,{" "}
-            <a
-              href="https://streamdown.ai/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Streamdown
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://www.vectr.store/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Vectr
-            </a>
-            . I also co-authored{" "}
-            <a
-              href="https://www.components.build/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              components.build
-            </a>
-            , the open-source standard for building modern, composable and
-            accessible UI components.
-          </p>
 
           <h2>Ultracite</h2>
           <p>
@@ -146,7 +109,14 @@ const Projects = () => (
             isolating audio.
           </p>
           <p>
-            After growing it to around 400 stars on GitHub, Orate was merged
+            After growing it to around 400 stars on GitHub, Orate was{" "}
+            <a
+              href="https://x.com/haydenbleasel/status/1931033287851675688"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              merged
+            </a>
             into the Vercel{" "}
             <a
               href="https://ai-sdk.dev/"

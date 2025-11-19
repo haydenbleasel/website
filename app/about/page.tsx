@@ -38,8 +38,7 @@ const About = () => (
         </h1>
         <Prose className="mt-6">
           <p>
-            I'm currently based in San Francisco and work on the Developer
-            Experience team at{" "}
+            I'm currently based in San Francisco and work on the DX team at{" "}
             <a
               href="https://vercel.com"
               rel="noopener noreferrer"
@@ -47,8 +46,40 @@ const About = () => (
             >
               Vercel
             </a>
-            , where I focus on creating tools, libraries and resources to help
-            developers build better products.
+            , where I focus on creating software such as{" "}
+            <a
+              href="https://ai-sdk.dev/elements/overview"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              AI Elements
+            </a>
+            ,{" "}
+            <a
+              href="https://streamdown.ai/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Streamdown
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://www.vectr.store/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Vectr
+            </a>
+            . I also co-authored{" "}
+            <a
+              href="https://www.components.build/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              components.build
+            </a>
+            , the open-source standard for building modern, composable and
+            accessible UI components.
           </p>
           <p>
             My previous role was Chief Product Officer at{" "}

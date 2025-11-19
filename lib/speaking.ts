@@ -117,6 +117,12 @@ export const speaking = [
 
 export const interviews = [
   {
+    name: "Interview with Hayden Bleasel",
+    location: "Resilient UI",
+    url: "https://www.resilient-ui.com/interviews/hayden-bleasel",
+    year: 2025,
+  },
+  {
     name: "Hayden Bleasel - NextDev #24",
     location: "NextDev",
     url: "https://www.youtube.com/watch?v=kHny7Y-HZcc",

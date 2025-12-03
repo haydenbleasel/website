@@ -21,6 +21,21 @@ const components: MDXComponents = {
       {children}
     </h2>
   ),
+  ul: ({ children, ...props }) => (
+    <ul {...props} className="not-first:mt-6">
+      {children}
+    </ul>
+  ),
+  li: ({ children, ...props }) => (
+    <li {...props} className="list-inside list-disc">
+      {children}
+    </li>
+  ),
+  em: ({ children, ...props }) => (
+    <span {...props} className="text-stone-500">
+      {children}
+    </span>
+  ),
 };
 
 export function useMDXComponents(): MDXComponents {

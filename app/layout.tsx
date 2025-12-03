@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
+import Background from "./background.jpg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +29,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="absolute top-0 right-0 left-0 h-[50vh] max-h-[600px] w-full">
+          <Image
+            alt="Logo"
+            className="size-full object-cover"
+            height={600}
+            src={Background}
+            width={1440}
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent to-background" />
+        </div>
+        <main className="relative z-10 mx-auto w-full max-w-[560px] py-32 text-lg tracking-tight">
+          <div className="mb-8 size-8 rounded-full bg-foreground" />
+          {children}
+        </main>
       </body>
     </html>
   );

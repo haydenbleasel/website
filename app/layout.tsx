@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 import Image from "next/image";
 import Background from "./background.jpg";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const soehneBuch = localFont({
+  src: "./soehne-buch.woff2",
+  variable: "--font-sans",
+  display: "swap",
+  weight: "400",
+  style: "normal",
 });
 
 export const metadata: Metadata = {
@@ -26,9 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${soehneBuch.className} antialiased`}>
         <div className="absolute top-0 right-0 left-0 h-[50vh] max-h-[600px] w-full">
           <Image
             alt="Logo"
@@ -37,10 +33,10 @@ export default function RootLayout({
             src={Background}
             width={1440}
           />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent to-background" />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent to-stone-50" />
         </div>
-        <main className="relative z-10 mx-auto w-full max-w-[560px] py-32 text-lg tracking-tight">
-          <div className="mb-8 size-8 rounded-full bg-foreground" />
+        <main className="relative z-10 mx-auto w-full max-w-[540px] py-32">
+          <div className="mb-12 size-8 rounded-full bg-stone-950" />
           {children}
         </main>
       </body>

@@ -14,7 +14,9 @@
     "@vercel/analytics": "^1.6.1",
     "next": "16.0.6",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "resend": "^6.5.2",
+    "sonner": "^2.0.7"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.8",

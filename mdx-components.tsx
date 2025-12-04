@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { Newsletter } from "./components/newsletter";
 
 const components: MDXComponents = {
   p: ({ children, ...props }) => (
@@ -36,6 +37,8 @@ const components: MDXComponents = {
       {children}
     </span>
   ),
+
+  Newsletter,
 };
 
 export function useMDXComponents(): MDXComponents {

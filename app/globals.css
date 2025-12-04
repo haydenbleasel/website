@@ -4,6 +4,7 @@
   --background: var(--color-stone-50);
   --foreground: var(--color-stone-950);
   --muted: var(--color-stone-500);
+  --border: var(--color-stone-200);
   --primary: #C94736;
 }
 
@@ -11,6 +12,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-border: var(--border);
   --color-primary: var(--primary);
 }
 
@@ -19,13 +21,14 @@
     --background: var(--color-stone-950);
     --foreground: var(--color-stone-50);
     --muted: var(--color-stone-400);
+    --border: var(--color-stone-800);
     --primary: #C94736;
   }
 }
 
 @layer base {
   * {
-    @apply min-w-0;
+    @apply min-w-0 border-border;
   }
   html {
     text-rendering: optimizelegibility;

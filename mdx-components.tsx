@@ -9,7 +9,7 @@ const components: MDXComponents = {
   a: ({ children, ...props }) => (
     <a
       {...props}
-      className="underline transition-colors hover:text-[#C94736]"
+      className="underline transition-colors hover:text-primary"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -17,7 +17,7 @@ const components: MDXComponents = {
     </a>
   ),
   h2: ({ children, ...props }) => (
-    <h2 {...props} className="not-first:mt-12 text-neutral-500 text-sm">
+    <h2 {...props} className="not-first:mt-12 text-muted text-sm">
       {children}
     </h2>
   ),
@@ -32,7 +32,7 @@ const components: MDXComponents = {
     </li>
   ),
   em: ({ children, ...props }) => (
-    <span {...props} className="text-stone-500">
+    <span {...props} className="text-muted">
       {children}
     </span>
   ),

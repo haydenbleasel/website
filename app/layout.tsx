@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { Toaster } from "sonner";
 import Background from "./background.jpg";
 
 const soehneBuch = localFont({
@@ -48,6 +49,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         {children}
       </main>
       <Analytics />
+      <Toaster />
     </body>
   </html>
 );

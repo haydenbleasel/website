@@ -15,10 +15,60 @@ const soehneBuch = localFont({
   style: "normal",
 });
 
+const title = "Software engineer and product designer | Hayden Bleasel";
+const description =
+  "I design and build software on the internet. I’m originally from Sydney, Australia and currently living in San Francisco, California 🇺🇸.";
+
 export const metadata: Metadata = {
-  title: "Software engineer and product designer | Hayden Bleasel",
-  description:
-    "I design and build software on the internet. I’m originally from Sydney, Australia and currently living in San Francisco, California 🇺🇸.",
+  title,
+  description,
+
+  creator: "Hayden Bleasel",
+
+  authors: [
+    {
+      name: "Hayden Bleasel",
+      url: "https://haydenbleasel.com",
+    },
+  ],
+
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    url: "https://haydenbleasel.com",
+    siteName: "Hayden Bleasel",
+    locale: "en_US",
+    images: [
+      {
+        alt: "Hayden Bleasel",
+        height: 630,
+        url: "https://haydenbleasel.com/opengraph-image.png",
+        width: 1200,
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    creatorId: "@haydenbleasel",
+    images: [
+      {
+        alt: "Hayden Bleasel",
+        height: 630,
+        width: 1200,
+        url: "https://haydenbleasel.com/opengraph-image.png",
+      },
+    ],
+  },
+
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title,
+  },
 };
 
 type RootLayoutProps = {

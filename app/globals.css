@@ -35,6 +35,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    @apply text-lg leading-relaxed -tracking-[0.015em] antialiased;
+    @apply sm:text-lg leading-relaxed -tracking-[0.015em] antialiased;
   }
 }

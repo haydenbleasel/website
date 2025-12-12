@@ -5,7 +5,7 @@
   --foreground: var(--color-stone-950);
   --muted: var(--color-stone-500);
   --border: var(--color-stone-200);
-  --primary: #C94736;
+  --primary: #c94736;
 }
 
 @theme {
@@ -22,7 +22,7 @@
     --foreground: var(--color-stone-50);
     --muted: var(--color-stone-400);
     --border: var(--color-stone-800);
-    --primary: #C94736;
+    --primary: #c94736;
   }
 }
 

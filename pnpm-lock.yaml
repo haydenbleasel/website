@@ -61,8 +61,8 @@ importers:
         specifier: ^5
         version: 5.9.3
       ultracite:
-        specifier: ^6.3.12
-        version: 6.3.12(typescript@5.9.3)
+        specifier: ^6.4.0
+        version: 6.4.0(typescript@5.9.3)
 
 packages:
 
@@ -1135,8 +1135,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  ultracite@6.3.12:
-    resolution: {integrity: sha512-/ZG/zmX4eTB8OZmS+1uKGsa7rrA7HxspB8lJRynLrykFS5oEMqy3RX7SFGFTdCGnrQ0jHC+8QS7iuM+b0AmcUw==}
+  ultracite@6.4.0:
+    resolution: {integrity: sha512-N7D427ofOfZLuMAK8JMosTzb1ww+y/UGA8fqaBItRpCQLTsf/V/HDjmNVrzeS+8I7gBW7Ng3vp29+2RtW2gANA==}
     hasBin: true
 
   undici-types@6.21.0:
@@ -2374,7 +2374,7 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  ultracite@6.3.12(typescript@5.9.3):
+  ultracite@6.4.0(typescript@5.9.3):
     dependencies:
       '@clack/prompts': 0.11.0
       '@trpc/server': 11.7.2(typescript@5.9.3)
@@ -2382,6 +2382,7 @@ snapshots:
       glob: 13.0.0
       jsonc-parser: 3.3.1
       nypm: 0.6.2
+      picocolors: 1.1.1
       trpc-cli: 0.12.1(@trpc/server@11.7.2(typescript@5.9.3))(zod@4.1.13)
       zod: 4.1.13
     transitivePeerDependencies:

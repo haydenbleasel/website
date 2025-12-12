@@ -28,6 +28,6 @@
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "ultracite": "^6.3.12"
+    "ultracite": "^6.4.0"
   }
 }

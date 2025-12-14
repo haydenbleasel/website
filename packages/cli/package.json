@@ -1,0 +1,40 @@
+{
+  "name": "haydenbleasel",
+  "description": "My personal CLI",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "haydenbleasel": "dist/index.js"
+  },
+  "files": [
+    "config",
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "bun test",
+    "test:coverage": "bun test --coverage"
+  },
+  "author": "Hayden Bleasel <hello@haydenbleasel.com>",
+  "bugs": {
+    "url": "https://github.com/haydenbleasel/website/issues"
+  },
+  "homepage": "https://www.haydenbleasel.com/",
+  "keywords": [
+    "haydenbleasel",
+    "cli",
+    "command",
+    "line",
+    "interface"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydenbleasel/website.git"
+  }
+}

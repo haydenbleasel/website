@@ -36,5 +36,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haydenbleasel/website.git"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.2"
   }
 }

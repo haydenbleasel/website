@@ -42,6 +42,9 @@
       "bin": {
         "haydenbleasel": "dist/index.js",
       },
+      "devDependencies": {
+        "@types/node": "^25.0.2",
+      },
     },
   },
   "packages": {

@@ -12,20 +12,51 @@ const bootLines = [
   "LOAD ROM(1): DEITRIX 303",
 ];
 
-const introLines = [
-  "Hi, I'm Hayden Bleasel.",
-  "",
-  "I design and build software on the internet. I'm originally from Sydney, Australia and currently living in San Francisco, California.",
-  "",
-  "Visit my website @ haydenbleasel.com",
-];
+const MDX_URL =
+  "https://raw.githubusercontent.com/haydenbleasel/website/refs/heads/main/apps/website/app/page.mdx";
+
+const fetchContent = async (): Promise<string> => {
+  const response = await fetch(MDX_URL);
+  return response.text();
+};
+
+const parseMdx = (content: string): string[] => {
+  const lines = content
+    .replace(/<[^>]+\s*\/>/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/ ?[\u{1F1E0}-\u{1F1FF}]/gu, "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line !== "");
+
+  const formattedLines: string[] = [];
+
+  for (const line of lines) {
+    if (line.startsWith("## ")) {
+      formattedLines.push("");
+      formattedLines.push(`━━━ ${line.slice(3).toUpperCase()} ━━━`);
+      formattedLines.push("");
+    } else if (line.startsWith("- ")) {
+      formattedLines.push(`  • ${line.slice(2)}`);
+    } else {
+      formattedLines.push(line);
+      formattedLines.push("");
+    }
+  }
+
+  formattedLines.push("");
+  formattedLines.push("Visit my website @ haydenbleasel.com");
+
+  return formattedLines;
+};
 
 const sleep = (ms: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
 const printCharacter = async (char: string): Promise<void> => {
   process.stdout.write(char);
-  await sleep(30);
+  await sleep(10);
 };
 
 const printLine = async (line: string): Promise<void> => {
@@ -57,12 +88,17 @@ const fadeUp = async (renderedLines: string[]): Promise<void> => {
 };
 
 const main = async (): Promise<void> => {
+  const contentPromise = fetchContent();
+
   for (const line of bootLines) {
     await printLine(line);
   }
 
-  await sleep(2000);
+  const [content] = await Promise.all([contentPromise, sleep(2000)]);
+
   await fadeUp(bootLines);
+
+  const introLines = parseMdx(content);
 
   for (const line of introLines) {
     await printLine(line);

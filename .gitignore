@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Dist
 dist
+
+# Next.js
+.next

@@ -1,8 +1,24 @@
 {
   "name": "haydenbleasel",
-  "description": "My personal CLI",
   "version": "1.0.1",
-  "type": "module",
+  "description": "My personal CLI",
+  "keywords": [
+    "cli",
+    "command",
+    "haydenbleasel",
+    "interface",
+    "line"
+  ],
+  "homepage": "https://www.haydenbleasel.com/",
+  "bugs": {
+    "url": "https://github.com/haydenbleasel/website/issues"
+  },
+  "license": "MIT",
+  "author": "Hayden Bleasel <hello@haydenbleasel.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydenbleasel/website.git"
+  },
   "bin": {
     "haydenbleasel": "dist/index.js"
   },
@@ -11,33 +27,17 @@
     "dist",
     "README.md"
   ],
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "tsup",
     "test": "bun test",
     "test:coverage": "bun test --coverage"
   },
-  "author": "Hayden Bleasel <hello@haydenbleasel.com>",
-  "bugs": {
-    "url": "https://github.com/haydenbleasel/website/issues"
-  },
-  "homepage": "https://www.haydenbleasel.com/",
-  "keywords": [
-    "haydenbleasel",
-    "cli",
-    "command",
-    "line",
-    "interface"
-  ],
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/haydenbleasel/website.git"
-  },
   "devDependencies": {
-    "@types/node": "^25.0.2"
+    "@types/node": "^25.5.0"
   }
 }

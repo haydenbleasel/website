@@ -1,101 +1,106 @@
-import type { Metadata } from "next";
-import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+
+import "./globals.css";
+import type { Metadata } from "next";
+import { Instrument_Serif as createSerif } from "next/font/google";
 import localFont from "next/font/local";
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { Toaster } from "sonner";
-import Background from "./background.jpg";
 
-const soehneBuch = localFont({
-  src: "./soehne-buch.woff2",
-  variable: "--font-sans",
+const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+const origin = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "localhost:3000";
+const websiteUrl = `${protocol}://${origin}`;
+
+const sans = localFont({
   display: "swap",
+  src: [
+    {
+      path: "./soehne-buch.woff2",
+      style: "normal",
+      weight: "400",
+    },
+    {
+      path: "./soehne-kraftig.woff2",
+      style: "normal",
+      weight: "500",
+    },
+  ],
+  variable: "--font-sans",
+});
+
+const serif = createSerif({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-serif",
   weight: "400",
-  style: "normal",
 });
 
 const title = "Software engineer and product designer | Hayden Bleasel";
 const description =
-  "I design and build software on the internet. I’m originally from Sydney, Australia and currently living in San Francisco, California 🇺🇸.";
+  "I design and build software on the internet. I’m originally from Sydney, Australia and currently living in San Francisco, California.";
 
 export const metadata: Metadata = {
-  title,
-  description,
-
-  creator: "Hayden Bleasel",
-
-  authors: [
-    {
-      name: "Hayden Bleasel",
-      url: "https://haydenbleasel.com",
-    },
-  ],
-
-  openGraph: {
-    title,
-    description,
-    type: "website",
-    url: "https://haydenbleasel.com",
-    siteName: "Hayden Bleasel",
-    locale: "en_US",
-    images: [
-      {
-        alt: "Hayden Bleasel",
-        height: 630,
-        url: "https://haydenbleasel.com/opengraph-image.png",
-        width: 1200,
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    creatorId: "@haydenbleasel",
-    images: [
-      {
-        alt: "Hayden Bleasel",
-        height: 630,
-        width: 1200,
-        url: "https://haydenbleasel.com/opengraph-image.png",
-      },
-    ],
-  },
-
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title,
   },
+  authors: [
+    {
+      name: "Hayden Bleasel",
+      url: websiteUrl,
+    },
+  ],
+
+  creator: "Hayden Bleasel",
+
+  description,
+
+  openGraph: {
+    description,
+    images: [
+      {
+        alt: "Hayden Bleasel",
+        height: 630,
+        url: new URL("/opengraph-image.png", websiteUrl).toString(),
+        width: 1200,
+      },
+    ],
+    locale: "en_US",
+    siteName: "Hayden Bleasel",
+    title,
+    type: "website",
+    url: websiteUrl,
+  },
+
+  title,
+
+  twitter: {
+    card: "summary_large_image",
+    creatorId: "@haydenbleasel",
+    description,
+    images: [
+      {
+        alt: "Hayden Bleasel",
+        height: 630,
+        url: new URL("/opengraph-image.png", websiteUrl).toString(),
+        width: 1200,
+      },
+    ],
+    title,
+  },
 };
 
-type RootLayoutProps = {
+interface RootLayoutProps {
   children: ReactNode;
-};
+}
 
 const RootLayout = ({ children }: RootLayoutProps) => (
   <html lang="en">
-    <body className={`${soehneBuch.className} antialiased`}>
-      <div className="absolute top-0 right-0 left-0 h-[50vh] max-h-[600px] w-full">
-        <Image
-          alt="Logo"
-          className="size-full object-cover dark:opacity-10"
-          height={600}
-          src={Background}
-          width={1440}
-        />
-        <div className="absolute inset-0 bg-linear-to-b from-transparent to-background" />
-      </div>
-      <main className="relative z-10 mx-auto w-full max-w-xl px-4 py-16 sm:py-32">
-        <Image
-          alt="Hayden Bleasel"
-          className="mb-12 size-8 rounded-full"
-          height={32}
-          src="https://github.com/haydenbleasel.png"
-          width={32}
-        />
+    <body
+      className={`${sans.variable} ${serif.variable} font-sans antialiased`}
+    >
+      <main className="relative z-10 mx-auto grid w-full max-w-2xl gap-16 sm:gap-24 px-4 py-16 sm:py-32">
         {children}
       </main>
       <Analytics />

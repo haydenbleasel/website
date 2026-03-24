@@ -2,11 +2,12 @@
 
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
+
 import { subscribe } from "@/actions/subscribe";
 
 const initialState = {
-  message: "",
   error: "",
+  message: "",
 };
 
 export const emailRegex = /.+@.+/u;
@@ -32,13 +33,13 @@ export const Newsletter = () => {
   return (
     <form
       action={formAction}
-      className="relative mt-4 overflow-hidden rounded-full border"
+      className="relative overflow-hidden rounded-full bg-secondary"
     >
       <input
         aria-label="Email address"
         autoCapitalize="none"
         autoComplete="email"
-        className="w-full appearance-none rounded-full py-2 pr-16 pl-4 text-base focus-visible:outline-none"
+        className="w-full appearance-none rounded-full py-2 pr-18 pl-4 text-base focus-visible:outline-none"
         id="email"
         name="email"
         placeholder="jane@acme.com"
@@ -46,7 +47,7 @@ export const Newsletter = () => {
         type="email"
       />
       <button
-        className="absolute top-1 right-1 flex-none cursor-pointer rounded-full! bg-primary px-4 py-1 text-base text-white transition-colors hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-50"
+        className="absolute top-1 right-1 flex-none cursor-pointer rounded-full! bg-foreground px-4 py-1 text-base text-white transition-colors hover:bg-foreground/80 disabled:cursor-not-allowed disabled:opacity-50"
         disabled={isPending}
         type="submit"
       >

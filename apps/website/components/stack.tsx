@@ -12,13 +12,8 @@ const stackItems: StackItem[] = [
   },
   {
     description: "Focused desktop app for agentic development.",
-    name: "Codex",
+    name: "Codex App",
     url: "https://developers.openai.com/codex/app/",
-  },
-  {
-    description: "Claude in your terminal.",
-    name: "Claude Code",
-    url: "https://www.claude.com/product/claude-code",
   },
   {
     description: "AI speech synthesis and voice cloning.",

@@ -47,7 +47,7 @@ export const Newsletter = () => {
         type="email"
       />
       <button
-        className="absolute top-1 right-1 flex-none cursor-pointer rounded-full! bg-foreground px-4 py-1 text-base text-white transition-colors hover:bg-foreground/80 disabled:cursor-not-allowed disabled:opacity-50"
+        className="absolute top-1 right-1 flex-none cursor-pointer rounded-full! bg-foreground px-4 py-1 text-base text-background transition-colors hover:bg-foreground/80 disabled:cursor-not-allowed disabled:opacity-50"
         disabled={isPending}
         type="submit"
       >

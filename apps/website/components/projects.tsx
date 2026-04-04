@@ -169,7 +169,7 @@ const projects: Project[] = [
     logo: EververseLogo,
     name: "Eververse",
     status: "Archived",
-    url: "https://www.eververse.ai/",
+    url: "https://github.com/haydenbleasel/eververse",
   },
 ];
 

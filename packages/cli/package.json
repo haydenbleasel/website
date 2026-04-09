@@ -38,6 +38,6 @@
     "test:coverage": "bun test --coverage"
   },
   "devDependencies": {
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.2"
   }
 }

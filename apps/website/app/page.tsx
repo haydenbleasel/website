@@ -7,12 +7,51 @@ import { Section } from "@/components/section";
 import { Speaking } from "@/components/speaking";
 import { Stack } from "@/components/stack";
 import { Work } from "@/components/work";
+import { Suspense } from "react";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Hayden Bleasel",
+  url: "https://haydenbleasel.com",
+  jobTitle: "Member of Technical Staff",
+  worksFor: {
+    "@type": "Organization",
+    name: "OpenAI",
+  },
+  sameAs: [
+    "https://x.com/haydenbleasel",
+    "https://www.linkedin.com/in/haydenbleasel/",
+    "https://github.com/haydenbleasel",
+  ],
+  image: "https://haydenbleasel.com/opengraph-image.png",
+};
 
 const Home = () => (
   <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
     <Header>
       <Hero />
-      <CallToAction />
+      <Suspense
+        fallback={
+          <p>
+            Follow me on{" "}
+            <a
+              href="https://x.com/haydenbleasel"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              X
+            </a>
+            , or join my mailing list below for infrequent updates.
+          </p>
+        }
+      >
+        <CallToAction />
+      </Suspense>
       <Newsletter />
     </Header>
     <Section title="Work">

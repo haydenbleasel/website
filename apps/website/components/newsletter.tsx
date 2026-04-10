@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 
 import { subscribe } from "@/actions/subscribe";
@@ -17,18 +17,19 @@ export const Newsletter = () => {
     subscribe,
     initialState
   );
+  const prevState = useRef(state);
 
   useEffect(() => {
+    if (state === prevState.current) return;
+    prevState.current = state;
+
     if (state.message) {
       toast.success(state.message);
     }
-  }, [state.message]);
-
-  useEffect(() => {
     if (state.error) {
       toast.error(state.error);
     }
-  }, [state.error]);
+  }, [state]);
 
   return (
     <form

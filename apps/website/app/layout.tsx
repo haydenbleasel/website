@@ -1,15 +1,12 @@
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
+import { url } from "@/lib/url";
 import type { Metadata } from "next";
 import { Instrument_Serif as createSerif } from "next/font/google";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import { Toaster } from "sonner";
-
-const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-const origin = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "localhost:3000";
-const websiteUrl = `${protocol}://${origin}`;
 
 const sans = localFont({
   display: "swap",
@@ -40,6 +37,12 @@ const description =
   "I design and build software on the internet. I’m originally from Sydney, Australia and currently living in San Francisco, California.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(url),
+
+  alternates: {
+    canonical: url,
+  },
+
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -48,7 +51,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Hayden Bleasel",
-      url: websiteUrl,
+      url: url,
     },
   ],
 
@@ -62,7 +65,7 @@ export const metadata: Metadata = {
       {
         alt: "Hayden Bleasel",
         height: 630,
-        url: new URL("/opengraph-image.png", websiteUrl).toString(),
+        url: new URL("/opengraph-image.png", url).toString(),
         width: 1200,
       },
     ],
@@ -70,7 +73,7 @@ export const metadata: Metadata = {
     siteName: "Hayden Bleasel",
     title,
     type: "website",
-    url: websiteUrl,
+    url: url,
   },
 
   title,
@@ -83,7 +86,7 @@ export const metadata: Metadata = {
       {
         alt: "Hayden Bleasel",
         height: 630,
-        url: new URL("/opengraph-image.png", websiteUrl).toString(),
+        url: new URL("/opengraph-image.png", url).toString(),
         width: 1200,
       },
     ],

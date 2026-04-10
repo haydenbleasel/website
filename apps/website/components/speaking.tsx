@@ -8,7 +8,7 @@ interface SpeakingItem {
 
 const speakingItems: SpeakingItem[] = [
   {
-    title: "Resend DevTools Meetup, March 2026",
+    title: "Resend DevTools Meetup",
     type: "Speaking",
     url: "https://events.ycombinator.com/resend-devtools-26",
     year: 2026,
@@ -78,6 +78,12 @@ const speakingItems: SpeakingItem[] = [
     type: "Interview",
     url: "https://balancethegrind.co/workflow/workflow-with-hayden-bleasel-director-of-jel",
     year: 2020,
+  },
+  {
+    title: "Sydney Views, ICC 2016",
+    type: "Interview",
+    url: "https://iccsydney.com.au/wp-content/uploads/2023/05/160909_Sydney-Views_Edition-3_FINAL.pdf",
+    year: 2016,
   },
   {
     title: "Startup Daily",

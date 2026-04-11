@@ -1,0 +1,4 @@
+bun check
+bun test
+bun types
+bun run build --filter haydenbleasel

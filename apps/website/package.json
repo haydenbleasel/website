@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "bun --bun next dev",
-    "build": "bun --bun next build"
+    "build": "bun --bun next build",
+    "types": "tsc --noEmit"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

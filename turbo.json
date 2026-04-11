@@ -8,6 +8,9 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
+    "types": {
+      "dependsOn": ["^types"]
+    },
     "dev": {
       "cache": false,
       "persistent": true

@@ -11,9 +11,13 @@
     "build": "turbo build",
     "check": "ultracite check",
     "fix": "ultracite fix",
-    "bump-deps": "npx npm-check-updates -u --deep && bun i"
+    "bump-deps": "npx npm-check-updates -u --deep && bun i",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo build --filter=haydenbleasel && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.30.0",
     "cli": "^1.0.1",
     "oxfmt": "^0.44.0",
     "oxlint": "^1.59.0",

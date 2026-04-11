@@ -1,12 +1,13 @@
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
-import { url } from "@/lib/url";
 import type { Metadata } from "next";
 import { Instrument_Serif as createSerif } from "next/font/google";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import { Toaster } from "sonner";
+
+import { url } from "@/lib/url";
 
 const sans = localFont({
   display: "swap",
@@ -37,8 +38,6 @@ const description =
   "I design and build software on the internet. I’m originally from Sydney, Australia and currently living in San Francisco, California.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(url),
-
   alternates: {
     canonical: url,
   },
@@ -48,16 +47,18 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title,
   },
+
   authors: [
     {
       name: "Hayden Bleasel",
-      url: url,
+      url,
     },
   ],
-
   creator: "Hayden Bleasel",
 
   description,
+
+  metadataBase: new URL(url),
 
   openGraph: {
     description,
@@ -73,7 +74,7 @@ export const metadata: Metadata = {
     siteName: "Hayden Bleasel",
     title,
     type: "website",
-    url: url,
+    url,
   },
 
   title,

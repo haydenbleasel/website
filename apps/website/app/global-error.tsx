@@ -5,13 +5,13 @@ const GlobalError = () => (
     <body>
       <main
         style={{
+          alignItems: "center",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          fontFamily: "system-ui, sans-serif",
+          gap: "1rem",
           justifyContent: "center",
           minHeight: "100vh",
-          gap: "1rem",
-          fontFamily: "system-ui, sans-serif",
         }}
       >
         <h1>Something went wrong</h1>

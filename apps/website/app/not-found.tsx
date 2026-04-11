@@ -6,7 +6,7 @@ const NotFound = () => (
       Page not found
     </h1>
     <p className="text-muted-foreground">
-      The page you're looking for doesn't exist.{" "}
+      The page you&apos;re looking for doesn&apos;t exist.{" "}
       <Link href="/" className="text-foreground underline">
         Go home
       </Link>

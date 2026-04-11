@@ -20,7 +20,9 @@ export const Newsletter = () => {
   const prevState = useRef(state);
 
   useEffect(() => {
-    if (state === prevState.current) return;
+    if (state === prevState.current) {
+      return;
+    }
     prevState.current = state;
 
     if (state.message) {

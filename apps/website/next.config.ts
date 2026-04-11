@@ -9,12 +9,12 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
 
-  async redirects() {
+  redirects() {
     return [
-      { source: "/blog/:path*", destination: "/", permanent: true },
-      { source: "/clients", destination: "/", permanent: true },
-      { source: "/games", destination: "/", permanent: true },
-      { source: "/work/:path*", destination: "/", permanent: true },
+      { destination: "/", permanent: true, source: "/blog/:path*" },
+      { destination: "/", permanent: true, source: "/clients" },
+      { destination: "/", permanent: true, source: "/games" },
+      { destination: "/", permanent: true, source: "/work/:path*" },
     ];
   },
 };

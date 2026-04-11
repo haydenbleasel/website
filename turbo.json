@@ -11,6 +11,8 @@
     "types": {
       "dependsOn": ["^types"]
     },
+    "test": {},
+    "test:coverage": {},
     "dev": {
       "cache": false,
       "persistent": true

@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { CallToAction } from "@/components/call-to-action";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
@@ -7,32 +9,28 @@ import { Section } from "@/components/section";
 import { Speaking } from "@/components/speaking";
 import { Stack } from "@/components/stack";
 import { Work } from "@/components/work";
-import { Suspense } from "react";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Hayden Bleasel",
-  url: "https://haydenbleasel.com",
+  image: "https://haydenbleasel.com/opengraph-image.png",
   jobTitle: "Member of Technical Staff",
-  worksFor: {
-    "@type": "Organization",
-    name: "OpenAI",
-  },
+  name: "Hayden Bleasel",
   sameAs: [
     "https://x.com/haydenbleasel",
     "https://www.linkedin.com/in/haydenbleasel/",
     "https://github.com/haydenbleasel",
   ],
-  image: "https://haydenbleasel.com/opengraph-image.png",
+  url: "https://haydenbleasel.com",
+  worksFor: {
+    "@type": "Organization",
+    name: "OpenAI",
+  },
 };
 
 const Home = () => (
   <>
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
     <Header>
       <Hero />
       <Suspense

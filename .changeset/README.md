@@ -7,6 +7,7 @@ find the full documentation for it [in the main changesets repo](https://github.
 **What is a changeset?**
 
 A changeset is a piece of information about changes made in a branch or commit. It holds three bits of information:
+
 - What we need to release
 - What version we are releasing packages at (using a [semver bump type](https://semver.org/))
 - A changelog entry for the released packages

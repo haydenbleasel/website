@@ -38,7 +38,7 @@ jobs:
         run: bun i
 
       - name: Build
-        run: bun run build
+        run: bunx turbo build --filter=haydenbleasel
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets

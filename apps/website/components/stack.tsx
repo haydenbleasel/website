@@ -13,7 +13,7 @@ const stackItems: StackItem[] = [
   {
     description: "Focused desktop app for agentic development.",
     name: "Codex App",
-    url: "https://developers.openai.com/codex/app/",
+    url: "https://developers.openai.com/codex/app",
   },
   {
     description: "AI speech synthesis and voice cloning.",
@@ -48,7 +48,7 @@ const stackItems: StackItem[] = [
   {
     description: "Grow your wealth with automated investing.",
     name: "Wealthfront",
-    url: "https://www.wealthfront.com/c/affiliates/invited/AFFB-VOQ0-8OAE-H0YL",
+    url: "https://www.wealthfront.com/c/affiliates/invited/AFFA-NU3D-C5WC-2CWU",
   },
   {
     description: "Simple banking for U.S. startups.",

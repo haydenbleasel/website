@@ -330,7 +330,7 @@ export const Work = () => (
       </a>{" "}
       by eToro); contracted for many clients through{" "}
       <a
-        href="https://campaignbrief.com/timberland-launches-new-timbstrails-immersive-digital-"
+        href="https://campaignbrief.com/timberland-launches-new-timbstrails-immersive-digital-storytelling-experience-via-r-ga-australia/"
         rel="noopener noreferrer"
         target="_blank"
       >

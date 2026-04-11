@@ -64,7 +64,7 @@ const speakingItems: SpeakingItem[] = [
   {
     title: "WDX Sydney",
     type: "Speaking",
-    url: "https://wdx.design/wdx23-conference",
+    url: "https://www.wdx.design/wdx23-conference",
     year: 2023,
   },
   {
@@ -76,7 +76,7 @@ const speakingItems: SpeakingItem[] = [
   {
     title: "Workflow",
     type: "Interview",
-    url: "https://balancethegrind.co/workflow/workflow-with-hayden-bleasel-director-of-jel",
+    url: "https://balancethegrind.co/workflow/workflow-with-hayden-bleasel-director-of-jellypepper/",
     year: 2020,
   },
   {
@@ -88,7 +88,7 @@ const speakingItems: SpeakingItem[] = [
   {
     title: "Startup Daily",
     type: "Interview",
-    url: "https://www.startupdaily.net/2016/10/sydney-startup-presumi-helps-job-seekers-se",
+    url: "https://www.startupdaily.net/advice/sydney-startup-presumi-helps-job-seekers-see-employers-interact-resume/",
     year: 2016,
   },
 ];

@@ -11,13 +11,13 @@
   ],
   "homepage": "https://www.haydenbleasel.com/",
   "bugs": {
-    "url": "https://github.com/haydenbleasel/website/issues"
+    "url": "https://github.com/haydenbleasel/haydenbleasel/issues"
   },
   "license": "MIT",
   "author": "Hayden Bleasel <hello@haydenbleasel.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haydenbleasel/website.git"
+    "url": "git+https://github.com/haydenbleasel/haydenbleasel.git"
   },
   "bin": {
     "haydenbleasel": "dist/index.js"

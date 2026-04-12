@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
       { hostname: "*.scdn.co" },
       { hostname: "image-cdn-*.spotifycdn.com" },
       { hostname: "avatars.githubusercontent.com" },
+      { hostname: "oku.ams3.cdn.digitaloceanspaces.com" },
     ],
   },
 };

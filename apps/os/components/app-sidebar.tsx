@@ -10,7 +10,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@haydenbleasel/design-system/components/ui/sidebar";
-import { CodeIcon, GamepadIcon, LayersIcon, MessageSquareIcon, MusicIcon } from "lucide-react";
+import {
+  BookOpenIcon,
+  CodeIcon,
+  GamepadIcon,
+  LayersIcon,
+  MessageSquareIcon,
+  MusicIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ComponentProps } from "react";
@@ -41,6 +48,11 @@ const data = {
       icon: LayersIcon,
       title: "Stack",
       url: "/stack",
+    },
+    {
+      icon: BookOpenIcon,
+      title: "Books",
+      url: "/books",
     },
   ],
 };

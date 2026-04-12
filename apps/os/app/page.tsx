@@ -1,6 +1,14 @@
 import { PageHeader } from "@/components/page-header";
 import Link from "next/link";
-import { CodeIcon, GamepadIcon, LayersIcon, MessageSquareIcon, MusicIcon } from "lucide-react";
+import {
+  BookOpenIcon,
+  CodeIcon,
+  GamepadIcon,
+  HeartIcon,
+  LayersIcon,
+  MessageSquareIcon,
+  MusicIcon,
+} from "lucide-react";
 import {
   Card,
   CardDescription,
@@ -38,6 +46,18 @@ const pages = [
     href: "/stack",
     icon: LayersIcon,
     title: "Stack",
+  },
+  {
+    description: "What I've been reading on Oku.",
+    href: "/books",
+    icon: BookOpenIcon,
+    title: "Books",
+  },
+  {
+    description: "A dynamic feed of quotes, links, and images.",
+    href: "/bookmarks",
+    icon: HeartIcon,
+    title: "Saved",
   },
 ];
 

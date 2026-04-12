@@ -13,10 +13,7 @@ const initialState = {
 export const emailRegex = /.+@.+/u;
 
 export const Newsletter = () => {
-  const [state, formAction, isPending] = useActionState(
-    subscribe,
-    initialState
-  );
+  const [state, formAction, isPending] = useActionState(subscribe, initialState);
   const prevState = useRef(state);
 
   useEffect(() => {
@@ -34,10 +31,7 @@ export const Newsletter = () => {
   }, [state]);
 
   return (
-    <form
-      action={formAction}
-      className="relative overflow-hidden rounded-full bg-secondary"
-    >
+    <form action={formAction} className="relative overflow-hidden rounded-full bg-secondary">
       <input
         aria-label="Email address"
         autoCapitalize="none"

@@ -1,0 +1,11 @@
+{
+  "extends": "@haydenbleasel/typescript-config/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"],
+      "@haydenbleasel/design-system/*": ["./*"]
+    }
+  },
+  "include": ["components/**/*.ts", "components/**/*.tsx", "lib/**/*.ts"],
+  "exclude": ["node_modules"]
+}

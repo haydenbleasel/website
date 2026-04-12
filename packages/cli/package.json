@@ -39,6 +39,7 @@
     "test:coverage": "bun test --coverage"
   },
   "devDependencies": {
+    "@haydenbleasel/typescript-config": "workspace:*",
     "@types/node": "^25.6.0"
   }
 }

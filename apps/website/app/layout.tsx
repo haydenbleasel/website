@@ -1,37 +1,13 @@
-import { Analytics } from "@vercel/analytics/next";
+import { DesignSystemProvider } from "@haydenbleasel/design-system/components/provider/client";
+import { DesignSystemServerProvider } from "@haydenbleasel/design-system/components/provider/server";
+import { fonts } from "@haydenbleasel/design-system/fonts";
 
 import "./globals.css";
 import type { Metadata } from "next";
-import { Instrument_Serif as createSerif } from "next/font/google";
-import localFont from "next/font/local";
+
 import type { ReactNode } from "react";
-import { Toaster } from "sonner";
 
 import { url } from "@/lib/url";
-
-const sans = localFont({
-  display: "swap",
-  src: [
-    {
-      path: "./soehne-buch.woff2",
-      style: "normal",
-      weight: "400",
-    },
-    {
-      path: "./soehne-kraftig.woff2",
-      style: "normal",
-      weight: "500",
-    },
-  ],
-  variable: "--font-sans",
-});
-
-const serif = createSerif({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-serif",
-  weight: "400",
-});
 
 const title = "Software engineer and product designer | Hayden Bleasel";
 const description =
@@ -100,15 +76,14 @@ interface RootLayoutProps {
 }
 
 const RootLayout = ({ children }: RootLayoutProps) => (
-  <html lang="en">
-    <body
-      className={`${sans.variable} ${serif.variable} font-sans antialiased`}
-    >
-      <main className="relative z-10 mx-auto grid w-full max-w-2xl gap-16 sm:gap-24 px-4 py-16 sm:py-32">
-        {children}
-      </main>
-      <Analytics />
-      <Toaster />
+  <html lang="en" suppressHydrationWarning>
+    <body className={fonts}>
+      <DesignSystemProvider>
+        <main className="relative z-10 mx-auto grid w-full max-w-2xl gap-16 sm:gap-24 px-4 py-16 sm:py-32">
+          {children}
+        </main>
+      </DesignSystemProvider>
+      <DesignSystemServerProvider />
     </body>
   </html>
 );

@@ -7,7 +7,6 @@ import { Newsletter } from "@/components/newsletter";
 import { Projects } from "@/components/projects";
 import { Section } from "@/components/section";
 import { Speaking } from "@/components/speaking";
-import { Stack } from "@/components/stack";
 import { Work } from "@/components/work";
 
 const jsonLd = {
@@ -37,11 +36,7 @@ const Home = () => (
         fallback={
           <p>
             Follow me on{" "}
-            <a
-              href="https://x.com/haydenbleasel"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href="https://x.com/haydenbleasel" rel="noopener noreferrer" target="_blank">
               X
             </a>
             , or join my mailing list below for infrequent updates.
@@ -60,9 +55,6 @@ const Home = () => (
     </Section>
     <Section title="Speaking & Interviews">
       <Speaking />
-    </Section>
-    <Section title="Stack">
-      <Stack />
     </Section>
   </>
 );

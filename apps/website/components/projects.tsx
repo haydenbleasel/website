@@ -1,4 +1,5 @@
 import type { ComponentProps, ReactNode } from "react";
+import { Badge } from "@haydenbleasel/design-system/components/ui/badge";
 
 interface Project {
   name: string;
@@ -9,12 +10,7 @@ interface Project {
 }
 
 const UltraciteLogo = (props: ComponentProps<"svg">) => (
-  <svg
-    fill="none"
-    viewBox="0 0 507 508"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg fill="none" viewBox="0 0 507 508" xmlns="http://www.w3.org/2000/svg" {...props}>
     <title>Ultracite</title>
     <path
       d="M318.661 13.3835L268.715 0L226.623 157.087L188.623 15.2678L138.674 28.6513L179.732 181.876L77.4678 79.6125L40.9035 116.177L153.075 228.349L13.3834 190.918L0 240.865L152.63 281.763C150.882 274.225 149.958 266.372 149.958 258.303C149.958 201.186 196.26 154.883 253.378 154.883C310.495 154.883 356.797 201.186 356.797 258.303C356.797 266.32 355.884 274.125 354.158 281.618L492.869 318.785L506.251 268.838L353.016 227.778L492.718 190.346L479.332 140.399L326.102 181.456L428.366 79.1929L391.801 42.6286L281.186 153.244L318.661 13.3835Z"
@@ -44,12 +40,7 @@ const UltraciteLogo = (props: ComponentProps<"svg">) => (
 );
 
 const EververseLogo = (props: ComponentProps<"svg">) => (
-  <svg
-    fill="none"
-    viewBox="0 0 118 118"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg fill="none" viewBox="0 0 118 118" xmlns="http://www.w3.org/2000/svg" {...props}>
     <title>Eververse</title>
     <path
       d="M59.3377 117.036C63.1496 117.036 66.2732 114.231 66.8024 110.26C72.0434 74.8953 76.861 69.9718 110.85 66.1073C114.767 65.6308 117.785 62.3486 117.785 58.5368C117.785 54.6717 114.82 51.4954 110.902 50.913C77.1259 46.2012 72.9438 42.0718 66.8024 6.76032C66.1142 2.84261 63.0964 0.036499 59.3377 0.036499C55.4732 0.036499 52.4022 2.84261 51.7671 6.81298C46.632 42.125 41.8144 47.0485 7.87879 50.913C3.85524 51.4427 0.890625 54.619 0.890625 58.5368C0.890625 62.3486 3.7494 65.5249 7.77295 66.1073C41.6022 70.9249 45.7316 75.0012 51.7671 110.313C52.5612 114.284 55.6317 117.036 59.3377 117.036Z"
@@ -59,12 +50,7 @@ const EververseLogo = (props: ComponentProps<"svg">) => (
 );
 
 const KiboLogo = (props: ComponentProps<"svg">) => (
-  <svg
-    fill="none"
-    viewBox="0 0 116 116"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg fill="none" viewBox="0 0 116 116" xmlns="http://www.w3.org/2000/svg" {...props}>
     <title>Kibo UI</title>
     <path
       clipRule="evenodd"
@@ -183,16 +169,16 @@ export const Projects = () => (
         target="_blank"
       >
         <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
-          <project.logo className="size-4 text-foreground transition-colors group-hover:text-muted mb-2 sm:mb-0" />
-          <p className="font-medium text-foreground transition-colors group-hover:text-muted">
+          <project.logo className="size-4 text-foreground transition-colors group-hover:text-muted-foreground mb-2 sm:mb-0" />
+          <p className="font-medium text-foreground transition-colors group-hover:text-muted-foreground">
             {project.name}
           </p>
           <p className="text-sm">{project.description}</p>
         </div>
         {project.status ? (
-          <span className="shrink-0 w-fit rounded-full border px-2.5 py-0.5 text-xs">
+          <Badge variant="outline" className="bg-transparent font-normal text-muted-foreground">
             {project.status}
-          </span>
+          </Badge>
         ) : null}
       </a>
     ))}

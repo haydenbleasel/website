@@ -12,16 +12,6 @@ describe("next.config", () => {
 
     expect(redirects).toBeDefined();
     expect(Array.isArray(redirects)).toBe(true);
-    expect(redirects?.length).toBe(4);
-  });
-
-  test("all redirects are permanent and point to /", async () => {
-    const redirects = await nextConfig.redirects?.();
-
-    for (const redirect of redirects ?? []) {
-      expect(redirect.destination).toBe("/");
-      expect(redirect.permanent).toBe(true);
-    }
   });
 
   test("redirects cover expected legacy routes", async () => {

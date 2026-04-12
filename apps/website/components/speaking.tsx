@@ -122,7 +122,7 @@ export const Speaking = () => (
         >
           <span>
             {item.type} {getAppender(item.type)}{" "}
-            <span className="font-medium text-foreground transition-colors group-hover:text-muted">
+            <span className="font-medium text-foreground transition-colors group-hover:text-muted-foreground">
               {item.title}
             </span>
           </span>

@@ -8,8 +8,9 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
+    "typegen": {},
     "types": {
-      "dependsOn": ["^types"]
+      "dependsOn": ["^types", "typegen"]
     },
     "test": {},
     "test:coverage": {},

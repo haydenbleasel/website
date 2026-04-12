@@ -2,6 +2,8 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
+import { Input } from "@haydenbleasel/design-system/components/ui/input";
+import { Button } from "@haydenbleasel/design-system/components/ui/button";
 
 import { subscribe } from "@/actions/subscribe";
 
@@ -31,25 +33,25 @@ export const Newsletter = () => {
   }, [state]);
 
   return (
-    <form action={formAction} className="relative overflow-hidden rounded-full bg-secondary">
-      <input
+    <form action={formAction} className="relative overflow-hidden rounded-full">
+      <Input
         aria-label="Email address"
         autoCapitalize="none"
         autoComplete="email"
-        className="w-full appearance-none rounded-full py-2 pr-18 pl-4 text-base focus-visible:outline-none"
+        className="pr-18 pl-4 md:text-base h-10 border-none"
         id="email"
         name="email"
         placeholder="jane@acme.com"
         required
         type="email"
       />
-      <button
-        className="absolute top-1 right-1 flex-none cursor-pointer rounded-full! bg-foreground px-4 py-1 text-base text-background transition-colors hover:bg-foreground/80 disabled:cursor-not-allowed disabled:opacity-50"
+      <Button
+        className="absolute top-0.5 px-4 right-0.5 cursor-pointer"
         disabled={isPending}
         type="submit"
       >
-        <span>Join</span>
-      </button>
+        Join
+      </Button>
     </form>
   );
 };

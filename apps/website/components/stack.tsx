@@ -77,7 +77,7 @@ export const Stack = () => (
         rel="noopener noreferrer"
         target="_blank"
       >
-        <p className="font-medium text-foreground group-hover:text-muted">{item.name}</p>
+        <p className="font-medium text-foreground group-hover:text-muted-foreground">{item.name}</p>
         <p className="text-sm">{item.description}</p>
       </a>
     ))}

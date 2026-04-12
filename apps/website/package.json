@@ -10,7 +10,7 @@
     "test:coverage": "bun test --coverage"
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
+    "@haydenbleasel/design-system": "workspace:*",
     "next": "16.2.3",
     "react": "19.2.5",
     "react-dom": "19.2.5",

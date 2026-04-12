@@ -1,4 +1,5 @@
 import type { ComponentProps, ReactNode } from "react";
+import { Badge } from "@haydenbleasel/design-system/components/ui/badge";
 
 interface Project {
   name: string;
@@ -168,16 +169,16 @@ export const Projects = () => (
         target="_blank"
       >
         <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
-          <project.logo className="size-4 text-foreground transition-colors group-hover:text-muted mb-2 sm:mb-0" />
-          <p className="font-medium text-foreground transition-colors group-hover:text-muted">
+          <project.logo className="size-4 text-foreground transition-colors group-hover:text-muted-foreground mb-2 sm:mb-0" />
+          <p className="font-medium text-foreground transition-colors group-hover:text-muted-foreground">
             {project.name}
           </p>
           <p className="text-sm">{project.description}</p>
         </div>
         {project.status ? (
-          <span className="shrink-0 w-fit rounded-full border px-2.5 py-0.5 text-xs">
+          <Badge variant="outline" className="bg-transparent font-normal text-muted-foreground">
             {project.status}
-          </span>
+          </Badge>
         ) : null}
       </a>
     ))}

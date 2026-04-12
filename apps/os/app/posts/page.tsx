@@ -1,12 +1,6 @@
 import { PageHeader } from "@/components/page-header";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@haydenbleasel/design-system/components/ui/card";
 import { getPublishedPosts } from "@/lib/typefully";
+import type { TypefullyPostWithAnalytics } from "@/lib/typefully";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,56 +18,91 @@ const formatNumber = (num = 0) => {
   return num.toString();
 };
 
+const getWeekStart = (date: string) => {
+  const d = new Date(date);
+  const day = d.getDay();
+  d.setDate(d.getDate() - day);
+  d.setHours(0, 0, 0, 0);
+  return d;
+};
+
+const formatDate = (d: Date) => d.toLocaleDateString("en-US", { day: "numeric", month: "short" });
+
+const formatWeek = (date: string) => {
+  const start = getWeekStart(date);
+  const end = new Date(start);
+  end.setDate(end.getDate() + 6);
+  return `${formatDate(start)} – ${formatDate(end)}, ${end.getFullYear()}`;
+};
+
+const groupByWeek = (posts: TypefullyPostWithAnalytics[]) => {
+  const groups: { week: string; posts: TypefullyPostWithAnalytics[] }[] = [];
+
+  for (const post of posts) {
+    const week = post.published_at ? formatWeek(post.published_at) : "Unknown";
+    const existing = groups.find((g) => g.week === week);
+    if (existing) {
+      existing.posts.push(post);
+    } else {
+      groups.push({ posts: [post], week });
+    }
+  }
+
+  return groups;
+};
+
+const formatPostText = (text: string) => {
+  const parts = text.replaceAll(/\n{2,}/g, " ").split(/(@\w+)/g);
+  return parts.map((part) =>
+    part.startsWith("@") ? (
+      <span key={part} className="text-blue-500">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+};
+
+const Post = ({ post }: { post: TypefullyPostWithAnalytics }) => (
+  <a
+    href={post.x_published_url ?? undefined}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex flex-col gap-2 rounded-lg px-3 py-2 no-underline transition-colors hover:bg-accent"
+  >
+    {post.preview && (
+      <p className="whitespace-pre-wrap leading-relaxed text-sm">{formatPostText(post.preview)}</p>
+    )}
+    <div className="flex gap-4 text-xs text-muted-foreground">
+      <span>{formatNumber(post.impressions)} impressions</span>
+      <span>{formatNumber(post.likes)} likes</span>
+      <span>{formatNumber(post.retweets)} retweets</span>
+      <span>{formatNumber(post.replies)} replies</span>
+    </div>
+  </a>
+);
+
 const PostsPage = async () => {
   const posts = await getPublishedPosts();
+  const grouped = groupByWeek(posts);
 
   return (
     <div className="flex flex-col gap-8">
       <PageHeader title="Posts" description="My recent posts on X, managed via Typefully." />
 
-      <div className="grid gap-4">
-        {posts.map((post) => (
-          <Card key={post.id} size="sm">
-            <CardHeader>
-              <CardTitle className="whitespace-pre-wrap leading-relaxed font-normal text-sm">
-                {post.text_first_tweet}
-              </CardTitle>
-              {post.num_tweets > 1 && (
-                <CardDescription>Thread ({post.num_tweets} posts)</CardDescription>
-              )}
-            </CardHeader>
-            <CardContent>
-              <div className="flex gap-4 text-xs text-muted-foreground">
-                <span>{formatNumber(post.num_impressions)} impressions</span>
-                <span>{formatNumber(post.num_likes)} likes</span>
-                <span>{formatNumber(post.num_retweets)} retweets</span>
-                <span>{formatNumber(post.num_replies)} replies</span>
-              </div>
-              <div className="mt-2 flex items-center gap-2">
-                {post.published_on && (
-                  <span className="text-xs text-muted-foreground">
-                    {new Date(post.published_on).toLocaleDateString("en-US", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </span>
-                )}
-                {post.publish_url && (
-                  <a
-                    href={post.publish_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-foreground hover:text-muted-foreground"
-                  >
-                    View on X
-                  </a>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      {grouped.map((group) => (
+        <section key={group.week} className="flex flex-col gap-2 rounded-2xl bg-sidebar p-2">
+          <div className="px-4 pt-2 pb-1">
+            <h2 className="text-sm font-medium text-muted-foreground">{group.week}</h2>
+          </div>
+          <div className="grid gap-2 rounded-2xl bg-background p-2 shadow-sm/5">
+            {group.posts.map((post) => (
+              <Post key={post.id} post={post} />
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 };

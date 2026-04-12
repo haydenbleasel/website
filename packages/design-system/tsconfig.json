@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@haydenbleasel/typescript-config/base.json",
   "compilerOptions": {
     "paths": {
       "@/*": ["./*"],

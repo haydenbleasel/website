@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/page-header";
 import { getOwnedGames, getRecentGames } from "@/lib/steam";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -41,12 +42,10 @@ const GamesPage = async () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <h1 className="text-2xl font-semibold">Games</h1>
-        <p className="text-muted-foreground">
-          What I&apos;ve been playing on Steam. {ownedGames.length} games owned.
-        </p>
-      </div>
+      <PageHeader
+        title="Games"
+        description={<>What I&apos;ve been playing on Steam. {ownedGames.length} games owned.</>}
+      />
 
       {recentGames.length > 0 && (
         <section className="flex flex-col gap-4">

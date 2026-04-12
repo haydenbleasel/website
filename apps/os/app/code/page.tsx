@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/page-header";
 import { getProfile, getRepositories, getWorkRepositories } from "@/lib/github";
 import { LanguageIcon } from "./language-icon";
 import { getBulkDownloads, getPackages } from "@/lib/npm";
@@ -57,13 +58,15 @@ const CodePage = async () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <h1 className="text-2xl font-semibold">Code</h1>
-        <p className="text-muted-foreground">
-          {profile.public_repos} public repos. {formatNumber(contributionData.total ?? 0)}{" "}
-          contributions this year.
-        </p>
-      </div>
+      <PageHeader
+        title="Code"
+        description={
+          <>
+            {profile.public_repos} public repos. {formatNumber(contributionData.total ?? 0)}{" "}
+            contributions this year.
+          </>
+        }
+      />
 
       <ContributionGraphClient
         contributions={contributionData.contributions}

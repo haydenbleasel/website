@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/page-header";
 import Link from "next/link";
 import { CodeIcon, GamepadIcon, LayersIcon, MessageSquareIcon, MusicIcon } from "lucide-react";
 import {
@@ -42,10 +43,7 @@ const pages = [
 
 const HomePage = () => (
   <div className="flex flex-col gap-8">
-    <div>
-      <h1 className="text-2xl font-semibold">OS1</h1>
-      <p className="text-muted-foreground">An operating system for my public-facing life.</p>
-    </div>
+    <PageHeader title="OS1" description="An operating system for my public-facing life." />
 
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {pages.map((page) => (

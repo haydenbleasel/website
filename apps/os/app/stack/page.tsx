@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/page-header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -272,10 +273,7 @@ const categories = [
 
 const StackPage = () => (
   <div className="flex flex-col gap-8">
-    <div>
-      <h1 className="text-2xl font-medium">Stack</h1>
-      <p className="text-muted-foreground">The tools and services I use daily.</p>
-    </div>
+    <PageHeader title="Stack" description="The tools and services I use daily." />
 
     {categories.map((category) => {
       const items = stackItems.filter((item) => item.category === category);

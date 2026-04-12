@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/page-header";
 import {
   Card,
   CardContent,
@@ -28,10 +29,7 @@ const PostsPage = async () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <h1 className="text-2xl font-semibold">Posts</h1>
-        <p className="text-muted-foreground">My recent posts on X, managed via Typefully.</p>
-      </div>
+      <PageHeader title="Posts" description="My recent posts on X, managed via Typefully." />
 
       <div className="grid gap-4">
         {posts.map((post) => (

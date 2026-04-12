@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/page-header";
 import {
   Card,
   CardDescription,
@@ -22,10 +23,7 @@ const MusicPage = async () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <h1 className="text-2xl font-semibold">Music</h1>
-        <p className="text-muted-foreground">What I&apos;ve been listening to on Spotify.</p>
-      </div>
+      <PageHeader title="Music" description="What I've been listening to on Spotify." />
 
       {currentlyPlaying?.is_playing && currentlyPlaying.item && (
         <section className="flex flex-col gap-4">

@@ -21,7 +21,7 @@ const MusicPage = async () => {
   ]);
 
   return (
-    <div className="flex flex-col gap-8 p-6">
+    <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-2xl font-semibold">Music</h1>
         <p className="text-muted-foreground">What I&apos;ve been listening to on Spotify.</p>

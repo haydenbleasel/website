@@ -41,7 +41,7 @@ const pages = [
 ];
 
 const HomePage = () => (
-  <div className="flex flex-col gap-8 p-6">
+  <div className="flex flex-col gap-8">
     <div>
       <h1 className="text-2xl font-semibold">OS1</h1>
       <p className="text-muted-foreground">An operating system for my public-facing life.</p>

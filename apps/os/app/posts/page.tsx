@@ -27,7 +27,7 @@ const PostsPage = async () => {
   const posts = await getPublishedPosts();
 
   return (
-    <div className="flex flex-col gap-8 p-6">
+    <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-2xl font-semibold">Posts</h1>
         <p className="text-muted-foreground">My recent posts on X, managed via Typefully.</p>

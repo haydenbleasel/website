@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { hostname: "cdn.cloudflare.steamstatic.com" },
       { hostname: "steamcdn-a.akamaihd.net" },
+      { hostname: "shared.akamai.steamstatic.com" },
       { hostname: "i.scdn.co" },
       { hostname: "avatars.githubusercontent.com" },
     ],

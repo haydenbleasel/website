@@ -7,6 +7,7 @@ export default defineConfig({
   extends: [core, react, next],
   ignorePatterns: [
     "packages/design-system/components/ui",
+    "packages/design-system/components/kibo-ui",
     "packages/design-system/lib/utils.ts",
     "packages/design-system/hooks/use-mobile.ts",
   ],

@@ -1,19 +1,34 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@haydenbleasel/design-system/components/ui/card";
-import { getContributions, getProfile, getRepositories } from "@/lib/github";
-import { getDownloads, getPackages } from "@/lib/npm";
+import { getProfile, getRepositories, getWorkRepositories } from "@/lib/github";
+import { LanguageIcon } from "./language-icon";
+import { getBulkDownloads, getPackages } from "@/lib/npm";
 import type { NpmPackage } from "@/lib/npm";
 import type { Metadata } from "next";
+import { unstable_cache } from "next/cache";
+import { ContributionGraphClient } from "./contribution-graph";
 
 export const metadata: Metadata = {
   description: "My open source work on GitHub and npm.",
   title: "Code | OS1",
 };
+
+const username = "haydenbleasel";
+
+interface ContributionsResponse {
+  total: Record<string, number>;
+  contributions: { date: string; count: number; level: number }[];
+}
+
+const getCachedContributions = unstable_cache(
+  async () => {
+    const url = new URL(`/v4/${username}`, "https://github-contributions-api.jogruber.de");
+    const response = await fetch(url);
+    const data = (await response.json()) as ContributionsResponse;
+    const total = data.total[new Date().getFullYear()];
+    return { contributions: data.contributions, total };
+  },
+  ["github-contributions"],
+  { revalidate: 60 * 60 * 24 },
+);
 
 const formatNumber = (num: number) => {
   if (num >= 1_000_000) {
@@ -26,79 +41,164 @@ const formatNumber = (num: number) => {
 };
 
 const CodePage = async () => {
-  const [profile, repos, contributions, packages] = await Promise.all([
+  const [profile, repos, workRepos, contributionData, packages] = await Promise.all([
     getProfile(),
     getRepositories(),
-    getContributions(),
+    getWorkRepositories(),
+    getCachedContributions(),
     getPackages(),
   ]);
 
-  const packagesWithDownloads = await Promise.all(
-    packages.map(async (pkg: NpmPackage) => {
-      const downloads = await getDownloads(pkg.name);
-      return { ...pkg, downloads: downloads.downloads };
-    }),
-  );
+  const downloads = await getBulkDownloads(packages.map((pkg: NpmPackage) => pkg.name));
+  const packagesWithDownloads = packages.map((pkg: NpmPackage) => ({
+    ...pkg,
+    downloads: downloads[pkg.name]?.downloads ?? 0,
+  }));
 
   return (
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-2xl font-semibold">Code</h1>
         <p className="text-muted-foreground">
-          {profile.public_repos} public repos. {formatNumber(contributions.totalContributions)}{" "}
+          {profile.public_repos} public repos. {formatNumber(contributionData.total ?? 0)}{" "}
           contributions this year.
         </p>
       </div>
 
-      <section className="flex flex-col gap-4">
-        <h2 className="text-lg font-medium">Repositories</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {repos.map((repo) => (
-            <a key={repo.id} href={repo.html_url} target="_blank" rel="noopener noreferrer">
-              <Card size="sm" className="h-full transition-colors hover:bg-accent">
-                <CardHeader>
-                  <CardTitle>{repo.name}</CardTitle>
+      <ContributionGraphClient
+        contributions={contributionData.contributions}
+        totalCount={contributionData.total ?? 0}
+      />
+
+      <section className="flex flex-col gap-2 rounded-2xl bg-sidebar p-2">
+        <div className="px-4 pt-2 pb-1">
+          <h2 className="text-sm font-medium text-muted-foreground">Active Repositories</h2>
+        </div>
+        <div className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-6 rounded-2xl bg-background p-2 text-sm shadow-sm/5">
+          {repos
+            .filter((repo) => !repo.fork && !repo.archived)
+            .toSorted((a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0))
+            .map((repo) => (
+              <a
+                key={repo.id}
+                href={repo.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="col-span-4 grid grid-cols-subgrid items-center rounded-lg px-3 py-2 transition-colors hover:bg-accent"
+              >
+                <div className="min-w-0">
+                  <p className="truncate font-medium">{repo.name}</p>
                   {repo.description && (
-                    <CardDescription className="line-clamp-2">{repo.description}</CardDescription>
+                    <p className="truncate text-xs text-muted-foreground">{repo.description}</p>
                   )}
-                </CardHeader>
-                <CardContent>
-                  <div className="flex gap-4 text-xs text-muted-foreground">
-                    {repo.language && <span>{repo.language}</span>}
-                    <span>{formatNumber(repo.stargazers_count ?? 0)} stars</span>
-                    <span>{formatNumber(repo.forks_count ?? 0)} forks</span>
+                </div>
+                <LanguageIcon language={repo.language ?? null} />
+                <span className="text-right text-sm text-muted-foreground">
+                  {formatNumber(repo.stargazers_count ?? 0)} stars
+                </span>
+                <span className="text-right text-sm text-muted-foreground">
+                  {formatNumber(repo.forks_count ?? 0)} forks
+                </span>
+              </a>
+            ))}
+        </div>
+      </section>
+
+      {repos.some((repo) => !repo.fork && repo.archived) && (
+        <section className="flex flex-col gap-2 rounded-2xl bg-sidebar p-2">
+          <div className="px-4 pt-2 pb-1">
+            <h2 className="text-sm font-medium text-muted-foreground">Archived Repositories</h2>
+          </div>
+          <div className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-6 rounded-2xl bg-background p-2 text-sm shadow-sm/5">
+            {repos
+              .filter((repo) => !repo.fork && repo.archived)
+              .toSorted((a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0))
+              .map((repo) => (
+                <a
+                  key={repo.id}
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="col-span-4 grid grid-cols-subgrid items-center rounded-lg px-3 py-2 transition-colors hover:bg-accent"
+                >
+                  <div className="min-w-0">
+                    <p className="truncate font-medium">{repo.name}</p>
+                    {repo.description && (
+                      <p className="truncate text-xs text-muted-foreground">{repo.description}</p>
+                    )}
                   </div>
-                </CardContent>
-              </Card>
-            </a>
-          ))}
+                  <LanguageIcon language={repo.language ?? null} />
+                  <span className="text-right text-sm text-muted-foreground">
+                    {formatNumber(repo.stargazers_count ?? 0)} stars
+                  </span>
+                  <span className="text-right text-sm text-muted-foreground">
+                    {formatNumber(repo.forks_count ?? 0)} forks
+                  </span>
+                </a>
+              ))}
+          </div>
+        </section>
+      )}
+
+      <section className="flex flex-col gap-2 rounded-2xl bg-sidebar p-2">
+        <div className="px-4 pt-2 pb-1">
+          <h2 className="text-sm font-medium text-muted-foreground">Work Repositories</h2>
+        </div>
+        <div className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-6 rounded-2xl bg-background p-2 text-sm shadow-sm/5">
+          {workRepos
+            .toSorted((a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0))
+            .map((repo) => (
+              <a
+                key={repo.id}
+                href={repo.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="col-span-4 grid grid-cols-subgrid items-center rounded-lg px-3 py-2 transition-colors hover:bg-accent"
+              >
+                <div className="min-w-0">
+                  <p className="truncate font-medium">{repo.full_name}</p>
+                  {repo.description && (
+                    <p className="truncate text-xs text-muted-foreground">{repo.description}</p>
+                  )}
+                </div>
+                <LanguageIcon language={repo.language ?? null} />
+                <span className="text-right text-sm text-muted-foreground">
+                  {formatNumber(repo.stargazers_count ?? 0)} stars
+                </span>
+                <span className="text-right text-sm text-muted-foreground">
+                  {formatNumber(repo.forks_count ?? 0)} forks
+                </span>
+              </a>
+            ))}
         </div>
       </section>
 
       {packagesWithDownloads.length > 0 && (
-        <section className="flex flex-col gap-4">
-          <h2 className="text-lg font-medium">npm Packages</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+        <section className="flex flex-col gap-2 rounded-2xl bg-sidebar p-2">
+          <div className="px-4 pt-2 pb-1">
+            <h2 className="text-sm font-medium text-muted-foreground">npm Packages</h2>
+          </div>
+          <div className="grid gap-2 rounded-2xl bg-background p-2 text-sm shadow-sm/5">
             {packagesWithDownloads
               .toSorted((a, b) => b.downloads - a.downloads)
               .map((pkg) => (
-                <a key={pkg.name} href={pkg.links.npm} target="_blank" rel="noopener noreferrer">
-                  <Card size="sm" className="h-full transition-colors hover:bg-accent">
-                    <CardHeader>
-                      <CardTitle>{pkg.name}</CardTitle>
-                      {pkg.description && (
-                        <CardDescription className="line-clamp-2">
-                          {pkg.description}
-                        </CardDescription>
-                      )}
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex gap-4 text-xs text-muted-foreground">
-                        <span>v{pkg.version}</span>
-                        <span>{formatNumber(pkg.downloads)} downloads/year</span>
-                      </div>
-                    </CardContent>
-                  </Card>
+                <a
+                  key={pkg.name}
+                  href={pkg.links.npm}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col gap-1 rounded-lg px-3 py-2 transition-colors hover:bg-accent sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+                >
+                  <div className="min-w-0">
+                    <p className="truncate font-medium">{pkg.name}</p>
+                    {pkg.description && (
+                      <p className="truncate text-xs text-muted-foreground">{pkg.description}</p>
+                    )}
+                  </div>
+                  <div className="flex shrink-0 gap-4 text-sm text-muted-foreground">
+                    <span>v{pkg.version}</span>
+                    <span>{formatNumber(pkg.downloads)} downloads/yr</span>
+                  </div>
                 </a>
               ))}
           </div>

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Posts | OS1",
 };
 
-const formatNumber = (num: number) => {
+const formatNumber = (num = 0) => {
   if (num >= 1_000_000) {
     return `${(num / 1_000_000).toFixed(1)}M`;
   }

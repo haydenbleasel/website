@@ -2,7 +2,6 @@
 
 import { Toaster } from "@haydenbleasel/design-system/components/ui/sonner";
 import { TooltipProvider } from "@haydenbleasel/design-system/components/ui/tooltip";
-import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "next-themes";
 import type { PropsWithChildren } from "react";
 
@@ -11,7 +10,6 @@ const DesignSystemProvider = ({ children }: PropsWithChildren) => (
     <TooltipProvider delayDuration={0}>
       {children}
       <Toaster />
-      <Analytics />
     </TooltipProvider>
   </ThemeProvider>
 );

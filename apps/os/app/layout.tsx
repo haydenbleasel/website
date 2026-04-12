@@ -1,4 +1,5 @@
-import { DesignSystemProvider } from "@haydenbleasel/design-system/components/provider";
+import { DesignSystemProvider } from "@haydenbleasel/design-system/components/provider/client";
+import { DesignSystemServerProvider } from "@haydenbleasel/design-system/components/provider/server";
 import { fonts } from "@haydenbleasel/design-system/fonts";
 
 import "./globals.css";
@@ -87,6 +88,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
           </SidebarInset>
         </SidebarProvider>
       </DesignSystemProvider>
+      <DesignSystemServerProvider />
     </body>
   </html>
 );

@@ -126,11 +126,11 @@ export const getMyPlaylists = async () => {
       ...playlist,
       description: playlist.description
         ? playlist.description
-            .replaceAll("&amp;", "&")
             .replaceAll("&#x27;", "'")
             .replaceAll("&quot;", '"')
             .replaceAll("&lt;", "<")
             .replaceAll("&gt;", ">")
+            .replaceAll("&amp;", "&")
         : null,
     }));
 };

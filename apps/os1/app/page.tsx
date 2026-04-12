@@ -4,7 +4,6 @@ import {
   BookOpenIcon,
   CodeIcon,
   GamepadIcon,
-  HeartIcon,
   LayersIcon,
   MessageSquareIcon,
   MusicIcon,
@@ -52,12 +51,6 @@ const pages = [
     href: "/books",
     icon: BookOpenIcon,
     title: "Books",
-  },
-  {
-    description: "A dynamic feed of quotes, links, and images.",
-    href: "/bookmarks",
-    icon: HeartIcon,
-    title: "Saved",
   },
 ];
 

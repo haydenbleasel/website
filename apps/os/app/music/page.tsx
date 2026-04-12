@@ -1,11 +1,5 @@
 import { PageHeader } from "@/components/page-header";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@haydenbleasel/design-system/components/ui/card";
-import { getCurrentlyPlaying, getTopArtists, getTopTracks } from "@/lib/spotify";
+import { getMyPlaylists, getSavedAlbums } from "@/lib/spotify";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -15,108 +9,81 @@ export const metadata: Metadata = {
 };
 
 const MusicPage = async () => {
-  const [currentlyPlaying, topTracks, topArtists] = await Promise.all([
-    getCurrentlyPlaying(),
-    getTopTracks(),
-    getTopArtists(),
-  ]);
+  const [playlists, savedAlbums] = await Promise.all([getMyPlaylists(), getSavedAlbums()]);
 
   return (
     <div className="flex flex-col gap-8">
       <PageHeader title="Music" description="What I've been listening to on Spotify." />
 
-      {currentlyPlaying?.is_playing && currentlyPlaying.item && (
-        <section className="flex flex-col gap-4">
-          <h2 className="text-lg font-medium">Now Playing</h2>
-          <Card size="sm">
-            <div className="flex items-center gap-4 px-6">
-              {currentlyPlaying.item.album.images[0] && (
-                <Image
-                  src={currentlyPlaying.item.album.images[0].url}
-                  alt={currentlyPlaying.item.album.name}
-                  className="size-16 rounded-lg"
-                  width={64}
-                  height={64}
-                />
-              )}
-              <div>
-                <p className="font-medium">{currentlyPlaying.item.name}</p>
-                <p className="text-sm text-muted-foreground">
-                  {currentlyPlaying.item.artists.map((a) => a.name).join(", ")}
+      {savedAlbums.length > 0 && (
+        <section className="flex flex-col gap-2 rounded-2xl bg-sidebar p-2">
+          <div className="px-4 pt-2 pb-1">
+            <h2 className="text-sm font-medium text-muted-foreground">Saved Albums</h2>
+          </div>
+          <div className="grid gap-2 rounded-2xl bg-background p-2 shadow-sm/5">
+            {savedAlbums.map((album) => (
+              <a
+                key={album.id}
+                href={album.external_urls.spotify}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 rounded-lg px-3 py-2 no-underline transition-colors hover:bg-accent"
+              >
+                {album.images[0] && (
+                  <Image
+                    src={album.images[0].url}
+                    alt={album.name}
+                    className="size-10 rounded"
+                    width={40}
+                    height={40}
+                  />
+                )}
+                <div className="min-w-0 flex-1">
+                  <p className="truncate font-medium text-foreground">{album.name}</p>
+                  <p className="truncate text-sm text-muted-foreground">
+                    {album.artists.map((a) => a.name).join(", ")}
+                  </p>
+                </div>
+                <p className="shrink-0 text-sm text-muted-foreground">
+                  {album.total_tracks} tracks
                 </p>
-              </div>
-            </div>
-          </Card>
+              </a>
+            ))}
+          </div>
         </section>
       )}
 
-      <section className="flex flex-col gap-4">
-        <h2 className="text-lg font-medium">Top Tracks</h2>
-        <div className="grid gap-4">
-          {topTracks.map((track, index) => (
-            <a
-              key={track.id}
-              href={track.external_urls.spotify}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Card size="sm" className="transition-colors hover:bg-accent">
-                <div className="flex items-center gap-4 px-6">
-                  <span className="text-sm font-medium text-muted-foreground w-6 text-right">
-                    {index + 1}
-                  </span>
-                  {track.album.images[0] && (
-                    <Image
-                      src={track.album.images[0].url}
-                      alt={track.album.name}
-                      className="size-10 rounded"
-                      width={40}
-                      height={40}
-                    />
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate font-medium text-sm">{track.name}</p>
-                    <p className="truncate text-xs text-muted-foreground">
-                      {track.artists.map((a) => a.name).join(", ")}
-                    </p>
-                  </div>
-                  <span className="text-xs text-muted-foreground">{track.album.name}</span>
-                </div>
-              </Card>
-            </a>
-          ))}
+      <section className="flex flex-col gap-2 rounded-2xl bg-sidebar p-2">
+        <div className="px-4 pt-2 pb-1">
+          <h2 className="text-sm font-medium text-muted-foreground">Playlists</h2>
         </div>
-      </section>
-
-      <section className="flex flex-col gap-4">
-        <h2 className="text-lg font-medium">Top Artists</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {topArtists.map((artist) => (
+        <div className="grid gap-2 rounded-2xl bg-background p-2 shadow-sm/5">
+          {playlists.map((playlist) => (
             <a
-              key={artist.id}
-              href={artist.external_urls.spotify}
+              key={playlist.id}
+              href={playlist.external_urls.spotify}
               target="_blank"
               rel="noopener noreferrer"
+              className="flex items-center gap-4 rounded-lg px-3 py-2 no-underline transition-colors hover:bg-accent"
             >
-              <Card size="sm" className="transition-colors hover:bg-accent">
-                {artist.images[0] && (
-                  <Image
-                    src={artist.images[0].url}
-                    alt={artist.name}
-                    className="h-32 w-full object-cover"
-                    width={128}
-                    height={128}
-                  />
+              {playlist.images[0] && (
+                <Image
+                  src={playlist.images[0].url}
+                  alt={playlist.name}
+                  className="size-10 rounded"
+                  width={40}
+                  height={40}
+                />
+              )}
+              <div className="min-w-0 flex-1">
+                <p className="truncate font-medium text-foreground">{playlist.name}</p>
+                {playlist.description && (
+                  <p className="truncate text-sm text-muted-foreground">{playlist.description}</p>
                 )}
-                <CardHeader>
-                  <CardTitle>{artist.name}</CardTitle>
-                  {artist.genres.length > 0 && (
-                    <CardDescription className="line-clamp-1">
-                      {artist.genres.slice(0, 3).join(", ")}
-                    </CardDescription>
-                  )}
-                </CardHeader>
-              </Card>
+              </div>
+              <p className="shrink-0 text-sm text-muted-foreground">
+                {playlist.tracks.total} tracks
+              </p>
             </a>
           ))}
         </div>

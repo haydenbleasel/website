@@ -76,7 +76,27 @@ interface SpotifyCurrentlyPlaying {
   progress_ms: number;
 }
 
-export type { SpotifyArtist, SpotifyTrack, SpotifyCurrentlyPlaying };
+interface SpotifyAlbum {
+  id: string;
+  name: string;
+  images: SpotifyImage[];
+  artists: { name: string; id: string }[];
+  external_urls: { spotify: string };
+  total_tracks: number;
+}
+
+interface SpotifyPlaylist {
+  id: string;
+  name: string;
+  description: string | null;
+  images: SpotifyImage[];
+  external_urls: { spotify: string };
+  tracks: { total: number };
+  owner: { id: string };
+  public: boolean;
+}
+
+export type { SpotifyAlbum, SpotifyArtist, SpotifyTrack, SpotifyCurrentlyPlaying, SpotifyPlaylist };
 
 export const getTopTracks = async () => {
   const data = await spotifyFetch<{ items: SpotifyTrack[] }>(
@@ -94,3 +114,30 @@ export const getTopArtists = async () => {
 
 export const getCurrentlyPlaying = () =>
   spotifyFetch<SpotifyCurrentlyPlaying | null>("/me/player/currently-playing");
+
+export const getMyPlaylists = async () => {
+  const data = await spotifyFetch<{ items: SpotifyPlaylist[] }>("/me/playlists?limit=50");
+
+  const userId = await spotifyFetch<{ id: string }>("/me");
+
+  return data.items
+    .filter((playlist) => playlist.owner.id === userId.id && playlist.public)
+    .map((playlist) => ({
+      ...playlist,
+      description: playlist.description
+        ? playlist.description
+            .replaceAll("&#x27;", "'")
+            .replaceAll("&quot;", '"')
+            .replaceAll("&amp;", "&")
+            .replaceAll("&lt;", "<")
+            .replaceAll("&gt;", ">")
+        : null,
+    }));
+};
+
+export const getSavedAlbums = async () => {
+  const data = await spotifyFetch<{ items: { added_at: string; album: SpotifyAlbum }[] }>(
+    "/me/albums?limit=50",
+  );
+  return data.items.map((item) => item.album);
+};

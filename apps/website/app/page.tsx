@@ -7,7 +7,6 @@ import { Newsletter } from "@/components/newsletter";
 import { Projects } from "@/components/projects";
 import { Section } from "@/components/section";
 import { Speaking } from "@/components/speaking";
-import { Stack } from "@/components/stack";
 import { Work } from "@/components/work";
 
 const jsonLd = {
@@ -56,9 +55,6 @@ const Home = () => (
     </Section>
     <Section title="Speaking & Interviews">
       <Speaking />
-    </Section>
-    <Section title="Stack">
-      <Stack />
     </Section>
   </>
 );

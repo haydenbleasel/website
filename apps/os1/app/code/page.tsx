@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/page-header";
-import { getProfile, getRepositories, getWorkRepositories } from "@/lib/github";
+import { getRepositories, getWorkRepositories } from "@/lib/github";
 import { LanguageIcon } from "./language-icon";
 import { getBulkDownloads, getPackages } from "@/lib/npm";
 import type { NpmPackage } from "@/lib/npm";
@@ -25,7 +25,10 @@ const getCachedContributions = unstable_cache(
     const response = await fetch(url);
     const data = (await response.json()) as ContributionsResponse;
     const total = data.total[new Date().getFullYear()];
-    return { contributions: data.contributions, total };
+    const [today] = new Date().toISOString().split("T");
+    const [oneYearAgo] = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000).toISOString().split("T");
+    const contributions = data.contributions.filter((c) => c.date >= oneYearAgo && c.date <= today);
+    return { contributions, total };
   },
   ["github-contributions"],
   { revalidate: 60 * 60 * 24 },
@@ -42,8 +45,7 @@ const formatNumber = (num: number) => {
 };
 
 const CodePage = async () => {
-  const [profile, repos, workRepos, contributionData, packages] = await Promise.all([
-    getProfile(),
+  const [repos, workRepos, contributionData, packages] = await Promise.all([
     getRepositories(),
     getWorkRepositories(),
     getCachedContributions(),
@@ -60,12 +62,7 @@ const CodePage = async () => {
     <div className="flex flex-col gap-8">
       <PageHeader
         title="Code"
-        description={
-          <>
-            {profile.public_repos} public repos. {formatNumber(contributionData.total ?? 0)}{" "}
-            contributions this year.
-          </>
-        }
+        description={`${formatNumber(contributionData.total ?? 0)} contributions this year.`}
       />
 
       <ContributionGraphClient

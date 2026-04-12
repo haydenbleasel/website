@@ -83,7 +83,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
         <SidebarProvider>
           <AppSidebar />
           <SidebarInset>
-            <main>{children}</main>
+            <main className="container mx-auto max-w-6xl">{children}</main>
           </SidebarInset>
         </SidebarProvider>
       </DesignSystemProvider>

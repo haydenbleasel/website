@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@haydenbleasel/design-system": "workspace:*",
+    "@spotify/web-api-ts-sdk": "^1.2.0",
     "lucide-react": "^1.8.0",
     "next": "16.2.3",
+    "octokit": "^5.0.5",
     "react": "19.2.5",
-    "react-dom": "19.2.5"
+    "react-dom": "19.2.5",
+    "steamapi": "^3.1.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

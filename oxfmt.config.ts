@@ -1,3 +1,6 @@
-import config from "ultracite/oxfmt";
+import { defineConfig } from "oxfmt";
+import ultracite from "ultracite/oxfmt";
 
-export default config;
+export default defineConfig({
+  extends: [ultracite],
+});

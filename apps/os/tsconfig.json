@@ -20,7 +20,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@haydenbleasel/*": ["../../packages/*"]
     },
     "strictNullChecks": true
   },

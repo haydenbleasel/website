@@ -20,6 +20,8 @@
       "name": "os1",
       "version": "0.1.0",
       "dependencies": {
+        "@haydenbleasel/design-system": "workspace:*",
+        "lucide-react": "^1.8.0",
         "next": "16.2.3",
         "react": "19.2.5",
         "react-dom": "19.2.5",

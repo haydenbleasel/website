@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "bun --bun next dev",
     "build": "bun --bun next build",
+    "typegen": "next typegen",
     "types": "tsc --noEmit",
     "test": "bun test",
     "test:coverage": "bun test --coverage"

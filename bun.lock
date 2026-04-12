@@ -20,7 +20,7 @@
         "ultracite": "7.5.5",
       },
     },
-    "apps/os": {
+    "apps/os1": {
       "name": "os1",
       "version": "0.1.0",
       "dependencies": {
@@ -1359,7 +1359,7 @@
 
     "os": ["os@0.1.2", "", {}, "sha512-ZoXJkvAnljwvc56MbvhtKVWmSkzV712k42Is2mA0+0KTSRakq5XXuXpjZjgAt9ctzl51ojhQWakQQpmOvXWfjQ=="],
 
-    "os1": ["os1@workspace:apps/os"],
+    "os1": ["os1@workspace:apps/os1"],
 
     "outdent": ["outdent@0.5.0", "", {}, "sha512-/jHxFIzoMXdqPzTaCpFzAAWhpkSjZPF4Vsn6jAfNpmbH/ymsmd7Qc6VE9BGn0L6YMj6uwpQLxCECpus4ukKS9Q=="],
 

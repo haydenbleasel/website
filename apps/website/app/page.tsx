@@ -8,6 +8,7 @@ import { Projects } from "@/components/projects";
 import { Section } from "@/components/section";
 import { Speaking } from "@/components/speaking";
 import { Work } from "@/components/work";
+import { OS1 } from "@/components/os1";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -56,6 +57,7 @@ const Home = () => (
     <Section title="Speaking & Interviews">
       <Speaking />
     </Section>
+    <OS1 />
   </>
 );
 

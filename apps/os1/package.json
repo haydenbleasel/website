@@ -15,7 +15,7 @@
     "@haydenbleasel/design-system": "workspace:*",
     "@spotify/web-api-ts-sdk": "^1.2.0",
     "lucide-react": "^1.8.0",
-    "next": "16.2.3",
+    "next": "16.2.4",
     "octokit": "^5.0.5",
     "openapi-fetch": "^0.17.0",
     "react": "19.2.5",

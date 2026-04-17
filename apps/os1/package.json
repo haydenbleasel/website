@@ -7,17 +7,16 @@
     "build": "bun --bun next build",
     "typegen": "next typegen",
     "types": "tsc --noEmit",
-    "generate:typefully": "openapi-typescript https://api.typefully.com/v2/openapi.json -o lib/typefully/schema.ts",
     "test": "bun test",
     "test:coverage": "bun test --coverage"
   },
   "dependencies": {
     "@haydenbleasel/design-system": "workspace:*",
+    "@haydenbleasel/typefully": "workspace:*",
     "@spotify/web-api-ts-sdk": "^1.2.0",
     "lucide-react": "^1.8.0",
     "next": "16.2.4",
     "octokit": "^5.0.5",
-    "openapi-fetch": "^0.17.0",
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "steamapi": "^3.1.5"
@@ -29,7 +28,6 @@
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "openapi-typescript": "^7.13.0",
     "tailwindcss": "^4",
     "typescript": "^6"
   }

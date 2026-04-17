@@ -1,12 +1,5 @@
-import createClient from "openapi-fetch";
-import type { components, paths } from "./schema";
-
-const client = createClient<paths>({
-  baseUrl: "https://api.typefully.com",
-  headers: {
-    Authorization: `Bearer ${process.env.TYPEFULLY_API_KEY ?? ""}`,
-  },
-});
+import { typefully } from "@haydenbleasel/typefully";
+import type { components } from "@haydenbleasel/typefully";
 
 type AnalyticsPost = components["schemas"]["SocialSetAnalyticsPostResponse"];
 
@@ -22,7 +15,7 @@ export interface TypefullyPostWithAnalytics {
 }
 
 const getSocialSetId = async (): Promise<number | null> => {
-  const { data } = await client.GET("/v2/social-sets");
+  const { data } = await typefully.GET("/v2/social-sets");
 
   return data?.results[0]?.id ?? null;
 };
@@ -36,7 +29,7 @@ const getAnalytics = async (socialSetId: number): Promise<AnalyticsPost[]> => {
   const limit = 100;
 
   while (true) {
-    const { data } = await client.GET(
+    const { data } = await typefully.GET(
       "/v2/social-sets/{social_set_id}/analytics/{platform}/posts",
       {
         params: {
@@ -70,7 +63,7 @@ export const getPublishedPosts = async (): Promise<TypefullyPostWithAnalytics[]>
   }
 
   const [draftsResponse, analytics] = await Promise.all([
-    client.GET("/v2/social-sets/{social_set_id}/drafts", {
+    typefully.GET("/v2/social-sets/{social_set_id}/drafts", {
       params: {
         path: { social_set_id: socialSetId },
         query: { limit: 25, order_by: "-published_at", status: "published" },

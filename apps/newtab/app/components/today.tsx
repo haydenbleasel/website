@@ -73,7 +73,7 @@ const TodayContent = async () => {
 };
 
 export const Today = () => (
-  <Card className="min-h-[188px] gap-0 bg-secondary p-1 shadow-xs">
+  <Card className="min-h-[188px] gap-0 bg-sidebar p-1 shadow-xs">
     <CardHeader className="gap-0 px-3 py-2">
       <CardTitle className="font-normal text-muted-foreground text-sm">
         Today&apos;s Posts

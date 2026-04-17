@@ -21,6 +21,7 @@
   "devDependencies": {
     "@haydenbleasel/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "^4",
+    "@types/bun": "^1.3.12",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
